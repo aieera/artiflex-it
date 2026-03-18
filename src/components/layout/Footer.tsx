@@ -27,9 +27,7 @@ export default function Footer() {
           <div>
             <Link to="/" className="group inline-flex items-center gap-2.5">
               <img src="/logos/artiflexit logo.svg" alt="ArtiflexIT" className="h-18 w-25" />
-              <span className="font-display text-xl font-bold text-white">
-                Artiflex<span className="text-brand-blue">It</span>
-              </span>
+              
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
               Enterprise-grade cybersecurity and IT solutions protecting

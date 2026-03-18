@@ -10,7 +10,7 @@ const services = [
     title: "Cybersecurity",
     description:
       "Stop threats before they reach your data. Our layered defense strategy covers everything from perimeter firewalls to endpoint detection, backed by a 24/7 security operations center.",
-    href: "/services/cybersecurity",
+    href: "/cybersecurity",
   },
   {
     number: "02",
@@ -18,7 +18,7 @@ const services = [
     title: "Cloud Solutions",
     description:
       "Move to the cloud without the migration headaches. We design, migrate, and manage cloud environments across AWS, Azure, and GCP with zero-downtime guarantees.",
-    href: "/services/cloud-solutions",
+    href: "/cloud-solutions",
   },
   {
     number: "03",
@@ -26,7 +26,7 @@ const services = [
     title: "IT Infrastructure",
     description:
       "Build networks that scale with your ambitions. From structured cabling to SD-WAN deployment, we design infrastructure that eliminates bottlenecks and future-proofs your operations.",
-    href: "/services/infrastructure",
+    href: "/infrastructure",
   },
   {
     number: "04",
@@ -34,7 +34,7 @@ const services = [
     title: "Managed Services",
     description:
       "Focus on your business while we handle your IT. Proactive monitoring, patch management, and help desk support — all under one predictable monthly fee.",
-    href: "/services/managed-services",
+    href: "/managed-services",
   },
 ];
 

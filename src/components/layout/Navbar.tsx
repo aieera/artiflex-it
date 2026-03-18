@@ -93,13 +93,7 @@ export default function Navbar() {
             alt="ArtiflexIT"
             className="h-15 w-20 transition-transform duration-300 group-hover:scale-105"
           />
-          <span
-            className={`font-display text-xl font-bold transition-colors duration-300 ${
-              scrolled ? "text-heading" : "text-white"
-            }`}
-          >
-            Artiflex<span className="text-brand-blue">It</span>
-          </span>
+         
         </Link>
 
         {/* ─── Desktop nav (center) ─── */}

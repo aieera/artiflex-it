@@ -118,7 +118,7 @@ export default function FAQPage() {
       />
 
       {/* Cybersecurity FAQs */}
-      <section className="relative py-16 bg-navy-deep sm:py-24">
+      <section className="relative py-16 bg-white sm:py-24">
         <div className="mx-auto max-w-4xl px-5 sm:px-6">
           <SectionHeader
             label="Cybersecurity"
@@ -140,7 +140,7 @@ export default function FAQPage() {
       </section>
 
       {/* Managed Services FAQs */}
-      <section className="relative py-16 bg-navy-deep sm:py-24">
+      <section className="relative py-16 bg-white sm:py-24">
         <div className="mx-auto max-w-4xl px-5 sm:px-6">
           <SectionHeader
             label="Managed Services"
