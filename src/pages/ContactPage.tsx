@@ -18,7 +18,7 @@ const offices = [
     label: "UAE",
     address: ["National Insurance Building, Office 603, Opposite Deira City Center, Deira, Dubai, United Arab Emirates"
 
-],
+    ],
     phone: "+971558086462",
     email: "info@artiflexit.com",
     highlight: true,
@@ -139,27 +139,27 @@ export default function ContactPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
- const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-  const {
-    name,
-    email,
-    phone,
-    company,
-    employees,
-    service,
-    message,
-  } = formData;
+    const {
+      name,
+      email,
+      phone,
+      company,
+      employees,
+      service,
+      message,
+    } = formData;
 
-  if (!name || !email || !message) {
-    alert("Please fill all required fields");
-    return;
-  }
+    if (!name || !email || !message) {
+      alert("Please fill all required fields");
+      return;
+    }
 
-  const phoneNumber = "+971522076531"; // ArtiflexIT WhatsApp number
+    const phoneNumber = "+971522076531"; // ArtiflexIT WhatsApp number
 
-  const text = `Hello, I have an enquiry:
+    const text = `Hello, I have an enquiry:
 
 Name: ${name}
 Email: ${email}
@@ -171,12 +171,12 @@ Service: ${service}
 Message:
 ${message}`;
 
-  const encodedText = encodeURIComponent(text);
+    const encodedText = encodeURIComponent(text);
 
-  const url = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodedText}`;
 
-  window.open(url, "_blank");
-};
+    window.open(url, "_blank");
+  };
 
   return (
     <>
@@ -405,61 +405,73 @@ ${message}`;
           />
 
           <div className="mt-8 grid gap-4 sm:mt-12 sm:gap-6 md:grid-cols-3">
-            {offices.map((office) => (
-              <div
-                key={office.city}
-                className={`relative rounded-2xl border p-6 transition-all duration-500 ${
-                  office.highlight
-                    ? "border-brand-blue/25 bg-gradient-to-br from-brand-blue/5 to-white shadow-[0_4px_20px_rgba(27,138,199,0.1)]"
-                    : "border-border-light bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(27,138,199,0.08)] hover:border-brand-blue/25 hover:-translate-y-0.5"
-                }`}
-              >
-                {/* Highlight badge */}
-                {office.highlight && (
-                  <span className="absolute -top-3 left-6 inline-flex items-center gap-1.5 rounded-full bg-brand-blue px-3 py-1 text-[11px] font-semibold text-white">
-                    <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse-dot" />
-                    Headquarters
-                  </span>
-                )}
+            {offices
+              
+              .map((office) => (
+                <div
+                  key={office.city}
+                  className={`relative rounded-2xl border p-6 transition-all duration-500 ${office.highlight
+                      ? "border-brand-blue/25 bg-gradient-to-br from-brand-blue/5 to-white shadow-[0_4px_20px_rgba(27,138,199,0.1)]"
+                      : "border-border-light bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(27,138,199,0.08)] hover:border-brand-blue/25 hover:-translate-y-0.5"
+                    }`}
+                >
+                  {/* Highlight badge */}
+                  {office.highlight && (
+                    <span className="absolute -top-3 left-6 inline-flex items-center gap-1.5 rounded-full bg-brand-blue px-3 py-1 text-[11px] font-semibold text-white">
+                      <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse-dot" />
+                      Headquarters
+                    </span>
+                  )}
 
-                <div className="flex items-center gap-3 mb-5">
-                  <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${
-                    office.highlight ? "bg-brand-blue text-white" : "bg-brand-blue/8 text-brand-blue"
-                  }`}>
-                    <MapPinIcon className="h-5 w-5" />
+                  <div className="flex items-center gap-3 mb-5">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center rounded-xl ${office.highlight
+                          ? "bg-brand-blue text-white"
+                          : "bg-brand-blue/8 text-brand-blue"
+                        }`}
+                    >
+                      <MapPinIcon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-lg font-semibold text-heading">
+                        {office.city}
+                      </h3>
+                      <p className="text-xs text-muted">{office.label}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-display text-lg font-semibold text-heading">{office.city}</h3>
-                    <p className="text-xs text-muted">{office.label}</p>
+
+                  <div className="space-y-4 text-sm">
+                    <div className="text-body leading-relaxed">
+                      {office.address.map((line) => (
+                        <p key={line}>{line}</p>
+                      ))}
+                    </div>
+
+                    <div className="h-px bg-border-light" />
+
+
+                    <div className="flex items-center justify-center gap-4">
+
+                      <a
+                        href={`https://wa.me/${office.phone.replace(/\D/g, "")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue text-white hover:scale-110 transition"
+                      >
+                        <PhoneIcon className="h-5 w-5" />
+                      </a>
+
+                      {/* Email */}
+                      <a
+                        href={`mailto:${office.email}`}
+                        className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue text-white hover:scale-110 transition"
+                      >
+                        <MailIcon className="h-5 w-5" />
+                      </a>
+                    </div>
                   </div>
                 </div>
-
-                <div className="space-y-3 text-sm">
-                  <div className="text-body leading-relaxed">
-                    {office.address.map((line) => (
-                      <p key={line}>{line}</p>
-                    ))}
-                  </div>
-
-                  <div className="h-px bg-border-light" />
-
-                  <a
-                    href={`tel:${office.phone.replace(/\s/g, "")}`}
-                    className="flex items-center gap-2 text-heading font-medium hover:text-brand-blue transition-colors"
-                  >
-                    <PhoneIcon className="h-4 w-4 text-brand-blue" />
-                    {office.phone}
-                  </a>
-                  <a
-                    href={`mailto:${office.email}`}
-                    className="flex items-center gap-2 text-heading font-medium hover:text-brand-blue transition-colors"
-                  >
-                    <MailIcon className="h-4 w-4 text-brand-blue" />
-                    {office.email}
-                  </a>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </section>
