@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.sophos.com)",
+      "Bash(npm run:*)",
+      "WebFetch(domain:artiflexit.com)",
+      "WebFetch(domain:reactbits.dev)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(find /tmp -name *.png -newer /tmp -maxdepth 2)",
+      "Read(//c/Users/dell/AppData/Local/Temp/**)"
+    ]
+  }
+}
