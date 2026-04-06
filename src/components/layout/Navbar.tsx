@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
 import { useContactModal } from "@/components/layout/ContactModal";
+import StarBorder from "@/components/ui/StarBorder";
 import {
   ShieldIcon,
   CloudIcon,
@@ -85,15 +86,14 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex h-[72px] max-w-7xl items-center px-6 lg:px-8">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center px-4 sm:h-[72px] sm:px-6 lg:px-8">
         {/* ─── Logo (left) ─── */}
         <Link to="/" className="group flex shrink-0 items-center gap-8.5">
           <img
             src="/logos/artiflexit logo.svg"
             alt="ArtiflexIT"
-            className="h-15 w-20 transition-transform duration-300 group-hover:scale-105"
+            className="h-10 w-14 sm:h-12 sm:w-16 lg:h-15 lg:w-20 transition-transform duration-300 group-hover:scale-105"
           />
-         
         </Link>
 
         {/* ─── Desktop nav (center) ─── */}
@@ -113,7 +113,7 @@ export default function Navbar() {
                     to={link.href}
                     className={`flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-200 ${
                       isActive(link.href)
-                        ? "text-brand-blue"
+                        ? scrolled ? "text-[#045891]" : "text-[#28B5E1]"
                         : scrolled
                           ? "text-slate-600 hover:text-heading"
                           : "text-slate-300 hover:text-white"
@@ -137,7 +137,7 @@ export default function Navbar() {
                         transition={{ duration: 0.2, ease: "easeOut" }}
                         className="absolute left-1/2 top-full mt-2 w-80 -translate-x-1/2 overflow-hidden rounded-2xl border border-border-light bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-xl"
                       >
-                        <div className="h-0.5 w-full bg-gradient-to-r from-brand-blue to-brand-cyan" />
+                        <div className="h-0.5 w-full bg-gradient-to-r from-[#045891] to-[#1B8AC7]" />
                         <div className="p-2">
                           {link.children.map((child) => {
                             const Icon = ICON_MAP[child.icon];
@@ -148,7 +148,7 @@ export default function Navbar() {
                                 className="group/item flex items-start gap-3 rounded-xl px-3 py-3 transition-all duration-200 hover:bg-surface-secondary"
                                 onClick={() => setDropdownOpen(false)}
                               >
-                                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-blue/8 text-brand-blue transition-colors duration-200 group-hover/item:bg-brand-blue group-hover/item:text-white">
+                                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#045891]/8 text-[#045891] transition-colors duration-200 group-hover/item:bg-[#045891] group-hover/item:text-white">
                                   {Icon && <Icon className="h-4 w-4" />}
                                 </div>
                                 <div>
@@ -176,7 +176,7 @@ export default function Navbar() {
                   to={link.href}
                   className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-200 ${
                     isActive(link.href)
-                      ? "text-brand-blue"
+                      ? scrolled ? "text-[#045891]" : "text-[#28B5E1]"
                       : scrolled
                         ? "text-slate-600 hover:text-heading"
                         : "text-slate-300 hover:text-white"
@@ -190,18 +190,22 @@ export default function Navbar() {
         </ul>
 
         {/* ─── CTA + Hamburger (right) ─── */}
-        <div className="flex shrink-0 items-center gap-4">
-          <button
-            type="button"
-            onClick={openContact}
-            className={`hidden rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 lg:inline-flex ${
-              scrolled
-                ? "bg-heading text-white hover:bg-brand-blue"
-                : "bg-white text-heading hover:bg-brand-blue hover:text-white"
-            }`}
-          >
-            Get Started
-          </button>
+        <div className="ml-auto flex shrink-0 items-center gap-4">
+          {/* Desktop CTA — StarBorder with logo gradient */}
+          <div className="hidden lg:block">
+            <StarBorder
+              as="button"
+              color="#1B8AC7"
+              speed="5s"
+              thickness={2}
+              className="cursor-pointer"
+              onClick={openContact}
+            >
+              <span className="flex items-center rounded-[18px] bg-gradient-to-r from-[#045891] to-[#1B8AC7] px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:brightness-110">
+                Get Started
+              </span>
+            </StarBorder>
+          </div>
 
           {/* Mobile hamburger */}
           <button
@@ -239,7 +243,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden border-t border-border-light bg-white lg:hidden"
           >
-            <div className="mx-auto max-w-7xl px-6 py-6">
+            <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-6">
               <ul className="flex flex-col gap-1">
                 {NAV_LINKS.map((link) => {
                   const hasChildren = "children" in link && link.children;
@@ -250,7 +254,7 @@ export default function Navbar() {
                         onClick={() => setMobileOpen(false)}
                         className={`block rounded-xl px-4 py-3 text-base font-medium transition-colors ${
                           isActive(link.href)
-                            ? "bg-brand-blue/8 text-brand-blue"
+                            ? "bg-[#045891]/8 text-[#045891]"
                             : "text-slate-600 hover:bg-surface-secondary hover:text-heading"
                         }`}
                       >
@@ -263,7 +267,11 @@ export default function Navbar() {
                               <Link
                                 to={child.href}
                                 onClick={() => setMobileOpen(false)}
-                                className="block rounded-lg px-4 py-2 text-sm text-muted transition-colors hover:text-heading"
+                                className={`block rounded-lg px-4 py-2 text-sm transition-colors ${
+                                  isActive(child.href)
+                                    ? "text-[#045891] font-semibold bg-[#045891]/5"
+                                    : "text-muted hover:text-heading"
+                                }`}
                               >
                                 {child.name}
                               </Link>
@@ -276,13 +284,18 @@ export default function Navbar() {
                 })}
               </ul>
               <div className="mt-6">
-                <button
-                  type="button"
+                <StarBorder
+                  as="button"
+                  color="#1B8AC7"
+                  speed="5s"
+                  thickness={2}
+                  className="w-full cursor-pointer"
                   onClick={() => { setMobileOpen(false); openContact(); }}
-                  className="w-full rounded-full bg-heading py-3 text-sm font-medium text-white transition-colors hover:bg-brand-blue"
                 >
-                  Get Started
-                </button>
+                  <span className="flex items-center justify-center rounded-[18px] bg-gradient-to-r from-[#045891] to-[#1B8AC7] py-3 text-sm font-semibold text-white w-full">
+                    Get Started
+                  </span>
+                </StarBorder>
               </div>
             </div>
           </motion.div>

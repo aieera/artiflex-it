@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface FAQItem {
   question: string;
@@ -43,9 +43,7 @@ function AccordionItem({
         className="flex w-full items-center justify-between px-6 py-5 text-left"
       >
         <span
-          className={`pr-4 font-display text-base font-semibold transition-colors duration-300 sm:text-lg ${
-            isOpen ? "text-heading" : "text-heading"
-          }`}
+          className="pr-4 font-display text-base font-semibold text-heading sm:text-lg"
         >
           {item.question}
         </span>

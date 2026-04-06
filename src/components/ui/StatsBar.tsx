@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 interface StatItem {
   value: number;
@@ -48,9 +48,9 @@ function AnimatedNumber({
   }, [inView, value]);
 
   return (
-    <span className="font-display text-2xl font-bold text-white sm:text-4xl md:text-5xl">
+    <span className="font-display text-2xl font-bold text-heading sm:text-4xl md:text-5xl">
       {display}
-      <span className="text-brand-blue">{suffix}</span>
+      <span className="text-[#045891]">{suffix}</span>
     </span>
   );
 }
@@ -84,16 +84,16 @@ export default function StatsBar({ stats }: StatsBarProps) {
     <div className="mx-auto max-w-7xl px-4 -mt-12 relative z-20 sm:px-6 sm:-mt-16">
       <div
         ref={ref}
-        className="rounded-2xl bg-navy-deep border border-white/[0.08] shadow-2xl shadow-black/20 px-4 py-8 sm:px-8 sm:py-10 md:px-12"
+        className="rounded-2xl bg-white border border-border-light shadow-[0_4px_20px_rgba(0,0,0,0.06)] px-4 py-8 sm:px-8 sm:py-10 md:px-12"
       >
-        <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4 lg:gap-8">
           {stats.map((stat) => (
             <div
               key={stat.label}
               className="flex flex-col items-center text-center"
             >
               <AnimatedNumber value={stat.value} suffix={stat.suffix} inView={inView} />
-              <span className="mt-2 text-sm text-slate-400 font-medium">{stat.label}</span>
+              <span className="mt-2 text-xs text-body font-medium sm:text-sm">{stat.label}</span>
             </div>
           ))}
         </div>

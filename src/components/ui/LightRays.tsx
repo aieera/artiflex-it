@@ -119,14 +119,18 @@ export default function LightRays({
     const mouseTarget = { x: 0.5, y: 0.5 };
     const smoothMouse = { x: 0.5, y: 0.5 };
 
-    const onMouseMove = (e: MouseEvent) => {
+    const updateMouseTarget = (clientX: number, clientY: number) => {
       const rect = container.getBoundingClientRect();
-      mouseTarget.x = (e.clientX - rect.left) / rect.width;
-      mouseTarget.y = (e.clientY - rect.top) / rect.height;
+      mouseTarget.x = (clientX - rect.left) / rect.width;
+      mouseTarget.y = (clientY - rect.top) / rect.height;
     };
+    const onMouseMove = (e: MouseEvent) => updateMouseTarget(e.clientX, e.clientY);
+    const onTouchMove = (e: TouchEvent) => { if (e.touches.length > 0) updateMouseTarget(e.touches[0].clientX, e.touches[0].clientY); };
 
     if (followMouse) {
       window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("touchmove", onTouchMove, { passive: true });
+      window.addEventListener("touchstart", onTouchMove, { passive: true });
     }
 
     const loop = (t: number) => {
@@ -146,6 +150,8 @@ export default function LightRays({
 
     cleanupRef.current = () => {
       window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchstart", onTouchMove);
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
       try {

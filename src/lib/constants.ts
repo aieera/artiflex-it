@@ -14,6 +14,7 @@ export const NAV_LINKS = [
     ],
   },
   { label: "Blog", href: "/blog" },
+  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -27,13 +28,11 @@ export const SERVICES = [
 ] as const;
 
 export const STATS = [
-  { value: 200, suffix: "+", label: "Enterprise Clients" },
+  { value: 500, suffix: "+", label: "Projects Completed" },
   { value: 99.9, suffix: "%", label: "Uptime Guaranteed" },
-  { value: 15, suffix: "+", label: "Years Experience" },
-  { value: 50, suffix: "M+", label: "Threats Blocked" },
+  { value: 14, suffix: "+", label: "Years Experience" },
+  { value: 20, suffix: "+", label: "Certified Professionals" },
 ] as const;
-
-export const VENDOR_NAMES = ["Sophos", "Fortinet", "Cisco", "Microsoft", "Palo Alto", "CrowdStrike", "AWS", "Azure"] as const;
 
 export const PARTNER_LOGOS = [
   { name: "Sophos", src: "/logos/sophos.svg" },
@@ -90,11 +89,10 @@ export const FOOTER_LINKS = {
 
 export const CONTACT_INFO = {
   address: "National Insurance Building, Office 603, Opposite Deira City Center, Deira, Dubai, United Arab Emirates",
-  phone: "+971558086462",
-  email: "info@artiflexit.com",
+  phone: "+971 52 207 6531",
+  email: "meghna@artiflexit.com",
 } as const;
 
 export const SOCIAL_LINKS = [
-  { label: "LinkedIn", href: "https://linkedin.com/company/artiflexit", icon: "LinkedInIcon" },
-  { label: "Twitter", href: "https://x.com/artiflexit", icon: "TwitterIcon" },
+  { label: "LinkedIn", href: "https://ae.linkedin.com/company/artiflex-information-technology-llc", icon: "LinkedInIcon" },
 ] as const;

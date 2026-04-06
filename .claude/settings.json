@@ -7,7 +7,9 @@
       "WebFetch(domain:reactbits.dev)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(find /tmp -name *.png -newer /tmp -maxdepth 2)",
-      "Read(//c/Users/dell/AppData/Local/Temp/**)"
+      "Read(//c/Users/dell/AppData/Local/Temp/**)",
+      "Bash(ls -la \"c:\\\\Users\\\\dell\\\\Documents\\\\Artiflex webpage\\\\artiflex-vite \\(2\\)\\\\artiflex-vite\\\\artiflex-vite\\\\src\\\\components\\\\sections\")",
+      "WebSearch"
     ]
   }
 }

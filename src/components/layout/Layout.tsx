@@ -14,7 +14,7 @@ export default function Layout() {
     <ContactModalProvider>
       <ScrollToTop />
       <Navbar />
-      <main className="pt-[72px]">
+      <main>
         <Outlet />
       </main>
       <Footer />

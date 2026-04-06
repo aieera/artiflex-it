@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import { Link } from "react-router-dom";
 import { FOOTER_LINKS, CONTACT_INFO, SOCIAL_LINKS } from "@/lib/constants";
 import {
@@ -6,32 +6,29 @@ import {
   PhoneIcon,
   MailIcon,
   LinkedInIcon,
-  TwitterIcon,
 } from "@/components/icons";
 
 const SOCIAL_ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   LinkedInIcon,
-  TwitterIcon,
 };
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/[0.06] bg-navy-deep">
-      {/* Gradient top border */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-blue to-transparent" />
+    <footer className="relative border-t border-white/[0.08] bg-black">
 
-      <div className="mx-auto max-w-7xl px-5 pb-8 pt-12 sm:px-6 sm:pt-16 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 pb-8 pt-10 sm:px-6 sm:pt-16 lg:px-8">
         {/* ─── Columns ─── */}
         <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4">
           {/* Column 1 — Brand */}
           <div>
             <Link to="/" className="group inline-flex items-center gap-2.5">
-              <img src="/logos/artiflexit logo.svg" alt="ArtiflexIT" className="h-18 w-25" />
+              <img src="/logos/artiflexit logo.svg" alt="ArtiflexIT" className="h-12 w-16 sm:h-16 sm:w-20 lg:h-18 lg:w-25" />
               
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
-              Enterprise-grade cybersecurity and IT solutions protecting
-              businesses across the UAE and the wider Middle East region.
+              Delivering high-quality, innovative IT solutions and
+              cybersecurity services to organizations worldwide — with over 14
+              years of experience and offices across 4 countries.
             </p>
           </div>
 
@@ -108,7 +105,7 @@ export default function Footer() {
         </div>
 
         {/* ─── Bottom bar ─── */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/[0.06] pt-8 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/[0.08] pt-8 sm:flex-row">
           <p className="text-xs text-slate-500">
             &copy; 2026 ArtiflexIT. All rights reserved.
           </p>

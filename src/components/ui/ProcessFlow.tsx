@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Step {
   number: number;
   title: string;
