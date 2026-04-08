@@ -105,18 +105,7 @@ export default function PageHero({
 
         {/* Title with VariableProximity effect */}
         <h1 className="font-display text-[1.75rem] font-bold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl max-w-4xl">
-          <VariableProximity
-            label={plainTitle}
-            fromFontVariationSettings="'wght' 400"
-            toFontVariationSettings="'wght' 900"
-            containerRef={containerRef}
-            radius={150}
-            falloff="gaussian"
-            className="text-white"
-            style={{
-              fontFamily: "'Roboto Flex', 'Space Grotesk', sans-serif",
-            }}
-          />
+          {title}
         </h1>
 
         {/* Subtitle */}

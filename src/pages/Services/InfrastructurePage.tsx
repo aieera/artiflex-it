@@ -41,7 +41,7 @@ export default function InfrastructurePage() {
       <section className="relative py-16 bg-white sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <SectionHeader label="The Cost of Downtime" title="When Infrastructure Fails, Everything Stops" centered />
+            <SectionHeader label="The Cost of Downtime" title={<>When <span className="gradient-text"> Infrastructure</span> Fails, Everything Stops </>} centered />
             <Card variant="glass" hover={false} className="p-5 sm:p-8">
               <p className="text-body leading-relaxed mb-4 text-left">The average cost of IT downtime is <span className="text-heading font-semibold">$5,600 per minute</span>. For a mid-market business, a four-hour outage can cost more than an entire year of proactive infrastructure management.</p>
               <p className="text-body leading-relaxed text-left">73% of unplanned downtime in the region is caused by aging infrastructure — equipment running past its lifecycle, firmware that hasn't been updated in years, and networks that were designed for half the current workload. This isn't bad luck. It's predictable failure from deferred investment.</p>
@@ -52,7 +52,7 @@ export default function InfrastructurePage() {
 
       <section className="relative py-16 bg-surface-secondary sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeader label="Core Services" title="Infrastructure That Works" description="Four pillars of IT infrastructure — each designed for performance, redundancy, and manageability." centered />
+          <SectionHeader label="Core Services" title={<><span className="gradient-text">Infrastructure</span> That Works</>} description="Four pillars of IT infrastructure — each designed for performance, redundancy, and manageability." centered />
           <div className="grid gap-4 sm:gap-6 md:grid-cols-2 md:gap-8">
             {coreServices.map((service) => (
               <Card key={service.title} variant="service" className="p-6">
@@ -73,19 +73,24 @@ export default function InfrastructurePage() {
 
       <section className="relative py-16 bg-white sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeader label="By the Numbers" title="Why Infrastructure Investment Pays Off" centered />
+          <SectionHeader label="By the Numbers"
+            title={<>Why <span className="gradient-text">Infrastructure </span>Investment Pays Off</>}
+            centered />
           <StatsBar stats={infraStats} />
         </div>
       </section>
 
       <section className="relative py-16 bg-surface-secondary sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeader label="Our Approach" title="How We Build Infrastructure" centered />
+          <SectionHeader label="Our Approach"
+            title={<>How We Build <span className="gradient-text">Infrastructure </span></>}
+            centered />
           <ProcessFlow steps={processSteps} />
         </div>
       </section>
 
-      <CTASection title="Build Infrastructure That Doesn't Keep You Up at Night" description="Get an infrastructure assessment that identifies aging equipment, capacity constraints, and single points of failure — with a prioritized upgrade roadmap." primaryButton={{ text: "Discuss Your Requirements", action: "modal" }} />
+      <CTASection title="Build Infrastructure That Doesn't Keep You Up at Night"
+        description="Get an infrastructure assessment that identifies aging equipment, capacity constraints, and single points of failure — with a prioritized upgrade roadmap." primaryButton={{ text: "Discuss Your Requirements", action: "modal" }} />
     </>
   );
 }

@@ -93,14 +93,12 @@ const STYLE = `
     width: auto;
     max-width: 110px;
     object-fit: contain;
-    filter: grayscale(1) opacity(0.45);
+    filter: none !important;  
+  opacity: 1 !important;
     transition:
-      filter   0.4s ease,
-      opacity  0.4s ease,
       transform 0.4s ease;
   }
   .logo-card:hover .logo-img {
-    filter: grayscale(0) opacity(1);
     transform: scale(1.06);
   }
 
@@ -201,12 +199,12 @@ function LogoTrack({
   return (
     <div style={{ position: "relative", overflow: "hidden", padding: "10px 0" }}>
       {/* fade masks */}
-      <div className="fade-left"  style={{ position:"absolute", inset:"0 auto 0 0", width:150, zIndex:10 }} />
-      <div className="fade-right" style={{ position:"absolute", inset:"0 0 0 auto", width:150, zIndex:10 }} />
+      <div className="fade-left" style={{ position: "absolute", inset: "0 auto 0 0", width: 150, zIndex: 10 }} />
+      <div className="fade-right" style={{ position: "absolute", inset: "0 0 0 auto", width: 150, zIndex: 10 }} />
 
       <div
         className={reverse ? "scroll-rev" : "scroll-fwd"}
-        style={{ display:"flex", alignItems:"center", width:"max-content" }}
+        style={{ display: "flex", alignItems: "center", width: "max-content" }}
       >
         {doubled.map((logo, i) => (
           <LogoCard key={`${logo.name}-${i}`} name={logo.name} src={logo.src} />
@@ -234,12 +232,12 @@ export default function VendorStrip() {
       <style>{STYLE}</style>
 
       {/* Ambient glow orbs */}
-      <div className="glow-orb" style={{ width:400, height:400, background:"#045891", top:-120, left:"10%" }} />
-      <div className="glow-orb" style={{ width:300, height:300, background:"#6aafd4", bottom:-100, right:"15%" }} />
+      <div className="glow-orb" style={{ width: 400, height: 400, background: "#045891", top: -120, left: "10%" }} />
+      <div className="glow-orb" style={{ width: 300, height: 300, background: "#6aafd4", bottom: -100, right: "15%" }} />
 
       {/* Header */}
-      <div style={{ textAlign:"center", marginBottom:36 }}>
-        <div className="partner-badge" style={{ display:"inline-flex" }}>
+      <div style={{ textAlign: "center", marginBottom: 36 }}>
+        <div className="partner-badge" style={{ display: "inline-flex" }}>
           <span className="badge-dot" />
           Trusted by global partners
         </div>
@@ -249,7 +247,7 @@ export default function VendorStrip() {
       <LogoTrack logos={PARTNER_LOGOS} />
 
       {/* Bottom rule */}
-      <div className="divider-line" style={{ margin:"40px auto 0", maxWidth:600 }} />
+      <div className="divider-line" style={{ margin: "40px auto 0", maxWidth: 600 }} />
     </section>
   );
 }

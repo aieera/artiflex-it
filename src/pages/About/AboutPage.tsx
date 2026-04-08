@@ -14,6 +14,7 @@ import {
   GlobeIcon,
   TargetIcon,
 } from "@/components/icons";
+import ShinyText from "@/components/ui/ShinyText";
 
 /* ── Schema.org structured data ── */
 const organizationSchema = {
@@ -207,16 +208,24 @@ export default function AboutPage() {
       <PageHero
         title={
           <>
-            Innovating IT Solutions.{" "}
-            <span className="gradient-text">Securing Digital Futures.</span>
+            Innovating IT Solutions,
+            <br />
+            <ShinyText
+              text="Securing Digital Futures"
+              speed={3}
+              color="#28B5E1"
+              shineColor="#ffffff"
+              spread={120}
+              className="inline-block font-display"
+            />
           </>
         }
-        description="With over 14 years of industry experience and 500+ successful projects, Artiflex Information Technology is a trusted global technology partner — delivering customized, secure, and scalable IT solutions from Dubai to the world."
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "About", href: "/about" },
-        ]}
-        background="gradient-blinds"
+      description="With over 14 years of industry experience and 500+ successful projects, Artiflex Information Technology is a trusted global technology partner — delivering customized, secure, and scalable IT solutions from Dubai to the world."
+      breadcrumbs={[
+        { label: "Home", href: "/" },
+        { label: "About", href: "/about" },
+      ]}
+      background="gradient-blinds"
       />
 
       {/* ─── Who We Are ─── */}

@@ -243,9 +243,8 @@ function FAQAccordion({ items }: { items: typeof faqs }) {
               {item.question}
             </span>
             <ChevronDownIcon
-              className={`h-5 w-5 shrink-0 text-brand-cyan transition-transform duration-300 ${
-                openIndex === i ? "rotate-180" : ""
-              }`}
+              className={`h-5 w-5 shrink-0 text-brand-cyan transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""
+                }`}
             />
           </button>
           <motion.div
@@ -314,7 +313,12 @@ export default function ApplicationSecurityPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeader
             label="Threat Landscape"
-            title="Why Application Security Cannot Wait"
+            title={
+              <>
+                Why {" "}
+                <span className="gradient-text">Application Security </span> Cannot Wait
+              </>
+            }
             description="Web applications and APIs are the most exploited attack surface in every industry. These are the numbers driving urgency across the UAE."
             centered
           />
@@ -344,7 +348,12 @@ export default function ApplicationSecurityPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeader
             label="Core Services"
-            title="Comprehensive Application Security"
+            title={
+              <>
+                Comprehensive{" "}
+                <span className="gradient-text">Application Security</span>
+              </>
+            }
             description="Six specialized services that cover your entire application attack surface — from source code to live production environments."
             centered
           />
@@ -380,7 +389,11 @@ export default function ApplicationSecurityPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeader
             label="Compliance"
-            title="Application Security & UAE Compliance"
+            title={
+              <>
+                <span className="gradient-text"> Application Security </span> & UAE Compliance
+              </>
+            }
             description="Every assessment maps findings to the regulatory frameworks that apply to your business — a single report for all auditors."
             centered
           />

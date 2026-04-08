@@ -9,6 +9,7 @@ import {
   CheckIcon,
   ArrowRightIcon,
 } from "@/components/icons";
+import ShinyText from "@/components/ui/ShinyText";
 
 const services = [
   {
@@ -145,7 +146,29 @@ export default function ServicesPage() {
       </Helmet>
 
       <PageHero
-        title="Security, Cloud, and Infrastructure — Under One Roof"
+        title={
+          <>
+            <ShinyText
+              text="Security "
+              speed={3}
+              color="#28B5E1"
+              shineColor="#ffffff"
+              spread={120}
+              className="inline-block font-display"
+            />
+            ,Cloud and {""}
+            <ShinyText
+              text="Infrastructure  "
+              speed={3}
+              color="#28B5E1"
+              shineColor="#ffffff"
+              spread={120}
+              className="inline-block font-display"
+            />
+            {""} - Under One Roof
+
+          </>
+        }
         description="Six core IT disciplines delivered by one team, under one SLA, with one point of accountability. No vendor gaps. No finger-pointing. No blind spots."
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -175,9 +198,8 @@ export default function ServicesPage() {
                 className="group rounded-2xl border border-border-light bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)] overflow-hidden hover:shadow-[0_8px_30px_rgba(4,88,145,0.08)] hover:border-[#045891]/20 transition-all duration-500"
               >
                 <div
-                  className={`grid gap-0 lg:grid-cols-[1fr_1fr] ${
-                    idx % 2 !== 0 ? "lg:[direction:rtl]" : ""
-                  }`}
+                  className={`grid gap-0 lg:grid-cols-[1fr_1fr] ${idx % 2 !== 0 ? "lg:[direction:rtl]" : ""
+                    }`}
                 >
                   {/* Image */}
                   <Link to={service.href} className="relative h-56 sm:h-64 lg:h-auto lg:min-h-[320px] overflow-hidden block">
@@ -192,9 +214,8 @@ export default function ServicesPage() {
 
                   {/* Content */}
                   <div
-                    className={`p-6 sm:p-8 lg:p-10 flex flex-col justify-center ${
-                      idx % 2 !== 0 ? "lg:[direction:ltr]" : ""
-                    }`}
+                    className={`p-6 sm:p-8 lg:p-10 flex flex-col justify-center ${idx % 2 !== 0 ? "lg:[direction:ltr]" : ""
+                      }`}
                   >
                     <Link to={service.href} className="block">
                       <h3 className="font-display text-xl font-bold text-heading sm:text-2xl mb-3 hover:text-[#045891] transition-colors">

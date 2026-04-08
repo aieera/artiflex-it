@@ -8,6 +8,7 @@ import { CTASection } from "@/pages/Home/sections/CTASection";
 import ClientStrip from "@/components/ui/ClientStrip";
 import { ArrowRightIcon, XIcon } from "@/components/icons";
 import { useLocation } from "react-router-dom";
+import ShinyText from "@/components/ui/ShinyText";
 
 interface Article {
   tag: string;
@@ -368,10 +369,17 @@ export default function BlogPage() {
       </Helmet>
 
       <PageHero
-        title={
+         title={
           <>
-            Insights &{" "}
-            <span className="gradient-text">Expert Analysis</span>
+            Insights & {""}
+            <ShinyText
+              text="Expert Analysis"
+              speed={3}
+              color="#28B5E1"
+              shineColor="#ffffff"
+              spread={120}
+              className="inline-block font-display"
+            />
           </>
         }
         description="Actionable cybersecurity, cloud, and IT infrastructure insights from our engineering team — helping UAE businesses stay protected and make informed decisions."

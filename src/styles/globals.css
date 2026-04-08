@@ -27,9 +27,8 @@
   --color-muted: #94A3B8;
 
   /* Fonts */
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
 }
 
 html {
@@ -47,19 +46,33 @@ body {
 }
 
 ::selection {
-  background: rgba(27,138,199,0.15);
+  background: rgba(27, 138, 199, 0.15);
   color: var(--color-heading);
 }
 
 /* ─── Animations ─── */
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
 }
 
 @keyframes vendor-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 
@@ -77,16 +90,33 @@ body {
 
 /* ─── Star Border Animations ─── */
 @keyframes star-movement-bottom {
-  0% { transform: translate(0%, 0%); opacity: 1; }
-  100% { transform: translate(-100%, 0%); opacity: 0; }
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
 }
+
 @keyframes star-movement-top {
-  0% { transform: translate(0%, 0%); opacity: 1; }
-  100% { transform: translate(100%, 0%); opacity: 0; }
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
 }
+
 .animate-star-movement-bottom {
   animation: star-movement-bottom linear infinite alternate;
 }
+
 .animate-star-movement-top {
   animation: star-movement-top linear infinite alternate;
 }
@@ -101,32 +131,36 @@ body {
 
 /* ─── Decorative Patterns ─── */
 .bg-dot-pattern {
-  background-image: radial-gradient(circle, rgba(27,138,199,0.05) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(27, 138, 199, 0.05) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 /* ─── Glass Card ─── */
 .glass {
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(0,0,0,0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #CBD5E1;
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-brand-blue);
 }
+
 .cs-scroll-rev,
 .scroll-fwd,
 .scroll-rev {
@@ -134,6 +168,7 @@ body {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
+
 .cs-scroll-rev,
 .scroll-fwd {
   contain: layout style;

@@ -80,11 +80,10 @@ export default function Navbar() {
       initial={{ y: 0 }}
       animate={{ y: isVisible ? 0 : -100 }}
       transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-      className={`fixed inset-x-0 top-0 z-50 transition-[background,box-shadow] duration-300 ${
-        scrolled
-          ? "bg-white/95 shadow-[0_1px_3px_rgba(0,0,0,0.06)] backdrop-blur-xl"
-          : "bg-transparent"
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-[background,box-shadow] duration-300 ${scrolled
+        ? "bg-white/95 shadow-[0_1px_3px_rgba(0,0,0,0.06)] backdrop-blur-xl"
+        : "bg-transparent"
+        }`}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center px-4 sm:h-[72px] sm:px-6 lg:px-8">
         {/* ─── Logo (left) ─── */}
@@ -111,19 +110,17 @@ export default function Navbar() {
                 >
                   <Link
                     to={link.href}
-                    className={`flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                      isActive(link.href)
-                        ? scrolled ? "text-[#045891]" : "text-[#28B5E1]"
-                        : scrolled
-                          ? "text-slate-600 hover:text-heading"
-                          : "text-slate-300 hover:text-white"
-                    }`}
+                    className={`flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-200 ${isActive(link.href)
+                      ? scrolled ? "text-[#045891]" : "text-[#28B5E1]"
+                      : scrolled
+                        ? "text-slate-600 hover:text-heading"
+                        : "text-slate-300 hover:text-white"
+                      }`}
                   >
                     {link.label}
                     <ChevronDownIcon
-                      className={`h-4 w-4 transition-transform duration-200 ${
-                        dropdownOpen ? "rotate-180" : ""
-                      }`}
+                      className={`h-4 w-4 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""
+                        }`}
                     />
                   </Link>
 
@@ -135,34 +132,79 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.98 }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="absolute left-1/2 top-full mt-2 w-80 -translate-x-1/2 overflow-hidden rounded-2xl border border-border-light bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-xl"
+                        className="absolute left-0 top-full mt-2 w-80 overflow-visible rounded-2xl border border-border-light bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-xl"
                       >
                         <div className="h-0.5 w-full bg-gradient-to-r from-[#045891] to-[#1B8AC7]" />
                         <div className="p-2">
                           {link.children.map((child) => {
                             const Icon = ICON_MAP[child.icon];
                             return (
-                              <Link
-                                key={child.name}
-                                to={child.href}
-                                className="group/item flex items-start gap-3 rounded-xl px-3 py-3 transition-all duration-200 hover:bg-surface-secondary"
-                                onClick={() => setDropdownOpen(false)}
-                              >
-                                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#045891]/8 text-[#045891] transition-colors duration-200 group-hover/item:bg-[#045891] group-hover/item:text-white">
-                                  {Icon && <Icon className="h-4 w-4" />}
+                              <div key={child.name} className="relative group/item w-full">
+                                {/* Main Item */}
+                                <div className="flex items-start gap-3 rounded-xl px-3 py-3 transition-all duration-200 hover:bg-surface-secondary cursor-pointer">
+                                  <Link to={child.href} className="flex gap-3 w-full">
+                                    <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#045891]/8 text-[#045891] group-hover/item:bg-[#045891] group-hover/item:text-white">
+                                      {Icon && <Icon className="h-4 w-4" />}
+                                    </div>
+
+                                    <div>
+                                      <div className="flex items-center justify-between">
+                                        <span className="block text-sm font-semibold text-heading">
+                                          {child.name}
+                                        </span>
+
+                                        {"children" in child && child.children && (
+                                          <ChevronDownIcon
+                                            className="h-4 w-4 transition-transform duration-200 -rotate-90 group-hover/item:rotate-90" />
+                                        )}
+                                      </div>
+
+                                      <span className="mt-0.5 block text-xs text-muted">
+                                        {child.description}
+                                      </span>
+                                    </div>
+                                  </Link>
                                 </div>
-                                <div>
-                                  <span className="block text-sm font-semibold text-heading">
-                                    {child.name}
-                                  </span>
-                                  <span className="mt-0.5 block text-xs text-muted">
-                                    {child.description}
-                                  </span>
-                                </div>
-                              </Link>
+
+                                {/* ✅ SUBMENU */}
+                                {"children" in child && child.children && (
+                                  <motion.div
+                                    initial={{ opacity: 0, x: 10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: 10 }}
+                                    transition={{ duration: 0.2 }}
+                                    style={{ pointerEvents: "auto" }}
+                                    className="absolute left-full top-0 ml-4 w-72 rounded-2xl border border-border-light bg-white invisible shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-xl opacity-0  group-hover/item:opacity-100 group-hover/item:visible transition-all duration-200 z-50" >
+                                    <div className="h-0.5 w-full bg-gradient-to-r from-[#045891] to-[#1B8AC7]" />
+
+                                    <div className="p-2">
+                                      {child.children.map((sub) => (
+                                        <div className="group flex items-start gap-3 rounded-xl px-3 py-3 transition-all duration-200 hover:bg-surface-secondary cursor-pointe">
+                                          <Link key={sub.name} to={sub.href} className="flex gap-3 w-full">
+                                            <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-[#045891] transition-all duration-200 group-hover:bg-[#045891] group-hover:text-white">
+                                              {Icon && <Icon className="h-4 w-4" />}
+                                            </div>
+
+                                            <div>
+                                              <span className="block text-sm font-semibold text-heading">
+                                                {sub.name}
+                                              </span>
+                                               <span className="mt-0.5 block text-xs text-muted">
+                                        {sub.description}
+                                      </span>
+                                            </div>
+                                          </Link>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </motion.div>
+                                )}
+                              </div>
+
                             );
                           })}
                         </div>
+
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -174,13 +216,12 @@ export default function Navbar() {
               <li key={link.label}>
                 <Link
                   to={link.href}
-                  className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                    isActive(link.href)
-                      ? scrolled ? "text-[#045891]" : "text-[#28B5E1]"
-                      : scrolled
-                        ? "text-slate-600 hover:text-heading"
-                        : "text-slate-300 hover:text-white"
-                  }`}
+                  className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-200 ${isActive(link.href)
+                    ? scrolled ? "text-[#045891]" : "text-[#28B5E1]"
+                    : scrolled
+                      ? "text-slate-600 hover:text-heading"
+                      : "text-slate-300 hover:text-white"
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -215,19 +256,16 @@ export default function Navbar() {
             aria-label="Toggle menu"
           >
             <span
-              className={`h-0.5 w-6 rounded-full transition-all duration-300 ${
-                scrolled || mobileOpen ? "bg-slate-800" : "bg-white"
-              } ${mobileOpen ? "translate-y-[7px] rotate-45" : ""}`}
+              className={`h-0.5 w-6 rounded-full transition-all duration-300 ${scrolled || mobileOpen ? "bg-slate-800" : "bg-white"
+                } ${mobileOpen ? "translate-y-[7px] rotate-45" : ""}`}
             />
             <span
-              className={`h-0.5 w-6 rounded-full transition-all duration-300 ${
-                scrolled || mobileOpen ? "bg-slate-800" : "bg-white"
-              } ${mobileOpen ? "opacity-0" : ""}`}
+              className={`h-0.5 w-6 rounded-full transition-all duration-300 ${scrolled || mobileOpen ? "bg-slate-800" : "bg-white"
+                } ${mobileOpen ? "opacity-0" : ""}`}
             />
             <span
-              className={`h-0.5 w-6 rounded-full transition-all duration-300 ${
-                scrolled || mobileOpen ? "bg-slate-800" : "bg-white"
-              } ${mobileOpen ? "-translate-y-[7px] -rotate-45" : ""}`}
+              className={`h-0.5 w-6 rounded-full transition-all duration-300 ${scrolled || mobileOpen ? "bg-slate-800" : "bg-white"
+                } ${mobileOpen ? "-translate-y-[7px] -rotate-45" : ""}`}
             />
           </button>
         </div>
@@ -252,11 +290,10 @@ export default function Navbar() {
                       <Link
                         to={link.href}
                         onClick={() => setMobileOpen(false)}
-                        className={`block rounded-xl px-4 py-3 text-base font-medium transition-colors ${
-                          isActive(link.href)
-                            ? "bg-[#045891]/8 text-[#045891]"
-                            : "text-slate-600 hover:bg-surface-secondary hover:text-heading"
-                        }`}
+                        className={`block rounded-xl px-4 py-3 text-base font-medium transition-colors ${isActive(link.href)
+                          ? "bg-[#045891]/8 text-[#045891]"
+                          : "text-slate-600 hover:bg-surface-secondary hover:text-heading"
+                          }`}
                       >
                         {link.label}
                       </Link>
@@ -267,11 +304,10 @@ export default function Navbar() {
                               <Link
                                 to={child.href}
                                 onClick={() => setMobileOpen(false)}
-                                className={`block rounded-lg px-4 py-2 text-sm transition-colors ${
-                                  isActive(child.href)
-                                    ? "text-[#045891] font-semibold bg-[#045891]/5"
-                                    : "text-muted hover:text-heading"
-                                }`}
+                                className={`block rounded-lg px-4 py-2 text-sm transition-colors ${isActive(child.href)
+                                  ? "text-[#045891] font-semibold bg-[#045891]/5"
+                                  : "text-muted hover:text-heading"
+                                  }`}
                               >
                                 {child.name}
                               </Link>

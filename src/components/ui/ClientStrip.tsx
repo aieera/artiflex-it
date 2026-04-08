@@ -76,16 +76,15 @@ const STYLE = `
   }
 
   /* ── Logo image ── */
-  .cs-img {
-    height: 28px;
-    width: auto;
-    max-width: 110px;
-    object-fit: contain;
-    filter: grayscale(1) opacity(0.45);
-    transition: filter 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
-  }
+ .cs-img {
+  height: 28px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+  filter: none !important;   
+  opacity: 1 !important;
+}
   .cs-card:hover .cs-img {
-    filter: grayscale(0) opacity(1);
     transform: scale(1.06);
   }
 

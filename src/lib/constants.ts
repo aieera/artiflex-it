@@ -5,8 +5,49 @@ export const NAV_LINKS = [
     label: "Services",
     href: "/services",
     children: [
-      { name: "Cybersecurity", description: "Advanced threat protection & SOC services", href: "/cybersecurity", icon: "ShieldIcon" },
-      { name: "Cloud Solutions", description: "Secure cloud migration & management", href: "/cloud-solutions", icon: "CloudIcon" },
+      {
+        name: "Cybersecurity",
+        description: "Advanced threat protection & SOC services",
+        href: "/cybersecurity",
+        icon: "ShieldIcon",
+        children: [
+          {
+            name: "Cybersecurity Risk & Threat Assessment",
+            href: "/cybersecurity/risk-assessment",
+            description: "Identify business risks, threat exposure, and security gaps across your IT environment."
+          },
+          {
+            name: "Firewall & Network Security",
+            href: "/cybersecurity/network-security",
+            description: "Protect networks with next-generation firewalls, intrusion prevention, and secure connectivity."
+          },
+          {
+            name: "Endpoint & Device Security",
+            href: "/cybersecurity/endpoint-security",
+            description: "Secure all endpoints with AI-driven threat detection, response, and device control."
+          },
+          {
+            name: "Email Security",
+            href: "/cybersecurity/email-security-overview",
+            description: "Defend against phishing, malware, and business email compromise attacks."
+          },
+          {
+            name: "Data Loss Prevention (DLP)",
+            href: "/cybersecurity/data-protection",
+            description: "Prevent sensitive data leakage across endpoints, cloud apps, and communication channels."
+          },
+          {
+            name: "Network Detection & Response (NDR)",
+            href: "/cybersecurity/network-detection-response",
+            description: "Detect and respond to advanced threats using network behavior analytics and AI."
+          },
+          {
+            name: "Workspace Security (SSE / SASE / CASB)",
+            href: "/cybersecurity/workspace-security",
+            description: "Secure cloud access, SaaS usage, and remote users with Zero Trust architecture."
+          }
+        ]
+      }, { name: "Cloud Solutions", description: "Secure cloud migration & management", href: "/cloud-solutions", icon: "CloudIcon" },
       { name: "Infrastructure", description: "Enterprise network & data center design", href: "/infrastructure", icon: "ServerIcon" },
       { name: "Managed Services", description: "24/7 monitoring & IT operations", href: "/managed-services", icon: "GearIcon" },
       { name: "Application Security", description: "Web app & API penetration testing", href: "/application-security-solutions", icon: "GlobeIcon" },
@@ -19,7 +60,47 @@ export const NAV_LINKS = [
 ] as const;
 
 export const SERVICES = [
-  { name: "Cybersecurity", description: "End-to-end cybersecurity solutions including threat intelligence, vulnerability management, SOC-as-a-Service, and compliance frameworks tailored for the Middle East.", href: "/cybersecurity", icon: "ShieldIcon" },
+  {
+    name: "Cybersecurity", description: "End-to-end cybersecurity solutions including threat intelligence, vulnerability management, SOC-as-a-Service, and compliance frameworks tailored for the Middle East.", href: "/cybersecurity", icon: "ShieldIcon",
+    children: [
+      {
+        name: "Cybersecurity Risk & Threat Assessment",
+        href: "/cybersecurity/risk-assessment",
+        description: "Identify business risks, threat exposure, and security gaps across your IT environment."
+      },
+      {
+        name: "Firewall & Network Security",
+        href: "/cybersecurity/network-security",
+        description: "Protect networks with next-generation firewalls, intrusion prevention, and secure connectivity."
+      },
+      {
+        name: "Endpoint & Device Security",
+        href: "/cybersecurity/endpoint-security",
+        description: "Secure all endpoints with AI-driven threat detection, response, and device control."
+      },
+      {
+        name: "Email Security",
+        href: "/cybersecurity/email-security-overview",
+        description: "Defend against phishing, malware, and business email compromise attacks."
+      },
+      {
+        name: "Data Loss Prevention (DLP)",
+        href: "/cybersecurity/data-protection",
+        description: "Prevent sensitive data leakage across endpoints, cloud apps, and communication channels."
+      },
+      {
+        name: "Network Detection & Response (NDR)",
+        href: "/cybersecurity/network-detection-response",
+        description: "Detect and respond to advanced threats using network behavior analytics and AI."
+      },
+      {
+        name: "Workspace Security (SSE / SASE / CASB)",
+        href: "/cybersecurity/workspace-security",
+        description: "Secure cloud access, SaaS usage, and remote users with Zero Trust architecture."
+      }
+    ]
+
+  },
   { name: "Cloud Solutions", description: "Secure cloud migration, multi-cloud architecture, and managed cloud services across AWS, Azure, and private cloud environments.", href: "/cloud-solutions", icon: "CloudIcon" },
   { name: "Infrastructure", description: "Enterprise networking, data center design, structured cabling, and next-generation firewall deployments for mission-critical environments.", href: "/infrastructure", icon: "ServerIcon" },
   { name: "Managed Services", description: "Proactive 24/7 monitoring, incident response, patch management, and IT operations outsourcing with guaranteed SLAs.", href: "/managed-services", icon: "GearIcon" },

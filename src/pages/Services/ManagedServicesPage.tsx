@@ -48,7 +48,7 @@ export default function ManagedServicesPage() {
       <section className="relative py-16 bg-white sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <div className="max-w-3xl mx-auto">
-            <SectionHeader label="The Problem" title="Your IT Team Is Buried in Maintenance" centered />
+            <SectionHeader label="The Problem" title={<>Your IT Team Is Buried in <span className="gradient-text">Maintenance</span></>} centered />
             <Card variant="glass" hover={false} className="p-6 sm:p-8">
               <p className="text-body leading-relaxed mb-4 text-left">IT teams spend <span className="text-heading font-semibold">60% of their time on maintenance tasks</span> — patching, rebooting, chasing alerts, and fielding help desk tickets. That leaves 40% for the projects that actually move the business forward.</p>
               <p className="text-body leading-relaxed text-left">Hiring solves the headcount problem but not the cost problem. A single qualified network engineer costs AED 25,000–35,000 per month. After visa, insurance, training, and turnover costs, you're investing AED 400,000+ annually per engineer — and you still need multiple specializations.</p>
@@ -59,7 +59,7 @@ export default function ManagedServicesPage() {
 
       <section className="relative py-16 bg-surface-secondary sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeader label="What We Manage" title="Five Pillars of Managed IT" centered />
+          <SectionHeader label="What We Manage" title={<><span className="gradient-text">Five Pillars </span>of Managed IT</>} centered />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <Card key={service.title} variant="service" className="p-6">
@@ -74,7 +74,7 @@ export default function ManagedServicesPage() {
 
       <section className="relative py-16 bg-white sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeader label="Performance" title="What Our Managed Clients Experience" centered />
+          <SectionHeader label="Performance" title={<>What Our  <span className="gradient-text">Managed Clients </span> Experience</>} centered />
           <StatsBar stats={managedStats} />
         </div>
       </section>

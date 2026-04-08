@@ -11,6 +11,7 @@ import {
   MailIcon,
   GlobeIcon,
 } from "@/components/icons";
+import ShinyText from "@/components/ui/ShinyText";
 
 /* ─── Office Locations ─── */
 const offices = [
@@ -182,7 +183,14 @@ export default function ContactPage() {
         title={
           <>
             Let&apos;s Secure Your{" "}
-            <span className="gradient-text">Business Together</span>
+            <ShinyText
+              text="Business Together "
+              speed={3}
+              color="#28B5E1"
+              shineColor="#ffffff"
+              spread={120}
+              className="inline-block font-display"
+            />
           </>
         }
         description="Whether you need a cybersecurity audit, cloud migration plan, or managed IT support — we're ready to have an honest conversation about your options."

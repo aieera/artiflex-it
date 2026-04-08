@@ -114,7 +114,7 @@ export default function CloudSolutionsPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeader
             label="Reality Check"
-            title="Why Cloud Projects Fail"
+            title={<>Why <span className="gradient-text">Cloud Projects</span> Fail</>}
             description="60% of cloud migrations exceed their budget. 45% miss their timeline. These are the six patterns we see most often."
             centered
           />
@@ -137,7 +137,7 @@ export default function CloudSolutionsPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeader
             label="Cloud Models"
-            title="Choose the Right Foundation"
+            title={<>Choose the <span className="gradient-text">Right</span> Foundation</>}
             description="Not every workload belongs in the same cloud model. We help you match each application to the model that delivers the best combination of control, cost, and scalability."
             centered
           />
@@ -183,7 +183,7 @@ export default function CloudSolutionsPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeader
             label="Migration"
-            title="Our Five-Phase Migration Strategy"
+            title={<>Our <span className="gradient-text">Five-Phase</span> Migration Strategy</>}
             centered
           />
           <ProcessFlow steps={migrationSteps} />
@@ -195,7 +195,8 @@ export default function CloudSolutionsPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeader
             label="Capabilities"
-            title="What We Deliver"
+            title={<>What We <span className="gradient-text">Deliver</span></>}
+
             centered
           />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
@@ -216,7 +217,7 @@ export default function CloudSolutionsPage() {
           <div className="max-w-3xl mx-auto">
             <SectionHeader
               label="Case Study"
-              title="From On-Premise to Hybrid Cloud"
+              title={<>From On-<span className="gradient-text">Premise</span> to <span className="gradient-text">Hybrid</span>-Cloud</>}
               centered
             />
             <Card variant="glass" hover={false} className="p-5 sm:p-8">

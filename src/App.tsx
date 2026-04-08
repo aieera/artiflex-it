@@ -8,11 +8,18 @@ import DLPPage from "./pages/Services/cybersecurity/components/Dlppage";
 import SASEPage from "./pages/Services/cybersecurity/components/Sasepage";
 import SIEMSOCMDRPage from "./pages/Services/cybersecurity/components/Siemsocmdrpage";
 import VulnAssessmentPage from "./pages/Services/cybersecurity/components/Vulnassessmentpage";
+import RiskThreatAssessment from "./pages/Services/cybersecurity/pages/RiskThreatAssessment";
+import FirewallNwk from "./pages/Services/cybersecurity/pages/FirewallNwk";
+import EndpointSecurity from "./pages/Services/cybersecurity/pages/EndpointSecurity";
+import EmailSecurity from "./pages/Services/cybersecurity/pages/EmailSecurity";
+import NDRPage from "./pages/Services/cybersecurity/pages/NDRPage";
+import DataLossdlp from "./pages/Services/cybersecurity/pages/DataLossdlp";
+import WorkSpaceProtection from "./pages/Services/cybersecurity/pages/WorkSpaceProtection";
 
 const HomePage = lazy(() => import("@/pages/Home/pages/HomePage"));
 const AboutPage = lazy(() => import("@/pages/About/AboutPage"));
 const ServicesPage = lazy(() => import("@/pages/Services/pages/ServicesPage"));
-const CybersecurityPage = lazy(() => import("@/pages/Services/cybersecurity/pages/CybersecurityPage"));
+const CybersecurityPage = lazy(() => import("@/pages/Services/CybersecurityPage"));
 const CloudSolutionsPage = lazy(() => import("@/pages/Services/CloudSolutionsPage"));
 const InfrastructurePage = lazy(() => import("@/pages/Services/InfrastructurePage"));
 const ManagedServicesPage = lazy(() => import("@/pages/Services/ManagedServicesPage"));
@@ -39,6 +46,15 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/cybersecurity" element={<CybersecurityPage />} />
+
+          <Route path="/cybersecurity/risk-assessment" element={<RiskThreatAssessment />} />
+          <Route path="/cybersecurity/network-security" element={<FirewallNwk />} />
+          <Route path="/cybersecurity/endpoint-security" element={<EndpointSecurity />} />
+          <Route path="/cybersecurity/email-security-overview" element={<EmailSecurity />} />
+          <Route path="/cybersecurity/data-protection" element={<DataLossdlp />} />
+          <Route path="/cybersecurity/network-detection-response" element={<NDRPage />} />
+          <Route path="/cybersecurity/workspace-security" element={<WorkSpaceProtection />} />
+          
           <Route path="/cloud-solutions" element={<CloudSolutionsPage />} />
           <Route path="/infrastructure" element={<InfrastructurePage />} />
           <Route path="/managed-services" element={<ManagedServicesPage />} />
@@ -53,9 +69,9 @@ export default function App() {
           <Route path="/cybersecurity/data-loss-prevention" element={<DLPPage />} />
           <Route path="/cybersecurity/sase-zero-trust" element={<SASEPage />} />
           <Route path="/cybersecurity/managed-detection-response" element={<SIEMSOCMDRPage />} />
-<Route path="/cybersecurity/vulnerability-assessment" element={<VulnAssessmentPage />} />
+          <Route path="/cybersecurity/vulnerability-assessment-penetration-testing" element={<VulnAssessmentPage />} />
         </Route>
       </Routes>
-    </Suspense>
+    </Suspense >
   );
 }

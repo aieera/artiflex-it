@@ -3,6 +3,7 @@ import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 import { CTASection } from "@/pages/Home/sections/CTASection";
+import ShinyText from "@/components/ui/ShinyText";
 
 const cyberFAQs = [
   {
@@ -108,7 +109,20 @@ export default function FAQPage() {
       </Helmet>
 
       <PageHero
-        title="Frequently Asked Questions"
+        title={
+          <>
+            Frequently {""}
+            <ShinyText
+              text="Asked "
+              speed={3}
+              color="#28B5E1"
+              shineColor="#ffffff"
+              spread={120}
+              className="inline-block font-display"
+            />
+            {" "} Questions
+          </>
+        }
         description="Direct answers to the questions we hear most from UAE businesses about cybersecurity, cloud migration, IT infrastructure, and managed services."
         breadcrumbs={[
           { label: "Home", href: "/" },

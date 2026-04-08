@@ -216,9 +216,8 @@ function FAQAccordion({ items }: { items: typeof faqs }) {
               {item.question}
             </span>
             <ChevronDownIcon
-              className={`h-5 w-5 shrink-0 text-brand-cyan transition-transform duration-300 ${
-                openIndex === i ? "rotate-180" : ""
-              }`}
+              className={`h-5 w-5 shrink-0 text-brand-cyan transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""
+                }`}
             />
           </button>
           <motion.div
@@ -284,10 +283,15 @@ export default function AMCServicesPage() {
 
       {/* THE COST PROBLEM */}
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 ">
           <SectionHeader
             label="The Problem"
-            title="The Hidden Cost of Reactive IT"
+            title={
+              <>
+                The Hidden Cost of{" "}
+                <span className="gradient-text">Reactive IT</span>
+              </>
+            }
             description="Most businesses don't realize how much unplanned downtime and break-fix repairs actually cost until they add it up."
             centered
           />
@@ -295,10 +299,10 @@ export default function AMCServicesPage() {
             {costProblem.stats.map((stat) => (
               <div
                 key={stat.label}
-                className="group relative rounded-2xl border border-border-light bg-white p-5 sm:p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#045891]/20 hover:shadow-[0_8px_30px_rgba(4,88,145,0.08)] hover:-translate-y-0.5"
+                className="group relative rounded-2xl border border-border-light bg-gradient-to-r from-[#045891] to-[#1B8AC7] p-5 sm:p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#045891]/20 hover:shadow-[0_8px_30px_rgba(4,88,145,0.08)] hover:-translate-y-0.5"
               >
-                <span className="font-display text-2xl font-bold text-[#045891] sm:text-3xl">{stat.value}</span>
-                <p className="mt-2 text-sm text-body leading-relaxed">{stat.label}</p>
+                <span className="font-display text-2xl font-bold text-white sm:text-3xl">{stat.value}</span>
+                <p className="mt-2 text-sm text-white leading-relaxed">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -310,7 +314,12 @@ export default function AMCServicesPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeader
             label="What's Covered"
-            title="Comprehensive Maintenance Services"
+            title={
+              <>
+                Comprehensive{" "}
+                <span className="gradient-text">Maintenance </span> Services
+              </>
+            }
             description="Six pillars of infrastructure maintenance that keep your systems healthy, patched, monitored, and documented."
             centered
           />

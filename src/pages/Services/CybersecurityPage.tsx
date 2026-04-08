@@ -350,6 +350,7 @@ function FAQAccordion({ items }: { items: typeof faqs }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
+    
     <div className="mx-auto max-w-3xl divide-y divide-white/[0.06]">
       {items.map((item, i) => (
         <div key={i}>
@@ -392,6 +393,7 @@ function FAQAccordion({ items }: { items: typeof faqs }) {
    ──────────────────────────────────────────── */
 
 export default function CybersecurityPage() {
+  
   const { open: openContact } = useContactModal();
 
   return (
@@ -696,6 +698,9 @@ export default function CybersecurityPage() {
         description="Book a free cybersecurity posture review. Our team identifies your top risks, maps them to solutions, and delivers a remediation roadmap aligned to NESA, UAE PDPL, and your industry requirements."
         primaryButton={{ text: "Discuss Your Requirements", action: "modal" }}
       />
+      
     </>
   );
+
+  
 }
