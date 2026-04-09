@@ -10,8 +10,36 @@ export default function PremiumCardStrip({ items }: { items: Item[] }) {
   const [active, setActive] = useState(2);
 
   return (
-    <div className="relative w-full overflow-hidden py-20">
-      <div className="flex justify-center items-center gap-6 transition-all duration-500">
+    <div className="relative w-full py-16">
+
+      {/* 🔹 MOBILE: Horizontal scroll */}
+      <div className="flex md:hidden gap-4 overflow-x-auto px-2 pb-4 no-scrollbar">
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className="min-w-[220px] bg-gradient-to-br from-[#111] to-[#1a1a1a] border border-white/10 rounded-2xl p-4"
+          >
+            <div className="h-32 w-full rounded-lg overflow-hidden mb-3">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <h3 className="text-white text-sm font-semibold">
+              {item.title}
+            </h3>
+
+            <p className="text-white/60 text-xs mt-2">
+              {item.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* 🔹 DESKTOP: Interactive strip */}
+      <div className="hidden md:flex justify-center items-center gap-6 transition-all duration-500 max-w-5xl mx-auto">
 
         {items.map((item, index) => {
           const isActive = index === active;

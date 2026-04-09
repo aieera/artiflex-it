@@ -10,6 +10,7 @@ import {
   ServerIcon,
   GearIcon,
   GlobeIcon,
+  DatabaseIcon,
   ChevronDownIcon,
 } from "@/components/icons";
 
@@ -19,6 +20,7 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   ServerIcon,
   GearIcon,
   GlobeIcon,
+  DatabaseIcon
 };
 
 export default function Navbar() {
@@ -30,6 +32,8 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastScrollY = useRef(0);
+  const [openChild, setOpenChild] = useState<string | null>(null);
+  const [openMain, setOpenMain] = useState<string | null>(null);
 
   /* Scroll: detect direction + scrolled state */
   useEffect(() => {
@@ -174,7 +178,7 @@ export default function Navbar() {
                                     exit={{ opacity: 0, x: 10 }}
                                     transition={{ duration: 0.2 }}
                                     style={{ pointerEvents: "auto" }}
-                                    className="absolute left-full top-0 ml-4 w-72 rounded-2xl border border-border-light bg-white invisible shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-xl opacity-0  group-hover/item:opacity-100 group-hover/item:visible transition-all duration-200 z-50" >
+                                    className="absolute left-full top-0 ml-4 w-96 rounded-2xl border border-border-light bg-white invisible shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-xl opacity-0  group-hover/item:opacity-100 group-hover/item:visible transition-all duration-200 z-50" >
                                     <div className="h-0.5 w-full bg-gradient-to-r from-[#045891] to-[#1B8AC7]" />
 
                                     <div className="p-2">
@@ -189,9 +193,9 @@ export default function Navbar() {
                                               <span className="block text-sm font-semibold text-heading">
                                                 {sub.name}
                                               </span>
-                                               <span className="mt-0.5 block text-xs text-muted">
-                                        {sub.description}
-                                      </span>
+                                              <span className="mt-0.5 block text-xs text-muted">
+                                                {sub.description}
+                                              </span>
                                             </div>
                                           </Link>
                                         </div>
@@ -287,30 +291,93 @@ export default function Navbar() {
                   const hasChildren = "children" in link && link.children;
                   return (
                     <li key={link.label}>
-                      <Link
-                        to={link.href}
-                        onClick={() => setMobileOpen(false)}
-                        className={`block rounded-xl px-4 py-3 text-base font-medium transition-colors ${isActive(link.href)
-                          ? "bg-[#045891]/8 text-[#045891]"
-                          : "text-slate-600 hover:bg-surface-secondary hover:text-heading"
-                          }`}
-                      >
-                        {link.label}
-                      </Link>
-                      {hasChildren && (
+                      <div className="flex items-center justify-between">
+
+                        {/* MAIN TEXT */}
+                        <Link
+                          to={link.href}
+                          onClick={() => setMobileOpen(false)}
+                          className={`flex-1 rounded-xl px-4 py-3 text-base font-medium transition-colors ${isActive(link.href)
+                            ? "bg-[#045891]/8 text-[#045891]"
+                            : "text-slate-600 hover:bg-surface-secondary hover:text-heading"
+                            }`}
+                        >
+                          {link.label}
+                        </Link>
+
+                        {/* ✅ MAIN ARROW */}
+                        {hasChildren && (
+                          <button
+                            onClick={() =>
+                              setOpenMain(openMain === link.href ? null : link.href)
+                            }
+                            className="p-2"
+                          >
+                            <ChevronDownIcon
+                              className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${openMain === link.href ? "rotate-180" : "-rotate-90"
+                                }`}
+                            />
+                          </button>
+                        )}
+
+                      </div>
+                      {hasChildren && openMain === link.href && (
                         <ul className="mt-1 ml-4 flex flex-col gap-0.5">
                           {link.children.map((child) => (
                             <li key={child.name}>
-                              <Link
-                                to={child.href}
-                                onClick={() => setMobileOpen(false)}
-                                className={`block rounded-lg px-4 py-2 text-sm transition-colors ${isActive(child.href)
-                                  ? "text-[#045891] font-semibold bg-[#045891]/5"
-                                  : "text-muted hover:text-heading"
-                                  }`}
-                              >
-                                {child.name}
-                              </Link>
+
+                              {/* CHILD */}
+                              <div className="flex items-center justify-between">
+
+                                {/* TEXT */}
+                                <Link
+                                  to={child.href}
+                                  onClick={() => setMobileOpen(false)}
+                                  className={`flex-1 rounded-lg px-4 py-2 text-sm transition-colors ${isActive(child.href)
+                                    ? "text-[#045891] font-semibold bg-[#045891]/5"
+                                    : "text-muted hover:text-heading"
+                                    }`}
+                                >
+                                  {child.name}
+                                </Link>
+
+                                {/* ✅ CLICKABLE ARROW */}
+                                {"children" in child && child.children && (
+                                  <button
+                                    onClick={() =>
+                                      setOpenChild(openChild === child.href ? null : child.href)
+                                    }
+                                    className="p-2"
+                                  >
+                                    <ChevronDownIcon
+                                      className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${openChild === child.href ? "rotate-180" : "-rotate-90"
+                                        }`}
+                                    />
+                                  </button>
+                                )}
+
+                              </div>
+
+                              {/* ✅ SUBCHILD (NEW FIX) */}
+                              {"children" in child && child.children && openChild === child.href && (
+                                <ul className="ml-4 mt-1 border-l border-gray-200 pl-3 flex flex-col gap-0.5">
+                                  {child.children.map((sub) => (
+                                    <li key={sub.name}>
+                                      <Link
+                                        to={sub.href}
+                                        onClick={() => setMobileOpen(false)}
+                                        className={`block px-3 py-2 text-xs rounded-md transition ${isActive(sub.href)
+                                          ? "text-[#045891] font-semibold"
+                                          : "text-gray-500 hover:text-heading"
+                                          }`}
+                                      >
+                                        {sub.name}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+
                             </li>
                           ))}
                         </ul>

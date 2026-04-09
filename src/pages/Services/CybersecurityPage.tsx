@@ -55,63 +55,63 @@ const pillars = [
     icon: ShieldIcon,
     title: "Next-Generation Firewall (NGFW)",
     category: "NETWORK SECURITY",
-    href: "/cybersecurity/next-gen-firewall",
+    href: "/cybersecurity/network-security",
     description:
-      "Deep packet inspection, application-aware traffic control, and TLS 1.3 decryption at line rate. From DEC's first packet filter in 1988 to today's ML-powered NGFWs — the Sophos XGS Xstream Architecture delivers enterprise-grade perimeter defense without performance trade-offs.",
+      "Deep packet inspection, application-aware traffic control, and TLS 1.3 decryption at line rate...",
   },
   {
     number: "02",
     icon: MonitorIcon,
     title: "Endpoint Detection & Response (EDR/XDR)",
     category: "ENDPOINT SECURITY",
-     href: "/cybersecurity/endpoint-detection-response",
+    href: "/cybersecurity/endpoint-security",
     description:
-      "AI-powered behavioral analysis, anti-ransomware rollback, and cross-layer threat correlation across endpoints, network, email, and cloud. Sophos Intercept X with deep learning detects and neutralizes threats in milliseconds — before damage occurs.",
+      "AI-powered behavioral analysis, anti-ransomware rollback, and cross-layer threat correlation...",
   },
   {
     number: "03",
     icon: MailIcon,
     title: "Email Security & Anti-Phishing",
     category: "COMMUNICATION SECURITY",
-    href: "/cybersecurity/email-security",
+    href: "/cybersecurity/email-security-overview",
     description:
-      "NLP-powered phishing detection, BEC impersonation prevention, attachment sandboxing, and DMARC/DKIM/SPF enforcement. Email remains the #1 attack vector — Business Email Compromise alone caused USD 43 billion in losses globally.",
+      "NLP-powered phishing detection, BEC impersonation prevention, attachment sandboxing...",
   },
   {
     number: "04",
     icon: LockIcon,
     title: "Data Loss Prevention (DLP)",
     category: "DATA PROTECTION",
-    href: "/cybersecurity/data-loss-prevention",
+    href: "/cybersecurity/data-protection",
     description:
-      "Content-aware policies preventing unauthorized data exfiltration across endpoints, email, web, and cloud channels. With UAE PDPL now in force requiring breach notification within 72 hours, DLP is mandatory for all organizations processing personal data.",
+      "Content-aware policies preventing unauthorized data exfiltration across endpoints...",
   },
   {
     number: "05",
     icon: CloudIcon,
     title: "SASE & Zero Trust Network Access",
     category: "CLOUD & REMOTE ACCESS",
-      href: "/cybersecurity/sase-zero-trust",
+    href: "/cybersecurity/workspace-security",
     description:
-      "ZTNA, CASB, SWG, and Firewall-as-a-Service converged into a cloud-delivered security service edge. Replaces legacy VPN infrastructure with identity-aware, zero-trust access — securing users and applications regardless of location.",
+      "ZTNA, CASB, SWG, and Firewall-as-a-Service converged into a cloud-delivered security service edge...",
   },
   {
     number: "06",
     icon: LayersIcon,
     title: "SIEM, SOC & Managed Detection",
     category: "THREAT INTELLIGENCE",
-    href: "/cybersecurity/managed-detection-response",
+    href: "/cybersecurity/network-detection-response",
     description:
-      "24/7 security event correlation, anomaly detection, and managed incident response. Sophos MDR — the world's largest managed detection service with 28,000+ organizations — delivers SOC-grade protection without the cost of building an internal team.",
+      "24/7 security event correlation, anomaly detection, and managed incident response...",
   },
   {
     number: "07",
     icon: SearchIcon,
     title: "Vulnerability Assessment & Pen Testing",
     category: "RISK MANAGEMENT",
-    href: "/cybersecurity/vulnerability-assessment-penetration-testing",
+    href: "/cybersecurity/risk-assessment",
     description:
-      "Continuous vulnerability discovery, external attack surface management, and penetration testing aligned to NESA, UAE PDPL, CBUAE, and PCI-DSS. Quarterly testing is best practice — annual is the minimum for regulatory compliance.",
+      "Continuous vulnerability discovery, external attack surface management, and penetration testing...",
   },
 ];
 
@@ -350,7 +350,7 @@ function FAQAccordion({ items }: { items: typeof faqs }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    
+
     <div className="mx-auto max-w-3xl divide-y divide-white/[0.06]">
       {items.map((item, i) => (
         <div key={i}>
@@ -364,9 +364,8 @@ function FAQAccordion({ items }: { items: typeof faqs }) {
               {item.question}
             </span>
             <ChevronDownIcon
-              className={`h-5 w-5 shrink-0 text-[#045891] transition-transform duration-300 ${
-                openIndex === i ? "rotate-180" : ""
-              }`}
+              className={`h-5 w-5 shrink-0 text-[#045891] transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""
+                }`}
             />
           </button>
           <motion.div
@@ -393,7 +392,7 @@ function FAQAccordion({ items }: { items: typeof faqs }) {
    ──────────────────────────────────────────── */
 
 export default function CybersecurityPage() {
-  
+
   const { open: openContact } = useContactModal();
 
   return (
@@ -502,43 +501,43 @@ export default function CybersecurityPage() {
           />
 
           <div className="space-y-6">
-           {pillars.map((pillar) => (
-  <Link key={pillar.number} to={pillar.href} className="block">
-    <article
-      className="group relative rounded-2xl border border-border-light bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#045891]/20 hover:shadow-[0_8px_30px_rgba(4,88,145,0.08)] hover:-translate-y-0.5 sm:p-8"
-    >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
-        {/* Icon */}
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#045891]/8 text-[#045891] transition-colors group-hover:bg-[#045891] group-hover:text-white">
-          <pillar.icon className="h-5 w-5" />
-        </div>
+            {pillars.map((pillar) => (
+              <Link key={pillar.number} to={pillar.href} className="block">
+                <article
+                  className="group relative rounded-2xl border border-border-light bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#045891]/20 hover:shadow-[0_8px_30px_rgba(4,88,145,0.08)] hover:-translate-y-0.5 sm:p-8"
+                >
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+                    {/* Icon */}
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#045891]/8 text-[#045891] transition-colors group-hover:bg-[#045891] group-hover:text-white">
+                      <pillar.icon className="h-5 w-5" />
+                    </div>
 
-        <div className="flex-1">
-          <div className="mb-2 flex flex-wrap items-center gap-3">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#045891]">
-              Pillar {pillar.number}
-            </span>
-            <span className="rounded-full border border-[#045891]/15 bg-[#045891]/5 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-widest text-[#045891]">
-              {pillar.category}
-            </span>
-          </div>
+                    <div className="flex-1">
+                      <div className="mb-2 flex flex-wrap items-center gap-3">
+                        <span className="font-mono text-xs uppercase tracking-widest text-[#045891]">
+                          Pillar {pillar.number}
+                        </span>
+                        <span className="rounded-full border border-[#045891]/15 bg-[#045891]/5 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-widest text-[#045891]">
+                          {pillar.category}
+                        </span>
+                      </div>
 
-          <h3 className="font-display text-xl font-bold text-heading sm:text-2xl">
-            {pillar.title}
-          </h3>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-body sm:text-base">
-            {pillar.description}
-          </p>
-        </div>
-      </div>
+                      <h3 className="font-display text-xl font-bold text-heading sm:text-2xl">
+                        {pillar.title}
+                      </h3>
+                      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-body sm:text-base">
+                        {pillar.description}
+                      </p>
+                    </div>
+                  </div>
 
-      {/* ← ADD THIS: hover arrow */}
-      <span className="absolute right-6 top-1/2 -translate-y-1/2 font-mono text-xs text-[#045891] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-        Explore →
-      </span>
-    </article>
-  </Link>
-))}
+                  {/* ← ADD THIS: hover arrow */}
+                  <span className="absolute right-6 top-1/2 -translate-y-1/2 font-mono text-xs text-[#045891] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    Explore →
+                  </span>
+                </article>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -698,9 +697,9 @@ export default function CybersecurityPage() {
         description="Book a free cybersecurity posture review. Our team identifies your top risks, maps them to solutions, and delivers a remediation roadmap aligned to NESA, UAE PDPL, and your industry requirements."
         primaryButton={{ text: "Discuss Your Requirements", action: "modal" }}
       />
-      
+
     </>
   );
 
-  
+
 }

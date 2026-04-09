@@ -6,6 +6,7 @@ import StatsBar from "@/components/ui/StatsBar";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { AlertIcon, ShieldIcon, ServerIcon, EyeIcon } from "@/components/icons";
 import FAQAccordion from "@/components/ui/FAQAccordion";
+import PremiumCardGrid from "@/components/ui/PremiumCardGrid";
 
 /* ───────── STATS ───────── */
 
@@ -22,10 +23,10 @@ const cyberStats = [
 const threatReality = {
   title: "Cybersecurity — The Mandatory Imperative",
   stats: [
-    { value: "$4.88M", label: "Average cost of a data breach globally" },
-    { value: "Every 2 sec", label: "Ransomware attacks occurring worldwide" },
-    { value: "AI-driven", label: "Rise of automated cyber attacks" },
-    { value: "4%", label: "Revenue fines under GDPR" },
+    { value: "$4.88M", label: "Breach Impact" },
+    { value: "2 sec", label: "Attack Frequency" },
+    { value: "APT", label: "Threat Evolution" },
+    { value: "Certain", label: "Attack Certainty" },
   ],
 };
 
@@ -34,23 +35,23 @@ const threatReality = {
 const threatPoints = [
   {
     icon: AlertIcon,
-    title: "Explosion of Attack Surface",
-    desc: "Cloud, SaaS, IoT, and remote work have expanded entry points for attackers.",
+    title: "Explosion of Attack Surfaces",
+    desc: "Cloud workloads, SaaS apps, IoT devices, and remote endpoints create multiple entry points for attackers.",
   },
   {
     icon: EyeIcon,
     title: "Sophisticated Threat Actors",
-    desc: "AI phishing, deepfakes, and zero-day exploits are widely accessible.",
+    desc: "AI-powered phishing, deepfakes, and zero-day exploit kits are easily accessible on cybercrime marketplaces.",
   },
   {
     icon: ShieldIcon,
-    title: "Regulatory Pressure",
-    desc: "Strict laws like GDPR, ISO 27001, and NIST impose heavy penalties.",
+    title: "Regulatory Mandates",
+    desc: "Frameworks like GDPR, ISO 27001, NIST, and PCI-DSS impose strict compliance and heavy penalties.",
   },
   {
     icon: ServerIcon,
-    title: "Supply Chain Risks",
-    desc: "Single vendor vulnerabilities can impact thousands of businesses.",
+    title: "Supply Chain Attacks",
+    desc: "Incidents like SolarWinds and Log4j show how one vendor vulnerability can impact thousands globally.",
   },
 ];
 
@@ -59,38 +60,38 @@ const threatPoints = [
 const businessImpact = [
   {
     title: "Financial Loss",
-    desc: "Millions lost due to breaches, ransomware payments, and fines.",
+    desc: "Average breach cost $4.88M; ransomware demands exceed $1.5M; regulatory fines up to $20M.",
   },
   {
     title: "Operational Disruption",
-    desc: "Systems go offline, causing productivity and revenue loss.",
+    desc: "Average downtime of 21 days; critical systems offline; major productivity loss.",
   },
   {
     title: "Reputational Damage",
-    desc: "Loss of customer trust and long-term brand damage.",
+    desc: "Loss of customer trust; stock drop (~7.5%); negative media exposure.",
   },
   {
-    title: "Legal Consequences",
-    desc: "Compliance violations, lawsuits, and penalties.",
+    title: "Legal & Regulatory Impact",
+    desc: "Mandatory breach disclosures, lawsuits, penalties, and potential license loss.",
   },
   {
-    title: "Competitive Loss",
-    desc: "Intellectual property theft and business advantage loss.",
+    title: "Competitive Disadvantage",
+    desc: "Intellectual property theft and loss of market advantage.",
   },
   {
     title: "Strategic Setbacks",
-    desc: "Delayed investments, failed deals, and leadership changes.",
+    desc: "Failed M&A deals, delayed investments, and leadership changes.",
   },
 ];
 
 const solutions = [
-  { title: "Firewall / NGFW", desc: "Control and secure network traffic with advanced threat prevention." },
-  { title: "Endpoint Security (EDR/XDR)", desc: "Detect and respond to threats across devices." },
-  { title: "Email Security", desc: "Protect against phishing, spam, and malware attacks." },
-  { title: "Data Loss Prevention", desc: "Prevent sensitive data leaks across systems." },
-  { title: "Zero Trust (ZTNA)", desc: "Secure access to applications and remote users." },
-  { title: "SIEM & SOC Monitoring", desc: "Continuous monitoring and threat detection." },
-  { title: "Vulnerability Management", desc: "Identify and fix security weaknesses proactively." },
+  { title: "Firewall / NGFW", desc: "Control network traffic and prevent advanced threats across perimeter and internal networks." },
+  { title: "Endpoint Security (EDR/XDR)", desc: "Detect, prevent, and respond to threats across all user devices." },
+  { title: "Email Security", desc: "Block phishing, malware, spam, BEC attacks, and data leakage." },
+  { title: "Data Loss Prevention (DLP)", desc: "Prevent sensitive data exfiltration across endpoints, networks, and cloud." },
+  { title: "Workspace Protection (ZTNA)", desc: "Secure SaaS, cloud workloads, and enforce Zero Trust access for users." },
+  { title: "SIEM & SOC Monitoring", desc: "Correlate events, detect anomalies, and enable real-time incident response." },
+  { title: "Vulnerability Management", desc: "Continuously identify, prioritize, and remediate security weaknesses." },
 ];
 
 /* ───────── FAQ ───────── */
@@ -165,56 +166,84 @@ export default function CyberThreatPage() {
       {/* STATS */}
       <StatsBar stats={cyberStats} />
 
-      {/* PROBLEM SECTION */}
-      <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeader
-            label="The Reality"
-            title={
-              <>
-                Cybersecurity is{" "}
-                <span className="gradient-text">No Longer Optional</span>
-              </>
-            }
-            description="The digital landscape has transformed cyber risk into one of the biggest threats to modern businesses."
-            centered
-          />
-          <div className="grid gap-4 sm:grid-cols-2 max-w-5xl mx-auto">
-            {threatReality.stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-2xl border bg-gradient-to-r from-[#045891] to-[#1B8AC7] p-6 text-white"
-              >
-                <h3 className="text-2xl font-bold">{stat.value}</h3>
-                <p className="text-sm mt-2">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* REALITY */}
 
-      {/* THREAT LANDSCAPE */}
-      <section className="relative py-16 bg-surface-secondary sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+      <section className="relative py-24 bg-white overflow-hidden">
+
+  {/* Soft background glow */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(27,138,199,0.06),transparent_60%)]" />
+
+  <div className="relative max-w-5xl mx-auto px-6">
+
+    <SectionHeader
+      label="The Reality"
+      title={
+        <>
+          Cybersecurity is{" "}
+          <span className="gradient-text">No Longer Optional</span>
+        </>
+      }
+      description="The digital landscape has transformed cyber risk into one of the biggest threats to modern businesses."
+      centered
+    />
+
+    {/* Timeline Layout */}
+    <div className="mt-20 relative">
+
+      {/* Vertical line */}
+      <div className="absolute left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#045891] to-[#1B8AC7]/20" />
+
+      <div className="space-y-12">
+
+        {threatReality.stats.map((stat, i) => (
+          <div key={stat.label} className="relative pl-14 group">
+
+            {/* Dot */}
+            <div className="absolute left-0 top-2 w-8 h-8 rounded-full bg-white border border-[#1B8AC7]/30 flex items-center justify-center group-hover:scale-110 transition">
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#045891] to-[#1B8AC7]" />
+            </div>
+
+            {/* Content */}
+            <div className="flex items-center justify-between gap-6">
+
+              {/* Text */}
+              <p className="text-sm text-gray-600 max-w-xs leading-relaxed">
+                {stat.label}
+              </p>
+
+              {/* Value */}
+              <p className="text-2xl sm:text-2xl font-semibold bg-gradient-to-r from-[#045891] to-[#1B8AC7] bg-clip-text text-transparent">
+                {stat.value}
+              </p>
+
+            </div>
+
+          </div>
+        ))}
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+      {/* 🔥 PREMIUM THREAT LANDSCAPE */}
+      <section className="py-20 bg-[#020617]">
+        <div className="max-w-7xl mx-auto px-6">
+
           <SectionHeader
             label="Threat Landscape"
             title={
               <>
-                Why{" "}
-                <span className="gradient-text">Cyber Risk</span> is Increasing
+                <span className="text-blue-100"> The Evolving</span>  <span className="gradient-text">Cyber Threat Landscape</span>
               </>
             }
+            description="Cyber risks are accelerating due to technology expansion and advanced threat actors."
             centered
           />
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {threatPoints.map((item) => (
-              <Card key={item.title}>
-                <item.icon className="mb-3 text-brand-blue" />
-                <h3 className="font-bold">{item.title}</h3>
-                <p className="text-sm">{item.desc}</p>
-              </Card>
-            ))}
-          </div>
+
+          <PremiumCardGrid items={threatPoints} />
+
         </div>
       </section>
 

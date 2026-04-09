@@ -52,7 +52,12 @@ export const NAV_LINKS = [
       { name: "Managed Services", description: "24/7 monitoring & IT operations", href: "/managed-services", icon: "GearIcon" },
       { name: "Application Security", description: "Web app & API penetration testing", href: "/application-security-solutions", icon: "GlobeIcon" },
       { name: "AMC Services", description: "Preventive maintenance & hardware care", href: "/amc-services", icon: "ServerIcon" },
-    ],
+      {
+        name: "Disaster Recovery Solutions",
+        description: "Backup & rapid data recovery solutions",
+        href: "/disaster-recovery-solutions",
+        icon: "DatabaseIcon"
+      }]
   },
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
@@ -106,6 +111,12 @@ export const SERVICES = [
   { name: "Managed Services", description: "Proactive 24/7 monitoring, incident response, patch management, and IT operations outsourcing with guaranteed SLAs.", href: "/managed-services", icon: "GearIcon" },
   { name: "Application Security", description: "Web application penetration testing, API security, secure code review, WAF management, and DAST scanning for UAE businesses.", href: "/application-security-solutions", icon: "GlobeIcon" },
   { name: "AMC Services", description: "Annual Maintenance Contracts with preventive maintenance, 24/7 monitoring, patch management, and hardware lifecycle management.", href: "/amc-services", icon: "ServerIcon" },
+   {
+        name: "Disaster Recovery Solutions",
+        description: "Backup & rapid data recovery solutions",
+        href: "/disaster-recovery-solutions",
+        icon: "DatabaseIcon"
+      }
 ] as const;
 
 export const STATS = [
