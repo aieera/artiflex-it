@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { CTASection } from "@/pages/Home/sections/CTASection";
@@ -52,7 +52,51 @@ const workspaceFaqs = [
   },
 ];
 
+const capabilities = [
+  {
+    title: "ZTNA",
+    short: "VPN replacement",
+    desc: "Zero Trust Network Access replaces VPN by giving users access only to specific applications — not the full network. Eliminates lateral movement risk.",
+  },
+  {
+    title: "CASB",
+    short: "SaaS visibility",
+    desc: "Cloud Access Security Broker provides visibility and control over SaaS apps, detects shadow IT, enforces DLP policies, and monitors risky user behavior.",
+  },
+  {
+    title: "SWG",
+    short: "Web protection",
+    desc: "Secure Web Gateway inspects web traffic for malware, phishing, and command-and-control attacks, enforcing safe browsing from any location.",
+  },
+  {
+    title: "FWaaS",
+    short: "Cloud firewall",
+    desc: "Firewall-as-a-Service delivers NGFW-level protection from the cloud, securing remote users, branches, and cloud workloads without hardware.",
+  },
+  {
+    title: "DLP",
+    short: "Data protection",
+    desc: "Data Loss Prevention prevents sensitive data from being uploaded, shared, or leaked across web and cloud channels with consistent policies.",
+  },
+  {
+    title: "DNS Security",
+    short: "Early threat block",
+    desc: "Blocks malicious and phishing domains at the DNS layer before connections are established, protecting all applications and protocols.",
+  },
+  {
+    title: "RBI",
+    short: "Safe browsing",
+    desc: "Remote Browser Isolation executes web sessions in the cloud, preventing malware and zero-day exploits from reaching user devices.",
+  },
+  {
+    title: "SSPM",
+    short: "SaaS posture",
+    desc: "Security Posture Management continuously audits SaaS configurations to detect misconfigurations, excessive permissions, and compliance risks.",
+  },
+];
+
 function WorkSpaceProtection() {
+  const [activeCap, setActiveCap] = useState(0);
   return (
     <>
       {/* HERO */}
@@ -131,55 +175,99 @@ function WorkSpaceProtection() {
           />
 
           <div className="mt-16">
-  <FeatureHighlightGrid items={workspaceDrivers} />
-</div>
+            <FeatureHighlightGrid items={workspaceDrivers} />
+          </div>
 
         </div>
       </section>
 
       {/* 🧠 CAPABILITIES GRID */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+
+      {/* 🔥 SSE / SASE CAPABILITY EXPERIENCE */}
+      <section className="relative py-28 bg-[#020617] text-white overflow-hidden">
+
+        <div className="max-w-6xl mx-auto px-6">
 
           <SectionHeader
             label="Capabilities"
             title={
               <>
-                What <span className="gradient-text">SSE / SASE Provides</span>
+                <span className="text-blue-100">What</span> <span className="gradient-text">SSE / SASE Delivers</span>
               </>
             }
+            description="Security follows the user — across devices, apps, and networks — not the old perimeter."
             centered
           />
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-16">
+          {/* 🔥 SCROLLABLE STRIP */}
+          <div className="mt-16 flex gap-6 overflow-x-auto pb-4">
 
-            {[
-              { title: "ZTNA", desc: "Secure app-level access without VPN." },
-              { title: "CASB", desc: "Control and monitor SaaS applications." },
-              { title: "SWG", desc: "Protect users from web threats." },
-              { title: "FWaaS", desc: "Cloud-delivered firewall protection." },
-              { title: "DLP", desc: "Prevent sensitive data leaks." },
-              { title: "DNS Security", desc: "Block malicious domains early." },
-              { title: "RBI", desc: "Safe browsing in isolated environments." },
-              { title: "SSPM", desc: "Monitor SaaS misconfigurations." },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="p-6 rounded-2xl border bg-white hover:shadow-md transition"
-              >
-                <h3 className="font-semibold text-gray-900">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-600 mt-2">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
+            {capabilities.map((item, index) => {
+              const isActive = activeCap === index;
+
+              return (
+                <div
+                  key={index}
+                  onClick={() => setActiveCap(index)}
+                  className={`group relative min-w-[250px] cursor-pointer rounded-2xl p-6 transition-all duration-300 border overflow-hidden
+    ${isActive
+                      ? "bg-gradient-to-br from-[#045891] to-[#0d4b6c] border-transparent scale-105 shadow-xl shadow-blue-500/20"
+                      : "bg-white/5 border-white/10 hover:bg-white/10 hover:scale-[1.03] hover:shadow-lg hover:shadow-blue-500/10"
+                    }`}
+                >
+                  {/* ✨ subtle glow layer */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-br from-blue-500/10 to-cyan-400/10" />
+
+                  {/* ✨ top highlight line */}
+                  <div className={`absolute top-0 left-0 h-[2px] bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300
+    ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} />
+
+                  <h3 className={`text-lg font-semibold transition-colors duration-300
+    ${isActive ? "text-white" : "text-white/80 group-hover:text-white"}`}>
+                    {item.title}
+                  </h3>
+
+                  <p className={`text-xs mt-2 transition-colors duration-300
+    ${isActive ? "text-white/90" : "text-white/60 group-hover:text-white/80"}`}>
+                    {item.short}
+                  </p>
+
+                  {/* 👇 keep a hint of desc even when inactive */}
+                  {!isActive && (
+                    <p className="text-xs mt-3 text-white/40 line-clamp-2 group-hover:text-white/60 transition">
+                      {item.desc}
+                    </p>
+                  )}
+
+                  {/* Active Expand */}
+                  {isActive && (
+                    <p className="text-sm mt-4 text-white/95 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  )}
+
+                  {/* ✨ bottom glow accent */}
+                  <div className={`mt-4 h-[2px] bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300
+    ${isActive ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"}`} />
+                </div>
+              );
+            })}
 
           </div>
+
+          {/* 🔥 INSIGHT PANEL */}
+          <div className="mt-16 max-w-3xl mx-auto text-center">
+            <p className="text-sm text-white/70 leading-relaxed">
+              SSE/SASE replaces fragmented security tools with a{" "}
+              <span className="text-white font-semibold">
+                unified cloud-delivered security layer
+              </span>{" "}
+              — protecting users, applications, and data anywhere.
+            </p>
+          </div>
+
         </div>
       </section>
-
       {/* FAQ */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-2xl mx-auto px-6">

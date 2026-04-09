@@ -41,24 +41,36 @@ const firewallStory = [
 
 const evolution = [
   {
-    title: "Packet Filtering (1988)",
-    desc: "The first firewall concept introduced basic filtering based on IP, port, and protocol rules.",
+    title: "1988 — The Morris Worm",
+    desc: "The first major cyberattack infected ~10% of the internet, crashing systems and exposing the dangers of open networks — leading to the birth of firewalls.",
   },
   {
-    title: "Stateful Inspection (1993)",
-    desc: "Firewalls evolved to track active sessions, understanding connections instead of isolated packets.",
+    title: "1988 — Packet Filtering (DEC)",
+    desc: "Digital Equipment Corporation introduced the first firewall concept — filtering traffic based on IP, port, and protocol (stateless security).",
   },
   {
-    title: "Application Layer (1994)",
-    desc: "Deep inspection of application data allowed firewalls to detect threats hidden inside traffic.",
+    title: "1993 — Stateful Inspection",
+    desc: "Check Point revolutionized firewalls by tracking active sessions, allowing context-aware decisions instead of isolated packet filtering.",
   },
   {
-    title: "UTM Era (2000)",
-    desc: "Unified Threat Management combined firewall, antivirus, intrusion prevention, and more in one system.",
+    title: "1994 — Application Layer Firewalls",
+    desc: "Firewalls evolved to inspect actual content (HTTP, FTP, SMTP), detecting threats hidden inside legitimate traffic.",
   },
   {
-    title: "NGFW & Cloud Era",
-    desc: "Modern firewalls provide application awareness, user identity tracking, and cloud-based protection.",
+    title: "2000 — UTM Revolution",
+    desc: "Astaro introduced Unified Threat Management — combining firewall, antivirus, IPS, and filtering into one platform.",
+  },
+  {
+    title: "2007–2008 — NGFW Era",
+    desc: "Palo Alto Networks introduced Next-Generation Firewalls with App-ID, User-ID, deep inspection, and SSL decryption.",
+  },
+  {
+    title: "2010s — Identity-Based Security",
+    desc: "Cyberoam introduced Layer 8 security — policies based on user identity instead of IP address.",
+  },
+  {
+    title: "2020+ — Cloud & AI Firewalls",
+    desc: "Modern firewalls use machine learning, cloud intelligence, and SASE to provide real-time adaptive protection.",
   },
 ];
 
@@ -113,28 +125,48 @@ const ngfwFeatures = [
   {
     title: "Application Awareness",
     subtitle: "App-ID",
-    desc: "Identifies and controls applications regardless of port, protocol, or encryption — even evasive apps.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31", // network infrastructure (clean, different)
+    desc: "Identifies and controls applications regardless of port, protocol, or encryption.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop",
   },
   {
     title: "User Identity Control",
     subtitle: "User-ID",
-    desc: "Applies security policies based on user identity instead of IP address — enabling Zero Trust access.",
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d", // people/team identity
+    desc: "Applies policies based on user identity instead of IP address.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop",
   },
   {
     title: "Deep Packet Inspection",
     subtitle: "Content-ID",
-    desc: "Inspects actual traffic content to detect malware, intrusions, and hidden threats in real time.",
-    image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4", // coding terminal (DIFFERENT from earlier)
+    desc: "Inspects traffic content to detect malware and threats in real time.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
   },
   {
     title: "SSL/TLS Decryption",
-    subtitle: "Encrypted Traffic Visibility",
-    desc: "Decrypts and inspects encrypted traffic where 80%+ threats hide — without performance loss.",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3", // lock/security visual (different)
+    subtitle: "Encrypted Visibility",
+    desc: "Decrypts encrypted traffic to uncover hidden threats.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    title: "Threat Intelligence",
+    subtitle: "Real-Time Protection",
+    desc: "Uses global threat intelligence to block zero-day attacks instantly.",
+    rating: 4,
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    title: "Cloud Integration",
+    subtitle: "SASE & FWaaS",
+    desc: "Extends firewall protection to cloud and remote environments.",
+    rating: 4,
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
   },
 ];
+
+
 
 
 /* ───────── FAQ ───────── */
@@ -208,6 +240,8 @@ export default function FirewallNetworkPage() {
         </div>
       </section>
 
+
+
       {/* STORY */}
       <section className="relative">
         <PremiumScrollStory items={firewallStory} />
@@ -215,6 +249,8 @@ export default function FirewallNetworkPage() {
         {/* Overlay */}
         <div className="pointer-events-none absolute inset-0 bg-black/30" />
       </section>
+
+
 
       {/* TYPES */}
       <section className="relative py-16 bg-white sm:py-24">
@@ -231,6 +267,9 @@ export default function FirewallNetworkPage() {
 
 
 
+
+
+          {/* TYPES */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {firewallTypes.map((item, index) => {
               const isOpen = openIndex === index;
@@ -303,7 +342,8 @@ export default function FirewallNetworkPage() {
       </section>
 
 
-      
+
+
 
       {/* MODERN */}
       <section className="relative py-24 bg-white overflow-hidden">
@@ -358,17 +398,16 @@ export default function FirewallNetworkPage() {
               })}
             </div>
 
+
             {/* RIGHT SIDE — DYNAMIC CONTENT */}
-
-
             <div className="relative">
 
               <motion.div
                 key={activeFeature}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="rounded-2xl border border-border-light overflow-hidden bg-surface-secondary"
+                transition={{ duration: 0.4 }}
+                className="rounded-2xl border border-border-light overflow-hidden shadow bg-black"
               >
 
                 {/* IMAGE */}
@@ -376,44 +415,68 @@ export default function FirewallNetworkPage() {
                   <img
                     src={ngfwFeatures[activeFeature].image}
                     alt={ngfwFeatures[activeFeature].title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="w-full h-full object-cover"
                   />
                 </div>
 
                 {/* TEXT */}
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-heading mb-3">
+
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold text-white mb-2">
                     {ngfwFeatures[activeFeature].title}
                   </h3>
 
-                  <p className="text-sm text-body leading-relaxed mb-4">
+                  {/* Subtitle */}
+                  <p className="text-xs text-muted mb-3 ">
+                    {ngfwFeatures[activeFeature].subtitle}
+                  </p>
+
+                  {/* ⭐ Rating */}
+                  <div className="flex items-center gap-1 mb-4">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <span
+                        key={star}
+                        className={`text-sm ${star <= ngfwFeatures[activeFeature].rating
+                            ? "text-yellow-400"
+                            : "text-gray-300"
+                          }`}
+                      >
+                        ★
+                      </span>
+                    ))}
+                    <span className="text-xs text-muted ml-2">
+                      ({ngfwFeatures[activeFeature].rating}/5)
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-sm text-white leading-relaxed mb-4">
                     {ngfwFeatures[activeFeature].desc}
                   </p>
 
+                  {/* Accent */}
                   <div className="h-1 w-20 bg-gradient-to-r from-[#045891] to-[#1B8AC7] rounded-full" />
-                </div>
 
+                </div>
               </motion.div>
 
-              {/* Glow */}
-              <div className="absolute -z-10 top-10 left-10 w-40 h-40 bg-[#1B8AC7]/10 blur-3xl rounded-full" />
+            </div>
+            </div>
 
+            {/* 🔥 Bottom Statement */}
+            <div className="mt-20 text-center max-w-3xl mx-auto">
+              <p className="text-sm text-body leading-relaxed">
+                NGFW is not just a firewall — it is a{" "}
+                <span className="font-semibold text-heading">
+                  real-time security intelligence platform
+                </span>{" "}
+                capable of identifying applications, users, and threats instantly.
+              </p>
             </div>
 
           </div>
-
-          {/* 🔥 Bottom Statement */}
-          <div className="mt-20 text-center max-w-3xl mx-auto">
-            <p className="text-sm text-body leading-relaxed">
-              NGFW is not just a firewall — it is a{" "}
-              <span className="font-semibold text-heading">
-                real-time security intelligence platform
-              </span>{" "}
-              capable of identifying applications, users, and threats instantly.
-            </p>
-          </div>
-
-        </div>
+      
       </section>
 
       {/* FAQ */}

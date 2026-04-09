@@ -57,6 +57,57 @@ const transformData = [
   },
 ];
 
+const emailFeatures = [
+  {
+    name: "Phishing Detection",
+    desc: "Ability to detect malicious links, attachments, and deceptive emails using AI and threat intelligence.",
+    vendors: {
+      "Sophos": 5,
+      "Check Point": 5,
+      "Abnormal": 5,
+      "Barracuda": 4,
+      "Proofpoint": 5,
+      "Mimecast": 4,
+    },
+  },
+  {
+    name: "BEC Protection",
+    desc: "Detects impersonation, CEO fraud, and social engineering attacks without malware.",
+    vendors: {
+      "Sophos": 5,
+      "Check Point": 4,
+      "Abnormal": 5,
+      "Barracuda": 4,
+      "Proofpoint": 5,
+      "Mimecast": 4,
+    },
+  },
+  {
+    name: "Sandboxing & CDR",
+    desc: "Analyzes attachments in isolated environments and removes malicious content.",
+    vendors: {
+      "Sophos": 5,
+      "Check Point": 5,
+      "Abnormal": 2,
+      "Barracuda": 4,
+      "Proofpoint": 5,
+      "Mimecast": 4,
+    },
+  },
+  {
+    name: "Deployment Ease",
+    desc: "How quickly and easily the solution can be deployed (API vs gateway).",
+    vendors: {
+      "Sophos": 5,
+      "Check Point": 5,
+      "Abnormal": 5,
+      "Barracuda": 4,
+      "Proofpoint": 3,
+      "Mimecast": 3,
+    },
+  },
+];
+
 
 
 /* ───────── FAQ ───────── */
@@ -83,6 +134,7 @@ const faqs = [
 
 export default function EmailSecurityPage() {
   const [active, setActive] = useState(3);
+  const [activeFeature, setActiveFeature] = useState(0);
   return (
     <>
       <Helmet>
@@ -219,17 +271,17 @@ export default function EmailSecurityPage() {
                 initial={{ opacity: 0, y: 40, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.45, ease: "easeOut" }}
-                className="relative rounded-[28px] bg-white/80 backdrop-blur-xl p-10 
-      shadow-[0_20px_60px_rgba(4,88,145,0.12)] 
-      hover:shadow-[0_30px_100px_rgba(4,88,145,0.18)] 
-      transition-all duration-500 text-left overflow-hidden"
+                className="relative rounded-[28px] bg-[#020617]/90 backdrop-blur-xl p-10 
+  shadow-[0_20px_60px_rgba(0,0,0,0.6)] 
+  hover:shadow-[0_30px_100px_rgba(0,0,0,0.8)] 
+  transition-all duration-500 text-left overflow-hidden"
               >
 
                 {/* subtle inner light */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
 
                 {/* 🔥 TITLE */}
-                <h3 className="relative text-xl font-semibold tracking-tight text-heading">
+                <h3 className="relative text-xl font-semibold tracking-tight text-white">
                   {transformData[active].title}
                 </h3>
 
@@ -238,7 +290,7 @@ export default function EmailSecurityPage() {
                   {transformData[active].content.map((line, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-3 text-sm text-body leading-relaxed"
+                      className="flex items-start gap-3 text-sm text-gray-300 leading-relaxed"
                     >
                       <span className="mt-1 w-1.5 h-1.5 rounded-full bg-gradient-to-br from-[#045891] to-[#1B8AC7]" />
                       {line}
@@ -247,10 +299,9 @@ export default function EmailSecurityPage() {
                 </ul>
 
                 {/* 🔥 DIVIDER */}
-                <div className="relative mt-8 h-px w-full bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
-
+                <div className="relative mt-8 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                 {/* 🔥 HIGHLIGHT */}
-                <div className="relative mt-4 text-xs font-medium tracking-wide text-brand-cyan">
+                <div className="relative mt-4 text-xs font-medium tracking-wide text-[#38bdf8]">
                   {transformData[active].highlight}
                 </div>
 
@@ -312,132 +363,100 @@ export default function EmailSecurityPage() {
         </div>
       </section>
 
-      {/* 🔥 CAPABILITY COMPARISON (PREMIUM INTELLIGENCE UI) */}
-      <section className="relative py-32 bg-white overflow-hidden">
+      
+      {/* 🔥 EMAIL SECURITY INTELLIGENCE */}
+<section className="relative py-28 bg-white overflow-hidden">
 
-        {/* background glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(27,138,199,0.08),transparent_70%)]" />
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(27,138,199,0.08),transparent_70%)]" />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+  <div className="max-w-6xl mx-auto px-6 relative z-10">
 
-          <SectionHeader
-            label="Capability Intelligence"
-            title={
-              <>
-                Email Security <span className="gradient-text">Capability Matrix</span>
-              </>
-            }
-            description="Based on real-world vendor performance across AI detection, sandboxing, BEC protection, and deployment models."
-            centered
-          />
+    <SectionHeader
+      label="Security Intelligence"
+      title={
+        <>
+          Email Security <span className="gradient-text">Capabilities & Leaders</span>
+        </>
+      }
+      description="Understand what matters in email security — and which vendors lead in each capability."
+      centered
+    />
 
-          {/* 🔥 CAPABILITY CARDS */}
-          <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {/* 🔥 FEATURE SELECTOR */}
+    <div className="mt-12 flex flex-wrap justify-center gap-3">
+      {emailFeatures.map((f, i) => (
+        <button
+          key={i}
+          onClick={() => setActiveFeature(i)}
+          className={`px-4 py-2 rounded-full text-sm transition ${
+            activeFeature === i
+              ? "bg-gradient-to-r from-[#045891] to-[#1B8AC7] text-white shadow"
+              : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+          }`}
+        >
+          {f.name}
+        </button>
+      ))}
+    </div>
 
-            {[
-              {
-                title: "Phishing Detection",
-                desc: "AI + threat intelligence driven detection across URLs, attachments, and behaviour.",
-                level: "Best in class",
-                value: 100,
-              },
-              {
-                title: "BEC Protection",
-                desc: "Behavioural AI detecting impersonation, CEO fraud, and social engineering.",
-                level: "Critical capability",
-                value: 100,
-              },
-              {
-                title: "Sandboxing & CDR",
-                desc: "Deep attachment analysis and content reconstruction for zero-day threats.",
-                level: "Advanced",
-                value: 85,
-              },
-              {
-                title: "Deployment Model",
-                desc: "API-based deployment without MX changes — fastest enterprise rollout.",
-                level: "Optimized",
-                value: 95,
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-[#045891]/30 to-[#1B8AC7]/30"
-              >
+    {/* 🔥 DYNAMIC CARD */}
+    <div className="mt-16 max-w-3xl mx-auto rounded-2xl border border-border-light bg-gradient-to-r from-[#082c44] to-[#1c1c1d] p-8 shadow">
 
-                <div className="relative rounded-2xl bg-white/80 backdrop-blur-xl p-6 
-            shadow-[0_10px_30px_rgba(4,88,145,0.08)] 
-            hover:shadow-[0_25px_80px_rgba(4,88,145,0.18)] 
-            transition-all duration-500 overflow-hidden">
+      {/* Feature Title */}
+      <h3 className="text-lg font-semibold text-white">
+        {emailFeatures[activeFeature].name}
+      </h3>
 
-                  {/* glow */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition 
-              bg-gradient-to-br from-[#045891]/10 to-[#1B8AC7]/10" />
+      {/* Description */}
+      <p className="mt-2 text-sm text-white">
+        {emailFeatures[activeFeature].desc}
+      </p>
 
-                  <div className="relative">
-                    <h3 className="text-sm font-semibold text-heading">
-                      {item.title}
-                    </h3>
+      {/* Divider */}
+      <div className="my-6 h-px bg-gradient-to-r from-transparent via-border-light to-transparent" />
 
-                    <p className="mt-2 text-xs text-body leading-relaxed">
-                      {item.desc}
-                    </p>
+      {/* 🔥 Vendor Ratings */}
+      <div className="space-y-3">
 
-                    {/* progress */}
-                    <div className="mt-6 h-2 w-full rounded-full bg-slate-200 overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-[#045891] to-[#1B8AC7]"
-                        style={{ width: `${item.value}%` }}
-                      />
-                    </div>
+        {Object.entries(emailFeatures[activeFeature].vendors).map(
+          ([vendor, rating], i) => (
+            <div
+              key={i}
+              className="flex items-center justify-between rounded-lg bg-blue-100 px-4 py-3"
+            >
+              <span className="text-sm text-black ">{vendor}</span>
 
-                    <p className="mt-3 text-xs text-brand-cyan font-medium">
-                      {item.level}
-                    </p>
-                  </div>
-
-                </div>
+              {/* ⭐ Stars */}
+              <div className="flex items-center gap-1">
+                {[1,2,3,4,5].map((star) => (
+                  <span
+                    key={star}
+                    className={`text-md ${
+                      star <= rating
+                        ? "text-yellow-600"
+                        : "text-gray-300"
+                    }`}
+                  >
+                    ★
+                  </span>
+                ))}
               </div>
-            ))}
+            </div>
+          )
+        )}
 
-          </div>
+      </div>
 
-          {/* 🔥 ENTERPRISE INSIGHT STRIP */}
-          <div className="mt-20 grid md:grid-cols-3 gap-6">
+      {/* Bottom Insight */}
+      <div className="mt-6 text-xs text-muted">
+        ⭐ Higher ratings indicate stronger real-world performance and detection capability.
+      </div>
 
-            {[
-              {
-                title: "AI-Native Detection",
-                desc: "Modern vendors rely on behavioural AI to detect threats without signatures.",
-              },
-              {
-                title: "Gateway Limitations",
-                desc: "Traditional SEG models fail against zero-day phishing and BEC attacks.",
-              },
-              {
-                title: "Platform Integration",
-                desc: "Unified security platforms provide better visibility across endpoint, network, and email.",
-              },
-            ].map((item) => (
-              <div className="relative p-6 rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-xl transition">
-                <h3 className="text-sm font-semibold text-heading">{item.title}</h3>
-                <p className="text-xs text-body mt-2">{item.desc}</p>
-              </div>
-            ))}
+    </div>
 
-          </div>
+  </div>
+</section>
 
-          {/* 🔥 FINAL PREMIUM STATEMENT */}
-          <div className="mt-20 max-w-3xl mx-auto text-center">
-            <p className="text-sm text-body leading-relaxed">
-              Traditional email security relied on detecting known threats. Modern security evaluates
-              identity, behaviour, and intent. This shift — from content filtering to intelligence-driven
-              protection — defines the new generation of email security platforms.
-            </p>
-          </div>
-
-        </div>
-      </section>
 
       {/* FAQ */}
       <section className="relative py-16 bg-surface-secondary sm:py-24">
