@@ -4,6 +4,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 import FeatureHighlightGrid from "@/components/ui/FeatureHighlightGrid";
+import { Helmet } from "react-helmet-async";
 
 
 const workspaceDrivers = [
@@ -99,12 +100,20 @@ function WorkSpaceProtection() {
   const [activeCap, setActiveCap] = useState(0);
   return (
     <>
+    <Helmet>
+            <title>Enterprise Cybersecurity Solutions | SASE, MDR & Risk Management</title>
+            <meta
+              name="description"
+              content="Enterprise cybersecurity solutions for hybrid environments, including SASE architecture, MDR operations, vulnerability management, and data protection strategies."
+            />
+          </Helmet>
       {/* HERO */}
       <PageHero
         title={
           <>
-            Workspace Protection{" "}
-            <span className="gradient-text">(SSE / SASE / CASB)</span>
+            Enterprise {" "}
+            <span className="gradient-text">Cybersecurity Solutions</span>
+             {" "}for Hybrid IT Environments
           </>
         }
         description="Secure users, applications, and data across cloud, SaaS, and hybrid work environments."

@@ -5,6 +5,7 @@ import { CTASection } from "@/pages/Home/sections/CTASection";
 import FeatureFlow from "@/components/ui/FeatureFlow";
 import PremiumCardStrip from "@/components/ui/PremiumCardStrip";
 import FAQAccordion from "@/components/ui/FAQAccordion";
+import { Helmet } from "react-helmet-async";
 
 const ndrImportance = [
   {
@@ -65,12 +66,24 @@ const ndrFaqs = [
 function NDRPage() {
   return (
     <>
+      <Helmet>
+        <title>
+
+          Network Detection and Response (NDR) Solutions Guide</title>
+        <meta
+          name="description"
+          content="Network detection and response (NDR) solutions covering threat visibility, behavioural analysis, vendor comparison, and enterprise network security use cases."
+        />
+      </Helmet>
+
       {/* HERO */}
       <PageHero
         title={
           <>
-            Network Detection & Response{" "}
-            <span className="gradient-text">(NDR)</span>
+            Network Detection and Response{" "}
+            <span className="gradient-text">(NDR) Solutions</span>{" "} Guide
+
+
           </>
         }
         description="Detect advanced threats inside your network that traditional security tools cannot see."

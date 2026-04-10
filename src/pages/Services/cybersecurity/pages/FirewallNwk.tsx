@@ -13,7 +13,7 @@ const firewallStory = [
   {
     title: "The Internet Was Open",
     desc: "Early networks were built on trust. No protection, no boundaries — just open communication.",
-    image: "https://d2yghbees9788u.cloudfront.net/futurecom/2025/02/O-novo-papel-dos-provedores-de-internet-de-conectividade-para-ecossistemas-digitais.jpg", 
+    image: "https://d2yghbees9788u.cloudfront.net/futurecom/2025/02/O-novo-papel-dos-provedores-de-internet-de-conectividade-para-ecossistemas-digitais.jpg",
   },
   {
     title: "The Morris Worm (1988)",
@@ -197,15 +197,22 @@ export default function FirewallNetworkPage() {
   return (
     <>
       <Helmet>
-        <title>Firewall & Network Security Solutions</title>
+        <title>
+
+          Firewall Solutions in Dubai | Complete Guide for Businesses</title>
+        <meta
+          name="description"
+          content="Explore firewall solutions in Dubai, types of firewalls, top vendors, and how businesses in UAE can protect networks from evolving cyber threats."
+        />
       </Helmet>
 
       {/* HERO */}
       <PageHero
         title={
           <>
-            Firewall &{" "}
-            <span className="gradient-text">Network Security</span>
+            Complete  {" "}
+            <span className="gradient-text">Network Security Guide for Firewall Solutions </span>
+            in Dubai
           </>
         }
         description="Protect your network with advanced firewall technologies designed to detect, prevent, and respond to modern cyber threats."
@@ -438,8 +445,8 @@ export default function FirewallNetworkPage() {
                       <span
                         key={star}
                         className={`text-sm ${star <= ngfwFeatures[activeFeature].rating
-                            ? "text-yellow-400"
-                            : "text-gray-300"
+                          ? "text-yellow-400"
+                          : "text-gray-300"
                           }`}
                       >
                         ★
@@ -462,21 +469,21 @@ export default function FirewallNetworkPage() {
               </motion.div>
 
             </div>
-            </div>
-
-            {/* 🔥 Bottom Statement */}
-            <div className="mt-20 text-center max-w-3xl mx-auto">
-              <p className="text-sm text-body leading-relaxed">
-                NGFW is not just a firewall — it is a{" "}
-                <span className="font-semibold text-heading">
-                  real-time security intelligence platform
-                </span>{" "}
-                capable of identifying applications, users, and threats instantly.
-              </p>
-            </div>
-
           </div>
-      
+
+          {/* 🔥 Bottom Statement */}
+          <div className="mt-20 text-center max-w-3xl mx-auto">
+            <p className="text-sm text-body leading-relaxed">
+              NGFW is not just a firewall — it is a{" "}
+              <span className="font-semibold text-heading">
+                real-time security intelligence platform
+              </span>{" "}
+              capable of identifying applications, users, and threats instantly.
+            </p>
+          </div>
+
+        </div>
+
       </section>
 
       {/* FAQ */}

@@ -4,6 +4,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 import FeatureFlow from "@/components/ui/FeatureFlow";
+import { Helmet } from "react-helmet-async";
 
 const faqs = [
   {
@@ -163,12 +164,24 @@ function DataLossdlp() {
   const [activeDlpFeature, setActiveDlpFeature] = useState(0);
   return (
     <>
+
+      <Helmet>
+        <title>
+
+         Data Loss Prevention Solutions for Enterprise Data Security</title>
+        <meta
+          name="description"
+          content="Data loss prevention solutions covering DLP technologies, data protection strategies, vendor comparison, and enterprise deployment approaches."
+        />
+      </Helmet>
+
       {/* ✅ HERO (reuse same style) */}
       <PageHero
         title={
           <>
-            Data Loss Prevention{" "}
-            <span className="gradient-text">(DLP)</span>
+            Understanding {" "}
+            <span className="gradient-text">Data Loss Prevention (DLP)</span>
+             {" "}and How It Protects Business Data
           </>
         }
         description="Protect sensitive data from leaks, insider threats, and compliance risks with modern Data Loss Prevention strategies."
@@ -384,8 +397,8 @@ function DataLossdlp() {
                 key={i}
                 onClick={() => setActiveDlpFeature(i)}
                 className={`px-4 py-2 rounded-full text-sm transition ${activeDlpFeature === i
-                    ? "bg-gradient-to-r from-[#045891] to-[#1B8AC7] text-white shadow"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  ? "bg-gradient-to-r from-[#045891] to-[#1B8AC7] text-white shadow"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
               >
                 {f.name}
@@ -425,8 +438,8 @@ function DataLossdlp() {
                           <span
                             key={star}
                             className={`text-md ${star <= rating
-                                ? "text-yellow-600 "
-                                : "text-gray-300"
+                              ? "text-yellow-600 "
+                              : "text-gray-300"
                               }`}
                           >
                             ★

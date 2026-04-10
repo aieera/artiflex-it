@@ -138,15 +138,21 @@ export default function EmailSecurityPage() {
   return (
     <>
       <Helmet>
-        <title>Email Security Solutions & Vendor Comparison</title>
+        <title>Email Security Vendors Comparison for Enterprise Security</title>
+        <meta
+          name="description"
+          content="Email security vendors comparison covering threat evolution, BEC risks, platform capabilities, and evaluation criteria for enterprise environments."
+        />
       </Helmet>
+  	
 
       {/* HERO */}
       <PageHero
         title={
           <>
-            Email Security Solutions &{" "}
-            <span className="gradient-text">Vendor Comparison</span>
+            Email Security Vendors {" "}
+            <span className="gradient-text">Comparison & Enterprise</span>{" "}
+              Evaluation Guide
           </>
         }
         description="Email remains the #1 attack vector. Protect your organisation with AI-powered email security designed to stop modern threats."
@@ -363,99 +369,97 @@ export default function EmailSecurityPage() {
         </div>
       </section>
 
-      
+
       {/* 🔥 EMAIL SECURITY INTELLIGENCE */}
-<section className="relative py-28 bg-white overflow-hidden">
+      <section className="relative py-28 bg-white overflow-hidden">
 
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(27,138,199,0.08),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(27,138,199,0.08),transparent_70%)]" />
 
-  <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
 
-    <SectionHeader
-      label="Security Intelligence"
-      title={
-        <>
-          Email Security <span className="gradient-text">Capabilities & Leaders</span>
-        </>
-      }
-      description="Understand what matters in email security — and which vendors lead in each capability."
-      centered
-    />
+          <SectionHeader
+            label="Security Intelligence"
+            title={
+              <>
+                Email Security <span className="gradient-text">Capabilities & Leaders</span>
+              </>
+            }
+            description="Understand what matters in email security — and which vendors lead in each capability."
+            centered
+          />
 
-    {/* 🔥 FEATURE SELECTOR */}
-    <div className="mt-12 flex flex-wrap justify-center gap-3">
-      {emailFeatures.map((f, i) => (
-        <button
-          key={i}
-          onClick={() => setActiveFeature(i)}
-          className={`px-4 py-2 rounded-full text-sm transition ${
-            activeFeature === i
-              ? "bg-gradient-to-r from-[#045891] to-[#1B8AC7] text-white shadow"
-              : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-          }`}
-        >
-          {f.name}
-        </button>
-      ))}
-    </div>
+          {/* 🔥 FEATURE SELECTOR */}
+          <div className="mt-12 flex flex-wrap justify-center gap-3">
+            {emailFeatures.map((f, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveFeature(i)}
+                className={`px-4 py-2 rounded-full text-sm transition ${activeFeature === i
+                    ? "bg-gradient-to-r from-[#045891] to-[#1B8AC7] text-white shadow"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  }`}
+              >
+                {f.name}
+              </button>
+            ))}
+          </div>
 
-    {/* 🔥 DYNAMIC CARD */}
-    <div className="mt-16 max-w-3xl mx-auto rounded-2xl border border-border-light bg-gradient-to-r from-[#082c44] to-[#1c1c1d] p-8 shadow">
+          {/* 🔥 DYNAMIC CARD */}
+          <div className="mt-16 max-w-3xl mx-auto rounded-2xl border border-border-light bg-gradient-to-r from-[#082c44] to-[#1c1c1d] p-8 shadow">
 
-      {/* Feature Title */}
-      <h3 className="text-lg font-semibold text-white">
-        {emailFeatures[activeFeature].name}
-      </h3>
+            {/* Feature Title */}
+            <h3 className="text-lg font-semibold text-white">
+              {emailFeatures[activeFeature].name}
+            </h3>
 
-      {/* Description */}
-      <p className="mt-2 text-sm text-white">
-        {emailFeatures[activeFeature].desc}
-      </p>
+            {/* Description */}
+            <p className="mt-2 text-sm text-white">
+              {emailFeatures[activeFeature].desc}
+            </p>
 
-      {/* Divider */}
-      <div className="my-6 h-px bg-gradient-to-r from-transparent via-border-light to-transparent" />
+            {/* Divider */}
+            <div className="my-6 h-px bg-gradient-to-r from-transparent via-border-light to-transparent" />
 
-      {/* 🔥 Vendor Ratings */}
-      <div className="space-y-3">
+            {/* 🔥 Vendor Ratings */}
+            <div className="space-y-3">
 
-        {Object.entries(emailFeatures[activeFeature].vendors).map(
-          ([vendor, rating], i) => (
-            <div
-              key={i}
-              className="flex items-center justify-between rounded-lg bg-blue-100 px-4 py-3"
-            >
-              <span className="text-sm text-black ">{vendor}</span>
-
-              {/* ⭐ Stars */}
-              <div className="flex items-center gap-1">
-                {[1,2,3,4,5].map((star) => (
-                  <span
-                    key={star}
-                    className={`text-md ${
-                      star <= rating
-                        ? "text-yellow-600"
-                        : "text-gray-300"
-                    }`}
+              {Object.entries(emailFeatures[activeFeature].vendors).map(
+                ([vendor, rating], i) => (
+                  <div
+                    key={i}
+                    className="flex items-center justify-between rounded-lg bg-blue-100 px-4 py-3"
                   >
-                    ★
-                  </span>
-                ))}
-              </div>
+                    <span className="text-sm text-black ">{vendor}</span>
+
+                    {/* ⭐ Stars */}
+                    <div className="flex items-center gap-1">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <span
+                          key={star}
+                          className={`text-md ${star <= rating
+                              ? "text-yellow-600"
+                              : "text-gray-300"
+                            }`}
+                        >
+                          ★
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )
+              )}
+
             </div>
-          )
-        )}
 
-      </div>
+            {/* Bottom Insight */}
+            <div className="mt-6 text-xs text-muted">
+              ⭐ Higher ratings indicate stronger real-world performance and detection capability.
+            </div>
 
-      {/* Bottom Insight */}
-      <div className="mt-6 text-xs text-muted">
-        ⭐ Higher ratings indicate stronger real-world performance and detection capability.
-      </div>
+          </div>
 
-    </div>
-
-  </div>
-</section>
+        </div>
+      </section>
 
 
       {/* FAQ */}

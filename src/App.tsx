@@ -48,14 +48,15 @@ export default function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/cybersecurity" element={<CybersecurityPage />} />
 
-          <Route path="/cybersecurity/risk-assessment" element={<RiskThreatAssessment />} />
-          <Route path="/cybersecurity/network-security" element={<FirewallNwk />} />
-          <Route path="/cybersecurity/endpoint-security" element={<EndpointSecurity />} />
-          <Route path="/cybersecurity/email-security-overview" element={<EmailSecurity />} />
-          <Route path="/cybersecurity/data-protection" element={<DataLossdlp />} />
-          <Route path="/cybersecurity/network-detection-response" element={<NDRPage />} />
-          <Route path="/cybersecurity/workspace-security" element={<WorkSpaceProtection />} />
-          
+          <Route path="/cybersecurity/cybersecurity-threats-solutions-dubai" element={<RiskThreatAssessment />} />
+          <Route path="/cybersecurity/firewall-solutions-dubai-guide" element={<FirewallNwk />} />
+          <Route path="/cybersecurity/endpoint-email-security-solutions-uae" element={<EndpointSecurity />} />
+          <Route path="/cybersecurity/email-security-vendors" element={<EmailSecurity />} />
+          <Route path="/cybersecurity/data-loss-prevention-solutions" element={<DataLossdlp />} />
+          <Route path="/cybersecurity/network-detection-response-solutions" element={<NDRPage />} />
+          <Route path="/cybersecurity/enterprise-cybersecurity-solutions" element={<WorkSpaceProtection />} />
+
+        
           <Route path="/cloud-solutions" element={<CloudSolutionsPage />} />
           <Route path="/infrastructure" element={<InfrastructurePage />} />
           <Route path="/managed-services" element={<ManagedServicesPage />} />

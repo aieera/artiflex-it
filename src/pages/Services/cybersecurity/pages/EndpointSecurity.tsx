@@ -50,14 +50,21 @@ export default function EndpointSecurityPage() {
   return (
     <>
       <Helmet>
-        <title>Endpoint Security Solutions</title>
+        <title>
+
+          Email Security Solutions UAE & Endpoint Protection Guide</title>
+        <meta
+          name="description"
+          content="Email security solutions in UAE covering threat prevention, BEC protection, & endpoint security technologies including EDR and XDR for enterprise environments."
+        />
       </Helmet>
 
       {/* HERO */}
       <PageHero
         title={
           <>
-            Endpoint & Email <span className="gradient-text">Security Solutions</span>
+            <span className="gradient-text">Email Security </span>
+            {" "}Solutions in UAE & <span className="gradient-text"> Endpoint Protection </span>Guide
           </>
         }
         description="Protect every device in your organization with advanced endpoint detection, response, and AI-powered security."

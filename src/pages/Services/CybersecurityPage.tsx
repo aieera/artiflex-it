@@ -55,7 +55,7 @@ const pillars = [
     icon: ShieldIcon,
     title: "Next-Generation Firewall (NGFW)",
     category: "NETWORK SECURITY",
-    href: "/cybersecurity/network-security",
+    href: "/cybersecurity/firewall-solutions-dubai-guide",
     description:
       "Deep packet inspection, application-aware traffic control, and TLS 1.3 decryption at line rate...",
   },
@@ -64,7 +64,7 @@ const pillars = [
     icon: MonitorIcon,
     title: "Endpoint Detection & Response (EDR/XDR)",
     category: "ENDPOINT SECURITY",
-    href: "/cybersecurity/endpoint-security",
+    href: "/cybersecurity/endpoint-email-security-solutions-uae",
     description:
       "AI-powered behavioral analysis, anti-ransomware rollback, and cross-layer threat correlation...",
   },
@@ -73,7 +73,7 @@ const pillars = [
     icon: MailIcon,
     title: "Email Security & Anti-Phishing",
     category: "COMMUNICATION SECURITY",
-    href: "/cybersecurity/email-security-overview",
+    href: "/cybersecurity/email-security-vendors",
     description:
       "NLP-powered phishing detection, BEC impersonation prevention, attachment sandboxing...",
   },
@@ -82,7 +82,7 @@ const pillars = [
     icon: LockIcon,
     title: "Data Loss Prevention (DLP)",
     category: "DATA PROTECTION",
-    href: "/cybersecurity/data-protection",
+    href: "/cybersecurity/data-loss-prevention-solutions",
     description:
       "Content-aware policies preventing unauthorized data exfiltration across endpoints...",
   },
@@ -91,7 +91,7 @@ const pillars = [
     icon: CloudIcon,
     title: "SASE & Zero Trust Network Access",
     category: "CLOUD & REMOTE ACCESS",
-    href: "/cybersecurity/workspace-security",
+    href: "/cybersecurity/enterprise-cybersecurity-solutions",
     description:
       "ZTNA, CASB, SWG, and Firewall-as-a-Service converged into a cloud-delivered security service edge...",
   },
@@ -100,7 +100,7 @@ const pillars = [
     icon: LayersIcon,
     title: "SIEM, SOC & Managed Detection",
     category: "THREAT INTELLIGENCE",
-    href: "/cybersecurity/network-detection-response",
+    href: "/cybersecurity/network-detection-response-solutions",
     description:
       "24/7 security event correlation, anomaly detection, and managed incident response...",
   },
@@ -109,7 +109,7 @@ const pillars = [
     icon: SearchIcon,
     title: "Vulnerability Assessment & Pen Testing",
     category: "RISK MANAGEMENT",
-    href: "/cybersecurity/risk-assessment",
+    href: "/cybersecurity/cybersecurity-threats-solutions-dubai",
     description:
       "Continuous vulnerability discovery, external attack surface management, and penetration testing...",
   },

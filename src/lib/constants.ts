@@ -12,38 +12,38 @@ export const NAV_LINKS = [
         icon: "ShieldIcon",
         children: [
           {
-            name: "Cybersecurity Risk & Threat Assessment",
-            href: "/cybersecurity/risk-assessment",
+            name: "Cybersecurity Solutions in Dubai ",
+            href: "/cybersecurity/cybersecurity-threats-solutions-dubai",
             description: "Identify business risks, threat exposure, and security gaps across your IT environment."
           },
           {
-            name: "Firewall & Network Security",
-            href: "/cybersecurity/network-security",
+            name: "Firewall Solutions in Dubai",
+            href: "/cybersecurity/firewall-solutions-dubai-guide",
             description: "Protect networks with next-generation firewalls, intrusion prevention, and secure connectivity."
           },
           {
-            name: "Endpoint & Device Security",
-            href: "/cybersecurity/endpoint-security",
+            name: "Email Security Solutions in UAE",
+            href: "/cybersecurity/endpoint-email-security-solutions-uae",
             description: "Secure all endpoints with AI-driven threat detection, response, and device control."
           },
           {
-            name: "Email Security",
-            href: "/cybersecurity/email-security-overview",
+            name: "Email Security Vendors",
+            href: "/cybersecurity/email-security-vendors",
             description: "Defend against phishing, malware, and business email compromise attacks."
           },
           {
-            name: "Data Loss Prevention (DLP)",
-            href: "/cybersecurity/data-protection",
+            name: "Data Loss Prevention Solutions",
+            href: "/cybersecurity/data-loss-prevention-solutions",
             description: "Prevent sensitive data leakage across endpoints, cloud apps, and communication channels."
           },
           {
-            name: "Network Detection & Response (NDR)",
-            href: "/cybersecurity/network-detection-response",
+            name: "Network Detection & Response Solutions",
+            href: "/cybersecurity/network-detection-response-solutions",
             description: "Detect and respond to advanced threats using network behavior analytics and AI."
           },
           {
-            name: "Workspace Security (SSE / SASE / CASB)",
-            href: "/cybersecurity/workspace-security",
+            name: "Enterprise Cybersecurity Solutions",
+            href: "/cybersecurity/enterprise-cybersecurity-solutions",
             description: "Secure cloud access, SaaS usage, and remote users with Zero Trust architecture."
           }
         ]
@@ -68,42 +68,42 @@ export const SERVICES = [
   {
     name: "Cybersecurity", description: "End-to-end cybersecurity solutions including threat intelligence, vulnerability management, SOC-as-a-Service, and compliance frameworks tailored for the Middle East.", href: "/cybersecurity", icon: "ShieldIcon",
     children: [
-      {
-        name: "Cybersecurity Risk & Threat Assessment",
-        href: "/cybersecurity/risk-assessment",
-        description: "Identify business risks, threat exposure, and security gaps across your IT environment."
-      },
-      {
-        name: "Firewall & Network Security",
-        href: "/cybersecurity/network-security",
-        description: "Protect networks with next-generation firewalls, intrusion prevention, and secure connectivity."
-      },
-      {
-        name: "Endpoint & Device Security",
-        href: "/cybersecurity/endpoint-security",
-        description: "Secure all endpoints with AI-driven threat detection, response, and device control."
-      },
-      {
-        name: "Email Security",
-        href: "/cybersecurity/email-security-overview",
-        description: "Defend against phishing, malware, and business email compromise attacks."
-      },
-      {
-        name: "Data Loss Prevention (DLP)",
-        href: "/cybersecurity/data-protection",
-        description: "Prevent sensitive data leakage across endpoints, cloud apps, and communication channels."
-      },
-      {
-        name: "Network Detection & Response (NDR)",
-        href: "/cybersecurity/network-detection-response",
-        description: "Detect and respond to advanced threats using network behavior analytics and AI."
-      },
-      {
-        name: "Workspace Security (SSE / SASE / CASB)",
-        href: "/cybersecurity/workspace-security",
-        description: "Secure cloud access, SaaS usage, and remote users with Zero Trust architecture."
-      }
-    ]
+          {
+            name: "Cybersecurity Solutions in Dubai ",
+            href: "/cybersecurity/cybersecurity-threats-solutions-dubai",
+            description: "Identify business risks, threat exposure, and security gaps across your IT environment."
+          },
+          {
+            name: "Firewall Solutions in Dubai",
+            href: "/cybersecurity/firewall-solutions-dubai-guide",
+            description: "Protect networks with next-generation firewalls, intrusion prevention, and secure connectivity."
+          },
+          {
+            name: "Email Security Solutions in UAE",
+            href: "/cybersecurity/endpoint-email-security-solutions-uae",
+            description: "Secure all endpoints with AI-driven threat detection, response, and device control."
+          },
+          {
+            name: "Email Security Vendors",
+            href: "/cybersecurity/email-security-vendors",
+            description: "Defend against phishing, malware, and business email compromise attacks."
+          },
+          {
+            name: "Data Loss Prevention Solutions",
+            href: "/cybersecurity/data-loss-prevention-solutions",
+            description: "Prevent sensitive data leakage across endpoints, cloud apps, and communication channels."
+          },
+          {
+            name: "Network Detection & Response Solutions",
+            href: "/cybersecurity/network-detection-response-solutions",
+            description: "Detect and respond to advanced threats using network behavior analytics and AI."
+          },
+          {
+            name: "Enterprise Cybersecurity Solutions",
+            href: "/cybersecurity/enterprise-cybersecurity-solutions",
+            description: "Secure cloud access, SaaS usage, and remote users with Zero Trust architecture."
+          }
+        ]
 
   },
   { name: "Cloud Solutions", description: "Secure cloud migration, multi-cloud architecture, and managed cloud services across AWS, Azure, and private cloud environments.", href: "/cloud-solutions", icon: "CloudIcon" },

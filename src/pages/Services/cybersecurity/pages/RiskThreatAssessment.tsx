@@ -140,10 +140,10 @@ export default function CyberThreatPage() {
   return (
     <>
       <Helmet>
-        <title>Cybersecurity Threats & Business Risks | ArtiflexIT</title>
+        <title>Cybersecurity Solutions in Dubai | Threats & Risks Guide</title>
         <meta
           name="description"
-          content="Understand cybersecurity threats, risks, and their impact on businesses. Learn how modern attacks affect operations, finances, and reputation."
+          content="Understand cybersecurity threats, business risks, and essential cybersecurity solutions in Dubai & UAE to protect your organization from evolving attacks."
         />
       </Helmet>
 
@@ -151,8 +151,9 @@ export default function CyberThreatPage() {
       <PageHero
         title={
           <>
-            Cybersecurity Threats{" "}
-            <span className="gradient-text">& Business Risks</span>
+            Cybersecurity{" "}
+            <span className="gradient-text">Threats,Risks & Solutions</span>
+             {" "} for Businesses in Dubai
           </>
         }
         description="Cyber threats are no longer optional risks — they are inevitable. Understand the evolving threat landscape and how it impacts your business."
@@ -170,62 +171,62 @@ export default function CyberThreatPage() {
 
       <section className="relative py-24 bg-white overflow-hidden">
 
-  {/* Soft background glow */}
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(27,138,199,0.06),transparent_60%)]" />
+        {/* Soft background glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(27,138,199,0.06),transparent_60%)]" />
 
-  <div className="relative max-w-5xl mx-auto px-6">
+        <div className="relative max-w-5xl mx-auto px-6">
 
-    <SectionHeader
-      label="The Reality"
-      title={
-        <>
-          Cybersecurity is{" "}
-          <span className="gradient-text">No Longer Optional</span>
-        </>
-      }
-      description="The digital landscape has transformed cyber risk into one of the biggest threats to modern businesses."
-      centered
-    />
+          <SectionHeader
+            label="The Reality"
+            title={
+              <>
+                Cybersecurity is{" "}
+                <span className="gradient-text">No Longer Optional</span>
+              </>
+            }
+            description="The digital landscape has transformed cyber risk into one of the biggest threats to modern businesses."
+            centered
+          />
 
-    {/* Timeline Layout */}
-    <div className="mt-20 relative">
+          {/* Timeline Layout */}
+          <div className="mt-20 relative">
 
-      {/* Vertical line */}
-      <div className="absolute left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#045891] to-[#1B8AC7]/20" />
+            {/* Vertical line */}
+            <div className="absolute left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#045891] to-[#1B8AC7]/20" />
 
-      <div className="space-y-12">
+            <div className="space-y-12">
 
-        {threatReality.stats.map((stat, i) => (
-          <div key={stat.label} className="relative pl-14 group">
+              {threatReality.stats.map((stat, i) => (
+                <div key={stat.label} className="relative pl-14 group">
 
-            {/* Dot */}
-            <div className="absolute left-0 top-2 w-8 h-8 rounded-full bg-white border border-[#1B8AC7]/30 flex items-center justify-center group-hover:scale-110 transition">
-              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#045891] to-[#1B8AC7]" />
+                  {/* Dot */}
+                  <div className="absolute left-0 top-2 w-8 h-8 rounded-full bg-white border border-[#1B8AC7]/30 flex items-center justify-center group-hover:scale-110 transition">
+                    <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#045891] to-[#1B8AC7]" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex items-center justify-between gap-6">
+
+                    {/* Text */}
+                    <p className="text-sm text-gray-600 max-w-xs leading-relaxed">
+                      {stat.label}
+                    </p>
+
+                    {/* Value */}
+                    <p className="text-2xl sm:text-2xl font-semibold bg-gradient-to-r from-[#045891] to-[#1B8AC7] bg-clip-text text-transparent">
+                      {stat.value}
+                    </p>
+
+                  </div>
+
+                </div>
+              ))}
+
             </div>
-
-            {/* Content */}
-            <div className="flex items-center justify-between gap-6">
-
-              {/* Text */}
-              <p className="text-sm text-gray-600 max-w-xs leading-relaxed">
-                {stat.label}
-              </p>
-
-              {/* Value */}
-              <p className="text-2xl sm:text-2xl font-semibold bg-gradient-to-r from-[#045891] to-[#1B8AC7] bg-clip-text text-transparent">
-                {stat.value}
-              </p>
-
-            </div>
-
           </div>
-        ))}
 
-      </div>
-    </div>
-
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* 🔥 PREMIUM THREAT LANDSCAPE */}
       <section className="py-20 bg-[#020617]">
