@@ -335,27 +335,27 @@ export default function EmailSecurityPage() {
                 {
                   title: "Sophos Email",
                   desc: "Synchronized security across endpoint, firewall, and email with AI-driven threat intelligence.",
-                  image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b",
+                  image: "https://jettbt.com/wp-content/uploads/how-email-security-services-safeguard-your-business.jpg",
                 },
                 {
                   title: "Check Point Harmony",
                   desc: "Threat extraction and sandboxing powered by ThreatCloud AI.",
-                  image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+                  image: "https://blog.checkpoint.com/wp-content/uploads/2023/05/blog-05-700x700.jpg",
                 },
                 {
                   title: "Abnormal Security",
                   desc: "AI-native behavioural detection for advanced phishing and BEC attacks.",
-                  image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c",
+                  image: "https://www.tierpoint.com/wp-content/uploads/2025/02/Benefits-of-Using-AI-and-ML-in-Cybersecurity_blog.jpg",
                 },
                 {
                   title: "Darktrace Email",
                   desc: "Self-learning AI with autonomous response and anomaly detection.",
-                  image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+                  image: "https://cdn.prod.website-files.com/626ff19cdd07d1258d49238d/66bcb0a26b0b4635f49444e1_Email%20-%20Product%20Hero.jpg",
                 },
                 {
                   title: "Proofpoint",
                   desc: "People-centric email protection with advanced analytics and intelligence.",
-                  image: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72",
+                  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtfZSkrILJOMqMlFldBBql4jTS6kHO6q2N2Q&s",
                 },
               ]}
             />

@@ -36,6 +36,8 @@ const costProblem = {
     { value: "73%", label: "Of unplanned downtime caused by aging, unmaintained infrastructure" },
     { value: "3.6x", label: "Higher repair costs for break-fix vs. preventive maintenance" },
     { value: "42%", label: "Of SMEs experience data loss from hardware failure without AMC" },
+    { value: "60%", label: "Of businesses shut down within 6 months after major data loss" },
+    { value: "25%", label: "Productivity loss due to recurring IT issues in reactive environments" },
   ],
 };
 
@@ -282,32 +284,55 @@ export default function AMCServicesPage() {
       <StatsBar stats={amcStats} />
 
       {/* THE COST PROBLEM */}
-      <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6 ">
-          <SectionHeader
-            label="The Problem"
-            title={
-              <>
-                The Hidden Cost of{" "}
-                <span className="gradient-text">Reactive IT</span>
-              </>
-            }
-            description="Most businesses don't realize how much unplanned downtime and break-fix repairs actually cost until they add it up."
-            centered
-          />
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 max-w-5xl mx-auto">
-            {costProblem.stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="group relative rounded-2xl border border-border-light bg-gradient-to-r from-[#045891] to-[#1B8AC7] p-5 sm:p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#045891]/20 hover:shadow-[0_8px_30px_rgba(4,88,145,0.08)] hover:-translate-y-0.5"
-              >
-                <span className="font-display text-2xl font-bold text-white sm:text-3xl">{stat.value}</span>
-                <p className="mt-2 text-sm text-white leading-relaxed">{stat.label}</p>
-              </div>
-            ))}
+<section className="relative py-20 bg-gradient-to-b from-[#f8fbff] to-white sm:py-28">
+  <div className="mx-auto max-w-7xl px-5 sm:px-6">
+
+    {/* Header */}
+    <div className="mb-14 sm:mb-20">
+      <SectionHeader
+        label="The Problem"
+        title={
+          <>
+            The Hidden Cost of{" "}
+            <span className="gradient-text">Reactive IT</span>
+          </>
+        }
+        description="Most businesses don't realize how much unplanned downtime and break-fix repairs actually cost until they add it up."
+        centered
+      />
+    </div>
+
+    {/* Cards */}
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+
+      {costProblem.stats.map((stat) => (
+        <div
+          key={stat.label}
+          className="group relative overflow-hidden rounded-3xl border border-white/40 bg-white/60 backdrop-blur-xl p-6 sm:p-7 shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(4,88,145,0.15)]"
+        >
+          
+          {/* Glow effect */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-[#045891]/10 via-transparent to-[#1B8AC7]/10"></div>
+
+          {/* Content */}
+          <div className="relative z-10">
+            <span className="block text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#045891] to-[#1B8AC7] bg-clip-text text-transparent">
+              {stat.value}
+            </span>
+
+            <p className="mt-3 text-sm text-gray-600 leading-relaxed">
+              {stat.label}
+            </p>
           </div>
+
+          {/* Bottom accent line */}
+          <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-gradient-to-r from-[#045891] to-[#1B8AC7] transition-all duration-500 group-hover:w-full"></div>
         </div>
-      </section>
+      ))}
+
+    </div>
+  </div>
+</section>
 
       {/* AMC SERVICES */}
       <section className="relative py-16 bg-surface-secondary sm:py-24">

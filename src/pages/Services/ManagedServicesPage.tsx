@@ -74,7 +74,13 @@ export default function ManagedServicesPage() {
 
       <section className="relative py-16 bg-white sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeader label="Performance" title={<>What Our  <span className="gradient-text">Managed Clients </span> Experience</>} centered />
+          <div className="mb-12 sm:mb-16">
+            <SectionHeader
+              label="Performance"
+              title={<>What Our <span className="gradient-text">Managed Clients </span> Experience</>}
+              centered
+            />
+          </div>
           <StatsBar stats={managedStats} />
         </div>
       </section>

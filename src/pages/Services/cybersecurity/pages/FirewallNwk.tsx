@@ -13,7 +13,7 @@ const firewallStory = [
   {
     title: "The Internet Was Open",
     desc: "Early networks were built on trust. No protection, no boundaries — just open communication.",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1920&auto=format&fit=crop", // early computing / open systems
+    image: "https://d2yghbees9788u.cloudfront.net/futurecom/2025/02/O-novo-papel-dos-provedores-de-internet-de-conectividade-para-ecossistemas-digitais.jpg", 
   },
   {
     title: "The Morris Worm (1988)",
@@ -23,7 +23,7 @@ const firewallStory = [
   {
     title: "The Need for Control",
     desc: "Organizations realized they needed a way to monitor and restrict traffic between networks.",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1920&auto=format&fit=crop", // monitoring / network traffic
+    image: "https://lockstepgroup.com/wp-content/uploads/2024/03/Network-protection-with-digital-locks-and-firewalls-guarding-against-cyber-threats.-Concept-Cybersecurity-Digital-Locks-Firewalls-Network-Protection-Cyber-Threats-scaled.jpeg", // monitoring / network traffic
   },
   {
     title: "Birth of the Firewall",
@@ -33,7 +33,7 @@ const firewallStory = [
   {
     title: "From Rules to Intelligence",
     desc: "Modern firewalls evolved into intelligent systems capable of detecting and stopping advanced threats.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1920&auto=format&fit=crop", // AI/network intelligence
+    image: "https://www.gigenet.com/wp-content/uploads/2025/05/image-34.jpg", // AI/network intelligence
   },
 ];
 
@@ -127,7 +127,7 @@ const ngfwFeatures = [
     subtitle: "App-ID",
     desc: "Identifies and controls applications regardless of port, protocol, or encryption.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop",
+    image: "https://www.wattlecorp.com/wp-content/uploads/2024/06/Security-Awareness-.webp",
   },
   {
     title: "User Identity Control",
@@ -141,28 +141,28 @@ const ngfwFeatures = [
     subtitle: "Content-ID",
     desc: "Inspects traffic content to detect malware and threats in real time.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+    image: "https://www.acldigital.com/wp-content/uploads/2024/10/Banner_Deep-Packet-Inspection-A-Data-Insight.jpg",
   },
   {
     title: "SSL/TLS Decryption",
     subtitle: "Encrypted Visibility",
     desc: "Decrypts encrypted traffic to uncover hidden threats.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop",
+    image: "https://www.globalsign.com/application/files/8217/3106/6266/How_a_CDN_can_Support_SSL_GLobalSign.jpg",
   },
   {
     title: "Threat Intelligence",
     subtitle: "Real-Time Protection",
     desc: "Uses global threat intelligence to block zero-day attacks instantly.",
     rating: 4,
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
+    image: "https://www.ek.co/wp-content/uploads/2024/10/Ekco-Post-Choosing-the-right-cyber-threat-intelligence-tools-for-your-business.jpg",
   },
   {
     title: "Cloud Integration",
     subtitle: "SASE & FWaaS",
     desc: "Extends firewall protection to cloud and remote environments.",
     rating: 4,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
+    image: "https://knowhow.distrelec.com/wp-content/uploads/2023/11/iStock-1420039843.jpg",
   },
 ];
 

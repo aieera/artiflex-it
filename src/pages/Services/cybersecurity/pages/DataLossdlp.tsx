@@ -208,7 +208,7 @@ function DataLossdlp() {
 
             {/* Image */}
             <img
-              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop"
+              src="https://assets.esecurityplanet.com/uploads/2024/03/esp_20240326-data-loss-prevention.png"
               alt="Data security"
               className="absolute inset-0 w-full h-full object-cover"
             />

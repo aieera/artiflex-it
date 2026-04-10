@@ -15,7 +15,7 @@ const workspaceDrivers = [
   {
     title: "Cloud & SaaS",
     desc: "Applications now live outside traditional networks, bypassing legacy security.",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800",
+    image: "https://storage.googleapis.com/medium-feed.appspot.com/images%2F9353691196%2F1a89a08388034-Empresa-de-desenvolvimento-de-aplicativos-Saas-personalizados.jpg",
   },
   {
     title: "Data Protection",
@@ -25,7 +25,7 @@ const workspaceDrivers = [
   {
     title: "Zero Trust",
     desc: "Every access request is verified — no implicit trust.",
-    image: "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&w=800",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP1-khfb4BRjVXLF2o1Q-SJ87NdW7YlMKC6w&s",
   },
 ];
 
@@ -142,7 +142,7 @@ function WorkSpaceProtection() {
           {/* IMAGE */}
           <div className="relative min-h-[350px]">
             <img
-              src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200"
+              src="https://media.licdn.com/dms/image/v2/D4D12AQE98nCC8jphtg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1722934427471?e=2147483647&v=beta&t=5Ky-5KiME-eNYMhUyqWSuM0p23MDsCYSe5If3_HUNPQ"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/50" />

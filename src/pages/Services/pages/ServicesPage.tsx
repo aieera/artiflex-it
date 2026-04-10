@@ -102,6 +102,21 @@ const services = [
     ],
     outcome: "Predictable IT costs with zero unplanned downtime from preventable failures.",
   },
+  {
+  name: "Disaster Recovery Solutions",
+  href: "/disaster-recovery-solutions",
+  image: "https://ebm.ae/admin/uploads/solution/5fd54968246a7.jpg",
+  description:
+    "Comprehensive disaster recovery solutions ensuring business continuity through automated backups, rapid failover, and secure data restoration.",
+  features: [
+    "Automated Data Backup",
+    "Disaster Recovery Planning",
+    "Failover & Failback Systems",
+    "Cloud & On-Premise Recovery",
+    "RTO & RPO Optimization",
+  ],
+  outcome: "Business continuity with minimal downtime and fast recovery from unexpected disruptions.",
+}
 ];
 
 const whyOneProvider = [
