@@ -15,10 +15,68 @@ const features = [
 ];
 
 const process = [
-    { step: "01", title: "Assess", desc: "Identify critical systems & risks." },
-    { step: "02", title: "Design", desc: "Define RTO, RPO & recovery architecture." },
-    { step: "03", title: "Deploy", desc: "Implement backup & failover systems." },
-    { step: "04", title: "Recover", desc: "Instant restoration with minimal downtime." },
+  {
+    step: "01",
+    title: "Assessment & Risk Analysis",
+    desc: "Identify critical business systems, dependencies, and potential risks including cyber threats, hardware failures, and natural disruptions.",
+  },
+  {
+    step: "02",
+    title: "Strategy & Planning",
+    desc: "Define recovery objectives (RTO & RPO), select recovery models, and design a tailored disaster recovery architecture aligned with business goals.",
+  },
+  {
+    step: "03",
+    title: "Solution Design",
+    desc: "Architect secure backup, replication, and failover mechanisms across cloud, on-premise, or hybrid environments.",
+  },
+  {
+    step: "04",
+    title: "Implementation & Deployment",
+    desc: "Deploy automated backup systems, real-time replication, and failover infrastructure ensuring seamless integration with existing systems.",
+  },
+  {
+    step: "05",
+    title: "Testing & Validation",
+    desc: "Continuously test recovery processes through simulations to ensure reliability, compliance, and readiness during real incidents.",
+  },
+  {
+    step: "06",
+    title: "Monitoring & Optimization",
+    desc: "Enable continuous monitoring, performance tuning, and proactive issue detection to improve recovery efficiency over time.",
+  },
+  {
+    step: "07",
+    title: "Recovery & Continuity",
+    desc: "Execute rapid failover and restoration processes to ensure minimal downtime and uninterrupted business operations during disruptions.",
+  },
+];
+
+const drInsights = [
+    {
+        title: "Why Disaster Recovery Matters",
+        desc: "Downtime affects revenue, trust, and operations. A strong DR strategy ensures continuity even during cyberattacks, outages, or system failures.",
+    },
+    {
+        title: "Recovery Models",
+        desc: "Cloud, on-premise, and hybrid recovery models provide flexibility, scalability, and control based on business needs.",
+    },
+    {
+        title: "RTO & RPO Strategy",
+        desc: "Define how fast systems recover (RTO) and how much data loss is acceptable (RPO) to align with business risk tolerance.",
+    },
+    {
+        title: "AI-Powered Resilience",
+        desc: "Leverage predictive analytics and automation to detect failures early and trigger intelligent recovery workflows.",
+    },
+    {
+        title: "Immutable Backups",
+        desc: "Protect against ransomware with tamper-proof backups that cannot be altered or deleted.",
+    },
+    {
+        title: "Geo-Redundant Infrastructure",
+        desc: "Distribute workloads across multiple regions to ensure availability even during large-scale outages.",
+    },
 ];
 
 const faqs = [
@@ -151,9 +209,13 @@ export default function DisasterRecoveryPage() {
                 </div>
             </section>
 
-            {/* 🚀 TIMELINE (PREMIUM STYLE) */}
-            <section className="relative py-28 bg-white">
-                <div className="max-w-6xl mx-auto px-6">
+            {/* 🚀 PREMIUM TIMELINE (UPGRADED UI) */}
+            <section className="relative py-28 bg-white overflow-hidden">
+
+                {/* SUBTLE BG EFFECT */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(27,138,199,0.08),transparent_70%)]" />
+
+                <div className="max-w-6xl mx-auto px-6 relative z-10">
 
                     <SectionHeader
                         label="Process"
@@ -165,23 +227,105 @@ export default function DisasterRecoveryPage() {
                         centered
                     />
 
-                    <div className="mt-16 relative">
-                        <div className="absolute left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#045891] to-[#1B8AC7]" />
+                    <div className="mt-20 relative">
+
+                        {/* CENTER LINE */}
+                        <div className="absolute left-5 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#045891]/40 via-[#1B8AC7] to-transparent" />
 
                         {process.map((p, i) => (
-                            <div key={p.step} className="flex gap-6 mb-12 relative">
-                                <div className="w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-br from-[#045891] to-[#1B8AC7] text-white text-xs font-semibold z-10">
-                                    {p.step}
+                            <div key={p.step} className="relative flex items-start gap-8 mb-16 group">
+
+                                {/* STEP ICON */}
+                                <div className="relative z-10">
+                                    <div className="w-10 h-10 flex items-center justify-center rounded-full 
+              bg-gradient-to-br from-[#045891] to-[#1B8AC7] text-white text-sm font-semibold
+              shadow-lg group-hover:scale-110 transition duration-300">
+                                        {p.step}
+                                    </div>
+
+                                    {/* PULSE EFFECT */}
+                                    <div className="absolute inset-0 rounded-full bg-[#1B8AC7]/20 blur-md opacity-0 group-hover:opacity-100 transition" />
                                 </div>
 
-                                <div>
-                                    <h3 className="font-semibold text-heading">{p.title}</h3>
-                                    <p className="text-sm text-body">{p.desc}</p>
+                                {/* CARD */}
+                                <div className="relative flex-1 p-6 rounded-2xl border border-slate-200 bg-white 
+            shadow-sm hover:shadow-[0_15px_50px_rgba(4,88,145,0.15)] 
+            transition-all duration-300 group-hover:-translate-y-1">
+
+                                    {/* TOP LINE ACCENT */}
+                                    <div className="absolute top-0 left-0 w-0 h-[3px] bg-gradient-to-r from-[#045891] to-[#1B8AC7] group-hover:w-full transition-all duration-500 rounded-t-2xl" />
+
+                                    <h3 className="font-semibold text-heading text-lg">
+                                        {p.title}
+                                    </h3>
+
+                                    <p className="text-sm text-body mt-2 leading-relaxed max-w-md">
+                                        {p.desc}
+                                    </p>
+
+                                    {/* CONNECTOR DOT */}
+                                    <div className="absolute -left-[38px] top-7 w-3 h-3 rounded-full bg-[#1B8AC7] border-4 border-white shadow" />
+
                                 </div>
                             </div>
                         ))}
-                    </div>
 
+                    </div>
+                </div>
+            </section>
+
+            {/* 🔥 NEXT-GEN INSIGHTS UI */}
+            <section className="relative py-28 bg-[#020617] text-white overflow-hidden">
+
+                {/* BACKGROUND GLOW */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(27,138,199,0.15),transparent_70%)]" />
+
+                <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+                    <SectionHeader
+                        label="Deep Insights"
+                        title={
+                            <>
+                                <span className="text-blue-100">Modern</span> <span className="gradient-text">Disaster Recovery</span>
+                            </>
+                        }
+                        centered
+                    />
+
+                    {/* GRID */}
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+
+                        {drInsights.map((item, i) => (
+                            <div
+                                key={i}
+                                className="group relative p-[1px] rounded-2xl bg-gradient-to-br from-[#045891] to-[#1B8AC7]"
+                            >
+                                {/* INNER CARD */}
+                                <div className="relative h-full bg-[#020617] rounded-2xl p-6 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_60px_rgba(27,138,199,0.3)]">
+
+                                    {/* NUMBER BADGE */}
+                                    <div className="absolute top-4 right-4 text-xs text-slate-500 group-hover:text-[#1B8AC7] transition">
+                                        0{i + 1}
+                                    </div>
+
+                                    {/* TITLE */}
+                                    <h3 className="text-lg font-semibold text-white">
+                                        {item.title}
+                                    </h3>
+
+                                    {/* DESC */}
+                                    <p className="text-sm text-slate-400 mt-3 leading-relaxed">
+                                        {item.desc}
+                                    </p>
+
+                                    {/* HOVER GLOW LINE */}
+                                    <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#045891] to-[#1B8AC7] group-hover:w-full transition-all duration-500" />
+
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
                 </div>
             </section>
 
