@@ -1,0 +1,61 @@
+name: Deploy to Hostinger
+
+# Builds the Vite site (including the Playwright OG-image + prerender steps)
+# and uploads the generated dist/ folder to Hostinger over FTPS.
+#
+# Runs automatically on every push to main, and can be triggered manually
+# from the Actions tab ("Run workflow").
+#
+# Required repository secrets (Settings -> Secrets and variables -> Actions):
+#   FTP_HOST        e.g. ftp.artiflexit.com  (or the IP/host from hPanel FTP Accounts)
+#   FTP_USERNAME    the FTP account username from Hostinger
+#   FTP_PASSWORD    the FTP account password
+#   FTP_REMOTE_DIR  target web root, e.g. /public_html/  (must end with a slash)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hostinger
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Build (with OG images + prerender)
+        run: npm run build:seo
+
+      - name: Deploy dist/ to Hostinger via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./dist/
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+          # Files that live on the server but are not part of the build,
+          # so the sync does not delete them. Add more as needed.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.well-known/**
