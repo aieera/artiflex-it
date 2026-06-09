@@ -25,7 +25,7 @@ const testimonials = [
   {
     id: 3,
     quote:
-      "The cybersecurity audit Artiflex conducted uncovered vulnerabilities we had no idea existed. Their SOC team now monitors our systems 24/7 — we haven't had a single incident since.",
+      "The cybersecurity audit Artiflex conducted uncovered vulnerabilities we had no idea existed. Their SOC team now monitors our systems 24/7, we haven't had a single incident since.",
     name: "Ahmed Al Mansoori",
     role: "IT Director",
     company: "Gulf Logistics Group",
@@ -35,7 +35,7 @@ const testimonials = [
   {
     id: 4,
     quote:
-      "We evaluated five IT providers before choosing Artiflex. What sealed it was their honesty — they recommended what we actually needed, not the most expensive package.",
+      "We evaluated five IT providers before choosing Artiflex. What sealed it was their honesty, they recommended what we actually needed, not the most expensive package.",
     name: "Priya Sharma",
     role: "CISO",
     company: "MedCare Health Systems",
@@ -75,7 +75,7 @@ const testimonials = [
   {
     id: 8,
     quote:
-      "From endpoint security to cloud management — Artiflex handles everything so our internal team can focus on strategic initiatives instead of firefighting IT issues.",
+      "From endpoint security to cloud management, Artiflex handles everything so our internal team can focus on strategic initiatives instead of firefighting IT issues.",
     name: "Layla Hassan",
     role: "CEO",
     company: "Horizon Real Estate",
@@ -117,7 +117,7 @@ function MarqueeRow({
             className="shrink-0 w-[260px] sm:w-[320px] md:w-[380px] cursor-pointer"
           >
             <div className="rounded-2xl border border-border-light bg-white p-5 sm:p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(4,88,145,0.12)] hover:border-[#045891]/25 hover:-translate-y-1 h-full">
-              {/* Top row — avatar + info */}
+              {/* Top row, avatar + info */}
               <div className="flex items-center gap-3 mb-4">
                 <div
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white font-display font-bold text-sm"
@@ -273,7 +273,7 @@ export function TestimonialsSection() {
 
   return (
     <section className="bg-surface-secondary py-14 sm:py-20 lg:py-28 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 mb-10 sm:mb-14">
+      <div className="shell mb-10 sm:mb-14">
         <div className="text-center mb-4">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#045891]/8 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#045891] mb-5">
             <span className="h-1.5 w-1.5 rounded-full bg-[#045891]" />
@@ -283,7 +283,7 @@ export function TestimonialsSection() {
             Trusted by Businesses Across the Region
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-body sm:text-base lg:text-lg mx-auto max-w-xl">
-            Don&apos;t take our word for it — hear from the teams we&apos;ve helped secure, scale, and transform.
+            Don&apos;t take our word for it, hear from the teams we&apos;ve helped secure, scale, and transform.
           </p>
         </div>
       </div>

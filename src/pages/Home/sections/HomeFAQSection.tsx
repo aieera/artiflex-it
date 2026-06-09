@@ -10,12 +10,12 @@ const faqItems = [
   {
     question: "How quickly can you respond to a security incident?",
     answer:
-      "Our average incident response time is 12 minutes from initial alert to first action. Our SOC operates 24/7/365 with tiered escalation — L1 analysts handle immediate triage, L2 handles containment, and L3 specialists manage advanced threat hunting and forensics.",
+      "Our average incident response time is 12 minutes from initial alert to first action. Our SOC operates 24/7/365 with tiered escalation, L1 analysts handle immediate triage, L2 handles containment, and L3 specialists manage advanced threat hunting and forensics.",
   },
   {
     question: "Do you support small businesses or only enterprises?",
     answer:
-      "We work with businesses of all sizes — from 10-person startups to organizations with 500+ employees. Our managed service packages are tiered so you pay only for what you need. Our Sophos Site-in-a-Box solution is specifically designed to bring enterprise-grade security to small and mid-sized businesses.",
+      "We work with businesses of all sizes, from 10-person startups to organizations with 500+ employees. Our managed service packages are tiered so you pay only for what you need. Our Sophos Site-in-a-Box solution is specifically designed to bring enterprise-grade security to small and mid-sized businesses.",
   },
   {
     question: "What is VAPT and why does my business need it?",
@@ -32,7 +32,7 @@ const faqItems = [
 export function HomeFAQSection() {
   return (
     <section className="bg-white py-14 sm:py-20 lg:py-28">
-      <div className="mx-auto max-w-3xl px-5 sm:px-6 lg:px-8">
+      <div className="shell">
         <SectionHeader
           label="FAQ"
           title="Frequently Asked Questions"

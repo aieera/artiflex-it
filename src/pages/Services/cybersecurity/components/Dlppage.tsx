@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
@@ -7,8 +6,8 @@ import { LockIcon, ShieldIcon, EyeIcon, ServerIcon, MailIcon, CheckIcon } from "
 
 const stats = [
   { value: "AED 5M", label: "MAX UAE PDPL FINE", source: "Federal Decree No. 45/2021" },
-  { value: "72hrs", label: "BREACH NOTIFICATION WINDOW", source: "UAE PDPL — mandatory" },
-  { value: "83%", label: "BREACHES INVOLVE INTERNAL DATA", source: "Verizon DBIR 2024" },
+  { value: "72hrs", label: "BREACH NOTIFICATION WINDOW", source: "UAE PDPL, mandatory" },
+  { value: "83%", label: "BREACHES INVOLVE INTERNAL DATA", source: "Verizon DBIR" },
   { value: "60%", label: "DATA LOSS VIA EMAIL", source: "Insider threat research" },
 ];
 
@@ -17,7 +16,7 @@ const features = [
     icon: LockIcon,
     title: "Content-Aware Policy Engine",
     description:
-      "Inspect data content — not just metadata — across endpoints, email, web uploads, and cloud storage. Detect PII, financial records, health data, and IP using regex, fingerprinting, and AI classification.",
+      "Inspect data content, not just metadata, across endpoints, email, web uploads, and cloud storage. Detect PII, financial records, health data, and IP using regex, fingerprinting, and AI classification.",
   },
   {
     icon: EyeIcon,
@@ -29,7 +28,7 @@ const features = [
     icon: MailIcon,
     title: "Email DLP",
     description:
-      "Inspect outbound email content and attachments before delivery. Automatically encrypt, quarantine, or block messages containing sensitive data — without disrupting legitimate business communication.",
+      "Inspect outbound email content and attachments before delivery. Automatically encrypt, quarantine, or block messages containing sensitive data, without disrupting legitimate business communication.",
   },
   {
     icon: ServerIcon,
@@ -41,7 +40,7 @@ const features = [
     icon: ShieldIcon,
     title: "Insider Threat Detection",
     description:
-      "Behavioral analytics identify unusual data access patterns — mass downloads, after-hours access, and data staging before resignation. Detect malicious insiders and compromised accounts early.",
+      "Behavioral analytics identify unusual data access patterns, mass downloads, after-hours access, and data staging before resignation. Detect malicious insiders and compromised accounts early.",
   },
   {
     icon: CheckIcon,
@@ -62,7 +61,7 @@ const dataTypes = [
 
 const deploymentChannels = [
   { channel: "Endpoint", coverage: "USB, printer, Bluetooth, clipboard, screenshot, removable media" },
-  { channel: "Email", coverage: "Microsoft 365, Google Workspace, Exchange — inbound and outbound" },
+  { channel: "Email", coverage: "Microsoft 365, Google Workspace, Exchange, inbound and outbound" },
   { channel: "Web", coverage: "HTTP/HTTPS uploads, file sharing sites, personal webmail" },
   { channel: "Cloud / SaaS", coverage: "OneDrive, SharePoint, Google Drive, Dropbox, Salesforce via CASB" },
   { channel: "Network", coverage: "Inline inspection via NGFW integration for all network-transmitted data" },
@@ -71,11 +70,11 @@ const deploymentChannels = [
 const faqs = [
   {
     q: "Is DLP mandatory under UAE PDPL?",
-    a: "UAE PDPL (Federal Decree No. 45/2021) requires organizations to implement appropriate technical measures to protect personal data. While DLP is not explicitly named, it is the primary technical control for preventing unauthorized disclosure — making it effectively mandatory for organizations processing personal data.",
+    a: "UAE PDPL (Federal Decree No. 45/2021) requires organizations to implement appropriate technical measures to protect personal data. While DLP is not explicitly named, it is the primary technical control for preventing unauthorized disclosure, making it effectively mandatory for organizations processing personal data.",
   },
   {
     q: "Can DLP impact employee productivity?",
-    a: "Poorly configured DLP generates high false positives and blocks legitimate workflows. We use a phased approach — starting in monitoring mode to establish baselines, then progressively enforcing policies. Well-tuned DLP is invisible to compliant users and only triggers on genuine policy violations.",
+    a: "Poorly configured DLP generates high false positives and blocks legitimate workflows. We use a phased approach, starting in monitoring mode to establish baselines, then progressively enforcing policies. Well-tuned DLP is invisible to compliant users and only triggers on genuine policy violations.",
   },
   {
     q: "Does DLP cover data on personal devices (BYOD)?",
@@ -86,25 +85,24 @@ const faqs = [
 export default function DLPPage() {
   return (
     <>
-      <Helmet>
-        <title>Data Loss Prevention (DLP) UAE — PDPL Compliance | ArtiflexIT Dubai</title>
+      <>
+        <title>Data Loss Prevention (DLP) UAE, PDPL Compliance | ArtiflexIT Dubai</title>
         <meta name="description" content="Content-aware DLP solutions for UAE businesses. Prevent data exfiltration, achieve UAE PDPL compliance, and protect sensitive data across endpoints, email, and cloud." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/data-loss-prevention" />
-      </Helmet>
+      </>
 
       <PageHero
         title={<>Data Loss Prevention <span className="gradient-text">& UAE PDPL Compliance</span></>}
-        description="Content-aware policies preventing unauthorized data exfiltration across endpoints, email, web, and cloud — with AED 5M fines now enforceable under UAE PDPL, DLP is mandatory."
+        description="Content-aware policies preventing unauthorized data exfiltration across endpoints, email, web, and cloud, with AED 5M fines now enforceable under UAE PDPL, DLP is mandatory."
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
           { label: "Cybersecurity", href: "/cybersecurity" },
           { label: "DLP", href: "/cybersecurity/data-loss-prevention" },
         ]}
       />
 
       <section className="relative border-y border-border-light bg-white">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <div className="grid grid-cols-2 divide-x divide-white/[0.06] lg:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label} className="px-3 py-6 text-center sm:px-8 sm:py-10">
@@ -118,7 +116,7 @@ export default function DLPPage() {
       </section>
 
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader label="DLP Capabilities" title={<>Protect Data <span className="gradient-text">Everywhere It Travels</span></>} description="A complete DLP stack covers every channel through which sensitive data can leave your organization." centered />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
@@ -135,7 +133,7 @@ export default function DLPPage() {
       </section>
 
       <section className="relative py-16 bg-surface-secondary sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader label="Data Classification" title={<>What Data Types <span className="gradient-text">DLP Protects</span></>} description="DLP policies are built around data categories aligned to UAE regulatory requirements." centered />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {dataTypes.map((d) => (
@@ -149,10 +147,10 @@ export default function DLPPage() {
       </section>
 
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader label="Coverage Matrix" title={<>DLP Across <span className="gradient-text">Every Channel</span></>} description="Full coverage from endpoint to cloud ensures no exfiltration path is left unmonitored." centered />
           <div className="overflow-x-auto rounded-2xl border border-border-light bg-surface-secondary shadow-sm">
-            <table className="w-full min-w-[400px]">
+            <table className="w-full">
               <thead>
                 <tr className="border-b border-border-light bg-white">
                   {["Channel", "Coverage"].map((h) => (
@@ -174,7 +172,7 @@ export default function DLPPage() {
       </section>
 
       <section className="relative py-16 bg-surface-secondary sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader label="FAQ" title={<>Common <span className="gradient-text">Questions</span></>} centered />
           <div className="mx-auto max-w-3xl space-y-6">
             {faqs.map((f) => (

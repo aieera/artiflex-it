@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
@@ -6,10 +5,10 @@ import { CTASection } from "@/pages/Home/sections/CTASection";
 import { MailIcon, ShieldIcon, EyeIcon, LockIcon, CheckIcon, SearchIcon } from "@/components/icons";
 
 const stats = [
-  { value: "91%", label: "ATTACKS START VIA EMAIL", source: "Verizon DBIR 2024" },
-  { value: "$43B", label: "BEC LOSSES 2016–2023", source: "FBI Internet Crime Report" },
-  { value: "3.4B", label: "PHISHING EMAILS PER DAY", source: "Global estimate 2024" },
-  { value: "99.9%", label: "SPAM CATCH RATE", source: "Sophos Email — independent test" },
+  { value: "91%", label: "ATTACKS START VIA EMAIL", source: "Verizon DBIR" },
+  { value: "$43B", label: "TOTAL BEC LOSSES", source: "FBI Internet Crime Report" },
+  { value: "3.4B", label: "PHISHING EMAILS PER DAY", source: "Global estimate" },
+  { value: "99.9%", label: "SPAM CATCH RATE", source: "Sophos Email, independent test" },
 ];
 
 const features = [
@@ -29,7 +28,7 @@ const features = [
     icon: EyeIcon,
     title: "Attachment Sandboxing",
     description:
-      "Every attachment is detonated in an isolated cloud sandbox before delivery. Malware, macro-based exploits, and weaponized PDFs are intercepted — even zero-day variants with no known signatures.",
+      "Every attachment is detonated in an isolated cloud sandbox before delivery. Malware, macro-based exploits, and weaponized PDFs are intercepted, even zero-day variants with no known signatures.",
   },
   {
     icon: LockIcon,
@@ -41,13 +40,13 @@ const features = [
     icon: SearchIcon,
     title: "URL Time-of-Click Protection",
     description:
-      "Rewrite and re-scan all links at the moment of click — blocking malicious URLs that were clean at delivery but weaponized afterward. Prevents delayed phishing attacks.",
+      "Rewrite and re-scan all links at the moment of click, blocking malicious URLs that were clean at delivery but weaponized afterward. Prevents delayed phishing attacks.",
   },
   {
     icon: CheckIcon,
     title: "DLP for Outbound Email",
     description:
-      "Content-aware policies prevent sensitive data leaving via email — PII, financial data, health records, and IP. Automatic encryption for compliant data sharing with external parties.",
+      "Content-aware policies prevent sensitive data leaving via email, PII, financial data, health records, and IP. Automatic encryption for compliant data sharing with external parties.",
   },
 ];
 
@@ -75,36 +74,35 @@ const faqs = [
   },
   {
     q: "What is DMARC and why is it critical for UAE organizations?",
-    a: "DMARC (Domain-based Message Authentication, Reporting & Conformance) prevents attackers from sending emails that appear to come from your domain. Without a DMARC policy in enforcement mode, anyone can spoof your brand in phishing campaigns — damaging your reputation and targeting your customers.",
+    a: "DMARC (Domain-based Message Authentication, Reporting & Conformance) prevents attackers from sending emails that appear to come from your domain. Without a DMARC policy in enforcement mode, anyone can spoof your brand in phishing campaigns, damaging your reputation and targeting your customers.",
   },
   {
     q: "How long does email security deployment take?",
-    a: "Sophos Email integrates with Microsoft 365 and Google Workspace via API in under 2 hours — no MX record change required. Full policy tuning and DMARC enforcement deployment takes 2–4 weeks to avoid impacting legitimate email flows.",
+    a: "Sophos Email integrates with Microsoft 365 and Google Workspace via API in under 2 hours, no MX record change required. Full policy tuning and DMARC enforcement deployment takes 2–4 weeks to avoid impacting legitimate email flows.",
   },
 ];
 
 export default function EmailSecurityPage() {
   return (
     <>
-      <Helmet>
-        <title>Email Security & Anti-Phishing UAE — Sophos Email | ArtiflexIT Dubai</title>
-        <meta name="description" content="Enterprise email security for UAE businesses. NLP phishing detection, BEC prevention, attachment sandboxing, DMARC enforcement — deployed by ArtiflexIT, Platinum Sophos Partner." />
+      <>
+        <title>Email Security & Anti-Phishing UAE, Sophos Email | ArtiflexIT Dubai</title>
+        <meta name="description" content="Enterprise email security for UAE businesses. NLP phishing detection, BEC prevention, attachment sandboxing, DMARC enforcement, deployed by ArtiflexIT, Platinum Sophos Partner." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/email-security" />
-      </Helmet>
+      </>
 
       <PageHero
         title={<>Email Security & <span className="gradient-text">Anti-Phishing</span></>}
-        description="NLP-powered phishing detection, BEC impersonation prevention, attachment sandboxing, and DMARC/DKIM/SPF enforcement — because 91% of cyberattacks begin with a single email."
+        description="NLP-powered phishing detection, BEC impersonation prevention, attachment sandboxing, and DMARC/DKIM/SPF enforcement, because 91% of cyberattacks begin with a single email."
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
           { label: "Cybersecurity", href: "/cybersecurity" },
           { label: "Email Security", href: "/cybersecurity/email-security" },
         ]}
       />
 
       <section className="relative border-y border-border-light bg-white">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <div className="grid grid-cols-2 divide-x divide-white/[0.06] lg:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label} className="px-3 py-6 text-center sm:px-8 sm:py-10">
@@ -118,8 +116,8 @@ export default function EmailSecurityPage() {
       </section>
 
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeader label="Protection Layers" title={<>Six Layers of <span className="gradient-text">Email Defense</span></>} description="A complete email security stack blocks threats at every stage — before delivery, at delivery, and at the moment of interaction." centered />
+        <div className="shell">
+          <SectionHeader label="Protection Layers" title={<>Six Layers of <span className="gradient-text">Email Defense</span></>} description="A complete email security stack blocks threats at every stage, before delivery, at delivery, and at the moment of interaction." centered />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
               <div key={f.title} className="group rounded-2xl border border-border-light bg-surface-secondary p-6 transition-all duration-300 hover:border-[#045891]/20 hover:shadow-[0_8px_30px_rgba(4,88,145,0.08)] hover:-translate-y-0.5">
@@ -135,7 +133,7 @@ export default function EmailSecurityPage() {
       </section>
 
       <section className="relative py-16 bg-surface-secondary sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader label="Threat Landscape" title={<>Email Attack Types <span className="gradient-text">Targeting UAE Businesses</span></>} description="Understanding the threat spectrum helps prioritize protection layers." centered />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {attackTypes.map((a) => (
@@ -152,10 +150,10 @@ export default function EmailSecurityPage() {
       </section>
 
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader label="Compliance" title={<>Email Security & <span className="gradient-text">Regulatory Requirements</span></>} description="UAE compliance frameworks mandate specific email security controls. Here is how they map." centered />
           <div className="overflow-x-auto rounded-2xl border border-border-light bg-surface-secondary shadow-sm">
-            <table className="w-full min-w-[500px]">
+            <table className="w-full">
               <thead>
                 <tr className="border-b border-border-light bg-white">
                   {["Standard", "Email Security Requirement"].map((h) => (
@@ -177,7 +175,7 @@ export default function EmailSecurityPage() {
       </section>
 
       <section className="relative py-16 bg-surface-secondary sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader label="FAQ" title={<>Common <span className="gradient-text">Questions</span></>} centered />
           <div className="mx-auto max-w-3xl space-y-6">
             {faqs.map((f) => (

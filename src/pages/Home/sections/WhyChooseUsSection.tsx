@@ -5,12 +5,12 @@ const reasons = [
   {
     title: "14+ Years, 500+ Projects Delivered",
     description:
-      "With over 14 years of industry experience and more than 500 successfully completed projects, Artiflex has established a proven track record across cybersecurity, cloud, and IT infrastructure — serving industries from energy to fintech.",
+      "With over 14 years of industry experience and more than 500 successfully completed projects, Artiflex has established a proven track record across cybersecurity, cloud, and IT infrastructure, serving industries from energy to fintech.",
   },
   {
     title: "Global Presence, Local Expertise",
     description:
-      "Offices in four countries — including Dubai, Oman, and Saudi Arabia — mean we combine international best practices with deep local knowledge of regional regulations like NESA, ICA, and ADHICS.",
+      "Offices in four countries, including Dubai, Oman, and Saudi Arabia, mean we combine international best practices with deep local knowledge of regional regulations like NESA, ICA, and ADHICS.",
   },
   {
     title: "One Partner, Complete Coverage",
@@ -31,11 +31,11 @@ const cardVariants = {
 export function WhyChooseUsSection() {
   return (
     <section className="bg-white py-14 sm:py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="shell">
         <SectionHeader
           label="Why Artiflex"
           title="Why Businesses Trust Artiflex"
-          description="Three reasons our clients choose us — and stay."
+          description="Three reasons our clients choose us, and stay."
           centered
         />
 

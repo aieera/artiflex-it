@@ -4,7 +4,6 @@ import SectionHeader from "@/components/ui/SectionHeader";
 
 const services = [
   {
-    number: "01",
     title: "Cybersecurity",
     description:
       "Stop threats before they reach your data. Our layered defense strategy covers everything from perimeter firewalls to endpoint detection, backed by a 24/7 security operations center.",
@@ -12,7 +11,6 @@ const services = [
     image: "/images/cybersecurity.jpg",
   },
   {
-    number: "02",
     title: "Cloud Solutions",
     description:
       "Move to the cloud without the migration headaches. We design, migrate, and manage cloud environments across AWS, Azure, and GCP with zero-downtime guarantees.",
@@ -20,7 +18,6 @@ const services = [
     image: "/images/cloud.jpg",
   },
   {
-    number: "03",
     title: "IT Infrastructure",
     description:
       "Build networks that scale with your ambitions. From structured cabling to SD-WAN deployment, we design infrastructure that eliminates bottlenecks and future-proofs your operations.",
@@ -28,28 +25,25 @@ const services = [
     image: "/images/infrastructure.jpg",
   },
   {
-    number: "04",
     title: "Managed Services",
     description:
-      "Focus on your business while we handle your IT. Proactive monitoring, patch management, and help desk support — all under one predictable monthly fee.",
+      "Focus on your business while we handle your IT. Proactive monitoring, patch management, and help desk support, all under one predictable monthly fee.",
     href: "/managed-services",
     image: "/images/managed-services.jpg",
   },
   {
-    number: "05",
     title: "Application Security",
     description:
-      "Protect your web applications and APIs with penetration testing, secure code review, WAF management, and DAST scanning — aligned with OWASP Top 10 standards.",
+      "Protect your web applications and APIs with penetration testing, secure code review, WAF management, and DAST scanning, aligned with OWASP Top 10 standards.",
     href: "/application-security-solutions",
     image: "/images/app-security.jpg",
   },
   {
-    number: "06",
-    title: "AMC Services",
+    title: "Business Solutions",
     description:
-      "Annual Maintenance Contracts with preventive maintenance, 24/7 monitoring, patch management, backup testing, and hardware lifecycle management for your IT infrastructure.",
-    href: "/amc-services",
-    image: "/images/amc.jpg",
+      "Run your business on software that actually works as one. We implement and integrate ERP, CRM, finance, and HR platforms with vendor-neutral advice grounded in real 7-year TCO, so your data flows end to end.",
+    href: "/business-solutions",
+    image: "/images/office.jpg",
   },
 ];
 
@@ -65,7 +59,7 @@ const cardVariants = {
 export function ServicesSection() {
   return (
     <section className="bg-white py-14 sm:py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="shell">
         <SectionHeader
           label="What We Deliver"
           title="End-to-End IT Solutions, Zero Gaps"
@@ -95,9 +89,6 @@ export function ServicesSection() {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                  <span className="absolute top-3 right-3 inline-block rounded-full bg-white/90 backdrop-blur-sm px-2.5 py-0.5 text-xs font-semibold text-[#045891] font-mono">
-                    {service.number}
-                  </span>
                 </div>
 
                 <div className="flex flex-col gap-3 p-5 flex-1">

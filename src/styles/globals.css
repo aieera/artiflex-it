@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+/* Plus Jakarta Sans (the --font-display / --font-body family) is loaded via
+   <link> in index.html with preconnect. The previous @import here pulled four
+   fonts (Inter, Space Grotesk, JetBrains Mono, Roboto Flex) that the design
+   never used, while the font it does use was never loaded. */
 @import "tailwindcss";
 
 @theme {
-  /* Dark tones — hero, footer, CTA */
+  /* Dark tones, hero, footer, CTA */
   --color-navy: #0A2540;
   --color-navy-deep: #04101E;
   --color-navy-light: #0F3460;
@@ -13,7 +16,7 @@
   --color-surface-tertiary: #EEF2F7;
   --color-border-light: #E5EAF0;
 
-  /* Brand — derived from logo (navy blue + cyan) */
+  /* Brand, derived from logo (navy blue + cyan) */
   --color-brand-blue: #1B8AC7;
   --color-brand-blue-bright: #28B5E1;
   --color-brand-blue-dark: #0A3D6B;
@@ -35,6 +38,26 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lenis momentum scrolling (see useSmoothScroll). While Lenis is active it
+   drives scroll via JS, so native CSS smooth scroll must yield to it. When
+   Lenis is off (reduced-motion / no-JS) the html rule above still applies. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
 body {
@@ -121,6 +144,31 @@ body {
   animation: star-movement-top linear infinite alternate;
 }
 
+/* ─── Site shell: one common page padding, no width cap ───
+   Used by header, footer, and every section's content wrapper so the
+   whole site shares a single left/right gutter. Edit the values here to
+   change the site-wide padding in one place. Add a `max-w-*` on a
+   specific element if you want to re-cap that block. */
+.shell {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;  /* 32px */
+  padding-right: 2rem;
+}
+@media (min-width: 1024px) {
+  .shell {
+    padding-left: 6rem;  /* 64px */
+    padding-right: 6rem;
+  }
+}
+@media (min-width: 1280px) {
+  .shell {
+    padding-left: 8rem;  /* 96px */
+    padding-right: 8rem;
+  }
+}
+
 /* ─── Gradient Text ─── */
 .gradient-text {
   background: linear-gradient(135deg, #1B8AC7 0%, #28B5E1 60%, #0A3D6B 100%);
@@ -153,12 +201,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: var(--color-brand-blue);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-blue);
+  background: var(--color-brand-blue-dark);
 }
 
 .cs-scroll-rev,

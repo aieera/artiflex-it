@@ -1,25 +1,25 @@
-import { Helmet } from "react-helmet-async";
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import ShinyText from "@/components/ui/ShinyText";
+import SEO from "@/components/SEO";
 
 const cyberFAQs = [
   {
     question: "What is the best cybersecurity solution for SMEs in the UAE?",
     answer:
-      "The most effective cybersecurity solution for SMEs in the UAE combines three core components: a next-generation firewall to protect your network perimeter, endpoint protection on every device, and 24/7 security monitoring to detect threats in real-time. Our Sophos Site-in-a-Box deployment delivers all three as a pre-configured, plug-and-play package — designed specifically for small and medium businesses that need enterprise-grade protection without enterprise-grade complexity or pricing. For most SMEs with 10-200 employees, this approach provides comprehensive protection starting from AED 3,500 per month.",
+      "The most effective cybersecurity solution for SMEs in the UAE combines three core components: a next-generation firewall to protect your network perimeter, endpoint protection on every device, and 24/7 security monitoring to detect threats in real-time. Our Sophos Site-in-a-Box deployment delivers all three as a pre-configured, plug-and-play package, designed specifically for small and medium businesses that need enterprise-grade protection without enterprise-grade complexity or pricing. For most SMEs with 10-200 employees, this approach provides comprehensive protection starting from AED 3,500 per month.",
   },
   {
     question: "What is VAPT and why does my business need it?",
     answer:
-      "VAPT stands for Vulnerability Assessment and Penetration Testing. A Vulnerability Assessment uses automated scanning tools to identify known security weaknesses across your network, applications, and systems — it tells you what's exposed. Penetration Testing goes further: our ethical hackers actively attempt to exploit those vulnerabilities using the same techniques real attackers use — it tells you what's actually exploitable and how far an attacker could get. Every business that processes sensitive data, handles financial transactions, or is subject to regulatory requirements (NESA, PCI-DSS, ISO 27001) should conduct VAPT at least twice per year and after any major infrastructure change.",
+      "VAPT stands for Vulnerability Assessment and Penetration Testing. A Vulnerability Assessment uses automated scanning tools to identify known security weaknesses across your network, applications, and systems, it tells you what's exposed. Penetration Testing goes further: our ethical hackers actively attempt to exploit those vulnerabilities using the same techniques real attackers use, it tells you what's actually exploitable and how far an attacker could get. Every business that processes sensitive data, handles financial transactions, or is subject to regulatory requirements (NESA, PCI-DSS, ISO 27001) should conduct VAPT at least twice per year and after any major infrastructure change.",
   },
   {
     question: "How quickly can you respond to a security incident?",
     answer:
-      "Our average incident response time is 12 minutes from alert to first responder engagement. Our SOC operates 24/7 with a three-tier escalation model: L1 analysts handle initial triage and containment within minutes, L2 engineers handle investigation and remediation, and L3 specialists handle advanced forensics and root cause analysis. For managed clients, response SLAs are contractually guaranteed — 1-hour response for Enterprise tier, 4-hour for Professional tier. Every incident includes a root cause analysis report and a prevention plan to ensure it doesn't recur.",
+      "Our average incident response time is 12 minutes from alert to first responder engagement. Our SOC operates 24/7 with a three-tier escalation model: L1 analysts handle initial triage and containment within minutes, L2 engineers handle investigation and remediation, and L3 specialists handle advanced forensics and root cause analysis. For managed clients, response SLAs are contractually guaranteed, 1-hour response for Enterprise tier, 4-hour for Professional tier. Every incident includes a root cause analysis report and a prevention plan to ensure it doesn't recur.",
   },
   {
     question: "What compliance standards do you help with?",
@@ -34,7 +34,7 @@ const cyberFAQs = [
   {
     question: "How does firewall management work?",
     answer:
-      "Firewall management covers the complete lifecycle of your firewall infrastructure. Deployment: we size, configure, and install firewalls based on your traffic patterns, user count, and security requirements. Rule management: we create, review, and optimize firewall rules — removing stale rules, consolidating redundant policies, and ensuring rules follow least-privilege principles. Firmware: we test and deploy firmware updates on a regular schedule to patch known vulnerabilities. Traffic analysis: we monitor traffic patterns to detect anomalies, unauthorized applications, and potential threats. Monitoring: 24/7 log analysis through our SOC, with real-time alerting for blocked attacks, policy violations, and suspicious patterns.",
+      "Firewall management covers the complete lifecycle of your firewall infrastructure. Deployment: we size, configure, and install firewalls based on your traffic patterns, user count, and security requirements. Rule management: we create, review, and optimize firewall rules, removing stale rules, consolidating redundant policies, and ensuring rules follow least-privilege principles. Firmware: we test and deploy firmware updates on a regular schedule to patch known vulnerabilities. Traffic analysis: we monitor traffic patterns to detect anomalies, unauthorized applications, and potential threats. Monitoring: 24/7 log analysis through our SOC, with real-time alerting for blocked attacks, policy violations, and suspicious patterns.",
   },
 ];
 
@@ -47,12 +47,12 @@ const cloudFAQs = [
   {
     question: "Do you support multi-cloud environments?",
     answer:
-      "Yes. We manage environments across AWS, Microsoft Azure, and Google Cloud Platform — including hybrid configurations with on-premise infrastructure. Our approach uses a single management layer that provides unified visibility, consistent security policies, and consolidated cost reporting across all cloud providers. This prevents vendor lock-in while letting you leverage each platform's strengths (e.g., AWS for compute-intensive workloads, Azure for Microsoft ecosystem integration, GCP for data analytics).",
+      "Yes. We manage environments across AWS, Microsoft Azure, and Google Cloud Platform, including hybrid configurations with on-premise infrastructure. Our approach uses a single management layer that provides unified visibility, consistent security policies, and consolidated cost reporting across all cloud providers. This prevents vendor lock-in while letting you leverage each platform's strengths (e.g., AWS for compute-intensive workloads, Azure for Microsoft ecosystem integration, GCP for data analytics).",
   },
   {
     question: "What is the difference between IaaS, PaaS, and SaaS?",
     answer:
-      "IaaS (Infrastructure as a Service) gives you virtual hardware — servers, storage, and networking — on demand. You manage everything from the operating system up. Best for workloads needing custom configurations or running legacy applications. Examples: AWS EC2, Azure Virtual Machines. PaaS (Platform as a Service) gives you a managed platform for building and deploying applications. The provider handles OS, patches, scaling, and databases. Your developers focus on code. Best for custom application development. Examples: Azure App Service, AWS Elastic Beanstalk. SaaS (Software as a Service) gives you complete applications delivered over the internet. No installation or management needed. Best for standard business functions. Examples: Microsoft 365, Salesforce, Google Workspace.",
+      "IaaS (Infrastructure as a Service) gives you virtual hardware, servers, storage, and networking, on demand. You manage everything from the operating system up. Best for workloads needing custom configurations or running legacy applications. Examples: AWS EC2, Azure Virtual Machines. PaaS (Platform as a Service) gives you a managed platform for building and deploying applications. The provider handles OS, patches, scaling, and databases. Your developers focus on code. Best for custom application development. Examples: Azure App Service, AWS Elastic Beanstalk. SaaS (Software as a Service) gives you complete applications delivered over the internet. No installation or management needed. Best for standard business functions. Examples: Microsoft 365, Salesforce, Google Workspace.",
   },
   {
     question: "Can you upgrade our existing network without downtime?",
@@ -65,7 +65,7 @@ const managedFAQs = [
   {
     question: "Do you support small businesses or only enterprises?",
     answer:
-      "We serve businesses ranging from 10-person startups to 500+ employee enterprises. Our service is structured in three tiers: Essential (for small teams, from AED 3,500/month), Professional (for growing businesses, from AED 8,500/month), and Enterprise (custom scoping for larger organizations). The methodology is the same regardless of size — the difference is scope and scale. A 30-person company gets the same security monitoring approach as a 300-person company, sized to fit their environment and budget.",
+      "We serve businesses ranging from 10-person startups to 500+ employee enterprises. Our service is structured in three tiers: Essential (for small teams, from AED 3,500/month), Professional (for growing businesses, from AED 8,500/month), and Enterprise (custom scoping for larger organizations). The methodology is the same regardless of size, the difference is scope and scale. A 30-person company gets the same security monitoring approach as a 300-person company, sized to fit their environment and budget.",
   },
   {
     question: "How does your managed IT service reduce costs?",
@@ -75,12 +75,12 @@ const managedFAQs = [
   {
     question: "What is included in an Annual Maintenance Contract?",
     answer:
-      "Our AMC includes: preventive maintenance visits (monthly for critical systems, quarterly for standard equipment), hardware health monitoring with proactive component replacement, operating system and firmware patching on tested schedules, configuration backup and disaster recovery testing, priority support with guaranteed response times, quarterly health reports with trending analysis and recommendations, and vendor coordination for warranty claims and hardware replacements. AMC pricing is based on the number and type of devices covered. All pricing is fixed and predictable — no surprise charges for standard support activities.",
+      "Our AMC includes: preventive maintenance visits (monthly for critical systems, quarterly for standard equipment), hardware health monitoring with proactive component replacement, operating system and firmware patching on tested schedules, configuration backup and disaster recovery testing, priority support with guaranteed response times, quarterly health reports with trending analysis and recommendations, and vendor coordination for warranty claims and hardware replacements. AMC pricing is based on the number and type of devices covered. All pricing is fixed and predictable, no surprise charges for standard support activities.",
   },
   {
     question: "Can I keep my in-house IT team and still use your services?",
     answer:
-      "Absolutely. Our co-managed model is designed for organizations that want to retain in-house IT staff for strategic and day-to-day operations while supplementing with specialized capabilities they don't have internally. Common co-managed scenarios include: your team handles help desk and user support while we manage security operations, your team manages cloud infrastructure while we handle network and on-premise systems, or your team runs daily operations while we provide 24/7 monitoring and incident response. We integrate with your existing ticketing systems, communication channels, and escalation procedures — so it feels like one team, not two.",
+      "Absolutely. Our co-managed model is designed for organizations that want to retain in-house IT staff for strategic and day-to-day operations while supplementing with specialized capabilities they don't have internally. Common co-managed scenarios include: your team handles help desk and user support while we manage security operations, your team manages cloud infrastructure while we handle network and on-premise systems, or your team runs daily operations while we provide 24/7 monitoring and incident response. We integrate with your existing ticketing systems, communication channels, and escalation procedures, so it feels like one team, not two.",
   },
 ];
 
@@ -102,11 +102,12 @@ const faqSchema = {
 export default function FAQPage() {
   return (
     <>
-      <Helmet>
-        <title>FAQ — Cybersecurity, Cloud, IT Services Questions | ArtiflexIT</title>
-        <meta name="description" content="Answers to common questions about cybersecurity, VAPT, firewall management, cloud migration, and managed IT services for UAE businesses." />
-        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-      </Helmet>
+      <SEO
+        title="FAQ, Cybersecurity, Cloud, IT Services Questions | ArtiflexIT"
+        description="Answers to common questions about cybersecurity, VAPT, firewall management, cloud migration, and managed IT services for UAE businesses."
+        path="/faq"
+        schema={[faqSchema]}
+      />
 
       <PageHero
         title={
@@ -133,7 +134,7 @@ export default function FAQPage() {
 
       {/* Cybersecurity FAQs */}
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-4xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader
             label="Cybersecurity"
             title="Security Questions"
@@ -144,7 +145,7 @@ export default function FAQPage() {
 
       {/* Cloud & Infrastructure FAQs */}
       <section className="relative py-16 bg-surface-secondary sm:py-24">
-        <div className="mx-auto max-w-4xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader
             label="Cloud & Infrastructure"
             title="Cloud & Infrastructure Questions"
@@ -155,7 +156,7 @@ export default function FAQPage() {
 
       {/* Managed Services FAQs */}
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-4xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader
             label="Managed Services"
             title="Managed IT Questions"
@@ -166,7 +167,7 @@ export default function FAQPage() {
 
       <CTASection
         title="Still Have Questions?"
-        description="Our team is available for a no-obligation conversation about your specific situation. We'll give you a straight answer — not a sales pitch."
+        description="Our team is available for a no-obligation conversation about your specific situation. We'll give you a straight answer, not a sales pitch."
         primaryButton={{ text: "Discuss Your Requirements", action: "modal" }}
       />
     </>

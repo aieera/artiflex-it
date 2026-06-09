@@ -1,9 +1,7 @@
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
-import StatsBar from "@/components/ui/StatsBar";
 import ClientStrip from "@/components/ui/ClientStrip";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import {
@@ -39,7 +37,7 @@ const organizationSchema = {
       addressRegion: "Dubai",
       addressCountry: "AE",
       streetAddress:
-        "National Insurance Building, Office 603, Opposite Deira City Center, Deira",
+        "Malik Saeed Suhail Saeed Bin Daliwi Al-Kutbi - Bardab - First Commercial Center 45B - Office No.102",
     },
     {
       "@type": "PostalAddress",
@@ -54,7 +52,7 @@ const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+971522076531",
-    email: "meghna@artiflexit.com",
+    email: "info@artiflexit.com",
     contactType: "sales",
     areaServed: ["AE", "OM", "SA", "IN"],
     availableLanguage: ["English", "Arabic", "Hindi"],
@@ -93,7 +91,7 @@ const faqSchema = {
       name: "Where is Artiflex Information Technology located?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Artiflex Information Technology is headquartered in Dubai, UAE (Deira, opposite Deira City Center). We operate globally with branches in four countries: Artiflex Information Technology in Dubai, Artiflex Manchi in Oman, and Artiflex Metal World in Saudi Arabia.",
+        text: "Artiflex Information Technology is headquartered in Dubai, UAE (Bardab, First Commercial Center 45B). We operate globally with branches in four countries: Artiflex Information Technology in Dubai, Artiflex Manchi in Oman, and Artiflex Metal World in Saudi Arabia.",
       },
     },
     {
@@ -120,13 +118,13 @@ const values = [
     icon: EyeIcon,
     title: "Transparency",
     description:
-      "No hidden costs. No ambiguous SLAs. Every contract spells out exactly what you get, what it costs, and how we measure success. We do what we say — and if something goes wrong, you hear about it from us first.",
+      "No hidden costs. No ambiguous SLAs. Every contract spells out exactly what you get, what it costs, and how we measure success. We do what we say, and if something goes wrong, you hear about it from us first.",
   },
   {
     icon: ShieldIcon,
     title: "Cyber Resilience",
     description:
-      "We don\u2019t just defend — we build resilience. Our proactive approach ensures your business can withstand, recover from, and adapt to evolving cyber threats. Prevention costs less than recovery, and we engineer every engagement around that principle.",
+      "We don\u2019t just defend, we build resilience. Our proactive approach ensures your business can withstand, recover from, and adapt to evolving cyber threats. Prevention costs less than recovery, and we engineer every engagement around that principle.",
   },
   {
     icon: BarChartIcon,
@@ -138,13 +136,13 @@ const values = [
     icon: UsersIcon,
     title: "Customer Commitment",
     description:
-      "Our team goes above and beyond to respond quickly, adapt to your needs, and deliver long-term value. When you engage Artiflex, you benefit from the collective expertise of our entire organization — not just a single consultant.",
+      "Our team goes above and beyond to respond quickly, adapt to your needs, and deliver long-term value. When you engage Artiflex, you benefit from the collective expertise of our entire organization, not just a single consultant.",
   },
   {
     icon: GlobeIcon,
     title: "Global Reach, Local Expertise",
     description:
-      "With offices in four countries and deep knowledge of regional regulations — NESA, ICA, ADHICS, CBUAE — we combine international best practices with the local insight needed to support clients with agility.",
+      "With offices in four countries and deep knowledge of regional regulations, NESA, ICA, ADHICS, CBUAE, we combine international best practices with the local insight needed to support clients with agility.",
   },
   {
     icon: TargetIcon,
@@ -173,14 +171,11 @@ const cardFade = {
 export default function AboutPage() {
   return (
     <>
-      <Helmet>
-        <title>
-          About Artiflex Information Technology — 14+ Years of IT Solutions &
-          Cybersecurity | Dubai, Oman, Saudi Arabia
-        </title>
+      <>
+        <title>About Artiflex IT, 14 Years of UAE IT & Cybersecurity</title>
         <meta
           name="description"
-          content="Artiflex Information Technology (ArtiflexIT) has over 14 years of experience delivering customized cybersecurity, cloud, and IT solutions. 500+ projects completed. Offices in Dubai, Oman, and Saudi Arabia. 20+ certified professionals."
+          content="Artiflex Information Technology delivers cybersecurity, cloud, and IT solutions across UAE, Oman, and Saudi Arabia. 500+ projects, 20+ certified experts."
         />
         <meta
           name="keywords"
@@ -189,7 +184,7 @@ export default function AboutPage() {
         <link rel="canonical" href="https://artiflexit.com/about" />
         <meta
           property="og:title"
-          content="About Artiflex Information Technology — Global IT Solutions & Cybersecurity"
+          content="About Artiflex Information Technology, Global IT Solutions & Cybersecurity"
         />
         <meta
           property="og:description"
@@ -203,7 +198,7 @@ export default function AboutPage() {
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
         </script>
-      </Helmet>
+      </>
 
       <PageHero
         title={
@@ -220,7 +215,7 @@ export default function AboutPage() {
             />
           </>
         }
-      description="With over 14 years of industry experience and 500+ successful projects, Artiflex Information Technology is a trusted global technology partner — delivering customized, secure, and scalable IT solutions from Dubai to the world."
+      description="With over 14 years of industry experience and 500+ successful projects, Artiflex Information Technology is a trusted global technology partner, delivering customized, secure, and scalable IT solutions from Dubai to the world."
       breadcrumbs={[
         { label: "Home", href: "/" },
         { label: "About", href: "/about" },
@@ -230,7 +225,7 @@ export default function AboutPage() {
 
       {/* ─── Who We Are ─── */}
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           {/* Team image banner */}
           <div className="mb-12 rounded-2xl overflow-hidden h-[200px] sm:h-[280px] lg:h-[340px]">
             <img
@@ -263,7 +258,7 @@ export default function AboutPage() {
                 <p>
                   Backed by a team of 20+ certified full-time professionals, we
                   have successfully completed over 500 projects across various
-                  industries — from energy and fintech to logistics and
+                  industries, from energy and fintech to logistics and
                   healthcare. Our global presence, with offices in four
                   countries, allows us to support clients with agility and local
                   insight.
@@ -301,8 +296,8 @@ export default function AboutPage() {
                       What We Built
                     </h3>
                     <p className="mt-1 text-sm text-body">
-                      A unified IT practice — cybersecurity, cloud
-                      infrastructure, custom software, and managed services —
+                      A unified IT practice, cybersecurity, cloud
+                      infrastructure, custom software, and managed services,
                       all under one roof. One partner. One SLA. Complete
                       accountability.
                     </p>
@@ -339,7 +334,7 @@ export default function AboutPage() {
         {/* Glow effect */}
         <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-blue/20 blur-[120px] rounded-full" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 text-center">
+        <div className="shell relative z-10 text-center">
 
           <SectionHeader
             label="Track Record"
@@ -378,7 +373,7 @@ export default function AboutPage() {
 
       {/* ─── Vision & Mission ─── */}
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader label="Purpose" title="Vision & Mission" centered />
           <div className="grid gap-4 sm:gap-8 sm:grid-cols-2 max-w-4xl mx-auto">
             <motion.div
@@ -394,8 +389,8 @@ export default function AboutPage() {
               </h3>
               <p className="text-body leading-relaxed">
                 Empowering businesses with trust through cyber resilience. We
-                envision a world where every organization — regardless of size
-                or industry — operates with the confidence that their digital
+                envision a world where every organization, regardless of size
+                or industry, operates with the confidence that their digital
                 assets, operations, and reputation are protected by
                 best-in-class technology.
               </p>
@@ -413,7 +408,7 @@ export default function AboutPage() {
               </h3>
               <p className="text-body leading-relaxed">
                 To deliver customized, secure, and scalable IT solutions that
-                empower industries — from energy to fintech — to operate
+                empower industries, from energy to fintech, to operate
                 efficiently and grow confidently. We believe a growing business
                 deserves the same protection methodology and innovation as a
                 Fortune 500, scaled to fit its operations and budget.
@@ -425,7 +420,7 @@ export default function AboutPage() {
 
       {/* ─── Our Commitment ─── */}
       <section className="relative py-16 bg-surface-secondary sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeader
               label="Our Promise"
@@ -436,14 +431,14 @@ export default function AboutPage() {
               <p className="text-body leading-relaxed mb-4">
                 Our commitment to customers is what makes us unique. We strive
                 to build a reputable organization and a desirable place to work
-                — positively impacting our clients and communities through
+               , positively impacting our clients and communities through
                 innovation and excellence.
               </p>
               <p className="text-body leading-relaxed mb-4">
                 We do what we say. Our team goes above and beyond to respond
                 quickly, adapt to customer needs, and deliver long-term value.
                 When you engage Artiflex, you benefit from the collective
-                expertise of our entire organization — not just a single point
+                expertise of our entire organization, not just a single point
                 of contact.
               </p>
               <p className="text-body leading-relaxed">
@@ -458,7 +453,7 @@ export default function AboutPage() {
 
       {/* ─── Values ─── */}
       <section className="relative py-16 bg-surface-secondary sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader
             label="Our Values"
             title="What Guides Every Decision"

@@ -19,7 +19,7 @@ const posts = [
     tagColor: "text-brand-cyan",
     title: "Cloud Migration Checklist: 7 Steps Most Companies Skip",
     excerpt:
-      "Most cloud migrations fail not because of technology but because of planning gaps. From dependency mapping to rollback strategies — the seven steps that matter.",
+      "Most cloud migrations fail not because of technology but because of planning gaps. From dependency mapping to rollback strategies, the seven steps that matter.",
     readTime: "5 min read",
     href: "/blog",
     image: "/cyber2.png",
@@ -29,7 +29,7 @@ const posts = [
     tagColor: "text-brand-purple-light",
     title: "5 Signs Your Network Infrastructure Needs an Upgrade",
     excerpt:
-      "Slow file transfers, frequent outages, and rising help desk tickets are more than annoyances — they are warning signs that your network has outgrown its capacity.",
+      "Slow file transfers, frequent outages, and rising help desk tickets are more than annoyances, they are warning signs that your network has outgrown its capacity.",
     readTime: "4 min read",
     href: "/blog",
     image: "/infra.png",
@@ -48,11 +48,11 @@ const cardVariants = {
 export function BlogPreviewSection() {
   return (
     <section className="bg-surface-secondary py-14 sm:py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="shell">
         <SectionHeader
           label="Latest Insights"
           title="From the Artiflex Blog"
-          description="Expert analysis on cybersecurity, cloud, and IT infrastructure — written for business leaders, not just engineers."
+          description="Expert analysis on cybersecurity, cloud, and IT infrastructure, written for business leaders, not just engineers."
           centered
         />
 

@@ -1,0 +1,213 @@
+# ==============================================================
+# .htaccess — Artiflex IT (artiflexit.com) on Hostinger Apache
+# Works for a PRE-RENDERED Vite + React SPA.
+# Expected layout inside public_html:
+#   /index.html                     <-- SPA fallback
+#   /cybersecurity/index.html       <-- pre-rendered
+#   /business-solutions/.../…       <-- pre-rendered
+#   /assets/… /logos/… /images/…    <-- static
+# ==============================================================
+
+# --------------------------------------------------------------
+# 1.  MIME types for modern assets
+# --------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType image/webp                .webp
+  AddType image/avif                .avif
+  AddType image/svg+xml             .svg .svgz
+  AddType application/manifest+json .webmanifest
+  AddType font/woff2                .woff2
+  AddType font/woff                 .woff
+  AddType application/wasm          .wasm
+  AddType text/xml                  .xml
+  AddType application/xml           .xml
+</IfModule>
+
+# --------------------------------------------------------------
+# 2.  Default document
+# --------------------------------------------------------------
+DirectoryIndex index.html
+
+# --------------------------------------------------------------
+# 3.  Rewrite engine
+# --------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 3a. Force HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # 3b. Force non-www (canonical host = artiflexit.com)
+  RewriteCond %{HTTP_HOST} ^www\.artiflexit\.com$ [NC]
+  RewriteRule ^ https://artiflexit.com%{REQUEST_URI} [L,R=301]
+
+  # 3b-i. 301 redirects for retired URLs.
+  #       Keep this list alphabetical. Every entry is a permanent
+  #       redirect — Google will update its index within 1–2 crawls.
+  RewriteRule ^amc-services/?$ /managed-services [L,R=301]
+  RewriteRule ^business-solutions/document-management-system/?$ /infrastructure/document-management-systems [L,R=301]
+  RewriteRule ^business-solutions/sales-management-software/?$ /business-solutions/crm-software [L,R=301]
+  RewriteRule ^business-solutions/unified-firewall-management/?$ /cybersecurity/unified-firewall-management [L,R=301]
+  RewriteRule ^cloud-solutions/disaster-recovery/?$ /cloud-solutions/disaster-recovery-solutions-dubai [L,R=301]
+  RewriteRule ^cybersecurity/cybersecurity-solutions/?$ /cybersecurity [L,R=301]
+  RewriteRule ^cybersecurity/email-security-vendors/?$ /cybersecurity/email-security [L,R=301]
+  RewriteRule ^cybersecurity/endpoint/sophos-intercept-x/?$ /cybersecurity/endpoint/sophos-endpoint [L,R=301]
+  RewriteRule ^disaster-recovery-solutions-dubai/?$ /cloud-solutions/disaster-recovery-solutions-dubai [L,R=301]
+
+  # 3c. Remove trailing slashes (except root)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+  # 3d. Serve pre-rendered /route/index.html when /route is requested
+  #     If a directory with index.html exists for the clean URL, use it.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+  RewriteRule ^([^/]+(?:/[^/]+)*)$ /$1/index.html [L]
+
+  # 3e. SPA-only routes that redirect via a URL fragment (#…). A fragment
+  #     never reaches the server, so these cannot be a server-side 301 —
+  #     they must boot the SPA with a 200 and let React Router redirect.
+  RewriteRule ^cybersecurity/(vendor-scorecard|implementation-roadmap)/?$ /index.html [L]
+
+  # 3f. NO catch-all to index.html. Every valid page is pre-rendered to its
+  #     own /route/index.html (served by 3d) and listed in sitemap.xml, so
+  #     any request that is not a real file, not a pre-rendered route, and
+  #     not a SPA route above is genuinely unknown. It falls through to
+  #     Apache's 404 handler (section 8), which serves the pre-rendered
+  #     /404.html with a real HTTP 404 status.
+  #     NOTE: a new valid page must be added to sitemap.xml (so prerender
+  #     emits its HTML) or it will correctly 404 here.
+</IfModule>
+
+# --------------------------------------------------------------
+# 4.  Compression (gzip)
+# --------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/atom+xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/ld+json
+  AddOutputFilterByType DEFLATE application/manifest+json
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/woff
+  AddOutputFilterByType DEFLATE font/woff2
+</IfModule>
+
+# --------------------------------------------------------------
+# 5.  Browser caching
+# --------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                              "access plus 1 month"
+
+  # HTML — SHORT cache so deploys take effect fast
+  ExpiresByType text/html                     "access plus 0 seconds"
+
+  # Data
+  ExpiresByType application/json              "access plus 0 seconds"
+  ExpiresByType application/ld+json           "access plus 0 seconds"
+  ExpiresByType application/xml               "access plus 1 hour"
+  ExpiresByType text/xml                      "access plus 1 hour"
+
+  # Manifests / RSS
+  ExpiresByType application/manifest+json     "access plus 1 week"
+  ExpiresByType application/rss+xml           "access plus 1 hour"
+  ExpiresByType application/atom+xml          "access plus 1 hour"
+
+  # Favicons
+  ExpiresByType image/x-icon                  "access plus 1 week"
+  ExpiresByType image/vnd.microsoft.icon      "access plus 1 week"
+
+  # Media
+  ExpiresByType image/jpeg                    "access plus 1 year"
+  ExpiresByType image/png                     "access plus 1 year"
+  ExpiresByType image/gif                     "access plus 1 year"
+  ExpiresByType image/webp                    "access plus 1 year"
+  ExpiresByType image/avif                    "access plus 1 year"
+  ExpiresByType image/svg+xml                 "access plus 1 year"
+
+  # Fonts
+  ExpiresByType font/woff                     "access plus 1 year"
+  ExpiresByType font/woff2                    "access plus 1 year"
+  ExpiresByType application/font-woff         "access plus 1 year"
+  ExpiresByType application/font-woff2        "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+
+  # JS / CSS  (fingerprinted by Vite, safe to cache long)
+  ExpiresByType text/css                      "access plus 1 year"
+  ExpiresByType application/javascript        "access plus 1 year"
+  ExpiresByType application/x-javascript      "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Immutable cache for fingerprinted Vite assets
+  <FilesMatch "\.(css|js|woff2|woff|ttf|eot|svg|webp|avif|jpg|jpeg|png|gif|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # NEVER cache HTML — we want new deploys picked up instantly
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # ------------------------------------------------------------
+  # 6.  Security headers
+  # ------------------------------------------------------------
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # CORS for fonts (harmless; avoids cross-origin font blocks)
+  <FilesMatch "\.(woff|woff2|ttf|eot|otf)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+# --------------------------------------------------------------
+# 7.  Hotlink / sensitive file protection
+# --------------------------------------------------------------
+# Block source-map files only. (Do NOT use "\.ht.*" — it matches .html too
+# and would return 403 for every pre-rendered page on the site.)
+<FilesMatch "\.map$">
+  Require all denied
+</FilesMatch>
+
+# Block specific sensitive filenames by exact match.
+<FilesMatch "^(\.htaccess|\.htpasswd|\.env|\.env\..*|\.gitignore|\.gitattributes|composer\.json|package\.json|package-lock\.json|tsconfig\..*\.json|tsconfig\.json|vite\.config\..*|eslint\.config\..*)$">
+  Require all denied
+</FilesMatch>
+
+# Allow the two files the site needs to serve at the root
+<Files "robots.txt">
+  Require all granted
+</Files>
+<Files "sitemap.xml">
+  Require all granted
+</Files>
+
+# --------------------------------------------------------------
+# 8.  Custom 404 — pre-rendered static page served WITH a real 404 status.
+#     scripts/prerender.mjs snapshots the React 404 route to dist/404.html.
+# --------------------------------------------------------------
+ErrorDocument 404 /404.html
+
+# --------------------------------------------------------------
+# 9.  Misc
+# --------------------------------------------------------------
+ServerSignature Off
+Options -Indexes

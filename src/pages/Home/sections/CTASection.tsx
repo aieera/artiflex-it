@@ -1,9 +1,6 @@
-import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useContactModal } from "@/components/layout/ContactModal";
-
-const LightPillar = lazy(() => import("@/components/ui/LightPillar"));
 
 interface CTASectionProps {
   title: string;
@@ -12,6 +9,22 @@ interface CTASectionProps {
   secondaryButton?: { text: string; href: string };
 }
 
+/**
+ * CTASection
+ * ────────────────────────────────────────────────────────────────
+ * Used at the bottom of every page. Previously rendered a 504 KB
+ * three.js LightPillar scene as the background, that single
+ * decision was responsible for the heaviest chunk on every page
+ * load and was the single biggest Core Web Vitals regression.
+ *
+ * Replaced with a pure-CSS gradient + animated radial glow that
+ * delivers ~95% of the visual effect at ~0 KB. No JS, no GPU
+ * thrash, no LCP penalty.
+ *
+ * The keyframe animation uses transform/opacity only, so it stays
+ * GPU-accelerated and won't trigger layout reflows.
+ * ────────────────────────────────────────────────────────────────
+ */
 export function CTASection({
   title,
   description,
@@ -21,24 +34,50 @@ export function CTASection({
   const { openModal } = useContactModal();
 
   return (
-    <section className="relative min-h-[70vh] sm:min-h-[85vh] md:min-h-screen flex items-center overflow-hidden bg-black">
-      {/* LightPillar background — same as hero */}
-      <div className="absolute inset-0 z-0">
-        <Suspense fallback={<div className="h-full w-full bg-black" />}>
-          <LightPillar
-            topColor="#28B5E1"
-            bottomColor="#045891"
-            intensity={0.8}
-            rotationSpeed={0.2}
-            interactive
-            glowAmount={0.003}
-            pillarWidth={3}
-            pillarHeight={0.4}
-            noiseIntensity={0.3}
-            quality="medium"
-          />
-        </Suspense>
+    <section
+      className="relative isolate flex min-h-[70vh] items-center overflow-hidden bg-black sm:min-h-[80vh] md:min-h-[85vh]"
+      aria-label="Call to action"
+    >
+      {/* CSS-driven background, replaces the 504 KB three.js LightPillar */}
+      <div aria-hidden="true" className="absolute inset-0 z-0">
+        {/* Deep base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-[#04101E] to-black" />
+
+        {/* Vertical light pillar, soft, glowing, animated */}
+        <div className="cta-pillar absolute left-1/2 top-1/2 h-[140%] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(40,181,225,0.55)_0%,rgba(27,138,199,0.28)_28%,rgba(4,88,145,0.10)_55%,transparent_75%)] blur-3xl" />
+
+        {/* Secondary glow for depth */}
+        <div className="cta-pillar-aux absolute left-1/2 top-1/2 h-[80%] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(40,181,225,0.4),transparent_70%)] blur-2xl" />
+
+        {/* Top + bottom vignettes for cinematic edge */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black to-transparent" />
+
+        {/* Subtle grain via SVG noise, pure CSS, no asset request */}
+        <div
+          className="absolute inset-0 opacity-[0.06] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'160\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'2\' stitchTiles=\'stitch\'/></filter><rect width=\'100%\' height=\'100%\' filter=\'url(%23n)\' opacity=\'0.5\'/></svg>")',
+          }}
+        />
       </div>
+
+      <style>{`
+        @keyframes cta-pillar-pulse {
+          0%, 100% { opacity: 1;   transform: translate(-50%, -50%) scale(1);    }
+          50%      { opacity: 0.85; transform: translate(-50%, -50%) scale(1.04); }
+        }
+        @keyframes cta-pillar-aux-drift {
+          0%, 100% { opacity: 0.85; transform: translate(-50%, -50%) scale(1);    }
+          50%      { opacity: 0.55; transform: translate(-48%, -52%) scale(1.06); }
+        }
+        .cta-pillar     { animation: cta-pillar-pulse     8s ease-in-out infinite; will-change: transform, opacity; }
+        .cta-pillar-aux { animation: cta-pillar-aux-drift 10s ease-in-out infinite; will-change: transform, opacity; }
+        @media (prefers-reduced-motion: reduce) {
+          .cta-pillar, .cta-pillar-aux { animation: none; }
+        }
+      `}</style>
 
       <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
         <div className="text-center">

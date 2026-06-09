@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { scrollToElement } from "@/lib/lenis";
 import { motion } from "framer-motion";
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
 import StatsBar from "@/components/ui/StatsBar";
-import ProcessFlow from "@/components/ui/ProcessFlow";
 import { CTASection } from "@/pages/Home/sections/CTASection";
+import { useContactModal } from "@/components/layout/ContactModal";
 import {
   ShieldIcon,
   GlobeIcon,
@@ -40,7 +40,7 @@ const appThreats = [
     stat: "$43B",
     label: "Business Email Compromise",
     description:
-      "Email remains the #1 attack vector for application-layer threats. BEC, phishing, and impersonation attacks cost global businesses $43 billion between 2016–2023, with UAE companies disproportionately targeted.",
+      "Email remains the leading attack vector for application-layer threats. BEC, phishing, and impersonation attacks cost global businesses $43 billion between 2016–2023, with UAE companies disproportionately targeted.",
   },
   {
     stat: "300%",
@@ -76,7 +76,7 @@ const coreServices = [
     title: "API Security Assessment",
     subtitle: "REST, GraphQL & SOAP",
     description:
-      "APIs expose critical business logic and data. We test authentication, authorization, rate limiting, input validation, and data exposure across your entire API surface — including undocumented endpoints.",
+      "APIs expose critical business logic and data. We test authentication, authorization, rate limiting, input validation, and data exposure across your entire API surface, including undocumented endpoints.",
     features: [
       "API discovery and attack surface mapping",
       "Authentication & token handling review",
@@ -90,7 +90,7 @@ const coreServices = [
     title: "Secure Code Review",
     subtitle: "Source Code Analysis",
     description:
-      "Automated SAST scanning combined with manual expert review identifies vulnerabilities that scanners miss — hardcoded credentials, insecure cryptography, race conditions, and logic flaws embedded in your codebase.",
+      "Automated SAST scanning combined with manual expert review identifies vulnerabilities that scanners miss, hardcoded credentials, insecure cryptography, race conditions, and logic flaws embedded in your codebase.",
     features: [
       "Static Application Security Testing (SAST)",
       "Manual code review by security engineers",
@@ -116,9 +116,9 @@ const coreServices = [
   {
     icon: MonitorIcon,
     title: "Dynamic Application Security Testing",
-    subtitle: "DAST — Runtime Scanning",
+    subtitle: "DAST, Runtime Scanning",
     description:
-      "Black-box scanning of running applications discovers vulnerabilities that only manifest at runtime — server misconfigurations, exposed admin panels, information leakage, and insecure HTTP headers.",
+      "Black-box scanning of running applications discovers vulnerabilities that only manifest at runtime, server misconfigurations, exposed admin panels, information leakage, and insecure HTTP headers.",
     features: [
       "Automated DAST scanning of live environments",
       "Server misconfiguration detection",
@@ -148,7 +148,7 @@ const methodologySteps = [
     number: 1,
     title: "Discover",
     description:
-      "Map your application attack surface — web apps, APIs, mobile backends, serverless functions, and third-party integrations. Identify what needs testing and prioritize by risk.",
+      "Map your application attack surface, web apps, APIs, mobile backends, serverless functions, and third-party integrations. Identify what needs testing and prioritize by risk.",
   },
   {
     number: 2,
@@ -175,7 +175,7 @@ const complianceMapping = [
   { framework: "UAE PDPL", requirement: "Data protection, encryption, and breach notification for web applications" },
   { framework: "CBUAE", requirement: "Vulnerability management and application security for financial institutions" },
   { framework: "PCI-DSS v4", requirement: "Web application firewall and penetration testing for payment applications" },
-  { framework: "ISO 27001", requirement: "Annex A.14 — System acquisition, development, and maintenance controls" },
+  { framework: "ISO 27001", requirement: "Annex A.14, System acquisition, development, and maintenance controls" },
   { framework: "OWASP ASVS", requirement: "Application Security Verification Standard for secure development" },
 ];
 
@@ -188,7 +188,7 @@ const faqs = [
   {
     question: "What is the difference between SAST, DAST, and penetration testing?",
     answer:
-      "SAST (Static Application Security Testing) analyzes source code without running the application — finding hardcoded secrets, insecure patterns, and logic flaws. DAST (Dynamic Application Security Testing) scans running applications to find runtime vulnerabilities like misconfigurations and information leakage. Penetration testing combines automated tools with manual expert testing to simulate real-world attacks. Best practice is using all three: SAST in development, DAST in staging, and penetration testing before and after production deployment.",
+      "SAST (Static Application Security Testing) analyzes source code without running the application, finding hardcoded secrets, insecure patterns, and logic flaws. DAST (Dynamic Application Security Testing) scans running applications to find runtime vulnerabilities like misconfigurations and information leakage. Penetration testing combines automated tools with manual expert testing to simulate real-world attacks. Best practice is using all three: SAST in development, DAST in staging, and penetration testing before and after production deployment.",
   },
   {
     question: "How often should we test our web applications?",
@@ -198,7 +198,7 @@ const faqs = [
   {
     question: "Do you test APIs as well as web applications?",
     answer:
-      "Yes — API security testing is a core service. We test REST, GraphQL, and SOAP APIs for authentication bypass, BOLA/IDOR vulnerabilities, rate limiting gaps, excessive data exposure, and injection attacks. API attacks have grown 300% year-over-year, making API security essential for any organization exposing business logic through programmatic interfaces.",
+      "Yes, API security testing is a core service. We test REST, GraphQL, and SOAP APIs for authentication bypass, BOLA/IDOR vulnerabilities, rate limiting gaps, excessive data exposure, and injection attacks. API attacks have grown 300% year-over-year, making API security essential for any organization exposing business logic through programmatic interfaces.",
   },
   {
     question: "Can you integrate security testing into our CI/CD pipeline?",
@@ -265,52 +265,86 @@ function FAQAccordion({ items }: { items: typeof faqs }) {
 }
 
 /* ────────────────────────────────────────────
+   HERO CTAs
+   ──────────────────────────────────────────── */
+
+function HeroCTAs() {
+  const { openModal } = useContactModal();
+
+  const scrollToCoreServices = () => {
+    const el = document.getElementById("core-services");
+    if (el) scrollToElement(el);
+  };
+
+  return (
+    <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+      <button
+        onClick={openModal}
+        className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-white/90 hover:shadow-[0_4px_20px_rgba(255,255,255,0.2)] sm:px-8 sm:py-3.5 sm:text-base cursor-pointer"
+      >
+        Book a Free App Security Assessment
+      </button>
+      <button
+        onClick={scrollToCoreServices}
+        className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/5 px-7 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/60 hover:bg-white/10 sm:px-8 sm:py-3.5 sm:text-base cursor-pointer"
+      >
+        See Our Core Services
+      </button>
+    </div>
+  );
+}
+
+/* ────────────────────────────────────────────
    PAGE COMPONENT
    ──────────────────────────────────────────── */
 
 export default function ApplicationSecurityPage() {
   return (
     <>
-      <Helmet>
-        <title>Application Security Solutions UAE — VAPT, API Testing, WAF, Code Review | ArtiflexIT Dubai</title>
+      <>
+        <title>Application Security UAE, VAPT, API, WAF | Artiflex IT</title>
         <meta
           name="description"
-          content="Protect your web applications and APIs with ArtiflexIT's application security services: penetration testing (OWASP Top 10), API security, secure code review, WAF management, and DAST scanning for UAE businesses."
+          content="ArtiflexIT application security, VAPT (OWASP Top 10), API security testing, secure code review, WAF management, and DAST scanning for UAE businesses."
         />
         <meta
           name="keywords"
           content="application security UAE, web application penetration testing Dubai, API security testing, OWASP Top 10, WAF management UAE, secure code review, SAST DAST, application security testing Middle East, VAPT web applications, PCI-DSS application testing"
         />
         <link rel="canonical" href="https://artiflexit.com/application-security-solutions" />
-        <meta property="og:title" content="Application Security Solutions — Web App & API Protection | ArtiflexIT UAE" />
+        <meta property="og:title" content="Application Security Solutions, Web App & API Protection | ArtiflexIT UAE" />
         <meta property="og:description" content="Web application penetration testing, API security, WAF management, and secure code review for UAE enterprises. OWASP Top 10 coverage with compliance mapping." />
         <meta property="og:url" content="https://artiflexit.com/application-security-solutions" />
         <meta property="og:type" content="article" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-      </Helmet>
+      </>
 
       {/* HERO */}
       <PageHero
-        title={
-          <>
-            Application Security That{" "}
-            <span className="gradient-text">Stops Breaches at the Code</span>
-          </>
-        }
-        description="85% of data breaches involve web applications. We test, protect, and harden your web apps, APIs, and cloud applications — from source code to production runtime — so attackers hit walls, not data."
+        title={<>Application Security <span className="gradient-text">UAE</span></>}
+        backgroundImage="/images/app-security.jpg"
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
           { label: "Application Security", href: "/application-security-solutions" },
         ]}
-      />
+      >
+        <p className="-mt-2 max-w-5xl font-display text-xl font-medium leading-snug text-slate-200 sm:text-xl md:text-2xl lg:text-[2.0rem] lg:leading-snug">
+          VAPT, API Testing, WAF Management, and Secure Code Review across the UAE, Oman, and Saudi Arabia.
+        </p>
+        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-400 sm:mt-6 sm:text-base">
+          85% of data breaches involve web applications. Artiflex IT tests, protects, and hardens your web apps, APIs, and cloud applications, from source code to production runtime, so attackers hit walls, not data. The conversation starts with your stack, your threat model, and the compliance regimes you answer to.
+        </p>
+        <div className="mt-7 sm:mt-9">
+          <HeroCTAs />
+        </div>
+      </PageHero>
 
       {/* STATS */}
       <StatsBar stats={threatStats} />
 
       {/* THREAT LANDSCAPE */}
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader
             label="Threat Landscape"
             title={
@@ -344,8 +378,8 @@ export default function ApplicationSecurityPage() {
       </section>
 
       {/* CORE SERVICES */}
-      <section className="relative py-16 bg-surface-secondary sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+      <section id="core-services" className="relative py-16 bg-surface-secondary scroll-mt-20 sm:py-24">
+        <div className="shell">
           <SectionHeader
             label="Core Services"
             title={
@@ -354,7 +388,7 @@ export default function ApplicationSecurityPage() {
                 <span className="gradient-text">Application Security</span>
               </>
             }
-            description="Six specialized services that cover your entire application attack surface — from source code to live production environments."
+            description="Six specialized services that cover your entire application attack surface, from source code to live production environments."
             centered
           />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -386,7 +420,7 @@ export default function ApplicationSecurityPage() {
 
       {/* COMPLIANCE MAPPING */}
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader
             label="Compliance"
             title={
@@ -394,7 +428,7 @@ export default function ApplicationSecurityPage() {
                 <span className="gradient-text"> Application Security </span> & UAE Compliance
               </>
             }
-            description="Every assessment maps findings to the regulatory frameworks that apply to your business — a single report for all auditors."
+            description="Every assessment maps findings to the regulatory frameworks that apply to your business, a single report for all auditors."
             centered
           />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
@@ -413,7 +447,7 @@ export default function ApplicationSecurityPage() {
 
       {/* FAQ */}
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader
             label="Knowledge Base"
             title={
@@ -431,7 +465,7 @@ export default function ApplicationSecurityPage() {
       {/* CTA */}
       <CTASection
         title="Get Your Application Security Assessment"
-        description="Request a free scoping call. We'll map your application attack surface, identify priority targets, and deliver a testing proposal within 48 hours — aligned to OWASP, NESA, and your compliance requirements."
+        description="Request a free scoping call. We'll map your application attack surface, identify priority targets, and deliver a testing proposal within 48 hours, aligned to OWASP, NESA, and your compliance requirements."
         primaryButton={{ text: "Discuss Your Requirements", action: "modal" }}
       />
     </>

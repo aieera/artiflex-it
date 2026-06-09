@@ -2,7 +2,7 @@ import React from "react";
 import SectionLabel from "./SectionLabel";
 
 interface SectionHeaderProps {
-  label: string;
+  label?: string;
   title: string | React.ReactNode;
   description?: string;
   centered?: boolean;
@@ -18,13 +18,15 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className={`mb-10 sm:mb-12 md:mb-16 ${centered ? "text-center" : ""}`}>
-      <div className={centered ? "flex justify-center" : ""}>
-        <SectionLabel text={label} dark={dark} />
-      </div>
+      {label && (
+        <div className={centered ? "flex justify-center" : ""}>
+          <SectionLabel text={label} dark={dark} />
+        </div>
+      )}
       <h2
         className={`font-display text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.15] ${
           dark ? "text-white" : "text-heading"
-        } ${centered ? "mx-auto max-w-3xl" : "max-w-2xl"}`}
+        } ${centered ? "mx-auto max-w-4xl" : "max-w-2xl"}`}
       >
         {title}
       </h2>

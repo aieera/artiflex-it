@@ -1,377 +1,184 @@
-import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
-import { motion, AnimatePresence } from "framer-motion";
+/**
+ * BlogPage, index of all posts.
+ *
+ * Two-column layout: a paginated vertical list of post cards (image left,
+ * title/excerpt/meta right) plus a sidebar with search, a Recent/Archives/
+ * Tags widget, follow links, categories, and a newsletter signup.
+ * Search and the Archives month picker filter the list client-side.
+ * Each card links to /blog/<slug>; categories link to /blog/category/<tag>.
+ */
+
+import { useMemo, useState, type FC } from "react";
+import { scrollToElement } from "@/lib/lenis";
+import { Link } from "react-router-dom";
 import PageHero from "@/pages/About/section/PageHero";
-import SectionHeader from "@/components/ui/SectionHeader";
-import Card from "@/components/ui/Card";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import ClientStrip from "@/components/ui/ClientStrip";
-import { ArrowRightIcon, XIcon } from "@/components/icons";
-import { useLocation } from "react-router-dom";
+import { ArrowRightIcon, SearchIcon, LinkedInIcon, FolderIcon } from "@/components/icons";
 import ShinyText from "@/components/ui/ShinyText";
+import { allTags, sortedPosts } from "@/content/blog/posts";
+import { SOCIAL_LINKS } from "@/lib/constants";
 
-interface Article {
-  tag: string;
-  tagColor: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  date: string;
-  readTime: string;
-  gradient: string;
-  image: string;
-}
-
-const featuredArticle = {
-  tag: "Cybersecurity",
-  tagColor: "bg-brand-blue/20 text-brand-blue border-brand-blue/40",
-  title:
-    "The State of Cybersecurity in the UAE: What Every Business Owner Needs to Know in 2025",
-  excerpt:
-    "Ransomware attacks targeting GCC businesses surged 300% in two years. Social engineering losses exceeded $4.7 billion globally. And the average breach cost in the Middle East hit $6.93 million — 69% higher than the global average. This isn't a technology problem. It's a business risk that demands board-level attention.",
-  content: `Ransomware attacks targeting GCC businesses surged 300% in two years. Social engineering losses exceeded $4.7 billion globally. And the average breach cost in the Middle East hit $6.93 million — 69% higher than the global average. This isn't a technology problem. It's a business risk that demands board-level attention.
-
-The UAE has positioned itself as a global digital economy hub, but that same connectivity creates an expanded attack surface. Government entities, financial institutions, healthcare providers, and logistics companies are all prime targets for sophisticated threat actors.
-
-Key trends shaping the 2025 threat landscape:
-
-1. AI-Powered Attacks: Threat actors are leveraging AI to craft more convincing phishing campaigns, automate vulnerability scanning, and develop polymorphic malware that evades traditional detection.
-
-2. Supply Chain Compromise: Attackers increasingly target trusted vendors and software providers to gain access to their customers' networks. A single compromised update can affect thousands of organizations.
-
-3. Ransomware-as-a-Service (RaaS): The commoditization of ransomware has lowered the barrier to entry for cybercriminals. Even unskilled attackers can now launch sophisticated ransomware campaigns.
-
-4. Regulatory Pressure: With NESA, ICA, and UAE PDPL enforcement tightening, non-compliance carries significant financial and legal consequences beyond the breach itself.
-
-5. Cloud Security Gaps: Rapid cloud adoption has outpaced security posture management. Misconfigured cloud resources remain one of the top causes of data exposure.
-
-What should businesses do? The answer isn't more tools — it's a coordinated, multi-layered defense strategy that addresses people, processes, and technology. This means regular vulnerability assessments, employee security awareness training, incident response planning, and continuous monitoring through a dedicated SOC.
-
-The cost of prevention is always lower than the cost of recovery. Businesses that invest in proactive security today will be the ones that survive and thrive in the digital economy of tomorrow.`,
-  date: "March 12, 2025",
-  readTime: "8 min read",
-  gradient: "from-brand-blue/20 to-navy-deep",
-  image: "/cybermain.jpeg",
+const SOCIAL_ICONS: Record<string, FC<{ className?: string }>> = {
+  LinkedInIcon,
 };
 
-const articles: Article[] = [
-  {
-    tag: "Cybersecurity",
-    tagColor: "bg-red-500/10 text-red-400 border-red-500/30",
-    title: "Why Your Firewall Alone Won't Stop a Ransomware Attack",
-    excerpt:
-      "Modern ransomware bypasses perimeter defenses entirely. It enters through phishing emails, compromised credentials, and supply chain vendors. Here's what actually works.",
-    content: `Modern ransomware bypasses perimeter defenses entirely. It enters through phishing emails, compromised credentials, and supply chain vendors. Here's what actually works.
+const SITE = "https://artiflexit.com";
 
-Your firewall is doing its job — blocking unauthorized traffic at the network edge. But ransomware in 2025 doesn't need to breach your firewall. It walks through the front door.
-
-The anatomy of a modern ransomware attack:
-
-1. Initial Access: A convincing phishing email lands in an employee's inbox. The email appears to come from a trusted vendor or internal colleague. One click downloads a malicious payload.
-
-2. Lateral Movement: The attacker uses the compromised credentials to move laterally across the network, escalating privileges and mapping out high-value targets.
-
-3. Data Exfiltration: Before encryption, attackers exfiltrate sensitive data to use as leverage for double extortion — "pay up, or we publish your data."
-
-4. Encryption: The ransomware deploys across all accessible systems simultaneously, encrypting files and demanding payment in cryptocurrency.
-
-What actually stops ransomware:
-- Endpoint Detection and Response (EDR) on every device
-- Network segmentation to limit lateral movement
-- Email security with advanced threat protection
-- Regular, tested, air-gapped backups
-- Employee security awareness training
-- 24/7 SOC monitoring for anomalous behavior
-- Incident response plan tested quarterly
-
-The firewall remains essential — but it's just one layer in a defense-in-depth strategy. Without the other layers, it's a locked front door on a house with open windows.`,
-    date: "March 5, 2025",
-    readTime: "6 min read",
-    gradient: "from-red-950/40 to-navy-deep",
-    image: "/cyber1.jpeg",
-  },
-  {
-    tag: "Cloud",
-    tagColor: "bg-brand-blue/10 text-brand-blue border-brand-blue/30",
-    title: "Cloud Migration Mistakes That Cost UAE Businesses Millions",
-    excerpt:
-      "60% of cloud migrations exceed budget. 45% miss timelines. We analyzed the six patterns behind failed migrations and what successful ones do differently.",
-    content: `60% of cloud migrations exceed budget. 45% miss timelines. We analyzed the six patterns behind failed migrations and what successful ones do differently.
-
-Cloud migration promises reduced costs, increased agility, and improved scalability. But the reality for many UAE businesses has been cost overruns, performance issues, and security gaps that didn't exist on-premises.
-
-The six patterns behind failed migrations:
-
-1. Lift-and-Shift Everything: Moving workloads to the cloud without re-architecting them results in higher costs and worse performance. Not every application belongs in the cloud.
-
-2. Skipping the Assessment Phase: Without a thorough assessment of current infrastructure, dependencies, and data flows, migration plans are built on assumptions rather than facts.
-
-3. Ignoring Security from Day One: Security should be designed into the cloud architecture, not bolted on afterward. Cloud-native security differs fundamentally from on-premises security.
-
-4. Underestimating Data Transfer Costs: Moving large datasets to the cloud and data egress charges can significantly impact the total cost of ownership.
-
-5. No Training Plan: Teams unfamiliar with cloud services make costly mistakes — from leaving S3 buckets public to over-provisioning compute resources.
-
-6. Missing Governance Framework: Without clear policies for resource provisioning, cost management, and access control, cloud sprawl becomes inevitable.
-
-What successful migrations do differently:
-- Start with a comprehensive cloud readiness assessment
-- Prioritize workloads based on business value and complexity
-- Implement a Cloud Center of Excellence (CCoE)
-- Use FinOps practices from day one
-- Design for resilience with multi-AZ and multi-region architectures
-- Establish clear governance and compliance frameworks`,
-    date: "February 27, 2025",
-    readTime: "7 min read",
-    gradient: "from-blue-950/40 to-navy-deep",
-    image: "/cyber2.png",
-  },
-  {
-    tag: "Compliance",
-    tagColor: "bg-amber-500/10 text-amber-400 border-amber-500/30",
-    title: "NESA Compliance: A Practical Guide for UAE Businesses",
-    excerpt:
-      "The National Electronic Security Authority sets security standards for critical infrastructure. But the requirements also apply to any organization that handles sensitive data. Here's how to comply without over-engineering.",
-    content: `The National Electronic Security Authority (NESA) sets security standards for critical infrastructure in the UAE. But the requirements extend beyond critical infrastructure — any organization handling sensitive data should align with NESA guidelines.
-
-Understanding NESA's framework:
-
-NESA's Information Assurance Standards cover 188 controls across 12 domains. These include access management, incident response, business continuity, network security, and more.
-
-Practical steps to achieve compliance:
-
-1. Gap Assessment: Compare your current security posture against NESA's requirements. Identify where you fall short and prioritize based on risk.
-
-2. Policy Development: Create or update security policies to align with NESA standards. Policies should be practical and enforceable, not just documentation exercises.
-
-3. Technical Controls: Implement required technical controls including encryption, access management, network segmentation, and logging.
-
-4. Training and Awareness: Ensure all employees understand their role in maintaining security. Regular training and phishing simulations are essential.
-
-5. Incident Response: Develop and regularly test an incident response plan that meets NESA's notification and reporting requirements.
-
-6. Continuous Monitoring: Implement 24/7 monitoring and regular vulnerability assessments to maintain compliance over time.
-
-The key to compliance without over-engineering is proportionality. Apply controls based on the sensitivity of the data you handle and the risks you face. Not every organization needs the same level of protection for every asset.`,
-    date: "February 18, 2025",
-    readTime: "10 min read",
-    gradient: "from-amber-950/40 to-navy-deep",
-    image: "/compli.png",
-  },
-  {
-    tag: "Infrastructure",
-    tagColor: "bg-brand-purple/10 text-brand-purple border-brand-purple/30",
-    title:
-      "The $5,600-Per-Minute Problem: Calculating the True Cost of IT Downtime",
-    excerpt:
-      "Downtime costs more than most businesses estimate. Beyond lost revenue, factor in recovery costs, compliance penalties, customer churn, and reputation damage.",
-    content: `Downtime costs more than most businesses estimate. The average cost of IT downtime is $5,600 per minute — but that number varies dramatically based on your industry and business model.
-
-For a financial services firm processing transactions, a minute of downtime could mean tens of thousands in lost revenue. For a healthcare provider, it could mean delayed patient care. For an e-commerce business during peak season, it could mean permanent customer loss.
-
-Components of downtime cost:
-
-1. Lost Revenue: Direct loss of sales, transactions, or billable hours during the outage.
-
-2. Recovery Costs: Emergency IT support, overtime pay, hardware replacement, and data recovery expenses.
-
-3. Compliance Penalties: Regulatory fines for service disruptions, especially in financial services and healthcare.
-
-4. Customer Churn: Customers who experience service disruptions are 3x more likely to switch to a competitor within 12 months.
-
-5. Reputation Damage: Social media amplifies outage visibility. A major outage can take months to recover from in terms of brand perception.
-
-6. Employee Productivity: Every minute of system downtime multiplied by the number of affected employees equals significant lost productivity.
-
-How to reduce downtime:
-- Implement redundant systems and failover capabilities
-- Use proactive monitoring to catch issues before they cause outages
-- Maintain up-to-date disaster recovery plans and test them regularly
-- Invest in preventive maintenance through AMC contracts
-- Design infrastructure with high availability in mind from the start`,
-    date: "February 10, 2025",
-    readTime: "5 min read",
-    gradient: "from-purple-950/40 to-navy-deep",
-    image: "/infra.png",
-  },
-  {
-    tag: "Managed Services",
-    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
-    title:
-      "Build vs. Buy: When Managed IT Services Make More Sense Than Hiring",
-    excerpt:
-      "A qualified network engineer costs AED 25,000+/month. After visa, insurance, and training, that's AED 400,000 annually. Here's the math on when outsourcing wins.",
-    content: `A qualified network engineer costs AED 25,000+/month in the UAE. After visa sponsorship, health insurance, annual flights, training, and benefits, that's approximately AED 400,000 annually — for one person covering one domain.
-
-Now consider that a comprehensive IT team needs expertise across networking, security, cloud, helpdesk, and compliance. That's five to eight full-time hires minimum, totaling AED 2-3 million annually before accounting for turnover, training, and management overhead.
-
-When managed services make more sense:
-
-1. Cost Predictability: Replace variable break-fix costs with a fixed monthly fee. Our clients see an average 60% reduction in total IT spending.
-
-2. 24/7 Coverage: No single hire can provide round-the-clock coverage. Managed services include after-hours monitoring and response as standard.
-
-3. Breadth of Expertise: A managed services provider brings a team of specialists across every IT domain. You get the collective expertise of the entire organization.
-
-4. Scalability: Scale your IT support up or down based on business needs without the delays and costs of hiring or layoffs.
-
-5. Reduced Risk: Managed providers maintain compliance certifications, carry professional liability insurance, and follow established best practices.
-
-When to build in-house:
-- When IT is your core business
-- When you have highly specialized or proprietary systems
-- When regulatory requirements demand on-site personnel
-- When you need real-time physical access to systems
-
-For most mid-market businesses, the answer is a hybrid approach: a lean internal team for strategic decisions and vendor management, with managed services handling day-to-day operations, monitoring, and incident response.`,
-    date: "February 3, 2025",
-    readTime: "6 min read",
-    gradient: "from-emerald-950/40 to-navy-deep",
-    image: "/manage.jpg",
-  },
-  {
-    tag: "Cybersecurity",
-    tagColor: "bg-red-500/10 text-red-400 border-red-500/30",
-    title:
-      "Social Engineering in the UAE: Why Your Employees Are Your Biggest Vulnerability",
-    excerpt:
-      "73% of successful breaches start with a human being tricked. Phishing simulations, vishing campaigns, and pretexting attacks reveal gaps that technology alone cannot close.",
-    content: `73% of successful breaches start with a human being tricked — not a firewall bypassed or a zero-day exploited. Social engineering remains the most effective attack vector because it targets the one element of your security stack that can't be patched: human psychology.
-
-Common social engineering attacks in the UAE:
-
-1. Business Email Compromise (BEC): Attackers impersonate executives or vendors to authorize fraudulent wire transfers. UAE businesses lost over $1.2 billion to BEC attacks in 2024.
-
-2. Spear Phishing: Targeted emails crafted using information from LinkedIn, company websites, and social media. These emails are nearly indistinguishable from legitimate communications.
-
-3. Vishing (Voice Phishing): Phone calls impersonating banks, government agencies, or IT support. The caller creates urgency to extract credentials or authorize actions.
-
-4. Pretexting: Attackers build a fabricated scenario to gain trust and extract information. This often involves impersonating new employees, auditors, or vendors.
-
-5. Watering Hole Attacks: Compromising websites frequently visited by target employees to deliver malware through trusted channels.
-
-Building human resilience:
-- Regular phishing simulations with immediate feedback
-- Role-based security awareness training
-- Clear reporting channels for suspicious communications
-- Two-person authorization for financial transactions
-- Verification protocols for vendor payment changes
-- Culture that rewards reporting over punishing mistakes
-
-Technology helps — email filters, URL scanning, and AI-powered detection can catch many attacks. But the last line of defense is always the human. Training your employees to recognize and report social engineering is the highest-ROI security investment you can make.`,
-    date: "January 25, 2025",
-    readTime: "7 min read",
-    gradient: "from-red-950/40 to-navy-deep",
-    image: "/cyber3.jpg",
-  },
-];
-
-
-/* ── Blog Post Modal ── */
-function BlogModal({
-  article,
-  onClose,
-}: {
-  article: (typeof articles)[0] | typeof featuredArticle;
-  onClose: () => void;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/70 backdrop-blur-sm p-4 sm:p-8"
-      onClick={onClose}
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 40, scale: 0.97 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 40, scale: 0.97 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl my-8 overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm hover:bg-black/70 transition-colors"
-        >
-          <XIcon className="h-4 w-4" />
-        </button>
-
-        {/* Image */}
-        <div className="w-full h-[250px] sm:h-[350px] relative overflow-hidden">
-          <img
-            src={article.image}
-            alt={article.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-          <div className="absolute bottom-4 left-6">
-            <span
-              className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-widest ${article.tagColor}`}
-            >
-              {article.tag}
-            </span>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-6 sm:p-8">
-          <div className="flex items-center gap-3 text-xs text-muted mb-4">
-            <span>{article.date}</span>
-            <span className="w-1 h-1 rounded-full bg-slate-300" />
-            <span>{article.readTime}</span>
-          </div>
-
-          <h2 className="font-display text-xl font-bold text-heading sm:text-2xl md:text-3xl mb-6 leading-tight">
-            {article.title}
-          </h2>
-
-          <div className="prose prose-sm sm:prose-base max-w-none text-body leading-relaxed">
-            {article.content.split("\n\n").map((paragraph, i) => (
-              <p key={i} className="mb-4">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
+function fmtDate(iso: string): string {
+  const d = new Date(iso + "T00:00:00Z");
+  return d.toLocaleDateString("en-AE", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 }
 
 export default function BlogPage() {
-  const [selectedArticle, setSelectedArticle] = useState<
-    (typeof articles)[0] | typeof featuredArticle | null
-  >(null);
-  const location = useLocation();
+  const all = useMemo(() => sortedPosts(), []);
+  const tags = useMemo(() => allTags(), []);
 
-  useEffect(() => {
-    if (location.hash) {
-      const el = document.getElementById(location.hash.replace("#", ""));
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: "smooth" });
-        }, 100); // wait for render
+  /* ── List state: search, archive-month filter, sidebar tab, pagination ── */
+  const PER_PAGE = 6;
+  const [query, setQuery] = useState("");
+  const [month, setMonth] = useState<string | null>(null);
+  const [tab, setTab] = useState<"recent" | "archives" | "tags">("recent");
+  const [page, setPage] = useState(1);
+
+  const featured = all[0];
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return all.filter((p) => {
+      if (month && p.date.slice(0, 7) !== month) return false;
+      if (q && !p.title.toLowerCase().includes(q) && !p.excerpt.toLowerCase().includes(q)) return false;
+      return true;
+    });
+  }, [all, query, month]);
+
+  /* When not searching/filtering, the newest post is shown as a featured
+     card, so the list below starts from the second post. While filtering,
+     every match (including the featured one) appears in the list. */
+  const isFiltering = query.trim() !== "" || month !== null;
+  const listSource = isFiltering ? filtered : all.slice(1);
+
+  const totalPages = Math.max(1, Math.ceil(listSource.length / PER_PAGE));
+  const pageSafe = Math.min(page, totalPages);
+  const pageItems = listSource.slice((pageSafe - 1) * PER_PAGE, pageSafe * PER_PAGE);
+
+  /* Windowed page list: 1 … (cur-1) cur (cur+1) … last */
+  const pageList = useMemo<(number | "…")[]>(() => {
+    const out: (number | "…")[] = [];
+    for (let n = 1; n <= totalPages; n++) {
+      if (n === 1 || n === totalPages || (n >= pageSafe - 1 && n <= pageSafe + 1)) {
+        out.push(n);
+      } else if (out[out.length - 1] !== "…") {
+        out.push("…");
       }
     }
-  }, [location]);
+    return out;
+  }, [totalPages, pageSafe]);
+
+  const recent = useMemo(() => all.slice(0, 5), [all]);
+  const archives = useMemo(() => {
+    const m = new Map<string, number>();
+    for (const p of all) {
+      const k = p.date.slice(0, 7);
+      m.set(k, (m.get(k) || 0) + 1);
+    }
+    return Array.from(m.entries()).sort((a, b) => b[0].localeCompare(a[0]));
+  }, [all]);
+
+  function fmtMonth(key: string) {
+    const [y, mo] = key.split("-");
+    return new Date(Number(y), Number(mo) - 1, 1).toLocaleDateString("en-AE", {
+      month: "long",
+      year: "numeric",
+    });
+  }
+  function scrollToList() {
+    const el = document.getElementById("all-articles");
+    if (el) scrollToElement(el);
+  }
+  function changePage(n: number) {
+    setPage(Math.min(Math.max(n, 1), totalPages));
+    scrollToList();
+  }
 
   return (
     <>
-      <Helmet>
-        <title>Blog — Cybersecurity & IT Insights | ArtiflexIT</title>
+      <>
+        <title>Blog, Cybersecurity & IT Insights for UAE Business | Artiflex IT</title>
         <meta
           name="description"
-          content="Expert analysis on cybersecurity trends, cloud strategy, and IT infrastructure for UAE businesses. Practical insights from ArtiflexIT's engineering team."
+          content="Field-tested cybersecurity, cloud, and IT insights from Artiflex IT engineers. Practical guidance for UAE businesses, NESA, PDPL, ransomware, cloud migration, AMC."
         />
-      </Helmet>
+        <link rel="canonical" href={`${SITE}/blog`} />
+
+        {/* hreflang */}
+        <link rel="alternate" hrefLang="en-ae" href={`${SITE}/blog`} />
+        <link rel="alternate" hrefLang="en-om" href={`${SITE}/blog`} />
+        <link rel="alternate" hrefLang="en-sa" href={`${SITE}/blog`} />
+        <link rel="alternate" hrefLang="x-default" href={`${SITE}/blog`} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Artiflex IT Blog, Cybersecurity & IT Insights" />
+        <meta
+          property="og:description"
+          content="Field-tested cybersecurity, cloud, and IT insights from Artiflex IT engineers for UAE businesses."
+        />
+        <meta property="og:url" content={`${SITE}/blog`} />
+        <meta property="og:image" content={`${SITE}/og/blog.png`} />
+        <meta property="og:site_name" content="Artiflex IT" />
+        <meta property="og:locale" content="en_AE" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Artiflex IT Blog" />
+        <meta
+          name="twitter:description"
+          content="Cybersecurity, cloud, and IT insights for UAE businesses."
+        />
+        <meta name="twitter:image" content={`${SITE}/og/blog.png`} />
+
+        {/* JSON-LD: Blog */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          name: "Artiflex IT Blog",
+          url: `${SITE}/blog`,
+          description: "Cybersecurity, cloud, and IT infrastructure insights for UAE businesses.",
+          publisher: { "@type": "Organization", name: "Artiflex IT", url: SITE },
+          inLanguage: "en-AE",
+        })}</script>
+
+        {/* JSON-LD: ItemList of posts */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          itemListElement: all.map((p, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: `${SITE}/blog/${p.slug}`,
+            name: p.title,
+          })),
+        })}</script>
+
+        {/* JSON-LD: Breadcrumbs */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+            { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog` },
+          ],
+        })}</script>
+      </>
 
       <PageHero
-         title={
+        title={
           <>
-            Insights & {""}
+            Insights &{" "}
             <ShinyText
               text="Expert Analysis"
               speed={3}
@@ -382,7 +189,7 @@ export default function BlogPage() {
             />
           </>
         }
-        description="Actionable cybersecurity, cloud, and IT infrastructure insights from our engineering team — helping UAE businesses stay protected and make informed decisions."
+        description="Field-tested cybersecurity, cloud, and IT infrastructure insights from our engineering team, written for UAE businesses making real decisions."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Blog", href: "/blog" },
@@ -390,133 +197,362 @@ export default function BlogPage() {
         background="gradient-blinds"
       />
 
-      {/* Featured */}
-      <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeader label="Featured" title="Latest Analysis" />
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.2fr_1fr] items-stretch">
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-brand-blue/20 via-brand-purple/10 to-navy-deep min-h-[200px] sm:min-h-[300px] lg:min-h-[400px] flex items-end">
-              <img
-                src={featuredArticle.image}
-                alt={featuredArticle.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute top-4 left-6">
-                <span className="inline-flex rounded-full bg-brand-blue/20 border border-brand-blue/40 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-brand-blue">
-                  {featuredArticle.tag}
-                </span>
-              </div>
-              <div className="relative p-6 lg:p-8">
-                <div className="flex items-center gap-3 text-xs text-body mb-3">
-                  <span>{featuredArticle.date}</span>
-                  <span className="w-1 h-1 rounded-full bg-slate-600" />
-                  <span>{featuredArticle.readTime}</span>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center">
-              <h2 className="font-display text-xl font-bold text-heading sm:text-2xl md:text-3xl mb-3 sm:mb-4 leading-tight">
-                {featuredArticle.title}
-              </h2>
-              <p className="text-body leading-relaxed mb-6">
-                {featuredArticle.excerpt}
-              </p>
-              <div>
-                <button
-                  onClick={() => setSelectedArticle(featuredArticle)}
-                  className="inline-flex items-center gap-2 font-semibold text-brand-blue hover:text-brand-blue-bright transition-colors cursor-pointer"
-                >
-                  Read Full Article{" "}
-                  <ArrowRightIcon className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* All Articles */}
-      <section id="all-articles" className="relative py-16 bg-surface-secondary sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeader
-            label="All Articles"
-            title="More From Our Team"
-            centered
-          />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {articles.map((article) => (
-              <div
-                key={article.title}
-                className="group cursor-pointer"
-                onClick={() => setSelectedArticle(article)}
-              >
-                <Card className="p-0 overflow-hidden h-full flex flex-col">
-                  <div className="h-48 relative overflow-hidden">
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-all duration-500 blur-[6px] scale-110 group-hover:blur-none group-hover:scale-100"
-                    />
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${article.gradient} opacity-90 group-hover:opacity-0 transition-all duration-500`}
-                    />
-                    <div className="absolute inset-0 bg-dot-pattern opacity-30 group-hover:opacity-0 transition-all duration-500" />
-                    <div className="absolute top-4 left-4">
-                      <span
-                        className={`inline-flex rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest ${article.tagColor}`}
-                      >
-                        {article.tag}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex-1 p-5 flex flex-col">
-                    <div className="flex items-center gap-3 text-xs text-muted mb-3">
-                      <span>{article.date}</span>
-                      <span className="w-1 h-1 rounded-full bg-slate-600" />
-                      <span>{article.readTime}</span>
-                    </div>
-                    <h3 className="font-display text-base font-semibold text-heading mb-2 group-hover:text-brand-blue transition-colors leading-snug">
-                      {article.title}
-                    </h3>
-                    <p className="text-sm text-body leading-relaxed flex-1">
-                      {article.excerpt}
-                    </p>
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-brand-blue mt-4 group-hover:gap-2 transition-all">
-                      Read more <ArrowRightIcon className="w-3.5 h-3.5" />
+      {/* ───────── FEATURED POST (hidden while searching/filtering) ───────── */}
+      {featured && !isFiltering && (
+        <section className="relative bg-white py-14 sm:py-20">
+          <div className="shell">
+            <p className="mb-6 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-brand-blue">
+              Featured · Latest Analysis
+            </p>
+            <Link
+              to={`/blog/${featured.slug}`}
+              className="group block overflow-hidden rounded-2xl border border-border-light bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-blue/25 hover:shadow-xl"
+            >
+              <div className="grid gap-0 lg:grid-cols-[1.2fr_1fr]">
+                <div className="relative h-64 overflow-hidden lg:h-auto lg:min-h-[360px]">
+                  <img
+                    src={featured.image}
+                    alt={featured.title}
+                    loading="eager"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute left-4 top-4">
+                    <span className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-widest ${featured.tagColor}`}>
+                      {featured.tagLabel}
                     </span>
                   </div>
-                </Card>
+                </div>
+                <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                  <div className="mb-3 flex items-center gap-3 text-xs text-muted">
+                    <time dateTime={featured.date}>{fmtDate(featured.date)}</time>
+                    <span className="h-1 w-1 rounded-full bg-slate-400" />
+                    <span>{featured.readTime} min read</span>
+                  </div>
+                  <h2 className="mb-4 font-display text-2xl font-bold leading-tight text-heading transition-colors group-hover:text-brand-blue sm:text-3xl">
+                    {featured.title}
+                  </h2>
+                  <p className="mb-6 text-base leading-relaxed text-body sm:text-lg">
+                    {featured.excerpt}
+                  </p>
+                  <span className="inline-flex items-center gap-2 font-semibold text-brand-blue transition-all group-hover:gap-3">
+                    Read full article <ArrowRightIcon className="h-4 w-4" />
+                  </span>
+                </div>
               </div>
-            ))}
+            </Link>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Newsletter */}
-      <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <div className="max-w-2xl mx-auto">
-            <Card variant="glass" hover={false} className="p-5 sm:p-8 text-center">
-              <h2 className="font-display text-2xl font-bold text-heading mb-3">
-                Security Briefing, Monthly
-              </h2>
-              <p className="text-body mb-6">
-                One email per month. Threat landscape updates, practical
-                recommendations, and analysis from our engineering team. No
-                spam. Unsubscribe anytime.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+      {/* ───────── BLOG INDEX: article list + sidebar ───────── */}
+      <section
+        id="all-articles"
+        className={`relative scroll-mt-24 py-14 sm:py-20 ${
+          featured && !isFiltering ? "bg-surface-secondary" : "bg-white"
+        }`}
+      >
+        <div className="shell">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12 xl:gap-16">
+
+            {/* ── MAIN: article list ── */}
+            <div className="min-w-0">
+              {(query || month) && (
+                <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-body">
+                  <span>
+                    {filtered.length} {filtered.length === 1 ? "article" : "articles"}
+                    {month && (
+                      <>
+                        {" "}in <span className="font-semibold text-heading">{fmtMonth(month)}</span>
+                      </>
+                    )}
+                    {query && (
+                      <>
+                        {" "}matching <span className="font-semibold text-heading">&ldquo;{query}&rdquo;</span>
+                      </>
+                    )}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setQuery("");
+                      setMonth(null);
+                      setPage(1);
+                    }}
+                    className="font-semibold text-brand-blue hover:underline"
+                  >
+                    Clear
+                  </button>
+                </div>
+              )}
+
+              {pageItems.length === 0 ? (
+                <p className="rounded-2xl border border-dashed border-border-light bg-white px-6 py-16 text-center text-body">
+                  No articles found. Try a different search or category.
+                </p>
+              ) : (
+                <div className="flex flex-col gap-8">
+                  {pageItems.map((post) => (
+                    <article
+                      key={post.slug}
+                      className="group flex flex-col gap-5 border-b border-border-light pb-8 sm:flex-row"
+                    >
+                      <Link
+                        to={`/blog/${post.slug}`}
+                        aria-label={post.title}
+                        className="relative block h-48 w-full shrink-0 overflow-hidden rounded-xl sm:h-32 sm:w-48"
+                      >
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          loading="lazy"
+                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </Link>
+                      <div className="min-w-0 flex-1">
+                        <h2 className="font-display text-xl font-bold leading-snug text-heading transition-colors group-hover:text-brand-blue sm:text-2xl">
+                          <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                        </h2>
+                        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-body sm:text-[15px]">
+                          {post.excerpt}
+                        </p>
+                        <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted">
+                          <time dateTime={post.date}>{fmtDate(post.date)}</time>
+                          <span className="h-1 w-1 rounded-full bg-slate-400" />
+                          <span>{post.readTime} min read</span>
+                          <span className="h-1 w-1 rounded-full bg-slate-400" />
+                          <Link
+                            to={`/blog/category/${post.tag}`}
+                            className="font-medium text-brand-blue hover:underline"
+                          >
+                            {post.tagLabel}
+                          </Link>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <nav
+                  aria-label="Blog pagination"
+                  className="mt-10 flex items-center justify-center gap-2"
+                >
+                  {pageList.map((n, i) =>
+                    n === "…" ? (
+                      <span
+                        key={`gap-${i}`}
+                        className="inline-flex h-10 w-6 items-center justify-center text-sm text-muted"
+                        aria-hidden="true"
+                      >
+                        …
+                      </span>
+                    ) : (
+                      <button
+                        key={n}
+                        type="button"
+                        onClick={() => changePage(n)}
+                        aria-current={n === pageSafe ? "page" : undefined}
+                        className={`inline-flex h-10 w-10 items-center justify-center rounded-lg border text-sm font-semibold transition-colors ${
+                          n === pageSafe
+                            ? "border-brand-blue bg-brand-blue text-white"
+                            : "border-border-light bg-white text-body hover:border-brand-blue/40 hover:text-brand-blue"
+                        }`}
+                      >
+                        {n}
+                      </button>
+                    ),
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => changePage(pageSafe + 1)}
+                    disabled={pageSafe === totalPages}
+                    aria-label="Next page"
+                    className="inline-flex h-10 items-center justify-center gap-1 rounded-lg border border-border-light bg-white px-4 text-sm font-semibold text-body transition-colors hover:border-brand-blue/40 hover:text-brand-blue disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    Next <ArrowRightIcon className="h-3.5 w-3.5" />
+                  </button>
+                </nav>
+              )}
+            </div>
+
+            {/* ── SIDEBAR ── */}
+            <aside className="space-y-8 lg:sticky lg:top-24 lg:self-start">
+              {/* Search */}
+              <div className="relative">
                 <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="flex-1 rounded-lg border border-border-light bg-surface-secondary px-4 py-3 text-sm text-heading placeholder:text-muted focus:border-brand-blue/50 focus:outline-none focus:ring-1 focus:ring-brand-blue/50"
+                  type="search"
+                  value={query}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    setPage(1);
+                  }}
+                  placeholder="Search articles"
+                  aria-label="Search articles"
+                  className="w-full rounded-lg border border-border-light bg-white py-3 pl-4 pr-11 text-sm text-heading placeholder:text-muted focus:border-brand-blue/50 focus:outline-none focus:ring-1 focus:ring-brand-blue/40"
                 />
-                <button className="inline-flex items-center justify-center rounded-lg bg-brand-blue px-6 py-3 text-sm font-semibold text-heading hover:bg-brand-blue-bright transition-colors">
-                  Subscribe
-                </button>
+                <SearchIcon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
               </div>
-            </Card>
+
+              {/* Recent / Archives / Tags */}
+              <div className="rounded-2xl border border-border-light bg-white p-5">
+                <div className="flex gap-1 border-b border-border-light">
+                  {(["recent", "archives", "tags"] as const).map((t) => (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => setTab(t)}
+                      className={`-mb-px border-b-2 px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-colors ${
+                        tab === t
+                          ? "border-brand-blue text-brand-blue"
+                          : "border-transparent text-muted hover:text-heading"
+                      }`}
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
+
+                {tab === "recent" && (
+                  <ul className="mt-4 space-y-4">
+                    {recent.map((p) => (
+                      <li key={p.slug}>
+                        <Link to={`/blog/${p.slug}`} className="group flex gap-3">
+                          <img
+                            src={p.image}
+                            alt=""
+                            loading="lazy"
+                            className="h-12 w-12 shrink-0 rounded-md object-cover"
+                          />
+                          <span className="min-w-0">
+                            <span className="block text-[11px] text-muted">{fmtDate(p.date)}</span>
+                            <span className="line-clamp-2 text-[13px] font-medium leading-snug text-heading transition-colors group-hover:text-brand-blue">
+                              {p.title}
+                            </span>
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {tab === "archives" && (
+                  <ul className="mt-4 space-y-1">
+                    {archives.map(([key, count]) => (
+                      <li key={key}>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setMonth(month === key ? null : key);
+                            setPage(1);
+                            scrollToList();
+                          }}
+                          className={`flex w-full items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors ${
+                            month === key
+                              ? "bg-brand-blue/10 text-brand-blue"
+                              : "text-body hover:bg-surface-secondary hover:text-heading"
+                          }`}
+                        >
+                          <span>{fmtMonth(key)}</span>
+                          <span className="text-xs text-muted">({count})</span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {tab === "tags" && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {tags.map((t) => (
+                      <Link
+                        key={t.tag}
+                        to={`/blog/category/${t.tag}`}
+                        className="rounded-full border border-border-light bg-surface-secondary px-3 py-1 text-xs font-medium text-body transition-colors hover:border-brand-blue/40 hover:bg-brand-blue/5 hover:text-brand-blue"
+                      >
+                        {t.label} ({t.count})
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Follow Us */}
+              {SOCIAL_LINKS.length > 0 && (
+                <div className="rounded-2xl border border-border-light bg-white p-5">
+                  <h3 className="font-display text-sm font-bold uppercase tracking-wider text-heading">
+                    Follow Us
+                  </h3>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {SOCIAL_LINKS.map((s) => {
+                      const Icon = SOCIAL_ICONS[s.icon];
+                      return (
+                        <a
+                          key={s.label}
+                          href={s.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 rounded-lg bg-[#0A66C2] px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                        >
+                          {Icon && <Icon className="h-4 w-4" />}
+                          {s.label}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Categories */}
+              <div className="rounded-2xl border border-border-light bg-white p-5">
+                <h3 className="font-display text-sm font-bold uppercase tracking-wider text-heading">
+                  Categories
+                </h3>
+                <ul className="mt-4 divide-y divide-border-light">
+                  {tags.map((t) => (
+                    <li key={t.tag}>
+                      <Link
+                        to={`/blog/category/${t.tag}`}
+                        className="flex items-center justify-between py-2.5 text-sm text-body transition-colors hover:text-brand-blue"
+                      >
+                        <span className="inline-flex items-center gap-2">
+                          <FolderIcon className="h-4 w-4 text-muted" />
+                          {t.label}
+                        </span>
+                        <span className="text-xs text-muted">({t.count})</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Newsletter */}
+              <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#04101E] via-[#06182B] to-[#0A3D6B] p-5 text-center">
+                <h3 className="font-display text-lg font-bold text-white">
+                  Security Briefing, Monthly
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                  One email per month. Threat updates and analysis from our team. No spam.
+                </p>
+                <form className="mt-4 space-y-2" onSubmit={(e) => e.preventDefault()}>
+                  <input
+                    type="email"
+                    required
+                    placeholder="your@email.com"
+                    aria-label="Email address"
+                    className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-slate-400 focus:border-[#28B5E1]/60 focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full rounded-lg bg-brand-blue px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-blue-bright"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </aside>
+
           </div>
         </div>
       </section>
@@ -525,19 +561,9 @@ export default function BlogPage() {
 
       <CTASection
         title="Have a Security Question?"
-        description="Our engineering team is available for consultations. Ask about your specific situation — we'll give you a straight answer."
+        description="Our engineering team is available for consultations. Ask about your specific situation, we'll give you a straight answer."
         primaryButton={{ text: "Discuss Your Requirements", action: "modal" }}
       />
-
-      {/* Blog Post Modal */}
-      <AnimatePresence>
-        {selectedArticle && (
-          <BlogModal
-            article={selectedArticle}
-            onClose={() => setSelectedArticle(null)}
-          />
-        )}
-      </AnimatePresence>
     </>
   );
 }

@@ -33,7 +33,7 @@ export default function Card({
         hover ? hoverClasses : ""
       } ${className}`}
     >
-      {/* Top accent line — appears on hover */}
+      {/* Top accent line, appears on hover */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-0.5 rounded-t-2xl bg-gradient-to-r from-brand-blue to-brand-cyan opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
       {children}

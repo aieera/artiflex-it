@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Button from "@/components/ui/Button";
@@ -18,11 +17,11 @@ const offices = [
   {
     city: "Dubai",
     label: "UAE",
-    address: ["National Insurance Building, Office 603, Opposite Deira City Center, Deira, Dubai, United Arab Emirates"
+    address: ["Malik Saeed Suhail Saeed Bin Daliwi Al-Kutbi - Bardab - First Commercial Center 45B - Office No.102, Dubai, United Arab Emirates"
 
     ],
     phone: "+971 52 207 6531",
-    email: "meghna@artiflexit.com",
+    email: "info@artiflexit.com",
     highlight: true,
   },
   {
@@ -30,7 +29,7 @@ const offices = [
     label: "Oman",
     address: ["Office No: 61,Al Takween Building, Way No: 5007, Near Centara Hotel, Opp: Spar, Ghala, Muscat, Oman"],
     phone: "+971 52 207 6531",
-    email: "meghna@artiflexit.com",
+    email: "info@artiflexit.com",
     highlight: false,
   },
   {
@@ -38,7 +37,7 @@ const offices = [
     label: "India",
     address: ["Sai Sree Layout, Parappana Agrahara, Hosa Road, Bengaluru, Karnataka – 560100"],
     phone: "+971 52 207 6531",
-    email: "meghna@artiflexit.com",
+    email: "info@artiflexit.com",
     highlight: false,
   },
 ];
@@ -57,9 +56,9 @@ const quickConnect = [
     icon: MailIcon,
     title: "Email Us",
     description: "Send us your requirements and we'll respond with a detailed assessment within 2 hours.",
-    action: "meghna@artiflexit.com",
+    action: "info@artiflexit.com",
     actionLabel: "Send Email",
-    href: "mailto:meghna@artiflexit.com",
+    href: "mailto:info@artiflexit.com",
   },
   {
     icon: GlobeIcon,
@@ -160,24 +159,76 @@ export default function ContactPage() {
     }
 
     const subject = encodeURIComponent(
-      `New Inquiry from ${name}${company ? ` — ${company}` : ""}`
+      `New Inquiry from ${name}${company ? `, ${company}` : ""}`
     );
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\nCompany: ${company || "Not provided"}\nEmployees: ${employees || "Not specified"}\nService Interest: ${service || "Not specified"}\n\nMessage:\n${message}`
     );
 
-    window.location.href = `mailto:meghna@artiflexit.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@artiflexit.com?subject=${subject}&body=${body}`;
   };
 
   return (
     <>
-      <Helmet>
-        <title>Contact ArtiflexIT — Get a Free Security Assessment | Dubai, UAE</title>
+      <>
+        <title>Contact ArtiflexIT, Get a Free Security Assessment | Dubai, UAE</title>
         <meta
           name="description"
           content="Contact ArtiflexIT for cybersecurity, cloud migration, IT infrastructure, and managed services. Offices in Dubai, Abu Dhabi, and Sharjah."
         />
-      </Helmet>
+        <link rel="canonical" href="https://artiflexit.com/contact" />
+        <meta property="og:title" content="Contact ArtiflexIT, Get a Free Security Assessment | Dubai, UAE" />
+        <meta property="og:description" content="Contact ArtiflexIT for cybersecurity, cloud migration, IT infrastructure, and managed services across UAE, Oman, and Saudi Arabia." />
+        <meta property="og:image" content="https://artiflexit.com/og/contact.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://artiflexit.com/contact" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact ArtiflexIT, Dubai, UAE" />
+        <meta name="twitter:description" content="Offices in Dubai, Muscat, and Bengaluru. Response within 2 business hours." />
+        <meta name="twitter:image" content="https://artiflexit.com/og/contact.png" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Artiflex IT",
+          url: "https://artiflexit.com/contact",
+          description: "Get in touch with Artiflex IT for cybersecurity, cloud, and managed services across the UAE.",
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "@id": "https://artiflexit.com/#organization",
+          name: "Artiflex Information Technology",
+          url: "https://artiflexit.com",
+          telephone: "+971 52 207 6531",
+          email: "info@artiflexit.com",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Malik Saeed Suhail Saeed Bin Daliwi Al-Kutbi - Bardab - First Commercial Center 45B - Office No.102",
+            addressLocality: "Dubai",
+            addressCountry: "AE",
+          },
+          areaServed: [
+            { "@type": "Country", name: "United Arab Emirates" },
+            { "@type": "Country", name: "Oman" },
+            { "@type": "Country", name: "Saudi Arabia" },
+          ],
+          openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+            opens: "09:00",
+            closes: "18:00",
+          },
+          sameAs: [],
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://artiflexit.com/" },
+            { "@type": "ListItem", position: 2, name: "Contact", item: "https://artiflexit.com/contact" },
+          ],
+        })}</script>
+      </>
 
       <PageHero
         title={
@@ -193,7 +244,7 @@ export default function ContactPage() {
             />
           </>
         }
-        description="Whether you need a cybersecurity audit, cloud migration plan, or managed IT support — we're ready to have an honest conversation about your options."
+        description="Whether you need a cybersecurity audit, cloud migration plan, or managed IT support, we're ready to have an honest conversation about your options."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Contact", href: "/contact" },
@@ -205,7 +256,7 @@ export default function ContactPage() {
           QUICK CONNECT CARDS
           ═══════════════════════════════════════ */}
       <section className="bg-white py-14 sm:py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
             {quickConnect.map((item) => (
               <a
@@ -238,7 +289,7 @@ export default function ContactPage() {
           CONTACT FORM + MAP
           ═══════════════════════════════════════ */}
       <section className="bg-surface-secondary py-14 sm:py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader
             label="Get in Touch"
             title="Send Us a Message"
@@ -246,9 +297,9 @@ export default function ContactPage() {
             centered
           />
 
-          <div className="mt-4 grid gap-5 sm:mt-12 sm:gap-8 lg:grid-cols-[1fr_380px] lg:gap-10">
+          <div className="mt-4 sm:mt-12">
             {/* Form */}
-            <div className="rounded-2xl border border-border-light bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:p-8 lg:p-10">
+            <div className="mx-auto max-w-4xl rounded-2xl border border-border-light bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:p-8 lg:p-10">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid gap-5 sm:grid-cols-2">
                   <FormInput
@@ -320,9 +371,8 @@ export default function ContactPage() {
                     <option value="cybersecurity">Cybersecurity</option>
                     <option value="cloud">Cloud Solutions</option>
                     <option value="infrastructure">IT Infrastructure</option>
-                    <option value="managed">Managed Services</option>
+                    <option value="managed">Managed Services & AMC</option>
                     <option value="appsec">Application Security</option>
-                    <option value="amc">AMC Services</option>
                     <option value="multiple">Multiple Services</option>
                   </FormSelect>
                 </div>
@@ -353,39 +403,6 @@ export default function ContactPage() {
               </form>
             </div>
 
-            {/* Google Map Embed */}
-            <div className="flex flex-col gap-6">
-              {/* <div className="flex-1 overflow-hidden rounded-2xl border border-border-light shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5439.573436745175!2d55.323435161542356!3d25.287888751932947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5cd89a00d82b%3A0x684c64ac6a26dd36!2sNational%20General%20Insurance%20Co.%20(PJSC)%20%E2%80%93%20Head%20Office!5e0!3m2!1sen!2sin!4v1773819782734!5m2!1sen!2sin"
-                  title="ArtiflexIT Office Location — Business Bay, Dubai"
-                  className="h-full w-full min-h-[200px] sm:min-h-[300px]"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div> */}
-
-              {/* Quick Info Card */}
-              <div className="rounded-2xl border border-brand-blue/15 bg-brand-blue/5 p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-blue text-white">
-                    <MapPinIcon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-base font-semibold text-heading">Main Office — Dubai</h3>
-                    <p className="text-xs text-muted">Deira</p>
-                  </div>
-                </div>
-                <div className="space-y-2 text-sm text-body">
-                  <p>National Insurance Building, Office 603, Opposite Deira City Center, Deira, Dubai, United Arab Emirates</p>
-                  <a href="tel:+971522076531" className="block text-brand-blue font-medium hover:underline">
-                    +971 52 207 6531
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -394,7 +411,7 @@ export default function ContactPage() {
           OFFICE LOCATIONS
           ═══════════════════════════════════════ */}
       <section className="bg-white py-14 sm:py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader
             label="Our Offices"
             title="Locations Across the UAE"

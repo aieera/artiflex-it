@@ -13,7 +13,7 @@ const industries = [
     stat: "2x",
     statLabel: "higher breach cost vs. other sectors",
     description:
-      "Patient records sell for $250 each on the dark web — making healthcare the #1 targeted industry globally. We protect clinical systems, EHR platforms, and connected medical devices under ADHICS and DHA compliance frameworks.",
+      "Patient records sell for $250 each on the dark web, making healthcare the most-targeted industry globally. We protect clinical systems, EHR platforms, and connected medical devices under ADHICS and DHA compliance frameworks.",
     features: [
       "ADHICS & DHA compliance",
       "Medical IoT segmentation",
@@ -55,9 +55,9 @@ const industries = [
     stat: "60%",
     statLabel: "of SMEs close within 6 months of a breach",
     description:
-      "43% of all cyberattacks target small businesses, yet most lack dedicated security teams. We deliver enterprise-grade managed SOC, endpoint protection, and employee training — at pricing built for growing companies.",
+      "43% of all cyberattacks target small businesses, yet most lack dedicated security teams. We deliver enterprise-grade managed SOC, endpoint protection, and employee training, at pricing built for growing companies.",
     features: [
-      "Managed SOC — no team needed",
+      "Managed SOC, no team needed",
       "Employee security awareness",
       "Predictable monthly pricing",
       "Sophos Site-in-a-Box",
@@ -106,7 +106,7 @@ export function IndustriesPreviewSection() {
         <div className="absolute inset-0 bg-black/85" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="shell relative z-10">
         <SectionHeader
           label="Industries We Protect"
           title="Specialized Security for Every Sector"
@@ -115,7 +115,7 @@ export function IndustriesPreviewSection() {
           dark
         />
 
-        {/* CardSwap — large, centered */}
+        {/* CardSwap, large, centered */}
         <div className="flex items-center justify-center min-h-[500px] sm:min-h-[520px] lg:min-h-[620px]">
           <Suspense fallback={null}>
             <CardSwap

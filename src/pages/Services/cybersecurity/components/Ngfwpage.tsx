@@ -1,16 +1,13 @@
-import { Helmet } from "react-helmet-async";
-import { motion } from "framer-motion";
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
-import Button from "@/components/ui/Button";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 import { ShieldIcon, CheckIcon, GlobeIcon, ServerIcon, LockIcon, EyeIcon } from "@/components/icons";
 
 const stats = [
-  { value: "99.9%", label: "THREAT DETECTION RATE", source: "Sophos XGS — independent lab tested" },
-  { value: "40Gbps", label: "FIREWALL THROUGHPUT", source: "XGS 7500 — enterprise grade" },
+  { value: "99.9%", label: "THREAT DETECTION RATE", source: "Sophos XGS, independent lab tested" },
+  { value: "40Gbps", label: "FIREWALL THROUGHPUT", source: "XGS 7500, enterprise grade" },
   { value: "TLS 1.3", label: "FULL SSL INSPECTION", source: "Zero performance penalty" },
   { value: "<1ms", label: "LATENCY OVERHEAD", source: "Xstream Architecture" },
 ];
@@ -20,7 +17,7 @@ const features = [
     icon: ShieldIcon,
     title: "Deep Packet Inspection",
     description:
-      "Inspect every packet at wire speed — identifying threats hidden inside encrypted traffic, tunneled protocols, and evasive application payloads that bypass traditional firewalls.",
+      "Inspect every packet at wire speed, identifying threats hidden inside encrypted traffic, tunneled protocols, and evasive application payloads that bypass traditional firewalls.",
   },
   {
     icon: EyeIcon,
@@ -32,7 +29,7 @@ const features = [
     icon: LockIcon,
     title: "TLS 1.3 Decryption",
     description:
-      "Decrypt and inspect SSL/TLS traffic at line rate without introducing latency bottlenecks. Up to 95% of modern malware hides in encrypted traffic — inspection is no longer optional.",
+      "Decrypt and inspect SSL/TLS traffic at line rate without introducing latency bottlenecks. Up to 95% of modern malware hides in encrypted traffic, inspection is no longer optional.",
   },
   {
     icon: ServerIcon,
@@ -50,7 +47,7 @@ const features = [
     icon: CheckIcon,
     title: "Synchronized Security",
     description:
-      "Automatic threat response between firewall and endpoints. When Intercept X detects malware, the firewall instantly isolates that device — zero manual intervention required.",
+      "Automatic threat response between firewall and endpoints. When Intercept X detects malware, the firewall instantly isolates that device, zero manual intervention required.",
   },
 ];
 
@@ -74,7 +71,7 @@ const useCases = [
   },
   {
     title: "Remote Access (ZTNA)",
-    detail: "Replace insecure legacy VPNs with identity-aware Zero Trust Network Access — users get access only to what they need, nothing more.",
+    detail: "Replace insecure legacy VPNs with identity-aware Zero Trust Network Access, users get access only to what they need, nothing more.",
   },
   {
     title: "Branch Connectivity",
@@ -93,7 +90,7 @@ const useCases = [
 const faqs = [
   {
     q: "What is the difference between a traditional firewall and an NGFW?",
-    a: "Traditional firewalls filter by port/IP only. NGFWs add deep packet inspection, application awareness, TLS decryption, IPS, and threat intelligence — blocking modern attacks that bypass legacy filters.",
+    a: "Traditional firewalls filter by port/IP only. NGFWs add deep packet inspection, application awareness, TLS decryption, IPS, and threat intelligence, blocking modern attacks that bypass legacy filters.",
   },
   {
     q: "How does Sophos XGS compare to Palo Alto and Fortinet?",
@@ -110,18 +107,17 @@ export default function NGFWPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Next-Generation Firewall (NGFW) UAE — Sophos XGS | ArtiflexIT Dubai</title>
-        <meta name="description" content="Enterprise NGFW solutions for UAE businesses. Deep packet inspection, TLS decryption, IPS, and SD-WAN — deployed by ArtiflexIT, Platinum Sophos Partner. NESA and CBUAE compliant." />
+      <>
+        <title>Next-Generation Firewall (NGFW) UAE, Sophos XGS | ArtiflexIT Dubai</title>
+        <meta name="description" content="Enterprise NGFW solutions for UAE businesses. Deep packet inspection, TLS decryption, IPS, and SD-WAN, deployed by ArtiflexIT, Platinum Sophos Partner. NESA and CBUAE compliant." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/next-generation-firewall" />
-      </Helmet>
+      </>
 
       <PageHero
         title={<>Next-Generation Firewall <span className="gradient-text">for UAE Enterprises</span></>}
-        description="Enterprise-grade perimeter defense with deep packet inspection, TLS 1.3 decryption, integrated IPS, and Synchronized Security — powered by Sophos XGS Xstream Architecture."
+        description="Enterprise-grade perimeter defense with deep packet inspection, TLS 1.3 decryption, integrated IPS, and Synchronized Security, powered by Sophos XGS Xstream Architecture."
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
           { label: "Cybersecurity", href: "/cybersecurity" },
           { label: "NGFW", href: "/cybersecurity/next-generation-firewall" },
         ]}
@@ -129,7 +125,7 @@ export default function NGFWPage() {
 
       {/* Stats */}
       <section className="relative border-y border-border-light bg-white" aria-label="NGFW statistics">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <div className="grid grid-cols-2 divide-x divide-white/[0.06] lg:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label} className="px-3 py-6 text-center sm:px-8 sm:py-10">
@@ -144,7 +140,7 @@ export default function NGFWPage() {
 
       {/* Features */}
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader
             label="Core Capabilities"
             title={<>What Makes an NGFW <span className="gradient-text">Next-Generation</span></>}
@@ -167,15 +163,15 @@ export default function NGFWPage() {
 
       {/* Sophos XGS Model Range */}
       <section className="relative py-16 bg-surface-secondary sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader
             label="Sophos XGS Range"
             title={<>Right-Sized for <span className="gradient-text">Every Deployment</span></>}
-            description="From 50-user branch offices to multi-gigabit data centers — the XGS Series scales to match your environment."
+            description="From 50-user branch offices to multi-gigabit data centers, the XGS Series scales to match your environment."
             centered
           />
           <div className="overflow-x-auto rounded-2xl border border-border-light bg-white shadow-sm">
-            <table className="w-full min-w-[600px]">
+            <table className="w-full">
               <thead>
                 <tr className="border-b border-border-light bg-surface-secondary">
                   {["Model", "Firewall Throughput", "Recommended Users", "Ideal Use Case"].map((h) => (
@@ -200,7 +196,7 @@ export default function NGFWPage() {
 
       {/* Use Cases */}
       <section className="relative py-16 bg-white sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader
             label="Use Cases"
             title={<>NGFW Deployment <span className="gradient-text">Scenarios</span></>}
@@ -220,7 +216,7 @@ export default function NGFWPage() {
 
       {/* FAQ */}
       <section className="relative py-16 bg-surface-secondary sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="shell">
           <SectionHeader label="FAQ" title={<>Common <span className="gradient-text">Questions</span></>} description="Answers to the most common NGFW questions from UAE IT teams." centered />
           <div className="mx-auto max-w-3xl space-y-6">
             {faqs.map((f) => (

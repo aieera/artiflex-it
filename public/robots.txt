@@ -1,0 +1,40 @@
+# robots.txt for artiflexit.com
+# Last updated: 2026-04-22
+
+User-agent: *
+Allow: /
+
+# Disallow build/dev artifacts (defensive)
+Disallow: /assets/hash-*
+Disallow: /*.map$
+
+# Crawl-delay is ignored by Google; included for other bots
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://artiflexit.com/sitemap.xml
+
+# Explicitly allow major search + AI crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /

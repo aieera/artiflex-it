@@ -16,27 +16,27 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-white/[0.08] bg-black">
 
-      <div className="mx-auto max-w-7xl px-4 pb-8 pt-10 sm:px-6 sm:pt-16 lg:px-8">
+      <div className="shell pb-8 pt-10 sm:pt-16">
         {/* ─── Columns ─── */}
         <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4">
-          {/* Column 1 — Brand */}
+          {/* Column 1, Brand */}
           <div>
             <Link to="/" className="group inline-flex items-center gap-2.5">
-              <img src="/logos/artiflexit logo.svg" alt="ArtiflexIT" className="h-12 w-16 sm:h-16 sm:w-20 lg:h-18 lg:w-25" />
+              <img src="/logos/artiflexit logo.svg" alt="ArtiflexIT" className="h-14 w-20 sm:h-18 sm:w-24 lg:h-20 lg:w-28" />
               
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
               Delivering high-quality, innovative IT solutions and
-              cybersecurity services to organizations worldwide — with over 14
+              cybersecurity services to organizations worldwide, with over 14
               years of experience and offices across 4 countries.
             </p>
           </div>
 
-          {/* Column 2 — Services */}
+          {/* Column 2, Services */}
           <div>
-            <h4 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-white">
               Services
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2.5">
               {FOOTER_LINKS.services.map((link) => (
                 <li key={link.href}>
@@ -51,11 +51,11 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3 — Company */}
+          {/* Column 3, Company */}
           <div>
-            <h4 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-white">
               Company
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2.5">
               {FOOTER_LINKS.company.map((link) => (
                 <li key={link.href}>
@@ -70,11 +70,11 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4 — Contact */}
+          {/* Column 4, Contact */}
           <div>
-            <h4 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-white">
               Contact
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-3">
               <li className="flex items-start gap-3">
                 <MapPinIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-blue" />
@@ -106,9 +106,25 @@ export default function Footer() {
 
         {/* ─── Bottom bar ─── */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/[0.08] pt-8 sm:flex-row">
-          <p className="text-xs text-slate-500">
-            &copy; 2026 ArtiflexIT. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
+            <p className="text-xs text-slate-500">
+              &copy; 2026 Artiflex Information Technology LLC. All rights reserved.
+            </p>
+            <div className="flex items-center gap-4">
+              <Link
+                to="/terms"
+                className="text-xs text-slate-500 transition-colors duration-200 hover:text-brand-blue"
+              >
+                Terms of Use
+              </Link>
+              <Link
+                to="/privacy"
+                className="text-xs text-slate-500 transition-colors duration-200 hover:text-brand-blue"
+              >
+                Privacy Policy
+              </Link>
+            </div>
+          </div>
 
           <div className="flex items-center gap-4">
             {SOCIAL_LINKS.map((social) => {

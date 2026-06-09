@@ -81,7 +81,7 @@ export default function StatsBar({ stats }: StatsBarProps) {
   }, [handleIntersect]);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 -mt-12 relative z-20 sm:px-6 sm:-mt-16">
+    <div className="shell -mt-12 relative z-20 sm:-mt-16">
       <div
         ref={ref}
         className="rounded-2xl bg-white border border-border-light shadow-[0_4px_20px_rgba(0,0,0,0.06)] px-4 py-8 sm:px-8 sm:py-10 md:px-12"

@@ -1,6 +1,5 @@
 import React, { lazy, Suspense, useRef } from "react";
 import { Link } from "react-router-dom";
-import VariableProximity from "@/components/ui/VariableProximity";
 
 const LightRays = lazy(() => import("@/components/ui/LightRays"));
 const GradientBlinds = lazy(() => import("@/components/ui/GradientBlinds"));
@@ -12,9 +11,11 @@ interface Breadcrumb {
 
 interface PageHeroProps {
   title: string | React.ReactNode;
-  description: string;
+  description?: string;
   breadcrumbs: Breadcrumb[];
   background?: "lightrays" | "gradient-blinds";
+  backgroundImage?: string;
+  children?: React.ReactNode;
 }
 
 /** Extract plain text from ReactNode for the variable proximity effect */
@@ -34,6 +35,8 @@ export default function PageHero({
   description,
   breadcrumbs,
   background = "lightrays",
+  backgroundImage,
+  children,
 }: PageHeroProps) {
   const containerRef = useRef<HTMLElement>(null);
   const plainTitle = extractText(title);
@@ -43,43 +46,67 @@ export default function PageHero({
       ref={containerRef}
       className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-navy-deep via-navy to-navy-light"
     >
-      {/* Background effect */}
-      <Suspense fallback={null}>
-        {background === "lightrays" ? (
-          <LightRays
-            raysOrigin="top-center"
-            raysColor="#1B8AC7"
-            raysSpeed={0.8}
-            lightSpread={1.2}
-            rayLength={2}
-            fadeDistance={1}
-            saturation={1}
-            followMouse={true}
-            mouseInfluence={0.15}
-            distortion={0.3}
+      {/* Background: image takes precedence over WebGL effects */}
+      {backgroundImage ? (
+        <>
+          <img
+            src={backgroundImage}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="eager"
+            decoding="async"
           />
-        ) : (
-          <GradientBlinds
-            gradientColors={["#04101E", "#0A3D6B", "#1B8AC7", "#28B5E1"]}
-            angle={135}
-            noise={0.2}
-            blindCount={14}
-            blindMinWidth={50}
-            spotlightRadius={0.6}
-            spotlightSoftness={1.2}
-            spotlightOpacity={0.6}
+          {/* Strong navy overlay for legibility on photographic backgrounds */}
+          <div
+            className="absolute inset-0 z-[2] bg-gradient-to-r from-navy-deep/90 via-navy-deep/70 to-navy-deep/40 pointer-events-none"
+            aria-hidden="true"
           />
-        )}
-      </Suspense>
+          <div
+            className="absolute inset-0 z-[3] bg-gradient-to-b from-navy-deep/40 via-transparent to-navy-deep/60 pointer-events-none"
+            aria-hidden="true"
+          />
+        </>
+      ) : (
+        <>
+          <Suspense fallback={null}>
+            {background === "lightrays" ? (
+              <LightRays
+                raysOrigin="top-center"
+                raysColor="#1B8AC7"
+                raysSpeed={0.8}
+                lightSpread={1.2}
+                rayLength={2}
+                fadeDistance={1}
+                saturation={1}
+                followMouse={true}
+                mouseInfluence={0.15}
+                distortion={0.3}
+              />
+            ) : (
+              <GradientBlinds
+                gradientColors={["#04101E", "#0A3D6B", "#1B8AC7", "#28B5E1"]}
+                angle={135}
+                noise={0.2}
+                blindCount={14}
+                blindMinWidth={50}
+                spotlightRadius={0.6}
+                spotlightSoftness={1.2}
+                spotlightOpacity={0.6}
+              />
+            )}
+          </Suspense>
 
-      {/* Overlay */}
-      <div
-        className="absolute inset-0 z-[3] bg-gradient-to-b from-navy-deep/30 via-navy-deep/15 to-navy-deep/50 pointer-events-none"
-        aria-hidden="true"
-      />
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 z-[3] bg-gradient-to-b from-navy-deep/30 via-navy-deep/15 to-navy-deep/50 pointer-events-none"
+            aria-hidden="true"
+          />
+        </>
+      )}
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-5xl px-5 pt-24 pb-12 sm:px-6 sm:py-40 md:py-44 lg:py-48 w-full">
+      <div className="shell relative z-10 pt-24 pb-12 sm:py-40 md:py-44 lg:py-48 w-full">
         {/* Breadcrumbs */}
         <nav aria-label="Breadcrumb" className="mb-6 sm:mb-8">
           <ol className="flex flex-wrap items-center gap-2 text-xs text-slate-400 sm:text-sm">
@@ -109,9 +136,17 @@ export default function PageHero({
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-300 sm:mt-6 sm:text-base md:text-lg lg:text-xl">
-          {description}
-        </p>
+        {description && (
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-300 sm:mt-6 sm:text-base md:text-lg lg:text-xl">
+            {description}
+          </p>
+        )}
+
+        {children && (
+          <div className="mt-6 sm:mt-8">
+            {children}
+          </div>
+        )}
       </div>
     </section>
   );
