@@ -27,3 +27,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Regenerable audit outputs (npm run qa, node scripts/audit-seo.mjs, mobile-audit.mjs)
+scripts/_screenshots/
+scripts/_qa-report.json
+scripts/_seo-audit.md

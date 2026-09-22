@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+# Artiflex IT website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing site for Artiflex Information Technology (artiflexit.com).
+React 19 + TypeScript + Vite 8, Tailwind CSS 4, React Router 7,
+Framer Motion. Static output, prerendered per route, hosted on Apache
+(Hostinger) via manual upload of `dist/`.
 
-Currently, two official plugins are available:
+## Commands
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Command | What it does |
+|---|---|
+| `npm run dev` | Vite dev server with HMR, opens the browser |
+| `npm run build` | Type-check (`tsc -b`) then production bundle into `dist/` |
+| `npm run build:seo` | `build`, then OG images, then prerender. Use this for a deployable `dist/` |
+| `npm run og` | Renders one 1200x630 OG card per blog post into `public/og/blog/` |
+| `npm run prerender` | Walks the sitemaps, renders each route with Playwright, writes static HTML into `dist/` |
+| `npm run qa` | Playwright QA pass over the built site (meta, headings, screenshots) |
+| `npm run lint` | ESLint |
+| `npm run preview` | Serves `dist/` locally |
 
-## React Compiler
+Playwright browsers must be installed once: `npx playwright install chromium`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Layout
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+index.html              Shell: critical CSS, GTM stub, favicon, fonts
+public/                 Served as-is at site root
+  .htaccess             Apache: 301s, caching, proper 404
+  sitemap*.xml          Drives prerender and search engines. New pages MUST be added
+  og/blog/              Generated OG cards (one per post), committed
+  logos/                Vendor logos referenced by the comparison pages
+  images/               Page imagery
+scripts/
+  prerender.mjs         Static HTML per route (wired to npm run prerender)
+  generate-og-images.mjs  OG cards for blog posts (npm run og)
+  qa-audit.mjs          QA pass (npm run qa)
+  audit-*.mjs, verify-faq-*.mjs, mobile-audit.mjs
+                        Ad-hoc audits, run directly with node
+src/
+  App.tsx               All routes, pages lazy-loaded
+  components/           Shared layout, sections, UI primitives
+  content/blog/         Blog registry (see below)
+  pages/                One folder per site section
+  styles/               Tailwind entry
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Blog posts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Posts are discovered automatically from `src/content/blog/posts/<slug>/`:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `meta.ts` exports `meta` (title, excerpt, date, image, ogImage, related, author). Always bundled.
+- `content.ts` exports `content` (the article body blocks). Loaded on demand.
+
+To add a post: create the folder with both files, add a `<url>` entry to
+`public/sitemap-blog.xml`, then run `npm run build:seo`.
+
+## Deploy
+
+1. `npm run build:seo`
+2. Upload the contents of `dist/` to the Apache document root, including `.htaccess`.
+
+Routes not listed in a sitemap are not prerendered and will 404 in production.
