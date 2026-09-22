@@ -1241,6 +1241,62 @@ export const VENDORS: Vendor[] = [
     ctaHeading: "Talk to our IT Operations Specialist",
   },
   {
+    slug: "hexnode",
+    name: "Hexnode",
+    logo: "/logos/Hexnode.png",
+    description:
+      "Hexnode UEM partner in Dubai and the UAE. Artiflex IT, a Hexnode Premium Partner, delivers Hexnode licensing, deployment and managed device operations across the UAE, Oman and Saudi Arabia.",
+    categories: ["endpoint"],
+    partnerBadge: "Hexnode Premium Partner",
+    heroTagline: "Unified endpoint management without the enterprise tax",
+    summaryHeadline: "One console for every device your business runs on: iOS, Android, Windows, macOS, tvOS, Fire OS and rugged.",
+    summaryParagraphs: [
+      "Artiflex IT deploys and operates Hexnode UEM across the UAE, Oman and Saudi Arabia. From zero-touch enrolment through Apple Business Manager, Android Zero-Touch and Windows Autopilot to kiosk lockdown, app distribution, patching and conditional access, we design the policy set, run the pilot and take the platform to production in days rather than months.",
+      "As a Hexnode Premium Partner we handle edition selection, cloud or on-premises deployment for PDPL and NESA data-residency needs, integration with Entra ID, Okta and your MTD layer, and ongoing co-managed operations, so your team gets enterprise-grade device control without hiring a team of specialists.",
+    ],
+    aboutHeading: "About Hexnode",
+    aboutTagline: "Mid-market UEM built for speed, value and breadth of platform support",
+    aboutFacts: [
+      { label: "Founded", value: "2013, San Francisco (a Mitsogo Inc. product)" },
+      { label: "Deployment", value: "Cloud SaaS or on-premises" },
+      { label: "Platforms", value: "iOS, Android, Windows, macOS, tvOS, Fire OS, rugged" },
+      { label: "Standout tech", value: "Best-in-class single-app and multi-app kiosk with a branded launcher, five editions from Express to Ultra that scale from MDM to a zero-trust security platform, and Genie AI plus Hexnode Access in the top tier", wide: true },
+    ],
+    whyVendor: {
+      eyebrow: "Why Hexnode",
+      title: "Why we recommend Hexnode to our customers",
+      intro: "Hexnode wins on total cost of ownership, time to value and genuine cross-platform coverage, the three things mid-market UAE buyers ask us about first.",
+      items: [
+        { title: "Best value per device", body: "Full UEM capability without premium enterprise licensing. Editions scale from Express to Ultra so you pay for the tier you actually need, with a clear upgrade path as your estate or compliance obligations grow." },
+        { title: "Fast to deploy", body: "Cloud-based and intuitive. Pilot to production in days, with prebuilt enrolment workflows for Apple Business Manager, Android Zero-Touch and Windows Autopilot, and no infrastructure footprint on the SaaS edition." },
+        { title: "Truly cross-platform", body: "iOS, Android, Windows, macOS, tvOS, Fire OS and rugged devices managed from one console. No ecosystem lock-in and no fragmented toolchain across device types." },
+        { title: "Kiosk and rugged strength", body: "Single-app and multi-app kiosk with a branded launcher, plus rugged-device support for retail, logistics, warehousing and field operations where devices are shared, exposed and mission-critical." },
+        { title: "BYOD without overreach", body: "Container and profile separation keeps corporate data governed while respecting personal privacy, an essential balance for UAE workplaces under PDPL." },
+        { title: "Open and integrable", body: "A clean REST API and webhooks plug into your identity provider (Entra ID, Okta), your SIEM, and Zimperium or Lookout for a complete UEM plus MTD programme. SCCM integration arrives in the Ultra tier." },
+      ],
+    },
+    productShowcase: {
+      eyebrow: "Featured Solutions: Hexnode UEM",
+      heading: "Complete Hexnode Product Portfolio",
+      intro: "A single unified endpoint management platform covering enrolment, policy, apps, content, patching, security and reporting across every major operating system.",
+      products: [
+        { icon: "zap", title: "Zero-Touch Enrolment", description: "Ship devices straight to users. Apple Business Manager, Android Zero-Touch and Windows Autopilot enrol and configure them automatically on first boot." },
+        { icon: "grid", title: "App Management", description: "Deploy, update and remove store and in-house apps at scale, with silent installs, mandatory apps and version control across the fleet." },
+        { icon: "monitor", title: "Kiosk Lockdown", description: "Single-app and multi-app kiosk with a branded launcher for retail, hospitality, logistics and shared-device deployments." },
+        { icon: "shield", title: "Policy and Compliance", description: "Configuration profiles, restrictions and automated compliance actions that quarantine or remediate non-compliant devices without manual intervention." },
+        { icon: "phone", title: "Remote Actions", description: "Lock, wipe, locate, message, remote view and remote control across the fleet from one console, for support and for lost-device response." },
+        { icon: "folder", title: "Content Management", description: "Distribute and control documents and media securely, with managed access from corporate containers on both corporate-owned and BYOD devices." },
+        { icon: "lock", title: "Conditional Access", description: "Gate corporate resources on live device compliance state, integrated with Entra ID, Okta and Google Workspace. Okta Device Trust in the Ultra tier." },
+        { icon: "gear", title: "Patch and OS Updates", description: "Orchestrate operating system updates and third-party patching across Windows, macOS, iOS and Android on schedules you control." },
+        { icon: "globe", title: "Geofencing and Location", description: "Location-aware policies, asset tracking and geofence triggers for field teams, fleets and devices that must not leave a site." },
+        { icon: "users", title: "BYOD Containers", description: "Android Enterprise work profiles and iOS User Enrolment separate corporate data from personal, keeping governance tight and privacy intact." },
+        { icon: "key", title: "Hexnode Access and Genie AI", description: "Ultra-tier identity-aware access to corporate resources plus an AI assistant that turns natural-language requests into policies and reports." },
+        { icon: "activity", title: "Reporting and Audit", description: "Fleet dashboards, scheduled reports and audit-ready compliance evidence for NESA, PDPL, ADHICS, CBUAE, SAMA and ISO 27001 reviews." },
+      ],
+    },
+    ctaHeading: "Talk to our Consultant",
+  },
+  {
     slug: "hpe",
     name: "Hewlett Packard Enterprise",
     logo: "/logos/Hewlett.svg",
@@ -6170,7 +6226,7 @@ export function getVendorBySlug(slug: string): Vendor | undefined {
    "Related cybersecurity solutions" links. Any slug listed here MUST
    exist in the corresponding cybersecurity data file.                */
 
-export type RelatedCategory = "firewall" | "endpoint" | "email" | "dlp";
+export type RelatedCategory = "firewall" | "endpoint" | "email" | "dlp" | "mobile";
 
 export const RELATED_CATEGORY_META: Record<
   RelatedCategory,
@@ -6204,6 +6260,13 @@ export const RELATED_CATEGORY_META: Record<
     chipBg: "bg-rose-500/10",
     chipBorder: "border-rose-400/30",
   },
+  mobile: {
+    label: "Mobile Security & UEM",
+    pathBase: "/cybersecurity/mobile-security",
+    accent: "#0D9488",
+    chipBg: "bg-teal-500/10",
+    chipBorder: "border-teal-400/30",
+  },
 };
 
 export type RelatedDetailLink = {
@@ -6214,6 +6277,9 @@ export type RelatedDetailLink = {
 
 /** Manually curated map: vendor slug → list of cybersecurity detail pages. */
 export const RELATED_DETAIL_PAGES: Record<string, RelatedDetailLink[]> = {
+  hexnode: [
+    { category: "mobile", productName: "Hexnode UEM", slug: "hexnode" },
+  ],
   sophos: [
     { category: "firewall", productName: "Sophos XGS", slug: "sophos-xgs" },
     { category: "endpoint", productName: "Sophos Endpoint", slug: "sophos-endpoint" },
