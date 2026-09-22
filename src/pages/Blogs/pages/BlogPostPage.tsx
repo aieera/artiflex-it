@@ -510,7 +510,9 @@ export default function BlogPostPage() {
             url: SITE,
             logo: {
               "@type": "ImageObject",
-              url: `${SITE}/favicon.png`,
+              url: `${SITE}/logo_artiflex.png`,
+              width: 500,
+              height: 151,
             },
           },
           mainEntityOfPage: { "@type": "WebPage", "@id": url },
@@ -600,11 +602,22 @@ export default function BlogPostPage() {
       {post.image && (
         <div className="shell relative -mt-8">
           <div className="overflow-hidden rounded-2xl border border-border-light shadow-xl">
+            {/*
+              This is the LCP element on every post. fetchPriority lets the
+              browser start the download ahead of same-priority assets;
+              width/height give it the intrinsic ratio before CSS arrives.
+              The aspect-[16/9] class still controls the rendered box, so
+              images of any ratio display exactly as before.
+            */}
             <img
               src={post.image}
               alt={post.imageAlt ?? post.title}
+              width={1600}
+              height={900}
               className="w-full h-auto object-cover aspect-[16/9]"
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
         </div>
