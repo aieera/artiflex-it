@@ -10,8 +10,10 @@ export const meta: BlogPostMeta = {
   date: "2026-04-28",
   readTime: 11,
   tag: "cybersecurity",
-  image: "/images/blog-images/origin-firewall-1988-worm.png",
-  ogImage: "/images/blog-images/origin-firewall-1988-worm.png",
+  image: "/images/blog-images/origin-firewall-1988-worm.webp",
+  imageAlt: "Timeline from 1988 terminals sending orange worm traffic into a glowing firewall wall, with clean blue traffic passing through to a next-generation firewall and cloud on the right",
+  ogImage: "/images/blog-images/origin-firewall-1988-worm-og.jpg",
+  updated: "2026-09-23",
   related: [
     "firewall-alone-wont-stop-ransomware",
     "state-of-cybersecurity-uae-2026",

@@ -602,7 +602,7 @@ export default function BlogPostPage() {
           <div className="overflow-hidden rounded-2xl border border-border-light shadow-xl">
             <img
               src={post.image}
-              alt={post.title}
+              alt={post.imageAlt ?? post.title}
               className="w-full h-auto object-cover aspect-[16/9]"
               loading="eager"
             />

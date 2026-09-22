@@ -63,6 +63,7 @@ export type BlogPostMeta = {
   readTime: number; // minutes
   tag: BlogTag;
   image: string;
+  imageAlt?: string; // descriptive alt for the hero; falls back to title
   ogImage?: string;
   author: BlogAuthor;
   related?: string[];
