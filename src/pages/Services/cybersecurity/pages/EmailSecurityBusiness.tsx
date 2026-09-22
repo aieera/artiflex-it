@@ -543,7 +543,7 @@ function EmailBusinessHero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/emailsec.jpg')" }}
+        style={{ backgroundImage: "url('/emailsec.webp')" }}
       />
       <div
         aria-hidden="true"
