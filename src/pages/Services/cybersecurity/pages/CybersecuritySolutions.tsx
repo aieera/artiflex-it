@@ -233,7 +233,7 @@
 // const articleSchema = {
 //   "@context": "https://schema.org",
 //   "@type": "Article",
-//   headline: "Cyber Security for Business 2026 | Artiflex IT UAE",
+//   headline: "Complete Cybersecurity Stack for UAE Enterprises",
 //   description:
 //     "Protect your business with proven cybersecurity best practices. Firewalls, EDR, email security, DLP, SIEM, and more - plus a phased framework and free UAE assessment.",
 //   datePublished: "2026-01-15",
@@ -422,7 +422,7 @@
 //   return (
 //     <>
 //       <>
-//         <title>Cyber Security for Business 2026 | Artiflex IT UAE</title>
+//         <title>Complete Cybersecurity Stack for UAE Enterprises</title>
 //         <meta
 //           name="description"
 //           content="Protect your business with proven cybersecurity best practices - firewalls, EDR, email, DLP, SIEM. Free UAE assessment."

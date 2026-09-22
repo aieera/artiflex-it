@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 
@@ -367,7 +368,7 @@ function OTHero() {
   const { open: openContact } = useContactModal();
   return (
     <section className="relative flex min-h-screen flex-col overflow-hidden bg-navy-deep">
-      <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/cybersecurity.png')" }} />
+      <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/cybersecurity.webp')" }} />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/70 to-navy-deep/90" />
 
       <div className="relative z-10 border-b border-white/5">
@@ -389,12 +390,12 @@ function OTHero() {
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[#28B5E1] sm:text-xs">
             OT / ICS Security · Visibility · Detection · Compliance
           </p>
-          <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
+          <p className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
             OT / ICS Security UAE{" "}
             <span className="gradient-text">Visibility · Detection · Compliance</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              Protect industrial control systems without disrupting operations
-            </span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Protect industrial control systems without disrupting operations
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Artiflex IT designs, deploys and runs OT and ICS security programmes across the UAE, Oman and Saudi Arabia, covering manufacturing, utilities, oil and gas, water and critical infrastructure. We deliver Nozomi Networks, Claroty, Dragos, Tenable OT Security and Microsoft Defender for IoT as focused solutions and integrate them with the IT SOC you already operate. The conversation starts with your assets, protocols and safety constraints, not a SKU.
@@ -438,10 +439,42 @@ export default function OTICSSecurity() {
   return (
     <>
       <>
-        <title>OT / ICS Security UAE | Industrial Cybersecurity | Artiflex IT</title>
-        <meta name="description" content="UAE OT / ICS Security: Nozomi Networks, Claroty, Dragos, Tenable OT and Microsoft Defender for IoT. Vendor matrix, Gartner-style scorecard and audit-ready compliance for IEC 62443, NESA and ADHICS." />
+        <title>OT & ICS Security Dubai | SCADA & IEC 62443 Protection</title>
+        <meta name="description" content="OT and ICS cybersecurity in Dubai for industrial, utility and energy sites: SCADA visibility, detection and IEC 62443, NESA and ADHICS compliance." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/ot-ics-security" />
-        <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "Service", "serviceType": "OT / ICS Security", "provider": { "@type": "Organization", "name": "Artiflex IT" }, "areaServed": { "@type": "Country", "name": "United Arab Emirates" }, "description": "UAE OT / ICS Security delivery across Nozomi, Claroty, Dragos, Tenable OT Security and Microsoft Defender for IoT." })}</script>
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/ot-ics-security" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/ot-ics-security" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/ot-ics-security" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/ot-ics-security" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/ot-ics-security" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/ot-ics-security" />
+
+        <meta property="og:title" content="OT & ICS Security Dubai | SCADA & IEC 62443 Protection" />
+        <meta property="og:description" content="OT and ICS cybersecurity in Dubai for industrial, utility and energy sites: SCADA visibility, detection and IEC 62443, NESA and ADHICS compliance." />
+        <meta property="og:url" content="https://artiflexit.com/cybersecurity/ot-ics-security" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT OT and ICS security for the UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="OT & ICS Security Dubai | SCADA & IEC 62443 Protection" />
+        <meta name="twitter:description" content="OT and ICS cybersecurity in Dubai for industrial, utility and energy sites: SCADA visibility, detection and IEC 62443, NESA and ADHICS compliance." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "Service", "serviceType": "OT / ICS Security", "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" }, "areaServed": { "@type": "Country", "name": "United Arab Emirates" }, "description": "UAE OT / ICS Security delivery across Nozomi, Claroty, Dragos, Tenable OT Security and Microsoft Defender for IoT." })}</script>
         <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqs.map((f) => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } })) })}</script>
       </>
 
@@ -576,12 +609,12 @@ export default function OTICSSecurity() {
             </button>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + matrixVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + matrixVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">Criteria</th>
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">Criteria</th>
                     {matrixVendors.map((v) => (
                       <th key={v.name} className={`border-l border-white/15 px-2 py-3 sm:px-4 sm:py-5 align-bottom ${v.featured ? "bg-white/10" : ""}`}>
                         <p className="font-display text-sm font-semibold text-white sm:text-base">{v.name}</p>
@@ -706,10 +739,10 @@ export default function OTICSSecurity() {
 
           <div className="mt-8 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + featureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + featureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">Capability</th>
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">Capability</th>
                     {featureVendors.map((v, i) => (
                       <th key={v} className={`border-l border-white/15 px-2 py-3 sm:px-4 sm:py-5 align-bottom font-display text-sm font-semibold text-white sm:text-base ${i === 0 ? "bg-white/10" : ""}`}>
                         {v}
@@ -880,6 +913,8 @@ export default function OTICSSecurity() {
       </section>
 
       <CTASection title="Get the OT / ICS Security Selection Guide" description="A vendor-neutral comparison of Nozomi, Claroty, Dragos, Tenable OT and Microsoft Defender for IoT, with TCO analysis, sensor sizing and real UAE deployment case studies." primaryButton={{ text: "Book a free OT posture assessment", action: "modal" }} />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

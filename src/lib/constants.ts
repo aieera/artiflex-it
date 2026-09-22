@@ -344,7 +344,7 @@ export const FOOTER_LINKS = {
 } as const;
 
 export const CONTACT_INFO = {
-  address: "Malik Saeed Suhail Saeed Bin Daliwi Al-Kutbi - Bardab - First Commercial Center 45B - Office No.102, Dubai, United Arab Emirates",
+  address: "M22, New Al Safiya Building, Near Abu Hail Metro Station, Hor Al Anz, Dubai, United Arab Emirates",
   phone: "+971 52 207 6531",
   email: "info@artiflexit.com",
 } as const;

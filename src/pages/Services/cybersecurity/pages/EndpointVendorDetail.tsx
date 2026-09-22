@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import FAQAccordion from "@/components/ui/FAQAccordion";
+import SophosAccreditationBadge from "@/components/ui/SophosAccreditationBadge";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 import {
@@ -87,14 +88,132 @@ export default function EndpointVendorDetail() {
     return <Navigate to="/cybersecurity/endpoint-security-edr-xdr" replace />;
   }
 
+  // Clean brand name for SEO strings; the visible H1 still uses the full
+  // vendor.name. seoBrand strips any "Endpoint" suffix so "Endpoint Protection"
+  // does not read doubled (e.g. "Sophos Endpoint Protection", not
+  // "Sophos Endpoint endpoint protection").
+  const brand = vendor.seoBrand ?? vendor.name;
+
+  // Keyword-led meta description, seeded from each vendor's own tagline so the
+  // copy reads differently on every page (no near-duplicate boilerplate).
+  // Break on a word boundary so Google never shows a half-cut sentence.
+  const metaDescription = vendor.metaDescription;
+
+  // Two templated FAQs that capture the "pricing UAE" and "implementation Dubai"
+  // secondary keywords; appended to each vendor's own unique FAQ set.
+  const seoFaqs = [
+    {
+      question: `How much does ${brand} endpoint protection cost in the UAE?`,
+      answer: `${brand} pricing in the UAE depends on the endpoint count, tier (EDR, XDR or MDR), contract term and bundle. Artiflex provides vendor-neutral sizing and a written ${brand} quote for your environment, so you only pay for the endpoints and modules you actually need across the UAE, Oman and Saudi Arabia.`,
+    },
+    {
+      question: `How long does ${brand} implementation take in Dubai?`,
+      answer: `A typical ${brand} endpoint protection rollout in Dubai runs about 1 to 3 weeks from assessment to full deployment, covering policy design, agent rollout, tuning and a managed handover. Artiflex handles the full deployment and ongoing managed detection and response across the UAE.`,
+    },
+  ];
+  const faqItems = [...vendor.faqs, ...seoFaqs];
+
+  const pageUrl = `https://artiflexit.com/cybersecurity/endpoint/${vendor.slug}`;
+  const pageTitle = vendor.metaTitle;
+  const ogImage = "https://artiflexit.com/og-image.png";
+
   return (
     <>
-      <title>{`${vendor.name} | Endpoint Security UAE | Artiflex IT`}</title>
-      <meta name="description" content={vendor.description.slice(0, 160)} />
-      <link
-        rel="canonical"
-        href={`https://artiflexit.com/cybersecurity/endpoint/${vendor.slug}`}
-      />
+      <title>{pageTitle}</title>
+      <meta name="description" content={metaDescription} />
+      <link rel="canonical" href={pageUrl} />
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+      <meta httpEquiv="content-language" content="en-AE" />
+      <meta name="geo.region" content="AE-DU" />
+      <meta name="geo.placename" content="Dubai" />
+      <meta name="geo.position" content="25.2528;55.3300" />
+      <meta name="ICBM" content="25.2528, 55.3300" />
+
+      {/* hreflang, UAE primary, Oman + Saudi Arabia secondary */}
+      <link rel="alternate" hrefLang="en-ae" href={pageUrl} />
+      <link rel="alternate" hrefLang="en-om" href={pageUrl} />
+      <link rel="alternate" hrefLang="en-sa" href={pageUrl} />
+      <link rel="alternate" hrefLang="x-default" href={pageUrl} />
+
+      {/* Open Graph */}
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:url" content={pageUrl} />
+      <meta property="og:site_name" content="Artiflex Information Technology" />
+      <meta property="og:locale" content="en_AE" />
+      <meta property="og:locale:alternate" content="en_US" />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={pageTitle} />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:site" content="@artiflexit" />
+
+      {/* JSON-LD: Service schema (endpoint deployment / managed service offered
+          by Artiflex IT, using the vendor's product as the underlying brand). */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Endpoint Detection and Response",
+          name: vendor.name,
+          description: metaDescription,
+          url: pageUrl,
+          provider: {
+            "@type": "Organization",
+            name: "Artiflex Information Technology",
+            url: "https://artiflexit.com",
+          },
+          brand: {
+            "@type": "Brand",
+            name: vendor.name,
+          },
+          areaServed: [
+            { "@type": "Country", name: "United Arab Emirates" },
+            { "@type": "Country", name: "Oman" },
+            { "@type": "Country", name: "Saudi Arabia" },
+          ],
+        })}
+      </script>
+
+      {/* JSON-LD: Breadcrumbs */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://artiflexit.com/" },
+            { "@type": "ListItem", position: 2, name: "Cybersecurity", item: "https://artiflexit.com/cybersecurity" },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: "Endpoint Security (EDR & XDR)",
+              item: "https://artiflexit.com/cybersecurity/endpoint-security-edr-xdr",
+            },
+            { "@type": "ListItem", position: 4, name: vendor.name, item: pageUrl },
+          ],
+        })}
+      </script>
+
+      {/* JSON-LD: FAQPage (vendor FAQs + templated pricing/implementation FAQs) */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqItems.map((f) => ({
+            "@type": "Question",
+            name: f.question,
+            acceptedAnswer: { "@type": "Answer", text: f.answer },
+          })),
+        })}
+      </script>
 
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#04101E] to-[#0A3D6B]">
@@ -145,8 +264,11 @@ export default function EndpointVendorDetail() {
               </div>
 
               {/* Vendor name */}
-              <h1 className="mt-6 font-display text-4xl font-bold leading-[0.95] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.25rem]">
+              <p className="mt-6 font-display text-4xl font-bold leading-[0.95] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.25rem]">
                 {vendor.name}
+              </p>
+              <h1 className="mt-3 block font-display text-base font-semibold leading-snug text-[#28B5E1] sm:text-lg md:text-xl">
+                Endpoint Protection Implementation, Pricing &amp; Support in Dubai &amp; UAE
               </h1>
 
               {/* Tagline */}
@@ -226,7 +348,7 @@ export default function EndpointVendorDetail() {
                 />
                 <img
                   src={vendor.logo}
-                  alt={`${vendor.name} logo`}
+                  alt={`${brand} endpoint protection deployed by Artiflex IT in Dubai and the UAE`}
                   className="relative z-10 max-h-32 w-full max-w-[80%] object-contain"
                 />
               </div>
@@ -234,6 +356,9 @@ export default function EndpointVendorDetail() {
           </div>
         </div>
       </section>
+
+      {/* Sophos accreditation trust strip, shown only on Sophos vendor pages */}
+      {vendor.slug.startsWith("sophos") && <SophosAccreditationBadge variant="platform" />}
 
       {/* KEY FACTS (rendered only when keyStats has entries) */}
       {vendor.keyStats.length > 0 && (
@@ -506,7 +631,7 @@ export default function EndpointVendorDetail() {
               Product portfolio
             </p>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
-              Models we deploy and manage
+              {brand} models we deploy in Dubai &amp; UAE
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
               Picking the right SKU is as important as picking the right vendor. We size by endpoint count, OS mix, and operational capacity, not by brochure tier.
@@ -573,7 +698,7 @@ export default function EndpointVendorDetail() {
               Why Artiflex IT
             </p>
             <h2 className="mt-4 font-display text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl">
-              Delivering {vendor.name} across the UAE
+              Delivering {brand} endpoint protection across Dubai &amp; the UAE
             </h2>
             <p className="mt-6 text-base leading-relaxed text-slate-200 sm:text-lg">
               {vendor.whyArtiflex}
@@ -685,7 +810,7 @@ export default function EndpointVendorDetail() {
             </h2>
           </div>
           <div className="mt-10">
-            <FAQAccordion items={vendor.faqs} />
+            <FAQAccordion items={faqItems} />
           </div>
         </div>
       </section>

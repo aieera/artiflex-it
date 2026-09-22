@@ -1,86 +1,112 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
-import FirewallsNetworkSecurity from "./pages/Services/cybersecurity/pages/FirewallsNetworkSecurity";
-import FirewallVendorDetail from "./pages/Services/cybersecurity/pages/FirewallVendorDetail";
-import EdrXdrSecurity from "./pages/Services/cybersecurity/pages/EdrXdrSecurity";
-import EndpointVendorDetail from "./pages/Services/cybersecurity/pages/EndpointVendorDetail";
-import EmailSecurityBusiness from "./pages/Services/cybersecurity/pages/EmailSecurityBusiness";
-import EmailVendorDetail from "./pages/Services/cybersecurity/pages/EmailVendorDetail";
-import WorkspaceProtectionSASE from "./pages/Services/cybersecurity/pages/WorkspaceProtectionSASE";
-import WorkspaceVendorDetail from "./pages/Services/cybersecurity/pages/WorkspaceVendorDetail";
-import DataLossPrevention from "./pages/Services/cybersecurity/pages/DataLossPrevention";
-import DlpVendorDetail from "./pages/Services/cybersecurity/pages/DlpVendorDetail";
-import IdentityAccessSecurity from "./pages/Services/cybersecurity/pages/IdentityAccessSecurity";
-import IdentityAccessManagement from "./pages/Services/cybersecurity/pages/IdentityAccessManagement";
-import MfaProduct from "./pages/Services/cybersecurity/pages/iam/MfaProduct";
-import IgaProduct from "./pages/Services/cybersecurity/pages/iam/IgaProduct";
-import PamProduct from "./pages/Services/cybersecurity/pages/iam/PamProduct";
-import PamVendorDetail from "./pages/Services/cybersecurity/pages/PamVendorDetail";
-import IgaVendorDetail from "./pages/Services/cybersecurity/pages/IgaVendorDetail";
-import IamVendorDetail from "./pages/Services/cybersecurity/pages/IamVendorDetail";
-import MfaVendorDetail from "./pages/Services/cybersecurity/pages/MfaVendorDetail";
-import SecurityOperations from "./pages/Services/cybersecurity/pages/SecurityOperations";
-import SecurityOperationsSiem from "./pages/Services/cybersecurity/pages/SecurityOperationsSiem";
-import SecurityOperationsNdr from "./pages/Services/cybersecurity/pages/SecurityOperationsNdr";
-import SecurityOperationsMdr from "./pages/Services/cybersecurity/pages/SecurityOperationsMdr";
-import SecOpsVendorDetail from "./pages/Services/cybersecurity/pages/SecOpsVendorDetail";
-import VulnerabilityManagement from "./pages/Services/cybersecurity/pages/VulnerabilityManagement";
-import VmVendorDetail from "./pages/Services/cybersecurity/pages/VmVendorDetail";
-import UnifiedFirewallManagement from "./pages/Services/cybersecurity/pages/UnifiedFirewallManagement";
-import MobileSecurity from "./pages/Services/cybersecurity/pages/MobileSecurity";
-import MobileSecurityHexnode from "./pages/Services/cybersecurity/pages/MobileSecurityHexnode";
-import MobileSecuritySophos from "./pages/Services/cybersecurity/pages/MobileSecuritySophos";
-import MobileSecurityZimperium from "./pages/Services/cybersecurity/pages/MobileSecurityZimperium";
-import MobileSecurityIntune from "./pages/Services/cybersecurity/pages/MobileSecurityIntune";
-import MobileSecurityJamf from "./pages/Services/cybersecurity/pages/MobileSecurityJamf";
-import MobileSecurityOmnissa from "./pages/Services/cybersecurity/pages/MobileSecurityOmnissa";
-import MobileSecurityLookout from "./pages/Services/cybersecurity/pages/MobileSecurityLookout";
-import OTICSSecurity from "./pages/Services/cybersecurity/pages/OTICSSecurity";
-import OTICSSecurityNozomi from "./pages/Services/cybersecurity/pages/OTICSSecurityNozomi";
-import OTICSSecurityClaroty from "./pages/Services/cybersecurity/pages/OTICSSecurityClaroty";
-import OTICSSecurityDragos from "./pages/Services/cybersecurity/pages/OTICSSecurityDragos";
-import OTICSSecurityTenable from "./pages/Services/cybersecurity/pages/OTICSSecurityTenable";
-import OTICSSecurityMSDefenderIoT from "./pages/Services/cybersecurity/pages/OTICSSecurityMSDefenderIoT";
-import PublicCloud from "./pages/Services/cloud-solutions/pages/PublicCloud";
-import PrivateCloud from "./pages/Services/cloud-solutions/pages/PrivateCloud";
-import HybridCloud from "./pages/Services/cloud-solutions/pages/HybridCloud";
-import MultiCloud from "./pages/Services/cloud-solutions/pages/MultiCloud";
-import CloudMigration from "./pages/Services/cloud-solutions/pages/CloudMigration";
-import BackupAsAService from "./pages/Services/cloud-solutions/pages/BackupAsAService";
-import DisasterRecoveryAsAService from "./pages/Services/cloud-solutions/pages/DisasterRecoveryAsAService";
-import DataCenterInfrastructure from "./pages/Services/infrastructure/pages/DataCenterInfrastructure";
-import ServersComputeVirtualization from "./pages/Services/infrastructure/pages/ServersComputeVirtualization";
-import StorageSolutions from "./pages/Services/infrastructure/pages/StorageSolutions";
-import BackupDataManagement from "./pages/Services/infrastructure/pages/BackupDataManagement";
-import DocumentManagementSystems from "./pages/Services/infrastructure/pages/DocumentManagementSystems";
-import NetworkInfrastructure from "./pages/Services/infrastructure/pages/NetworkInfrastructure";
-import WirelessSolutions from "./pages/Services/infrastructure/pages/WirelessSolutions";
-import StructuredCabling from "./pages/Services/infrastructure/pages/StructuredCabling";
-import UnifiedCommunicationTelephony from "./pages/Services/infrastructure/pages/UnifiedCommunicationTelephony";
-import VideoConferencingCollaboration from "./pages/Services/infrastructure/pages/VideoConferencingCollaboration";
-import CctvSurveillance from "./pages/Services/infrastructure/pages/CctvSurveillance";
-import AccessControlBiometrics from "./pages/Services/infrastructure/pages/AccessControlBiometrics";
-import PowerUps from "./pages/Services/infrastructure/pages/PowerUps";
-import PrintingDocumentSolutions from "./pages/Services/infrastructure/pages/PrintingDocumentSolutions";
 
+/**
+ * All route components are lazy-loaded.
+ *
+ * Why: previously these were eager-imported at the top of this file, which
+ * meant the home page download included the JS for every cybersecurity, cloud,
+ * infrastructure, business-solutions and vendor-detail page. That ballooned
+ * the main bundle to ~4 MB and pushed mobile TBT past 5 seconds. Lazy()
+ * splits each route into its own chunk so the initial visit only fetches
+ * the Layout + the route the user actually loaded.
+ */
+
+// Core pages
 const HomePage = lazy(() => import("@/pages/Home/pages/HomePage"));
 const AboutPage = lazy(() => import("@/pages/About/AboutPage"));
-const CybersecurityPage = lazy(() => import("@/pages/Services/CybersecurityPage"));
-const CloudSolutionsPage = lazy(() => import("@/pages/Services/CloudSolutionsPage"));
-const InfrastructurePage = lazy(() => import("@/pages/Services/InfrastructurePage"));
-const ManagedServicesPage = lazy(() => import("@/pages/Services/ManagedServicesPage"));
-const BlogPage = lazy(() => import("@/pages/Blogs/pages/BlogPage"));
-const BlogPostPage = lazy(() => import("@/pages/Blogs/pages/BlogPostPage"));
-const BlogCategoryPage = lazy(() => import("@/pages/Blogs/pages/BlogCategoryPage"));
 const ContactPage = lazy(() => import("@/pages/Contact/ContactPage"));
 const FAQPage = lazy(() => import("@/pages/FAQ/FAQPage"));
 const TermsPage = lazy(() => import("@/pages/Legal/TermsPage"));
 const PrivacyPage = lazy(() => import("@/pages/Legal/PrivacyPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFound/NotFoundPage"));
+
+// Blog
+const BlogPage = lazy(() => import("@/pages/Blogs/pages/BlogPage"));
+const BlogPostPage = lazy(() => import("@/pages/Blogs/pages/BlogPostPage"));
+const BlogCategoryPage = lazy(() => import("@/pages/Blogs/pages/BlogCategoryPage"));
+
+// Vendors
 const VendorsPage = lazy(() => import("@/pages/Vendors/VendorsPage"));
 const VendorDetailPage = lazy(() => import("@/pages/Vendors/VendorDetailPage"));
+
+// Hub pages
+const CybersecurityPage = lazy(() => import("@/pages/Services/CybersecurityPage"));
+const CloudSolutionsPage = lazy(() => import("@/pages/Services/CloudSolutionsPage"));
+const InfrastructurePage = lazy(() => import("@/pages/Services/InfrastructurePage"));
+const ManagedServicesPage = lazy(() => import("@/pages/Services/ManagedServicesPage"));
 const ApplicationSecurityPage = lazy(() => import("@/pages/Services/ApplicationSecurityPage"));
+
+// Cybersecurity sub-pages
+const FirewallsNetworkSecurity = lazy(() => import("./pages/Services/cybersecurity/pages/FirewallsNetworkSecurity"));
+const FirewallVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/FirewallVendorDetail"));
+const UnifiedFirewallManagement = lazy(() => import("./pages/Services/cybersecurity/pages/UnifiedFirewallManagement"));
+const EdrXdrSecurity = lazy(() => import("./pages/Services/cybersecurity/pages/EdrXdrSecurity"));
+const EndpointVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/EndpointVendorDetail"));
+const EmailSecurityBusiness = lazy(() => import("./pages/Services/cybersecurity/pages/EmailSecurityBusiness"));
+const EmailVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/EmailVendorDetail"));
+const WorkspaceProtectionSASE = lazy(() => import("./pages/Services/cybersecurity/pages/WorkspaceProtectionSASE"));
+const WorkspaceVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/WorkspaceVendorDetail"));
+const DataLossPrevention = lazy(() => import("./pages/Services/cybersecurity/pages/DataLossPrevention"));
+const DlpVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/DlpVendorDetail"));
+const IdentityAccessSecurity = lazy(() => import("./pages/Services/cybersecurity/pages/IdentityAccessSecurity"));
+const IdentityAccessManagement = lazy(() => import("./pages/Services/cybersecurity/pages/IdentityAccessManagement"));
+const MfaProduct = lazy(() => import("./pages/Services/cybersecurity/pages/iam/MfaProduct"));
+const IgaProduct = lazy(() => import("./pages/Services/cybersecurity/pages/iam/IgaProduct"));
+const PamProduct = lazy(() => import("./pages/Services/cybersecurity/pages/iam/PamProduct"));
+const PamVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/PamVendorDetail"));
+const IgaVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/IgaVendorDetail"));
+const IamVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/IamVendorDetail"));
+const MfaVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/MfaVendorDetail"));
+const SecurityOperations = lazy(() => import("./pages/Services/cybersecurity/pages/SecurityOperations"));
+const SecurityOperationsSiem = lazy(() => import("./pages/Services/cybersecurity/pages/SecurityOperationsSiem"));
+const SecurityOperationsNdr = lazy(() => import("./pages/Services/cybersecurity/pages/SecurityOperationsNdr"));
+const SecurityOperationsMdr = lazy(() => import("./pages/Services/cybersecurity/pages/SecurityOperationsMdr"));
+const SecOpsVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/SecOpsVendorDetail"));
+const VulnerabilityManagement = lazy(() => import("./pages/Services/cybersecurity/pages/VulnerabilityManagement"));
+const VmVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/VmVendorDetail"));
+const MobileSecurity = lazy(() => import("./pages/Services/cybersecurity/pages/MobileSecurity"));
+const MobileSecurityHexnode = lazy(() => import("./pages/Services/cybersecurity/pages/MobileSecurityHexnode"));
+const MobileSecuritySophos = lazy(() => import("./pages/Services/cybersecurity/pages/MobileSecuritySophos"));
+const MobileSecurityZimperium = lazy(() => import("./pages/Services/cybersecurity/pages/MobileSecurityZimperium"));
+const MobileSecurityIntune = lazy(() => import("./pages/Services/cybersecurity/pages/MobileSecurityIntune"));
+const MobileSecurityJamf = lazy(() => import("./pages/Services/cybersecurity/pages/MobileSecurityJamf"));
+const MobileSecurityOmnissa = lazy(() => import("./pages/Services/cybersecurity/pages/MobileSecurityOmnissa"));
+const MobileSecurityLookout = lazy(() => import("./pages/Services/cybersecurity/pages/MobileSecurityLookout"));
+const OTICSSecurity = lazy(() => import("./pages/Services/cybersecurity/pages/OTICSSecurity"));
+const OTICSSecurityNozomi = lazy(() => import("./pages/Services/cybersecurity/pages/OTICSSecurityNozomi"));
+const OTICSSecurityClaroty = lazy(() => import("./pages/Services/cybersecurity/pages/OTICSSecurityClaroty"));
+const OTICSSecurityDragos = lazy(() => import("./pages/Services/cybersecurity/pages/OTICSSecurityDragos"));
+const OTICSSecurityTenable = lazy(() => import("./pages/Services/cybersecurity/pages/OTICSSecurityTenable"));
+const OTICSSecurityMSDefenderIoT = lazy(() => import("./pages/Services/cybersecurity/pages/OTICSSecurityMSDefenderIoT"));
+
+// Cloud sub-pages
+const PublicCloud = lazy(() => import("./pages/Services/cloud-solutions/pages/PublicCloud"));
+const PrivateCloud = lazy(() => import("./pages/Services/cloud-solutions/pages/PrivateCloud"));
+const HybridCloud = lazy(() => import("./pages/Services/cloud-solutions/pages/HybridCloud"));
+const MultiCloud = lazy(() => import("./pages/Services/cloud-solutions/pages/MultiCloud"));
+const CloudMigration = lazy(() => import("./pages/Services/cloud-solutions/pages/CloudMigration"));
+const BackupAsAService = lazy(() => import("./pages/Services/cloud-solutions/pages/BackupAsAService"));
+const DisasterRecoveryAsAService = lazy(() => import("./pages/Services/cloud-solutions/pages/DisasterRecoveryAsAService"));
+
+// Infrastructure sub-pages
+const DataCenterInfrastructure = lazy(() => import("./pages/Services/infrastructure/pages/DataCenterInfrastructure"));
+const ServersComputeVirtualization = lazy(() => import("./pages/Services/infrastructure/pages/ServersComputeVirtualization"));
+const StorageSolutions = lazy(() => import("./pages/Services/infrastructure/pages/StorageSolutions"));
+const BackupDataManagement = lazy(() => import("./pages/Services/infrastructure/pages/BackupDataManagement"));
+const DocumentManagementSystems = lazy(() => import("./pages/Services/infrastructure/pages/DocumentManagementSystems"));
+const NetworkInfrastructure = lazy(() => import("./pages/Services/infrastructure/pages/NetworkInfrastructure"));
+const WirelessSolutions = lazy(() => import("./pages/Services/infrastructure/pages/WirelessSolutions"));
+const StructuredCabling = lazy(() => import("./pages/Services/infrastructure/pages/StructuredCabling"));
+const UnifiedCommunicationTelephony = lazy(() => import("./pages/Services/infrastructure/pages/UnifiedCommunicationTelephony"));
+const VideoConferencingCollaboration = lazy(() => import("./pages/Services/infrastructure/pages/VideoConferencingCollaboration"));
+const CctvSurveillance = lazy(() => import("./pages/Services/infrastructure/pages/CctvSurveillance"));
+const AccessControlBiometrics = lazy(() => import("./pages/Services/infrastructure/pages/AccessControlBiometrics"));
+const PowerUps = lazy(() => import("./pages/Services/infrastructure/pages/PowerUps"));
+const PrintingDocumentSolutions = lazy(() => import("./pages/Services/infrastructure/pages/PrintingDocumentSolutions"));
+
+// Business Solutions sub-pages
 const BusinessSolutionsOverview = lazy(() => import("@/pages/Services/business-solutions/pages/BusinessSolutionsOverview"));
 const ErpSoftware = lazy(() => import("@/pages/Services/business-solutions/pages/ErpSoftware"));
 const CrmSoftware = lazy(() => import("@/pages/Services/business-solutions/pages/CrmSoftware"));
@@ -147,8 +173,15 @@ export default function App() {
           <Route path="/cybersecurity/security-operations/:discipline/:slug" element={<SecOpsVendorDetail />} />
           <Route path="/cybersecurity/vulnerability-management" element={<VulnerabilityManagement />} />
           <Route path="/cybersecurity/vulnerability-management/:slug" element={<VmVendorDetail />} />
-          <Route path="/cybersecurity/vendor-scorecard" element={<Navigate to="/cybersecurity#scorecard" replace />} />
+          <Route path="/cybersecurity/vendor-scorecard" element={<Navigate to="/cybersecurity" replace />} />
           <Route path="/cybersecurity/implementation-roadmap" element={<Navigate to="/cybersecurity#roadmap" replace />} />
+          {/*
+            Stale URL: Google has crawled /cybersecurity/identity-access-management/*
+            (note: -management/, not -security/). Redirect to the real hub so any
+            existing backlinks + Google Tag pageviews land on a tagged page.
+          */}
+          <Route path="/cybersecurity/identity-access-management" element={<Navigate to="/cybersecurity/identity-access-security" replace />} />
+          <Route path="/cybersecurity/identity-access-management/:sub" element={<Navigate to="/cybersecurity/identity-access-security" replace />} />
 
 
           <Route path="/cloud-solutions" element={<CloudSolutionsPage />} />
@@ -205,15 +238,6 @@ export default function App() {
 
           {/* Catch-all 404, must remain the last route */}
           <Route path="*" element={<NotFoundPage />} />
-
-
-          {/* <Route path="/cybersecurity/next-gen-firewall" element={<NGFWPage />} />
-          <Route path="/cybersecurity/endpoint-detection-response" element={<EDRXDRPage />} />
-          <Route path="/cybersecurity/email-security" element={<EmailSecurityPage />} />
-          <Route path="/cybersecurity/data-loss-prevention" element={<DLPPage />} />
-          <Route path="/cybersecurity/sase-zero-trust" element={<SASEPage />} />
-          <Route path="/cybersecurity/managed-detection-response" element={<SIEMSOCMDRPage />} />
-          <Route path="/cybersecurity/vulnerability-assessment-penetration-testing" element={<VulnAssessmentPage />} /> */}
         </Route>
       </Routes>
     </Suspense >

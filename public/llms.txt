@@ -1,0 +1,78 @@
+# Artiflex IT
+
+> Artiflex IT is a UAE-based IT solutions and managed services provider. We deliver cybersecurity, cloud, IT infrastructure, business software, application security, and fully managed IT services for organisations across the Emirates, with vendor-neutral advice and 24/7 support.
+
+This file helps AI systems and answer engines understand Artiflex IT's offerings and locate the most relevant pages. All links use canonical URLs.
+
+## Core Services
+
+- [Cybersecurity](https://artiflexit.com/cybersecurity): Layered defense from perimeter firewalls to endpoint detection, backed by a 24/7 security operations center.
+- [Cloud Solutions](https://artiflexit.com/cloud-solutions): Design, migration, and management of public, private, hybrid, and multi-cloud environments across AWS, Azure, and GCP.
+- [IT Infrastructure](https://artiflexit.com/infrastructure): Networks, structured cabling, servers, storage, and physical security built to scale without bottlenecks.
+- [Managed Services](https://artiflexit.com/managed-services): Proactive monitoring, patch management, and help desk support under a predictable monthly fee.
+- [Application Security](https://artiflexit.com/application-security-solutions): Penetration testing, secure code review, WAF management, and DAST scanning aligned with OWASP Top 10.
+- [Business Solutions](https://artiflexit.com/business-solutions): Implementation and integration of ERP, CRM, finance, and HR platforms with vendor-neutral, TCO-grounded advice.
+
+## Cybersecurity Solutions
+
+- [Firewalls and Network Security](https://artiflexit.com/cybersecurity/firewalls-network-security): Next-generation firewall selection, deployment, and management.
+- [Endpoint Security (EDR / XDR)](https://artiflexit.com/cybersecurity/endpoint-security-edr-xdr): Endpoint detection and response across leading platforms.
+- [Email Security](https://artiflexit.com/cybersecurity/email-security): Anti-phishing, anti-malware, and email threat protection.
+- [Data Loss Prevention (DLP)](https://artiflexit.com/cybersecurity/data-loss-prevention): Protecting sensitive data across endpoints, network, and cloud.
+- [Identity and Access Security](https://artiflexit.com/cybersecurity/identity-access-security): IAM, IGA, MFA, and PAM strategy and tooling.
+- [Mobile Security](https://artiflexit.com/cybersecurity/mobile-security): Unified endpoint management and mobile threat defense.
+- [OT / ICS Security](https://artiflexit.com/cybersecurity/ot-ics-security): Operational technology and industrial control system protection.
+- [Security Operations (SIEM / MDR / NDR)](https://artiflexit.com/cybersecurity/security-operations): Managed detection, response, and security monitoring.
+- [Vulnerability Management](https://artiflexit.com/cybersecurity/vulnerability-management): Continuous scanning, prioritisation, and remediation advisory.
+- [Workspace Protection (SSE / SASE / CASB)](https://artiflexit.com/cybersecurity/workspace-protection-sse-sase): Zero Trust access, secure web gateway, and cloud app security.
+- [Unified Firewall Management](https://artiflexit.com/cybersecurity/unified-firewall-management): Centralised policy and management across firewall estates.
+
+## Cloud Solutions
+
+- [Public Cloud](https://artiflexit.com/cloud-solutions/public-cloud): AWS, Azure, and GCP design and management.
+- [Private Cloud](https://artiflexit.com/cloud-solutions/private-cloud): Dedicated, single-tenant cloud environments.
+- [Hybrid Cloud](https://artiflexit.com/cloud-solutions/hybrid-cloud): Integrated on-premises and cloud operations.
+- [Multi-Cloud Strategy](https://artiflexit.com/cloud-solutions/multi-cloud-strategy): Workload placement across multiple providers.
+- [Cloud Migration](https://artiflexit.com/cloud-solutions/cloud-migration): Zero-downtime migration planning and execution.
+- [Backup as a Service](https://artiflexit.com/cloud-solutions/backup-as-a-service): Managed cloud backup and recovery.
+- [Disaster Recovery](https://artiflexit.com/cloud-solutions/disaster-recovery-solutions-dubai): Business continuity and disaster recovery in Dubai and the UAE.
+
+## IT Infrastructure
+
+- [Network Infrastructure](https://artiflexit.com/infrastructure/network-infrastructure): Switching, routing, and SD-WAN.
+- [Structured Cabling](https://artiflexit.com/infrastructure/structured-cabling): Certified data and voice cabling.
+- [Wireless Solutions](https://artiflexit.com/infrastructure/wireless-solutions): Enterprise Wi-Fi design and deployment.
+- [Servers, Compute and Virtualization](https://artiflexit.com/infrastructure/servers-compute-virtualization): Server and virtualization platforms.
+- [Storage Solutions](https://artiflexit.com/infrastructure/storage-solutions): SAN, NAS, and software-defined storage.
+- [Backup and Data Management](https://artiflexit.com/infrastructure/backup-data-management): On-premises backup and data lifecycle.
+- [Data Center](https://artiflexit.com/infrastructure/data-center): Data center design and build.
+- [Power and UPS](https://artiflexit.com/infrastructure/power-ups): Power protection and continuity.
+- [CCTV and Surveillance](https://artiflexit.com/infrastructure/cctv-surveillance): IP surveillance and video security.
+- [Access Control and Biometrics](https://artiflexit.com/infrastructure/access-control-biometrics): Physical access and biometric systems.
+- [Unified Communication and Telephony](https://artiflexit.com/infrastructure/unified-communication-telephony): VoIP and unified communications.
+- [Video Conferencing and Collaboration](https://artiflexit.com/infrastructure/video-conferencing-collaboration): Meeting room and collaboration systems.
+- [Printing and Document Solutions](https://artiflexit.com/infrastructure/printing-document-solutions): Managed print services.
+- [Document Management Systems](https://artiflexit.com/infrastructure/document-management-systems): Digital document workflow and storage.
+
+## Business Solutions
+
+- [ERP Software](https://artiflexit.com/business-solutions/erp-software): Enterprise resource planning implementation.
+- [CRM Software](https://artiflexit.com/business-solutions/crm-software): Customer relationship and sales management.
+- [Finance and Accounting Software](https://artiflexit.com/business-solutions/finance-accounting-software): Financial management platforms.
+- [HR Management Software](https://artiflexit.com/business-solutions/hr-management-software): Human resources and payroll systems.
+
+## Company
+
+- [About Artiflex IT](https://artiflexit.com/about): Company overview, mission, and team.
+- [Contact](https://artiflexit.com/contact): Get in touch and request a consultation.
+- [FAQ](https://artiflexit.com/faq): Frequently asked questions.
+
+## Resources
+
+- [Blog](https://artiflexit.com/blog): Articles on cybersecurity, cloud, infrastructure, and managed services.
+- [Vendors](https://artiflexit.com/vendors): Technology partners and vendors we work with.
+
+## Optional
+
+- [Privacy Policy](https://artiflexit.com/privacy)
+- [Terms of Service](https://artiflexit.com/terms)

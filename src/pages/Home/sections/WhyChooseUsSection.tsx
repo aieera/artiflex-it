@@ -10,7 +10,7 @@ const reasons = [
   {
     title: "Global Presence, Local Expertise",
     description:
-      "Offices in four countries, including Dubai, Oman, and Saudi Arabia, mean we combine international best practices with deep local knowledge of regional regulations like NESA, ICA, and ADHICS.",
+      "Based in the UAE with offices in Dubai, Oman and India and clients across the UAE, Oman, Saudi Arabia and India, we combine international best practices with deep local knowledge of UAE regulations like NESA, ICA, and ADHICS.",
   },
   {
     title: "One Partner, Complete Coverage",
@@ -34,8 +34,8 @@ export function WhyChooseUsSection() {
       <div className="shell">
         <SectionHeader
           label="Why Artiflex"
-          title="Why Businesses Trust Artiflex"
-          description="Three reasons our clients choose us, and stay."
+          title="Why Businesses Choose Artiflex as Their IT Company in Dubai"
+          description="What separates us from other IT companies in Dubai, and why clients stay."
           centered
         />
 

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 
 /* ───────── HRM VENDORS (HONEYCOMB) ───────── */
 
@@ -619,7 +620,7 @@ function HrManagementSoftwareHero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/business-solutions.jpg'), url('/cloud-solutions.jpg')" }}
+        style={{ backgroundImage: "url('/business-solutions.webp'), url('/cloud-solutions.webp')" }}
       />
       <div
         aria-hidden="true"
@@ -659,12 +660,12 @@ function HrManagementSoftwareHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
-            HRM{" "}
-            <span className="gradient-text">Software</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              Buyer's Guide, Vendor Matrix and Gartner-style Scorecard
-            </span>
+          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+            HRM Software in{" "}
+            <span className="gradient-text">Dubai</span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Payroll, WPS &amp; Gratuity. Vendor Matrix and Gartner-style Scorecard.
           </h1>
 
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
@@ -741,18 +742,55 @@ export default function HrManagementSoftware() {
   return (
     <>
       <>
-        <title>HRM Software Solutions UAE | Buyer's Guide, Vendor Matrix and Gartner-style Scorecard | Artiflex IT</title>
-        <meta
-          name="description"
-          content="UAE buyer's guide for HRM and payroll software. Vendor matrix and Gartner-style scorecard across SAP SuccessFactors, Oracle HCM, Microsoft Dynamics 365 HR, Ramco HCM, Zoho People, Bayzat and Focus Softnet HR, with on-prem TCO analysis."
-        />
+        <title>HRM Software Dubai | Payroll, WPS & Gratuity Compliant</title>
+        <meta name="description" content="HRM software in Dubai with WPS payroll, end-of-service gratuity, GPSSA and MOHRE support across SuccessFactors, Oracle HCM, Ramco, Bayzat and Focus Softnet." />
         <link rel="canonical" href="https://artiflexit.com/business-solutions/hr-management-software" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/business-solutions/hr-management-software" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/business-solutions/hr-management-software" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/business-solutions/hr-management-software" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/business-solutions/hr-management-software" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/business-solutions/hr-management-software" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/business-solutions/hr-management-software" />
+
+        <meta property="og:title" content="HRM Software Dubai | Payroll, WPS & Gratuity Compliant" />
+        <meta property="og:description" content="HRM software in Dubai with WPS payroll, end-of-service gratuity, GPSSA and MOHRE support across SuccessFactors, Oracle HCM, Ramco, Bayzat and Focus Softnet." />
+        <meta property="og:url" content="https://artiflexit.com/business-solutions/hr-management-software" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="HRM Software Dubai | Payroll, WPS & Gratuity Compliant" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="HRM Software Dubai | Payroll, WPS & Gratuity Compliant" />
+        <meta name="twitter:description" content="HRM software in Dubai with WPS payroll, end-of-service gratuity, GPSSA and MOHRE support across SuccessFactors, Oracle HCM, Ramco, Bayzat and Focus Softnet." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Artiflex IT",
-            "url": "https://artiflexit.com/business-solutions/hr-management-software",
+            "@id": "https://artiflexit.com/#localbusiness",
+            "name": "Artiflex Information Technology",
+            "url": "https://artiflexit.com/",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "M22, New Al Safiya Building, Near Abu Hail Metro Station, Hor Al Anz",
+              "addressLocality": "Dubai",
+              "addressRegion": "Dubai",
+              "addressCountry": "AE",
+            },
             "areaServed": [
               { "@type": "Country", "name": "United Arab Emirates" },
               { "@type": "City", "name": "Dubai" },
@@ -766,7 +804,7 @@ export default function HrManagementSoftware() {
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "HRM Software Solutions",
-            "provider": { "@type": "Organization", "name": "Artiflex IT" },
+            "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
             "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
             "description": "UAE HRM software delivery across SAP SuccessFactors, Oracle HCM, Microsoft Dynamics 365 HR, Ramco HCM, Zoho People, Bayzat and Focus Softnet HRMS: WPS-ready payroll, end-of-service gratuity, GPSSA pension, employee-document automation and 7-year TCO governance.",
           })}
@@ -791,6 +829,7 @@ export default function HrManagementSoftware() {
               "@type": "ListItem",
               "position": i + 1,
               "name": v.name,
+              "url": "https://artiflexit.com/business-solutions/hr-management-software",
             })),
           })}
         </script>
@@ -963,9 +1002,9 @@ export default function HrManagementSoftware() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + selectionFramework.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + selectionFramework.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
                     <th className="w-16 px-4 py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
@@ -1077,7 +1116,7 @@ export default function HrManagementSoftware() {
 
           <div className="mt-8 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + tcoRows.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + tcoRows.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#04101E] via-[#0A3D6B] to-[#1B8AC7]">
                     <th className="px-4 py-5 align-bottom font-display text-sm font-semibold text-white sm:text-base">
@@ -1216,12 +1255,12 @@ export default function HrManagementSoftware() {
             </button>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + matrixVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + matrixVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Criteria
                     </th>
                     {matrixVendors.map((v) => (
@@ -1437,12 +1476,12 @@ export default function HrManagementSoftware() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + featureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + featureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Capability
                     </th>
                     {featureVendors.map((v) => (
@@ -1784,6 +1823,8 @@ export default function HrManagementSoftware() {
         description="Free HRM readiness assessment including current platform audit, UAE WPS and compliance posture, employee-document automation scope, 7-year on-prem vs SaaS TCO calculation, and recommended platform plus deployment model."
         primaryButton={{ text: "Book Assessment", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { useContactModal } from "@/components/layout/ContactModal";
 import { CTASection } from "@/pages/Home/sections/CTASection";
@@ -583,12 +583,12 @@ function EmailBusinessHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Email Security{" "}
             <span className="gradient-text">UAE</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              Phishing, BEC &amp; Account Takeover Defence
-            </span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Phishing, BEC &amp; Account Takeover Defence
           </h1>
 
           <p className="mt-5 max-w-2xl font-display text-sm italic leading-relaxed text-slate-300 sm:text-base">
@@ -819,22 +819,48 @@ export default function EmailSecurityBusiness() {
   return (
     <>
       <>
-        <title>Email Security UAE | DMARC, BEC & Brand Protection | Artiflex IT</title>
-        <meta
-          name="description"
-          content="Email security UAE: stop phishing, BEC, ransomware delivery & brand impersonation. Sophos, Check Point Harmony, Fortra (Agari DMARC + PhishLabs), Proofpoint. Free phishing risk test."
-        />
-        <meta
-          name="keywords"
-          content="email security UAE, email security Dubai, DMARC implementation Dubai, BEC protection UAE, phishing protection UAE, Sophos email security, Check Point Harmony email, Fortra email security, Agari DMARC, PhishLabs takedown, Clearswift adaptive redaction, Microsoft Defender for Office 365, Proofpoint UAE"
-        />
+        <title>Email Security UAE | DMARC & BEC Protection | Artiflex IT</title>
+        <meta name="description" content="Email security in the UAE: stop phishing, BEC, ransomware and brand impersonation with Sophos, Check Point Harmony, Fortra DMARC and Proofpoint." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/email-security" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/email-security" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/email-security" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/email-security" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/email-security" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/email-security" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/email-security" />
+
+        <meta property="og:title" content="Email Security UAE | DMARC & BEC Protection | Artiflex IT" />
+        <meta property="og:description" content="Email security in the UAE: stop phishing, BEC, ransomware and brand impersonation with Sophos, Check Point Harmony, Fortra DMARC and Proofpoint." />
+        <meta property="og:url" content="https://artiflexit.com/cybersecurity/email-security" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT email security for the UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Email Security UAE | DMARC & BEC Protection | Artiflex IT" />
+        <meta name="twitter:description" content="Email security in the UAE: stop phishing, BEC, ransomware and brand impersonation with Sophos, Check Point Harmony, Fortra DMARC and Proofpoint." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: "Artiflex IT",
-            url: "https://artiflexit.com/cybersecurity/email-security",
+            "@id": "https://artiflexit.com/#localbusiness",
+            name: "Artiflex Information Technology",
+            url: "https://artiflexit.com/",
             areaServed: [
               { "@type": "Country", name: "United Arab Emirates" },
               { "@type": "City", name: "Dubai" },
@@ -1066,20 +1092,14 @@ export default function EmailSecurityBusiness() {
                     </h3>
                   </div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.p
-                        key="desc"
-                        initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                        animate={{ height: "auto", opacity: 1, marginTop: 12 }}
-                        exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden text-sm leading-relaxed text-slate-600"
-                      >
-                        {t.desc}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
+                  <motion.p
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0, marginTop: isOpen ? 12 : 0 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden text-sm leading-relaxed text-slate-600"
+                  >
+                    {t.desc}
+                  </motion.p>
                 </div>
               );
             })}

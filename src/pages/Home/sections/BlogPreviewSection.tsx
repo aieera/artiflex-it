@@ -12,7 +12,7 @@ const posts = [
       "The UAE faces a 78% increase in sophisticated cyber threats this year. From evolving ransomware strains targeting critical infrastructure to new regulatory mandates reshaping compliance.",
     readTime: "6 min read",
     href: "/blog",
-    image: "/cybermain.jpeg",
+    image: "/cybermain.webp",
   },
   {
     tag: "Cloud",
@@ -22,7 +22,7 @@ const posts = [
       "Most cloud migrations fail not because of technology but because of planning gaps. From dependency mapping to rollback strategies, the seven steps that matter.",
     readTime: "5 min read",
     href: "/blog",
-    image: "/cyber2.png",
+    image: "/cyber2.webp",
   },
   {
     tag: "Infrastructure",
@@ -32,7 +32,7 @@ const posts = [
       "Slow file transfers, frequent outages, and rising help desk tickets are more than annoyances, they are warning signs that your network has outgrown its capacity.",
     readTime: "4 min read",
     href: "/blog",
-    image: "/infra.png",
+    image: "/infra.webp",
   },
 ];
 

@@ -99,28 +99,30 @@ export default function MfaVendorDetail() {
 
   // Build a safe meta description, break on a word boundary if the source is
   // longer than the snippet limit so Google does not show a half-cut sentence.
-  const metaDescription = (() => {
-    const raw = vendor.description.replace(/\s+/g, " ").trim();
-    if (raw.length <= 155) return raw;
-    const cut = raw.slice(0, 155);
-    const lastSpace = cut.lastIndexOf(" ");
-    return (lastSpace > 100 ? cut.slice(0, lastSpace) : cut).replace(/[,.;:!?-]+$/, "") + "…";
-  })();
+  const metaDescription = vendor.metaDescription;
 
   const pageUrl = `https://artiflexit.com/cybersecurity/mfa/${vendor.slug}`;
-  const pageTitle = `${vendor.name} | Multi-Factor Authentication UAE | Artiflex IT`;
-  const ogImage = "https://artiflexit.com/og/identity-access-security.png";
+  const pageTitle = vendor.metaTitle;
+  const ogImage = "https://artiflexit.com/og-image.png";
 
   return (
     <>
       <title>{pageTitle}</title>
       <meta name="description" content={metaDescription} />
       <link rel="canonical" href={pageUrl} />
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
-      {/* hreflang, UAE primary, Oman + Saudi Arabia secondary */}
+      <meta httpEquiv="content-language" content="en-AE" />
+      <meta name="geo.region" content="AE-DU" />
+      <meta name="geo.placename" content="Dubai" />
+      <meta name="geo.position" content="25.2528;55.3300" />
+      <meta name="ICBM" content="25.2528, 55.3300" />
+
       <link rel="alternate" hrefLang="en-ae" href={pageUrl} />
       <link rel="alternate" hrefLang="en-om" href={pageUrl} />
       <link rel="alternate" hrefLang="en-sa" href={pageUrl} />
+      <link rel="alternate" hrefLang="en-in" href={pageUrl} />
+      <link rel="alternate" hrefLang="en" href={pageUrl} />
       <link rel="alternate" hrefLang="x-default" href={pageUrl} />
 
       {/* Open Graph */}
@@ -128,40 +130,44 @@ export default function MfaVendorDetail() {
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:url" content={pageUrl} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:site_name" content="Artiflex IT" />
+      <meta property="og:site_name" content="Artiflex Information Technology" />
       <meta property="og:locale" content="en_AE" />
+      <meta property="og:locale:alternate" content="en_US" />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={pageTitle} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:site" content="@artiflexit" />
 
       {/* JSON-LD: Product schema for the MFA platform */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Product",
+          "@type": "Service",
+          serviceType: "Multi-Factor Authentication",
           name: vendor.name,
-          category: "Multi-Factor Authentication",
           description: metaDescription,
-          brand: { "@type": "Brand", name: vendor.name },
           url: pageUrl,
-          offers: {
-            "@type": "Offer",
-            availability: "https://schema.org/InStock",
-            seller: {
-              "@type": "Organization",
-              name: "Artiflex Information Technology",
-              url: "https://artiflexit.com",
-            },
-            areaServed: [
-              { "@type": "Country", name: "United Arab Emirates" },
-              { "@type": "Country", name: "Oman" },
-              { "@type": "Country", name: "Saudi Arabia" },
-            ],
+          provider: {
+            "@type": "Organization",
+            name: "Artiflex Information Technology",
+            url: "https://artiflexit.com",
           },
+          brand: {
+            "@type": "Brand",
+            name: vendor.name,
+          },
+          areaServed: [
+            { "@type": "Country", name: "United Arab Emirates" },
+            { "@type": "Country", name: "Oman" },
+            { "@type": "Country", name: "Saudi Arabia" },
+          ],
         })}
       </script>
 

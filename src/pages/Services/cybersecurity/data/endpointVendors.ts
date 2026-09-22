@@ -1,6 +1,13 @@
 export type EndpointVendor = {
   slug: string;
   name: string;
+  /** Clean brand name used only for SEO strings (title, meta, keywords, FAQs).
+      Defaults to `name` when omitted. Set when `name` carries an "Endpoint"
+      suffix (so "Endpoint Protection" does not read doubled) or differs from
+      the keyword brand. */
+  seoBrand?: string;
+  metaTitle: string;
+  metaDescription: string;
   logo: string;
   tagline: string;
   bestFor: string;
@@ -72,7 +79,11 @@ export type EndpointVendor = {
 export const endpointVendors: Record<string, EndpointVendor> = {
   "sophos-endpoint": {
     slug: "sophos-endpoint",
+    metaTitle: "Sophos Endpoint Protection Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Sophos Intercept X endpoint protection in Dubai and the UAE with deep-learning prevention and Synchronized Security. Artiflex handles rollout and 24/7 MDR.",
     name: "Sophos Endpoint",
+    seoBrand: "Sophos",
     logo: "/logos/sophos.svg",
     tagline: "Formerly Intercept X, deep-learning prevention with Synchronized Security and 24x7 MDR",
     bestFor: "Best Overall Value (Recommended)",
@@ -231,6 +242,9 @@ export const endpointVendors: Record<string, EndpointVendor> = {
 
   "crowdstrike-falcon": {
     slug: "crowdstrike-falcon",
+    metaTitle: "CrowdStrike Falcon Protection Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "CrowdStrike Falcon endpoint protection in Dubai and the UAE: cloud-native EDR with Threat Graph and 24/7 OverWatch hunting. Deployed by Artiflex IT.",
     name: "CrowdStrike Falcon",
     logo: "/logos/CrowdStrike.webp",
     tagline: "Cloud-native EDR with Threat Graph and 24x7 OverWatch managed hunting",
@@ -371,7 +385,11 @@ export const endpointVendors: Record<string, EndpointVendor> = {
 
   "microsoft-defender-endpoint": {
     slug: "microsoft-defender-endpoint",
+    metaTitle: "Microsoft Defender for Endpoint Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Microsoft Defender for Endpoint in Dubai and the UAE: built into Windows and M365 E5 with native Sentinel and Entra integration. Artiflex handles rollout.",
     name: "Microsoft Defender for Endpoint",
+    seoBrand: "Microsoft Defender",
     logo: "/logos/microsoft.svg",
     tagline: "Built into Windows, included with M365 E5, native integration with Sentinel and Entra",
     bestFor: "Best Value for M365 E5 Customers (Recommended)",
@@ -525,6 +543,9 @@ export const endpointVendors: Record<string, EndpointVendor> = {
 
   "sentinelone-singularity": {
     slug: "sentinelone-singularity",
+    metaTitle: "SentinelOne Singularity Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "SentinelOne Singularity endpoint protection in Dubai and the UAE: autonomous AI with Storyline and Purple AI hunting. Deployed by Artiflex IT.",
     name: "SentinelOne Singularity",
     logo: "/logos/SentinelOne.png",
     tagline: "Autonomous AI agent with on-device decisions, Storyline graph, and Purple AI hunting",
@@ -679,6 +700,9 @@ export const endpointVendors: Record<string, EndpointVendor> = {
 
   "bitdefender-gravityzone": {
     slug: "bitdefender-gravityzone",
+    metaTitle: "Bitdefender GravityZone Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Bitdefender GravityZone endpoint protection in Dubai and the UAE: independent-test leader with HyperDetect and anti-exploit. Deployed by Artiflex IT.",
     name: "Bitdefender GravityZone",
     logo: "/logos/Bitdefender.png",
     tagline: "Independent-test leader with HyperDetect ML and Anti-Exploit prevention",
@@ -819,7 +843,11 @@ export const endpointVendors: Record<string, EndpointVendor> = {
 
   "trend-micro-vision-one": {
     slug: "trend-micro-vision-one",
-    name: "Trend Micro Apex One",
+    metaTitle: "Trend Micro Vision One XDR Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Trend Micro Vision One endpoint and XDR protection in Dubai and the UAE with Zero Day Initiative intelligence. Artiflex handles rollout and managed support.",
+    name: "Trend Micro Vision One",
+    seoBrand: "Trend Micro Vision One",
     logo: "/logos/Trend_Micro.svg",
     tagline: "Mature endpoint protection with Zero Day Initiative intelligence and Vision One XDR feed",
     bestFor: "Best for Mature Server Estates (Recommended)",
@@ -959,7 +987,11 @@ export const endpointVendors: Record<string, EndpointVendor> = {
 
   "check-point-harmony": {
     slug: "check-point-harmony",
+    metaTitle: "Check Point Harmony Endpoint Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Check Point Harmony Endpoint in Dubai and the UAE: ThreatCloud AI prevention with anti-ransomware and Forensic Recorder. Artiflex handles rollout and support.",
     name: "Check Point Harmony Endpoint",
+    seoBrand: "Check Point Harmony",
     logo: "/logos/Check-Point-2024-logo-color.svg",
     tagline: "ThreatCloud AI prevention with Anti-Ransomware and Forensic Recorder",
     bestFor: "Strong Choice for Check Point Estates (Recommended)",
@@ -1097,6 +1129,9 @@ export const endpointVendors: Record<string, EndpointVendor> = {
 
   "palo-alto-cortex-xdr": {
     slug: "palo-alto-cortex-xdr",
+    metaTitle: "Palo Alto Cortex XDR Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Palo Alto Cortex XDR in Dubai and the UAE: true XDR with behavioral analytics across endpoint, network, cloud and identity. Deployed by Artiflex IT.",
     name: "Palo Alto Cortex XDR",
     logo: "/logos/PaloAltoNetworks.svg",
     tagline: "True XDR with behavioral analytics across endpoint, network, cloud, and identity",
@@ -1237,6 +1272,9 @@ export const endpointVendors: Record<string, EndpointVendor> = {
 
   "eset-protect": {
     slug: "eset-protect",
+    metaTitle: "ESET PROTECT Endpoint Security Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "ESET PROTECT endpoint security in Dubai and the UAE: lightweight, low-false-positive prevention with mature ML. Artiflex handles rollout and managed support.",
     name: "ESET PROTECT",
     logo: "/logos/ESET.svg",
     tagline: "Lightweight, low-false-positive prevention with mature signatures plus ML",
@@ -1377,7 +1415,11 @@ export const endpointVendors: Record<string, EndpointVendor> = {
 
   "cisco-secure-endpoint": {
     slug: "cisco-secure-endpoint",
+    metaTitle: "Cisco Secure Endpoint Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Cisco Secure Endpoint in Dubai and the UAE: Talos-powered EDR with retrospective security and SecureX correlation. Artiflex handles rollout and support.",
     name: "Cisco Secure Endpoint",
+    seoBrand: "Cisco Secure",
     logo: "/logos/Cisco.svg",
     tagline: "Talos-powered EDR with retrospective security and SecureX correlation",
     bestFor: "Best for Cisco-Native Environments (Recommended)",

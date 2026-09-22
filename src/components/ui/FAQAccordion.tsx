@@ -57,7 +57,25 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
         })}
       </ul>
 
-      {/* Answer panel (right) */}
+      {/* Answer panel (right).
+          EVERY answer is rendered into the DOM; the inactive ones are hidden
+          with display:none rather than not being rendered at all.
+
+          Why (2026-09-01): this component previously rendered only
+          items[activeFaq], so on a page with N questions, N-1 answers existed
+          nowhere in the HTML. Most callers also emit FAQPage JSON-LD built
+          from the same array (see PageFAQ), which meant the schema promised
+          answers the page did not contain. That is a content mismatch Google
+          can act on, and it threw away a large amount of indexable copy: the
+          firewalls page alone was hiding ~1,200 words this way.
+
+          Accordion content hidden with CSS is explicitly fine for indexing;
+          content absent from the DOM is not. Roughly 30 pages render through
+          this component, so the fix lands everywhere at once.
+
+          The question <h3> is emitted for the ACTIVE panel only. Rendering it
+          for every item would duplicate each question, which already appears
+          as its button label in the list on the left. */}
       <div className="lg:col-span-6">
         <div
           id="faq-answer-panel"
@@ -65,23 +83,32 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
           aria-live="polite"
           className="lg:sticky lg:top-24"
         >
-          <div className="overflow-hidden rounded-2xl border border-transparent bg-gradient-to-r from-[#045891] to-[#054466] p-6 shadow-[0_18px_40px_-18px_rgba(27,138,199,0.55)] sm:p-8">
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-white">
-                Faq
-              </span>
-              <span
-                aria-hidden="true"
-                className="h-px flex-1 bg-gradient-to-r from-white/40 to-transparent"
-              />
+          {items.map((faq) => (
+            <div
+              key={faq.question}
+              className={`overflow-hidden rounded-2xl border border-transparent bg-gradient-to-r from-[#045891] to-[#054466] p-6 shadow-[0_18px_40px_-18px_rgba(27,138,199,0.55)] sm:p-8 ${
+                faq === active ? "" : "hidden"
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-white">
+                  Faq
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="h-px flex-1 bg-gradient-to-r from-white/40 to-transparent"
+                />
+              </div>
+              {faq === active && (
+                <h3 className="mt-4 font-display text-xl font-bold leading-snug text-white sm:text-2xl">
+                  {faq.question}
+                </h3>
+              )}
+              <p className="mt-4 text-sm leading-relaxed text-white/90 sm:text-base">
+                {faq.answer}
+              </p>
             </div>
-            <h3 className="mt-4 font-display text-xl font-bold leading-snug text-white sm:text-2xl">
-              {active.question}
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed text-white/90 sm:text-base">
-              {active.answer}
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </div>

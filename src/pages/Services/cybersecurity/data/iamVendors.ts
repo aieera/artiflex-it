@@ -1,6 +1,8 @@
 export type IamVendor = {
   slug: string;
   name: string;
+  metaTitle: string;
+  metaDescription: string;
   logo?: string;
   tagline: string;
   bestFor: string;
@@ -61,6 +63,9 @@ export type IamVendor = {
 export const iamVendors: Record<string, IamVendor> = {
   "microsoft-entra": {
     slug: "microsoft-entra",
+    metaTitle: "Microsoft Entra ID IAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Microsoft Entra ID (Azure AD) IAM in Dubai and the UAE: SSO, MFA and conditional access for Microsoft 365 estates. Deployed and managed by Artiflex IT.",
     name: "Microsoft Entra ID",
     logo: "/logos/microsoft.svg",
     tagline: "The dominant enterprise IAM platform, bundled into Microsoft 365, with the deepest Active Directory integration and a market-leading Conditional Access engine",
@@ -187,6 +192,9 @@ export const iamVendors: Record<string, IamVendor> = {
 
   okta: {
     slug: "okta",
+    metaTitle: "Okta IAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Okta IAM in Dubai and the UAE: vendor-neutral, cloud-native SSO and lifecycle with 7,000+ integrations. Deployed and managed by Artiflex IT.",
     name: "Okta",
     logo: "/logos/Okta.png",
     tagline: "The vendor-neutral, cloud-native IAM platform with 7,000+ pre-built integrations and the strongest combined workforce plus customer identity coverage",
@@ -313,6 +321,9 @@ export const iamVendors: Record<string, IamVendor> = {
 
   "ping-identity": {
     slug: "ping-identity",
+    metaTitle: "Ping Identity IAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Ping Identity IAM in Dubai and the UAE: enterprise federation with deep SAML, OAuth, OIDC and FIDO2 support. Deployed and managed by Artiflex IT.",
     name: "Ping Identity",
     logo: "/logos/pingidentity.png",
     tagline: "The enterprise federation specialist with the deepest protocol support and workforce plus customer identity on one hybrid-flexible platform",
@@ -439,6 +450,9 @@ export const iamVendors: Record<string, IamVendor> = {
 
   "ibm-security": {
     slug: "ibm-security",
+    metaTitle: "IBM Security IAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "IBM Security Verify IAM in Dubai and the UAE: compliance-first identity with deep audit trails. Deployed and managed by Artiflex IT for regulated sectors.",
     name: "IBM Security IAM",
     logo: "/logos/IBM-Security.png",
     tagline: "The compliance-first IAM platform with the deepest audit trail and the tightest integration into QRadar SIEM and the broader IBM security ecosystem",
@@ -565,6 +579,9 @@ export const iamVendors: Record<string, IamVendor> = {
 
   oracle: {
     slug: "oracle",
+    metaTitle: "Oracle Identity IAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Oracle Identity IAM in Dubai and the UAE: native integration for Oracle ERP and database estates. Deployed and managed by Artiflex IT.",
     name: "Oracle Identity",
     logo: "/logos/Oracle.png",
     tagline: "The natural identity choice for Oracle-heavy estates, with native ERP and database integration and strong IGA for complex role models",
@@ -684,6 +701,9 @@ export const iamVendors: Record<string, IamVendor> = {
 
   "one-identity": {
     slug: "one-identity",
+    metaTitle: "One Identity IAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "One Identity IAM in Dubai and the UAE: strong native IAM and PAM in one platform. Deployed and managed by Artiflex IT for consolidation projects.",
     name: "One Identity",
     logo: "/logos/OneIdentity.png",
     tagline: "The rare vendor with genuinely strong native IAM and PAM in one platform, a consolidation play with a strong Active Directory bridge and mid-market value",
@@ -803,6 +823,9 @@ export const iamVendors: Record<string, IamVendor> = {
 
   saviynt: {
     slug: "saviynt",
+    metaTitle: "Saviynt IAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Saviynt IAM in Dubai and the UAE: cloud-native identity and governance for SaaS-heavy estates. Deployed and managed by Artiflex IT.",
     name: "Saviynt",
     logo: "/logos/Saviynt.png",
     tagline: "Cloud-native IGA built for SaaS-heavy estates, with strong application and third-party access governance and ML-driven access reviews",
@@ -929,6 +952,9 @@ export const iamVendors: Record<string, IamVendor> = {
 
   jumpcloud: {
     slug: "jumpcloud",
+    metaTitle: "JumpCloud IAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "JumpCloud IAM in Dubai and the UAE: cloud directory, SSO, MFA and device management in one platform. Deployed and managed by Artiflex IT.",
     name: "JumpCloud",
     logo: "/logos/JumpCloud.webp",
     tagline: "A full directory, SSO, MFA and device management in one cloud-delivered platform, at a price point accessible to organisations without a dedicated IAM team",

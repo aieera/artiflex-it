@@ -59,13 +59,6 @@ type SocPlatform = {
   featured?: boolean;
 };
 
-const socPlatforms: SocPlatform[] = [
-  { slug: "rapid7", name: "Rapid7", logo: "/logos/rapid7.png", rank: "#1 SIEM/MDR", featured: true },
-  { slug: "sophos-mdr", name: "Sophos MDR", logo: "/logos/sophos.svg", rank: "Managed MDR" },
-  { slug: "darktrace", name: "Darktrace", logo: "/logos/Darktrace.png", rank: "NDR · Self-Learning AI" },
-  { slug: "vectra", name: "Vectra AI", logo: "/logos/Vectra.png", rank: "NDR · Identity & Cloud" },
-  { slug: "extrahop", name: "ExtraHop", logo: "/logos/ExtraHop.png", rank: "NDR · Forensics" },
-];
 
 /* ───────── VENDOR COMPARISON MATRIX ───────── */
 
@@ -76,109 +69,7 @@ type MatrixRow =
   | { label: string; type: "stars"; cells: StarCell[] }
   | { label: string; type: "verdict"; cells: VerdictCell[] };
 
-const matrixVendors = [
-  { name: "Rapid7", featured: true },
-  { name: "Sophos MDR" },
-  { name: "Darktrace" },
-  { name: "Vectra AI" },
-  { name: "ExtraHop" },
-];
 
-const matrixRows: MatrixRow[] = [
-  {
-    label: "Primary discipline",
-    type: "text",
-    cells: ["SIEM + MDR", "Managed Detection & Response", "Network Detection & Response", "Network Detection & Response", "Network Detection & Response"],
-  },
-  {
-    label: "Founded / Heritage",
-    type: "text",
-    cells: [
-      "2000, Boston. Metasploit lineage.",
-      "Sophos (Astaro and Cyberoam heritage).",
-      "2013, Cambridge UK. Self-Learning AI pioneer.",
-      "2010, San Jose. AI-driven NDR.",
-      "2007, Seattle. Wire-data analytics.",
-    ],
-  },
-  {
-    label: "Detection approach",
-    type: "stars",
-    cells: [
-      { stars: 5, note: "AI-native SIEM. Incident Command, UEBA." },
-      { stars: 5, note: "Human-led plus Synchronized Security." },
-      { stars: 5, note: "Self-Learning AI baselines normal, flags deviation." },
-      { stars: 5, note: "Attack Signal Intelligence across network, identity, cloud." },
-      { stars: 5, note: "Packet-level ML with decryption and forensics." },
-    ],
-  },
-  {
-    label: "Coverage",
-    type: "text",
-    cells: [
-      "Cloud, endpoint, identity, network",
-      "Endpoint, network, cloud, identity",
-      "Network, email, cloud and SaaS",
-      "Network, identity, cloud and SaaS",
-      "Network, cloud and encrypted traffic",
-    ],
-  },
-  {
-    label: "Response & automation",
-    type: "stars",
-    cells: [
-      { stars: 5, note: "Incident Command plus Rapid7 MDR." },
-      { stars: 5, note: "Fully managed 24/7 response." },
-      { stars: 5, note: "Autonomous response (Antigena)." },
-      { stars: 4, note: "Prioritised signal, MDR available." },
-      { stars: 4, note: "Guided response, strong forensics." },
-    ],
-  },
-  {
-    label: "Delivery model",
-    type: "text",
-    cells: [
-      "SaaS platform plus managed",
-      "Fully managed service",
-      "Self-learning appliance plus SaaS",
-      "SaaS plus sensors",
-      "SaaS (RevealX) plus sensors",
-    ],
-  },
-  {
-    label: "Recognition",
-    type: "text",
-    cells: [
-      "7x Gartner SIEM Magic Quadrant",
-      "Top-rated MDR. Artiflex Sophos Platinum Partner.",
-      "NDR pioneer, thousands of deployments",
-      "Leader in AI-driven NDR",
-      "Strong NDR for forensics and decryption",
-    ],
-  },
-  {
-    label: "Best suited for",
-    type: "text",
-    cells: [
-      "Cloud-forward SOCs needing SIEM plus MDR",
-      "Teams wanting a managed outcome",
-      "Behavioural NDR across IT, cloud and email",
-      "Identity and cloud-centric attack detection",
-      "Deep packet forensics and encrypted-traffic visibility",
-    ],
-  },
-  {
-    label: "Strategic Verdict",
-    type: "verdict",
-    cells: [
-      { recommended: true, rank: "#1", text: "Recommended for SIEM and MDR. AI-native, analyst-first detection and response." },
-      { recommended: true, text: "Recommended MDR. Fully managed, Synchronized Security. Artiflex is a Sophos Platinum Partner." },
-      { recommended: true, text: "Recommended NDR. Self-Learning AI catches novel and insider threats." },
-      { text: "Strong NDR where identity and cloud attack paths dominate." },
-      { text: "Strong NDR for forensic depth and encrypted-traffic analysis." },
-    ],
-  },
-];
 
 /* ───────── DETAILED VENDOR CARDS ───────── */
 
@@ -191,85 +82,14 @@ type VendorCard = {
   logo?: string;
 };
 
-const vendors: VendorCard[] = [
-  {
-    id: "rapid7",
-    name: "Rapid7 InsightIDR / Incident Command",
-    best: "SIEM & MDR (Recommended)",
-    strength:
-      "Founded in 2000 in Boston and shaped by its Metasploit lineage, Rapid7 has been named in the Gartner Magic Quadrant for SIEM seven consecutive years. Its AI-native Incident Command platform unifies SIEM, UEBA, threat intelligence and automation with analyst-first workflows across cloud, endpoint, identity and network. It ties directly into Rapid7 MDR for end-to-end detection and response.",
-    watch:
-      "It is primarily an IT and cloud SOC platform. Network blind spots are best closed with a dedicated NDR layer that feeds detections back into the SIEM.",
-    logo: "/logos/rapid7.png",
-  },
-  {
-    id: "sophos-mdr",
-    name: "Sophos MDR",
-    best: "Managed Detection & Response (Recommended)",
-    strength:
-      "Sophos, with its Astaro and Cyberoam heritage, delivers a fully managed 24/7 MDR service led by human analysts with active response. Its Synchronized Security ties detection and response together across endpoint, network, cloud and identity. Artiflex is a Sophos Platinum Partner, so the outcome is delivered hands-on.",
-    watch:
-      "It is an outcome-led managed service rather than a platform you operate yourself. Its value depends on log coverage and the response authority you grant, which we define during the assessment.",
-    logo: "/logos/sophos.svg",
-  },
-  {
-    id: "darktrace",
-    name: "Darktrace",
-    best: "Network Detection & Response (Recommended)",
-    strength:
-      "Founded in 2013 in Cambridge UK, Darktrace pioneered Self-Learning AI for network detection. It baselines what normal looks like for your environment, then flags deviations across network, email, cloud and SaaS, catching novel and insider threats that signatures miss. Autonomous response (Antigena) can act on threats in real time.",
-    watch:
-      "Behavioural AI needs a learning period and tuning to settle. It is most powerful as a feed into SIEM or MDR rather than a standalone island.",
-    logo: "/logos/Darktrace.png",
-  },
-  {
-    id: "vectra",
-    name: "Vectra AI",
-    best: "Network Detection & Response",
-    strength:
-      "Founded in 2010 in San Jose, Vectra AI applies Attack Signal Intelligence across network, identity and cloud to surface and prioritise real attacks. It excels where identity and cloud attack paths dominate, cutting alert noise so analysts focus on the signals that matter. MDR is available where a managed outcome is preferred.",
-    watch:
-      "Its strength is detection and prioritisation rather than deep packet forensics. It works best correlated into a SIEM rather than as a single source of truth.",
-    logo: "/logos/Vectra.png",
-  },
-  {
-    id: "extrahop",
-    name: "ExtraHop",
-    best: "Network Detection & Response",
-    strength:
-      "Founded in 2007 in Seattle on wire-data analytics, ExtraHop RevealX delivers packet-level NDR with machine learning, decryption and forensic depth. It gives strong visibility into encrypted traffic and supports detailed investigation and guided response when an incident needs to be reconstructed.",
-    watch:
-      "It is focused on network and forensics rather than managed response. It delivers the most value when its detections feed a SIEM or MDR for correlation.",
-    logo: "/logos/ExtraHop.png",
-  },
-];
 
 /* ───────── GARTNER-STYLE SCORECARD ───────── */
 
 type Tier = "best" | "excellent" | "veryStrong" | "strong" | "good" | "none";
 type FeatureCell = { tier: Tier; note?: string };
 
-const tierStyles: Record<Tier, { bg: string; text: string; label: string }> = {
-  best: { bg: "bg-emerald-600", text: "text-white", label: "Best in class" },
-  excellent: { bg: "bg-emerald-500", text: "text-white", label: "Excellent" },
-  veryStrong: { bg: "bg-sky-200", text: "text-sky-900", label: "Very strong" },
-  strong: { bg: "bg-amber-200", text: "text-amber-900", label: "Strong" },
-  good: { bg: "bg-amber-100", text: "text-amber-900", label: "Good" },
-  none: { bg: "bg-slate-200", text: "text-slate-600", label: "None / N/A" },
-};
 
-const featureVendors = ["Rapid7", "Sophos MDR", "Darktrace", "Vectra AI", "ExtraHop"];
 
-const featureRows: { label: string; cells: FeatureCell[] }[] = [
-  { label: "Log Correlation / SIEM", cells: [ { tier: "best", note: "AI-native Incident Command" }, { tier: "excellent", note: "Managed" }, { tier: "good", note: "Feeds SIEM" }, { tier: "good", note: "Correlated into SIEM" }, { tier: "strong", note: "Wire-data analytics" } ] },
-  { label: "Threat Detection (UEBA / ML)", cells: [ { tier: "best", note: "UEBA plus threat intel" }, { tier: "excellent", note: "Human-led plus ML" }, { tier: "best", note: "Self-Learning AI" }, { tier: "excellent", note: "Attack Signal Intelligence" }, { tier: "excellent", note: "Packet-level ML" } ] },
-  { label: "Managed Response (MDR)", cells: [ { tier: "excellent", note: "Rapid7 MDR" }, { tier: "best", note: "Fully managed 24/7" }, { tier: "strong", note: "Antigena" }, { tier: "strong", note: "MDR available" }, { tier: "good", note: "Guided response" } ] },
-  { label: "Network Detection (NDR)", cells: [ { tier: "strong", note: "Via NDR layer" }, { tier: "strong", note: "Synchronized Security" }, { tier: "best", note: "Behavioural NDR pioneer" }, { tier: "excellent", note: "AI-driven NDR" }, { tier: "excellent", note: "Packet-level NDR" } ] },
-  { label: "Cloud & Identity Coverage", cells: [ { tier: "excellent", note: "Cloud, endpoint, identity" }, { tier: "excellent", note: "Cloud and identity" }, { tier: "strong", note: "Cloud and SaaS" }, { tier: "best", note: "Identity and cloud paths" }, { tier: "strong", note: "Cloud traffic" } ] },
-  { label: "Encrypted Traffic / Forensics", cells: [ { tier: "good", note: "Log-based" }, { tier: "good", note: "Managed visibility" }, { tier: "strong", note: "Behavioural visibility" }, { tier: "strong", note: "Prioritised signal" }, { tier: "best", note: "Decryption and forensics" } ] },
-  { label: "Compliance Reporting", cells: [ { tier: "excellent", note: "Audit-ready evidence" }, { tier: "excellent", note: "Managed reporting" }, { tier: "good", note: "Detection feed" }, { tier: "good", note: "Detection feed" }, { tier: "strong", note: "Forensic records" } ] },
-  { label: "Deployment Simplicity", cells: [ { tier: "excellent", note: "SaaS" }, { tier: "best", note: "Managed" }, { tier: "strong", note: "Appliance plus SaaS" }, { tier: "strong", note: "SaaS plus sensors" }, { tier: "good", note: "RevealX plus sensors" } ] },
-];
 
 /* ───────── DECISION FRAMEWORK ───────── */
 
@@ -370,7 +190,7 @@ function SecurityOperationsHero() {
   const { open: openContact } = useContactModal();
   return (
     <section className="relative flex min-h-screen flex-col overflow-hidden bg-navy-deep">
-      <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/cybersecurity.png')" }} />
+      <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/cybersecurity.webp')" }} />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/70 to-navy-deep/90" />
 
       {/* Breadcrumb band */}
@@ -392,12 +212,12 @@ function SecurityOperationsHero() {
       <div className="relative z-10 mx-auto flex w-full max-w-[88rem] flex-1 flex-col px-4 py-10 sm:px-5 sm:py-12 lg:px-6 lg:py-14">
         <div className="grid flex-1 grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:items-center lg:gap-8 xl:gap-12">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }} className="w-full">
-            <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[5rem]">
+            <p className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[5rem]">
               Security Operations{" "}
               <span className="gradient-text">UAE</span>
-              <span className="block font-display text-xl font-light leading-tight text-slate-300 sm:mt-3 sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl">
-                SIEM, MDR &amp; NDR
-              </span>
+            </p>
+            <h1 className="block font-display text-xl font-light leading-tight text-slate-300 sm:mt-3 sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl">
+              SIEM, MDR &amp; NDR
             </h1>
 
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:mt-6 sm:text-base xl:text-lg">
@@ -520,18 +340,47 @@ export default function SecurityOperations() {
   return (
     <>
       <>
-        <title>Security Operations UAE | SIEM, MDR & NDR | Artiflex IT</title>
-        <meta
-          name="description"
-          content="UAE Security Operations: SIEM, MDR and NDR in one detection-and-response programme. An overview of the three SOC disciplines Artiflex designs, deploys and manages across the UAE."
-        />
+        <title>SOC as a Service UAE | 24/7 SIEM, SOAR, NDR & MDR | Artiflex</title>
+        <meta name="description" content="SOC as a service in UAE. SIEM, SOAR, NDR and MDR delivered as one managed outcome or co-managed with your in-house team." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/security-operations" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/security-operations" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/security-operations" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/security-operations" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/security-operations" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/security-operations" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/security-operations" />
+
+        <meta property="og:title" content="SOC as a Service UAE | 24/7 SIEM, SOAR, NDR & MDR | Artiflex" />
+        <meta property="og:description" content="SOC as a service in UAE. SIEM, SOAR, NDR and MDR delivered as one managed outcome or co-managed with your in-house team." />
+        <meta property="og:url" content="https://artiflexit.com/cybersecurity/security-operations" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT security operations and SOC services for the UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="SOC as a Service UAE | 24/7 SIEM, SOAR, NDR & MDR | Artiflex" />
+        <meta name="twitter:description" content="SOC as a service in UAE. SIEM, SOAR, NDR and MDR delivered as one managed outcome or co-managed with your in-house team." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Security Operations (SIEM, MDR, NDR)",
-            "provider": { "@type": "Organization", "name": "Artiflex IT" },
+            "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
             "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
             "description": "UAE Security Operations delivery across Rapid7 (SIEM/MDR), Sophos MDR, and NDR platforms Darktrace, Vectra AI and ExtraHop.",
           })}

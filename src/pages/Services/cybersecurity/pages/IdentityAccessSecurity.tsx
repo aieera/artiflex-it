@@ -15,17 +15,6 @@ import {
 
 type Vendor = { slug: string; name: string; logo: string; featured?: boolean; rank?: string };
 
-const vendorLineup: Vendor[] = [
-  { slug: "microsoft-entra", name: "Microsoft Entra", logo: "/logos/microsoft.svg", featured: true, rank: "#1 Identity Cloud" },
-  { slug: "okta", name: "Okta", logo: "/logos/Okta.png", rank: "Neutral SaaS" },
-  { slug: "ping-identity", name: "Ping Identity", logo: "/logos/pingidentity.png", rank: "Workforce + CIAM" },
-  { slug: "cyberark", name: "CyberArk", logo: "/logos/CyberArk.png", rank: "PAM leader" },
-  { slug: "sailpoint", name: "SailPoint", logo: "/logos/sailpoint.webp", rank: "IGA leader" },
-  { slug: "saviynt", name: "Saviynt", logo: "/logos/Saviynt.png", rank: "Cloud IGA" },
-  { slug: "beyondtrust", name: "BeyondTrust", logo: "/logos/BeyondTrust.webp", rank: "PAM challenger" },
-  { slug: "delinea", name: "Delinea", logo: "/logos/Delinea.webp", rank: "PAM challenger" },
-  { slug: "one-identity", name: "One Identity", logo: "/logos/OneIdentity.png", rank: "Unified identity" },
-];
 
 /* ───────── CAPABILITY SUBPAGES ───────── */
 
@@ -82,155 +71,7 @@ type MatrixRow =
   | { label: string; type: "stars"; cells: StarCell[] }
   | { label: string; type: "verdict"; cells: VerdictCell[] };
 
-const matrixVendors = [
-  { name: "Microsoft Entra", featured: true },
-  { name: "Okta" },
-  { name: "Ping Identity" },
-  { name: "CyberArk" },
-  { name: "SailPoint" },
-  { name: "Saviynt" },
-  { name: "BeyondTrust" },
-  { name: "Delinea" },
-  { name: "One Identity" },
-];
 
-const matrixRows: MatrixRow[] = [
-  {
-    label: "Primary discipline",
-    type: "text",
-    cells: [
-      "IAM, MFA, Conditional Access, IGA",
-      "Workforce + customer identity (SaaS)",
-      "Workforce + CIAM, hybrid",
-      "Privileged Access Management",
-      "Identity Governance (IGA)",
-      "Cloud-native IGA + application GRC",
-      "Privileged Access Management",
-      "Privileged Access Management",
-      "Unified IAM, PAM and IGA",
-    ],
-  },
-  {
-    label: "Founded / Heritage",
-    type: "text",
-    cells: [
-      "1975 (Microsoft); Azure AD 2010; Entra 2022.",
-      "2009, San Francisco. SaaS-first IAM.",
-      "2002, Denver. Strong federation lineage.",
-      "1999, Israel. Vault invented PAM as a category.",
-      "2005, Austin. The IGA reference platform.",
-      "2010, California. Cloud-native IGA.",
-      "1985, USA. PAM and privileged remote access.",
-      "2021, from Thycotic + Centrify. PAM vaulting.",
-      "Quest brand; OneLogin, Safeguard, Identity Manager.",
-    ],
-  },
-  {
-    label: "Cloud / SSO / MFA",
-    type: "stars",
-    cells: [
-      { stars: 5, note: "Native to M365. Conditional Access, Authenticator." },
-      { stars: 5, note: "7000+ pre-built connectors." },
-      { stars: 5, note: "Strong federation and CIAM." },
-      { stars: 3, note: "Via partners. Not the focus." },
-      { stars: 3, note: "Via partners. Not the focus." },
-      { stars: 2, note: "Light MFA; not an SSO platform." },
-      { stars: 1, note: "Not an IAM/SSO platform." },
-      { stars: 1, note: "Not an IAM/SSO platform." },
-      { stars: 4, note: "OneLogin SSO and MFA across the stack." },
-    ],
-  },
-  {
-    label: "Privileged Access (PAM)",
-    type: "stars",
-    cells: [
-      { stars: 3, note: "PIM in Entra; not full PAM." },
-      { stars: 2, note: "Via partners only." },
-      { stars: 2, note: "Limited native PAM." },
-      { stars: 5, note: "Category leader. Vault, JIT, session recording." },
-      { stars: 0, note: "Out of scope." },
-      { stars: 2, note: "Light privileged controls only." },
-      { stars: 5, note: "Privileged remote access, endpoint privilege." },
-      { stars: 5, note: "Secret Server vaulting, JIT elevation." },
-      { stars: 4, note: "Safeguard vault and session management." },
-    ],
-  },
-  {
-    label: "Identity Governance (IGA)",
-    type: "stars",
-    cells: [
-      { stars: 4, note: "Entra ID Governance, lifecycle workflows." },
-      { stars: 4, note: "Okta Identity Governance, growing." },
-      { stars: 3, note: "Workflow-led, smaller deployments." },
-      { stars: 2, note: "Out of focus, partner ecosystem." },
-      { stars: 5, note: "Reference IGA platform. Certifications, SoD." },
-      { stars: 5, note: "Cloud-native IGA, application GRC, SoD." },
-      { stars: 0, note: "Out of scope." },
-      { stars: 1, note: "Not an IGA platform." },
-      { stars: 4, note: "Identity Manager governance and certification." },
-    ],
-  },
-  {
-    label: "Cloud / Hybrid deployment",
-    type: "text",
-    cells: [
-      "Azure SaaS + on-prem AD bridge",
-      "Pure SaaS (Workforce + Customer)",
-      "SaaS + on-prem PingFederate",
-      "SaaS + Self-Hosted + Cloud Entitlements",
-      "SaaS-first; on-prem heritage",
-      "Cloud-native SaaS on AWS",
-      "SaaS + on-prem appliance",
-      "Cloud + on-prem Secret Server",
-      "On-prem heritage + cloud options",
-    ],
-  },
-  {
-    label: "Compliance fit (NESA, PDPL, ISO)",
-    type: "stars",
-    cells: [
-      { stars: 5, note: "Microsoft Purview + Entra audit." },
-      { stars: 5, note: "Audit logs, Workforce Identity Cloud." },
-      { stars: 4, note: "Strong audit and federation logs." },
-      { stars: 5, note: "Vault and session evidence." },
-      { stars: 5, note: "Access certification, SoD reports." },
-      { stars: 5, note: "Application GRC, SoD, audit reporting." },
-      { stars: 5, note: "Privileged session recording and audit." },
-      { stars: 4, note: "Vault audit and session evidence." },
-      { stars: 4, note: "Cross-discipline audit from one vendor." },
-    ],
-  },
-  {
-    label: "Best suited for",
-    type: "text",
-    cells: [
-      "Microsoft 365 estates wanting native identity",
-      "Multi-cloud, multi-SaaS, neutral identity",
-      "Hybrid workforce + customer-facing portals",
-      "Regulated estates needing real PAM",
-      "Mature IGA programmes, certifications",
-      "Cloud-first IGA and application governance",
-      "PAM with privileged remote and endpoint access",
-      "Fast, low-friction PAM vaulting",
-      "Mid-market wanting one vendor across disciplines",
-    ],
-  },
-  {
-    label: "Strategic Verdict",
-    type: "verdict",
-    cells: [
-      { recommended: true, rank: "#1", text: "Recommended for Microsoft-aligned UAE enterprises. Often already licensed in M365 E3/E5." },
-      { recommended: true, text: "Recommended for cloud-forward and multi-SaaS estates needing a neutral identity provider." },
-      { text: "Strong choice where federation and customer identity are first-class requirements." },
-      { recommended: true, text: "Recommended for PAM, the category-defining platform." },
-      { recommended: true, text: "Recommended for IGA, the reference platform for governance." },
-      { text: "Cloud-first IGA challenger to SailPoint." },
-      { text: "Strong PAM alternative to CyberArk." },
-      { text: "PAM for fast, low-friction vaulting." },
-      { text: "Unified IAM, PAM and IGA from one vendor." },
-    ],
-  },
-];
 
 /* ───────── DETAILED VENDOR CARDS ───────── */
 
@@ -243,126 +84,14 @@ type VendorCard = {
   logo?: string;
 };
 
-const vendors: VendorCard[] = [
-  {
-    id: "microsoft",
-    name: "Microsoft Entra",
-    best: "Best for Microsoft 365 estates (Recommended)",
-    strength:
-      "The native identity layer for Microsoft 365, Azure and the wider Microsoft stack. Entra ID delivers SSO, MFA and Conditional Access; Entra ID Governance adds lifecycle workflows and access reviews; Entra Permissions Management covers cloud entitlements. Frequently already licensed under M365 E3 or E5 and the lowest-friction starting point for Microsoft-aligned UAE enterprises.",
-    watch:
-      "Entra is workforce identity at heart. For deep PAM, pair with CyberArk; for advanced IGA at enterprise scale, pair with SailPoint or Saviynt.",
-    logo: "/logos/microsoft.svg",
-  },
-  {
-    id: "okta",
-    name: "Okta",
-    best: "Best for multi-cloud, multi-SaaS (Recommended)",
-    strength:
-      "The neutral-ground identity platform. 7,000+ pre-built connectors, Workforce Identity Cloud for employees, Customer Identity Cloud (Auth0) for end users. Strong developer ecosystem and the right choice when you cannot bet the identity layer on a single hyperscaler.",
-    watch:
-      "Pure SaaS, deep cloud dependency. PAM and on-prem heritage are weaker than Microsoft or PingFederate, layer CyberArk or BeyondTrust on top.",
-    logo: "/logos/Okta.png",
-  },
-  {
-    id: "ping",
-    name: "Ping Identity",
-    best: "Strong for hybrid workforce + customer identity",
-    strength:
-      "Mature federation lineage, strong PingFederate on-prem option and a full customer-identity (CIAM) stack. The natural choice when SAML/OIDC depth and customer-facing portals (banking, telco) are the priority and you want hybrid deployment without committing to pure SaaS.",
-    watch:
-      "Smaller ecosystem than Microsoft or Okta. Privileged Access and IGA are not the focus, partner up.",
-    logo: "/logos/pingidentity.png",
-  },
-  {
-    id: "cyberark",
-    name: "CyberArk",
-    best: "Best for Privileged Access (Recommended)",
-    strength:
-      "Invented PAM as a discipline. Privileged Cloud, Self-Hosted Vault, Session Manager and Endpoint Privilege Manager cover every privileged use case from human admins to service accounts and DevOps secrets. The default PAM choice for finance, government and critical-infrastructure customers in the UAE.",
-    watch:
-      "Premium pricing, premium outcome. For SMB or simpler privilege programmes, BeyondTrust or Delinea are more cost-effective.",
-    logo: "/logos/CyberArk.png",
-  },
-  {
-    id: "sailpoint",
-    name: "SailPoint",
-    best: "Best for Identity Governance (Recommended)",
-    strength:
-      "The reference IGA platform. Identity Security Cloud delivers access certification, role mining, segregation-of-duties and AI-driven access modelling. The default choice when auditors and regulators (NESA, ISO 27001, CBUAE, SAMA) ask 'who has access to what, and why'.",
-    watch:
-      "IGA-only. Pair with Entra or Okta for SSO/MFA and CyberArk for PAM, SailPoint is one layer in the broader programme, not the whole stack.",
-    logo: "/logos/sailpoint.webp",
-  },
-  {
-    id: "saviynt",
-    name: "Saviynt",
-    best: "Strong cloud-first IGA",
-    strength:
-      "Cloud-native IGA built on AWS. Strong on application access governance, cross-application SoD and rapid time-to-value compared to legacy on-prem IGA. The cost-effective alternative to SailPoint for organisations starting their IGA programme in the cloud.",
-    watch:
-      "Less mature than SailPoint in the largest, most complex global rollouts. Confirm scale and integration scope during scoping.",
-    logo: "/logos/Saviynt.png",
-  },
-  {
-    id: "beyondtrust",
-    name: "BeyondTrust",
-    best: "Strong PAM alternative to CyberArk",
-    strength:
-      "A privileged access specialist with deep strength in privileged remote access and endpoint privilege management. Password Safe handles credential vaulting and session control, while Privilege Management for Windows, Mac and Unix removes standing admin rights at the endpoint. A pragmatic, cost-effective PAM choice for UAE estates that want strong privileged control without the heaviest enterprise footprint.",
-    watch:
-      "PAM-focused: it is not an IAM, SSO or IGA platform. Pair with Entra or Okta for workforce identity and SailPoint or Saviynt for governance.",
-    logo: "/logos/BeyondTrust.webp",
-  },
-  {
-    id: "delinea",
-    name: "Delinea",
-    best: "PAM for fast, low-friction vaulting",
-    strength:
-      "Formed from Thycotic and Centrify, Delinea leads on speed and simplicity. Secret Server delivers credential vaulting that teams actually adopt, and just-in-time elevation reduces standing privilege without slowing admins down. A strong fit when fast time-to-value and low operational friction matter as much as raw feature depth.",
-    watch:
-      "PAM-focused: no native IGA or customer identity. Layer in Entra or Okta for IAM and SailPoint or Saviynt where governance is required.",
-    logo: "/logos/Delinea.webp",
-  },
-  {
-    id: "one-identity",
-    name: "One Identity",
-    best: "Unified IAM, PAM and IGA from one vendor",
-    strength:
-      "A single-vendor portfolio spanning OneLogin for IAM and SSO, Safeguard for privileged access and Identity Manager for governance. The appeal is consolidation: one relationship and one roadmap across disciplines, which suits mid-market and mid-size enterprise teams that want broad coverage without stitching together multiple best-of-breed platforms.",
-    watch:
-      "Broad mid-tier rather than category leader in any single discipline. Where one pillar is mission-critical, a specialist such as CyberArk or SailPoint may still be the better fit.",
-    logo: "/logos/OneIdentity.png",
-  },
-];
 
 /* ───────── GARTNER-STYLE SCORECARD ───────── */
 
 type Tier = "best" | "excellent" | "veryStrong" | "strong" | "good" | "none";
 type FeatureCell = { tier: Tier; note?: string };
 
-const tierStyles: Record<Tier, { bg: string; text: string; label: string }> = {
-  best: { bg: "bg-emerald-600", text: "text-white", label: "Best in class" },
-  excellent: { bg: "bg-emerald-500", text: "text-white", label: "Excellent" },
-  veryStrong: { bg: "bg-sky-200", text: "text-sky-900", label: "Very strong" },
-  strong: { bg: "bg-amber-200", text: "text-amber-900", label: "Strong" },
-  good: { bg: "bg-amber-100", text: "text-amber-900", label: "Good" },
-  none: { bg: "bg-slate-200", text: "text-slate-600", label: "None / N/A" },
-};
 
-const featureVendors = ["Microsoft Entra", "Okta", "Ping", "CyberArk", "SailPoint", "Saviynt", "BeyondTrust", "Delinea", "One Identity"];
 
-const featureRows: { label: string; cells: FeatureCell[] }[] = [
-  { label: "SSO / Federation", cells: [{ tier: "best", note: "Native to M365" }, { tier: "best", note: "7,000+ connectors" }, { tier: "excellent", note: "Federation lineage" }, { tier: "good", note: "Via partners" }, { tier: "good", note: "Via partners" }, { tier: "good", note: "Not an SSO platform" }, { tier: "none", note: "Out of scope" }, { tier: "none", note: "Out of scope" }, { tier: "strong", note: "OneLogin SSO" }] },
-  { label: "Multi-Factor Authentication", cells: [{ tier: "best", note: "Authenticator, Conditional Access" }, { tier: "excellent", note: "Okta Verify push" }, { tier: "excellent", note: "Adaptive MFA" }, { tier: "strong", note: "Limited native" }, { tier: "strong", note: "Via IdP partners" }, { tier: "good", note: "Light MFA" }, { tier: "good", note: "Privileged MFA only" }, { tier: "good", note: "Privileged MFA only" }, { tier: "strong", note: "OneLogin MFA" }] },
-  { label: "Conditional / Adaptive Access", cells: [{ tier: "best", note: "Conditional Access policy" }, { tier: "excellent", note: "Adaptive risk policies" }, { tier: "excellent", note: "Risk-based access" }, { tier: "good", note: "Not the focus" }, { tier: "good", note: "Not the focus" }, { tier: "good", note: "Not the focus" }, { tier: "good", note: "Privileged context only" }, { tier: "good", note: "Privileged context only" }, { tier: "strong", note: "Adaptive via OneLogin" }] },
-  { label: "Identity Lifecycle", cells: [{ tier: "excellent", note: "Lifecycle workflows" }, { tier: "excellent", note: "Automated provisioning" }, { tier: "strong", note: "Workflow-led" }, { tier: "good", note: "Limited scope" }, { tier: "best", note: "Reference lifecycle engine" }, { tier: "excellent", note: "Cloud-native provisioning" }, { tier: "good", note: "Privileged accounts only" }, { tier: "good", note: "Privileged accounts only" }, { tier: "strong", note: "Identity Manager workflows" }] },
-  { label: "Identity Governance (IGA)", cells: [{ tier: "veryStrong", note: "Entra ID Governance" }, { tier: "veryStrong", note: "Okta Identity Governance" }, { tier: "strong", note: "Smaller deployments" }, { tier: "good", note: "Partner ecosystem" }, { tier: "best", note: "Reference IGA platform" }, { tier: "excellent", note: "Cloud-native IGA, app GRC" }, { tier: "none", note: "Out of scope" }, { tier: "good", note: "Privileged governance only" }, { tier: "strong", note: "Identity Manager governance" }] },
-  { label: "Privileged Access (PAM)", cells: [{ tier: "strong", note: "PIM only" }, { tier: "good", note: "Via partners only" }, { tier: "good", note: "Limited native PAM" }, { tier: "best", note: "Vault, JIT, session recording" }, { tier: "none", note: "Out of scope" }, { tier: "good", note: "Light privileged controls" }, { tier: "best", note: "Privileged remote, endpoint" }, { tier: "excellent", note: "Secret Server, JIT" }, { tier: "veryStrong", note: "Safeguard vault" }] },
-  { label: "Customer Identity (CIAM)", cells: [{ tier: "veryStrong", note: "Entra External ID" }, { tier: "best", note: "via Auth0" }, { tier: "excellent", note: "Full CIAM stack" }, { tier: "good", note: "Not the focus" }, { tier: "none", note: "Out of scope" }, { tier: "none", note: "Out of scope" }, { tier: "none", note: "Out of scope" }, { tier: "none", note: "Out of scope" }, { tier: "good", note: "Limited CIAM" }] },
-  { label: "On-prem / Hybrid deploy", cells: [{ tier: "excellent", note: "AD bridge" }, { tier: "good", note: "SaaS-only" }, { tier: "best", note: "PingFederate" }, { tier: "excellent", note: "Self-hosted vault" }, { tier: "veryStrong", note: "On-prem heritage" }, { tier: "good", note: "Cloud-native SaaS" }, { tier: "excellent", note: "On-prem appliance" }, { tier: "excellent", note: "On-prem Secret Server" }, { tier: "best", note: "Deep on-prem heritage" }] },
-  { label: "Compliance evidence (NESA, ISO, PDPL)", cells: [{ tier: "excellent", note: "Purview + Entra audit" }, { tier: "excellent", note: "Workforce Cloud audit logs" }, { tier: "veryStrong", note: "Federation audit logs" }, { tier: "best", note: "Vault, session evidence" }, { tier: "best", note: "Certification, SoD reports" }, { tier: "excellent", note: "App GRC, SoD reporting" }, { tier: "veryStrong", note: "Session recording, audit" }, { tier: "strong", note: "Vault and session audit" }, { tier: "strong", note: "Cross-discipline audit" }] },
-];
 
 /* ───────── DECISION FRAMEWORK ───────── */
 
@@ -467,7 +196,7 @@ function IdentityHero() {
   const { open: openContact } = useContactModal();
   return (
     <section className="relative flex min-h-screen flex-col overflow-hidden bg-navy-deep">
-      <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/cybersecurity.png')" }} />
+      <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/cybersecurity.webp')" }} />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/70 to-navy-deep/90" />
 
       {/* Breadcrumb band */}
@@ -489,12 +218,12 @@ function IdentityHero() {
       <div className="relative z-10 mx-auto flex w-full max-w-[88rem] flex-1 flex-col px-4 py-10 sm:px-5 sm:py-12 lg:px-6 lg:py-14">
         <div className="grid flex-1 grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:items-center lg:gap-8 xl:gap-12">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }} className="w-full">
-            <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[5rem]">
+            <p className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[5rem]">
               Identity &amp; Access Security{" "}
               <span className="gradient-text">UAE</span>
-              <span className="block font-display text-xl font-light leading-tight text-slate-300 sm:mt-3 sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl">
-                IAM, MFA, IGA &amp; Privileged Access
-              </span>
+            </p>
+            <h1 className="block font-display text-xl font-light leading-tight text-slate-300 sm:mt-3 sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl">
+              IAM, MFA, IGA &amp; Privileged Access
             </h1>
 
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:mt-6 sm:text-base xl:text-lg">
@@ -618,18 +347,47 @@ export default function IdentityAccessSecurity() {
   return (
     <>
       <>
-        <title>Identity & Access Security UAE | IAM, MFA, IGA & PAM | Artiflex IT</title>
-        <meta
-          name="description"
-          content="UAE Identity & Access Security: IAM, MFA, IGA and PAM in one programme. An overview of the four identity disciplines Artiflex designs, deploys and manages across the UAE."
-        />
+        <title>Identity & Access Management Dubai | SSO, MFA, IGA, PAM</title>
+        <meta name="description" content="IAM in Dubai: SSO, MFA, identity governance and PAM across Okta, Microsoft Entra, CyberArk, SailPoint and Saviynt. UAE PDPL aligned." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/identity-access-security" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/identity-access-security" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/identity-access-security" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/identity-access-security" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/identity-access-security" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/identity-access-security" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/identity-access-security" />
+
+        <meta property="og:title" content="Identity & Access Management Dubai | SSO, MFA, IGA, PAM" />
+        <meta property="og:description" content="IAM in Dubai: SSO, MFA, identity governance and PAM across Okta, Microsoft Entra, CyberArk, SailPoint and Saviynt. UAE PDPL aligned." />
+        <meta property="og:url" content="https://artiflexit.com/cybersecurity/identity-access-security" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT identity and access security for the UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Identity & Access Management Dubai | SSO, MFA, IGA, PAM" />
+        <meta name="twitter:description" content="IAM in Dubai: SSO, MFA, identity governance and PAM across Okta, Microsoft Entra, CyberArk, SailPoint and Saviynt. UAE PDPL aligned." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Identity & Access Security (IAM, MFA, IGA, PAM)",
-            "provider": { "@type": "Organization", "name": "Artiflex IT" },
+            "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
             "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
             "description": "UAE Identity & Access Security delivery across Microsoft Entra, Okta, Ping Identity, CyberArk, SailPoint, Saviynt, BeyondTrust, Delinea and OneIdentity.",
           })}
@@ -718,35 +476,64 @@ export default function IdentityAccessSecurity() {
         </div>
       </section>
 
-      {/* ───────── DECISION FRAMEWORK ───────── */}
-      <section className="relative bg-white py-16 sm:py-24">
-        <div className="shell">
+      {/* ───────── DECISION FRAMEWORK ─────────
+          Same design as the firewalls-network-security page: dark
+          gradient cards on slate-50, answer expands on hover/focus. */}
+      <section className="relative overflow-hidden bg-slate-50 py-16 sm:py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(27,138,199,0.06),transparent_60%)]" />
+        <div className="shell relative">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#1B8AC7]">Decision Framework</p>
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#1B8AC7]">Decision framework</p>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">Questions we ask before designing the programme</h2>
             <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
               Identity programmes get cleaner when the questions are direct. Walk through these and the architecture usually falls out by itself.
             </p>
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-2">
-            {decisionQuestions.map((q, i) => (
-              <article key={q.q} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="flex items-start gap-4">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#045891] to-[#1B8AC7] font-display text-sm font-bold text-white">{String(i + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3 className="font-display text-base font-bold text-slate-900">{q.q}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{q.a}</p>
+          <div className="mx-auto mt-10 max-w-6xl sm:mt-12">
+            <div className="grid grid-cols-1 gap-2 sm:gap-3 md:grid-cols-2">
+              {decisionQuestions.map((q) => (
+                <div
+                  key={q.q}
+                  tabIndex={0}
+                  className="group relative flex min-h-[5rem] flex-col justify-center overflow-hidden rounded-xl border border-white/10 bg-gradient-to-r from-[#04101E] to-[#0A3D6B] px-4 py-3 shadow-md transition-all duration-300 hover:border-[#28B5E1]/40 hover:shadow-lg focus-within:border-[#28B5E1]/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#28B5E1]/40 sm:min-h-[5.5rem] sm:px-5 sm:py-3.5"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <h4 className="font-display text-sm font-semibold leading-snug text-white sm:text-base">
+                      {q.q}
+                    </h4>
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-4 w-4 shrink-0 text-[#28B5E1] transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
+                  <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
+                    <div className="overflow-hidden">
+                      <p className="mt-2 text-xs leading-relaxed text-slate-300 sm:text-sm">
+                        {q.a}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </article>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ───────── DELIVERY MODEL ───────── */}
-      <section className="relative bg-slate-50 py-16 sm:py-24">
+      {/* ───────── DELIVERY MODEL ─────────
+          bg-white (was slate-50): the decision-framework section above
+          moved to slate-50 to match the firewalls page, so this flips
+          to keep the white / slate alternation. */}
+      <section className="relative bg-white py-16 sm:py-24">
         <div className="shell">
           <SectionHeader
             label="How we work"

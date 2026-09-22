@@ -1,6 +1,8 @@
 export type MfaVendor = {
   slug: string;
   name: string;
+  metaTitle: string;
+  metaDescription: string;
   logo?: string;
   tagline: string;
   bestFor: string;
@@ -61,6 +63,9 @@ export type MfaVendor = {
 export const mfaVendors: Record<string, MfaVendor> = {
   "microsoft-entra-mfa": {
     slug: "microsoft-entra-mfa",
+    metaTitle: "Microsoft Entra MFA Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Microsoft Entra MFA in Dubai and the UAE: complete multi-factor for Microsoft estates with conditional access. Deployed and managed by Artiflex IT.",
     name: "Microsoft Entra MFA",
     logo: "/logos/microsoft.svg",
     tagline: "The most complete multi-factor authentication for Microsoft estates, tying MFA policy to device compliance, location and risk from one Conditional Access engine",
@@ -207,6 +212,9 @@ export const mfaVendors: Record<string, MfaVendor> = {
 
   "cisco-duo": {
     slug: "cisco-duo",
+    metaTitle: "Cisco Duo MFA Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Cisco Duo MFA in Dubai and the UAE: the cleanest push experience and fast rollout across mixed estates. Deployed and managed by Artiflex IT.",
     name: "Cisco Duo",
     logo: "/logos/Cisco.svg",
     tagline: "Built MFA-first from day one, with the cleanest push experience in the market, the fastest end-user adoption and device trust that works with any identity infrastructure",
@@ -353,6 +361,9 @@ export const mfaVendors: Record<string, MfaVendor> = {
 
   "okta-mfa": {
     slug: "okta-mfa",
+    metaTitle: "Okta Adaptive MFA Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Okta Adaptive MFA in Dubai and the UAE: strong cloud-native multi-factor with risk-based policies. Deployed and managed by Artiflex IT.",
     name: "Okta Adaptive MFA",
     logo: "/logos/Okta.png",
     tagline: "The strongest cloud-native multi-factor authentication, paired with Okta's 7,000+ app catalogue and cross-platform FastPass passwordless sign-in",
@@ -499,6 +510,9 @@ export const mfaVendors: Record<string, MfaVendor> = {
 
   "rsa-securid": {
     slug: "rsa-securid",
+    metaTitle: "RSA SecurID MFA Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "RSA SecurID Access MFA in Dubai and the UAE: the MFA pioneer with a long enterprise and government track record. Deployed by Artiflex IT.",
     name: "RSA SecurID Access",
     logo: "/logos/RSA_SecurID.png",
     tagline: "The MFA pioneer with the longest enterprise track record, strong in government and financial services where hardware-token infrastructure already exists",
@@ -645,6 +659,9 @@ export const mfaVendors: Record<string, MfaVendor> = {
 
   yubico: {
     slug: "yubico",
+    metaTitle: "Yubico YubiKey MFA Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Yubico YubiKey MFA in Dubai and the UAE: phishing-resistant FIDO2 hardware keys for high-risk accounts. Deployed and managed by Artiflex IT.",
     name: "Yubico (YubiKey)",
     logo: "/logos/yubico.svg",
     tagline: "The leading hardware security key, delivering phishing-resistant FIDO2 and WebAuthn authentication for the highest-risk accounts, with no battery, app or connectivity needed",
@@ -791,6 +808,9 @@ export const mfaVendors: Record<string, MfaVendor> = {
 
   "google-workspace-mfa": {
     slug: "google-workspace-mfa",
+    metaTitle: "Google Workspace MFA Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Google Workspace MFA in Dubai and the UAE: native multi-factor for Google estates with a smooth prompt. Deployed and managed by Artiflex IT.",
     name: "Google Workspace MFA",
     logo: "/logos/Google-Cloud.webp",
     tagline: "Native multi-factor for Google Workspace estates, with a smooth Google prompt and phishing-resistant Titan Security Keys included without an extra vendor contract",

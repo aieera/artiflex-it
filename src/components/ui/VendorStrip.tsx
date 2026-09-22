@@ -3,8 +3,6 @@ import { PARTNER_LOGOS } from "@/lib/constants";
 
 // ─── Styles injected once ─────────────────────────────────────────────────────
 const STYLE = `
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap');
-
   :root {
     --gold-100: #e8f4fb;
     --gold-300: #6aafd4;
@@ -16,7 +14,10 @@ const STYLE = `
   }
 
   .vs-wrap * { box-sizing: border-box; }
-  .vs-wrap { font-family: 'DM Sans', sans-serif; }
+  /* Plus Jakarta Sans is the site font, self-hosted + already loaded.
+     DM Sans was dropped 2026-07-13: its Google Fonts @import added a
+     render-delaying third-party CSS fetch for a 13px label. */
+  .vs-wrap { font-family: 'Plus Jakarta Sans', sans-serif; }
 
   /* ── Scroll tracks ── */
   @keyframes scroll-left {
@@ -236,11 +237,75 @@ export default function VendorStrip() {
       <div className="glow-orb" style={{ width: 300, height: 300, background: "#6aafd4", bottom: -100, right: "15%" }} />
 
       {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: 36 }}>
+      <div style={{ textAlign: "center", marginBottom: 28 }}>
         <div className="partner-badge" style={{ display: "inline-flex" }}>
           <span className="badge-dot" />
           Trusted by global partners
         </div>
+      </div>
+
+      {/* Partner credentials (Sophos Platinum, Hexnode Premium), visible above the fold */}
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 16, marginBottom: 36, padding: "0 16px" }}>
+        <a
+          href="/vendors/sophos"
+          aria-label="ArtiflexIT is a Sophos Platinum Partner in UAE"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 12,
+            padding: "10px 20px",
+            borderRadius: 14,
+            border: "1px solid rgba(4,88,145,0.18)",
+            background: "rgba(255,255,255,0.85)",
+            textDecoration: "none",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+          }}
+        >
+          <img
+            src="/sophos-platinum-partner/Sophos-Platinum-Partner.svg"
+            alt="Sophos Platinum Partner UAE Dubai"
+            style={{ height: 56, width: "auto" }}
+            loading="lazy"
+            width={56}
+            height={56}
+          />
+          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 13, fontWeight: 600, color: "var(--gold-700)", letterSpacing: "0.02em" }}>
+            Sophos Platinum Partner
+            <span style={{ display: "block", fontSize: 11, fontWeight: 400, color: "var(--muted)", letterSpacing: "0.04em" }}>
+              Authorized in UAE | Dubai
+            </span>
+          </span>
+        </a>
+        <a
+          href="/cybersecurity/mobile-security/hexnode"
+          aria-label="ArtiflexIT is a Hexnode Premium Partner in UAE"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 12,
+            padding: "10px 20px",
+            borderRadius: 14,
+            border: "1px solid rgba(4,88,145,0.18)",
+            background: "rgba(255,255,255,0.85)",
+            textDecoration: "none",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+          }}
+        >
+          <img
+            src="/logos/Hexnode.png"
+            alt="Hexnode Premium Partner UAE Dubai"
+            style={{ height: 40, width: "auto" }}
+            loading="lazy"
+            width={119}
+            height={40}
+          />
+          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 13, fontWeight: 600, color: "var(--gold-700)", letterSpacing: "0.02em" }}>
+            Hexnode Premium Partner
+            <span style={{ display: "block", fontSize: 11, fontWeight: 400, color: "var(--muted)", letterSpacing: "0.04em" }}>
+              Authorized in UAE | Dubai
+            </span>
+          </span>
+        </a>
       </div>
 
       {/* Single scrolling row */}

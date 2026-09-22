@@ -39,7 +39,6 @@ export default function PageHero({
   children,
 }: PageHeroProps) {
   const containerRef = useRef<HTMLElement>(null);
-  const plainTitle = extractText(title);
 
   return (
     <section

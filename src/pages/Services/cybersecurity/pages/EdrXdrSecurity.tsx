@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 import { useContactModal } from "@/components/layout/ContactModal";
 import FAQAccordion from "@/components/ui/FAQAccordion";
+import SophosAccreditationBadge from "@/components/ui/SophosAccreditationBadge";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import {
   ShieldIcon,
@@ -18,49 +20,9 @@ import {
 
 /* ───────── EVOLUTION (AV → EDR → XDR) ───────── */
 
-const evolution = [
-  {
-    era: "1987",
-    title: "Signature Antivirus",
-    desc: "McAfee & Symantec ship the first commercial AV. Match file hashes against a list of known bad.",
-  },
-  {
-    era: "2013",
-    title: "Next-Gen Antivirus",
-    desc: "Machine learning + behavioural heuristics. First wave of AI meeting malware at the file gate.",
-  },
-  {
-    era: "2013",
-    title: "EDR is Coined",
-    desc: "Anton Chuvakin (Gartner) names the category. Continuous telemetry, not just prevention.",
-  },
-  {
-    era: "2018",
-    title: "Managed EDR",
-    desc: "24/7 SOC analysts + threat hunters become the norm for businesses without in-house teams.",
-  },
-  {
-    era: "2020",
-    title: "XDR Emerges",
-    desc: "Palo Alto coins XDR. Correlate endpoint, email, identity, network & cloud into one story.",
-  },
-  {
-    era: "2026",
-    title: "Autonomous Response",
-    desc: "AI-driven containment in seconds - no analyst required for the first 90% of incidents.",
-  },
-];
 
 /* ───────── TELEMETRY SIGNALS (what EDR watches) ───────── */
 
-const telemetry = [
-  { signal: "Process Execution", detail: "Parent-child trees, command-line args, DLL injection, hollowing" },
-  { signal: "File Operations", detail: "Create, rename, encrypt, mass-modify - ransomware's tell" },
-  { signal: "Registry Changes", detail: "Persistence keys, autoruns, service hijacks" },
-  { signal: "Network Connections", detail: "C2 beacons, DNS tunneling, data exfil to unusual IPs" },
-  { signal: "Memory Operations", detail: "Fileless malware, process injection, reflective loaders" },
-  { signal: "User & Identity", detail: "Privilege escalation, credential theft, abnormal logons" },
-];
 
 /* ───────── VENDOR MATRIX ───────── */
 
@@ -529,121 +491,15 @@ const endpointTierStyles: Record<EndpointTier, { bg: string; text: string; label
 
 /* ───────── HEAD-TO-HEAD VENDOR COMPARISON (Big 3) ───────── */
 
-const headToHead = [
-  {
-    vendor: "CrowdStrike Falcon",
-    accent: "#E04B3C",
-    strengths:
-      "Cloud-native lightweight agent, market-leading threat intel (Overwatch managed hunting), strong cross-platform coverage across Windows, macOS and Linux.",
-    weaknesses:
-      "Premium pricing scales quickly as modules stack; module licensing can be hard to forecast for finance teams.",
-    bestFor: "Mid-market and enterprise SOCs that want best-in-class detection and 24/7 managed hunting.",
-    uae: "Available in the UAE through regional distributors. CrowdStrike partner UAE tier is confirmed on a per-engagement basis - contact us for current authorisation status.",
-  },
-  {
-    vendor: "SentinelOne Singularity",
-    accent: "#6B3FB0",
-    strengths:
-      "Autonomous AI agent makes local kill decisions without cloud lookup - fastest automated rollback on ransomware in independent tests.",
-    weaknesses:
-      "Console alert volume is noisy until tuned; reporting depth lags Falcon for executive-level dashboards.",
-    bestFor: "Businesses that need autonomous response on disconnected or roaming endpoints.",
-    uae: "Distributed across the UAE through certified regional resellers. SentinelOne partner Dubai status is verified per project - request our current reseller letter before contracting.",
-  },
-  {
-    vendor: "Microsoft Defender XDR",
-    accent: "#28B5E1",
-    strengths:
-      "Zero-agent on Windows, deep Entra ID, Sentinel SIEM and M365 integration. Already paid for in many E5 licences - strong TCO story.",
-    weaknesses:
-      "Non-Windows coverage is shallower than Falcon or SentinelOne; depth varies sharply across the Defender SKU family (Business vs Endpoint P1/P2).",
-    bestFor: "M365 E5 shops standardised on Microsoft, looking to consolidate licensing.",
-    uae: "Native Microsoft availability across UAE Azure regions and via local Microsoft solutions partners.",
-  },
-];
 
 /* ───────── RANSOMWARE LITMUS TEST ───────── */
 
-const ransomwareTests = [
-  {
-    test: "Behavioural Detection",
-    desc: "Spots encryption patterns - not just known signatures. Catches zero-day ransomware families.",
-    icon: EyeIcon,
-  },
-  {
-    test: "Rollback Capability",
-    desc: "Restores files encrypted before the kill shot. CrowdStrike, SentinelOne, Sophos all offer this.",
-    icon: ShieldIcon,
-  },
-  {
-    test: "Kernel-Level Protection",
-    desc: "The agent itself cannot be disabled by admin-level malware. No agent = no defence.",
-    icon: LockIcon,
-  },
-  {
-    test: "Offline Protection",
-    desc: "Still works when the endpoint is disconnected from the internet. Airport, coffee shop, train.",
-    icon: AlertTriangleIcon,
-  },
-];
 
 /* ───────── XDR CORRELATION STORY ───────── */
 
-const attackStory = [
-  {
-    step: "01",
-    channel: "Email",
-    icon: MailIcon,
-    event: "Phishing email lands in an executive's inbox",
-    meta: "Email telemetry · attachment.xlsx",
-    tone: "from-[#6B3FB0] to-[#4FC3F7]",
-  },
-  {
-    step: "02",
-    channel: "Endpoint",
-    icon: MonitorIcon,
-    event: "Excel spawns PowerShell, then cmd.exe - parent-child anomaly",
-    meta: "EDR telemetry · process tree",
-    tone: "from-[#4FC3F7] to-[#28B5E1]",
-  },
-  {
-    step: "03",
-    channel: "Identity",
-    icon: EyeIcon,
-    event: "Credentials reused from an unusual geolocation 18 minutes later",
-    meta: "Identity telemetry · risky sign-in",
-    tone: "from-[#28B5E1] to-[#1B8AC7]",
-  },
-  {
-    step: "04",
-    channel: "Network",
-    icon: CloudIcon,
-    event: "2.3 GB exfiltrated to an AWS bucket never used before",
-    meta: "Network telemetry · anomalous outbound",
-    tone: "from-[#1B8AC7] to-[#045891]",
-  },
-];
 
 /* ───────── MANAGED EDR PILLARS ───────── */
 
-const managedPillars = [
-  {
-    title: "24/7 Threat Hunting",
-    desc: "Human analysts proactively search for indicators of compromise automated tools miss.",
-  },
-  {
-    title: "Alert Triage",
-    desc: "False positives eliminated before they hit your team. You only see verified incidents.",
-  },
-  {
-    title: "Incident Response",
-    desc: "Containment, eradication, and recovery - with documented runbooks and SLA-bound timing.",
-  },
-  {
-    title: "Policy Tuning",
-    desc: "Exclusions, detection rules, and prevention policies continuously refined to your environment.",
-  },
-];
 
 /* ───────── FAQ ───────── */
 
@@ -721,7 +577,7 @@ function EndpointHero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/endpoint.jpg')" }}
+        style={{ backgroundImage: "url('/endpoint.webp')" }}
       />
       <div
         aria-hidden="true"
@@ -761,16 +617,15 @@ function EndpointHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
-            Endpoint Security{" "}
-            <span className="gradient-text">UAE</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              EDR, XDR &amp; Managed Detection
-            </span>
+          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+            Endpoint Security
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            EDR, XDR &amp; Managed Endpoint Protection Solutions in Dubai &amp; UAE
           </h1>
 
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
-            Artiflex IT designs, deploys, and manages enterprise endpoint security across the UAE, Oman, and Saudi Arabia. <span className="font-semibold text-white">Sophos Platinum Partner</span>, plus full delivery experience across CrowdStrike, Microsoft Defender, SentinelOne, Palo Alto Cortex, Bitdefender, ESET, Trend Micro, and Check Point, so the conversation starts with your environment, not our preferred SKU.
+            Artiflex IT designs, deploys, and manages enterprise EDR and XDR solutions and managed endpoint protection across Dubai and the wider UAE, Oman, and Saudi Arabia. <span className="font-semibold text-white">Sophos Platinum Partner</span>, plus full delivery experience across CrowdStrike, Microsoft Defender, SentinelOne, Palo Alto Cortex, Bitdefender, ESET, Trend Micro, and Check Point, so the conversation starts with your environment, not our preferred SKU.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
@@ -857,38 +712,67 @@ export default function EdrXdrSecurityPage() {
   return (
     <>
       <>
-        <title>Endpoint Protection UAE | EDR & XDR for Business | Artiflex IT</title>
-        <meta
-          name="description"
-          content="Managed EDR & XDR for UAE business. Compare CrowdStrike, SentinelOne & Microsoft Defender. Free endpoint assessment."
-        />
-        <link
-          rel="canonical"
-          href="https://artiflexit.com/cybersecurity/endpoint-security-edr-xdr"
-        />
+        <title>EDR Solutions Dubai | XDR & Managed Endpoint Protection</title>
+        <meta name="description" content="EDR and XDR solutions in Dubai and across the UAE. Managed endpoint protection from CrowdStrike, SentinelOne, Sophos, Microsoft Defender and Palo Alto Cortex." />
+        <link rel="canonical" href="https://artiflexit.com/cybersecurity/endpoint-security-edr-xdr" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/endpoint-security-edr-xdr" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/endpoint-security-edr-xdr" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/endpoint-security-edr-xdr" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/endpoint-security-edr-xdr" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/endpoint-security-edr-xdr" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/endpoint-security-edr-xdr" />
+
+        <meta property="og:title" content="EDR Solutions Dubai | XDR & Managed Endpoint Protection" />
+        <meta property="og:description" content="EDR and XDR solutions in Dubai and across the UAE. Managed endpoint protection from CrowdStrike, SentinelOne, Sophos, Microsoft Defender and Palo Alto Cortex." />
+        <meta property="og:url" content="https://artiflexit.com/cybersecurity/endpoint-security-edr-xdr" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT EDR and XDR managed endpoint protection in Dubai, UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="EDR Solutions Dubai | XDR & Managed Endpoint Protection" />
+        <meta name="twitter:description" content="EDR and XDR solutions in Dubai and across the UAE. Managed endpoint protection from CrowdStrike, SentinelOne, Sophos, Microsoft Defender and Palo Alto Cortex." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          "name": "Artiflex IT",
-          "url": "https://artiflexit.com/cybersecurity/endpoint-security-edr-xdr",
+          "@id": "https://artiflexit.com/#localbusiness",
+          "name": "Artiflex Information Technology",
+          "url": "https://artiflexit.com/",
+          "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "M22, New Al Safiya Building, Near Abu Hail Metro Station, Hor Al Anz",
+              "addressLocality": "Dubai",
+              "addressRegion": "Dubai",
+              "addressCountry": "AE",
+            },
           "areaServed": [
             { "@type": "Country", "name": "United Arab Emirates" },
             { "@type": "City", "name": "Dubai" },
             { "@type": "City", "name": "Abu Dhabi" },
           ],
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "AE",
-            "addressLocality": "Dubai",
-          },
-          "telephone": "+971",
+          "telephone": "+971522076531",
         })}</script>
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Service",
           "name": "Managed Endpoint Security",
           "serviceType": "Managed EDR & XDR",
-          "provider": { "@type": "Organization", "name": "Artiflex IT" },
+          "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
           "areaServed": [
             { "@type": "Country", "name": "United Arab Emirates" },
             { "@type": "City", "name": "Dubai" },
@@ -915,12 +799,15 @@ export default function EdrXdrSecurityPage() {
             "@type": "ListItem",
             position: i + 1,
             name: v.name,
+            url: `https://artiflexit.com/cybersecurity/endpoint/${v.slug}`,
           })),
         })}</script>
       </>
 
       {/* HERO */}
       <EndpointHero />
+
+      <SophosAccreditationBadge variant="platform" />
 
       {/* ───────── ENDPOINT VENDORS WE DELIVER (HONEYCOMB) ───────── */}
       <section className="relative overflow-hidden bg-slate-50 py-16 sm:py-20">
@@ -948,11 +835,11 @@ export default function EdrXdrSecurityPage() {
               The Vendor Lineup
             </p>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-[2.5rem]">
-              Endpoint{" "}
+              Endpoint Security{" "}
               <span className="bg-gradient-to-r from-[#1B8AC7] to-[#28B5E1] bg-clip-text text-transparent">
                 Vendors
               </span>{" "}
-              we deliver
+              we deliver in Dubai &amp; UAE
             </h2>
             <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
               The EDR, XDR and MDR platforms we design, deploy and manage across UAE environments. The choice follows your stack, your SOC capacity, and the threat surface you actually face.
@@ -1247,25 +1134,19 @@ export default function EdrXdrSecurityPage() {
                     </h3>
                   </div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden"
-                      >
+                  <motion.div
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
                         <p className="mt-4 text-xs leading-relaxed text-slate-600">
                           {t.desc}
                         </p>
                         <p className="mt-4 border-t border-slate-200 pt-3 text-xs italic text-slate-500">
                           {t.fit}
                         </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  </motion.div>
                 </div>
               );
             })}
@@ -1312,12 +1193,12 @@ export default function EdrXdrSecurityPage() {
           </div>
 
           {/* At-a-glance vendor snapshot */}
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] sm:mt-16">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] sm:mt-16 -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + endpointFeatureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + endpointFeatureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Feature
                     </th>
                     {endpointFeatureVendors.map((v, i) => (
@@ -1414,7 +1295,7 @@ export default function EdrXdrSecurityPage() {
 
           <div className="mx-auto mt-20 max-w-4xl text-center sm:mt-28">
             <h2 className="font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
-              Detailed Comparison on Endpoint Security Vendors
+              Detailed Comparison of Endpoint Security Vendors in the UAE
             </h2>
             <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
               Strengths, blind spots, and the buyer profile each vendor was built for. Recommendations are based on UAE deployment patterns, not vendor tier.
@@ -1490,7 +1371,7 @@ export default function EdrXdrSecurityPage() {
                       {v.logo ? (
                         <img
                           src={v.logo}
-                          alt={`${v.name} logo`}
+                          alt={`${v.name} endpoint security logo`}
                           loading="lazy"
                           className="h-10 w-24 shrink-0 object-contain object-right sm:h-12 sm:w-32"
                         />
@@ -1542,19 +1423,19 @@ export default function EdrXdrSecurityPage() {
           {/* Capability comparison table */}
           <div id="gartner-comparison" className="mx-auto mt-20 max-w-4xl scroll-mt-24 text-center sm:mt-28">
             <h2 className="font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
-              Gartner-style Capability Comparison
+              Gartner-style EDR &amp; XDR Capability Comparison
             </h2>
             <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
               Visual capability ratings for the leading endpoint security platforms across ransomware protection, threat hunting, managed EDR coverage, XDR cross-domain correlation, and OT/ICS support. A gold ★ marker denotes best-in-class performance for that specific feature.
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + endpointFeatureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + endpointFeatureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Capability
                     </th>
                     {endpointFeatureVendors.map((v, i) => (
@@ -1644,7 +1525,8 @@ export default function EdrXdrSecurityPage() {
             </p>
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-5xl gap-5 sm:mt-16 lg:grid-cols-2">
+          <div className="mx-auto mt-10 max-w-6xl sm:mt-12">
+            <div className="grid grid-cols-1 gap-2 sm:gap-3 md:grid-cols-2">
             {[
               {
                 title: "What is your existing security stack?",
@@ -1665,16 +1547,36 @@ export default function EdrXdrSecurityPage() {
             ].map((q) => (
               <div
                 key={q.title}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-r from-[#04101E] to-[#0A3D6B] p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#28B5E1]/40 hover:shadow-xl sm:p-7"
+                tabIndex={0}
+                className="group relative flex min-h-[5rem] flex-col justify-center overflow-hidden rounded-xl border border-white/10 bg-gradient-to-r from-[#04101E] to-[#0A3D6B] px-4 py-3 shadow-md transition-all duration-300 hover:border-[#28B5E1]/40 hover:shadow-lg focus-within:border-[#28B5E1]/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#28B5E1]/40 sm:min-h-[5.5rem] sm:px-5 sm:py-3.5"
               >
-                <h3 className="font-display text-xl font-semibold leading-tight text-white">
-                  {q.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
-                  {q.desc}
-                </p>
+                <div className="flex items-center justify-between gap-3">
+                  <h4 className="font-display text-sm font-semibold leading-snug text-white sm:text-base">
+                    {q.title}
+                  </h4>
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4 shrink-0 text-[#28B5E1] transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </div>
+                <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
+                  <div className="overflow-hidden">
+                    <p className="mt-2 text-xs leading-relaxed text-slate-300 sm:text-sm">
+                      {q.desc}
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1884,6 +1786,8 @@ export default function EdrXdrSecurityPage() {
         description="Vendor-neutral comparison of CrowdStrike, SentinelOne, Microsoft, Sophos & Palo Alto - pricing, deployment, TCO, and real production case studies."
         primaryButton={{ text: "Request the Guide", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

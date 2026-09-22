@@ -95,8 +95,8 @@ export default function VulnAssessmentPage() {
   return (
     <>
       <>
-        <title>Vulnerability Assessment & Penetration Testing UAE, Sophos Managed Risk | ArtiflexIT Dubai</title>
-        <meta name="description" content="Continuous vulnerability management and penetration testing for UAE enterprises. NESA, CBUAE, and PCI-DSS aligned assessments, delivered by ArtiflexIT, Platinum Sophos Partner." />
+        <title>Independent VAPT & Pentesting in Dubai</title>
+        <meta name="description" content="Penetration testing companies in UAE. Independent VAPT, red team and ethical hacking aligned to OWASP, NESA and CBUAE." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/vulnerability-assessment-penetration-testing" />
       </>
 

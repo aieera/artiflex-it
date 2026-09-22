@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
@@ -37,7 +38,7 @@ const organizationSchema = {
       addressRegion: "Dubai",
       addressCountry: "AE",
       streetAddress:
-        "Malik Saeed Suhail Saeed Bin Daliwi Al-Kutbi - Bardab - First Commercial Center 45B - Office No.102",
+        "M22, New Al Safiya Building, Near Abu Hail Metro Station, Hor Al Anz",
     },
     {
       "@type": "PostalAddress",
@@ -46,7 +47,8 @@ const organizationSchema = {
     },
     {
       "@type": "PostalAddress",
-      addressCountry: "SA",
+      addressLocality: "Bengaluru",
+      addressCountry: "IN",
     },
   ],
   contactPoint: {
@@ -54,6 +56,8 @@ const organizationSchema = {
     telephone: "+971522076531",
     email: "info@artiflexit.com",
     contactType: "sales",
+    /* areaServed represents MARKETS SERVED, not physical offices.
+       We have no KSA office but serve Saudi customers, so KSA stays. */
     areaServed: ["AE", "OM", "SA", "IN"],
     availableLanguage: ["English", "Arabic", "Hindi"],
   },
@@ -66,11 +70,35 @@ const organizationSchema = {
     "VAPT",
     "SOC as a Service",
   ],
+  /* areaServed = markets served (SA kept for SEO/GEO); office footprint
+     is expressed in the `address` array above. */
   areaServed: [
     { "@type": "Country", name: "United Arab Emirates" },
     { "@type": "Country", name: "Oman" },
     { "@type": "Country", name: "Saudi Arabia" },
     { "@type": "Country", name: "India" },
+  ],
+  award: "Sophos Platinum Partner",
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Sophos Platinum Partner",
+      credentialCategory: "Vendor Partnership Tier",
+      recognizedBy: { "@type": "Organization", name: "Sophos", url: "https://www.sophos.com" },
+      url: "https://sophos2.my.site.com/sophospartnerportal/s/partner-finder",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Sophos Platform Accredited Partner",
+      credentialCategory: "Technical Accreditation",
+      recognizedBy: { "@type": "Organization", name: "Sophos", url: "https://www.sophos.com" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Sophos Firewall Accredited Partner",
+      credentialCategory: "Technical Accreditation",
+      recognizedBy: { "@type": "Organization", name: "Sophos", url: "https://www.sophos.com" },
+    },
   ],
 };
 
@@ -83,7 +111,7 @@ const faqSchema = {
       name: "What does Artiflex Information Technology do?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Artiflex Information Technology (ArtiflexIT) delivers customized, secure, and scalable IT solutions including cybersecurity, cloud infrastructure, managed IT services, and custom software development. With over 14 years of experience and 500+ completed projects, we serve industries from energy to fintech across the UAE, Oman, Saudi Arabia, and beyond.",
+        text: "Artiflex Information Technology (ArtiflexIT) delivers customized, secure, and scalable IT solutions including cybersecurity, cloud infrastructure, managed IT services, and custom software development. With over 14 years of experience and 500+ completed projects, we serve industries from energy to fintech across the UAE, Oman, Saudi Arabia, India, and beyond.",
       },
     },
     {
@@ -91,7 +119,7 @@ const faqSchema = {
       name: "Where is Artiflex Information Technology located?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Artiflex Information Technology is headquartered in Dubai, UAE (Bardab, First Commercial Center 45B). We operate globally with branches in four countries: Artiflex Information Technology in Dubai, Artiflex Manchi in Oman, and Artiflex Metal World in Saudi Arabia.",
+        text: "Artiflex Information Technology is headquartered in Dubai, UAE (Hor Al Anz, New Al Safiya Building). Our regional presence extends across Dubai, Oman and India, with the UAE as our primary market.",
       },
     },
     {
@@ -142,7 +170,7 @@ const values = [
     icon: GlobeIcon,
     title: "Global Reach, Local Expertise",
     description:
-      "With offices in four countries and deep knowledge of regional regulations, NESA, ICA, ADHICS, CBUAE, we combine international best practices with the local insight needed to support clients with agility.",
+      "Based in the UAE with regional offices in Dubai, Oman and India and clients across the UAE, Oman, Saudi Arabia and India, we combine international best practices with deep local knowledge of UAE regulations, NESA, ICA, ADHICS and CBUAE.",
   },
   {
     icon: TargetIcon,
@@ -156,7 +184,6 @@ const aboutStats = [
   { value: 500, suffix: "+", label: "Projects Completed" },
   { value: 14, suffix: "+", label: "Years of Experience" },
   { value: 20, suffix: "+", label: "Certified Professionals" },
-  { value: 4, suffix: "", label: "Countries" },
 ];
 
 const cardFade = {
@@ -172,26 +199,41 @@ export default function AboutPage() {
   return (
     <>
       <>
-        <title>About Artiflex IT, 14 Years of UAE IT & Cybersecurity</title>
-        <meta
-          name="description"
-          content="Artiflex Information Technology delivers cybersecurity, cloud, and IT solutions across UAE, Oman, and Saudi Arabia. 500+ projects, 20+ certified experts."
-        />
-        <meta
-          name="keywords"
-          content="Artiflex Information Technology, ArtiflexIT, IT solutions Dubai, cybersecurity company UAE, managed IT services Oman, IT company Saudi Arabia, custom software development Middle East, cloud solutions GCC"
-        />
+        <title>About Artiflex Information Technology LLC | UAE IT Partner</title>
+        <meta name="description" content="Artiflex Information Technology has 14+ years delivering cybersecurity, cloud and IT solutions across the UAE, Oman, Saudi Arabia and India. 500+ projects." />
         <link rel="canonical" href="https://artiflexit.com/about" />
-        <meta
-          property="og:title"
-          content="About Artiflex Information Technology, Global IT Solutions & Cybersecurity"
-        />
-        <meta
-          property="og:description"
-          content="14+ years of industry experience. 500+ projects. 20+ certified professionals. Offices across 4 countries. Discover why organizations worldwide trust ArtiflexIT."
-        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/about" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/about" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/about" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/about" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/about" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/about" />
+
+        <meta property="og:title" content="About Artiflex Information Technology LLC | UAE IT Partner" />
+        <meta property="og:description" content="14+ years of experience. 500+ projects. 20+ certified professionals. UAE-based IT and cybersecurity partner serving UAE, Oman, Saudi Arabia and India, with offices in Dubai, Oman and India." />
         <meta property="og:url" content="https://artiflexit.com/about" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex Information Technology, IT and cybersecurity partner in Dubai, UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Artiflex Information Technology LLC | UAE IT Partner" />
+        <meta name="twitter:description" content="Artiflex Information Technology has 14+ years delivering cybersecurity, cloud and IT solutions across the UAE, Oman, Saudi Arabia and India. 500+ projects." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
         </script>
@@ -259,9 +301,9 @@ export default function AboutPage() {
                   Backed by a team of 20+ certified full-time professionals, we
                   have successfully completed over 500 projects across various
                   industries, from energy and fintech to logistics and
-                  healthcare. Our global presence, with offices in four
-                  countries, allows us to support clients with agility and local
-                  insight.
+                  healthcare. Our UAE base and regional offices in Dubai,
+                  Oman and India let us support clients with agility and
+                  local insight.
                 </p>
               </div>
             </div>
@@ -315,8 +357,9 @@ export default function AboutPage() {
                     </h3>
                     <p className="mt-1 text-sm text-body">
                       500+ projects delivered, 20+ certified professionals,
-                      offices in 4 countries, and a reputation built on trust,
-                      innovation, and results across the UAE and beyond.
+                      regional offices in Dubai, Oman and India, and a
+                      reputation built on trust, innovation, and results
+                      across the UAE and beyond.
                     </p>
                   </div>
                 </div>
@@ -347,7 +390,7 @@ export default function AboutPage() {
           />
 
           {/* Stats grid */}
-          <div className="mt-14 grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-8">
+          <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-8 max-w-4xl mx-auto">
             {aboutStats.map((stat, i) => (
               <div
                 key={i}
@@ -481,6 +524,91 @@ export default function AboutPage() {
                 </Card>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Vendor Partnerships & Accreditations ───
+         Note: this section deliberately uses neutral SEO copy so it does
+         not compete with /vendors/sophos for "Sophos Platinum Partner UAE".
+         Anchor text on the deep link uses the target keyword, which
+         reinforces the canonical landing page instead of cannibalising it. */}
+      <section className="relative py-16 bg-white sm:py-24" aria-labelledby="accreditations-heading">
+        <div className="shell">
+          <SectionHeader
+            label="Vendor Partnerships"
+            title="Where We're Accredited"
+            description="We hold partner status and active accreditations with the vendors we deploy, so customers know the engineers handling their environment are certified by the vendor itself, not just by us."
+            centered
+          />
+
+          {/* Sophos accreditation strip */}
+          <div className="mx-auto mt-10 max-w-5xl rounded-3xl border border-border-light bg-surface-secondary p-6 sm:p-10">
+            <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-3 sm:gap-8">
+              <div className="flex flex-col items-center text-center">
+                <img
+                  src="/sophos-platinum-partner/Sophos-Platinum-Partner.svg"
+                  alt="Sophos Platinum tier partner badge"
+                  className="h-24 w-auto"
+                  loading="lazy"
+                  width={96}
+                  height={96}
+                />
+              </div>
+              <div className="flex flex-col items-center text-center">
+                <img
+                  src="/sophos-platinum-partner/PartnerPlatform_Partner.svg"
+                  alt="Sophos Platform accreditation badge"
+                  className="h-20 w-auto"
+                  loading="lazy"
+                  width={80}
+                  height={80}
+                />
+              </div>
+              <div className="flex flex-col items-center text-center">
+                <img
+                  src="/sophos-platinum-partner/Firewall_Partner.svg"
+                  alt="Sophos Firewall accreditation badge"
+                  className="h-20 w-auto"
+                  loading="lazy"
+                  width={80}
+                  height={80}
+                />
+              </div>
+            </div>
+
+            {/* Certifications count, paired with the deep link */}
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+              {[
+                { value: "83", label: "Sales Certifications" },
+                { value: "19", label: "MDR Sales Certifications" },
+                { value: "8", label: "Engineer Certifications" },
+                { value: "3", label: "Architect Certifications" },
+              ].map((cert) => (
+                <div
+                  key={cert.label}
+                  className="rounded-xl border border-[#045891]/15 bg-white p-4 text-center"
+                >
+                  <span className="font-display text-2xl font-bold text-[#045891] sm:text-3xl">{cert.value}</span>
+                  <p className="mt-1 text-[11px] font-medium text-body sm:text-xs">{cert.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 text-center" id="accreditations-heading">
+              <p className="text-sm text-body leading-relaxed">
+                Our team maintains active vendor certifications across sales, deployment, MDR, and architecture for the products we deliver to UAE, Oman and Saudi Arabia customers.
+              </p>
+              <Link
+                to="/vendors/sophos"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand-blue hover:underline"
+              >
+                Learn more about our Sophos Platinum Partnership
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

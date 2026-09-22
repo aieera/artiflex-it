@@ -1,6 +1,7 @@
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
+import SophosAccreditationBadge from "@/components/ui/SophosAccreditationBadge";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { CloudIcon, ShieldIcon, LockIcon, GlobeIcon, EyeIcon, CheckIcon } from "@/components/icons";
 
@@ -87,8 +88,8 @@ export default function SASEPage() {
   return (
     <>
       <>
-        <title>SASE & Zero Trust Network Access UAE, Sophos Workspace | ArtiflexIT Dubai</title>
-        <meta name="description" content="SASE and ZTNA solutions for UAE enterprises. Replace legacy VPN with identity-aware zero trust access. ZTNA, CASB, SWG, and FWaaS from ArtiflexIT, Platinum Sophos Partner." />
+        <title>Adopt Zero Trust: ZTNA & SASE Rollout in UAE</title>
+        <meta name="description" content="Zero Trust in UAE. Replace legacy VPN, enforce identity at every connection, reduce attack surface across the hybrid workforce." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/sase-zero-trust" />
       </>
 
@@ -101,6 +102,8 @@ export default function SASEPage() {
           { label: "SASE & Zero Trust", href: "/cybersecurity/sase-zero-trust" },
         ]}
       />
+
+      <SophosAccreditationBadge variant="platform" />
 
       <section className="relative border-y border-border-light bg-white">
         <div className="shell">

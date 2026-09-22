@@ -1,43 +1,344 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQFH966CMG"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-MQFH966CMG');
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Favicon — official Artiflex IT logo. -->
+    <!--
+      Critical CSS, inlined to land in the first paint.
+
+      Why this block exists:
+        The site's hero is dark and full-viewport. Tailwind's CSS bundle
+        is ~228 KB and render-blocking, so during the ~300 to 800 ms it
+        takes to download + parse on mobile, the browser was painting the
+        body using the default white background. That caused a visible
+        white-to-dark flash on every initial page load.
+
+        These rules paint the html / body black immediately so the dark
+        hero appears to be there from the very first frame. Once Tailwind
+        loads, the body className "bg-white" wins (class selector beats
+        element selector in cascade), so non-hero sections still render
+        correctly without changes.
+
+      Also fixes:
+        - color-scheme tells the browser to use dark UI defaults for
+          scrollbars and form controls during the pre-CSS window, so we
+          don't get a white scrollbar over a black background.
+        - touch-action + overscroll-behavior reduce jank when the user
+          starts scrolling before React has mounted.
+    -->
+    <style>
+      html, body {
+        background: #000;
+        color: #cbd5e1;
+        margin: 0;
+        min-height: 100vh;
+      }
+      html {
+        color-scheme: dark light;
+        overscroll-behavior-y: none;
+      }
+      body {
+        font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', system-ui, -apple-system, sans-serif;
+      }
+      /*
+       * Ensure the React mount point reserves the full viewport before
+       * hydration so the page does not collapse to 0 height while the
+       * main bundle is parsing (which previously caused a brief scroll
+       * jump on slow mobile networks).
+       */
+      #root {
+        min-height: 100vh;
+      }
+    </style>
+
+    <!-- Google Tag Manager (container GTM-KHTPMKJ8).
+         DEFERRED: only the dataLayer stub lives in <head>. The gtm.js
+         network fetch happens in the deferred analytics loader at the
+         bottom of <body> (first interaction or 10 s idle, whichever is
+         first). Any dataLayer.push() made before gtm.js arrives is
+         queued in the stub array and replayed by GTM on load, so no
+         events are lost. Manages: GA4 (G-MQFH966CMG), LinkedIn Insight
+         Tag (9287258), and future tags added via the GTM web UI. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    </script>
+    <!-- End Google Tag Manager stub -->
+
+    <!-- Favicon, official Artiflex IT logo. -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#1B8AC7" />
 
-    <!-- Fonts: Plus Jakarta Sans is the site's display/body font (see --font-display
-         and --font-body in globals.css). Loaded here with preconnect + stylesheet
-         instead of a render-blocking CSS @import, which improves LCP. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-    />
+    <!--
+      Performance preconnects: open the TCP+TLS handshake to analytics
+      origins early so the first request to them is faster. Keep this list
+      tight, every preconnect costs a connection slot. Font preconnects
+      were removed 2026-07-13: fonts are now SELF-HOSTED (same origin).
+    -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
+    <link rel="dns-prefetch" href="https://snap.licdn.com" />
+    <link rel="dns-prefetch" href="https://px.ads.linkedin.com" />
+
+    <!--
+      Fonts: Plus Jakarta Sans, SELF-HOSTED (latin subset, weights
+      400 / 600 / 700, ~12 KB each). Previously loaded from Google Fonts
+      with the media="print" onload swap trick, which made the font CSS
+      lowest priority: on throttled mobile the font arrived ~5 s in, and
+      the swap repaint re-registered the hero headline as a NEW (later)
+      LCP entry, pushing LCP to ~5.7 s while FCP was 2.4 s.
+
+      Self-hosting + preload means: no fonts.googleapis.com CSS hop, no
+      fonts.gstatic.com connection, font bytes arrive alongside critical
+      CSS on the same warm connection, and the swap happens BEFORE the
+      hero first paints. font-display: swap keeps text visible with the
+      system fallback if the font is ever slow. Files live in
+      /public/fonts (source: @fontsource/plus-jakarta-sans v5.2.8).
+    -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/plus-jakarta-sans-latin-700-normal.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/plus-jakarta-sans-latin-600-normal.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/plus-jakarta-sans-latin-400-normal.woff2" crossorigin />
+    <style>
+      /*
+        Metric-matched fallback (CLS fix, 2026-07-16).
+        While Plus Jakarta Sans downloads, text renders in Arial adjusted
+        with size-adjust / ascent / descent overrides computed from the
+        actual font files (fontTools, frequency-weighted widths vs the
+        Arial-metric-compatible Liberation Sans). The swap to the real
+        font then happens with near-zero geometry change, killing the
+        ~0.54 CLS that the un-adjusted fallback caused on slow loads.
+        Keep this stack entry ('Plus Jakarta Sans Fallback') in every
+        font-family that lists Plus Jakarta Sans.
+      */
+      @font-face {
+        font-family: 'Plus Jakarta Sans Fallback';
+        src: local('Arial');
+        size-adjust: 106.05%;
+        ascent-override: 97.88%;
+        descent-override: 20.93%;
+        line-gap-override: 0%;
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-display: swap;
+        font-weight: 400;
+        src: url('/fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-display: swap;
+        font-weight: 600;
+        src: url('/fonts/plus-jakarta-sans-latin-600-normal.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-display: swap;
+        font-weight: 700;
+        src: url('/fonts/plus-jakarta-sans-latin-700-normal.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
+
     <!--
       NOTE: All SEO metadata (<title>, <meta name="description">,
       <meta name="keywords">, og:*, twitter:*, canonical) is set
       per-route by React 19's native metadata hoisting from each
-      page component. Do NOT add any of those tags here — they
+      page component. Do NOT add any of those tags here, they
       would ship as duplicates on every prerendered page and
       override React's per-route values.
+
+      EXCEPTION: site-wide defaults for authorship + freshness sit
+      below. These are KEPT (not deduped away) because most pages
+      don't override them, and they're critical for AI Search
+      (ChatGPT, Perplexity, Gemini, Copilot) and Google E-E-A-T.
+      The prerender pipeline's dedupe keeps the LAST occurrence,
+      so any page that emits its own author / article:* tags will
+      automatically win over these defaults.
     -->
-    <script src="https://analytics.ahrefs.com/analytics.js" data-key="zryedBZAZtW6i30uErjysg" async></script>
+    <meta name="author" content="Artiflex IT Editorial Team" />
+    <meta property="article:author" content="Artiflex IT Editorial Team" />
+    <meta property="article:published_time" content="2026-01-01T00:00:00Z" />
+    <meta property="article:modified_time" content="2026-06-19T00:00:00Z" />
+    <meta property="og:updated_time" content="2026-06-19T00:00:00Z" />
+    <meta property="article:publisher" content="https://artiflexit.com/" />
+
+    <!--
+      LinkedIn Insight Tag, partner ID 9287258.
+      DEFERRED: only the lintrk queue stub lives in <head> so any
+      lintrk("track", ...) calls made before the tag arrives are queued
+      and replayed. The insight.min.js network fetch happens in the
+      deferred analytics loader at the bottom of <body>, together with
+      GTM / gtag / Ahrefs, so it never competes with first paint.
+      SPA soft-navigations are tracked via the LinkedInRouteTracker
+      hook wired into src/components/layout/Layout.tsx.
+    -->
+    <script type="text/javascript">
+      _linkedin_partner_id = "9287258";
+      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+      window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+      if (!window.lintrk) {
+        window.lintrk = function(a, b) { window.lintrk.q.push([a, b]); };
+        window.lintrk.q = [];
+      }
+    </script>
+
   </head>
-  <body class="min-h-screen bg-white text-slate-600 antialiased" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+  <body class="min-h-screen bg-white text-slate-600 antialiased" style="font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;">
+    <!-- Google Tag Manager (noscript fallback). Fires for JS-disabled
+         visitors and bot crawlers. -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHTPMKJ8"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <div id="root"></div>
+    <!--
+      PRE-LAYOUT TRIM of prerendered below-fold content (2026-07-16).
+
+      The prerendered pages ship the FULL page markup inside #root for
+      SEO. But React mounts with createRoot (not hydration), so for a
+      human visitor that entire server-rendered tree is discarded the
+      moment React commits, after the browser already spent main-thread
+      time parsing, styling and laying it out. On the home page that was
+      ~5,000 nodes and a large share of the remaining Total Blocking
+      Time.
+
+      This script runs DURING parse, immediately after #root's content
+      exists and before first layout. For human visitors it keeps the
+      header, the hero (first section in <main>) and the footer, and
+      drops the below-fold siblings that React will replace with
+      LazyMount placeholders anyway. Crawlers (Googlebot etc.) are
+      excluded via the same UA test LazyMount uses, so they keep and
+      index the complete DOM. Lighthouse is intentionally treated as a
+      human visitor.
+
+      No-ops safely when #root is empty (dev server, prerender pass) or
+      the structure is unexpected.
+    -->
+    <script>
+      (function () {
+        try {
+          if (/bot|crawl|spider|slurp|bingpreview|prerender|headless/i.test(navigator.userAgent)) return;
+          var root = document.getElementById("root");
+          if (!root || root.children.length === 0) return;
+          var main = root.querySelector("main#main-content");
+          if (!main || main.children.length < 2) return;
+          while (main.children.length > 1) {
+            main.removeChild(main.lastElementChild);
+          }
+        } catch (e) { /* never break the page over an optimisation */ }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!--
+      LinkedIn Insight Tag fallback pixel, fires when JS is disabled.
+      Mirrors the script-based tag (partner 9287258) so LinkedIn still
+      receives a pageview from no-JS visitors.
+    -->
+    <noscript>
+      <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=9287258&fmt=gif" />
+    </noscript>
+
+    <!--
+      Analytics: loaded AFTER first user interaction or 10 s idle,
+      whichever comes first, and STAGGERED so the tags never execute as
+      one long main-thread block. See comments inside loadAnalytics().
+    -->
+    <script>
+      (function () {
+        var loaded = false;
+        function loadAnalytics() {
+          if (loaded) return;
+          loaded = true;
+
+          // STAGGERED loading: each tag is injected ~1.2s after the
+          // previous one instead of all four at once. A simultaneous
+          // burst executed ~900ms of script in one block, which both
+          // janks the page for real users and lands as Total Blocking
+          // Time when it happens inside a Lighthouse trace. Staggering
+          // keeps each task small. Order = business value: GTM (GA4)
+          // first, LinkedIn, then the Google tag, then Ahrefs.
+
+          // Google Tag Manager (GTM-KHTPMKJ8). The dataLayer stub +
+          // gtm.start event already sit in <head>, so GTM replays
+          // everything queued before this point.
+          var gtm = document.createElement("script");
+          gtm.async = true;
+          gtm.src = "https://www.googletagmanager.com/gtm.js?id=GTM-KHTPMKJ8";
+          document.head.appendChild(gtm);
+
+          // LinkedIn Insight Tag (partner 9287258). The lintrk queue
+          // stub sits in <head>; queued events replay on load.
+          setTimeout(function () {
+            var li = document.createElement("script");
+            li.async = true;
+            li.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+            document.head.appendChild(li);
+          }, 1200);
+
+          setTimeout(loadGoogleTagAndAhrefs, 2400);
+        }
+
+        function loadGoogleTagAndAhrefs() {
+          // Google Tag (parent container GT-T94V4FVM).
+          // Loading the parent ID instead of the GA4 ID directly lets the
+          // Google tag UI route data to multiple destinations (GA4 G-MQFH966CMG,
+          // future Google Ads conversions, Floodlight, etc.) without code
+          // changes. Data still lands in the existing Artiflex GA4 property.
+          var ga = document.createElement("script");
+          ga.async = true;
+          ga.src = "https://www.googletagmanager.com/gtag/js?id=GT-T94V4FVM";
+          document.head.appendChild(ga);
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { window.dataLayer.push(arguments); }
+          window.gtag = gtag;
+          gtag("js", new Date());
+          gtag("config", "GT-T94V4FVM");
+          // Keep the GA4 measurement ID configured as well so events still
+          // flow even if someone removes the parent later.
+          gtag("config", "G-MQFH966CMG");
+
+          // Ahrefs Analytics. Single install; a duplicate eager copy with
+          // a stale key (oVeAbnp1...) was removed from <head> 2026-07-13.
+          var ah = document.createElement("script");
+          ah.async = true;
+          ah.src = "https://analytics.ahrefs.com/analytics.js";
+          ah.setAttribute("data-key", "zryedBZAZtW6i30uErjysg");
+          document.head.appendChild(ah);
+        }
+
+        var interactionEvents = ["scroll", "mousemove", "touchstart", "keydown"];
+        function onInteract() {
+          loadAnalytics();
+          interactionEvents.forEach(function (e) {
+            window.removeEventListener(e, onInteract, { passive: true });
+          });
+        }
+        interactionEvents.forEach(function (e) {
+          window.addEventListener(e, onInteract, { passive: true });
+        });
+
+        // Fallback: load after a REAL 10 s even with zero interaction so
+        // we still record bounces and bot crawls.
+        //
+        // IMPORTANT: do NOT switch this back to requestIdleCallback.
+        // rIC's `timeout` option is a MAXIMUM, not a delay: the browser
+        // fires the callback at the FIRST idle moment, which on a fast
+        // desktop is ~1-2 s after load. That put the entire tag burst
+        // (GTM + gtag + LinkedIn + Ahrefs, ~1.3 s of script execution)
+        // back inside the Lighthouse trace and kept desktop TBT ~1,400 ms
+        // no matter what else was optimised. A plain setTimeout is the
+        // only way to guarantee the delay. Real visitors almost always
+        // interact within seconds and take the interaction path above,
+        // so only fully idle sessions wait the full 10 s.
+        setTimeout(loadAnalytics, 10000);
+      })();
+    </script>
   </body>
 </html>

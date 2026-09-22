@@ -1,6 +1,8 @@
 export type VmVendor = {
   slug: string;
   name: string;
+  metaTitle: string;
+  metaDescription: string;
   logo?: string;
   tagline: string;
   bestFor: string;
@@ -68,6 +70,9 @@ export const vmVendors: Record<string, VmVendor> = {
   "sophos-managed-risk": {
     slug: "sophos-managed-risk",
     name: "Sophos Managed Risk",
+    metaTitle: "Sophos Managed Risk VM UAE | Artiflex IT",
+    metaDescription:
+      "Sophos Managed Risk in Dubai and the UAE: managed vulnerability and attack-surface monitoring by the Sophos SOC. Deployed by Artiflex IT.",
     logo: "/logos/sophos.svg",
     tagline: "Fully managed continuous vulnerability management plus external attack surface monitoring, powered by Secureworks and the Counter Threat Unit",
     bestFor: "Recommended · Powered by Secureworks · Continuous Exposure Management",
@@ -256,6 +261,9 @@ export const vmVendors: Record<string, VmVendor> = {
   "fortra-tripwire": {
     slug: "fortra-tripwire",
     name: "Fortra Tripwire",
+    metaTitle: "Fortra Tripwire Vulnerability Management UAE | Artiflex",
+    metaDescription:
+      "Fortra Tripwire in Dubai and the UAE: file integrity monitoring and vulnerability management for compliance. Deployed and managed by Artiflex IT.",
     logo: "/logos/Fortra.png",
     tagline: "Invented File Integrity Monitoring, the FIM, SCM and continuous-compliance reference with the largest policy library in the industry",
     bestFor: "Compliance & Change Control · Largest Policy Library in the Industry",
@@ -388,6 +396,9 @@ export const vmVendors: Record<string, VmVendor> = {
   tenable: {
     slug: "tenable",
     name: "Tenable Nessus / Tenable.io / Tenable One",
+    metaTitle: "Tenable Vulnerability Management UAE | Artiflex IT",
+    metaDescription:
+      "Tenable Nessus, Tenable.io and Tenable One in Dubai and the UAE: risk-based vulnerability management across IT and cloud. Deployed by Artiflex IT.",
     logo: "/logos/tenable.png",
     tagline: "World's most widely deployed vulnerability scanner, 80,000+ plugins, 30,000+ customers, the Cyber Exposure category-defining platform",
     bestFor: "Industry-Leading Vulnerability Scanner · 80,000+ Plugins",
@@ -503,6 +514,9 @@ export const vmVendors: Record<string, VmVendor> = {
   "qualys-vmdr": {
     slug: "qualys-vmdr",
     name: "Qualys VMDR",
+    metaTitle: "Qualys VMDR Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Qualys VMDR in Dubai and the UAE: cloud-based vulnerability management, detection and response in one agent. Deployed and managed by Artiflex IT.",
     logo: "/logos/qualys.png",
     tagline: "Cloud-native VMDR unifying asset inventory, vulnerability detection, threat prioritisation and patch management under one subscription",
     bestFor: "Cloud-Native VMDR · TruRisk Score · Bundled Patch Management",
@@ -618,6 +632,9 @@ export const vmVendors: Record<string, VmVendor> = {
   "rapid7-insightvm": {
     slug: "rapid7-insightvm",
     name: "Rapid7 InsightVM",
+    metaTitle: "Rapid7 InsightVM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Rapid7 InsightVM in Dubai and the UAE: live vulnerability management with risk scoring and remediation workflows. Deployed by Artiflex IT.",
     logo: "/logos/rapid7.png",
     tagline: "Live risk dashboards backed by Metasploit exploit data and Project Sonar internet-wide visibility, part of the Rapid7 Insight Platform",
     bestFor: "Real-Time Visibility · Live Dashboards · Insight Platform",
@@ -733,6 +750,9 @@ export const vmVendors: Record<string, VmVendor> = {
   "microsoft-defender-vm": {
     slug: "microsoft-defender-vm",
     name: "Microsoft Defender Vulnerability Management",
+    metaTitle: "Microsoft Defender VM UAE | Artiflex IT",
+    metaDescription:
+      "Microsoft Defender Vulnerability Management in Dubai and the UAE: native VM built into Defender for Endpoint. Deployed and managed by Artiflex IT.",
     logo: "/logos/MicrosoftDefender.webp",
     tagline: "Bundled with Defender for Endpoint P2 / M365 E5, endpoint-telemetry-driven VM with Defender XDR integration",
     bestFor: "Bundled in M365 E5 · Best Value Inside Microsoft Estate",
@@ -844,6 +864,9 @@ export const vmVendors: Record<string, VmVendor> = {
   mandiant: {
     slug: "mandiant",
     name: "Mandiant (Google Cloud)",
+    metaTitle: "Mandiant Vulnerability Intel UAE | Artiflex IT",
+    metaDescription:
+      "Mandiant (Google Cloud) in Dubai and the UAE: threat intelligence and attack-surface management from frontline responders. Deployed by Artiflex IT.",
     logo: "/logos/Mandiant.png",
     tagline: "The world's most prestigious incident response and threat intelligence firm, elite red team operations and frontline attack expertise, now part of Google Cloud",
     bestFor: "Premium Tier · Frontline Attack Expertise · Nation-State Threat Intelligence",

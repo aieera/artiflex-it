@@ -7,8 +7,9 @@ import React, {
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { XIcon, PhoneIcon, MailIcon } from "@/components/icons";
+import { trackEvent } from "@/lib/analytics";
+import { submitContactForm, CONTACT_EMAIL } from "@/lib/contact";
 
-const CONTACT_EMAIL = "info@artiflexit.com";
 const CONTACT_PHONE = "+971522076531";
 const WHATSAPP_NUMBER = "971522076531";
 
@@ -73,8 +74,11 @@ function ContactModalBody({ close }: { close: () => void }) {
     company: "",
     service: "",
     message: "",
+    botcheck: "",
   });
   const [submitted, setSubmitted] = useState<null | "email" | "whatsapp">(null);
+  const [sending, setSending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -96,21 +100,47 @@ function ContactModalBody({ close }: { close: () => void }) {
     return true;
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!validateRequired()) return;
-    const { name, company } = formState;
-    const subject = encodeURIComponent(
-      `New Inquiry from ${name}${company ? ` (${company})` : ""}`
-    );
-    const body = encodeURIComponent(buildMessageBody());
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-    setSubmitted("email");
+    const { name, email, phone, company, service, message, botcheck } = formState;
+
+    setSending(true);
+    setErrorMsg(null);
+
+    const result = await submitContactForm({
+      name,
+      email,
+      phone,
+      company,
+      service,
+      message,
+      botcheck,
+      source: "modal",
+    });
+
+    setSending(false);
+
+    if (result.ok) {
+      trackEvent("contact_form_submit", {
+        location: "modal",
+        method: "email",
+        service: service || "not_specified",
+      });
+      setSubmitted("email");
+    } else {
+      setErrorMsg(result.error);
+    }
   }
 
   function handleWhatsApp() {
     if (!validateRequired()) return;
-    const { name, company } = formState;
+    const { name, company, service } = formState;
+    trackEvent("contact_form_submit", {
+      location: "modal",
+      method: "whatsapp",
+      service: service || "not_specified",
+    });
     const text = encodeURIComponent(
       `New Inquiry from ${name}${company ? ` (${company})` : ""}\n\n${buildMessageBody()}`
     );
@@ -161,7 +191,7 @@ function ContactModalBody({ close }: { close: () => void }) {
             <p className="text-sm text-body mb-6">
               {submitted === "whatsapp"
                 ? "WhatsApp has been opened with your message. We'll respond within 2 business hours."
-                : "Your email client has been opened. We'll respond within 2 business hours."}
+                : "Thanks for reaching out, your message has been sent. We'll respond within 2 business hours."}
             </p>
             <button
               onClick={close}
@@ -195,6 +225,7 @@ function ContactModalBody({ close }: { close: () => void }) {
             <div className="mb-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
+                onClick={() => trackEvent("email_click", { location: "modal" })}
                 className="flex min-w-0 items-center gap-2.5 rounded-xl border border-border-light bg-surface-secondary p-2.5 text-sm text-heading transition-all duration-200 hover:border-[#045891]/20 hover:bg-[#045891]/5"
               >
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#045891]/10 text-[#045891]">
@@ -207,6 +238,7 @@ function ContactModalBody({ close }: { close: () => void }) {
               </a>
               <a
                 href={`tel:${CONTACT_PHONE}`}
+                onClick={() => trackEvent("phone_click", { location: "modal" })}
                 className="flex min-w-0 items-center gap-2.5 rounded-xl border border-border-light bg-surface-secondary p-2.5 text-sm text-heading transition-all duration-200 hover:border-[#045891]/20 hover:bg-[#045891]/5"
               >
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#045891]/10 text-[#045891]">
@@ -230,6 +262,17 @@ function ContactModalBody({ close }: { close: () => void }) {
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="flex flex-col gap-2.5">
+              {/* Honeypot: hidden from humans, bots tend to fill it. */}
+              <input
+                type="text"
+                name="botcheck"
+                value={formState.botcheck}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+              />
               <div className="grid gap-2.5 sm:grid-cols-2">
                 <input
                   type="text"
@@ -295,18 +338,26 @@ function ContactModalBody({ close }: { close: () => void }) {
                 className={`${inputClasses} resize-none`}
               />
 
+              {errorMsg && (
+                <p className="rounded-lg bg-red-50 px-3 py-2 text-center text-xs text-red-600">
+                  {errorMsg}
+                </p>
+              )}
+
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#045891] py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#045891]/90 hover:shadow-[0_4px_16px_rgba(4,88,145,0.3)]"
+                  disabled={sending}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#045891] py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#045891]/90 hover:shadow-[0_4px_16px_rgba(4,88,145,0.3)] disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <MailIcon className="h-4 w-4" />
-                  Send via Email
+                  {sending ? "Sending..." : "Send via Email"}
                 </button>
                 <button
                   type="button"
+                  disabled={sending}
                   onClick={handleWhatsApp}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#1ebd5b] hover:shadow-[0_4px_16px_rgba(37,211,102,0.35)]"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#1ebd5b] hover:shadow-[0_4px_16px_rgba(37,211,102,0.35)] disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <svg
                     className="h-4 w-4"

@@ -3,7 +3,6 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import ShinyText from "@/components/ui/ShinyText";
-import SEO from "@/components/SEO";
 
 const cyberFAQs = [
   {
@@ -102,12 +101,46 @@ const faqSchema = {
 export default function FAQPage() {
   return (
     <>
-      <SEO
-        title="FAQ, Cybersecurity, Cloud, IT Services Questions | ArtiflexIT"
-        description="Answers to common questions about cybersecurity, VAPT, firewall management, cloud migration, and managed IT services for UAE businesses."
-        path="/faq"
-        schema={[faqSchema]}
-      />
+      <>
+        <title>Cybersecurity & IT FAQ UAE | Plain Answers | Artiflex IT</title>
+        <meta name="description" content="Plain-English answers on cybersecurity, VAPT, firewall management, cloud migration and managed IT services for UAE businesses. Written by Artiflex IT engineers." />
+        <link rel="canonical" href="https://artiflexit.com/faq" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/faq" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/faq" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/faq" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/faq" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/faq" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/faq" />
+
+        <meta property="og:title" content="Cybersecurity & IT FAQ UAE | Plain Answers | Artiflex IT" />
+        <meta property="og:description" content="Plain-English answers on cybersecurity, VAPT, firewall management, cloud migration and managed IT services for UAE businesses. Written by Artiflex IT engineers." />
+        <meta property="og:url" content="https://artiflexit.com/faq" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT cybersecurity and IT FAQ for UAE businesses" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cybersecurity & IT FAQ UAE | Plain Answers | Artiflex IT" />
+        <meta name="twitter:description" content="Plain-English answers on cybersecurity, VAPT, firewall management, cloud migration and managed IT services for UAE businesses. Written by Artiflex IT engineers." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </>
 
       <PageHero
         title={

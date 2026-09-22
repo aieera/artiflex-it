@@ -15,7 +15,7 @@ import PageHero from "@/pages/About/section/PageHero";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import ClientStrip from "@/components/ui/ClientStrip";
 import { ArrowRightIcon, SearchIcon, LinkedInIcon, FolderIcon } from "@/components/icons";
-import { posts, allTags, type BlogTag } from "@/content/blog/posts";
+import { posts, allTags, type BlogTag } from "@/content/blog";
 import { SOCIAL_LINKS } from "@/lib/constants";
 
 const SOCIAL_ICONS: Record<string, FC<{ className?: string }>> = {
@@ -40,7 +40,7 @@ const CATEGORY_META: Record<BlogTag, CategoryMeta> = {
   cybersecurity: {
     label: "Cybersecurity",
     shortLabel: "Cybersecurity",
-    metaTitle: "Cybersecurity Blog UAE | Threat Insights | Artiflex IT",
+    metaTitle: "Cybersecurity Articles UAE | Threat Insights | Artiflex IT",
     metaDescription:
       "Cybersecurity insights for UAE businesses, ransomware, NESA, PDPL, EDR, SASE, social engineering. Field-tested analysis from Artiflex IT.",
     heroTitle: "Cybersecurity insights for UAE businesses",
@@ -59,7 +59,7 @@ const CATEGORY_META: Record<BlogTag, CategoryMeta> = {
   cloud: {
     label: "Cloud",
     shortLabel: "Cloud",
-    metaTitle: "Cloud Computing Blog UAE | AWS & Azure | Artiflex IT",
+    metaTitle: "Cloud Computing Articles UAE | AWS & Azure | Artiflex IT",
     metaDescription:
       "Cloud architecture, migration, and FinOps insights for UAE businesses, AWS, Azure, and private cloud strategy from Artiflex IT engineers.",
     heroTitle: "Cloud architecture and migration insights",
@@ -77,7 +77,7 @@ const CATEGORY_META: Record<BlogTag, CategoryMeta> = {
   compliance: {
     label: "Compliance",
     shortLabel: "Compliance",
-    metaTitle: "IT Compliance Blog UAE | NESA & PDPL | Artiflex IT",
+    metaTitle: "UAE Compliance Articles | NESA, PDPL & ISO | Artiflex IT",
     metaDescription:
       "Practical compliance guidance for UAE businesses, NESA, UAE PDPL, ISO 27001, NIST CSF 2.0. From Artiflex IT's security advisory practice.",
     heroTitle: "Compliance practice for UAE businesses",
@@ -95,7 +95,7 @@ const CATEGORY_META: Record<BlogTag, CategoryMeta> = {
   infrastructure: {
     label: "Infrastructure",
     shortLabel: "Infrastructure",
-    metaTitle: "IT Infrastructure Blog UAE | Network & Servers | Artiflex",
+    metaTitle: "IT Infrastructure Articles UAE | Network & Servers | Artiflex IT",
     metaDescription:
       "IT infrastructure insights for UAE businesses, network design, servers, virtualization, downtime cost analysis. From Artiflex IT engineers.",
     heroTitle: "IT infrastructure insights",
@@ -112,7 +112,7 @@ const CATEGORY_META: Record<BlogTag, CategoryMeta> = {
   "managed-services": {
     label: "Managed Services",
     shortLabel: "Managed",
-    metaTitle: "Managed IT Services Blog UAE | AMC Insights | Artiflex IT",
+    metaTitle: "Managed IT Articles UAE | AMC & SOC Insights | Artiflex IT",
     metaDescription:
       "Managed IT services and AMC insights for UAE businesses, cost analysis, build-vs-buy, monitoring strategy. From Artiflex IT.",
     heroTitle: "Managed IT services & AMC insights",
@@ -229,11 +229,14 @@ export default function BlogCategoryPage() {
         <title>{meta.metaTitle}</title>
         <meta name="description" content={meta.metaDescription} />
         <link rel="canonical" href={url} />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
         {/* hreflang */}
         <link rel="alternate" hrefLang="en-ae" href={url} />
         <link rel="alternate" hrefLang="en-om" href={url} />
         <link rel="alternate" hrefLang="en-sa" href={url} />
+        <link rel="alternate" hrefLang="en-in" href={url} />
+        <link rel="alternate" hrefLang="en" href={url} />
         <link rel="alternate" hrefLang="x-default" href={url} />
 
         {/* Open Graph */}
@@ -566,7 +569,7 @@ export default function BlogCategoryPage() {
                             <Link to={`/blog/${p.slug}`} className="group flex gap-3">
                               <img
                                 src={p.image}
-                                alt=""
+                                alt={p.title}
                                 loading="lazy"
                                 className="h-12 w-12 shrink-0 rounded-md object-cover"
                               />

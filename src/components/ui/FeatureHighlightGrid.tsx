@@ -18,6 +18,7 @@ export default function FeatureHighlightGrid({ items }: { items: Item[] }) {
           {/* IMAGE */}
           <img
             src={item.image}
+            alt={item.title}
             className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
           />
 

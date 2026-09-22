@@ -1,6 +1,8 @@
 export type IgaVendor = {
   slug: string;
   name: string;
+  metaTitle: string;
+  metaDescription: string;
   logo?: string;
   tagline: string;
   bestFor: string;
@@ -61,6 +63,9 @@ export type IgaVendor = {
 export const igaVendors: Record<string, IgaVendor> = {
   saviynt: {
     slug: "saviynt",
+    metaTitle: "Saviynt Identity Governance UAE | Artiflex IT",
+    metaDescription:
+      "Saviynt Identity Cloud IGA in Dubai and the UAE: converged SaaS-native governance, AAG, CIEM and cloud PAM. Deployed and managed by Artiflex IT.",
     name: "Saviynt Identity Cloud",
     logo: "/logos/Saviynt.png",
     tagline: "Converged SaaS-native IGA + AAG + CIEM + Cloud PAM in one licence, four years running as Gartner Customers' Choice",
@@ -223,6 +228,9 @@ export const igaVendors: Record<string, IgaVendor> = {
 
   sailpoint: {
     slug: "sailpoint",
+    metaTitle: "SailPoint Identity Governance UAE | Artiflex IT",
+    metaDescription:
+      "SailPoint IGA in Dubai and the UAE: the most mature identity governance with the broadest connector library. Deployed and managed by Artiflex IT.",
     name: "SailPoint Identity Security Cloud",
     logo: "/logos/sailpoint.webp",
     tagline: "The most mature IGA platform with the broadest connector library and the strongest hybrid + on-prem story",
@@ -337,6 +345,9 @@ export const igaVendors: Record<string, IgaVendor> = {
 
   "microsoft-entra-id-governance": {
     slug: "microsoft-entra-id-governance",
+    metaTitle: "Microsoft Entra ID Governance UAE | Artiflex IT",
+    metaDescription:
+      "Microsoft Entra ID Governance in Dubai and the UAE: best-value IGA for Microsoft estates, bundled in E5 and Entra Suite. Deployed by Artiflex IT.",
     name: "Microsoft Entra ID Governance",
     logo: "/logos/microsoft.svg",
     tagline: "Bundled in Microsoft 365 E5 and Entra Suite, the best value IGA for Microsoft-centric estates",
@@ -451,6 +462,9 @@ export const igaVendors: Record<string, IgaVendor> = {
 
   "oracle-identity-governance": {
     slug: "oracle-identity-governance",
+    metaTitle: "Oracle Identity Governance UAE | Artiflex IT",
+    metaDescription:
+      "Oracle Identity Governance in Dubai and the UAE: heritage IGA with tight Oracle ERP and cloud integration. Deployed and managed by Artiflex IT.",
     name: "Oracle Identity Governance",
     logo: "/logos/Oracle.png",
     tagline: "On-prem heritage IGA with tight integration to Oracle ERP and Oracle Cloud Infrastructure",
@@ -544,6 +558,9 @@ export const igaVendors: Record<string, IgaVendor> = {
 
   "one-identity-manager": {
     slug: "one-identity-manager",
+    metaTitle: "One Identity Manager IGA UAE | Artiflex IT",
+    metaDescription:
+      "One Identity Manager IGA in Dubai and the UAE: mature on-prem and hybrid governance with strong AD lifecycle. Deployed by Artiflex IT.",
     name: "One Identity Manager",
     logo: "/logos/OneIdentity.png",
     tagline: "Mature on-prem and hybrid IGA with strong Active Directory lifecycle management",
@@ -638,6 +655,9 @@ export const igaVendors: Record<string, IgaVendor> = {
 
   "ibm-security-igi": {
     slug: "ibm-security-igi",
+    metaTitle: "IBM Verify Governance IGA UAE | Artiflex IT",
+    metaDescription:
+      "IBM Security Verify Governance in Dubai and the UAE: compliance-first IGA with the deepest audit trail. Deployed and managed by Artiflex IT.",
     name: "IBM Security Verify Governance",
     logo: "/logos/IBM-Security.png",
     tagline: "Compliance-first enterprise IGA with the deepest audit trail and tight integration into the IBM QRadar and Verify ecosystem",
@@ -788,6 +808,9 @@ export const igaVendors: Record<string, IgaVendor> = {
 
   "omada-identity": {
     slug: "omada-identity",
+    metaTitle: "Omada Identity Governance UAE | Artiflex IT",
+    metaDescription:
+      "Omada Identity Cloud IGA in Dubai and the UAE: cloud-native governance on the IdentityPROCESS+ framework. Deployed by Artiflex IT.",
     name: "Omada Identity Cloud",
     tagline: "Cloud-native IGA built on the IdentityPROCESS+ best-practice framework, configurable rather than custom-coded, with strong Microsoft Entra integration",
     bestFor: "Visionary · Best-Practice IGA Framework",

@@ -7,6 +7,7 @@ import {
   MailIcon,
   LinkedInIcon,
 } from "@/components/icons";
+import { trackEvent } from "@/lib/analytics";
 
 const SOCIAL_ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   LinkedInIcon,
@@ -28,7 +29,8 @@ export default function Footer() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
               Delivering high-quality, innovative IT solutions and
               cybersecurity services to organizations worldwide, with over 14
-              years of experience and offices across 4 countries.
+              years of experience, based in the UAE with regional offices in
+              Dubai, Oman and India.
             </p>
           </div>
 
@@ -85,6 +87,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`tel:${CONTACT_INFO.phone.replace(/\s/g, "")}`}
+                  onClick={() => trackEvent("phone_click", { location: "footer" })}
                   className="flex items-center gap-3 text-sm text-slate-400 transition-colors duration-200 hover:text-brand-blue"
                 >
                   <PhoneIcon className="h-5 w-5 shrink-0 text-brand-blue" />
@@ -94,6 +97,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${CONTACT_INFO.email}`}
+                  onClick={() => trackEvent("email_click", { location: "footer" })}
                   className="flex items-center gap-3 text-sm text-slate-400 transition-colors duration-200 hover:text-brand-blue"
                 >
                   <MailIcon className="h-5 w-5 shrink-0 text-brand-blue" />
@@ -104,8 +108,54 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* ─── Certified Partner mini-strip ───
+           The Sophos badge SVG is designed for light backgrounds, so wrap
+           it in a white pill so it stays legible against the black footer. */}
+        <div className="mt-12 flex flex-col items-center justify-center gap-3 border-t border-white/[0.08] pt-8 sm:flex-row sm:gap-4">
+          <Link
+            to="/vendors/sophos"
+            className="group inline-flex items-center gap-4 rounded-2xl border border-white/[0.12] bg-white/[0.04] px-4 py-3 transition-colors duration-200 hover:border-brand-blue/40 hover:bg-white/[0.08]"
+            aria-label="ArtiflexIT is a Sophos Platinum Partner in UAE"
+          >
+            <span className="flex items-center justify-center rounded-lg bg-white px-3 py-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
+              <img
+                src="/sophos-platinum-partner/Sophos-Platinum-Partner.svg"
+                alt="Sophos Platinum Partner UAE Dubai"
+                className="h-10 w-auto"
+                loading="lazy"
+                width={40}
+                height={40}
+              />
+            </span>
+            <span className="flex flex-col">
+              <span className="font-display text-sm font-semibold text-white">Sophos Platinum Partner</span>
+              <span className="text-xs text-slate-300">Authorized in UAE | Dubai</span>
+            </span>
+          </Link>
+          <Link
+            to="/cybersecurity/mobile-security/hexnode"
+            className="group inline-flex items-center gap-4 rounded-2xl border border-white/[0.12] bg-white/[0.04] px-4 py-3 transition-colors duration-200 hover:border-brand-blue/40 hover:bg-white/[0.08]"
+            aria-label="ArtiflexIT is a Hexnode Premium Partner in UAE"
+          >
+            <span className="flex items-center justify-center rounded-lg bg-white px-3 py-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
+              <img
+                src="/logos/Hexnode.png"
+                alt="Hexnode Premium Partner UAE Dubai"
+                className="h-10 w-auto"
+                loading="lazy"
+                width={119}
+                height={40}
+              />
+            </span>
+            <span className="flex flex-col">
+              <span className="font-display text-sm font-semibold text-white">Hexnode Premium Partner</span>
+              <span className="text-xs text-slate-300">Authorized in UAE | Dubai</span>
+            </span>
+          </Link>
+        </div>
+
         {/* ─── Bottom bar ─── */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/[0.08] pt-8 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/[0.08] pt-8 sm:flex-row">
           <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
             <p className="text-xs text-slate-500">
               &copy; 2026 Artiflex Information Technology LLC. All rights reserved.

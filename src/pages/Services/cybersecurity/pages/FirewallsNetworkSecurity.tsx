@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 
 import { CTASection } from "@/pages/Home/sections/CTASection";
+import SophosAccreditationBadge from "@/components/ui/SophosAccreditationBadge";
 import { useContactModal } from "@/components/layout/ContactModal";
 import {
   ShieldIcon,
@@ -87,24 +89,21 @@ function FirewallJobCard({
         </span>
       </div>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            key="content"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-[2] overflow-hidden"
-          >
-            <div className="px-5 pb-5 sm:px-6 sm:pb-6">
-              <div className="border-t border-slate-200 pt-4">
-                <p className="text-sm leading-relaxed text-slate-600">{desc}</p>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Body stays MOUNTED and collapses to height 0, rather than being
+          conditionally rendered. With `{isOpen && ...}` the description only
+          entered the DOM on hover, so crawlers never saw any of this copy. */}
+      <motion.div
+        initial={false}
+        animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-[2] overflow-hidden"
+      >
+        <div className="px-5 pb-5 sm:px-6 sm:pb-6">
+          <div className="border-t border-slate-200 pt-4">
+            <p className="text-sm leading-relaxed text-slate-600">{desc}</p>
+          </div>
+        </div>
+      </motion.div>
 
       {/* Animated bottom rule */}
       <span
@@ -122,85 +121,9 @@ function FirewallJobCard({
 
 /* ───────── EVOLUTION ───────── */
 
-const evolution = [
-  {
-    title: "Gen 1 - Packet Filtering",
-    desc: "Stateless IP/port rules pioneered at DEC in 1988. Fast, but blind to context.",
-  },
-  {
-    title: "Gen 2 - Stateful Inspection",
-    desc: "Check Point's FireWall-1 (1993) tracked entire TCP conversations, not just isolated packets.",
-  },
-  {
-    title: "Gen 3 - Application Layer",
-    desc: "Deep inspection of HTTP, FTP, SMTP - detecting threats hidden inside legitimate protocols.",
-  },
-  {
-    title: "UTM - Unified Threat Management",
-    desc: "One appliance for firewall, VPN, IPS, anti-malware, web filtering - ideal for SMB simplicity.",
-  },
-  {
-    title: "NGFW - Next-Generation Firewall",
-    desc: "Palo Alto's 2007 breakthrough: App-ID, User-ID, Content-ID. 80% of modern attacks targeted.",
-  },
-  {
-    title: "FWaaS - Cloud-Native Firewalls",
-    desc: "Firewall as a service inside SASE - protecting distributed workforces without hardware.",
-  },
-];
 
 /* ───────── FIREWALL TYPES ───────── */
 
-const firewallTypes = [
-  {
-    tag: "GEN 1",
-    icon: LayersIcon,
-    title: "Packet Filtering",
-    desc: "Static IP and port rules.",
-    details:
-      "Checks IP addresses and ports against static rules. Fast but limited - no memory of previous packets. Still used as the first layer in most modern network security tools.",
-  },
-  {
-    tag: "GEN 2",
-    icon: ServerIcon,
-    title: "Stateful Inspection",
-    desc: "Tracks TCP/UDP sessions.",
-    details:
-      "Tracks TCP/UDP sessions and knows if a packet belongs to a legitimate conversation. Check Point's bread and butter for over a decade.",
-  },
-  {
-    tag: "GEN 3",
-    icon: EyeIcon,
-    title: "Application-Aware / NGFW",
-    desc: "Layer 7 inspection with App-ID.",
-    details:
-      "Inspects at the application layer. Identifies specific apps regardless of port. Can block Tor, detect encrypted malware, and enforce user-based policies. The standard for enterprise network security solutions today.",
-  },
-  {
-    tag: "UTM",
-    icon: ShieldIcon,
-    title: "Unified Threat Management",
-    desc: "All-in-one security box.",
-    details:
-      "Combines firewall, VPN, IPS, antivirus, anti-spam, and web filtering in one appliance. Ideal for SMBs that need a single box to handle everything. The classic firewall vs UTM debate usually comes down to scale and complexity.",
-  },
-  {
-    tag: "FWaaS",
-    icon: CloudIcon,
-    title: "Cloud-Native Firewall",
-    desc: "Delivered as a cloud service.",
-    details:
-      "Firewall delivered as a cloud service. No hardware to manage. Integrates with SASE architectures. Growing fast as organisations adopt remote and hybrid work.",
-  },
-  {
-    tag: "IDS/IPS",
-    icon: AlertTriangleIcon,
-    title: "Intrusion Prevention",
-    desc: "Partner to every modern firewall.",
-    details:
-      "Monitors traffic for port scans, SQL injection, exfiltration patterns. IPS actively blocks in real time. Built into most NGFWs - a red flag if yours doesn't include it.",
-  },
-];
 
 /* ───────── VENDOR COMPARISON ───────── */
 
@@ -552,39 +475,18 @@ const tierStyles: Record<Tier, { bg: string; text: string; label: string }> = {
 
 /* ───────── SEGMENTATION ZONES ───────── */
 
-const segments = [
-  { label: "Perimeter", note: "NGFW + IPS", tone: "from-[#28B5E1] to-[#1B8AC7]" },
-  { label: "DMZ", note: "Public services", tone: "from-[#1B8AC7] to-[#0A3D6B]" },
-  { label: "Corporate VLAN", note: "Staff + policy", tone: "from-[#0A3D6B] to-[#04101E]" },
-  { label: "Finance VLAN", note: "Restricted access", tone: "from-[#1565A0] to-[#0A3D6B]" },
-  { label: "IoT / OT", note: "Isolated network", tone: "from-[#4FC3F7] to-[#1B8AC7]" },
-  { label: "Data Core", note: "Crown-jewel tier", tone: "from-[#045891] to-[#020617]" },
-];
 
 /* ───────── MANAGED PILLARS ───────── */
 
-const managedPillars = [
-  {
-    title: "24/7 Monitoring",
-    desc: "Real-time rule alerts, anomaly detection, and escalation before an attacker lands.",
-  },
-  {
-    title: "Firmware Patching",
-    desc: "Critical CVEs patched within hours of vendor release - not weeks.",
-  },
-  {
-    title: "Quarterly Rule Audits",
-    desc: "Dead rules pruned, overly broad policies tightened, logs reviewed for drift.",
-  },
-  {
-    title: "Change Management",
-    desc: "Versioned policy history, approvals, rollback - no more rogue rules on a Friday.",
-  },
-];
 
 /* ───────── FAQ ───────── */
 
 const faqs = [
+  {
+    question: "Do you provide managed firewall services in Dubai?",
+    answer:
+      "Yes. Artiflex IT provides managed firewall services in Dubai and across the UAE, covering 24/7 monitoring, rule and policy audits, firmware patching, and change control for NGFW deployments from Sophos, Fortinet, Palo Alto Networks, Check Point and Cisco. As a Sophos Platinum Partner with strategic partnerships across Check Point and Palo Alto, we design, deploy and operate firewall solutions in Dubai aligned to NESA, UAE PDPL and ISO 27001, so your network security is continuously maintained rather than left to age after install.",
+  },
   {
     question: "What firewall do you recommend for a UAE mid-market business?",
     answer:
@@ -686,16 +588,15 @@ function FirewallHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
-            Firewall Solutions{" "}
-            <span className="gradient-text">UAE</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              NGFW, UTM &amp; Managed Firewall Services
-            </span>
+          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+            Firewall Solutions
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            NGFW, UTM &amp; Managed Firewall Services in Dubai &amp; UAE
           </h1>
 
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
-            Artiflex IT designs, deploys, and manages enterprise firewalls across the UAE, Oman, and Saudi Arabia. <span className="font-semibold text-white">Sophos Platinum Partner</span>, stragetic partnership with Checkpoint and Palo Alto Networks. Artiflex also works on solutions like Cisco, SonicWall and Fortinet. So the conversation really starts with your environment, your expectation and budget allocated for the solution.
+            Artiflex IT delivers firewall solutions in Dubai and managed firewall services across the UAE, Oman, and Saudi Arabia, designing and deploying enterprise NGFW and network security. <span className="font-semibold text-white">Sophos Platinum Partner</span>, strategic partnership with Check Point and Palo Alto Networks. Artiflex also works on solutions like Cisco, SonicWall and Fortinet. So the conversation really starts with your environment, your expectation and budget allocated for the solution.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
@@ -778,18 +679,55 @@ export default function FirewallsNetworkSecurityPage() {
   return (
     <>
       <>
-        <title>Firewall Solutions UAE | NGFW & Managed | Artiflex IT</title>
-        <meta
-          name="description"
-          content="Compare NGFW, UTM & managed firewalls for UAE enterprises. Fortinet, Palo Alto, Sophos. Firewall installation Dubai - free network assessment."
-        />
+        <title>Firewall Solutions Dubai | NGFW & Managed Firewall UAE</title>
+        <meta name="description" content="Firewall solutions in Dubai: NGFW and managed firewall services across the UAE for Sophos, Fortinet, Palo Alto, Check Point and Cisco." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/firewalls-network-security" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/firewalls-network-security" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/firewalls-network-security" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/firewalls-network-security" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/firewalls-network-security" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/firewalls-network-security" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/firewalls-network-security" />
+
+        <meta property="og:title" content="Firewall Solutions Dubai | NGFW & Managed Firewall UAE" />
+        <meta property="og:description" content="Firewall solutions in Dubai with NGFW and managed firewall services across the UAE. Artiflex delivers network security for Sophos, Fortinet, Palo Alto, Check Point and Cisco." />
+        <meta property="og:url" content="https://artiflexit.com/cybersecurity/firewalls-network-security" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT firewall and NGFW services in Dubai, UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Firewall Solutions Dubai | NGFW & Managed Firewall UAE" />
+        <meta name="twitter:description" content="Firewall solutions in Dubai: NGFW and managed firewall services across the UAE for Sophos, Fortinet, Palo Alto, Check Point and Cisco." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Artiflex IT",
-            "url": "https://artiflexit.com/cybersecurity/firewalls-network-security",
+            "@id": "https://artiflexit.com/#localbusiness",
+            "name": "Artiflex Information Technology",
+            "url": "https://artiflexit.com/",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "M22, New Al Safiya Building, Near Abu Hail Metro Station, Hor Al Anz",
+              "addressLocality": "Dubai",
+              "addressRegion": "Dubai",
+              "addressCountry": "AE",
+            },
             "areaServed": [
               { "@type": "Country", "name": "United Arab Emirates" },
               { "@type": "City", "name": "Dubai" },
@@ -802,8 +740,16 @@ export default function FirewallsNetworkSecurityPage() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
+            "@id": "https://artiflexit.com/cybersecurity/firewalls-network-security#service",
+            "name": "Firewall Solutions and Installation in Dubai",
+            "url": "https://artiflexit.com/cybersecurity/firewalls-network-security",
             "serviceType": "Managed Firewall Services",
-            "provider": { "@type": "Organization", "name": "Artiflex IT" },
+            "provider": {
+              "@type": "Organization",
+              "@id": "https://artiflexit.com/#organization",
+              "name": "Artiflex Information Technology",
+              "url": "https://artiflexit.com/",
+            },
             "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
             "description": "Managed firewall services UAE - 24/7 monitoring, rule audits, firmware patching, and change control for Fortinet, Palo Alto, Sophos, Check Point, and Cisco NGFW deployments. Typical deployment lead time 2–4 weeks.",
           })}
@@ -819,8 +765,34 @@ export default function FirewallsNetworkSecurityPage() {
             })),
           })}
         </script>
-        {/* ItemList schema enumerating recommended firewall vendors,
-            helps Google understand the comparison content on this page */}
+        {/* BreadcrumbList mirroring the visible Home / Cybersecurity /
+            Firewalls & Network Security trail in the hero, which was
+            rendered but never marked up. */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://artiflexit.com/" },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Cybersecurity",
+                "item": "https://artiflexit.com/cybersecurity",
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Firewalls & Network Security",
+                "item": "https://artiflexit.com/cybersecurity/firewalls-network-security",
+              },
+            ],
+          })}
+        </script>
+        {/* ItemList schema enumerating recommended firewall vendors.
+            Each entry links to its own vendor detail page
+            (/cybersecurity/firewalls/:slug); they previously all pointed
+            back at this page, which made the list uncrawlable. */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -830,6 +802,7 @@ export default function FirewallsNetworkSecurityPage() {
               "@type": "ListItem",
               "position": i + 1,
               "name": v.name,
+              "url": "https://artiflexit.com/cybersecurity/firewalls/" + v.slug,
             })),
           })}
         </script>
@@ -837,6 +810,8 @@ export default function FirewallsNetworkSecurityPage() {
 
       {/* HERO */}
       <FirewallHero />
+
+      <SophosAccreditationBadge variant="firewall" />
 
       {/* ───────── FIREWALL VENDORS WE DELIVER (HONEYCOMB) ───────── */}
       <section className="relative overflow-hidden bg-slate-50 py-16 sm:py-20">
@@ -923,7 +898,7 @@ export default function FirewallsNetworkSecurityPage() {
                       <div className="relative flex h-full flex-col items-center justify-center px-5 text-center">
                         <img
                           src={v.logo}
-                          alt=""
+                          alt={`${v.name} logo`}
                           loading="lazy"
                           className="h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-110"
                         />
@@ -1074,7 +1049,7 @@ export default function FirewallsNetworkSecurityPage() {
               Types of Firewalls
             </h2>
             <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
-              The right firewall depends on your traffic volume, application mix, compliance posture, and operational capacity. These are the four categories we deploy and manage across UAE environments.
+              The right firewall depends on your traffic volume, application mix, compliance posture, and operational capacity. These are the next-gen firewall solutions in the UAE we deploy and manage, and how to tell which one fits.
             </p>
           </div>
 
@@ -1084,7 +1059,7 @@ export default function FirewallsNetworkSecurityPage() {
                 icon: AlertTriangleIcon,
                 title: "Next-Generation Firewall",
                 desc: "Today's enterprise standard. Combines stateful inspection, App-ID and User-ID, integrated IPS, TLS 1.3 decryption, and ML-driven threat intelligence in a single platform. Covers everything UTM did, with deeper visibility and identity-based policy.",
-                fit: "The default choice for any UAE business, from SMB to large enterprise.",
+                fit: "The default choice for any UAE business, from SMB to large enterprise, and the basis of most next-gen firewall solutions in UAE deployments we run.",
                 featured: true,
               },
               {
@@ -1127,25 +1102,22 @@ export default function FirewallsNetworkSecurityPage() {
                     </h3>
                   </div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <p className="mt-4 text-xs leading-relaxed text-slate-600">
-                          {t.desc}
-                        </p>
-                        <p className="mt-4 border-t border-slate-200 pt-3 text-xs italic text-slate-500">
-                          {t.fit}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {/* Same fix as FirewallCapabilityCard above: the card body
+                      stays mounted and collapses to height 0 so the firewall
+                      type descriptions and fit lines are in the HTML. */}
+                  <motion.div
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <p className="mt-4 text-xs leading-relaxed text-slate-600">
+                      {t.desc}
+                    </p>
+                    <p className="mt-4 border-t border-slate-200 pt-3 text-xs italic text-slate-500">
+                      {t.fit}
+                    </p>
+                  </motion.div>
                 </div>
               );
             })}
@@ -1193,15 +1165,15 @@ export default function FirewallsNetworkSecurityPage() {
 
 
 
-     <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+     <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
               <table
-                className="w-full table-fixed border-collapse text-center text-sm"
-                style={{ minWidth: Math.max(640, 150 + matrixVendors.length * 116) }}
+                className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0"
+                style={{ ["--vtw" as string]: `${Math.max(640, 150 + matrixVendors.length * 116)}px` }}
               >
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Criteria
                     </th>
                     {matrixVendors.map((v) => (
@@ -1426,15 +1398,15 @@ export default function FirewallsNetworkSecurityPage() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
               <table
-                className="w-full table-fixed border-collapse text-center text-sm"
-                style={{ minWidth: Math.max(640, 150 + featureVendors.length * 116) }}
+                className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0"
+                style={{ ["--vtw" as string]: `${Math.max(640, 150 + featureVendors.length * 116)}px` }}
               >
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Capability
                     </th>
                     {featureVendors.map((v) => (
@@ -1638,10 +1610,10 @@ export default function FirewallsNetworkSecurityPage() {
             label="How we work"
             title={
               <>
-                Our <span className="gradient-text">delivery model</span>
+                Firewall installation and <span className="gradient-text">delivery in Dubai</span>
               </>
             }
-            description="We don't sell boxes. We deliver firewall outcomes: assess, design, deploy, manage. Every stage produces something an auditor can read and a CFO can sign off on."
+            description="We don't sell boxes. Every firewall installation in Dubai runs the same four stages: assess, design, deploy, manage. Each one produces something an auditor can read and a CFO can sign off on."
             centered
           />
 
@@ -1664,10 +1636,10 @@ export default function FirewallsNetworkSecurityPage() {
                   "Approved architecture, signed-off cutover sequence, change-management plan.",
               },
               {
-                title: "Deploy",
+                title: "Deploy & Install",
                 duration: "2–6 weeks",
                 summary:
-                  "Phased deployment with rollback procedures at every stage. Pre-production validation, off-hours cutover for production traffic, day-1 hypercare.",
+                  "Phased firewall installation with rollback procedures at every stage. Pre-production validation, off-hours cutover for production traffic, day-1 hypercare.",
                 deliverable:
                   "Live firewall, audit-ready documentation, runbooks for your team.",
               },
@@ -1730,7 +1702,7 @@ export default function FirewallsNetworkSecurityPage() {
               Why Artiflex IT
             </p>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl">
-              14+ years of UAE firewall delivery
+              14+ years of network security delivery in the UAE
             </h2>
             <p className="mt-5 text-base leading-relaxed text-slate-300 sm:text-lg">
               Vendor-agnostic by design. We will tell you when Sophos wins, when Check Point wins, when Palo Alto wins, and when none of them is the right answer. The point of an honest assessment is honest answers.
@@ -1865,7 +1837,19 @@ export default function FirewallsNetworkSecurityPage() {
               })}
             </ul>
 
-            {/* Answer panel (right) */}
+            {/* Answer panel (right).
+                EVERY answer is rendered into the DOM; the inactive ones are
+                hidden with display:none rather than not rendered at all.
+                Before this, only faqs[activeFaq] reached the HTML, so 10 of
+                the 11 answers existed solely inside the FAQPage JSON-LD and
+                appeared nowhere on the page. That both wasted ~1,200 words
+                of copy and risked a schema/visible-content mismatch, since
+                Google wants FAQ schema answers to be present on the page.
+                Accordion content hidden with CSS is explicitly fine.
+
+                The question <h3> is still emitted for the ACTIVE panel only.
+                Rendering it for all 11 would duplicate every question, which
+                already appears as the button label in the list on the left. */}
             <div className="lg:col-span-6">
               <div
                 id="faq-answer-panel"
@@ -1873,20 +1857,29 @@ export default function FirewallsNetworkSecurityPage() {
                 aria-live="polite"
                 className="lg:sticky lg:top-24"
               >
-                <div className="overflow-hidden rounded-2xl border border-transparent bg-gradient-to-r from-[#045891] to-[#054466] p-6 shadow-[0_18px_40px_-18px_rgba(27,138,199,0.55)] sm:p-8">
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-white">
-                      Faq
-                    </span>
-                    <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-r from-white/40 to-transparent" />
+                {faqs.map((faq, idx) => (
+                  <div
+                    key={faq.question}
+                    className={`overflow-hidden rounded-2xl border border-transparent bg-gradient-to-r from-[#045891] to-[#054466] p-6 shadow-[0_18px_40px_-18px_rgba(27,138,199,0.55)] sm:p-8 ${
+                      idx === activeFaq ? "" : "hidden"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-white">
+                        Faq
+                      </span>
+                      <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-r from-white/40 to-transparent" />
+                    </div>
+                    {idx === activeFaq && (
+                      <h3 className="mt-4 font-display text-xl font-bold leading-snug text-white sm:text-2xl">
+                        {faq.question}
+                      </h3>
+                    )}
+                    <p className="mt-4 text-sm leading-relaxed text-white/90 sm:text-base">
+                      {faq.answer}
+                    </p>
                   </div>
-                  <h3 className="mt-4 font-display text-xl font-bold leading-snug text-white sm:text-2xl">
-                    {faqs[activeFaq].question}
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-white/90 sm:text-base">
-                    {faqs[activeFaq].answer}
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -1899,6 +1892,8 @@ export default function FirewallsNetworkSecurityPage() {
         description="Vendor-neutral comparison of NGFW, UTM, and cloud options - with TCO analysis, throughput benchmarks, and real deployment case studies."
         primaryButton={{ text: "Request the Guide", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

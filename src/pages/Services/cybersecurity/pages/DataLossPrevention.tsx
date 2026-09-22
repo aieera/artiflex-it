@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 import { useContactModal } from "@/components/layout/ContactModal";
 import FAQAccordion from "@/components/ui/FAQAccordion";
+import SophosAccreditationBadge from "@/components/ui/SophosAccreditationBadge";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import VendorComparisonMatrix, {
   type ComparisonRow,
@@ -23,88 +25,9 @@ import {
 
 /* ───────── DATA STATES ───────── */
 
-const dataStates = [
-  {
-    key: "rest",
-    code: "@rest",
-    title: "Data at Rest",
-    where: "File servers · databases · shared drives · cloud storage",
-    example: "The unencrypted customer database sitting on a legacy file share nobody owns.",
-    icon: DatabaseIcon,
-    risk: "42%",
-    riskLabel: "of sensitive data lives in places IT doesn't map",
-  },
-  {
-    key: "motion",
-    code: "in-motion",
-    title: "Data in Motion",
-    where: "Email · cloud uploads · USB · chat · API transfers",
-    example: "A spreadsheet of 15,000 customer records emailed to the wrong address.",
-    icon: CloudIcon,
-    risk: "1 click",
-    riskLabel: "is all it takes for a USD 4M client account to walk out the door",
-  },
-  {
-    key: "use",
-    code: "in-use",
-    title: "Data in Use",
-    where: "Desktops · endpoints · clipboard · screen capture",
-    example: "A departing employee copying the client list to a personal USB at 11pm.",
-    icon: EyeIcon,
-    risk: "60%",
-    riskLabel: "of breaches originate with insiders - negligent or malicious",
-  },
-];
 
 /* ───────── FRAMEWORK ───────── */
 
-const framework = [
-  {
-    step: "01",
-    phase: "Discovery",
-    title: "Classify what you have",
-    desc: "Scan file servers, databases, cloud storage and email. Tag every asset as Public, Internal, Confidential, or Restricted. You cannot protect what you have not found.",
-    output: "Data classification map",
-    days: "Week 1–2",
-    icon: SearchIcon,
-  },
-  {
-    step: "02",
-    phase: "Policy",
-    title: "Define what each class can do",
-    desc: "Restricted data cannot be emailed externally. Confidential data cannot land in personal cloud storage. Internal data requires encryption in transit. Be specific - vague policies fail open.",
-    output: "Enforcement policy matrix",
-    days: "Week 3",
-    icon: FileTextIcon,
-  },
-  {
-    step: "03",
-    phase: "Deploy",
-    title: "Ship agents · monitor-only",
-    desc: "Roll out Data Loss Prevention agents on endpoints, configure email DLP, and integrate cloud / SaaS DLP. Run 30 days in observation mode, surface what triggers without blocking a single user.",
-    output: "Baseline incident stream",
-    days: "Week 4–8",
-    icon: LayersIcon,
-  },
-  {
-    step: "04",
-    phase: "Tune",
-    title: "Cut false positives · enforce",
-    desc: "Review observation data, tighten thresholds, then flip to block. Expect two or three tuning cycles before policies hold the line without drowning the SOC in noise.",
-    output: "Production-grade DLP policies",
-    days: "Week 9–12",
-    icon: AlertTriangleIcon,
-  },
-  {
-    step: "05",
-    phase: "Operate",
-    title: "Quarterly policy review",
-    desc: "New apps get adopted, new data types emerge, employees find creative workarounds. Data Loss Prevention is not deploy-and-forget, it is a living control that needs attention every quarter.",
-    output: "Continuous programme",
-    days: "Ongoing",
-    icon: ShieldIcon,
-  },
-];
 
 /* ───────── DEPLOYMENT SCENARIOS ───────── */
 
@@ -436,33 +359,9 @@ const buyerDecisionGuide: { says: string; recommend: string; rationale: string }
 
 /* ───────── COMPLIANCE ───────── */
 
-const compliance = [
-  { code: "GDPR", penalty: "4% of global turnover", scope: "EU citizen data" },
-  { code: "HIPAA", penalty: "USD 1.9M per violation type / yr", scope: "Protected health information" },
-  { code: "PCI-DSS", penalty: "USD 100k / month", scope: "Cardholder data" },
-  { code: "UAE PDPL", penalty: "AED 5M", scope: "Personal data in the UAE" },
-];
 
 /* ───────── INSIDER SIGNALS ───────── */
 
-const insiderSignals = [
-  {
-    label: "Volume spike",
-    detail: "Normally pulls 5 files a day. Suddenly pulls 500. DLP catches the anomaly, not the job title.",
-  },
-  {
-    label: "Unusual destination",
-    detail: "Data being routed to a personal email domain or a brand-new cloud storage account.",
-  },
-  {
-    label: "Off-hours activity",
-    detail: "A bulk export of the CRM at 02:47 on a Saturday by someone who is about to resign.",
-  },
-  {
-    label: "Physical exfiltration",
-    detail: "USB drives connecting to endpoints that handle restricted data. Blocked by policy, alerted on attempt.",
-  },
-];
 
 /* ───────── FAQ ───────── */
 
@@ -548,7 +447,7 @@ function DlpHero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/Dataloss.jpg')" }}
+        style={{ backgroundImage: "url('/Dataloss.webp')" }}
       />
       <div
         aria-hidden="true"
@@ -588,12 +487,12 @@ function DlpHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Data Loss Prevention{" "}
             <span className="gradient-text">UAE</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              Endpoint, Network &amp; Cloud DLP
-            </span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Endpoint, Network &amp; Cloud DLP
           </h1>
 
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
@@ -810,43 +709,60 @@ export default function DataLossPrevention() {
   return (
     <>
       <>
-        <title>Data Loss Prevention UAE | DLP & Data Classification | Fortra, Microsoft Purview | Artiflex IT</title>
-        <meta
-          name="description"
-          content="Data Loss Prevention (DLP) and Data Classification for the UAE. Fortra Digital Guardian + Boldon James, Microsoft Purview, Forcepoint, Symantec, Trellix, Sophos. PDPL, NESA, NCA ECC, ADHICS, SAMA, ISO 27001, GDPR, HIPAA, PCI DSS. Free Data Loss Prevention consultation."
-        />
-        <meta
-          name="keywords"
-          content="Data Loss Prevention UAE, Data Loss Prevention Dubai, DLP UAE, DLP Dubai, data loss prevention services, data classification UAE, Fortra DLP, Digital Guardian DLP, Boldon James Classifier, Microsoft Purview DLP, Forcepoint DLP, Symantec DLP, Trellix DLP, Sophos DLP, IP protection, source code DLP, insider threat UAE, NESA DLP, NCA ECC DLP, ADHICS healthcare, SAMA Saudi Arabia DLP, PDPL UAE Data Loss Prevention"
-        />
+        <title>Data Loss Prevention UAE | DLP & Classification | Artiflex IT</title>
+        <meta name="description" content="Data loss prevention and data classification for the UAE across Fortra, Microsoft Purview, Forcepoint, Symantec, Trellix and Sophos." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/data-loss-prevention" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Data Loss Prevention UAE | DLP & Data Classification | Artiflex IT" />
-        <meta
-          property="og:description"
-          content="Data Loss Prevention (DLP) and Data Classification for UAE ministries, banks, healthcare, and IP-heavy industries. Fortra Digital Guardian, Boldon James, Microsoft Purview, Forcepoint, Symantec, Trellix, Sophos."
-        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/data-loss-prevention" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/data-loss-prevention" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/data-loss-prevention" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/data-loss-prevention" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/data-loss-prevention" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/data-loss-prevention" />
+
+        <meta property="og:title" content="Data Loss Prevention UAE | DLP & Classification | Artiflex IT" />
+        <meta property="og:description" content="Data Loss Prevention and Data Classification for UAE ministries, banks, healthcare and IP-heavy industries across Fortra, Microsoft Purview, Forcepoint, Symantec, Trellix and Sophos." />
         <meta property="og:url" content="https://artiflexit.com/cybersecurity/data-loss-prevention" />
-        <meta property="og:image" content="https://artiflexit.com/Dataloss.jpg" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT data loss prevention for the UAE" />
+
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Data Loss Prevention UAE | DLP & Data Classification | Artiflex IT" />
-        <meta
-          name="twitter:description"
-          content="Data Loss Prevention (DLP) and Data Classification for the UAE. Fortra Digital Guardian + Boldon James, Microsoft Purview, Forcepoint, Symantec, Trellix, Sophos."
-        />
-        <meta name="twitter:image" content="https://artiflexit.com/Dataloss.jpg" />
+        <meta name="twitter:title" content="Data Loss Prevention UAE | DLP & Classification | Artiflex IT" />
+        <meta name="twitter:description" content="Data loss prevention and data classification for the UAE across Fortra, Microsoft Purview, Forcepoint, Symantec, Trellix and Sophos." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          "name": "Artiflex IT",
-          "url": "https://artiflexit.com/cybersecurity/data-loss-prevention",
+          "@id": "https://artiflexit.com/#localbusiness",
+          "name": "Artiflex Information Technology",
+          "url": "https://artiflexit.com/",
+          "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "M22, New Al Safiya Building, Near Abu Hail Metro Station, Hor Al Anz",
+              "addressLocality": "Dubai",
+              "addressRegion": "Dubai",
+              "addressCountry": "AE",
+            },
           "areaServed": [
             { "@type": "Country", "name": "United Arab Emirates" },
             { "@type": "Country", "name": "Saudi Arabia" },
             { "@type": "City", "name": "Dubai" },
             { "@type": "City", "name": "Abu Dhabi" }
-          ],
-          "address": { "@type": "PostalAddress", "addressCountry": "AE" }
+          ]
         })}</script>
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
@@ -854,7 +770,7 @@ export default function DataLossPrevention() {
           "name": "Data Loss Prevention (DLP) & Data Classification, UAE",
           "alternateName": ["Data Loss Prevention UAE", "DLP UAE", "Data Loss Prevention Dubai", "DLP Dubai"],
           "description": "Data Loss Prevention services for UAE and the wider GCC: Fortra Digital Guardian, Boldon James data classification, Microsoft Purview, Forcepoint, Symantec, Trellix, and Sophos. Aligned to PDPL, NESA, NCA ECC, ADHICS, SAMA, ISO 27001, GDPR, HIPAA, and PCI DSS.",
-          "provider": { "@type": "Organization", "name": "Artiflex IT" },
+          "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
           "areaServed": [
             { "@type": "Country", "name": "United Arab Emirates" },
             { "@type": "Country", "name": "Saudi Arabia" }
@@ -874,6 +790,8 @@ export default function DataLossPrevention() {
 
       {/* HERO */}
       <DlpHero />
+
+      <SophosAccreditationBadge variant="platform" />
 
       {/* ───────── DLP VENDORS WE DELIVER (HONEYCOMB) ───────── */}
       <section className="relative overflow-hidden bg-slate-50 py-16 sm:py-20">
@@ -1759,20 +1677,14 @@ export default function DataLossPrevention() {
                     </h3>
                   </div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.p
-                        key="desc"
-                        initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                        animate={{ height: "auto", opacity: 1, marginTop: 12 }}
-                        exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden text-sm leading-relaxed text-slate-600"
-                      >
-                        {s.desc}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
+                  <motion.p
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0, marginTop: isOpen ? 12 : 0 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden text-sm leading-relaxed text-slate-600"
+                  >
+                    {s.desc}
+                  </motion.p>
                 </motion.div>
               );
             })}
@@ -1973,12 +1885,12 @@ export default function DataLossPrevention() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + dlpFeatureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + dlpFeatureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Capability
                     </th>
                     {dlpFeatureVendors.map((v, i) => (
@@ -2067,9 +1979,9 @@ export default function DataLossPrevention() {
             centered
           />
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] sm:mt-16">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20 sm:mt-16">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + buyerDecisionGuide.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + buyerDecisionGuide.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
                     <th className="w-[44%] px-5 py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
@@ -2170,6 +2082,8 @@ export default function DataLossPrevention() {
         description="Data Loss Prevention is not about paranoia, it is about giving your team the guardrails to work fast without leaking what matters most. Talk to a Data Loss Prevention specialist for the UAE and the wider GCC."
         primaryButton={{ text: "Book a Data Loss Prevention Review", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

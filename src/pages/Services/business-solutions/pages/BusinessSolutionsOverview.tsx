@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
@@ -199,9 +199,9 @@ const faqSchema = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Business Solutions UAE | ERP, CRM & Sales, Finance, HRM | Artiflex IT",
+  headline: "Business Software Dubai for ERP, CRM, Finance & HRM",
   description:
-    "Integrated business software for UAE: ERP, CRM & Sales Management, Finance & Accounting, and HRM on one platform, cloud or on-premises. UAE FTA, IFRS, PDPL and WPS ready.",
+    "Integrated business software for Dubai: ERP, CRM, finance, HRM and DMS on one platform. UAE FTA, IFRS, PDPL and WPS-ready. Cloud or on-premise.",
   author: { "@type": "Organization", name: "ArtiflexIT", url: "https://artiflexit.com" },
   publisher: { "@type": "Organization", name: "ArtiflexIT", url: "https://artiflexit.com" },
   datePublished: "2026-01-15",
@@ -382,24 +382,18 @@ function ForceCard({
         </span>
       </div>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            key="content"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-[2] overflow-hidden"
-          >
+      <motion.div
+        initial={false}
+        animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-[2] overflow-hidden"
+      >
             <div className="px-5 pb-5 sm:px-6 sm:pb-6">
               <div className="border-t border-slate-200 pt-4">
                 <p className="text-sm leading-relaxed text-slate-600">{description}</p>
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </motion.div>
 
       <span
         aria-hidden="true"
@@ -423,23 +417,41 @@ export default function BusinessSolutionsOverview() {
   return (
     <>
       <>
-        <title>Business Solutions UAE | ERP, CRM & Sales, Finance, HRM | Artiflex IT</title>
-        <meta
-          name="description"
-          content="Integrated business software for UAE: ERP, CRM & Sales Management, Finance & Accounting, and HRM on one platform, cloud or on-premises. UAE FTA, IFRS, PDPL and WPS ready."
-        />
-        <meta
-          name="keywords"
-          content="business solutions UAE, ERP software Dubai, CRM software UAE, finance accounting software UAE, HRM software UAE, FTA e-invoicing, IFRS reporting UAE, WPS payroll, MoHRE compliance, SAP UAE, Oracle Fusion UAE, Microsoft Dynamics 365 UAE, Focus Softnet, Odoo UAE"
-        />
+        <title>Business Software Dubai for ERP, CRM, Finance & HRM</title>
+        <meta name="description" content="Integrated business software for Dubai: ERP, CRM, finance, HRM and DMS on one platform. UAE FTA, IFRS, PDPL and WPS-ready. Cloud or on-premise." />
         <link rel="canonical" href="https://artiflexit.com/business-solutions" />
-        <meta property="og:title" content="Business Solutions UAE | Integrated ERP, CRM, Finance, HRM | Artiflex IT" />
-        <meta
-          property="og:description"
-          content="Integrated business software for UAE businesses. ERP, CRM & Sales, Finance, HRM on one unified platform, cloud or on-premises, FTA and IFRS ready."
-        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/business-solutions" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/business-solutions" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/business-solutions" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/business-solutions" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/business-solutions" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/business-solutions" />
+
+        <meta property="og:title" content="Business Software Dubai for ERP, CRM, Finance & HRM" />
+        <meta property="og:description" content="Integrated business software for Dubai: ERP, CRM, finance, HRM and DMS on one platform. UAE FTA, IFRS, PDPL and WPS-ready. Cloud or on-premise." />
         <meta property="og:url" content="https://artiflexit.com/business-solutions" />
-        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Business Software Dubai for ERP, CRM, Finance & HRM" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Business Software Dubai for ERP, CRM, Finance & HRM" />
+        <meta name="twitter:description" content="Integrated business software for Dubai: ERP, CRM, finance, HRM and DMS on one platform. UAE FTA, IFRS, PDPL and WPS-ready. Cloud or on-premise." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </>
@@ -451,8 +463,8 @@ export default function BusinessSolutionsOverview() {
         {/* Background image */}
         <div className="absolute inset-0 z-[1] overflow-hidden" aria-hidden="true">
           <img
-            src="/business-solutions.jpg"
-            alt=""
+            src="/business-solutions.webp"
+            alt="Business solutions, ERP and CRM services by Artiflex IT"
             loading="eager"
             decoding="async"
             className="h-full w-full object-cover object-center opacity-55 [mask-image:radial-gradient(120%_90%_at_60%_45%,black_55%,transparent_100%)]"
@@ -498,7 +510,7 @@ export default function BusinessSolutionsOverview() {
 
               <div className="mt-6 sm:mt-8 lg:mt-8 xl:mt-10">
                 <h1 className="mt-2 font-display text-xl font-semibold leading-snug tracking-tight text-white sm:mt-3 sm:text-2xl md:text-3xl lg:text-[1.6rem] xl:text-4xl">
-                  <span className="gradient-text">Integrated Business Software for the UAE & Middle East</span>
+                  <span className="gradient-text">Integrated Business Software for Dubai &amp; the UAE</span>
                 </h1>
 
                 <p className="mt-3 max-w-xl text-xs leading-relaxed text-slate-300 sm:mt-4 sm:text-sm md:text-base lg:text-sm xl:text-base">

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 import { useContactModal } from "@/components/layout/ContactModal";
+import SophosAccreditationBadge from "@/components/ui/SophosAccreditationBadge";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import {
   ShieldIcon,
@@ -676,7 +678,7 @@ function WorkspaceHero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/cyber2.png')" }}
+        style={{ backgroundImage: "url('/cyber2.webp')" }}
       />
       <div
         aria-hidden="true"
@@ -714,12 +716,12 @@ function WorkspaceHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Workspace Protection{" "}
             <span className="gradient-text">UAE</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              SSE, SASE &amp; CASB
-            </span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            SSE, SASE &amp; CASB
           </h1>
 
           <p className="mt-5 max-w-2xl font-display text-sm italic leading-relaxed text-slate-300 sm:text-base">
@@ -807,35 +809,48 @@ export default function WorkspaceProtectionSASE() {
   return (
     <>
       <>
-        <title>Workspace Protection UAE | SSE, SASE, CASB | Sophos, Check Point, Palo Alto, Netskope, Microsoft | Artiflex IT</title>
-        <meta
-          name="description"
-          content="Workspace Protection (SSE / SASE / CASB) for UAE ministries, banks, healthcare and enterprise. Sophos Workspace Protection (Most Innovative), Check Point Harmony SASE, Palo Alto Prisma Access, Netskope SSE and Microsoft Defender for Cloud Apps. ZTNA, SWG, CASB, FWaaS, DLP, RBI, DNS, SSPM. Aligned to NESA, NCA ECC, ADHICS, SAMA, ISO 27001 and PDPL."
-        />
-        <meta
-          name="keywords"
-          content="Workspace Protection UAE, SSE UAE, SASE UAE, SASE Dubai, CASB UAE, ZTNA UAE, Zero Trust Network Access, Sophos Workspace Protection, Sophos Protected Browser, Island.io, Check Point Harmony SASE, Palo Alto Prisma Access, Netskope SSE, Microsoft Defender for Cloud Apps, MCAS, Secure Web Gateway, FWaaS, Cloud DLP, Remote Browser Isolation, RBI, DNS Security, SSPM, Shadow IT UAE, Shadow AI governance, BYOD, NESA, NCA ECC, ADHICS, CBUAE, SAMA, ISO 27001, PDPL"
-        />
+        <title>SSE & SASE Solutions Dubai | ZTNA, CASB, VPN Replacement</title>
+        <meta name="description" content="ZTNA, SSE, SASE and CASB in Dubai across Sophos, Check Point Harmony, Palo Alto Prisma Access, Netskope and Microsoft. NESA and PDPL aligned." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/workspace-protection-sse-sase" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Workspace Protection UAE | SSE, SASE, CASB | Sophos, Check Point, Palo Alto, Netskope, Microsoft | Artiflex IT" />
-        <meta
-          property="og:description"
-          content="SSE / SASE / CASB for UAE ministries, banks, telcos and enterprise. Sophos Workspace Protection, Check Point Harmony SASE, Palo Alto Prisma Access, Netskope SSE, Microsoft MCAS. ZTNA, SWG, CASB, FWaaS, DLP, RBI, DNS, SSPM."
-        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/workspace-protection-sse-sase" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/workspace-protection-sse-sase" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/workspace-protection-sse-sase" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/workspace-protection-sse-sase" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/workspace-protection-sse-sase" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/workspace-protection-sse-sase" />
+
+        <meta property="og:title" content="SSE & SASE Solutions Dubai | ZTNA, CASB, VPN Replacement" />
+        <meta property="og:description" content="ZTNA, SSE, SASE and CASB in Dubai across Sophos, Check Point Harmony SASE, Palo Alto Prisma Access, Netskope and Microsoft. NESA and PDPL aligned." />
         <meta property="og:url" content="https://artiflexit.com/cybersecurity/workspace-protection-sse-sase" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT SSE and SASE solutions for the UAE" />
+
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Workspace Protection UAE | SSE / SASE / CASB | Artiflex IT" />
-        <meta
-          name="twitter:description"
-          content="SSE / SASE / CASB for the UAE: Sophos Workspace Protection (Most Innovative), Check Point Harmony SASE, Palo Alto Prisma Access, Netskope SSE, Microsoft MCAS."
-        />
+        <meta name="twitter:title" content="SSE & SASE Solutions Dubai | ZTNA, CASB, VPN Replacement" />
+        <meta name="twitter:description" content="ZTNA, SSE, SASE and CASB in Dubai across Sophos, Check Point Harmony, Palo Alto Prisma Access, Netskope and Microsoft. NESA and PDPL aligned." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: "Artiflex IT",
-            url: "https://artiflexit.com/cybersecurity/workspace-protection-sse-sase",
+            "@id": "https://artiflexit.com/#localbusiness",
+            name: "Artiflex Information Technology",
+            url: "https://artiflexit.com/",
             areaServed: [
               { "@type": "Country", name: "United Arab Emirates" },
               { "@type": "Country", name: "Saudi Arabia" },
@@ -887,6 +902,8 @@ export default function WorkspaceProtectionSASE() {
 
       {/* HERO */}
       <WorkspaceHero />
+
+      <SophosAccreditationBadge variant="platform" />
 
       {/* ───────── WORKSPACE PROTECTION VENDORS WE DELIVER (HONEYCOMB) ───────── */}
       <section className="relative overflow-hidden bg-slate-50 py-16 sm:py-20">
@@ -1211,25 +1228,19 @@ export default function WorkspaceProtectionSASE() {
                     </h3>
                   </div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="desc"
-                        initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                        animate={{ height: "auto", opacity: 1, marginTop: 12 }}
-                        exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-sm leading-relaxed text-slate-600">
-                          {d.desc}
-                        </p>
-                        <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">
-                          {d.keywords}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <motion.div
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0, marginTop: isOpen ? 12 : 0 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <p className="text-sm leading-relaxed text-slate-600">
+                      {d.desc}
+                    </p>
+                    <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">
+                      {d.keywords}
+                    </p>
+                  </motion.div>
                 </div>
               );
             })}
@@ -1283,25 +1294,19 @@ export default function WorkspaceProtectionSASE() {
                     </h3>
                   </div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="desc"
-                        initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                        animate={{ height: "auto", opacity: 1, marginTop: 12 }}
-                        exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-sm leading-relaxed text-slate-600">
-                          {c.desc}
-                        </p>
-                        <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">
-                          {c.keywords}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <motion.div
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0, marginTop: isOpen ? 12 : 0 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <p className="text-sm leading-relaxed text-slate-600">
+                      {c.desc}
+                    </p>
+                    <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">
+                      {c.keywords}
+                    </p>
+                  </motion.div>
                 </div>
               );
             })}
@@ -1343,12 +1348,12 @@ export default function WorkspaceProtectionSASE() {
             </button>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + wspMatrixVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + wspMatrixVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Criteria
                     </th>
                     {wspMatrixVendors.map((v) => (
@@ -1641,7 +1646,7 @@ export default function WorkspaceProtectionSASE() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] sm:mt-16">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20 sm:mt-16">
             <div className="overflow-x-auto lg:overflow-x-visible">
               <table className="w-full table-fixed border-collapse text-center text-sm lg:min-w-0">
                 <colgroup>
@@ -1785,9 +1790,9 @@ export default function WorkspaceProtectionSASE() {
             centered
           />
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] sm:mt-16">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20 sm:mt-16">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + buyerDecisionGuide.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + buyerDecisionGuide.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
                     <th className="w-[44%] px-5 py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
@@ -2100,6 +2105,8 @@ export default function WorkspaceProtectionSASE() {
         description="Modern Workspace Protection is identity-based, cloud-delivered and BYOD-friendly. Talk to an Artiflex IT specialist about Sophos Workspace Protection, Check Point Harmony SASE, Palo Alto Prisma Access, Netskope SSE and Microsoft Defender for Cloud Apps for the UAE and the wider GCC."
         primaryButton={{ text: "Book a Workspace Discovery Call", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

@@ -33,15 +33,15 @@ type Props = {
 
 function ComparisonTable({ vendors, rows }: { vendors: ComparisonVendor[]; rows: ComparisonRow[] }) {
   return (
-    <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+    <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
       <div className="overflow-x-auto">
         <table
-          className="w-full table-fixed border-collapse text-center text-sm"
-          style={{ minWidth: Math.max(640, 150 + vendors.length * 116) }}
+          className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0"
+          style={{ ["--vtw" as string]: `${Math.max(640, 150 + vendors.length * 116)}px` }}
         >
           <thead>
             <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-              <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+              <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                 Criteria
               </th>
               {vendors.map((v) => (

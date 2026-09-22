@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
 import { useContactModal } from "@/components/layout/ContactModal";
 import StarBorder from "@/components/ui/StarBorder";
+import { trackEvent } from "@/lib/analytics";
 import {
   ShieldIcon,
   CloudIcon,
@@ -192,7 +193,7 @@ export default function Navbar() {
         {/* ─── Logo (left) ─── */}
         <Link to="/" className="group flex shrink-0 items-center gap-8.5">
           <img
-            src="/logo_artiflex.png"
+            src="/logo_artiflex.webp"
             alt="Artiflex Information Technology"
             className="h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 sm:h-14 lg:h-16"
           />
@@ -571,7 +572,10 @@ export default function Navbar() {
               speed="5s"
               thickness={2}
               className="cursor-pointer"
-              onClick={openContact}
+              onClick={() => {
+                trackEvent("cta_click", { location: "navbar_desktop", label: "get_started" });
+                openContact();
+              }}
             >
               <span className="flex items-center rounded-[18px] bg-gradient-to-r from-[#045891] to-[#1B8AC7] px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:brightness-110">
                 Get Started
@@ -810,7 +814,11 @@ export default function Navbar() {
                   speed="5s"
                   thickness={2}
                   className="w-full cursor-pointer"
-                  onClick={() => { setMobileOpen(false); openContact(); }}
+                  onClick={() => {
+                    trackEvent("cta_click", { location: "navbar_mobile", label: "get_started" });
+                    setMobileOpen(false);
+                    openContact();
+                  }}
                 >
                   <span className="flex items-center justify-center rounded-[18px] bg-gradient-to-r from-[#045891] to-[#1B8AC7] py-3 text-sm font-semibold text-white w-full">
                     Get Started

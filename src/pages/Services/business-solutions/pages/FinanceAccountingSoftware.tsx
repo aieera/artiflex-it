@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 
 /* ───────── FINANCE & ACCOUNTING VENDORS (HONEYCOMB) ───────── */
 
@@ -616,7 +617,7 @@ function FinanceAccountingHero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/business-solutions.jpg'), url('/cloud-solutions.jpg')" }}
+        style={{ backgroundImage: "url('/business-solutions.webp'), url('/cloud-solutions.webp')" }}
       />
       <div
         aria-hidden="true"
@@ -656,12 +657,12 @@ function FinanceAccountingHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
-            Finance &amp;{" "}
-            <span className="gradient-text">Accounting</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              Buyer's Guide, Vendor Matrix and Gartner-style Scorecard
-            </span>
+          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+            FTA-Approved Accounting Software in{" "}
+            <span className="gradient-text">UAE</span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            VAT-ready, IFRS-compliant. Vendor Matrix and Gartner-style Scorecard.
           </h1>
 
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
@@ -738,18 +739,55 @@ export default function FinanceAccountingSoftware() {
   return (
     <>
       <>
-        <title>Finance &amp; Accounting Software UAE | Buyer's Guide, Vendor Matrix and Gartner-style Scorecard | Artiflex IT</title>
-        <meta
-          name="description"
-          content="UAE buyer's guide for finance and accounting software. Vendor matrix and Gartner-style scorecard across SAP S/4HANA Finance, Oracle Financials, Microsoft Dynamics 365 Finance, Sage X3, Tally Prime, QuickBooks Desktop and Focus Softnet, with on-prem TCO analysis."
-        />
+        <title>FTA-Approved Accounting Software UAE | VAT & IFRS Ready</title>
+        <meta name="description" content="FTA-approved accounting software for UAE businesses. VAT-ready, IFRS-compliant. SAP, Oracle, Microsoft, Sage, Tally, QuickBooks and Focus Softnet compared." />
         <link rel="canonical" href="https://artiflexit.com/business-solutions/finance-accounting-software" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/business-solutions/finance-accounting-software" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/business-solutions/finance-accounting-software" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/business-solutions/finance-accounting-software" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/business-solutions/finance-accounting-software" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/business-solutions/finance-accounting-software" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/business-solutions/finance-accounting-software" />
+
+        <meta property="og:title" content="FTA-Approved Accounting Software UAE | VAT & IFRS Ready" />
+        <meta property="og:description" content="FTA-approved accounting software for UAE businesses. VAT-ready, IFRS-compliant. SAP, Oracle, Microsoft, Sage, Tally, QuickBooks and Focus Softnet compared." />
+        <meta property="og:url" content="https://artiflexit.com/business-solutions/finance-accounting-software" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="FTA-Approved Accounting Software UAE | VAT & IFRS Ready" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="FTA-Approved Accounting Software UAE | VAT & IFRS Ready" />
+        <meta name="twitter:description" content="FTA-approved accounting software for UAE businesses. VAT-ready, IFRS-compliant. SAP, Oracle, Microsoft, Sage, Tally, QuickBooks and Focus Softnet compared." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Artiflex IT",
-            "url": "https://artiflexit.com/business-solutions/finance-accounting-software",
+            "@id": "https://artiflexit.com/#localbusiness",
+            "name": "Artiflex Information Technology",
+            "url": "https://artiflexit.com/",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "M22, New Al Safiya Building, Near Abu Hail Metro Station, Hor Al Anz",
+              "addressLocality": "Dubai",
+              "addressRegion": "Dubai",
+              "addressCountry": "AE",
+            },
             "areaServed": [
               { "@type": "Country", "name": "United Arab Emirates" },
               { "@type": "City", "name": "Dubai" },
@@ -763,7 +801,7 @@ export default function FinanceAccountingSoftware() {
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Finance & Accounting Software Solutions",
-            "provider": { "@type": "Organization", "name": "Artiflex IT" },
+            "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
             "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
             "description": "UAE finance and accounting software delivery across SAP S/4HANA Finance, Oracle Financials, Microsoft Dynamics 365 Finance, Sage X3, Tally Prime, QuickBooks and Focus Softnet: VAT and e-invoicing readiness, multi-entity consolidation and 7-year TCO governance.",
           })}
@@ -788,6 +826,7 @@ export default function FinanceAccountingSoftware() {
               "@type": "ListItem",
               "position": i + 1,
               "name": v.name,
+              "url": "https://artiflexit.com/business-solutions/finance-accounting-software",
             })),
           })}
         </script>
@@ -960,9 +999,9 @@ export default function FinanceAccountingSoftware() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + selectionFramework.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + selectionFramework.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
                     <th className="w-16 px-4 py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
@@ -1071,7 +1110,7 @@ export default function FinanceAccountingSoftware() {
 
           <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + tcoRows.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + tcoRows.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#04101E] to-[#0A3D6B]">
                     <th className="px-4 py-5 align-bottom font-display text-sm font-semibold text-white sm:text-base">
@@ -1207,12 +1246,12 @@ export default function FinanceAccountingSoftware() {
             </button>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + matrixVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + matrixVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Criteria
                     </th>
                     {matrixVendors.map((v) => (
@@ -1428,12 +1467,12 @@ export default function FinanceAccountingSoftware() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + featureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + featureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Capability
                     </th>
                     {featureVendors.map((v) => (
@@ -1771,6 +1810,8 @@ export default function FinanceAccountingSoftware() {
         description="Free finance software readiness assessment including VAT and FTA e-invoicing posture, multi-entity scope, AP-automation gap, 7-year on-prem vs SaaS TCO and recommended platform plus deployment model."
         primaryButton={{ text: "Book Assessment", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

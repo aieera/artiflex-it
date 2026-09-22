@@ -1,14 +1,14 @@
 /**
  * generate-og-images.mjs
  * ─────────────────────────────────────────────────────────────
- * Generates 1200×630 Open Graph images for every post in
- * src/content/blog/posts.ts.
+ * Generates 1200×630 Open Graph images for every post under
+ * src/content/blog/posts/.
  *
  * Output: public/og/blog/<slug>.png (one per post)
  *
  * Approach:
- *   1. Parse posts.ts with regex to extract slug, metaTitle, tag,
- *      readTime, date for each post (no TS toolchain required).
+ *   1. Import each posts/<slug>/meta.ts to read slug, metaTitle, tag,
+ *      readTime and date (Node strips the types, no bundler needed).
  *   2. For each post, render an HTML template at 1200×630 using
  *      Playwright (already a devDependency for the prerender step).
  *   3. Screenshot the rendered HTML to a PNG and save it.
@@ -17,20 +17,27 @@
  *   npm run og              # standalone
  *   npm run build:seo       # part of the build chain
  *
- * Re-run only when posts.ts changes — outputs are deterministic.
+ * Re-run when post metadata changes, outputs are deterministic.
  * ─────────────────────────────────────────────────────────────
  */
 
+import "./lib/ts-resolve.mjs";
 import { chromium } from "playwright";
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, "..");
-const POSTS_TS = path.join(ROOT, "src", "content", "blog", "posts.ts");
+const POSTS_DIR = path.join(ROOT, "src", "content", "blog", "posts");
 const OUT_DIR = path.join(ROOT, "public", "og", "blog");
+
+/* Real Artiflex IT logo, inlined as a data URI so Playwright's setContent   */
+/* renders it without needing to resolve a file:// path or serve public/.    */
+const LOGO_PATH = path.join(ROOT, "public", "logo_artiflex.png");
+const LOGO_DATA_URI =
+  "data:image/png;base64," + fs.readFileSync(LOGO_PATH).toString("base64");
 
 function log(msg) {
   console.log(`[og] ${msg}`);
@@ -71,53 +78,44 @@ const TAG_PALETTES = {
   },
 };
 
-/* ────────────── Parse posts.ts with regex ────────────── */
-/* This avoids needing tsx / TS compilation to read the data.       */
-/* Each post block starts with `slug: "..."` and is bounded by `},` */
+/* ────────────── Read the post metadata ────────────── */
+/* Imports each posts/<slug>/meta.ts directly (Node strips the type   */
+/* annotations, ts-resolve.mjs handles the extensionless imports), so  */
+/* this reads exactly what the site renders. No regex, and no chance   */
+/* of the OG image disagreeing with the page it represents.            */
+/* Content files are never touched, only meta.                         */
 
-function parsePosts() {
-  const src = fs.readFileSync(POSTS_TS, "utf8");
+async function loadPosts() {
+  if (!fs.existsSync(POSTS_DIR)) {
+    throw new Error("blog posts directory not found at " + POSTS_DIR);
+  }
 
-  // Find every post object literal in the `posts` array.
-  // Match `slug: "..."` and capture the surrounding fields.
-  const slugRe = /slug:\s*"([^"]+)"/g;
-  const titleRe = /title:\s*\n?\s*"([\s\S]*?)"\s*,/;
-  const metaTitleRe = /metaTitle:\s*"([^"]+)"/;
-  const tagRe = /tag:\s*"([^"]+)"/;
-  const dateRe = /date:\s*"([^"]+)"/;
-  const readTimeRe = /readTime:\s*(\d+)/;
-
-  const slugs = [...src.matchAll(slugRe)].map((m) => ({
-    slug: m[1],
-    index: m.index,
-  }));
-
-  // Skip placeholder posts that we know aren't published with full content.
-  // Heuristic: posts with readTime <= 5 in the placeholder block are stubs.
-  // The user can manually filter these later if needed.
+  const slugs = fs
+    .readdirSync(POSTS_DIR, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name)
+    .sort();
 
   const out = [];
-  for (let i = 0; i < slugs.length; i++) {
-    const start = slugs[i].index;
-    const end = i + 1 < slugs.length ? slugs[i + 1].index : src.length;
-    const block = src.slice(start, end);
-
-    const title =
-      (block.match(titleRe) || [])[1]?.replace(/\s+/g, " ").trim() ||
-      slugs[i].slug;
-    const metaTitle = (block.match(metaTitleRe) || [])[1] || title;
-    const tag = (block.match(tagRe) || [])[1] || "cybersecurity";
-    const date = (block.match(dateRe) || [])[1] || "";
-    const readTime = parseInt((block.match(readTimeRe) || [])[1] || "0", 10);
-
+  for (const slug of slugs) {
+    const metaPath = path.join(POSTS_DIR, slug, "meta.ts");
+    if (!fs.existsSync(metaPath)) {
+      warn(`no meta.ts in posts/${slug}, skipped`);
+      continue;
+    }
+    const { meta } = await import(pathToFileURL(metaPath).href);
     out.push({
-      slug: slugs[i].slug,
-      title,
-      metaTitle,
-      tag,
-      date,
-      readTime,
+      slug: meta.slug,
+      title: meta.title.replace(/\s+/g, " ").trim(),
+      metaTitle: meta.metaTitle || meta.title,
+      tag: meta.tag,
+      date: meta.date,
+      readTime: meta.readTime,
     });
+
+    if (meta.slug !== slug) {
+      warn(`slug mismatch: folder "${slug}" declares "${meta.slug}"`);
+    }
   }
   return out;
 }
@@ -201,32 +199,11 @@ function ogHtml(post) {
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
     }
-    .brand-mark {
-      width: 36px;
-      height: 36px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, #1B8AC7, #28B5E1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
-      font-size: 20px;
-      color: #04101E;
-      box-shadow: 0 4px 16px rgba(40, 181, 225, 0.3);
-    }
-    .brand-name {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 700;
-      font-size: 22px;
-      letter-spacing: -0.01em;
-    }
-    .brand-name .sub {
-      font-weight: 400;
-      color: #94a3b8;
-      margin-left: 4px;
+    .brand-logo {
+      height: 44px;
+      width: auto;
+      display: block;
     }
     .tag {
       display: inline-flex;
@@ -309,8 +286,7 @@ function ogHtml(post) {
     <div class="frame">
       <div class="top-row">
         <div class="brand">
-          <div class="brand-mark">A</div>
-          <div class="brand-name">Artiflex<span class="sub">IT</span></div>
+          <img class="brand-logo" src="${LOGO_DATA_URI}" alt="Artiflex IT" />
         </div>
         <div class="tag">${palette.label}</div>
       </div>
@@ -336,9 +312,9 @@ function ogHtml(post) {
 /* ────────────── Main ────────────── */
 
 async function run() {
-  const posts = parsePosts();
+  const posts = await loadPosts();
   if (posts.length === 0) {
-    warn("no posts found in posts.ts — nothing to generate");
+    warn("no posts found under src/content/blog/posts, nothing to generate");
     return;
   }
   log(`generating OG images for ${posts.length} posts`);

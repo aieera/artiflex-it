@@ -143,32 +143,6 @@ const coreServices = [
   },
 ];
 
-const methodologySteps = [
-  {
-    number: 1,
-    title: "Discover",
-    description:
-      "Map your application attack surface, web apps, APIs, mobile backends, serverless functions, and third-party integrations. Identify what needs testing and prioritize by risk.",
-  },
-  {
-    number: 2,
-    title: "Assess",
-    description:
-      "Execute penetration testing, code review, and DAST scanning against prioritized targets. Combine automated tools with manual expert testing for maximum coverage.",
-  },
-  {
-    number: 3,
-    title: "Remediate",
-    description:
-      "Deliver prioritized findings with proof-of-concept exploits, severity ratings, and actionable remediation guidance. Work with your dev team to fix critical issues.",
-  },
-  {
-    number: 4,
-    title: "Verify",
-    description:
-      "Re-test all remediated vulnerabilities to confirm fixes. Provide a clean report for compliance audits and integrate ongoing testing into your SDLC.",
-  },
-];
 
 const complianceMapping = [
   { framework: "NESA", requirement: "Application security controls across Critical Information Infrastructure" },
@@ -302,26 +276,47 @@ export default function ApplicationSecurityPage() {
   return (
     <>
       <>
-        <title>Application Security UAE, VAPT, API, WAF | Artiflex IT</title>
-        <meta
-          name="description"
-          content="ArtiflexIT application security, VAPT (OWASP Top 10), API security testing, secure code review, WAF management, and DAST scanning for UAE businesses."
-        />
-        <meta
-          name="keywords"
-          content="application security UAE, web application penetration testing Dubai, API security testing, OWASP Top 10, WAF management UAE, secure code review, SAST DAST, application security testing Middle East, VAPT web applications, PCI-DSS application testing"
-        />
+        <title>Application Security Dubai | VAPT, API & WAF Testing</title>
+        <meta name="description" content="Web application penetration testing, API security, WAF management and secure code review in Dubai. OWASP Top 10 coverage. Free app security assessment." />
         <link rel="canonical" href="https://artiflexit.com/application-security-solutions" />
-        <meta property="og:title" content="Application Security Solutions, Web App & API Protection | ArtiflexIT UAE" />
-        <meta property="og:description" content="Web application penetration testing, API security, WAF management, and secure code review for UAE enterprises. OWASP Top 10 coverage with compliance mapping." />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/application-security-solutions" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/application-security-solutions" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/application-security-solutions" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/application-security-solutions" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/application-security-solutions" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/application-security-solutions" />
+
+        <meta property="og:title" content="Application Security Dubai | VAPT, API & WAF Testing" />
+        <meta property="og:description" content="Web application penetration testing, API security, WAF management and secure code review in Dubai. OWASP Top 10 coverage for UAE enterprises." />
         <meta property="og:url" content="https://artiflexit.com/application-security-solutions" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
         <meta property="og:type" content="article" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT application security, VAPT and WAF services in Dubai, UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Application Security Dubai | VAPT, API & WAF Testing" />
+        <meta name="twitter:description" content="Web application penetration testing, API security, WAF management and secure code review in Dubai. OWASP Top 10 coverage. Free app security assessment." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </>
 
       {/* HERO */}
       <PageHero
-        title={<>Application Security <span className="gradient-text">UAE</span></>}
+        title={<>Application Security in <span className="gradient-text">Dubai</span>: VAPT, API &amp; WAF</>}
         backgroundImage="/images/app-security.jpg"
         breadcrumbs={[
           { label: "Home", href: "/" },

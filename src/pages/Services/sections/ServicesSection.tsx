@@ -9,6 +9,8 @@ const services = [
       "Stop threats before they reach your data. Our layered defense strategy covers everything from perimeter firewalls to endpoint detection, backed by a 24/7 security operations center.",
     href: "/cybersecurity",
     image: "/images/cybersecurity.jpg",
+    imageAlt:
+      "Cybersecurity solutions and 24/7 threat monitoring delivered in Dubai",
   },
   {
     title: "Cloud Solutions",
@@ -16,6 +18,8 @@ const services = [
       "Move to the cloud without the migration headaches. We design, migrate, and manage cloud environments across AWS, Azure, and GCP with zero-downtime guarantees.",
     href: "/cloud-solutions",
     image: "/images/cloud.jpg",
+    imageAlt:
+      "Cloud migration and managed cloud environments on AWS, Azure and GCP",
   },
   {
     title: "IT Infrastructure",
@@ -23,13 +27,17 @@ const services = [
       "Build networks that scale with your ambitions. From structured cabling to SD-WAN deployment, we design infrastructure that eliminates bottlenecks and future-proofs your operations.",
     href: "/infrastructure",
     image: "/images/infrastructure.jpg",
+    imageAlt:
+      "IT infrastructure and network solutions deployed in Dubai and the UAE",
   },
   {
     title: "Managed Services",
     description:
-      "Focus on your business while we handle your IT. Proactive monitoring, patch management, and help desk support, all under one predictable monthly fee.",
+      "Focus on your business while we handle your IT. Proactive monitoring, patch management, and responsive IT support for companies across Dubai and the UAE, all under one predictable monthly fee.",
     href: "/managed-services",
     image: "/images/managed-services.jpg",
+    imageAlt:
+      "Managed IT services and helpdesk support under a fixed monthly fee",
   },
   {
     title: "Application Security",
@@ -37,6 +45,8 @@ const services = [
       "Protect your web applications and APIs with penetration testing, secure code review, WAF management, and DAST scanning, aligned with OWASP Top 10 standards.",
     href: "/application-security-solutions",
     image: "/images/app-security.jpg",
+    imageAlt:
+      "Application security testing and WAF management for web apps and APIs",
   },
   {
     title: "Business Solutions",
@@ -44,6 +54,8 @@ const services = [
       "Run your business on software that actually works as one. We implement and integrate ERP, CRM, finance, and HR platforms with vendor-neutral advice grounded in real 7-year TCO, so your data flows end to end.",
     href: "/business-solutions",
     image: "/images/office.jpg",
+    imageAlt:
+      "ERP, CRM, finance and HR business software implementation",
   },
 ];
 
@@ -62,7 +74,8 @@ export function ServicesSection() {
       <div className="shell">
         <SectionHeader
           label="What We Deliver"
-          title="End-to-End IT Solutions, Zero Gaps"
+          title="End-to-End IT Solutions for Businesses in Dubai & UAE"
+          description="One IT services company in Dubai covering cybersecurity, cloud, infrastructure, applications and managed support, with zero gaps between them."
           centered
         />
 
@@ -76,15 +89,12 @@ export function ServicesSection() {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
             >
-              <Link
-                to={service.href}
-                className="group rounded-2xl bg-white border border-border-light shadow-[0_1px_3px_rgba(0,0,0,0.04)] overflow-hidden hover:shadow-[0_8px_30px_rgba(27,138,199,0.08)] hover:border-brand-blue/25 hover:-translate-y-0.5 transition-all duration-500 flex flex-col h-full"
-              >
+              <div className="group rounded-2xl bg-white border border-border-light shadow-[0_1px_3px_rgba(0,0,0,0.04)] overflow-hidden hover:shadow-[0_8px_30px_rgba(27,138,199,0.08)] hover:border-brand-blue/25 hover:-translate-y-0.5 transition-all duration-500 flex flex-col h-full">
                 {/* Image */}
                 <div className="relative h-44 overflow-hidden">
                   <img
                     src={service.image}
-                    alt={service.title}
+                    alt={service.imageAlt}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
@@ -93,21 +103,22 @@ export function ServicesSection() {
 
                 <div className="flex flex-col gap-3 p-5 flex-1">
                   <h3 className="font-display text-lg font-semibold text-heading">
-                    {service.title}
+                    <Link
+                      to={service.href}
+                      className="inline-flex items-center gap-1 text-heading transition-colors duration-200 hover:text-brand-blue group-hover:text-brand-blue"
+                    >
+                      {service.title}
+                      <span className="transition-transform duration-200 group-hover:translate-x-1">
+                        &rarr;
+                      </span>
+                    </Link>
                   </h3>
 
                   <p className="text-sm text-body leading-relaxed flex-1">
                     {service.description}
                   </p>
-
-                  <span className="mt-auto inline-flex items-center gap-1 text-[#045891] text-sm font-medium transition-colors duration-200 group-hover:text-[#1B8AC7]">
-                    Learn More
-                    <span className="transition-transform duration-200 group-hover:translate-x-1">
-                      &rarr;
-                    </span>
-                  </span>
                 </div>
-              </Link>
+              </div>
             </motion.div>
           ))}
         </div>

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 import {
@@ -29,20 +30,6 @@ const vendorLineup: { slug: string; name: string; logo: string }[] = [
 
 /* ───────── DATA ───────── */
 
-const stats: { value: string; label: string }[] = [
-  {
-    value: "99.9%",
-    label: "Of automated account attacks blocked by MFA (Microsoft data)",
-  },
-  {
-    value: "80%",
-    label: "Of breaches that involve compromised credentials",
-  },
-  {
-    value: "15 min",
-    label: "Average time for attackers to exploit a freshly compromised account",
-  },
-];
 
 type CapAccent = "cyan" | "amber" | "emerald" | "violet" | "rose" | "teal";
 
@@ -785,11 +772,11 @@ function MfaHero() {
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[#28B5E1] sm:text-xs">
             Multi-Factor Authentication
           </p>
-          <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
+          <p className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
             Multi-Factor Authentication <span className="gradient-text">UAE</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              The highest-ROI control in identity security
-            </span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            The highest-ROI control in identity security
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Artiflex IT designs, deploys and manages MFA across the UAE, Oman and Saudi Arabia. Okta, Microsoft Entra MFA, Cisco Duo, RSA SecurID, Yubico and Google Workspace MFA, picked on workload, compliance scope and stack alignment, not vendor preference.
@@ -834,15 +821,41 @@ export default function MfaProduct() {
   return (
     <>
       <>
-        <title>Multi-Factor Authentication (MFA) UAE | Push, FIDO2, Passwordless | Artiflex IT</title>
-        <meta
-          name="description"
-          content="Multi-Factor Authentication (MFA) for UAE enterprises. Compare Okta, Microsoft Entra MFA, Cisco Duo, RSA SecurID, Yubico and Google Workspace MFA. Vendor matrix, Gartner-style scorecard, phishing-resistant and passwordless. MFA blocks 99.9% of account attacks."
-        />
-        <link
-          rel="canonical"
-          href="https://artiflexit.com/cybersecurity/identity-access-security/mfa"
-        />
+        <title>Multi-Factor Authentication Dubai | FIDO2 & Passwordless</title>
+        <meta name="description" content="Multi-factor authentication in Dubai. Passwordless, FIDO2, push and OTP. MFA solutions to reduce account-takeover risk across UAE businesses." />
+        <link rel="canonical" href="https://artiflexit.com/cybersecurity/identity-access-security/mfa" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/identity-access-security/mfa" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/identity-access-security/mfa" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/identity-access-security/mfa" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/identity-access-security/mfa" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/identity-access-security/mfa" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/identity-access-security/mfa" />
+
+        <meta property="og:title" content="Multi-Factor Authentication Dubai | FIDO2 & Passwordless" />
+        <meta property="og:description" content="Multi-factor authentication in Dubai. Passwordless, FIDO2, push and OTP. MFA solutions to reduce account-takeover risk across UAE businesses." />
+        <meta property="og:url" content="https://artiflexit.com/cybersecurity/identity-access-security/mfa" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT multi-factor authentication for the UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Multi-Factor Authentication Dubai | FIDO2 & Passwordless" />
+        <meta name="twitter:description" content="Multi-factor authentication in Dubai. Passwordless, FIDO2, push and OTP. MFA solutions to reduce account-takeover risk across UAE businesses." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -863,6 +876,7 @@ export default function MfaProduct() {
               "@type": "ListItem",
               position: i + 1,
               name: v.name,
+              url: `https://artiflexit.com/cybersecurity/mfa/${v.slug}`,
             })),
           })}
         </script>
@@ -1222,22 +1236,16 @@ export default function MfaProduct() {
                     </div>
                   </div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden"
-                      >
+                  <motion.div
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
                         <p className="mt-4 border-t border-slate-200 pt-3 text-xs leading-relaxed text-slate-600">
                           {l.details}
                         </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  </motion.div>
                 </div>
               );
             })}
@@ -1311,12 +1319,12 @@ export default function MfaProduct() {
             </button>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + matrixVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + matrixVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Criteria
                     </th>
                     {matrixVendors.map((v) => (
@@ -1535,12 +1543,12 @@ export default function MfaProduct() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + featureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + featureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Capability
                     </th>
                     {featureVendors.map((v) => (
@@ -2020,6 +2028,8 @@ export default function MfaProduct() {
         description="60-minute review of your current authentication stack, push-fatigue exposure, and FIDO2 readiness, with a vendor-neutral MFA recommendation mapped to your environment."
         primaryButton={{ text: "Book Assessment", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

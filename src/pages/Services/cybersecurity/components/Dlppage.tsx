@@ -1,6 +1,7 @@
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
+import SophosAccreditationBadge from "@/components/ui/SophosAccreditationBadge";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { LockIcon, ShieldIcon, EyeIcon, ServerIcon, MailIcon, CheckIcon } from "@/components/icons";
 
@@ -86,8 +87,8 @@ export default function DLPPage() {
   return (
     <>
       <>
-        <title>Data Loss Prevention (DLP) UAE, PDPL Compliance | ArtiflexIT Dubai</title>
-        <meta name="description" content="Content-aware DLP solutions for UAE businesses. Prevent data exfiltration, achieve UAE PDPL compliance, and protect sensitive data across endpoints, email, and cloud." />
+        <title>Data Loss Prevention UAE | DLP & Data Classification</title>
+        <meta name="description" content="Data loss prevention in UAE for endpoint, network, cloud and email with data classification across Fortra, Microsoft Purview, Forcepoint, Symantec." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/data-loss-prevention" />
       </>
 
@@ -100,6 +101,8 @@ export default function DLPPage() {
           { label: "DLP", href: "/cybersecurity/data-loss-prevention" },
         ]}
       />
+
+      <SophosAccreditationBadge variant="platform" />
 
       <section className="relative border-y border-border-light bg-white">
         <div className="shell">

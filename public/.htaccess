@@ -35,13 +35,66 @@ DirectoryIndex index.html
   RewriteEngine On
   RewriteBase /
 
-  # 3a. Force HTTPS
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-  # 3b. Force non-www (canonical host = artiflexit.com)
+  # 3a. Force HTTPS + non-www in ONE rule (canonical host = artiflexit.com).
+  #     Combined so a backlink to http://, www., or http://www. resolves in a
+  #     single 301 instead of chaining through two separate redirects. Fewer
+  #     hops = less link-equity loss and faster crawling of inbound links.
+  RewriteCond %{HTTPS} !=on [OR]
   RewriteCond %{HTTP_HOST} ^www\.artiflexit\.com$ [NC]
   RewriteRule ^ https://artiflexit.com%{REQUEST_URI} [L,R=301]
+
+  # 3a-ii. Serve the PRE-COMPRESSED twin of a static asset when one exists.
+  #
+  #        The Vite build (vite-plugin-compression, see vite.config.ts)
+  #        already writes <file>.br next to every JS / CSS / SVG asset at
+  #        build time. Until 2026-08-24 nothing ever served them: section
+  #        4 below only configures ON-THE-FLY compression, so Apache spent
+  #        CPU re-compressing identical bytes on every request (slower
+  #        TTFB, therefore slower LCP) while ~250 pre-compressed files sat
+  #        in the deploy as dead weight.
+  #
+  #        These rules do the content negotiation by hand: if the client
+  #        advertises the encoding AND the twin actually exists on disk,
+  #        rewrite to it. The "-f" test means we can never rewrite to a
+  #        file that is not there, so this is a silent no-op for any asset
+  #        that was not pre-compressed.
+  #
+  #        Scope is deliberately js / css / svg only. HTML stays on
+  #        on-the-fly compression because it would interact with the
+  #        pre-rendered-route rewrite (3d) and the 404 handler (section 8).
+  #
+  #        The matching Content-Type / Content-Encoding headers live in
+  #        section 5 (mod_headers). BOTH halves are required. Removing
+  #        either one on its own WILL break asset delivery.
+  #
+  #        Rollback: comment out the four rules below AND the ".br / .gz
+  #        twin" FilesMatch blocks in section 5.
+
+  #        NOTE on $1 inside RewriteCond: Apache matches the RewriteRule
+  #        PATTERN first and only then evaluates the conditions, so the
+  #        rule's capture group is available here. %{DOCUMENT_ROOT}/$1 is
+  #        used in preference to %{REQUEST_FILENAME} because the latter is
+  #        not guaranteed to be a fully resolved filesystem path on the
+  #        first pass through a per-directory (.htaccess) ruleset.
+
+  #        FAIL-SAFE: the whole block is nested inside a mod_headers
+  #        guard on purpose. Without mod_headers the Content-Encoding
+  #        header could never be set, and the browser would receive
+  #        brotli bytes labelled as octet-stream, which breaks every
+  #        stylesheet and script on the site. If mod_headers is ever
+  #        absent, we must fall back to serving the plain files, so the
+  #        rewrite simply does not exist in that case.
+  <IfModule mod_headers.c>
+    # Brotli, preferred (roughly 20% smaller than gzip on our bundles).
+    RewriteCond %{HTTP:Accept-Encoding} (^|,)\s*br(\s*[;,]|$)
+    RewriteCond %{DOCUMENT_ROOT}/$1.br -f
+    RewriteRule ^(.+\.(?:js|css|svg))$ /$1.br [L]
+
+    # gzip fallback for clients that do not advertise brotli.
+    RewriteCond %{HTTP:Accept-Encoding} (^|,)\s*gzip(\s*[;,]|$)
+    RewriteCond %{DOCUMENT_ROOT}/$1.gz -f
+    RewriteRule ^(.+\.(?:js|css|svg))$ /$1.gz [L]
+  </IfModule>
 
   # 3b-i. 301 redirects for retired URLs.
   #       Keep this list alphabetical. Every entry is a permanent
@@ -55,6 +108,34 @@ DirectoryIndex index.html
   RewriteRule ^cybersecurity/email-security-vendors/?$ /cybersecurity/email-security [L,R=301]
   RewriteRule ^cybersecurity/endpoint/sophos-intercept-x/?$ /cybersecurity/endpoint/sophos-endpoint [L,R=301]
   RewriteRule ^disaster-recovery-solutions-dubai/?$ /cloud-solutions/disaster-recovery-solutions-dubai [L,R=301]
+
+  # 3b-ii. Block spam-injected URL patterns with HTTP 410 Gone.
+  #        Backlinks from low-quality sites point at random numeric paths
+  #        (e.g. /743137154, /876121755, /comment.php?798816093) trying
+  #        to game our domain. 410 = "permanently removed" — Google
+  #        deindexes 410s noticeably faster than 404s.
+  RewriteRule ^[0-9]+/?$ - [R=410,L]
+  RewriteRule ^comment\.php$ - [R=410,L]
+  # Also catch numeric paths with an extra slug, e.g. /743137154/anything
+  RewriteRule ^[0-9]+/.+ - [R=410,L]
+
+  # 3b-iii. Extend 410 to leftover WordPress-era paths from the old site.
+  #         None of these are real routes on the current Vite site (the real
+  #         blog categories live under /blog/category/…, not /category/…), so
+  #         a firm 410 deindexes them faster than the 404 handler.
+  RewriteRule ^(feed|comments/feed)/?$ - [R=410,L]
+  RewriteRule ^(category|tag|author)/ - [R=410,L]
+  RewriteRule ^(index\.php|xmlrpc\.php|wp-login\.php)$ - [R=410,L]
+  RewriteRule ^wp-(admin|content|includes|json)(/|$) - [R=410,L]
+  RewriteRule ^(sitemap_index|wp-sitemap)\.xml$ - [R=410,L]
+
+  # 3b-iv. Strip legacy JUNK numeric query strings, e.g. /?174015030 -> /
+  #        Google lists thousands of these under "alternate page with proper
+  #        canonical". A real UTM or ad-click tag ALWAYS contains "=" (e.g.
+  #        utm_campaign=firewall-post), so a digits-only query string is always
+  #        old junk and safe to drop. This never touches utm_*, gclid, fbclid.
+  RewriteCond %{QUERY_STRING} ^[0-9]+$
+  RewriteRule ^ https://artiflexit.com%{REQUEST_URI}? [L,R=301]
 
   # 3c. Remove trailing slashes (except root)
   RewriteCond %{REQUEST_FILENAME} !-d
@@ -82,8 +163,30 @@ DirectoryIndex index.html
 </IfModule>
 
 # --------------------------------------------------------------
-# 4.  Compression (gzip)
+# 4.  Compression (Brotli + gzip)
+#     Brotli ships ~15-25% smaller payloads than gzip for text. We try
+#     mod_brotli first, then fall back to mod_deflate (gzip). Both are
+#     safe to define, Apache picks the available one.
 # --------------------------------------------------------------
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html
+  AddOutputFilterByType BROTLI_COMPRESS text/plain
+  AddOutputFilterByType BROTLI_COMPRESS text/css
+  AddOutputFilterByType BROTLI_COMPRESS text/xml
+  AddOutputFilterByType BROTLI_COMPRESS application/xml
+  AddOutputFilterByType BROTLI_COMPRESS application/rss+xml
+  AddOutputFilterByType BROTLI_COMPRESS application/atom+xml
+  AddOutputFilterByType BROTLI_COMPRESS application/xhtml+xml
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript
+  AddOutputFilterByType BROTLI_COMPRESS application/x-javascript
+  AddOutputFilterByType BROTLI_COMPRESS application/json
+  AddOutputFilterByType BROTLI_COMPRESS application/ld+json
+  AddOutputFilterByType BROTLI_COMPRESS application/manifest+json
+  AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+  AddOutputFilterByType BROTLI_COMPRESS font/woff
+  AddOutputFilterByType BROTLI_COMPRESS font/woff2
+</IfModule>
+
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html
   AddOutputFilterByType DEFLATE text/plain
@@ -155,11 +258,84 @@ DirectoryIndex index.html
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 
-  # NEVER cache HTML — we want new deploys picked up instantly
+  # ------------------------------------------------------------
+  # .br / .gz twin handling (partner of rewrite rules 3a-ii above).
+  #
+  # Three things must happen for a pre-compressed file to be served
+  # correctly, and all three are mandatory:
+  #
+  #   1. ForceType. The request was internally rewritten to e.g.
+  #      "app.js.br", so Apache would otherwise resolve the type from
+  #      the ".br" extension and hand the browser octet-stream. With
+  #      X-Content-Type-Options: nosniff set below, a module script
+  #      served under a non-JS type is REJECTED outright. Force the
+  #      original type back on.
+  #
+  #   2. Content-Encoding, so the browser decompresses before parsing.
+  #
+  #   3. no-gzip / no-brotli. Section 4 enables output compression by
+  #      Content-Type, and step 1 just declared these files to be
+  #      text/javascript and text/css. Without these env vars Apache
+  #      would compress an ALREADY compressed body a second time and
+  #      the browser would receive garbage. Do not remove them.
+  #
+  # Vary: Accept-Encoding stops a shared proxy from handing a brotli
+  # body to a client that never asked for one.
+  #
+  # The immutable cache header has to be repeated here because the
+  # FilesMatch above keys on a ".js" / ".css" / ".svg" suffix, and
+  # "app.js.br" does not end in ".js".
+  # ------------------------------------------------------------
+  <FilesMatch "\.js\.(br|gz)$">
+    ForceType text/javascript
+    Header set Cache-Control "public, max-age=31536000, immutable"
+    Header append Vary "Accept-Encoding"
+    SetEnv no-gzip 1
+    SetEnv no-brotli 1
+  </FilesMatch>
+  <FilesMatch "\.css\.(br|gz)$">
+    ForceType text/css
+    Header set Cache-Control "public, max-age=31536000, immutable"
+    Header append Vary "Accept-Encoding"
+    SetEnv no-gzip 1
+    SetEnv no-brotli 1
+  </FilesMatch>
+  <FilesMatch "\.svg\.(br|gz)$">
+    ForceType image/svg+xml
+    Header set Cache-Control "public, max-age=31536000, immutable"
+    Header append Vary "Accept-Encoding"
+    SetEnv no-gzip 1
+    SetEnv no-brotli 1
+  </FilesMatch>
+  <FilesMatch "\.br$">
+    Header set Content-Encoding "br"
+  </FilesMatch>
+  <FilesMatch "\.gz$">
+    Header set Content-Encoding "gzip"
+  </FilesMatch>
+
+  # NEVER serve STALE HTML: we want new deploys picked up instantly.
+  #
+  # "no-cache" already guarantees that. It lets the browser keep a copy
+  # but requires it to revalidate with the server before reuse, so a
+  # deploy is picked up on the very next request. Deploy freshness is
+  # NOT changed by the edit below.
+  #
+  # "no-store" was REMOVED 2026-08-24 and must not be reinstated. It is
+  # a strictly stronger directive that forbids storing the response at
+  # all, and Chrome treats any page served with no-store as INELIGIBLE
+  # FOR BACK/FORWARD CACHE. Every Back click therefore ran a full cold
+  # navigation instead of an instant bfcache restore. bfcache restores
+  # report near-zero LCP and INP into CrUX, so no-store was quietly
+  # costing us Core Web Vitals field data on every multi-page session,
+  # and the vendor comparison pages are cross-linked heavily enough that
+  # this is most sessions.
+  #
+  # Pragma and Expires were the HTTP/1.0 companions of no-store. Every
+  # browser we support ignores them once Cache-Control is present, so
+  # they go too.
   <FilesMatch "\.(html|htm)$">
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
-    Header set Pragma "no-cache"
-    Header set Expires "0"
+    Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
 
   # ------------------------------------------------------------

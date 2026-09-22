@@ -333,22 +333,62 @@ export default function MobileSecurityHexnode() {
 
   const pageUrl = "https://artiflexit.com/cybersecurity/mobile-security/hexnode";
   const pageTitle = "Hexnode UEM | Unified Endpoint Management UAE | Artiflex IT";
-  const metaDescription = "Hexnode UEM, agile, value-led unified endpoint management and MDM for UAE enterprises. Artiflex IT recommended UEM. Five editions compared, features, benefits and deployment.";
+  const metaDescription = "Hexnode UEM: agile, value-led unified endpoint management and MDM for UAE enterprises. Five editions compared and deployed by Artiflex IT.";
 
   return (
     <>
       <title>{pageTitle}</title>
       <meta name="description" content={metaDescription} />
       <link rel="canonical" href={pageUrl} />
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+      <meta httpEquiv="content-language" content="en-AE" />
+      <meta name="geo.region" content="AE-DU" />
+      <meta name="geo.placename" content="Dubai" />
+      <meta name="geo.position" content="25.2528;55.3300" />
+      <meta name="ICBM" content="25.2528, 55.3300" />
+
+      <link rel="alternate" hrefLang="en-ae" href={pageUrl} />
+      <link rel="alternate" hrefLang="en-om" href={pageUrl} />
+      <link rel="alternate" hrefLang="en-sa" href={pageUrl} />
+      <link rel="alternate" hrefLang="en-in" href={pageUrl} />
+      <link rel="alternate" hrefLang="en" href={pageUrl} />
+      <link rel="alternate" hrefLang="x-default" href={pageUrl} />
+
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:url" content={pageUrl} />
+      <meta property="og:site_name" content="Artiflex Information Technology" />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_AE" />
+      <meta property="og:locale:alternate" content="en_US" />
+      <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={pageTitle} />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+      <meta name="twitter:site" content="@artiflexit" />
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Product",
+          "@type": "Service",
+          serviceType: "Unified Endpoint Management",
           name: vendor.name,
-          category: "Unified Endpoint Management",
           description: metaDescription,
-          brand: { "@type": "Brand", name: vendor.vendorCompany },
           url: pageUrl,
+          provider: {
+            "@type": "Organization",
+            name: "Artiflex Information Technology",
+            url: "https://artiflexit.com",
+          },
+          brand: {
+            "@type": "Brand",
+            name: vendor.vendorCompany,
+          },
         })}
       </script>
       <script type="application/ld+json">
@@ -741,10 +781,10 @@ export default function MobileSecurityHexnode() {
 
           <div className="mt-10 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + editions.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + editions.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-4 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-4 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Feature / Capability
                     </th>
                     {editions.map((e, i) => (

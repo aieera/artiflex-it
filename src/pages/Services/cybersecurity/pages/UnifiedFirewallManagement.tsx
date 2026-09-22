@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 
@@ -387,12 +388,12 @@ function UnifiedFirewallManagementHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Unified Firewall{" "}
             <span className="gradient-text">Management</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              AI-Native Multi-Vendor Firewall Management, Powered by Raabyt UFM ONE
-            </span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            AI-Native Multi-Vendor Firewall Management, Powered by Raabyt UFM ONE
           </h1>
 
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
@@ -486,18 +487,55 @@ export default function UnifiedFirewallManagement() {
   return (
     <>
       <>
-        <title>Unified Firewall Management (UFM) UAE | Raabyt UFM ONE | Artiflex IT</title>
-        <meta
-          name="description"
-          content="True multi-vendor Unified Firewall Management (UFM) for the UAE, powered by Raabyt UFM ONE. AI-driven policy intelligence, full lifecycle automation, broadest multi-vendor coverage and native NESA, UAE PDPL, CBUAE and DFSA compliance reporting. Artiflex IT is Platinum & Strategic Partner."
-        />
+        <title>Unified Firewall Management UAE | Multi-Vendor UFM Console</title>
+        <meta name="description" content="Unified firewall management in the UAE for multi-vendor estates: policy automation, audit and compliance reporting via Raabyt UFM ONE." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/unified-firewall-management" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/unified-firewall-management" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/unified-firewall-management" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/unified-firewall-management" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/unified-firewall-management" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/unified-firewall-management" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/unified-firewall-management" />
+
+        <meta property="og:title" content="Unified Firewall Management UAE | Multi-Vendor UFM Console" />
+        <meta property="og:description" content="Unified firewall management in the UAE for multi-vendor estates: policy automation, audit and compliance reporting via Raabyt UFM ONE." />
+        <meta property="og:url" content="https://artiflexit.com/cybersecurity/unified-firewall-management" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT unified firewall management for the UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Unified Firewall Management UAE | Multi-Vendor UFM Console" />
+        <meta name="twitter:description" content="Unified firewall management in the UAE for multi-vendor estates: policy automation, audit and compliance reporting via Raabyt UFM ONE." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Artiflex IT",
-            "url": "https://artiflexit.com/cybersecurity/unified-firewall-management",
+            "@id": "https://artiflexit.com/#localbusiness",
+            "name": "Artiflex Information Technology",
+            "url": "https://artiflexit.com/",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "M22, New Al Safiya Building, Near Abu Hail Metro Station, Hor Al Anz",
+              "addressLocality": "Dubai",
+              "addressRegion": "Dubai",
+              "addressCountry": "AE",
+            },
             "areaServed": [
               { "@type": "Country", "name": "United Arab Emirates" },
               { "@type": "City", "name": "Dubai" },
@@ -512,7 +550,7 @@ export default function UnifiedFirewallManagement() {
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Unified Firewall Management",
-            "provider": { "@type": "Organization", "name": "Artiflex IT" },
+            "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
             "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
             "description":
               "UAE Unified Firewall Management delivery powered by Raabyt UFM ONE: true multi-vendor policy automation, AI-driven risk analysis, audit-ready compliance and managed UFM. Artiflex IT is Platinum & Strategic Partner.",
@@ -888,9 +926,9 @@ export default function UnifiedFirewallManagement() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + selectionFramework.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + selectionFramework.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
                     <th className="w-16 px-4 py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
@@ -1286,6 +1324,8 @@ export default function UnifiedFirewallManagement() {
         description="Free UFM posture review covering your current firewall estate, vendor mix, policy complexity, change volume, compliance gaps and recommended Raabyt UFM ONE deployment architecture. Delivered by a certified engineer based in the UAE, in Arabic or English, on-site or remote."
         primaryButton={{ text: "Book Assessment", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

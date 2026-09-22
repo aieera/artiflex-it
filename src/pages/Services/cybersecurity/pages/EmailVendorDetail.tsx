@@ -97,14 +97,82 @@ export default function EmailVendorDetail() {
     return <Navigate to="/cybersecurity/email-security" replace />;
   }
 
+  const pageUrl = `https://artiflexit.com/cybersecurity/email/${vendor.slug}`;
+
   return (
     <>
-      <title>{`${vendor.name} | Email Security UAE | Artiflex IT`}</title>
-      <meta name="description" content={vendor.description.slice(0, 160)} />
-      <link
-        rel="canonical"
-        href={`https://artiflexit.com/cybersecurity/email/${vendor.slug}`}
-      />
+      <title>{vendor.metaTitle}</title>
+      <meta name="description" content={vendor.metaDescription} />
+      <link rel="canonical" href={pageUrl} />
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+      <meta httpEquiv="content-language" content="en-AE" />
+      <meta name="geo.region" content="AE-DU" />
+      <meta name="geo.placename" content="Dubai" />
+      <meta name="geo.position" content="25.2528;55.3300" />
+      <meta name="ICBM" content="25.2528, 55.3300" />
+
+      <link rel="alternate" hrefLang="en-ae" href={pageUrl} />
+      <link rel="alternate" hrefLang="en-om" href={pageUrl} />
+      <link rel="alternate" hrefLang="en-sa" href={pageUrl} />
+      <link rel="alternate" hrefLang="en-in" href={pageUrl} />
+      <link rel="alternate" hrefLang="en" href={pageUrl} />
+      <link rel="alternate" hrefLang="x-default" href={pageUrl} />
+
+      <meta property="og:title" content={vendor.metaTitle} />
+      <meta property="og:description" content={vendor.metaDescription} />
+      <meta property="og:url" content={pageUrl} />
+      <meta property="og:site_name" content="Artiflex Information Technology" />
+      <meta property="og:type" content="article" />
+      <meta property="og:locale" content="en_AE" />
+      <meta property="og:locale:alternate" content="en_US" />
+      <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={vendor.metaTitle} />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={vendor.metaTitle} />
+      <meta name="twitter:description" content={vendor.metaDescription} />
+      <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+      <meta name="twitter:site" content="@artiflexit" />
+
+      {/* JSON-LD: Service schema */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Email Security",
+          name: vendor.name,
+          description: vendor.metaDescription,
+          url: pageUrl,
+          provider: {
+            "@type": "Organization",
+            name: "Artiflex Information Technology",
+            url: "https://artiflexit.com",
+          },
+          brand: { "@type": "Brand", name: vendor.name },
+          areaServed: [
+            { "@type": "Country", name: "United Arab Emirates" },
+            { "@type": "Country", name: "Oman" },
+            { "@type": "Country", name: "Saudi Arabia" },
+          ],
+        })}
+      </script>
+
+      {/* JSON-LD: Breadcrumbs */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://artiflexit.com/" },
+            { "@type": "ListItem", position: 2, name: "Cybersecurity", item: "https://artiflexit.com/cybersecurity" },
+            { "@type": "ListItem", position: 3, name: "Email Security", item: "https://artiflexit.com/cybersecurity/email-security" },
+            { "@type": "ListItem", position: 4, name: vendor.name, item: pageUrl },
+          ],
+        })}
+      </script>
 
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#04101E] to-[#0A3D6B]">

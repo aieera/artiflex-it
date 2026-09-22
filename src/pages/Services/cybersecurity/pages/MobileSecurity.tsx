@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 
@@ -507,7 +508,7 @@ function MobileSecurityHero() {
   const { open: openContact } = useContactModal();
   return (
     <section className="relative flex min-h-screen flex-col overflow-hidden bg-navy-deep">
-      <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/mobile-security.jpg')" }} />
+      <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/mobile-security.webp')" }} />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/70 to-navy-deep/90" />
 
       <div className="relative z-10 border-b border-white/5">
@@ -529,12 +530,12 @@ function MobileSecurityHero() {
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[#28B5E1] sm:text-xs">
             Mobile Security · UEM · MTD
           </p>
-          <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
+          <p className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
             Mobile Security UAE{" "}
             <span className="gradient-text">UEM + MTD</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              Unified Endpoint Management & Mobile Threat Defense
-            </span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Unified Endpoint Management & Mobile Threat Defense
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Your team is managing more devices, more platforms and more risk than ever, and one lost phone or malicious app shouldn't put company data at stake. Artiflex IT builds and runs your complete mobile security stack across the UAE, Oman and Saudi Arabia, pairing <span className="font-semibold text-white">unified endpoint management (UEM/MDM)</span> to enrol and govern every device with <span className="font-semibold text-white">mobile threat defense (MTD)</span> to stop phishing, malicious apps and on-device exploits. We deploy and manage Microsoft Intune, Jamf, Omnissa Workspace ONE and Lookout, and recommend Hexnode and Zimperium where they fit your fleet, budget and compliance posture.
@@ -578,18 +579,47 @@ export default function MobileSecurity() {
   return (
     <>
       <>
-        <title>Mobile Security UAE | UEM + MTD Vendor Comparison & Gartner-style Scorecard | Artiflex IT</title>
-        <meta
-          name="description"
-          content="UAE Mobile Security buyer's guide. UEM and MTD vendor comparison and Gartner-style scorecard across Microsoft Intune, Jamf, Omnissa Workspace ONE, Lookout, Hexnode and Zimperium."
-        />
+        <title>Mobile Device Management Dubai | MDM, MTD & BYOD Security</title>
+        <meta name="description" content="UAE mobile security buyer's guide: UEM and MTD vendor comparison across Microsoft Intune, Jamf, Omnissa Workspace ONE, Lookout, Hexnode and Zimperium." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/mobile-security" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/mobile-security" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/mobile-security" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/mobile-security" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/mobile-security" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/mobile-security" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/mobile-security" />
+
+        <meta property="og:title" content="Mobile Device Management Dubai | MDM, MTD & BYOD Security" />
+        <meta property="og:description" content="UAE mobile security buyer's guide: UEM and MTD vendor comparison across Microsoft Intune, Jamf, Omnissa Workspace ONE, Lookout, Hexnode and Zimperium." />
+        <meta property="og:url" content="https://artiflexit.com/cybersecurity/mobile-security" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT mobile security, UEM and MTD guidance for the UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Mobile Device Management Dubai | MDM, MTD & BYOD Security" />
+        <meta name="twitter:description" content="UAE mobile security buyer's guide: UEM and MTD vendor comparison across Microsoft Intune, Jamf, Omnissa Workspace ONE, Lookout, Hexnode and Zimperium." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Mobile Security (UEM + MTD)",
-            "provider": { "@type": "Organization", "name": "Artiflex IT" },
+            "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
             "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
             "description":
               "UAE Mobile Security delivery across Microsoft Intune, Jamf, Omnissa Workspace ONE, Lookout, Hexnode and Zimperium: UEM, Mobile Threat Defense, BYOD, app protection and compliance.",
@@ -758,12 +788,12 @@ export default function MobileSecurity() {
             </button>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + matrixVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + matrixVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">Criteria</th>
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">Criteria</th>
                     {matrixVendors.map((v) => (
                       <th key={v.name} className={`border-l border-white/15 px-2 py-3 sm:px-4 sm:py-5 align-bottom ${v.featured ? "bg-white/10" : ""}`}>
                         <p className="font-display text-sm font-semibold text-white sm:text-base">
@@ -950,10 +980,10 @@ export default function MobileSecurity() {
 
           <div className="mt-8 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + featureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + featureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">Capability</th>
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">Capability</th>
                     {featureVendors.map((v, i) => {
                       const featured = i === 0 || i === 1;
                       return (
@@ -1172,6 +1202,8 @@ export default function MobileSecurity() {
         description="A vendor-neutral comparison of UEM and MTD options, with TCO analysis, a UEM-plus-MTD pairing matrix, and real UAE deployment case studies."
         primaryButton={{ text: "Book a free mobile posture assessment", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

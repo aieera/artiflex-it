@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 import {
@@ -948,11 +949,11 @@ function PamHero() {
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[#28B5E1] sm:text-xs">
             Privileged Access Management
           </p>
-          <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
+          <p className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
             Privileged Access Management <span className="gradient-text">UAE</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              Securing the keys to your entire digital kingdom
-            </span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Securing the keys to your entire digital kingdom
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Artiflex IT designs, deploys and manages privileged access platforms across the UAE, Oman and Saudi Arabia. BeyondTrust, CyberArk, Fortra, Delinea, One Identity Safeguard, Saviynt PAM, Microsoft Entra PIM, HashiCorp Vault and Senhasegura, picked on workload, compliance scope and stack alignment, not vendor preference.
@@ -997,15 +998,41 @@ export default function PamProduct() {
   return (
     <>
       <>
-        <title>Privileged Access Management (PAM) UAE | Vaulting, JIT & Session Recording | Artiflex IT</title>
-        <meta
-          name="description"
-          content="Privileged Access Management (PAM) for UAE enterprises. Compare BeyondTrust, CyberArk, Fortra, Delinea, One Identity, Saviynt, Microsoft Entra PIM, HashiCorp Vault & Senhasegura. Vendor matrix, Gartner-style scorecard, NESA / PDPL / CBUAE ready. Free PAM assessment."
-        />
-        <link
-          rel="canonical"
-          href="https://artiflexit.com/cybersecurity/identity-access-security/pam"
-        />
+        <title>Privileged Access Management Dubai | PAM Vault + Session</title>
+        <meta name="description" content="Privileged access management in Dubai. Credential vault, session recording and JIT access across CyberArk, BeyondTrust and Delinea." />
+        <link rel="canonical" href="https://artiflexit.com/cybersecurity/identity-access-security/pam" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/identity-access-security/pam" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/identity-access-security/pam" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/identity-access-security/pam" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/identity-access-security/pam" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/identity-access-security/pam" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/identity-access-security/pam" />
+
+        <meta property="og:title" content="Privileged Access Management Dubai | PAM Vault + Session" />
+        <meta property="og:description" content="Privileged access management in Dubai. Credential vault, session recording and JIT access across CyberArk, BeyondTrust and Delinea." />
+        <meta property="og:url" content="https://artiflexit.com/cybersecurity/identity-access-security/pam" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT privileged access management for the UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Privileged Access Management Dubai | PAM Vault + Session" />
+        <meta name="twitter:description" content="Privileged access management in Dubai. Credential vault, session recording and JIT access across CyberArk, BeyondTrust and Delinea." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -1026,6 +1053,7 @@ export default function PamProduct() {
               "@type": "ListItem",
               position: i + 1,
               name: v.name,
+              url: `https://artiflexit.com/cybersecurity/pam/${v.slug}`,
             })),
           })}
         </script>
@@ -1372,22 +1400,16 @@ export default function PamProduct() {
                     </div>
                   </div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden"
-                      >
+                  <motion.div
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
                         <p className="mt-4 border-t border-slate-200 pt-3 text-xs leading-relaxed text-slate-600">
                           {l.details}
                         </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  </motion.div>
                 </div>
               );
             })}
@@ -1504,12 +1526,12 @@ export default function PamProduct() {
             </button>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + matrixVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + matrixVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Criteria
                     </th>
                     {matrixVendors.map((v) => (
@@ -1728,12 +1750,12 @@ export default function PamProduct() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + featureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + featureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Capability
                     </th>
                     {featureVendors.map((v) => (
@@ -2162,6 +2184,8 @@ export default function PamProduct() {
         description="60-minute review of your privileged account inventory, JIT readiness, and ransomware blast-radius exposure, with a vendor-neutral PAM recommendation across BeyondTrust, CyberArk, Fortra, Delinea, One Identity, Saviynt, Microsoft Entra PIM, HashiCorp Vault and Senhasegura."
         primaryButton={{ text: "Book Assessment", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

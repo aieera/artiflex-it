@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import FAQAccordion from "@/components/ui/FAQAccordion";
+import SophosAccreditationBadge from "@/components/ui/SophosAccreditationBadge";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 import {
@@ -87,26 +88,45 @@ export default function FirewallVendorDetail() {
     return <Navigate to="/cybersecurity/firewalls-network-security" replace />;
   }
 
-  // Build a safe meta description, break on word boundary if the source
-  // is longer than the snippet limit, so Google does not show a half-cut
-  // sentence. Falls back to plain slice if the description is already short.
-  const metaDescription = (() => {
-    const raw = vendor.description.replace(/\s+/g, " ").trim();
-    if (raw.length <= 155) return raw;
-    const cut = raw.slice(0, 155);
-    const lastSpace = cut.lastIndexOf(" ");
-    return (lastSpace > 100 ? cut.slice(0, lastSpace) : cut).replace(/[,.;:!?-]+$/, "") + "…";
-  })();
+  // Clean brand name for SEO strings; the visible H1 still uses the full
+  // vendor.name (which may carry a model suffix like "TZ and NSa").
+  const brand = vendor.seoBrand ?? vendor.name;
+
+  // Keyword-led meta description, seeded from each vendor's own tagline so
+  // the copy reads differently on every page (no near-duplicate boilerplate).
+  // Break on a word boundary so Google never shows a half-cut sentence.
+  const metaDescription = vendor.metaDescription;
+
+  // Two templated FAQs that capture the "pricing UAE" and "implementation Dubai"
+  // secondary keywords; appended to each vendor's own unique FAQ set.
+  const seoFaqs = [
+    {
+      question: `How much does ${brand} cost in the UAE?`,
+      answer: `${brand} pricing in the UAE depends on the model, throughput tier, subscription bundle and contract term. Artiflex provides vendor-neutral sizing and a written ${brand} quote for your environment, so you only pay for the throughput and modules you actually need across the UAE, Oman and Saudi Arabia.`,
+    },
+    {
+      question: `How long does ${brand} implementation take in Dubai?`,
+      answer: `A typical ${brand} firewall implementation in Dubai runs about 2 to 4 weeks from assessment to cutover, covering design, staging, policy migration and a zero-downtime go-live. Artiflex handles the full deployment and ongoing managed support across the UAE.`,
+    },
+  ];
+  const faqItems = [...vendor.faqs, ...seoFaqs];
 
   const pageUrl = `https://artiflexit.com/cybersecurity/firewalls/${vendor.slug}`;
-  const pageTitle = `${vendor.name} | Firewall Solutions UAE | Artiflex IT`;
-  const ogImage = "https://artiflexit.com/og/firewalls-network-security.png";
+  const pageTitle = vendor.metaTitle;
+  const ogImage = "https://artiflexit.com/og-image.png";
 
   return (
     <>
       <title>{pageTitle}</title>
       <meta name="description" content={metaDescription} />
       <link rel="canonical" href={pageUrl} />
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+      <meta httpEquiv="content-language" content="en-AE" />
+      <meta name="geo.region" content="AE-DU" />
+      <meta name="geo.placename" content="Dubai" />
+      <meta name="geo.position" content="25.2528;55.3300" />
+      <meta name="ICBM" content="25.2528, 55.3300" />
 
       {/* hreflang, UAE primary, Oman + Saudi Arabia secondary */}
       <link rel="alternate" hrefLang="en-ae" href={pageUrl} />
@@ -119,43 +139,48 @@ export default function FirewallVendorDetail() {
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:url" content={pageUrl} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:site_name" content="Artiflex IT" />
+      <meta property="og:site_name" content="Artiflex Information Technology" />
       <meta property="og:locale" content="en_AE" />
+      <meta property="og:locale:alternate" content="en_US" />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={pageTitle} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:site" content="@artiflexit" />
 
-      {/* JSON-LD: Product schema, vendor's firewall as a product entry */}
+      {/* JSON-LD: Service schema (deployment / managed service offered by
+          Artiflex IT, using the vendor's product as the underlying brand).
+          Was previously Product+Offer, which Google flagged as invalid because
+          there is no price / aggregateRating / review. Service is the correct
+          type for B2B implementation work. */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Product",
+          "@type": "Service",
+          serviceType: "Network Firewall",
           name: vendor.name,
-          category: "Network Firewall",
           description: metaDescription,
+          url: pageUrl,
+          provider: {
+            "@type": "Organization",
+            name: "Artiflex Information Technology",
+            url: "https://artiflexit.com",
+          },
           brand: {
             "@type": "Brand",
             name: vendor.name,
           },
-          url: pageUrl,
-          offers: {
-            "@type": "Offer",
-            availability: "https://schema.org/InStock",
-            seller: {
-              "@type": "Organization",
-              name: "Artiflex Information Technology",
-              url: "https://artiflexit.com",
-            },
-            areaServed: [
-              { "@type": "Country", name: "United Arab Emirates" },
-              { "@type": "Country", name: "Oman" },
-              { "@type": "Country", name: "Saudi Arabia" },
-            ],
-          },
+          areaServed: [
+            { "@type": "Country", name: "United Arab Emirates" },
+            { "@type": "Country", name: "Oman" },
+            { "@type": "Country", name: "Saudi Arabia" },
+          ],
         })}
       </script>
 
@@ -175,6 +200,19 @@ export default function FirewallVendorDetail() {
             },
             { "@type": "ListItem", position: 4, name: vendor.name, item: pageUrl },
           ],
+        })}
+      </script>
+
+      {/* JSON-LD: FAQPage (vendor FAQs + templated pricing/implementation FAQs) */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqItems.map((f) => ({
+            "@type": "Question",
+            name: f.question,
+            acceptedAnswer: { "@type": "Answer", text: f.answer },
+          })),
         })}
       </script>
 
@@ -227,8 +265,11 @@ export default function FirewallVendorDetail() {
               </div>
 
               {/* Vendor name */}
-              <h1 className="mt-6 font-display text-4xl font-bold leading-[0.95] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.25rem]">
+              <p className="mt-6 font-display text-4xl font-bold leading-[0.95] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.25rem]">
                 {vendor.name}
+              </p>
+              <h1 className="mt-3 block font-display text-base font-semibold leading-snug text-[#28B5E1] sm:text-lg md:text-xl">
+                Firewall Implementation, Pricing &amp; Support in Dubai &amp; UAE
               </h1>
 
               {/* Tagline */}
@@ -314,7 +355,7 @@ export default function FirewallVendorDetail() {
                 />
                 <img
                   src={vendor.logo}
-                  alt={`${vendor.name} logo`}
+                  alt={`${brand} firewall deployed by Artiflex IT in Dubai and the UAE`}
                   className="relative z-10 max-h-32 w-full max-w-[80%] object-contain"
                 />
               </div>
@@ -322,6 +363,9 @@ export default function FirewallVendorDetail() {
           </div>
         </div>
       </section>
+
+      {/* Sophos accreditation trust strip, shown only on Sophos vendor pages */}
+      {vendor.slug.startsWith("sophos") && <SophosAccreditationBadge variant="firewall" />}
 
       {/* KEY FACTS */}
       {vendor.keyStats.length > 0 && (
@@ -594,7 +638,7 @@ export default function FirewallVendorDetail() {
               Sizing guide
             </p>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
-              Models we deploy and manage
+              {brand} models we deploy in Dubai &amp; UAE
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
               Sizing the right SKU is as important as choosing the right vendor. We size from inspected throughput at your specific feature mix, not from headline brochure numbers.

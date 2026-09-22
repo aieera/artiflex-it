@@ -24,7 +24,7 @@ export default function SectionHeader({
         </div>
       )}
       <h2
-        className={`font-display text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.15] ${
+        className={`font-display text-2xl font-bold  sm:text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.15] ${
           dark ? "text-white" : "text-heading"
         } ${centered ? "mx-auto max-w-4xl" : "max-w-2xl"}`}
       >

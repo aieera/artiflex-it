@@ -1,0 +1,1288 @@
+import { lazy, Suspense, useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import SectionHeader from "@/components/ui/SectionHeader";
+
+const LightRays = lazy(() => import("@/components/ui/LightRays"));
+import ProcessFlow from "@/components/ui/ProcessFlow";
+import FAQAccordion from "@/components/ui/FAQAccordion";
+import { CTASection } from "@/pages/Home/sections/CTASection";
+import {
+  ShieldIcon,
+  ServerIcon,
+  LayersIcon,
+  AlertTriangleIcon,
+  EyeIcon,
+  CloudIcon,
+  LockIcon,
+  CheckIcon,
+} from "@/components/icons";
+
+/* ───────── EVOLUTION ───────── */
+
+const evolution = [
+  {
+    title: "Gen 1 - Packet Filtering",
+    desc: "Stateless IP/port rules pioneered at DEC in 1988. Fast, but blind to context.",
+  },
+  {
+    title: "Gen 2 - Stateful Inspection",
+    desc: "Check Point's FireWall-1 (1993) tracked entire TCP conversations, not just isolated packets.",
+  },
+  {
+    title: "Gen 3 - Application Layer",
+    desc: "Deep inspection of HTTP, FTP, SMTP - detecting threats hidden inside legitimate protocols.",
+  },
+  {
+    title: "UTM - Unified Threat Management",
+    desc: "One appliance for firewall, VPN, IPS, anti-malware, web filtering - ideal for SMB simplicity.",
+  },
+  {
+    title: "NGFW - Next-Generation Firewall",
+    desc: "Palo Alto's 2007 breakthrough: App-ID, User-ID, Content-ID. 80% of modern attacks targeted.",
+  },
+  {
+    title: "FWaaS - Cloud-Native Firewalls",
+    desc: "Firewall as a service inside SASE - protecting distributed workforces without hardware.",
+  },
+];
+
+/* ───────── FIREWALL TYPES ───────── */
+
+const firewallTypes = [
+  {
+    tag: "GEN 1",
+    icon: LayersIcon,
+    title: "Packet Filtering",
+    desc: "Static IP and port rules.",
+    details:
+      "Checks IP addresses and ports against static rules. Fast but limited - no memory of previous packets. Still used as the first layer in most modern network security tools.",
+  },
+  {
+    tag: "GEN 2",
+    icon: ServerIcon,
+    title: "Stateful Inspection",
+    desc: "Tracks TCP/UDP sessions.",
+    details:
+      "Tracks TCP/UDP sessions and knows if a packet belongs to a legitimate conversation. Check Point's bread and butter for over a decade.",
+  },
+  {
+    tag: "GEN 3",
+    icon: EyeIcon,
+    title: "Application-Aware / NGFW",
+    desc: "Layer 7 inspection with App-ID.",
+    details:
+      "Inspects at the application layer. Identifies specific apps regardless of port. Can block Tor, detect encrypted malware, and enforce user-based policies. The standard for enterprise network security solutions today.",
+  },
+  {
+    tag: "UTM",
+    icon: ShieldIcon,
+    title: "Unified Threat Management",
+    desc: "All-in-one security box.",
+    details:
+      "Combines firewall, VPN, IPS, antivirus, anti-spam, and web filtering in one appliance. Ideal for SMBs that need a single box to handle everything. The classic firewall vs UTM debate usually comes down to scale and complexity.",
+  },
+  {
+    tag: "FWaaS",
+    icon: CloudIcon,
+    title: "Cloud-Native Firewall",
+    desc: "Delivered as a cloud service.",
+    details:
+      "Firewall delivered as a cloud service. No hardware to manage. Integrates with SASE architectures. Growing fast as organisations adopt remote and hybrid work.",
+  },
+  {
+    tag: "IDS/IPS",
+    icon: AlertTriangleIcon,
+    title: "Intrusion Prevention",
+    desc: "Partner to every modern firewall.",
+    details:
+      "Monitors traffic for port scans, SQL injection, exfiltration patterns. IPS actively blocks in real time. Built into most NGFWs - a red flag if yours doesn't include it.",
+  },
+];
+
+/* ───────── VENDOR COMPARISON ───────── */
+
+const vendors = [
+  {
+    name: "Sophos XGS",
+    best: "Best Overall Value (Recommended #1)",
+    strength: "Astaro German UTM heritage + Cyberoam Layer 8 identity policy + Xstream line-rate TLS 1.3 + Synchronized Security automation. Sophos Central single-pane management.",
+    watch: "Less suited for hyperscale 10K+ user environments where Check Point Quantum or Palo Alto wins outright.",
+    accent: "#1565A0",
+  },
+  {
+    name: "Check Point Quantum",
+    best: "Best for Large Enterprise (Recommended)",
+    strength: "Invented stateful inspection in 1993. ThreatCloud AI (86 engines, 3B txn/day), 99.9%+ prevention. Quantum Lightspeed up to 3 Tbps. SmartConsole policy consistency across the entire fabric.",
+    watch: "Premium positioning; not the lowest-TCO option for SMB.",
+    accent: "#4FC3F7",
+  },
+  {
+    name: "Palo Alto Networks",
+    best: "Enterprise Innovator (Recommended)",
+    strength: "Invented the NGFW (Nir Zuk, 2008). App-ID, WildFire (85K+ sensors), world's first ML-powered NGFW (2020). Prisma Access SASE + Cortex XDR. Magic Quadrant Leader for over a decade.",
+    watch: "Premium pricing, typically 40-60% more than Sophos or Check Point for equivalent deployment.",
+    accent: "#1B8AC7",
+  },
+  {
+    name: "Cisco Secure Firewall",
+    best: "Best for Cisco-Standardised Enterprise (Recommended)",
+    strength: "Talos threat intel (350+ researchers, 1.5M malware samples/day). Encrypted Traffic Analytics, detects malware in HTTPS without decryption. Snort 3 IPS. Native Cisco Security Cloud integration.",
+    watch: "FMC (Firepower Management Centre) requires expert operators; learning curve steeper than Sophos Central.",
+    accent: "#0A3D6B",
+  },
+  {
+    name: "Fortinet FortiGate",
+    best: "Best Throughput-per-Dollar",
+    strength: "Custom NP7 ASICs deliver up to 1.2 Tbps. Native SD-WAN built into FortiOS at no extra cost. Security Fabric integrates with 50+ Fortinet products. Best raw performance/$ in market.",
+    watch: "FortiManager has a steeper learning curve than Sophos Central or Check Point SmartConsole; some configurations require CLI.",
+    accent: "#28B5E1",
+  },
+  {
+    name: "SonicWall TZ / NSa",
+    best: "SMB Champion",
+    strength: "RTDMI engine detects encrypted malware in processor memory. TZ Series zero-touch provisioning lets non-technical staff deploy in minutes. Strong cost-per-Mbps for small UAE branches.",
+    watch: "NSM management portal less intuitive for multi-site deployments. Recent vendor security incidents worth weighing in vendor-risk assessment.",
+    accent: "#045891",
+  },
+];
+
+/* ───────── SEGMENTATION ZONES ───────── */
+
+const segments = [
+  { label: "Perimeter", note: "NGFW + IPS", tone: "from-[#28B5E1] to-[#1B8AC7]" },
+  { label: "DMZ", note: "Public services", tone: "from-[#1B8AC7] to-[#0A3D6B]" },
+  { label: "Corporate VLAN", note: "Staff + policy", tone: "from-[#0A3D6B] to-[#04101E]" },
+  { label: "Finance VLAN", note: "Restricted access", tone: "from-[#1565A0] to-[#0A3D6B]" },
+  { label: "IoT / OT", note: "Isolated network", tone: "from-[#4FC3F7] to-[#1B8AC7]" },
+  { label: "Data Core", note: "Crown-jewel tier", tone: "from-[#045891] to-[#020617]" },
+];
+
+/* ───────── MANAGED PILLARS ───────── */
+
+const managedPillars = [
+  {
+    title: "24/7 Monitoring",
+    desc: "Real-time rule alerts, anomaly detection, and escalation before an attacker lands.",
+  },
+  {
+    title: "Firmware Patching",
+    desc: "Critical CVEs patched within hours of vendor release - not weeks.",
+  },
+  {
+    title: "Quarterly Rule Audits",
+    desc: "Dead rules pruned, overly broad policies tightened, logs reviewed for drift.",
+  },
+  {
+    title: "Change Management",
+    desc: "Versioned policy history, approvals, rollback - no more rogue rules on a Friday.",
+  },
+];
+
+/* ───────── FAQ ───────── */
+
+const faqs = [
+  {
+    question: "What firewall do you recommend for a UAE mid-market business?",
+    answer:
+      "For most UAE mid-market environments, the Sophos XGS Firewall delivers the best total cost of ownership, simplest management via Sophos Central, and unique Synchronized Security automation between firewall and endpoint. Artiflex IT is a Sophos Platinum Partner. That said, the right answer depends on your existing stack, throughput envelope, operational capacity, and compliance posture, we assess this against NESA, UAE PDPL, and ISO 27001 before recommending.",
+  },
+  {
+    question: "Is Artiflex IT vendor-locked to Sophos?",
+    answer:
+      "No. We are a Sophos Platinum Partner because we have deep XGS deployment experience and Sophos wins for the majority of UAE SMB and mid-market customers. We also actively deliver Check Point Quantum, Palo Alto Networks, Cisco Secure Firewall, Fortinet FortiGate, and SonicWall. The vendor follows the assessment, not the other way around.",
+  },
+  {
+    question: "Can a NGFW replace a UTM?",
+    answer:
+      "A modern NGFW like Sophos XGS or Palo Alto delivers everything a UTM did, firewall, IPS, antivirus gateway, web filtering, application control, with the addition of identity-based policy (User-ID), deep application visibility (App-ID), TLS 1.3 decryption, and ML-powered threat detection. NGFW is effectively the evolution of UTM. If you are running a 5+ year old UTM, an NGFW migration usually pays for itself within 18 months through prevented incidents and consolidated licensing.",
+  },
+  {
+    question: "Do your firewall deployments cover NESA and UAE PDPL?",
+    answer:
+      "Yes. Every firewall design we deliver maps to a control framework, NESA, UAE PDPL, ISO 27001, NIST CSF 2.0, or CBUAE-specific requirements as applicable. Audit-ready evidence (policy documentation, log retention, incident-response runbooks, and configuration baselines) is delivered as part of the project, not as a follow-up engagement.",
+  },
+  {
+    question: "How long does a typical firewall deployment take in the UAE?",
+    answer:
+      "A single-site SMB deployment is typically 1–2 weeks end-to-end including assessment. A multi-site UAE enterprise migration with HA pairs, SD-WAN integration, and full SSL inspection is typically 6–10 weeks. Hyperscale or sovereign-infrastructure projects are scoped individually. Every deployment includes phased cutover with rollback procedures at each stage.",
+  },
+  {
+    question: "Do you offer managed firewall services in Dubai and across the UAE?",
+    answer:
+      "Yes. We deliver fully-managed firewall services across all six vendors above, 24/7 monitoring, policy change management, firmware lifecycle, threat-intelligence tuning, monthly board-readable reporting, and quarterly architecture reviews. On-site support across Dubai, Abu Dhabi, and Sharjah; remote coverage across the UAE, Oman, and Saudi Arabia.",
+  },
+  {
+    question: "What is a next-generation firewall (NGFW)?",
+    answer:
+      "A next-generation firewall combines traditional stateful inspection with Application-ID (identifying any application regardless of port, protocol, or encryption), User-ID (identity-based policy), Content-ID (deep content inspection), integrated IPS, SSL/TLS decryption, and threat-intelligence feeds. Unlike a legacy port-and-protocol firewall, an NGFW can distinguish a legitimate SaaS application from malware using the same port, which is why 80% of modern attacks need Layer 7 inspection to catch.",
+  },
+  {
+    question: "Fortinet vs Sophos, which wins for UAE mid-market?",
+    answer:
+      "Sophos XGS wins on TCO, single-pane Sophos Central management, identity-based policy out of the box, and the unique Synchronized Security automation with Sophos endpoints. Fortinet FortiGate wins on raw throughput-per-dollar and built-in SD-WAN, preferable if your priority is bandwidth-heavy WAN modernisation. For most UAE mid-market businesses without a dedicated firewall team, Sophos is the simpler, better-supported choice.",
+  },
+  {
+    question: "Check Point vs Palo Alto, which wins for UAE enterprise?",
+    answer:
+      "Check Point wins on policy consistency at hyperscale (SmartConsole, Quantum Lightspeed up to 3 Tbps), independent prevention-rate scores (99.9%+ unknown malware), and regulated-industry maturity, banking, government, and CBUAE-regulated environments lean Check Point. Palo Alto ships innovation faster, has a stronger cloud-native / Prisma SASE story, and integrates more deeply with Cortex XDR. If your roadmap is cloud-heavy, Palo Alto; if your roadmap is audit-heavy and on-premise, Check Point.",
+  },
+  {
+    question: "How often should firewall rules be audited?",
+    answer:
+      "Firmware and signature updates apply continuously, critical CVEs patched within 24 hours of vendor release. Rule-set audits should happen quarterly at minimum: prune dead rules, tighten overly broad any-any policies, and review logs for drift. Major policy reviews align with quarterly business-change cycles. Running the same rule set for more than 12 months without review is one of the most common findings in our UAE network security assessments.",
+  },
+];
+
+/* ───────── HERO (Tactical Console) ───────── */
+
+type LogStatus = "ALLOW" | "DENY" | "INSPECT";
+
+const heroLog: { t: string; p: string; d: string; m: string; s: LogStatus }[] = [
+  { t: "12:04:22.881", p: "tcp :443", d: "→ office365.com", m: "app=saas · allow", s: "ALLOW" },
+  { t: "12:04:22.903", p: "tcp :22",  d: "← 45.13.x.x",    m: "ssh brute · deny", s: "DENY" },
+  { t: "12:04:22.918", p: "udp :53",  d: "→ dns-01",       m: "resolved · 14ms", s: "ALLOW" },
+  { t: "12:04:22.941", p: "tcp :3389",d: "← 185.x.x.x",    m: "rdp scan · deny", s: "DENY" },
+  { t: "12:04:22.960", p: "tcp :443", d: "→ github.com",   m: "repo.sync · ok",  s: "ALLOW" },
+  { t: "12:04:22.984", p: "tls :443", d: "→ slack.com",    m: "ws upgrade",      s: "INSPECT" },
+  { t: "12:04:23.006", p: "tcp :445", d: "← 10.0.7.x",     m: "smb lateral · deny", s: "DENY" },
+  { t: "12:04:23.029", p: "tcp :443", d: "→ prisma.paloalto", m: "tunnel ok",    s: "ALLOW" },
+];
+
+const heroZones = [
+  { zone: "Perimeter",   rule: "NGFW · App-ID",   status: "ALLOW",   tone: "emerald" as const },
+  { zone: "DMZ",         rule: "Stateful · L7",   status: "ALLOW",   tone: "emerald" as const },
+  { zone: "Corp VLAN",   rule: "User-ID · SSO",   status: "ALLOW",   tone: "emerald" as const },
+  { zone: "IoT / OT",    rule: "Micro-segmented", status: "ISOLATE", tone: "amber"   as const },
+  { zone: "Data Core",   rule: "Zero Trust",      status: "STRICT",  tone: "rose"    as const },
+];
+
+const toneClasses: Record<"emerald" | "amber" | "rose", { dot: string; text: string }> = {
+  emerald: { dot: "bg-emerald-400", text: "text-emerald-400" },
+  amber:   { dot: "bg-amber-400",   text: "text-amber-400" },
+  rose:    { dot: "bg-rose-400",    text: "text-rose-400" },
+};
+
+function LogRow({ entry }: { entry: typeof heroLog[number] }) {
+  const color =
+    entry.s === "ALLOW" ? "text-emerald-400" :
+    entry.s === "DENY"  ? "text-rose-400"    :
+    "text-amber-400";
+  return (
+    <div className="flex items-center gap-3 font-mono text-[10px] leading-relaxed text-slate-400">
+      <span className="shrink-0 text-slate-600">{entry.t}</span>
+      <span className={`shrink-0 w-14 ${color}`}>{entry.s}</span>
+      <span className="shrink-0 text-slate-500">{entry.p}</span>
+      <span className="shrink-0 text-slate-500">{entry.d}</span>
+      <span className="truncate text-slate-400">{entry.m}</span>
+    </div>
+  );
+}
+
+function FirewallHero() {
+  return (
+    <section className="relative flex min-h-screen flex-col overflow-hidden bg-gradient-to-b from-navy-deep via-navy to-navy-light">
+      <Suspense fallback={null}>
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#1B8AC7"
+          raysSpeed={0.8}
+          lightSpread={1.2}
+          rayLength={2}
+          fadeDistance={1}
+          saturation={1}
+          followMouse={true}
+          mouseInfluence={0.15}
+          distortion={0.3}
+        />
+      </Suspense>
+
+      <div
+        className="absolute inset-0 z-[3] bg-gradient-to-b from-navy-deep/30 via-navy-deep/15 to-navy-deep/50 pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* Breadcrumb band */}
+      <div className="relative z-10 border-b border-white/5">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-end gap-4 px-5 pt-24 pb-3 sm:px-6 sm:pt-28 lg:px-8">
+          <nav aria-label="Breadcrumb">
+            <ol className="flex flex-wrap items-center justify-end gap-2 text-[10px] text-slate-400 sm:text-[11px]">
+              <li>
+                <Link to="/" className="transition-colors hover:text-white">
+                  Home
+                </Link>
+              </li>
+              <li className="text-slate-600">/</li>
+              <li>
+                <Link to="/cybersecurity" className="transition-colors hover:text-white">
+                  Cybersecurity
+                </Link>
+              </li>
+              <li className="text-slate-600">/</li>
+              <li>
+                <span className="font-medium text-[#28B5E1]">Firewalls & Network Security</span>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+      {/* Hero masthead, title + zone inspector */}
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="grid w-full items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="lg:col-span-7"
+          >
+            <div className="flex items-center gap-3">
+              <span aria-hidden="true" className="h-px w-10 bg-[#28B5E1]" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#28B5E1]">
+                Field Guide · Issue 02
+              </span>
+            </div>
+
+            <h1 className="mt-6 font-display text-4xl font-bold leading-[0.95] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.5rem]">
+              Firewall Solutions{" "}
+              <span className="gradient-text">UAE</span>
+              <span className="block font-display text-2xl font-light leading-tight text-slate-300 sm:text-3xl md:text-4xl lg:text-[2.5rem]">
+                NGFW, UTM &amp; Managed Firewall Services
+              </span>
+            </h1>
+
+            <p className="mt-8 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+              Artiflex IT designs, deploys, and manages enterprise firewalls across the UAE, Oman, and Saudi Arabia. <span className="font-semibold text-white">Sophos Platinum Partner</span>, plus full delivery experience across Check Point, Palo Alto Networks, Fortinet, Cisco, and SonicWall, so the conversation starts with your environment, not our preferred SKU.
+            </p>
+          </motion.div>
+
+          <motion.aside
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+            className="relative lg:col-span-5"
+          >
+            <ZoneInspector />
+
+            <figcaption className="mt-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.28em] text-slate-500">
+              <span>Fig. 02 · Zone Inspector</span>
+              <span>Streams in realtime</span>
+            </figcaption>
+          </motion.aside>
+        </div>
+      </div>
+
+      {/* Scroll affordance */}
+      <div className="relative z-10 flex justify-center pb-8">
+        <div
+          aria-hidden="true"
+          className="flex flex-col items-center gap-2 font-mono text-[9px] uppercase tracking-[0.32em] text-slate-500"
+        >
+          <span>Continue</span>
+          <span className="h-8 w-px bg-gradient-to-b from-[#28B5E1]/60 to-transparent" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── ZONE INSPECTOR (Hero aside) ───────── */
+
+function ZoneInspector() {
+  return (
+    <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] shadow-[0_30px_80px_-20px_rgba(3,16,28,0.8)] backdrop-blur-md">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#28B5E1]/70 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-20 -top-24 h-60 w-60 rounded-full bg-[#28B5E1]/20 blur-[110px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-20 -left-16 h-52 w-52 rounded-full bg-[#045891]/25 blur-[100px]"
+      />
+
+      {/* Panel header */}
+      <div className="relative flex items-center justify-between border-b border-white/10 px-5 py-3">
+        <div className="flex items-center gap-1.5">
+          <span className="h-2 w-2 rounded-full bg-rose-400/80" />
+          <span className="h-2 w-2 rounded-full bg-amber-400/80" />
+          <span className="h-2 w-2 rounded-full bg-emerald-400/80" />
+        </div>
+        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-400">
+          firewall.hud <span className="text-slate-600">/</span> zone-inspector
+        </p>
+        <div className="flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-emerald-400" />
+          <span className="font-mono text-[9px] uppercase tracking-widest text-emerald-400">
+            SYNC
+          </span>
+        </div>
+      </div>
+
+      {/* Radar / scope */}
+      <div className="relative h-44 overflow-hidden border-b border-white/10 bg-[radial-gradient(ellipse_at_bottom,rgba(27,138,199,0.22),transparent_70%)]">
+        <svg viewBox="0 0 400 160" className="absolute inset-0 h-full w-full">
+          <defs>
+            <linearGradient id="fwSweep" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0%" stopColor="#28B5E1" stopOpacity="0" />
+              <stop offset="70%" stopColor="#28B5E1" stopOpacity="0.08" />
+              <stop offset="100%" stopColor="#4FC3F7" stopOpacity="0.45" />
+            </linearGradient>
+          </defs>
+
+          {[40, 80, 120, 160].map((r, i) => (
+            <circle
+              key={r}
+              cx="200"
+              cy="160"
+              r={r}
+              fill="none"
+              stroke="#1B8AC7"
+              strokeWidth="0.5"
+              strokeDasharray={i % 2 ? "0" : "2 3"}
+              opacity={0.35 - i * 0.05}
+            />
+          ))}
+
+          <line x1="40" y1="160" x2="360" y2="160" stroke="#28B5E1" strokeWidth="0.4" opacity="0.4" />
+          <line x1="200" y1="0" x2="200" y2="160" stroke="#28B5E1" strokeWidth="0.4" opacity="0.2" strokeDasharray="2 4" />
+
+          <g className="fw-radar-sweep">
+            <path d="M 200 160 L 200 0 A 160 160 0 0 1 360 160 Z" fill="url(#fwSweep)" />
+          </g>
+
+          <circle className="fw-blip" cx="132" cy="92" r="2" fill="#4FC3F7" />
+          <circle className="fw-blip fw-blip-2" cx="264" cy="74" r="2" fill="#4FC3F7" />
+          <circle className="fw-blip fw-blip-3" cx="298" cy="118" r="2" fill="#4FC3F7" />
+
+          <circle cx="200" cy="160" r="3" fill="#28B5E1" />
+          <circle cx="200" cy="160" r="6" fill="none" stroke="#28B5E1" strokeWidth="0.5" opacity="0.6" />
+        </svg>
+
+        <div className="absolute left-3 top-3 font-mono text-[9px] uppercase tracking-widest text-slate-400">
+          Perimeter Scan · 360°
+        </div>
+        <div className="absolute right-3 top-3 font-mono text-[9px] uppercase tracking-widest text-slate-400">
+          RANGE 5km
+        </div>
+        <div className="absolute bottom-3 right-3 font-mono text-[10px] text-[#4FC3F7]">
+          4.91B <span className="text-slate-400">pkts/24h</span>
+        </div>
+      </div>
+
+      {/* Zones list */}
+      <div className="relative divide-y divide-white/5">
+        {heroZones.map((item, i) => {
+          const c = toneClasses[item.tone];
+          return (
+            <div
+              key={item.zone}
+              className="flex items-center justify-between px-5 py-2.5 transition hover:bg-white/[0.03]"
+            >
+              <div className="flex items-center gap-4">
+                <span className="font-mono text-[10px] text-slate-500">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <p className="font-display text-[13px] font-medium text-white">
+                    {item.zone}
+                  </p>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-slate-400">
+                    {item.rule}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className={`h-1.5 w-1.5 rounded-full ${c.dot}`} />
+                <span className={`font-mono text-[10px] font-semibold uppercase tracking-[0.18em] ${c.text}`}>
+                  {item.status}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Log footer */}
+      <div className="relative border-t border-white/10 px-5 pb-3 pt-3">
+        <div className="flex items-center justify-between">
+          <p className="font-mono text-[9px] uppercase tracking-widest text-slate-400">
+            <span className="text-[#4FC3F7]">$</span> tail -f /var/log/fw.log
+          </p>
+          <span className="font-mono text-[9px] uppercase tracking-widest text-emerald-400">
+            streaming
+          </span>
+        </div>
+        <div
+          className="mt-2 h-20 overflow-hidden"
+          style={{
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, black 18%, black 80%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, black 18%, black 80%, transparent 100%)",
+          }}
+        >
+          <div className="fw-log-scroll space-y-1">
+            {[...heroLog, ...heroLog].map((e, i) => (
+              <LogRow key={i} entry={e} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ───────── PAGE ───────── */
+
+export default function FirewallsNetworkSecurityPage() {
+  const [openType, setOpenType] = useState<number | null>(0);
+  const [activeVendor, setActiveVendor] = useState(0);
+
+  return (
+    <>
+      <>
+        <title>Firewall Solutions UAE | NGFW & Managed | Artiflex IT</title>
+        <meta
+          name="description"
+          content="Compare NGFW, UTM & managed firewalls for UAE enterprises. Fortinet, Palo Alto, Sophos. Firewall installation Dubai - free network assessment."
+        />
+        <link rel="canonical" href="https://artiflexit.com/cybersecurity/firewalls-network-security" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Artiflex IT",
+            "url": "https://artiflexit.com/cybersecurity/firewalls-network-security",
+            "areaServed": [
+              { "@type": "Country", "name": "United Arab Emirates" },
+              { "@type": "City", "name": "Dubai" },
+              { "@type": "City", "name": "Abu Dhabi" },
+            ],
+            "description": "Enterprise firewall services in the UAE - NGFW, UTM, and managed firewall deployments for Fortinet, Palo Alto Networks, Check Point, Cisco, and Sophos.",
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Managed Firewall Services",
+            "provider": { "@type": "Organization", "name": "Artiflex IT" },
+            "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
+            "description": "Managed firewall services UAE - 24/7 monitoring, rule audits, firmware patching, and change control for Fortinet, Palo Alto, Sophos, Check Point, and Cisco NGFW deployments. Typical deployment lead time 2–4 weeks.",
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((f) => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": { "@type": "Answer", "text": f.answer },
+            })),
+          })}
+        </script>
+        {/* ItemList schema enumerating recommended firewall vendors —
+            helps Google understand the comparison content on this page */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "Recommended Firewall Vendors for UAE Businesses",
+            "itemListElement": vendors.map((v, i) => ({
+              "@type": "ListItem",
+              "position": i + 1,
+              "name": v.name,
+            })),
+          })}
+        </script>
+      </>
+
+      {/* HERO, Tactical Security Operations Console */}
+      <FirewallHero />
+      <style>{`
+        @keyframes fw-radar-sweep {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .fw-radar-sweep { animation: fw-radar-sweep 6s linear infinite; transform-origin: 200px 160px; transform-box: fill-box; }
+
+        @keyframes fw-blip {
+          0%, 100% { opacity: 0; }
+          20% { opacity: 1; }
+          60% { opacity: 0.35; }
+        }
+        .fw-blip { animation: fw-blip 3.2s ease-in-out infinite; }
+        .fw-blip-2 { animation-delay: 1.1s; }
+        .fw-blip-3 { animation-delay: 2.1s; }
+
+        @keyframes fw-log-scroll {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-50%); }
+        }
+        .fw-log-scroll { animation: fw-log-scroll 14s linear infinite; }
+      `}</style>
+
+      {/* ───────── INTRO: WHAT A 2026 FIREWALL ACTUALLY HAS TO DO ───────── */}
+      <section className="relative overflow-hidden bg-[#04101E] py-20 sm:py-28">
+        {/* Atmospheric background, subtle radial gradients top-left and bottom-right */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(27,138,199,0.14),transparent_55%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(40,181,225,0.06),transparent_60%)]"
+        />
+        {/* Hairline grid, adds editorial texture without noise */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:60px_60px]"
+        />
+        {/* Faint background number, magazine touch */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute right-[-3rem] top-1/3 select-none font-display text-[16rem] font-bold leading-none text-white/[0.025] sm:text-[22rem]"
+        >
+          05
+        </div>
+
+        <div className="relative mx-auto max-w-6xl px-5 sm:px-6">
+          {/* Heading block */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="max-w-4xl"
+          >
+            <div className="flex items-center gap-3">
+              <span aria-hidden="true" className="h-px w-10 bg-[#28B5E1]" />
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.32em] text-[#28B5E1]">
+                Context · Field Guide
+              </span>
+            </div>
+
+            <h2 className="mt-6 font-display text-3xl font-bold leading-[1.05] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.5rem]">
+              What a 2026 firewall{" "}
+              <span className="gradient-text italic">actually</span> has to do
+            </h2>
+          </motion.div>
+
+          {/* Body, 5 cards mapped to the 5 jobs a 2026 firewall must do */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+            className="mx-auto mt-12 grid max-w-5xl gap-4 sm:mt-16 sm:gap-5 lg:grid-cols-2"
+          >
+            {[
+              {
+                n: "01",
+                icon: ShieldIcon,
+                title: "Block known threats at every boundary",
+                desc: "Ransomware, phishing payloads, and command-and-control traffic, stopped at the perimeter AND across east-west traffic between segments. The flat-network era is over.",
+              },
+              {
+                n: "02",
+                icon: EyeIcon,
+                title: "See and control thousands of applications",
+                desc: "Identify any application regardless of port or protocol, including ones tunnelled through HTTPS. App-ID, not port-and-protocol, is what catches modern attacks.",
+              },
+              {
+                n: "03",
+                icon: LockIcon,
+                title: "Inspect encrypted traffic at line rate",
+                desc: "TLS 1.3 decryption without breaking the user experience or blowing the throughput budget. If you have to disable inspection to keep up, your firewall is one generation behind.",
+              },
+              {
+                n: "04",
+                icon: ServerIcon,
+                title: "Tie every policy to identity, not IP",
+                desc: "Policies that follow employees across offices, devices, and remote work, not policies tied to IP addresses that change every time someone connects from a different network.",
+              },
+              {
+                n: "05",
+                icon: LayersIcon,
+                title: "Produce audit-ready evidence",
+                desc: "Logs, reports, and trails that satisfy a NESA auditor and a UAE PDPL controller without a forensics consultant rebuilding the trail from scratch six months later.",
+              },
+            ].map((j, idx) => (
+              <motion.div
+                key={j.n}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: 0.05 * idx }}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#28B5E1]/30 hover:bg-white/[0.06] sm:p-7"
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-0 h-[2px] w-0 bg-gradient-to-r from-[#1B8AC7] to-[#28B5E1] transition-all duration-500 group-hover:w-full"
+                />
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#1B8AC7]/15 text-[#28B5E1] transition-colors duration-300 group-hover:bg-[#28B5E1] group-hover:text-navy-deep">
+                    <j.icon className="h-5 w-5" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#28B5E1]">
+                      {j.n}
+                    </p>
+                    <h3 className="mt-1 font-display text-lg font-semibold text-white sm:text-xl">
+                      {j.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-300 sm:text-base">
+                      {j.desc}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ───────── FIVE JOBS A 2026 FIREWALL MUST DO ───────── */}
+      <section className="relative bg-surface-secondary py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+          <div className="mx-auto mt-2 grid max-w-5xl gap-4 sm:gap-5 lg:grid-cols-2">
+            {[
+              {
+                n: "01",
+                icon: ShieldIcon,
+                title: "Block known threats at every boundary",
+                desc: "Ransomware, phishing payloads, and command-and-control traffic, stopped at the perimeter AND across east-west traffic between segments. The flat-network era is over.",
+              },
+              {
+                n: "02",
+                icon: EyeIcon,
+                title: "See and control thousands of applications",
+                desc: "Identify any application regardless of port or protocol, including ones tunnelled through HTTPS. App-ID, not port-and-protocol, is what catches modern attacks.",
+              },
+              {
+                n: "03",
+                icon: LockIcon,
+                title: "Inspect encrypted traffic at line rate",
+                desc: "TLS 1.3 decryption without breaking the user experience or blowing the throughput budget. If you have to disable inspection to keep up, your firewall is one generation behind.",
+              },
+              {
+                n: "04",
+                icon: ServerIcon,
+                title: "Tie every policy to identity, not IP",
+                desc: "Policies that follow employees across offices, devices, and remote work, not policies tied to IP addresses that change every time someone connects from a different network.",
+              },
+              {
+                n: "05",
+                icon: LayersIcon,
+                title: "Produce audit-ready evidence",
+                desc: "Logs, reports, and trails that satisfy a NESA auditor and a UAE PDPL controller without a forensics consultant rebuilding the trail from scratch six months later.",
+              },
+            ].map((j) => (
+              <motion.div
+                key={j.n}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5 }}
+                className="group relative overflow-hidden rounded-2xl border border-border-light bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-blue/25 hover:shadow-[0_12px_40px_rgba(27,138,199,0.10)] sm:p-7"
+              >
+                <div className="absolute inset-x-0 top-0 h-[2px] w-0 bg-gradient-to-r from-brand-blue to-brand-cyan transition-all duration-500 group-hover:w-full" />
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue transition-colors duration-300 group-hover:bg-brand-blue group-hover:text-white">
+                    <j.icon className="h-5 w-5" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">
+                      {j.n}
+                    </p>
+                    <h3 className="mt-1 font-display text-lg font-semibold text-heading sm:text-xl">
+                      {j.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-body sm:text-base">
+                      {j.desc}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── TYPES OF FIREWALLS WE DELIVER ───────── */}
+      <section className="relative overflow-hidden bg-[#04101E] py-16 sm:py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(27,138,199,0.10),transparent_60%)]" />
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#28B5E1]">
+              Capabilities
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl">
+              Types of firewalls we deliver
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-slate-300 sm:text-lg">
+              The right firewall depends on your traffic volume, application mix, compliance posture, and operational capacity. We deploy and manage every category in commercial use today.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-4 sm:mt-16 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                tag: "Gen 2",
+                year: "1993",
+                icon: ServerIcon,
+                title: "Stateful Inspection",
+                desc: "The backbone of the firewall industry, invented by Check Point. Tracks the full state of TCP and UDP sessions and makes decisions based on connection context.",
+                fit: "Foundation layer of every modern firewall.",
+              },
+              {
+                tag: "Gen 3",
+                year: "1994",
+                icon: EyeIcon,
+                title: "Application Layer / Proxy",
+                desc: "Operates at OSI Layer 7. Breaks the client-server connection and inspects content at the application layer. Understands HTTP, FTP, SMTP, DNS, the actual language of the internet.",
+                fit: "Integrated into modern NGFW architectures.",
+              },
+              {
+                tag: "UTM",
+                year: "2000",
+                icon: ShieldIcon,
+                title: "Unified Threat Management",
+                desc: "Pioneered in Karlsruhe, Germany by Astaro Systems. Combines firewall, VPN, IPS, antivirus, anti-spam, web filtering, and application control into a single appliance.",
+                fit: "SMB and branch offices needing enterprise-grade security without enterprise complexity.",
+              },
+              {
+                tag: "NGFW",
+                year: "2008",
+                icon: AlertTriangleIcon,
+                title: "Next-Generation Firewall",
+                desc: "Current enterprise gold standard, invented by Palo Alto Networks. Adds App-ID, User-ID, Content-ID, SSL decryption, and integrated IPS to the stateful engine.",
+                fit: "The right answer for any UAE enterprise without a specific reason to run something else.",
+                featured: true,
+              },
+              {
+                tag: "WAF",
+                year: "2010+",
+                icon: LockIcon,
+                title: "Web Application Firewall",
+                desc: "Protects public-facing web applications and APIs. Defends against the OWASP Top 10, SQL injection, XSS, CSRF, broken access control, Layer 7 DDoS.",
+                fit: "Deployed in front of e-commerce, customer portals, and exposed APIs.",
+              },
+              {
+                tag: "FWaaS",
+                year: "2015+",
+                icon: CloudIcon,
+                title: "Cloud Firewall / FWaaS",
+                desc: "Cloud-delivered firewall for distributed branches, cloud workloads, and remote users without on-premises hardware. Central to SASE architectures.",
+                fit: "Hybrid teams, GCC branch offices, SaaS-first organisations.",
+              },
+            ].map((t) => (
+              <div
+                key={t.title}
+                className={`group relative overflow-hidden rounded-2xl border p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${
+                  t.featured
+                    ? "border-[#1B8AC7]/40 bg-gradient-to-br from-[#1B8AC7]/12 to-[#0A3D6B]/5"
+                    : "border-white/10 bg-white/[0.03] hover:border-[#1B8AC7]/30"
+                }`}
+              >
+                {t.featured && (
+                  <span className="absolute right-4 top-4 inline-flex rounded-full border border-[#28B5E1]/40 bg-[#28B5E1]/10 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.2em] text-[#28B5E1]">
+                    Standard
+                  </span>
+                )}
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex rounded-md border border-white/15 bg-white/5 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#4FC3F7]">
+                    {t.tag}
+                  </span>
+                  <span className="font-mono text-[10px] text-slate-500">·</span>
+                  <span className="font-mono text-[10px] text-slate-500">{t.year}</span>
+                </div>
+                <div className="mt-5 flex h-11 w-11 items-center justify-center rounded-xl bg-[#1B8AC7]/15 text-[#28B5E1]">
+                  <t.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 font-display text-lg font-semibold text-white">
+                  {t.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-400">
+                  {t.desc}
+                </p>
+                <p className="mt-4 border-t border-white/5 pt-3 text-xs italic text-slate-500">
+                  {t.fit}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── VENDOR COMPARISON FOR UAE BUYERS ───────── */}
+      <section
+        id="vendor-matrix"
+        className="relative bg-white py-16 scroll-mt-20 sm:py-24"
+      >
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+          <SectionHeader
+            label="Vendor matrix"
+            title={
+              <>
+                Vendor comparison for{" "}
+                <span className="gradient-text">UAE buyers</span>
+              </>
+            }
+            description="We do not believe one firewall wins everything. We do believe the right firewall for your environment usually wins by a meaningful margin once the assessment is honest."
+            centered
+          />
+
+          <div className="mx-auto mt-12 grid max-w-6xl gap-6 sm:mt-16 lg:grid-cols-2">
+            {vendors.map((v, idx) => {
+              const recommended = v.best.includes("Recommended");
+              return (
+                <motion.div
+                  key={v.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.05 }}
+                  className={`group relative overflow-hidden rounded-2xl border bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(4,88,145,0.12)] sm:p-8 ${
+                    recommended
+                      ? "border-brand-blue/30 shadow-[0_4px_20px_rgba(27,138,199,0.10)]"
+                      : "border-border-light shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:border-brand-blue/25"
+                  }`}
+                >
+                  {recommended && (
+                    <span
+                      className="absolute -top-px left-6 inline-flex rounded-b-md bg-brand-blue px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white"
+                      aria-label="Recommended vendor"
+                    >
+                      ★ Recommended
+                    </span>
+                  )}
+
+                  <div className="flex items-start justify-between gap-3 pt-3">
+                    <div>
+                      <h3 className="font-display text-xl font-bold text-heading sm:text-2xl">
+                        {v.name}
+                      </h3>
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.15em] text-brand-blue">
+                        {v.best}
+                      </p>
+                    </div>
+                    <span
+                      className="h-3 w-3 shrink-0 rounded-full"
+                      style={{ backgroundColor: v.accent }}
+                      aria-hidden
+                    />
+                  </div>
+
+                  <div className="mt-5 space-y-3">
+                    <div>
+                      <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">
+                        Why it wins
+                      </p>
+                      <p className="mt-1.5 text-sm leading-relaxed text-body">
+                        {v.strength}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">
+                        Consider
+                      </p>
+                      <p className="mt-1.5 text-sm leading-relaxed text-body/80">
+                        {v.watch}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-brand-blue/20 bg-gradient-to-br from-brand-blue/5 to-transparent p-5 text-center sm:p-6">
+            <p className="text-sm leading-relaxed text-body sm:text-base">
+              <span className="font-semibold text-heading">Artiflex IT is a Platinum Sophos Partner</span> and a delivery partner for Check Point, Palo Alto, Cisco, Fortinet, and SonicWall. The vendor follows the assessment, not the other way around.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── FOUR-QUESTION DECISION MATRIX ───────── */}
+      <section className="relative overflow-hidden bg-[#04101E] py-16 sm:py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(27,138,199,0.10),transparent_60%)]" />
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#28B5E1]">
+              Decision framework
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl">
+              Four questions to identify the right firewall
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-slate-300 sm:text-lg">
+              Procurement decisions get cleaner when the questions are direct. Walk through these four and the vendor shortlist usually falls out by itself.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-12 grid max-w-5xl gap-5 sm:mt-16 lg:grid-cols-2">
+            {[
+              {
+                n: "01",
+                title: "What is your operational capacity?",
+                desc: "A small in-house IT team needs single-pane management. A large security-engineering team can run Panorama or FortiManager at depth. Match the platform to the operators, not the brochure.",
+              },
+              {
+                n: "02",
+                title: "What is your throughput envelope?",
+                desc: "A 100-person UAE office and a sovereign data centre have different physics. The vendor that wins one frequently loses the other. Size for three years of growth, not last year's bill.",
+              },
+              {
+                n: "03",
+                title: "What does your existing stack standardise on?",
+                desc: "If the rest of your security stack is Cisco, Cisco Secure Firewall removes integration friction. If it is Sophos endpoint, XGS gives you Synchronized Security automation. If it is none of the above, Sophos or Check Point usually wins on TCO.",
+              },
+              {
+                n: "04",
+                title: "What is your compliance posture?",
+                desc: "NESA, UAE PDPL, ISO 27001, and CBUAE-regulated environments all have evidence requirements. Some firewalls produce that evidence natively; others require add-on tooling. We map this against your specific framework before recommending.",
+              },
+            ].map((q) => (
+              <div
+                key={q.n}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#28B5E1]/30 hover:bg-white/[0.05] sm:p-7"
+              >
+                <div className="absolute -right-6 -top-6 font-display text-[120px] font-bold leading-none text-white/[0.04] transition-colors duration-500 group-hover:text-[#28B5E1]/[0.10]">
+                  {q.n}
+                </div>
+                <p className="relative font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#28B5E1]">
+                  Question {q.n}
+                </p>
+                <h3 className="relative mt-3 font-display text-xl font-semibold leading-tight text-white">
+                  {q.title}
+                </h3>
+                <p className="relative mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
+                  {q.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── OUR DELIVERY MODEL ───────── */}
+      <section className="relative bg-surface-secondary py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+          <SectionHeader
+            label="How we work"
+            title={
+              <>
+                Our <span className="gradient-text">delivery model</span>
+              </>
+            }
+            description="We don't sell boxes. We deliver firewall outcomes, assess, design, deploy, manage. Every stage produces something an auditor can read and a CFO can sign off on."
+            centered
+          />
+
+          <div className="mt-12 grid gap-4 sm:mt-16 sm:gap-5 lg:grid-cols-4">
+            {[
+              {
+                step: "01",
+                title: "Assess",
+                duration: "2 weeks",
+                summary:
+                  "Inventory of current firewall estate, traffic-flow mapping, application discovery, policy review, throughput and SSL-inspection benchmarking.",
+                deliverable:
+                  "Current-state report, vendor recommendation with rationale, three-year TCO comparison.",
+              },
+              {
+                step: "02",
+                title: "Design",
+                duration: "2–3 weeks",
+                summary:
+                  "Architecture for your specific environment, segmentation, HA pair sizing, identity-based policy framework, SD-WAN integration, SSL plan, SIEM logging integration.",
+                deliverable:
+                  "Approved architecture, signed-off cutover sequence, change-management plan.",
+              },
+              {
+                step: "03",
+                title: "Deploy",
+                duration: "2–6 weeks",
+                summary:
+                  "Phased deployment with rollback procedures at every stage. Pre-production validation, off-hours cutover for production traffic, day-1 hypercare.",
+                deliverable:
+                  "Live firewall, audit-ready documentation, runbooks for your team.",
+              },
+              {
+                step: "04",
+                title: "Manage",
+                duration: "Ongoing",
+                summary:
+                  "24/7 monitoring, policy change management, firmware lifecycle, threat-intelligence tuning, monthly board-readable reporting, quarterly architecture reviews.",
+                deliverable:
+                  "Operational firewall with SLAs you can actually rely on. Or a clean handover to your team.",
+              },
+            ].map((s, idx) => (
+              <motion.div
+                key={s.step}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="group relative overflow-hidden rounded-2xl border border-border-light bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-blue/25 hover:shadow-[0_12px_40px_rgba(27,138,199,0.10)] sm:p-6"
+              >
+                <div className="flex items-baseline justify-between">
+                  <span className="font-display text-3xl font-bold leading-none text-brand-blue sm:text-4xl">
+                    {s.step}
+                  </span>
+                  <span className="rounded-full border border-border-light bg-surface-secondary px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">
+                    {s.duration}
+                  </span>
+                </div>
+                <h3 className="mt-4 font-display text-xl font-semibold text-heading">
+                  {s.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-body">
+                  {s.summary}
+                </p>
+                <div className="mt-4 border-t border-border-light pt-3">
+                  <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">
+                    You get
+                  </p>
+                  <p className="mt-1 text-xs leading-relaxed text-body/85">
+                    {s.deliverable}
+                  </p>
+                </div>
+                {idx < 3 && (
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-1/2 lg:block"
+                  >
+                    <div className="h-px w-6 bg-gradient-to-r from-brand-blue/40 to-transparent" />
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── WHY ARTIFLEX IT ───────── */}
+      <section className="relative overflow-hidden bg-navy-deep py-16 sm:py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(27,138,199,0.18),transparent_60%)]" />
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#28B5E1]">
+              Why Artiflex IT
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl">
+              14+ years of UAE firewall delivery
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-slate-300 sm:text-lg">
+              Vendor-agnostic by design. We will tell you when Sophos wins, when Check Point wins, when Palo Alto wins, and when none of them is the right answer. The point of an honest assessment is honest answers.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-12 grid max-w-5xl gap-4 sm:mt-16 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { value: "14+", label: "Years in UAE network security" },
+              { value: "500+", label: "Projects delivered, GCC-wide" },
+              { value: "20+", label: "Certified security engineers" },
+              { value: "Platinum", label: "Sophos partner tier" },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 text-center backdrop-blur-sm transition-colors duration-300 hover:border-[#28B5E1]/30"
+              >
+                <p className="font-display text-3xl font-bold leading-none text-white sm:text-4xl">
+                  {stat.value}
+                </p>
+                <p className="mt-3 text-xs leading-relaxed text-slate-400 sm:text-sm">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mx-auto mt-12 max-w-4xl rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm sm:p-8">
+            <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
+              <div>
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#28B5E1]">
+                  Vendor coverage
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                  Sophos (Platinum), Check Point, Palo Alto Networks, Cisco Secure Firewall, Fortinet, SonicWall, active delivery experience across all six.
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#28B5E1]">
+                  Compliance frameworks
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                  NESA, UAE PDPL, ISO 27001, NIST CSF 2.0, and CBUAE-aligned implementations, audit-ready evidence delivered as part of the project.
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#28B5E1]">
+                  Coverage area
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                  On-site across Dubai, Abu Dhabi, and Sharjah. Remote across the UAE, Oman, and Saudi Arabia. 24/7 SOC support for managed customers.
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#28B5E1]">
+                  Engagement model
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                  Fully managed, co-managed, or assessment-only. No vendor lock-in, no theatre, no upselling, the assessment drives the answer.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center rounded-lg bg-[#28B5E1] px-6 py-3 font-display text-sm font-semibold text-navy-deep transition-colors hover:bg-white sm:text-base"
+            >
+              Book a free firewall posture assessment
+            </Link>
+            <Link
+              to="/blog/origin-firewall-network-security"
+              className="inline-flex items-center justify-center rounded-lg border border-white/15 px-6 py-3 font-display text-sm font-medium text-slate-300 transition-colors hover:border-[#28B5E1]/40 hover:text-white sm:text-base"
+            >
+              Read the full origin story →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── FAQ ───────── */}
+      <section className="relative bg-white py-16 sm:py-24">
+        <div className="mx-auto max-w-3xl px-5 sm:px-6">
+          <SectionHeader
+            label="Knowledge Base"
+            title={
+              <>
+                Frequently <span className="gradient-text">asked</span> questions
+              </>
+            }
+            description="What businesses ask us most about enterprise firewalls and network security."
+            centered
+          />
+
+          <FAQAccordion items={faqs} />
+        </div>
+      </section>
+
+      {/* ───────── CTA ───────── */}
+      <CTASection
+        title="Get the Firewall Selection Guide"
+        description="Vendor-neutral comparison of NGFW, UTM, and cloud options - with TCO analysis, throughput benchmarks, and real deployment case studies."
+        primaryButton={{ text: "Request the Guide", action: "modal" }}
+      />
+    </>
+  );
+}

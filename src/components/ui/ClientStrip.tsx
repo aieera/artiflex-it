@@ -3,8 +3,6 @@ import { CLIENT_LOGOS } from "@/lib/constants";
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 const STYLE = `
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap');
-
   :root {
     --cs-100:   #e8f4fb;
     --cs-300:   #6aafd4;
@@ -15,7 +13,10 @@ const STYLE = `
   }
 
   .cs-wrap * { box-sizing: border-box; }
-  .cs-wrap { font-family: 'DM Sans', sans-serif; }
+  /* Plus Jakarta Sans is the site font, self-hosted + already loaded.
+     DM Sans was dropped 2026-07-13: its Google Fonts @import added a
+     render-delaying third-party CSS fetch for a small label strip. */
+  .cs-wrap { font-family: 'Plus Jakarta Sans', sans-serif; }
 
   /* ── Scroll ── */
   @keyframes cs-scroll-right {

@@ -29,9 +29,12 @@
   --color-body: #4A5568;
   --color-muted: #94A3B8;
 
-  /* Fonts */
-  --font-display: 'Plus Jakarta Sans', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+  /* Fonts. 'Plus Jakarta Sans Fallback' is the metric-matched Arial
+     defined inline in index.html (size-adjust 106.05% etc.), it keeps
+     text geometry identical while the real font downloads so the swap
+     causes no layout shift. Keep it second in both stacks. */
+  --font-display: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
 }
 
 html {
@@ -68,12 +71,185 @@ body {
   letter-spacing: -0.01em;
 }
 
+/* Text selection: solid brand-blue background with white text so it stays
+   legible on BOTH light sections and the black footer/dark sections.
+   The previous 0.15 alpha background made selected text disappear on
+   dark backgrounds. */
 ::selection {
-  background: rgba(27, 138, 199, 0.15);
-  color: var(--color-heading);
+  background: #1B8AC7;
+  color: #ffffff;
+  text-shadow: none;
+}
+::-moz-selection {
+  background: #1B8AC7;
+  color: #ffffff;
+  text-shadow: none;
 }
 
 /* ─── Animations ─── */
+
+/* Hero entrance: pure CSS fade-up, replaces framer-motion variants.
+   Keeps the same 0.7s ease-out timing and 0.18s stagger that the
+   original motion variants used, so visual feel is unchanged.
+   Why CSS: framer-motion adds ~30 KB of JS execution to the hero's
+   critical path; CSS animations run on the compositor thread for free. */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-fade-up {
+  opacity: 0;
+  animation: hero-fade-up 0.7s ease-out forwards;
+}
+.hero-fade-up-1 { animation-delay: 0.00s; }
+.hero-fade-up-2 { animation-delay: 0.18s; }
+.hero-fade-up-3 { animation-delay: 0.36s; }
+.hero-fade-up-4 { animation-delay: 0.54s; }
+
+/* Hero WebGL pillar entrance.
+   The pillar chunk loads only after first user interaction (see
+   HeroSection.tsx). When its wrapper mounts, this animation cross-fades
+   the canvas in over the always-present CSS gradient. The 0.4s delay
+   gives the shader a few frames to render before becoming visible, so
+   the user never sees a black or half-initialised canvas. */
+@keyframes hero-pillar-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.hero-pillar-fade {
+  opacity: 0;
+  animation: hero-pillar-in 2s ease-out 0.4s forwards;
+}
+
+/* LCP-safe variant for the hero HEADLINE + H1/description (-2 and -3).
+   Chrome does not register an LCP candidate while an element is at
+   opacity: 0, so fading the largest text block in from 0 pushed LCP
+   ~0.3-1.0s past first paint. These two now stay fully opaque and only
+   slide up (transform-only keyframes, still compositor-driven).
+   fill-mode: both holds the from-state (translateY) during the stagger
+   delay so there is no jump when the animation starts. The badge (-1)
+   and CTA (-4) are small non-LCP elements and keep the original fade. */
+@keyframes hero-rise {
+  from { transform: translateY(30px); }
+  to   { transform: translateY(0); }
+}
+.hero-fade-up-2,
+.hero-fade-up-3 {
+  opacity: 1;
+  animation-name: hero-rise;
+  animation-fill-mode: both;
+}
+
+/*
+ * ShinyText animation.
+ *
+ * Why CSS instead of framer-motion:
+ *   The previous ShinyText component pulled in 133 KB of framer-motion
+ *   onto the critical render path just to slide a background-position
+ *   value back and forth. That delayed LCP and FCP on mobile by ~2 s.
+ *   Pure CSS keyframes give the exact same shimmer for zero JS.
+ *
+ * How it works:
+ *   The text uses a linear-gradient as its background, clipped to the
+ *   text shape via background-clip: text. The keyframes slide the
+ *   gradient horizontally so the bright "shine" stripe passes across.
+ *
+ * Customisation (per-instance):
+ *   The component sets these CSS custom properties inline:
+ *     --shiny-color       base text colour
+ *     --shiny-shine       highlight (shine) colour
+ *     --shiny-spread      gradient angle in degrees
+ *     --shiny-duration    full sweep time, e.g. "3s"
+ */
+/*
+ * Mobile scroll stability.
+ *
+ * Why this exists:
+ *   On mobile, when a below-fold lazy section finishes downloading and
+ *   replaces its <SectionSkeleton minHeight="600px"> placeholder, even
+ *   a small height mismatch (skeleton 600, real section 612) shifts the
+ *   page during scroll. Users see this as a glitch / jitter.
+ *
+ *   `overflow-anchor` tells the browser to ANCHOR the viewport against
+ *   the element nearest the user's current scroll position when DOM
+ *   above the viewport changes. So when a section higher up grows by
+ *   12 px, the browser holds the viewport in place instead of jumping.
+ *   Native, no JS, supported in all evergreen browsers.
+ *
+ *   `scroll-behavior: smooth` powers anchor jumps on touch devices (where
+ *   we now disable Lenis, see useSmoothScroll.ts).
+ */
+html {
+  overflow-anchor: auto;
+  scroll-behavior: smooth;
+}
+
+@keyframes shiny-text-sweep {
+  0% { background-position: 150% center; }
+  100% { background-position: -50% center; }
+}
+.shiny-text {
+  display: inline-block;
+  background-image: linear-gradient(
+    var(--shiny-spread, 120deg),
+    var(--shiny-color, #b5b5b5) 0%,
+    var(--shiny-color, #b5b5b5) 35%,
+    var(--shiny-shine, #ffffff) 50%,
+    var(--shiny-color, #b5b5b5) 65%,
+    var(--shiny-color, #b5b5b5) 100%
+  );
+  background-size: 200% auto;
+  background-position: 150% center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shiny-text-sweep var(--shiny-duration, 3s) linear infinite;
+  /* GPU-accel hint, keeps the gradient sweep buttery on low-power devices. */
+  will-change: background-position;
+}
+/*
+ * Respect users who explicitly disable motion. The shimmer is decorative,
+ * so dropping it for "reduce-motion" users is the correct call.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text {
+    animation: none;
+    background-position: 50% center;
+  }
+  .hero-fade-up,
+  .hero-fade-up-2,
+  .hero-fade-up-3 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scroll indicator: fade in after hero finishes its stagger, then loop
+   the gentle bobbing motion. Replaces the motion.div + animate={{y:[0,8,0]}}
+   pattern with a CSS-only equivalent. */
+@keyframes hero-scroll-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes hero-scroll-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+.hero-scroll-indicator {
+  opacity: 0;
+  animation:
+    hero-scroll-fade-in 0.6s ease-out 1.2s forwards,
+    hero-scroll-bob 2s ease-in-out 1.8s infinite;
+}
+
 @keyframes pulse-dot {
 
   0%,

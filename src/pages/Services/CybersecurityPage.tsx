@@ -1,6 +1,6 @@
 import { useState, lazy } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
@@ -24,27 +24,12 @@ import {
   CpuIcon,
 } from "@/components/icons";
 
-const LightRays = lazy(() => import("@/components/ui/LightRays"));
 
 /* ────────────────────────────────────────────
    DATA
    ──────────────────────────────────────────── */
 
-const heroStats = [
-  { value: "$6.93M", label: "AVG. BREACH COST, MIDDLE EAST", source: "IBM 2024: 69% above global avg" },
-  { value: "300%", label: "RANSOMWARE SURGE IN GCC", source: "2022–2024 targeting businesses" },
-  { value: "28,000+", label: "MDR CUSTOMERS PROTECTED", source: "Sophos: world's largest MDR" },
-  { value: "<48h", label: "CRITICAL PATCH RESPONSE", source: "Sophos avg. patch time" },
-];
 
-const threatImpact = [
-  { area: "Financial Loss", detail: "Average breach cost USD 6.93M in Middle East; ransomware demands averaging USD 1.5M+" },
-  { area: "Operational Disruption", detail: "Average 21 days downtime post-ransomware; critical systems offline; productivity collapse" },
-  { area: "Regulatory Penalties", detail: "Fines up to AED 5M under UAE PDPL; mandatory breach notification within 72 hours" },
-  { area: "Reputational Damage", detail: "Average 7.5% stock price decline post-breach; loss of customer trust and media exposure" },
-  { area: "Competitive Loss", detail: "Intellectual property theft; customer data exfiltration; M&A deals collapse post-breach" },
-  { area: "Supply Chain Risk", detail: "Single vendor vulnerability cascades into thousands of organizations: SolarWinds, Log4j, MOVEit" },
-];
 
 const businessImpact = [
   {
@@ -128,28 +113,6 @@ const pillars = [
 ];
 
 
-const sophosDeploySteps = [
-  {
-    number: "01",
-    title: "Assess",
-    description: "Survey your sites, audit existing security tools, and map requirements to Sophos components.",
-  },
-  {
-    number: "02",
-    title: "Configure",
-    description: "Pre-stage all hardware and software with your policies, rules, and network topology, ready to deploy.",
-  },
-  {
-    number: "03",
-    title: "Deploy",
-    description: "On-site installation with zero-downtime cutover. Plug in, validate, go live.",
-  },
-  {
-    number: "04",
-    title: "Monitor",
-    description: "24/7 monitoring through Sophos Central with our SOC team on watch.",
-  },
-];
 
 const complianceFrameworks = [
   {
@@ -204,6 +167,21 @@ const complianceFrameworks = [
 ];
 
 const faqs = [
+  {
+    question: "Why choose Artiflex as your cyber security company in Dubai?",
+    answer:
+      "Artiflex IT is a cyber security company in Dubai delivering cybersecurity services across the UAE, Oman and Saudi Arabia, with close to fifteen years of regional experience. Unlike resellers tied to a single product line, we take a vendor-neutral approach across NGFW, EDR/XDR, email security, SASE, SIEM and MDR, all aligned to NESA, UAE PDPL and CBUAE. We assess your risk first, recommend and deploy the right mix of controls, and back it with local UAE support and 24/7 managed detection and response.",
+  },
+  {
+    question: "How do I choose between cyber security companies in Dubai?",
+    answer:
+      "Shortlist on four things. First, regulatory fluency: a Dubai provider should be able to map controls to NESA, UAE PDPL, CBUAE and, for free-zone entities, ADGM or DIFC rules without being prompted. Second, vendor neutrality: firms tied to one product line will recommend that line regardless of fit, so ask which platforms they walked away from and why. Third, breadth against the seven security layers on this page, because gaps between network, endpoint, email, identity and operations are where breaches start. Fourth, local delivery: confirm who responds at 2am, whether the SOC is in-region, and what the contractual response time actually is rather than what the brochure claims.",
+  },
+  {
+    question: "What should cybersecurity services in the UAE include for a mid-sized enterprise?",
+    answer:
+      "At minimum, cybersecurity services in the UAE should cover next-generation firewall at the perimeter, EDR or XDR on every endpoint and server, email security against phishing and business email compromise, identity controls with multi-factor authentication, and continuous monitoring through a SIEM or managed detection and response service. Layered on top, mid-sized enterprises need periodic vulnerability assessment and penetration testing, plus documented compliance mapping to NESA and UAE PDPL. The exact mix depends on your regulatory exposure and attack surface, which is what a risk assessment establishes before anything is deployed.",
+  },
   {
     question: "What is the average cost of a data breach for UAE enterprises in 2024?",
     answer:
@@ -271,16 +249,95 @@ const faqSchema = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Cybersecurity Solutions UAE | NGFW, EDR, SASE, MDR | Platinum Sophos Partner | ArtiflexIT",
+  headline: "Cyber Security Company in Dubai | Cybersecurity Services UAE",
   description:
-    "End-to-end enterprise cybersecurity for UAE businesses. Firewall, endpoint protection, email security, SASE, SIEM, and managed detection, delivered by ArtiflexIT, Platinum Sophos Partner in Dubai. NESA, UAE PDPL, and CBUAE compliance.",
+    "Cyber security company in Dubai serving the UAE. Artiflex delivers cybersecurity services across the UAE: NGFW, EDR/XDR, email security, SASE, SIEM and MDR aligned to NESA, PDPL and CBUAE.",
   author: { "@type": "Organization", name: "ArtiflexIT", url: "https://artiflexit.com" },
   publisher: { "@type": "Organization", name: "ArtiflexIT", url: "https://artiflexit.com" },
   datePublished: "2026-01-15",
-  dateModified: "2026-03-18",
+  dateModified: "2026-06-22",
   mainEntityOfPage: "https://artiflexit.com/cybersecurity",
+  /*
+   * NOTE: Google ignores schema.org `keywords` for ranking, exactly as it
+   * ignores <meta name="keywords">. This field is documentation of intent,
+   * NOT optimisation. Until 2026-08-31 three of the page's target terms
+   * ("cyber security companies in Dubai", "cybersecurity Dubai",
+   * "cybersecurity services UAE") existed ONLY in this string, which made
+   * the page look optimised while carrying no real signal. Each of those
+   * now lives in a heading, a section description or an FAQ entry. If you
+   * add a term here, add it to the visible copy in the same commit.
+   */
   keywords:
-    "enterprise cybersecurity UAE, NGFW Dubai, EDR XDR Middle East, SASE solutions, UAE PDPL compliance, NESA cybersecurity, CBUAE framework, Sophos partner UAE, managed detection response",
+    "cyber security company in Dubai, cyber security companies in Dubai, cybersecurity Dubai, cybersecurity services UAE, cybersecurity solutions in UAE, cyber security companies in UAE, UAE cyber security companies, NGFW Dubai, EDR XDR UAE, SASE UAE, managed detection response UAE, NESA cybersecurity, UAE PDPL compliance",
+};
+
+/**
+ * Service schema for the cybersecurity practice.
+ *
+ * Article alone was the wrong primary type for a commercial service
+ * landing page: it describes a piece of writing, not something a business
+ * sells. Service carries the offer catalogue (the seven pillars, each
+ * pointing at its own child page) and, critically, `provider` resolves to
+ * the SAME @id the home page's Organization node declares, so the two
+ * pages describe one entity instead of two unrelated ones. Article is
+ * kept alongside it for the editorial/freshness signals it does carry.
+ */
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://artiflexit.com/cybersecurity#service",
+  name: "Cybersecurity Services in the UAE",
+  serviceType: "Cybersecurity",
+  url: "https://artiflexit.com/cybersecurity",
+  description:
+    "Cyber security company in Dubai delivering cybersecurity services across the UAE: next-generation firewall, EDR/XDR, email security, SASE and zero trust, security operations, and managed detection and response, aligned to NESA, UAE PDPL and CBUAE.",
+  provider: {
+    "@type": "Organization",
+    "@id": "https://artiflexit.com/#organization",
+    name: "Artiflex Information Technology",
+    url: "https://artiflexit.com/",
+  },
+  areaServed: [
+    { "@type": "Country", name: "United Arab Emirates" },
+    { "@type": "Country", name: "Oman" },
+    { "@type": "Country", name: "Saudi Arabia" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Cybersecurity Solutions",
+    itemListElement: pillars.map((pillar) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: pillar.title,
+        url: "https://artiflexit.com" + pillar.href,
+      },
+    })),
+  },
+};
+
+/**
+ * BreadcrumbList mirroring the visible "Home / Cybersecurity" trail in the
+ * hero. The trail was rendered but never marked up, so Google had to infer
+ * the hierarchy from the URL alone.
+ */
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://artiflexit.com/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Cybersecurity",
+      item: "https://artiflexit.com/cybersecurity",
+    },
+  ],
 };
 
 
@@ -457,24 +514,18 @@ function ForceCard({
         </span>
       </div>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            key="content"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-[2] overflow-hidden"
-          >
+      <motion.div
+        initial={false}
+        animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-[2] overflow-hidden"
+      >
             <div className="px-5 pb-5 sm:px-6 sm:pb-6">
               <div className="border-t border-slate-200 pt-4">
                 <p className="text-sm leading-relaxed text-slate-600">{description}</p>
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </motion.div>
 
       {/* Animated bottom rule */}
       <span
@@ -501,24 +552,44 @@ export default function CybersecurityPage() {
   return (
     <>
       <>
-        <title>Cybersecurity UAE | NGFW, EDR, SASE, MDR | Artiflex IT</title>
-        <meta
-          name="description"
-          content="End-to-end enterprise cybersecurity for UAE: firewall, endpoint, email security, SASE, SIEM, MDR. Platinum Sophos Partner. NESA & PDPL ready."
-        />
-        <meta
-          name="keywords"
-          content="enterprise cybersecurity solutions UAE, NGFW Dubai, EDR XDR Middle East, SASE solutions UAE, UAE PDPL compliance, NESA cybersecurity framework, CBUAE regulations, Sophos partner Dubai, managed detection response UAE, cybersecurity vendor comparison 2026, penetration testing UAE, SOC as a service Dubai"
-        />
+        <title>Cyber Security Company in Dubai | Cybersecurity Services UAE</title>
+        <meta name="description" content="Cyber security company in Dubai and UAE. Artiflex delivers cybersecurity services across the UAE: NGFW, EDR/XDR, SASE, SIEM and MDR aligned to NESA and PDPL." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity" />
-        <meta property="og:title" content="Enterprise Cybersecurity Solutions Guide 2026 | ArtiflexIT UAE" />
-        <meta
-          property="og:description"
-          content="End-to-end enterprise cybersecurity for UAE businesses. Firewall, endpoint protection, email security, SASE, SIEM, and managed detection, delivered by ArtiflexIT, Platinum Sophos Partner in Dubai."
-        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity" />
+
+        <meta property="og:title" content="Cyber Security Company in Dubai | Cybersecurity Services UAE" />
+        <meta property="og:description" content="Cyber security company in Dubai and the UAE. Artiflex delivers cybersecurity services across the UAE: firewall, endpoint, email security, SASE, SIEM and managed detection aligned to NESA and PDPL." />
         <meta property="og:url" content="https://artiflexit.com/cybersecurity" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
         <meta property="og:type" content="article" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex Information Technology cybersecurity services in Dubai, UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cyber Security Company in Dubai | Cybersecurity Services UAE" />
+        <meta name="twitter:description" content="Cyber security company in Dubai and UAE. Artiflex delivers cybersecurity services across the UAE: NGFW, EDR/XDR, SASE, SIEM and MDR aligned to NESA and PDPL." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </>
 
@@ -530,7 +601,7 @@ export default function CybersecurityPage() {
         <div className="absolute inset-0 z-[1] overflow-hidden" aria-hidden="true">
           <img
             src="/images/cyber-main.png"
-            alt=""
+            alt="Artiflex IT, a cyber security company in Dubai delivering enterprise cybersecurity across the UAE"
             loading="eager"
             decoding="async"
             className="h-full w-full object-cover object-center opacity-55 [mask-image:radial-gradient(120%_90%_at_60%_45%,black_55%,transparent_100%)]"
@@ -596,13 +667,13 @@ export default function CybersecurityPage() {
 
               <h1 className="mt-2 font-display text-xl font-semibold leading-snug tracking-tight text-white sm:mt-3 sm:text-2xl md:text-3xl lg:text-[1.6rem] xl:text-4xl">
 
-                <span className="gradient-text"> Enterprise Cybersecurity Solutions for the UAE & Middle East</span>
+                <span className="gradient-text">Enterprise Cyber Security Company in the UAE & Middle East</span>
               </h1>
 
               <p className="mt-3 max-w-xl text-xs leading-relaxed text-slate-300 sm:mt-4 sm:text-sm md:text-base lg:text-sm xl:text-base">
-                A leading cybersecurity partner dedicated to defending UAE
-                enterprises against evolving digital threats, including security pillars,
-                top vendor comparisons, and UAE compliance requirements.
+                As a leading cyber security company in Dubai, Artiflex
+                defends UAE enterprises against evolving digital threats, with security
+                pillars, top vendor comparisons, and UAE compliance requirements.
               </p>
 
               <div className="mt-5 flex flex-col items-stretch gap-3 sm:mt-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3 lg:gap-3 xl:gap-4">
@@ -984,8 +1055,8 @@ export default function CybersecurityPage() {
                 Our Approach
               </span>
               <h2 className="mt-5 font-display text-3xl font-bold leading-[1.1] tracking-tight text-heading sm:text-4xl md:text-[2.75rem]">
-                Why Artiflex for{" "}
-                <span className="gradient-text">your Cybersecurity?</span>
+                Why Choose Artiflex Among{" "}
+                <span className="gradient-text">Cyber Security Companies in Dubai</span>
               </h2>
             </motion.div>
 
@@ -1000,8 +1071,8 @@ export default function CybersecurityPage() {
               <div className="relative border-l-2 border-[#28B5E1]/40 pl-6 sm:pl-8">
                 <p className="text-base leading-relaxed text-body sm:text-lg">
                   <span className="font-semibold text-heading">Artiflex IT</span> is a
-                  cybersecurity company in Dubai working with enterprise IT teams across
-                  the UAE for close to{" "}
+                  cyber security company in Dubai delivering cybersecurity
+                  services to enterprise IT teams across the UAE for close to{" "}
                   <span className="font-semibold text-[#045891]">fifteen years</span>.
                   The conversation around cybersecurity has shifted dramatically; it
                   used to be a once-a-year budget item, now it's on the board's agenda
@@ -1152,7 +1223,7 @@ export default function CybersecurityPage() {
                       className="pointer-events-none absolute right-0 top-0 h-48 w-48 rounded-full bg-[#28B5E1]/20 blur-[90px]"
                     />
                     <img
-                      src="/cybersecurity.png"
+                      src="/cybersecurity.webp"
                       alt="Cybersecurity"
                       loading="lazy"
                       className="relative w-full h-full object-cover"
@@ -1304,10 +1375,11 @@ export default function CybersecurityPage() {
             label="Security Pillars"
             title={
               <>
-                Our <span className="gradient-text">Essential</span> Solutions
+                Cybersecurity Solutions We{" "}
+                <span className="gradient-text">Deliver</span> in the UAE
               </>
             }
-            description="Every enterprise requires these seven security layers to achieve comprehensive protection across network, endpoint, data, and identity."
+            description="Cybersecurity in Dubai and across the wider UAE rests on seven layers. Our cybersecurity services in the UAE cover all of them, spanning network, endpoint, data, and identity, so no enterprise is left with a gap."
             centered
           />
 
@@ -1521,114 +1593,6 @@ export default function CybersecurityPage() {
                 </Card>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          VENDOR SCORECARD & STRATEGIC RECOMMENDATION
-          ═══════════════════════════════════════ */}
-      <section id="scorecard" className="relative bg-white py-16 sm:py-24">
-        <div className="shell">
-          <SectionHeader
-            label="Vendor Scorecard"
-            title={
-              <>
-                Overall Cybersecurity{" "}
-                <span className="gradient-text">Vendor Scorecard</span>
-              </>
-            }
-            description="Consolidated assessment across financial, strategic, and management dimensions. Scores are out of 10."
-            centered
-          />
-
-          <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-[#0A3D6B]/30 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
-            <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm">
-                <thead>
-                  <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7] text-white">
-                    <th className="px-4 py-4 text-xs font-semibold uppercase tracking-wider sm:px-5 sm:text-[13px]">
-                      Evaluation dimension
-                    </th>
-                    {[
-                      "Sophos",
-                      "Check Point",
-                      "Fortra",
-                      "Fortinet",
-                      "Palo Alto",
-                      "Cisco / Microsoft",
-                    ].map((v) => (
-                      <th
-                        key={v}
-                        className="border-l border-white/15 px-3 py-4 text-center font-display text-[13px] font-semibold sm:text-sm"
-                      >
-                        {v}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { dim: "Financial Value / TCO", scores: ["10", "9", "9", "8", "5", "6 / 9"] },
-                    { dim: "Ease of Management", scores: ["10", "9", "8", "7", "7", "5 / 9"] },
-                    { dim: "Threat Prevention", scores: ["9", "10", "9", "9", "9", "8 / 8"] },
-                    { dim: "Platform Integration", scores: ["10", "10", "9", "8", "8", "7 / 9"] },
-                    { dim: "Vendor Support Quality", scores: ["10", "9", "9", "8", "6", "7 / 8"] },
-                    { dim: "Scalability / Enterprise Fit", scores: ["9", "10", "9", "9", "10", "9 / 9"] },
-                  ].map((row, i) => (
-                    <tr
-                      key={row.dim}
-                      className={`${i % 2 === 0 ? "bg-white" : "bg-slate-50/60"} border-t border-slate-200/70`}
-                    >
-                      <td className="px-4 py-3 font-medium text-slate-900 sm:px-5">{row.dim}</td>
-                      {row.scores.map((s, j) => (
-                        <td
-                          key={j}
-                          className="border-l border-slate-200/70 px-3 py-3 text-center font-display text-[15px] font-semibold text-slate-700"
-                        >
-                          {s}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                  <tr className="border-t-2 border-[#1B8AC7]/30 bg-gradient-to-r from-[#045891]/[0.06] to-[#1B8AC7]/[0.06]">
-                    <td className="px-4 py-4 font-display text-[13px] font-bold uppercase tracking-wider text-[#045891] sm:px-5 sm:text-sm">
-                      Weighted Total
-                    </td>
-                    {["9.8", "9.6", "8.9", "8.3", "7.2", "7.0 / 8.6"].map((s, i) => (
-                      <td
-                        key={i}
-                        className={`border-l border-slate-200/70 px-3 py-4 text-center font-display text-base font-bold sm:text-lg ${i === 0 ? "text-[#1B8AC7]" : "text-slate-900"
-                          }`}
-                      >
-                        {s}
-                      </td>
-                    ))}
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="mx-auto mt-12 max-w-4xl rounded-3xl border border-[#0A3D6B]/15 bg-gradient-to-br from-[#04101E] via-[#0A3D6B] to-[#04101E] p-7 text-slate-200 shadow-xl shadow-[#1B8AC7]/10 sm:p-10">
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[#28B5E1]">
-              Strategic recommendation
-            </p>
-            <div className="mt-4 space-y-4 text-sm leading-relaxed sm:text-base">
-              <p>
-                <span className="font-semibold text-white">Sophos</span> is the #1 recommended vendor across firewall, endpoint, email, MDR, NDR and workspace protection. It delivers the best financial value, simplest management, and the deepest cross-product integration via Synchronized Security and Sophos Central.
-              </p>
-              <p>
-                <span className="font-semibold text-white">Check Point</span> is the top recommendation for large enterprises, banks and critical infrastructure where the highest threat-prevention rate is paramount, and is our second recommendation across the same security pillars.
-              </p>
-              <p>
-                <span className="font-semibold text-white">Fortra</span> is our recommended choice for DLP and Data Classification, Vulnerability Management (Tripwire), Brand Protection (PhishLabs), and is our third recommendation for Email Security where DMARC, content inspection, or sovereign deployment dominate.
-              </p>
-              <p>
-                <span className="font-semibold text-white">Saviynt</span> is our recommended choice for Identity Governance.{" "}
-                <span className="font-semibold text-white">CyberArk</span> is our recommended choice for PAM. Microsoft, Fortinet, Palo Alto, Cisco, Tenable and other named vendors all remain credible options where existing estate, regulatory, or specific-feature requirements dominate the decision.
-              </p>
-            </div>
           </div>
         </div>
       </section>

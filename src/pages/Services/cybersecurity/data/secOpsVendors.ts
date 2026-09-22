@@ -10,6 +10,9 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
   "sophos-mdr": {
     slug: "sophos-mdr",
     name: "Sophos MDR Complete",
+    metaTitle: "Sophos MDR Complete Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Sophos MDR Complete in Dubai and the UAE: fully managed 24/7 detection and response with a breach warranty. Deployed and managed by Artiflex IT.",
     logo: "/logos/sophos.svg",
     tagline: "The world's most-deployed MDR, with a guaranteed breach response",
     bestFor: "Best Overall MDR (Recommended)",
@@ -137,6 +140,9 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
   secureworks: {
     slug: "secureworks",
     name: "Secureworks Taegis MXDR",
+    metaTitle: "Secureworks Taegis MXDR Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Secureworks Taegis MXDR in Dubai and the UAE: managed detection and response with Counter Threat Unit intelligence. Deployed by Artiflex IT.",
     logo: "/logos/Secureworks.png",
     tagline: "Adversary-focused MXDR powered by the Counter Threat Unit",
     bestFor: "Best for Advanced Threat Intelligence (Recommended)",
@@ -256,6 +262,9 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
   "rapid7-mdr": {
     slug: "rapid7-mdr",
     name: "Rapid7 MDR",
+    metaTitle: "Rapid7 MDR Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Rapid7 MDR in Dubai and the UAE: 24/7 SOC monitoring and response on the InsightIDR cloud SIEM. Deployed and managed by Artiflex IT.",
     logo: "/logos/rapid7.png",
     tagline: "Managed detection on the InsightIDR platform with transparent SOC access",
     bestFor: "Best for Cloud-Native, Mid-Market SOC (Recommended)",
@@ -375,6 +384,9 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
   microsoft: {
     slug: "microsoft",
     name: "Microsoft Defender Experts (MDR)",
+    metaTitle: "Microsoft Defender Experts MDR UAE | Artiflex IT",
+    metaDescription:
+      "Microsoft Defender Experts MDR in Dubai and the UAE: 24/7 managed detection on Defender XDR and Sentinel. Deployed and managed by Artiflex IT.",
     logo: "/logos/MicrosoftDefender.webp",
     tagline: "Managed detection native to Microsoft Defender XDR and Sentinel",
     bestFor: "Best Value for Microsoft E5 Estates",
@@ -494,6 +506,9 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
   sentinelone: {
     slug: "sentinelone",
     name: "SentinelOne Vigilance Respond",
+    metaTitle: "SentinelOne Vigilance MDR UAE | Artiflex IT",
+    metaDescription:
+      "SentinelOne Vigilance Respond in Dubai and the UAE: 24/7 SOC triage and response on autonomous AI endpoint. Deployed by Artiflex IT.",
     logo: "/logos/SentinelOne.png",
     tagline: "MDR built on the autonomous Singularity platform",
     bestFor: "Best for Autonomous, Endpoint-First Response",
@@ -613,6 +628,9 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
   crowdstrike: {
     slug: "crowdstrike",
     name: "CrowdStrike Falcon Complete",
+    metaTitle: "CrowdStrike Falcon Complete MDR UAE | Artiflex IT",
+    metaDescription:
+      "CrowdStrike Falcon Complete in Dubai and the UAE: elite 24/7 managed detection and response with OverWatch hunting. Deployed by Artiflex IT.",
     logo: "/logos/CrowdStrike.webp",
     tagline: "Premium MDR with a breach-prevention warranty and elite hunting",
     bestFor: "Best for Elite, High-Budget Enterprise SOC",
@@ -732,6 +750,9 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
   "arctic-wolf": {
     slug: "arctic-wolf",
     name: "Arctic Wolf MDR",
+    metaTitle: "Arctic Wolf MDR Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Arctic Wolf MDR in Dubai and the UAE: 24/7 monitoring and guided response with a named Concierge Security Team. Deployed by Artiflex IT.",
     logo: "/logos/arctic-wolf.png",
     tagline: "Concierge security operations with a named team",
     bestFor: "Best for Guided, Concierge SOC Operations",
@@ -855,6 +876,9 @@ export const siemVendors: Record<string, SecOpsVendor> = {
   rapid7: {
     slug: "rapid7",
     name: "Rapid7 InsightIDR",
+    metaTitle: "Rapid7 InsightIDR SIEM UAE | Artiflex IT",
+    metaDescription:
+      "Rapid7 InsightIDR in Dubai and the UAE: cloud-native SIEM with UEBA and predictable user-based pricing. Deployed and managed by Artiflex IT.",
     logo: "/logos/rapid7.png",
     tagline: "Cloud-native SIEM with UEBA from day one",
     bestFor: "Best Overall Value SIEM (Recommended)",
@@ -974,6 +998,9 @@ export const siemVendors: Record<string, SecOpsVendor> = {
   splunk: {
     slug: "splunk",
     name: "Cisco Splunk Enterprise Security",
+    metaTitle: "Splunk Enterprise Security SIEM UAE | Artiflex IT",
+    metaDescription:
+      "Cisco Splunk Enterprise Security in Dubai and the UAE: schema-on-read SIEM with SPL analytics at scale. Deployed and managed by Artiflex IT.",
     logo: "/logos/Splunk.webp",
     tagline: "The market-leading data platform for security analytics at scale",
     bestFor: "Best for Large-Scale, Custom Analytics (Recommended)",
@@ -1093,6 +1120,9 @@ export const siemVendors: Record<string, SecOpsVendor> = {
   exabeam: {
     slug: "exabeam",
     name: "Exabeam New-Scale SIEM",
+    metaTitle: "Exabeam New-Scale SIEM UAE | Artiflex IT",
+    metaDescription:
+      "Exabeam New-Scale SIEM in Dubai and the UAE: UEBA-first analytics with automated Smart Timelines. Deployed and managed by Artiflex IT.",
     logo: "/logos/Exabeam.png",
     tagline: "UEBA-first SIEM that builds the attack timeline for you",
     bestFor: "Best for Insider Threat and UEBA (Recommended)",
@@ -1212,6 +1242,9 @@ export const siemVendors: Record<string, SecOpsVendor> = {
   sentinel: {
     slug: "sentinel",
     name: "Microsoft Sentinel",
+    metaTitle: "Microsoft Sentinel SIEM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Microsoft Sentinel in Dubai and the UAE: cloud-native SIEM with deep M365, Entra and Defender XDR integration. Deployed by Artiflex IT.",
     logo: "/logos/MicrosoftDefender.webp",
     tagline: "Cloud-native SIEM and SOAR built into Azure",
     bestFor: "Best for Microsoft and Azure Estates",
@@ -1331,6 +1364,9 @@ export const siemVendors: Record<string, SecOpsVendor> = {
   qradar: {
     slug: "qradar",
     name: "IBM QRadar",
+    metaTitle: "IBM QRadar SIEM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "IBM QRadar in Dubai and the UAE: powerful correlation and QFlow network analysis on the QRadar Suite. Deployed and managed by Artiflex IT.",
     logo: "/logos/IBM-Security.png",
     tagline: "Enterprise SIEM with deep correlation and a modern cloud suite",
     bestFor: "Best for Regulated, Compliance-Heavy Enterprises",
@@ -1450,6 +1486,9 @@ export const siemVendors: Record<string, SecOpsVendor> = {
   secureworks: {
     slug: "secureworks",
     name: "Secureworks Taegis XDR",
+    metaTitle: "Secureworks Taegis XDR SIEM UAE | Artiflex IT",
+    metaDescription:
+      "Secureworks Taegis XDR in Dubai and the UAE: open XDR with Counter Threat Unit intelligence and optional MXDR. Deployed by Artiflex IT.",
     logo: "/logos/Secureworks.png",
     tagline: "Analytics-driven XDR with Counter Threat Unit intelligence",
     bestFor: "Best for Open XDR with Threat Intelligence",
@@ -1569,6 +1608,9 @@ export const siemVendors: Record<string, SecOpsVendor> = {
   wazuh: {
     slug: "wazuh",
     name: "Wazuh Open Source SIEM",
+    metaTitle: "Wazuh Open Source SIEM UAE | Artiflex IT",
+    metaDescription:
+      "Wazuh open-source SIEM in Dubai and the UAE: log analysis, FIM, IDS and compliance in one platform. Deployed and managed by Artiflex IT.",
     logo: "/logos/Wazuh.png",
     tagline: "Free, open-source SIEM and XDR you fully control",
     bestFor: "Best for Budget-Conscious, Sovereign and OSS-First Teams",
@@ -1692,6 +1734,9 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
   linkshadow: {
     slug: "linkshadow",
     name: "LinkShadow NDR",
+    metaTitle: "LinkShadow NDR Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "LinkShadow NDR in Dubai and the UAE: UAE-founded network detection and response with AI-driven threat analytics. Deployed by Artiflex IT.",
     logo: "/logos/LinkShadow.png",
     tagline: "UAE-founded NDR with native regional compliance",
     bestFor: "Regional Pick for the UAE (Recommended)",
@@ -1811,6 +1856,9 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
   "sophos-ndr": {
     slug: "sophos-ndr",
     name: "Sophos NDR",
+    metaTitle: "Sophos NDR Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Sophos NDR in Dubai and the UAE: network detection and response that feeds the Sophos managed SOC. Deployed and managed by Artiflex IT.",
     logo: "/logos/sophos.svg",
     tagline: "Network detection that feeds the Sophos MDR and XDR ecosystem",
     bestFor: "Best for Sophos-Standardised Estates",
@@ -1930,6 +1978,9 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
   vectra: {
     slug: "vectra",
     name: "Vectra AI",
+    metaTitle: "Vectra AI NDR Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Vectra AI in Dubai and the UAE: AI-driven network detection and response with Attack Signal Intelligence. Deployed and managed by Artiflex IT.",
     logo: "/logos/Vectra.png",
     tagline: "AI-driven Attack Signal Intelligence across network, identity and cloud",
     bestFor: "Best for AI-Led Attack Signal and Hybrid Cloud",
@@ -2049,6 +2100,9 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
   darktrace: {
     slug: "darktrace",
     name: "Darktrace / NETWORK",
+    metaTitle: "Darktrace NETWORK NDR UAE | Artiflex IT",
+    metaDescription:
+      "Darktrace / NETWORK in Dubai and the UAE: self-learning AI network detection and response. Deployed and managed by Artiflex IT.",
     logo: "/logos/Darktrace.png",
     tagline: "Self-Learning AI with autonomous response to novel threats",
     bestFor: "Best for Autonomous Response and Novel-Threat Defence",
@@ -2168,6 +2222,9 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
   extrahop: {
     slug: "extrahop",
     name: "ExtraHop RevealX",
+    metaTitle: "ExtraHop RevealX NDR UAE | Artiflex IT",
+    metaDescription:
+      "ExtraHop RevealX in Dubai and the UAE: wire-data network detection and response with decryption at scale. Deployed by Artiflex IT.",
     logo: "/logos/ExtraHop.png",
     tagline: "Wire-data NDR with decryption and forensic-grade fidelity",
     bestFor: "Best for High-Fidelity Packet and Decryption Visibility",
@@ -2287,6 +2344,9 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
   arista: {
     slug: "arista",
     name: "Arista NDR",
+    metaTitle: "Arista NDR Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Arista NDR in Dubai and the UAE: AI-driven network detection and response from the Awake platform. Deployed and managed by Artiflex IT.",
     logo: "/logos/Arista.png",
     tagline: "Network-derived threat detection with an autonomous AI analyst",
     bestFor: "Best for Network-Native, Data-Center-Scale NDR",
@@ -2406,6 +2466,9 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
   trellix: {
     slug: "trellix",
     name: "Trellix NDR",
+    metaTitle: "Trellix NDR Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Trellix NDR in Dubai and the UAE: network detection and response integrated with the Trellix XDR ecosystem. Deployed by Artiflex IT.",
     logo: "/logos/Trellix.png",
     tagline: "Signature plus behaviour detection with FireEye threat heritage",
     bestFor: "Best for Threat-Intelligence-Rich, Broad-Platform Estates",
@@ -2525,6 +2588,9 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
   corelight: {
     slug: "corelight",
     name: "Corelight Open NDR",
+    metaTitle: "Corelight Open NDR Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Corelight Open NDR in Dubai and the UAE: Zeek and Suricata-based network evidence for detection and hunting. Deployed by Artiflex IT.",
     logo: "/logos/Corelight.png",
     tagline: "Open NDR built on Zeek and Suricata, evidence for the hunt",
     bestFor: "Best for Threat Hunting and Open, Evidence-Rich NDR",

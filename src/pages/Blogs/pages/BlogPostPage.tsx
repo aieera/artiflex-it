@@ -1,11 +1,16 @@
 /**
  * BlogPostPage, single-post template.
  *
- * Reads the slug from the URL, looks up the post in the typed catalogue
- * (src/content/blog/posts.ts), and renders the article with full SEO
+ * Reads the slug from the URL, looks up the post in the registry
+ * (src/content/blog/index.ts), and renders the article with full SEO
  * metadata (BlogPosting + BreadcrumbList JSON-LD, Article OG tags,
  * canonical, hreflang). Walks the structured ContentBlock array and
  * emits semantic HTML, h2/h3, paragraphs, lists, callouts, CTAs.
+ *
+ * Loading model: metadata is synchronous, so the head tags, breadcrumbs,
+ * hero, and related posts render on first paint. Only the article body
+ * is fetched on demand (one chunk per post, see the registry docblock),
+ * which keeps /blog and every other post out of this page's payload.
  *
  * If the slug doesn't match any post, redirects to /blog.
  */
@@ -21,9 +26,10 @@ import {
 import {
   getPostBySlug,
   getRelatedPosts,
+  loadPostContent,
   type BlogPost,
   type ContentBlock,
-} from "@/content/blog/posts";
+} from "@/content/blog";
 
 const SITE = "https://artiflexit.com";
 
@@ -248,12 +254,34 @@ function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
 }
 
 /* ──────────────────────────────────────────────────────────────── */
+/* Placeholder shown while the article's content chunk is in flight  */
+/* ──────────────────────────────────────────────────────────────── */
+
+function ArticleSkeleton() {
+  const widths = ["w-full", "w-full", "w-11/12", "w-full", "w-4/5"];
+  return (
+    <div aria-hidden="true" className="animate-pulse">
+      {[0, 1, 2].map((para) => (
+        <div key={para} className="mb-8 space-y-3">
+          {widths.map((w, i) => (
+            <div
+              key={i}
+              className={`h-4 rounded bg-slate-200/70 sm:h-5 ${w}`}
+            />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ──────────────────────────────────────────────────────────────── */
 /* Word count for schema                                              */
 /* ──────────────────────────────────────────────────────────────── */
 
-function wordCountOf(post: BlogPost): number {
+function wordCountOf(post: BlogPost, blocks: ContentBlock[]): number {
   let count = post.title.split(/\s+/).length + post.excerpt.split(/\s+/).length;
-  for (const b of post.content) {
+  for (const b of blocks) {
     if ("text" in b && typeof b.text === "string") {
       count += b.text.split(/\s+/).filter(Boolean).length;
     }
@@ -382,6 +410,21 @@ export default function BlogPostPage() {
   const related = useMemo(() => (slug ? getRelatedPosts(slug) : []), [slug]);
   const [progress, setProgress] = useState(0);
 
+  // Article body, fetched per slug. Null until its chunk resolves.
+  const [blocks, setBlocks] = useState<ContentBlock[] | null>(null);
+
+  useEffect(() => {
+    if (!slug) return;
+    let cancelled = false;
+    setBlocks(null);
+    loadPostContent(slug).then((c) => {
+      if (!cancelled) setBlocks(c);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [slug]);
+
   // Reading-progress bar.
   useEffect(() => {
     const onScroll = () => {
@@ -395,13 +438,15 @@ export default function BlogPostPage() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [slug]);
+    // `blocks` is a dependency because the article height, and therefore
+    // the progress denominator, is only final once the body has loaded.
+  }, [slug, blocks]);
 
   if (!post) return <Navigate to="/blog" replace />;
 
   const url = `${SITE}/blog/${post.slug}`;
   const ogImage = `${SITE}${post.ogImage || post.image}`;
-  const wordCount = wordCountOf(post);
+  const wordCount = blocks ? wordCountOf(post, blocks) : null;
 
   return (
     <>
@@ -409,11 +454,14 @@ export default function BlogPostPage() {
         <title>{post.metaTitle}</title>
         <meta name="description" content={post.metaDescription} />
         <link rel="canonical" href={url} />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
         {/* hreflang */}
         <link rel="alternate" hrefLang="en-ae" href={url} />
         <link rel="alternate" hrefLang="en-om" href={url} />
         <link rel="alternate" hrefLang="en-sa" href={url} />
+        <link rel="alternate" hrefLang="en-in" href={url} />
+        <link rel="alternate" hrefLang="en" href={url} />
         <link rel="alternate" hrefLang="x-default" href={url} />
 
         {/* Open Graph (article) */}
@@ -446,7 +494,9 @@ export default function BlogPostPage() {
           image: ogImage,
           datePublished: `${post.date}T00:00:00Z`,
           dateModified: `${post.updated || post.date}T00:00:00Z`,
-          wordCount,
+          // Omitted until the body resolves. The prerender waits for the
+          // article, so the static HTML crawlers receive always has it.
+          ...(wordCount !== null ? { wordCount } : {}),
           articleSection: post.tagLabel,
           inLanguage: "en-AE",
           author: {
@@ -567,13 +617,17 @@ export default function BlogPostPage() {
             {/* Sticky TOC, desktop only */}
             <aside className="hidden lg:block">
               <div className="sticky top-28 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2">
-                <TableOfContents blocks={post.content} />
+                {blocks && <TableOfContents blocks={blocks} />}
               </div>
             </aside>
 
             {/* Article column, capped at max-w-3xl for readable line length */}
             <div className="mx-auto w-full max-w-3xl lg:mx-0">
-              <ContentRenderer blocks={post.content} />
+              {blocks ? (
+                <ContentRenderer blocks={blocks} />
+              ) : (
+                <ArticleSkeleton />
+              )}
 
           {/* AUTHOR BIO, E-E-A-T signal for cybersecurity / IT content. */}
           <aside className="mt-12 overflow-hidden rounded-2xl border border-border-light bg-gradient-to-br from-surface-secondary to-white p-6 sm:p-8">

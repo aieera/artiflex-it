@@ -32,19 +32,84 @@ export default function VendorDetailPage() {
     .map((w) => w[0]!.toUpperCase())
     .join("");
 
+  /* Build a vendor-specific page title that varies by primary category instead
+     of using a single template across all 115 vendor pages. Each variant uses
+     natural action verbs (deploy, implement, set up) so titles read like real
+     marketing copy, not a SEO mill. */
+  const titleByCategory: Record<string, string> = {
+    "endpoint":          `${vendor.name} EDR & Endpoint Protection in Dubai`,
+    "network-security":  `${vendor.name} Firewall Deployment in Dubai`,
+    "email":             `${vendor.name} for Email Security in UAE`,
+    "dlp":               `Deploy ${vendor.name} DLP across UAE Endpoints & Cloud`,
+    "iam":               `${vendor.name} Identity & Access Management Dubai`,
+    "sase":              `${vendor.name} SASE & Workspace Protection Dubai`,
+    "siem":              `${vendor.name} for Security Operations in UAE`,
+    "vuln":              `${vendor.name} Vulnerability Management in Dubai`,
+    "app-security":      `${vendor.name} Application Security in UAE`,
+    "cloud":             `${vendor.name} Cloud Migration & Operations Dubai`,
+    "backup":            `${vendor.name} Backup & Recovery in UAE`,
+    "networking":        `${vendor.name} Networking & Wireless in Dubai`,
+    "servers":           `${vendor.name} Servers & Compute in UAE`,
+    "storage":           `${vendor.name} Enterprise Storage in Dubai`,
+    "power":             `${vendor.name} UPS & Power Solutions Dubai`,
+    "surveillance":      `${vendor.name} CCTV & Video Surveillance Dubai`,
+    "access-control":    `${vendor.name} Access Control in UAE`,
+    "cabling":           `${vendor.name} Structured Cabling in Dubai`,
+    "printing":          `${vendor.name} Printers & Managed Print Dubai`,
+    "comms":             `${vendor.name} UC & Telephony in Dubai`,
+  };
+  const primaryCat = vendor.categories[0];
+
+  /* Sophos is our flagship Platinum partnership and deserves a dedicated
+     title and description tuned to "Sophos Platinum Partner UAE" search
+     intent, rather than the generic per-category template. */
+  const isSophos = vendor.slug === "sophos";
+  const pageTitle = isSophos
+    ? "Sophos Platinum Partner in UAE | ArtiflexIT Dubai"
+    : `${vendor.name} in Dubai & UAE | Artiflex IT`;
+  const pageDescription = isSophos
+    ? "Artiflex IT is a Sophos Platinum Partner in the UAE, delivering Sophos firewall, endpoint, XDR, MDR and email security across Dubai, Oman and Saudi Arabia."
+    : vendor.description;
+
+  const vendorUrl = `https://artiflexit.com/vendors/${vendor.slug}`;
+
   return (
     <>
-      <title>{`${vendor.name} | Vendor Partner UAE | Artiflex IT`}</title>
-      <meta name="description" content={vendor.description} />
-      <meta name="keywords" content={`${vendor.name} UAE, ${vendor.name} partner UAE, ${vendor.name} reseller Dubai, ${vendor.categories.map((c) => CATEGORY_BADGE[c]).join(", ")}, Artiflex IT`} />
-      <link rel="canonical" href={`https://artiflexit.com/vendors/${vendor.slug}`} />
+      <title>{pageTitle}</title>
+      <meta name="description" content={pageDescription} />
+      <link rel="canonical" href={vendorUrl} />
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+      <meta httpEquiv="content-language" content="en-AE" />
+      <meta name="geo.region" content="AE-DU" />
+      <meta name="geo.placename" content="Dubai" />
+      <meta name="geo.position" content="25.2528;55.3300" />
+      <meta name="ICBM" content="25.2528, 55.3300" />
+
+      <link rel="alternate" hrefLang="en-ae" href={vendorUrl} />
+      <link rel="alternate" hrefLang="en-om" href={vendorUrl} />
+      <link rel="alternate" hrefLang="en-sa" href={vendorUrl} />
+      <link rel="alternate" hrefLang="en-in" href={vendorUrl} />
+      <link rel="alternate" hrefLang="en" href={vendorUrl} />
+      <link rel="alternate" hrefLang="x-default" href={vendorUrl} />
+
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={pageDescription} />
+      <meta property="og:url" content={vendorUrl} />
+      <meta property="og:site_name" content="Artiflex Information Technology" />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={`${vendor.name} | Vendor Partner UAE | Artiflex IT`} />
-      <meta property="og:description" content={vendor.description} />
-      <meta property="og:url" content={`https://artiflexit.com/vendors/${vendor.slug}`} />
+      <meta property="og:locale" content="en_AE" />
+      <meta property="og:locale:alternate" content="en_US" />
+      <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={pageTitle} />
+
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={`${vendor.name} | Vendor Partner UAE | Artiflex IT`} />
-      <meta name="twitter:description" content={vendor.description} />
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={pageDescription} />
+      <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+      <meta name="twitter:site" content="@artiflexit" />
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -66,6 +131,43 @@ export default function VendorDetailPage() {
           ],
         })}
       </script>
+      {/* Sophos-specific Organization schema with award + credentials.
+         Helps Google and LLMs extract the Platinum credential as structured
+         data when answering "Sophos Platinum Partner UAE" queries. */}
+      {isSophos && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://artiflexit.com/#organization",
+            name: "Artiflex Information Technology",
+            url: "https://artiflexit.com/",
+            logo: "https://artiflexit.com/logos/artiflexit%20logo.svg",
+            award: "Sophos Platinum Partner",
+            hasCredential: [
+              {
+                "@type": "EducationalOccupationalCredential",
+                name: "Sophos Platinum Partner",
+                credentialCategory: "Vendor Partnership Tier",
+                recognizedBy: { "@type": "Organization", name: "Sophos", url: "https://www.sophos.com" },
+                url: "https://sophos2.my.site.com/sophospartnerportal/s/partner-finder",
+              },
+              {
+                "@type": "EducationalOccupationalCredential",
+                name: "Sophos Platform Accredited Partner",
+                credentialCategory: "Technical Accreditation",
+                recognizedBy: { "@type": "Organization", name: "Sophos", url: "https://www.sophos.com" },
+              },
+              {
+                "@type": "EducationalOccupationalCredential",
+                name: "Sophos Firewall Accredited Partner",
+                credentialCategory: "Technical Accreditation",
+                recognizedBy: { "@type": "Organization", name: "Sophos", url: "https://www.sophos.com" },
+              },
+            ],
+          })}
+        </script>
+      )}
 
       {/* HERO */}
       <PageHero

@@ -1,6 +1,8 @@
 export type DlpVendor = {
   slug: string;
   name: string;
+  metaTitle: string;
+  metaDescription: string;
   logo?: string;
   tagline: string;
   bestFor: string;
@@ -62,6 +64,9 @@ export const dlpVendors: Record<string, DlpVendor> = {
   "fortra-dlp": {
     slug: "fortra-dlp",
     name: "Fortra Data Security",
+    metaTitle: "Fortra Data Security DLP UAE | Artiflex IT",
+    metaDescription:
+      "Fortra Data Security in Dubai and the UAE: email, endpoint and adaptive DLP with Clearswift redaction. Deployed and managed by Artiflex IT.",
     logo: "/logos/Fortra.png",
     tagline: "Boldon James data classification, Digital Guardian endpoint DLP and Clearswift adaptive redaction in one enterprise data security suite",
     bestFor: "Classification-Led Enterprise & Sovereign DLP",
@@ -224,6 +229,9 @@ export const dlpVendors: Record<string, DlpVendor> = {
   "check-point-harmony-dlp": {
     slug: "check-point-harmony-dlp",
     name: "Check Point Harmony DLP",
+    metaTitle: "Check Point Harmony DLP UAE | Artiflex IT",
+    metaDescription:
+      "Check Point Harmony DLP in Dubai and the UAE: data loss prevention across email, endpoint and web on the Infinity platform. Deployed by Artiflex IT.",
     logo: "/logos/Check-Point-2024-logo-color.svg",
     tagline: "Data protection across network, endpoint, email, and cloud under one Infinity policy",
     bestFor: "Best for Check Point Infinity Estates (Recommended)",
@@ -362,6 +370,9 @@ export const dlpVendors: Record<string, DlpVendor> = {
   "microsoft-purview-dlp": {
     slug: "microsoft-purview-dlp",
     name: "Microsoft Purview DLP",
+    metaTitle: "Microsoft Purview DLP UAE | Artiflex IT",
+    metaDescription:
+      "Microsoft Purview DLP in Dubai and the UAE: native data loss prevention across M365, endpoints and cloud apps. Deployed and managed by Artiflex IT.",
     logo: "/logos/microsoft.svg",
     tagline: "Native DLP for Microsoft 365 and Windows, integrated with Sensitivity Labels and Insider Risk",
     bestFor: "Best for Microsoft 365 E5 Estates (Recommended)",
@@ -500,6 +511,9 @@ export const dlpVendors: Record<string, DlpVendor> = {
   "forcepoint-dlp": {
     slug: "forcepoint-dlp",
     name: "Forcepoint Data Security",
+    metaTitle: "Forcepoint Data Security DLP UAE | Artiflex IT",
+    metaDescription:
+      "Forcepoint Data Security in Dubai and the UAE: enterprise DLP with risk-adaptive protection across channels. Deployed and managed by Artiflex IT.",
     logo: "/logos/forcepoint.png",
     tagline: "Risk-Adaptive Protection with behavioural analytics across endpoint, network, and cloud",
     bestFor: "Best for Enterprise DLP Depth (Recommended)",
@@ -638,6 +652,9 @@ export const dlpVendors: Record<string, DlpVendor> = {
   "symantec-dlp-broadcom": {
     slug: "symantec-dlp-broadcom",
     name: "Symantec Data Loss Prevention",
+    metaTitle: "Symantec DLP Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Symantec Data Loss Prevention (Broadcom) in Dubai and the UAE: enterprise DLP across endpoint, network, storage and cloud. Deployed by Artiflex IT.",
     logo: "/logos/Symantec.png",
     tagline: "The original enterprise DLP, with the deepest content classification in the market",
     bestFor: "Best for Mature Enterprise DLP (Recommended)",
@@ -776,6 +793,9 @@ export const dlpVendors: Record<string, DlpVendor> = {
   "trellix-dlp": {
     slug: "trellix-dlp",
     name: "Trellix Data Loss Prevention",
+    metaTitle: "Trellix DLP Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Trellix Data Loss Prevention in Dubai and the UAE: endpoint and network DLP integrated with the Trellix XDR ecosystem. Deployed by Artiflex IT.",
     logo: "/logos/Trellix.png",
     tagline: "Mature endpoint, network, and discovery DLP unified under Trellix ePolicy Orchestrator",
     bestFor: "Strong Choice for McAfee / Trellix Estates (Recommended)",
@@ -914,6 +934,9 @@ export const dlpVendors: Record<string, DlpVendor> = {
   "sophos-dlp": {
     slug: "sophos-dlp",
     name: "Sophos Data Protection",
+    metaTitle: "Sophos Data Protection DLP UAE | Artiflex IT",
+    metaDescription:
+      "Sophos Data Protection in Dubai and the UAE: endpoint and email DLP managed from Sophos Central. Deployed and managed by Artiflex IT.",
     logo: "/logos/sophos.svg",
     tagline: "Endpoint DLP integrated with Intercept X, Sophos Email, and Sophos Central",
     bestFor: "Best Overall Value (Recommended)",
@@ -1052,6 +1075,9 @@ export const dlpVendors: Record<string, DlpVendor> = {
   "netskope-dlp": {
     slug: "netskope-dlp",
     name: "Netskope Data Security",
+    metaTitle: "Netskope Data Security DLP UAE | Artiflex IT",
+    metaDescription:
+      "Netskope Data Security in Dubai and the UAE: cloud-native DLP with deep SaaS and web visibility on the SSE platform. Deployed by Artiflex IT.",
     logo: "/logos/Netscope.png",
     tagline: "SASE-native DLP for cloud, SaaS, web, and private apps with ML-driven classification",
     bestFor: "Specialist Choice: SASE-Native DLP",

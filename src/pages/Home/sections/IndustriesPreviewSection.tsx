@@ -99,7 +99,7 @@ export function IndustriesPreviewSection() {
       <div className="absolute inset-0 z-0">
         <img
           src="/images/code-bg.jpg"
-          alt=""
+          alt="" aria-hidden="true"
           className="w-full h-full object-cover"
           loading="lazy"
         />
@@ -133,11 +133,18 @@ export function IndustriesPreviewSection() {
                   key={industry.title}
                   customClass="overflow-hidden !bg-black !border-white/10"
                 >
-                  {/* Background image */}
+                  {/* Background image. loading=lazy + decoding=async: these
+                      cards sit far below the fold; width/height give the
+                      browser the intrinsic ratio (source photos are resized
+                      to 900px wide). */}
                   <img
                     src={industry.image}
                     alt={industry.title}
                     className="absolute inset-0 w-full h-full object-cover opacity-35"
+                    loading="lazy"
+                    decoding="async"
+                    width={900}
+                    height={600}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/20" />
 

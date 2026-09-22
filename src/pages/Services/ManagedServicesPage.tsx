@@ -501,25 +501,41 @@ export default function ManagedServicesPage() {
   return (
     <>
       <>
-        <title>Managed IT Services UAE | Plan, Build, Run | ArtiflexIT</title>
-        <meta
-          name="description"
-          content="Vendor-neutral managed IT services across the UAE, Oman, and Saudi Arabia. IT consulting, infrastructure design, implementation, AMC, 24/7 monitoring, and full IT outsourcing from one accountable team."
-        />
-        <meta
-          name="keywords"
-          content="managed IT services UAE, IT outsourcing Dubai, AMC UAE, IT consulting GCC, co-managed IT UAE, infrastructure design Dubai, 24/7 IT monitoring UAE, IT operating model, plan build run IT services, managed services Saudi Arabia, managed IT Oman"
-        />
+        <title>Managed IT Services Dubai | AMC & 24/7 SLA Support</title>
+        <meta name="description" content="Managed IT services and AMC in Dubai: 24/7 monitoring, patch management, help desk and incident response. SLA-backed support across UAE, Oman and Saudi Arabia." />
         <link rel="canonical" href="https://artiflexit.com/managed-services" />
-        <meta property="og:title" content="Managed IT Services UAE | Plan, Build, Run | ArtiflexIT" />
-        <meta property="og:description" content="Consulting, implementation, and outsourcing across the UAE, Oman, and Saudi Arabia. Vendor-neutral, compliance-aware, built around your business outcomes." />
-        <meta property="og:image" content="https://artiflexit.com/og/managed-services.png" />
-        <meta property="og:type" content="website" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/managed-services" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/managed-services" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/managed-services" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/managed-services" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/managed-services" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/managed-services" />
+
+        <meta property="og:title" content="Managed IT Services Dubai | AMC & 24/7 SLA Support" />
+        <meta property="og:description" content="Managed IT services and AMC in Dubai: 24/7 monitoring, patch management, help desk and incident response. SLA-backed support across UAE, Oman and Saudi Arabia." />
         <meta property="og:url" content="https://artiflexit.com/managed-services" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT managed services and AMC support in Dubai, UAE" />
+
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Managed IT Services UAE | ArtiflexIT" />
-        <meta name="twitter:description" content="Plan, build, run IT environments across the GCC. Consulting, AMC, monitoring, full outsourcing, on one accountable team." />
-        <meta name="twitter:image" content="https://artiflexit.com/og/managed-services.png" />
+        <meta name="twitter:title" content="Managed IT Services Dubai | AMC & 24/7 SLA Support" />
+        <meta name="twitter:description" content="24/7 monitoring, AMC, patch management and SLA-backed incident response across UAE, Oman and Saudi Arabia." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Service",
@@ -559,7 +575,7 @@ export default function ManagedServicesPage() {
       </>
 
       <PageHero
-        title={<>Managed IT Services <span className="gradient-text">UAE</span></>}
+        title={<>Managed IT Services &amp; AMC in <span className="gradient-text">Dubai</span></>}
         backgroundImage="/managed-it-services.webp"
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -567,10 +583,10 @@ export default function ManagedServicesPage() {
         ]}
       >
         <p className="-mt-2 max-w-5xl font-display text-xl font-medium leading-snug text-slate-200 sm:text-xl md:text-2xl lg:text-[2.0rem] lg:leading-snug">
-          Consulting, Implementation, and Outsourcing across the UAE, Oman, and Saudi Arabia.
+          24/7 monitoring, AMC, patch management and SLA-backed support across UAE, Oman and Saudi Arabia.
         </p>
         <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-400 sm:mt-6 sm:text-base">
-          Artiflex IT plans, builds, and runs IT environments for businesses across the GCC. From data center design and rollout to fully outsourced IT operations: vendor-neutral, compliance-aware, and built around your business outcomes. The conversation starts with your environment, your priorities, and your budget.
+          Artiflex IT plans, builds and runs IT environments for businesses across the GCC. From annual maintenance contracts (AMC) and 24/7 NOC monitoring to fully outsourced IT operations, our managed service provider model is vendor-neutral, compliance-aware and built around your business outcomes. The conversation starts with your environment, your priorities and your budget.
         </p>
         <div className="mt-7 sm:mt-9">
           <HeroCTAs />

@@ -1,9 +1,33 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import compression from "vite-plugin-compression";
 import path from "path";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    // Brotli pre-compression: writes <file>.br alongside every JS/CSS/HTML
+    // during build. Hostinger Apache (with mod_brotli) will serve these
+    // directly when the browser advertises "Accept-Encoding: br", which
+    // means zero server CPU spent compressing on every request. Falls back
+    // to gzip below if mod_brotli isn't loaded.
+    compression({
+      algorithm: "brotliCompress",
+      ext: ".br",
+      threshold: 1024, // skip tiny files where compression adds overhead
+      deleteOriginFile: false,
+      filter: /\.(js|mjs|json|css|html|svg|xml|txt|webmanifest)$/i,
+    }),
+    // gzip pre-compression: same idea, written as <file>.gz. Universal
+    // fallback for any server that supports mod_deflate but not mod_brotli.
+    compression({
+      algorithm: "gzip",
+      ext: ".gz",
+      threshold: 1024,
+      deleteOriginFile: false,
+      filter: /\.(js|mjs|json|css|html|svg|xml|txt|webmanifest)$/i,
+    }),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

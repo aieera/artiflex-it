@@ -1,6 +1,13 @@
 export type FirewallVendor = {
   slug: string;
   name: string;
+  /**
+   * Optional SEO-tuned brand name used in the page title and JSON-LD
+   * Service.brand. Falls back to `name` when omitted.
+   */
+  seoBrand?: string;
+  metaTitle: string;
+  metaDescription: string;
   logo: string;
   tagline: string;
   bestFor: string;
@@ -65,6 +72,9 @@ export type FirewallVendor = {
 export const firewallVendors: Record<string, FirewallVendor> = {
   "sophos-xgs": {
     slug: "sophos-xgs",
+    metaTitle: "Sophos XGS Firewall in Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Sophos XGS firewall in Dubai and the UAE with best-in-class TLS 1.3 inspection and single-pane management. Artiflex handles sizing, deployment and 24/7 support.",
     name: "Sophos XGS",
     logo: "/logos/sophos.svg",
     tagline: "Best-in-class TLS 1.3 inspection with single-pane operations",
@@ -198,6 +208,9 @@ export const firewallVendors: Record<string, FirewallVendor> = {
 
   "check-point-quantum": {
     slug: "check-point-quantum",
+    metaTitle: "Check Point Quantum Firewall Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Check Point Quantum firewall in Dubai and the UAE with ThreatCloud AI threat prevention. Artiflex handles sizing, deployment and managed support across the UAE.",
     name: "Check Point Quantum",
     logo: "/logos/Check-Point-2024-logo-color.svg",
     tagline: "Industry-leading threat prevention powered by ThreatCloud AI",
@@ -352,6 +365,9 @@ export const firewallVendors: Record<string, FirewallVendor> = {
 
   "palo-alto-networks": {
     slug: "palo-alto-networks",
+    metaTitle: "Palo Alto PA-Series Firewall Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Palo Alto PA-Series firewall in Dubai and the UAE with App-ID, User-ID and Precision AI threat prevention. Artiflex handles sizing, deployment and support.",
     name: "Palo Alto PA-Series",
     logo: "/logos/PaloAltoNetworks.svg",
     tagline: "App-ID, User-ID, and Precision AI for inline threat prevention",
@@ -506,6 +522,9 @@ export const firewallVendors: Record<string, FirewallVendor> = {
 
   "cisco-secure-firewall": {
     slug: "cisco-secure-firewall",
+    metaTitle: "Cisco Secure Firewall in Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Cisco Secure Firewall in Dubai and the UAE: Talos-powered NGFW with deep Cisco network and SecureX integration. Artiflex handles sizing, deployment and support.",
     name: "Cisco Secure Firewall",
     logo: "/logos/Cisco.svg",
     tagline: "Talos-powered NGFW with deep integration into the Cisco network and security stack",
@@ -660,6 +679,9 @@ export const firewallVendors: Record<string, FirewallVendor> = {
 
   "fortinet-fortigate": {
     slug: "fortinet-fortigate",
+    metaTitle: "Fortinet FortiGate Firewall Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Fortinet FortiGate firewall in Dubai and the UAE with ASIC-accelerated NGFW, SD-WAN and the Security Fabric. Artiflex handles sizing, deployment and support.",
     name: "Fortinet FortiGate",
     logo: "/logos/Fortinet.svg",
     tagline: "ASIC-accelerated NGFW with integrated SD-WAN and the Security Fabric",
@@ -814,6 +836,9 @@ export const firewallVendors: Record<string, FirewallVendor> = {
 
   "sonicwall": {
     slug: "sonicwall",
+    metaTitle: "SonicWall Firewall in Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "SonicWall TZ and NSa firewalls in Dubai and the UAE with Capture ATP and RTDMI sandboxing for SMB and mid-market. Artiflex handles sizing and managed support.",
     name: "SonicWall TZ and NSa",
     logo: "/logos/SonicWall.svg",
     tagline: "Capture ATP and RTDMI multi-engine sandboxing for budget-conscious SMB",

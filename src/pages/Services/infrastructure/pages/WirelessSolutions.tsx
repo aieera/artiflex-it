@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 import DeliveryModel from "@/components/sections/DeliveryModel";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 
 /* ───────── WIRELESS VENDORS (HONEYCOMB) ───────── */
 
@@ -148,16 +149,12 @@ function SelectionFrameworkCards() {
               </h3>
             </div>
 
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  key="content"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="overflow-hidden"
-                >
+            <motion.div
+              initial={false}
+              animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden"
+            >
                   <p className="mt-4 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1B8AC7]">
                     What you are nailing down
                   </p>
@@ -170,9 +167,7 @@ function SelectionFrameworkCards() {
                   <p className="mt-1.5 text-xs leading-relaxed text-slate-600">
                     {r.why}
                   </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            </motion.div>
           </div>
         );
       })}
@@ -237,16 +232,12 @@ function ChecklistCards() {
               </svg>
             </div>
 
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  key="content"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="overflow-hidden"
-                >
+            <motion.div
+              initial={false}
+              animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden"
+            >
                   <ul className="mt-4 space-y-2 text-sm leading-relaxed text-slate-600">
                     {g.items.map((it) => (
                       <li key={it} className="flex items-start gap-2">
@@ -258,9 +249,7 @@ function ChecklistCards() {
                       </li>
                     ))}
                   </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            </motion.div>
           </div>
         );
       })}
@@ -291,7 +280,7 @@ const vendors = [
   {
     slug: "juniper-mist",
     name: "Juniper Mist",
-    best: "Best AIOps (Recommended)",
+    best: "Best AIOps",
     strength: "Mist founded 2014, Juniper acquired 2019. Mist Cloud is AI-native with the gold-standard telemetry and assurance. Mist excels in classroom and conference density. BLE built-in across the AP line; AP44 / AP64 Wi-Fi 7 rolling out. Mist Access Assurance pairs cleanly with Session Smart Router.",
     watch: "Wi-Fi 7 portfolio is still expanding; UAE field bench is growing rather than dominant; outdoor AP63 is solid rather than market-leading.",
     logo: "/logos/JuniperMist.webp",
@@ -327,10 +316,10 @@ const vendors = [
 const matrixVendors = [
   { name: "Cisco Catalyst Wi-Fi / Meraki", recommended: true, rank: "#1" },
   { name: "HPE Aruba Wi-Fi", recommended: true },
-  { name: "Juniper Mist", recommended: true },
-  { name: "Ruckus (CommScope)" },
-  { name: "Huawei AirEngine" },
+  { name: "Huawei AirEngine", recommended: true },
+  { name: "Juniper Mist" },
   { name: "Extreme / Ubiquiti" },
+  { name: "Ruckus (CommScope)" },
 ];
 
 type StarCell = { stars: number; note: string };
@@ -347,10 +336,10 @@ const matrixRows: MatrixRow[] = [
     cells: [
       "Cisco wireless since 2005; Meraki acquired 2012",
       "Aruba founded 2002, HPE acquired 2015",
-      "Mist founded 2014, Juniper acquired 2019",
-      "Ruckus founded 2004, CommScope acquired 2019",
       "Huawei wireless since 2003, full enterprise stack",
+      "Mist founded 2014, Juniper acquired 2019",
       "Extreme 1996 plus Ubiquiti 2005 (SMB)",
+      "Ruckus founded 2004, CommScope acquired 2019; fragmented UAE channel",
     ],
   },
   {
@@ -359,10 +348,10 @@ const matrixRows: MatrixRow[] = [
     cells: [
       { stars: 5, note: "Catalyst CW9166 and Meraki MR57" },
       { stars: 5, note: "AP-700 series" },
-      { stars: 4, note: "AP44 / AP64 (rolling out)" },
-      { stars: 4, note: "R770 Wi-Fi 7" },
       { stars: 5, note: "AirEngine 8761 Wi-Fi 7" },
+      { stars: 4, note: "AP44 / AP64 (rolling out)" },
       { stars: 4, note: "AP5050 / Ubiquiti U7 Pro" },
+      { stars: 3, note: "R770 Wi-Fi 7; limited local stock and lead times" },
     ],
   },
   {
@@ -371,10 +360,10 @@ const matrixRows: MatrixRow[] = [
     cells: [
       { stars: 4, note: "RRM plus Meraki Auto RF" },
       { stars: 5, note: "AirMatch plus UX Insight" },
-      { stars: 5, note: "Mist AI is the reference" },
-      { stars: 4, note: "SmartZone analytics" },
       { stars: 4, note: "iMaster NCE-Campus AI" },
+      { stars: 5, note: "Mist AI is the reference" },
       { stars: 3, note: "ExtremeAnalytics / UniFi minimal" },
+      { stars: 3, note: "SmartZone analytics; thin local RF tuning support" },
     ],
   },
   {
@@ -383,10 +372,10 @@ const matrixRows: MatrixRow[] = [
     cells: [
       { stars: 5, note: "Meraki + Catalyst Center options" },
       { stars: 5, note: "Aruba Central cloud" },
-      { stars: 5, note: "Mist Cloud AI-native" },
-      { stars: 4, note: "SmartZone, Cloudpath" },
       { stars: 4, note: "iMaster NCE-Campus" },
-      { stars: 3, note: "ExtremeCloud IQ / UniFi Console" },
+      { stars: 5, note: "Mist Cloud AI-native" },
+      { stars: 4, note: "ExtremeCloud IQ / UniFi Console" },
+      { stars: 3, note: "SmartZone, Cloudpath; slow firmware and case response" },
     ],
   },
   {
@@ -395,10 +384,10 @@ const matrixRows: MatrixRow[] = [
     cells: [
       { stars: 5, note: "Stadium and high-density reference" },
       { stars: 5, note: "AP-655 high density, OFDMA mature" },
+      { stars: 5, note: "Strong dense and carrier-grade designs" },
       { stars: 4, note: "Mist excels in classroom / conference" },
-      { stars: 5, note: "Ruckus BeamFlex strongest dense RF" },
-      { stars: 4, note: "Strong dense designs in carriers" },
       { stars: 3, note: "Limited dense expertise" },
+      { stars: 3, note: "Strong dense RF on paper, but UAE delivery and support risk" },
     ],
   },
   {
@@ -407,10 +396,10 @@ const matrixRows: MatrixRow[] = [
     cells: [
       { stars: 5, note: "CW9162D outdoor, Meraki MR outdoor" },
       { stars: 5, note: "AP-377 / 575 outdoor mature" },
-      { stars: 4, note: "AP63 outdoor" },
-      { stars: 5, note: "T-series outdoor mesh" },
       { stars: 4, note: "AirEngine 5760 outdoor" },
+      { stars: 4, note: "AP63 outdoor" },
       { stars: 4, note: "Extreme / UniFi outdoor" },
+      { stars: 3, note: "T-series mesh; limited local integration partners" },
     ],
   },
   {
@@ -419,10 +408,10 @@ const matrixRows: MatrixRow[] = [
     cells: [
       { stars: 5, note: "Meraki MR plus IoT Gateway" },
       { stars: 5, note: "Aruba IoT-ready APs, USB" },
+      { stars: 3, note: "IoT integration maturing" },
       { stars: 4, note: "BLE built-in across line" },
-      { stars: 4, note: "IoT capabilities maturing" },
-      { stars: 3, note: "Limited IoT integration" },
       { stars: 3, note: "Limited" },
+      { stars: 3, note: "IoT roadmap lagging; few UAE references" },
     ],
   },
   {
@@ -431,10 +420,10 @@ const matrixRows: MatrixRow[] = [
     cells: [
       { stars: 5, note: "Largest direct UAE service" },
       { stars: 5, note: "Strong UAE bench" },
-      { stars: 4, note: "Growing UAE bench" },
-      { stars: 4, note: "Distributor-led" },
       { stars: 5, note: "Direct UAE TAC" },
+      { stars: 4, note: "Growing UAE bench" },
       { stars: 3, note: "Limited / online only (Ubiquiti)" },
+      { stars: 2, note: "Inconsistent distributor channel and slow vendor response in UAE" },
     ],
   },
   {
@@ -443,10 +432,10 @@ const matrixRows: MatrixRow[] = [
     cells: [
       "Largest UAE installed base, stadium and dense enterprise",
       "Enterprise Wi-Fi with mature NAC and AirMatch RF",
+      "Stadium, hospitality and carrier-scale high-density",
       "AIOps-led greenfield campus and Wi-Fi-first refreshes",
-      "Stadium, hospitality and high-density carrier deployments",
-      "Cost-sensitive enterprise, carrier-scale density",
       "SMB, franchise retail, vendor-consolidation refreshes",
+      "Niche dense RF; weak UAE channel limits enterprise fit",
     ],
   },
   {
@@ -455,10 +444,10 @@ const matrixRows: MatrixRow[] = [
     cells: [
       { recommended: true, rank: "#1", text: "Largest UAE estate, deepest service bench, broadest Wi-Fi 7 portfolio." },
       { recommended: true, text: "Best enterprise Wi-Fi with mature ClearPass and AirMatch; Aruba Central covers the full estate." },
-      { recommended: true, text: "Best AIOps with Mist AI; cleanest greenfield campus refresh path." },
-      { text: "Best dense-RF heritage; default for stadium, hospitality and carrier deployments." },
-      { text: "Best carrier-scale density; assess geopolitical procurement case by case." },
+      { recommended: true, text: "Best carrier-scale density with strong Wi-Fi 7 and direct UAE TAC; preferred stadium, hospitality and high-density alternative." },
+      { text: "Strong AIOps with Mist AI; clean greenfield campus refresh path." },
       { text: "Best SMB and franchise retail value; vendor-consolidation play for campus + Wi-Fi." },
+      { text: "Capable dense RF, but inconsistent UAE channel strategy and slow vendor response make delivery risky; Cisco or HPE Aruba preferred for stadium, hospitality and high-density." },
     ],
   },
 ];
@@ -468,9 +457,9 @@ const matrixRows: MatrixRow[] = [
 const featureVendors = [
   "Cisco / Meraki",
   "HPE Aruba",
+  "Huawei",
   "Juniper Mist",
   "Ruckus",
-  "Huawei",
 ];
 
 type Tier = "best" | "excellent" | "veryStrong" | "strong" | "good" | "moderate";
@@ -482,9 +471,9 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
     cells: [
       { tier: "best", note: "CW9166 / MR57 fully Wi-Fi 7" },
       { tier: "best", note: "AP-700 series ships at scale" },
+      { tier: "best", note: "AirEngine 8761 leads density" },
       { tier: "excellent", note: "AP44 / AP64 rolling out" },
       { tier: "excellent", note: "R770 Wi-Fi 7 capable" },
-      { tier: "best", note: "AirEngine 8761 leads density" },
     ],
   },
   {
@@ -492,9 +481,9 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
     cells: [
       { tier: "excellent", note: "RRM plus Meraki Auto RF" },
       { tier: "best", note: "AirMatch and UXI are reference" },
+      { tier: "excellent", note: "iMaster NCE-Campus AI" },
       { tier: "best", note: "Mist AI is the gold standard" },
       { tier: "excellent", note: "SmartZone analytics solid" },
-      { tier: "excellent", note: "iMaster NCE-Campus AI" },
     ],
   },
   {
@@ -502,9 +491,9 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
     cells: [
       { tier: "best", note: "Meraki dashboard most-deployed globally" },
       { tier: "best", note: "Aruba Central covers full estate" },
+      { tier: "excellent", note: "iMaster NCE-Campus solid" },
       { tier: "best", note: "Mist Cloud AI-native" },
       { tier: "excellent", note: "SmartZone Cloud capable" },
-      { tier: "excellent", note: "iMaster NCE-Campus solid" },
     ],
   },
   {
@@ -512,9 +501,9 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
     cells: [
       { tier: "best", note: "Stadium and arena reference" },
       { tier: "best", note: "AP-655 plus AirMatch" },
+      { tier: "excellent", note: "Strong dense at carrier scale" },
       { tier: "excellent", note: "Mist excels in classroom density" },
       { tier: "best", note: "Ruckus BeamFlex industry-leading" },
-      { tier: "excellent", note: "Strong dense at carrier scale" },
     ],
   },
   {
@@ -522,9 +511,9 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
     cells: [
       { tier: "best", note: "Outdoor MR and CW9162D mature" },
       { tier: "best", note: "AP-577 outdoor reference" },
+      { tier: "excellent", note: "AirEngine 5760 outdoor solid" },
       { tier: "excellent", note: "AP63 outdoor capable" },
       { tier: "best", note: "T-series outdoor mesh" },
-      { tier: "excellent", note: "AirEngine 5760 outdoor solid" },
     ],
   },
   {
@@ -532,9 +521,9 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
     cells: [
       { tier: "best", note: "Meraki IoT plus integrated radios" },
       { tier: "best", note: "IoT-ready APs across portfolio" },
+      { tier: "strong", note: "Limited IoT story" },
       { tier: "excellent", note: "BLE built-in across line" },
       { tier: "excellent", note: "Maturing IoT integration" },
-      { tier: "strong", note: "Limited IoT story" },
     ],
   },
   {
@@ -542,9 +531,9 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
     cells: [
       { tier: "best", note: "ISE integration deepest" },
       { tier: "best", note: "ClearPass mature NAC" },
+      { tier: "strong", note: "iMaster NCE-CampusInsight Trust" },
       { tier: "excellent", note: "Mist Access Assurance" },
       { tier: "excellent", note: "Cloudpath NAC capable" },
-      { tier: "strong", note: "iMaster NCE-CampusInsight Trust" },
     ],
   },
   {
@@ -552,9 +541,9 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
     cells: [
       { tier: "best", note: "Largest direct service" },
       { tier: "best", note: "Strong UAE bench" },
+      { tier: "best", note: "Direct UAE TAC" },
       { tier: "excellent", note: "Growing UAE bench" },
       { tier: "strong", note: "Distributor-led" },
-      { tier: "best", note: "Direct UAE TAC" },
     ],
   },
 ];
@@ -667,7 +656,7 @@ function WirelessHero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/infra.png')" }}
+        style={{ backgroundImage: "url('/infra.webp')" }}
       />
       <div
         aria-hidden="true"
@@ -707,12 +696,12 @@ function WirelessHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Wireless{" "}
             <span className="gradient-text">Solutions</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              Buyer's Guide, Vendor Matrix and Gartner-style Scorecard
-            </span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Buyer's Guide, Vendor Matrix and Gartner-style Scorecard
           </h1>
 
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
@@ -795,18 +784,55 @@ export default function WirelessSolutions() {
   return (
     <>
       <>
-        <title>Wireless Solutions UAE | Buyer's Guide & Vendor Scorecard | Artiflex IT</title>
-        <meta
-          name="description"
-          content="UAE buyer's guide for enterprise Wi-Fi. Vendor matrix and Gartner-style scorecard across Cisco Meraki, HPE Aruba, Juniper Mist, Ruckus, Huawei AirEngine, Extreme and Ubiquiti."
-        />
+        <title>WiFi Installation Dubai | Wi-Fi 6, 6E & 7 Surveys + Install</title>
+        <meta name="description" content="WiFi installation in Dubai. Predictive and on-site surveys, Wi-Fi 6/6E/7 design and AIOps from Cisco Meraki, Aruba, Juniper Mist, Ruckus and Huawei." />
         <link rel="canonical" href="https://artiflexit.com/infrastructure/wireless-solutions" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/infrastructure/wireless-solutions" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/infrastructure/wireless-solutions" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/infrastructure/wireless-solutions" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/infrastructure/wireless-solutions" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/infrastructure/wireless-solutions" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/infrastructure/wireless-solutions" />
+
+        <meta property="og:title" content="WiFi Installation Dubai | Wi-Fi 6, 6E & 7 Surveys + Install" />
+        <meta property="og:description" content="WiFi installation in Dubai. Predictive and on-site surveys, Wi-Fi 6/6E/7 design and AIOps from Cisco Meraki, Aruba, Juniper Mist, Ruckus and Huawei." />
+        <meta property="og:url" content="https://artiflexit.com/infrastructure/wireless-solutions" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="WiFi Installation Dubai | Wi-Fi 6, 6E & 7 Surveys + Install" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="WiFi Installation Dubai | Wi-Fi 6, 6E & 7 Surveys + Install" />
+        <meta name="twitter:description" content="WiFi installation in Dubai. Predictive and on-site surveys, Wi-Fi 6/6E/7 design and AIOps from Cisco Meraki, Aruba, Juniper Mist, Ruckus and Huawei." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Artiflex IT",
-            "url": "https://artiflexit.com/infrastructure/wireless-solutions",
+            "@id": "https://artiflexit.com/#localbusiness",
+            "name": "Artiflex Information Technology",
+            "url": "https://artiflexit.com/",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "M22, New Al Safiya Building, Near Abu Hail Metro Station, Hor Al Anz",
+              "addressLocality": "Dubai",
+              "addressRegion": "Dubai",
+              "addressCountry": "AE",
+            },
             "areaServed": [
               { "@type": "Country", "name": "United Arab Emirates" },
               { "@type": "City", "name": "Dubai" },
@@ -820,7 +846,7 @@ export default function WirelessSolutions() {
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Wireless Solutions",
-            "provider": { "@type": "Organization", "name": "Artiflex IT" },
+            "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
             "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
             "description": "UAE enterprise Wi-Fi 6E and Wi-Fi 7 design, deployment and managed services across Cisco, HPE Aruba, Juniper Mist, Ruckus, Huawei and Extreme.",
           })}
@@ -845,6 +871,7 @@ export default function WirelessSolutions() {
               "@type": "ListItem",
               "position": i + 1,
               "name": v.name,
+              "url": "https://artiflexit.com/infrastructure/wireless-solutions",
             })),
           })}
         </script>
@@ -946,7 +973,7 @@ export default function WirelessSolutions() {
                               const fb = img.nextElementSibling as HTMLElement | null;
                               if (fb) fb.style.removeProperty("display");
                             }}
-                            className="h-16 w-16 object-contain transition-transform duration-300 group-hover:scale-110"
+                            onLoad={(e) => { const img = e.currentTarget; const r = img.naturalWidth / img.naturalHeight; if (r) { const w = Math.min(Math.sqrt(3400 * r), 128); img.style.width = w + "px"; img.style.height = w / r + "px"; } }} className="h-20 w-32 object-contain transition-transform duration-300 group-hover:scale-110"
                           />
                         ) : null}
                         <p
@@ -980,7 +1007,7 @@ export default function WirelessSolutions() {
                       const fb = img.nextElementSibling as HTMLElement | null;
                       if (fb) fb.style.removeProperty("display");
                     }}
-                    className="h-12 w-12 object-contain"
+                    onLoad={(e) => { const img = e.currentTarget; const r = img.naturalWidth / img.naturalHeight; if (r) { const w = Math.min(Math.sqrt(1350 * r), 88); img.style.width = w + "px"; img.style.height = w / r + "px"; } }} className="h-12 w-24 object-contain"
                   />
                 ) : null}
                 <p
@@ -1071,12 +1098,12 @@ export default function WirelessSolutions() {
             </button>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + matrixVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + matrixVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Criteria
                     </th>
                     {matrixVendors.map((v) => (
@@ -1288,12 +1315,12 @@ export default function WirelessSolutions() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + featureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + featureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Capability
                     </th>
                     {featureVendors.map((v) => (
@@ -1634,6 +1661,8 @@ export default function WirelessSolutions() {
         description="Free Wi-Fi posture review including a basic site-survey appraisal, AP count and class, security posture and refresh horizon. We will identify density gaps and propose a prioritised plan aligned to your team capacity."
         primaryButton={{ text: "Book Assessment", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
+import SophosAccreditationBadge from "@/components/ui/SophosAccreditationBadge";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 import { ShieldIcon, CheckIcon, GlobeIcon, ServerIcon, LockIcon, EyeIcon } from "@/components/icons";
@@ -108,8 +109,8 @@ export default function NGFWPage() {
   return (
     <>
       <>
-        <title>Next-Generation Firewall (NGFW) UAE, Sophos XGS | ArtiflexIT Dubai</title>
-        <meta name="description" content="Enterprise NGFW solutions for UAE businesses. Deep packet inspection, TLS decryption, IPS, and SD-WAN, deployed by ArtiflexIT, Platinum Sophos Partner. NESA and CBUAE compliant." />
+        <title>Deploy Next-Generation Firewalls in UAE</title>
+        <meta name="description" content="NGFW deployment in UAE. App-aware, IPS-enabled next-generation firewall with TLS inspection, managed tuning and 24/7 support." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/next-generation-firewall" />
       </>
 
@@ -122,6 +123,8 @@ export default function NGFWPage() {
           { label: "NGFW", href: "/cybersecurity/next-generation-firewall" },
         ]}
       />
+
+      <SophosAccreditationBadge variant="firewall" />
 
       {/* Stats */}
       <section className="relative border-y border-border-light bg-white" aria-label="NGFW statistics">

@@ -387,7 +387,7 @@ const whyUs = [
     icon: GlobeIcon,
     title: "Local Presence, Regional Reach",
     description:
-      "Headquartered in Dubai with offices across four countries, we deliver projects with local engineers who understand local regulatory expectations and procurement realities. Arabic-speaking technical resources available where needed.",
+      "Headquartered in Dubai with offices in Oman and India, we deliver cloud projects across the UAE, Oman, Saudi Arabia and India with local engineers who understand regional regulatory expectations and procurement realities. Arabic-speaking technical resources available where needed.",
   },
   {
     icon: LockIcon,
@@ -458,25 +458,41 @@ export default function CloudSolutionsPage() {
   return (
     <>
       <>
-        <title>Cloud Solutions UAE | AWS, Azure, GCP, Hybrid & Private Cloud | ArtiflexIT</title>
-        <meta
-          name="description"
-          content="Vendor-neutral cloud migration, multi-cloud (AWS, Azure, GCP), private and hybrid cloud, BaaS, DRaaS, and FinOps for UAE businesses. Certified across all major hyperscalers, accountable end-to-end."
-        />
-        <meta
-          name="keywords"
-          content="cloud solutions UAE, cloud migration Dubai, AWS partner UAE, Azure partner UAE, Google Cloud UAE, hybrid cloud UAE, private cloud Dubai, DRaaS UAE, BaaS UAE, FinOps UAE, cloud cost optimization, multi-cloud GCC, Microsoft 365 backup, immutable backup UAE"
-        />
+        <title>Cloud Solutions Dubai | AWS, Azure & GCP Migration Partner</title>
+        <meta name="description" content="Cloud solutions provider in Dubai and the UAE: AWS, Azure and GCP migration, multi-cloud, hybrid, private cloud, BaaS and DRaaS. Free cloud assessment." />
         <link rel="canonical" href="https://artiflexit.com/cloud-solutions" />
-        <meta property="og:title" content="Cloud Solutions UAE | AWS, Azure, GCP, Hybrid & Private Cloud | ArtiflexIT" />
-        <meta property="og:description" content="Cloud migration, multi-cloud architecture, hybrid and private cloud, BaaS, DRaaS, and FinOps. Vendor-neutral, certified across all major hyperscalers." />
-        <meta property="og:image" content="https://artiflexit.com/og/cloud-solutions.png" />
-        <meta property="og:type" content="website" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cloud-solutions" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cloud-solutions" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cloud-solutions" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cloud-solutions" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cloud-solutions" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cloud-solutions" />
+
+        <meta property="og:title" content="Cloud Solutions Dubai | AWS, Azure & GCP Migration Partner" />
+        <meta property="og:description" content="Cloud solutions provider in Dubai. AWS, Azure and GCP migration, multi-cloud, hybrid and private cloud, BaaS and DRaaS for UAE businesses." />
         <meta property="og:url" content="https://artiflexit.com/cloud-solutions" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT cloud solutions for the UAE" />
+
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Cloud Solutions UAE | ArtiflexIT" />
-        <meta name="twitter:description" content="Multi-cloud, hybrid, private, BaaS, DRaaS, and FinOps for UAE businesses." />
-        <meta name="twitter:image" content="https://artiflexit.com/og/cloud-solutions.png" />
+        <meta name="twitter:title" content="Cloud Solutions Dubai | AWS, Azure & GCP Migration Partner" />
+        <meta name="twitter:description" content="Multi-cloud, hybrid, private cloud, BaaS, DRaaS and FinOps for UAE businesses." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Service",
@@ -487,6 +503,7 @@ export default function CloudSolutionsPage() {
             { "@type": "Country", name: "United Arab Emirates" },
             { "@type": "Country", name: "Oman" },
             { "@type": "Country", name: "Saudi Arabia" },
+            { "@type": "Country", name: "India" },
           ],
           url: "https://artiflexit.com/cloud-solutions",
           description: "Vendor-neutral cloud migration, multi-cloud (AWS, Azure, GCP), private cloud, hybrid cloud, backup-as-a-service, disaster-recovery-as-a-service, and FinOps for UAE businesses.",
@@ -521,8 +538,8 @@ export default function CloudSolutionsPage() {
         {/* Background image */}
         <div className="absolute inset-0 z-[1] overflow-hidden" aria-hidden="true">
           <img
-            src="/cloud-solutions.jpg"
-            alt=""
+            src="/cloud-solutions.webp"
+            alt="Cloud solutions and managed cloud services by Artiflex IT in Dubai"
             loading="eager"
             decoding="async"
             className="h-full w-full object-cover object-center opacity-55 [mask-image:radial-gradient(120%_90%_at_60%_45%,black_55%,transparent_100%)]"
@@ -569,7 +586,7 @@ export default function CloudSolutionsPage() {
 
               <div className="mt-6 sm:mt-8 lg:mt-8 xl:mt-10">
                 <h1 className="mt-2 font-display text-xl font-semibold leading-snug tracking-tight text-white sm:mt-3 sm:text-2xl md:text-3xl lg:text-[1.6rem] xl:text-4xl">
-                  <span className="gradient-text"> Cloud Migration Without the Chaos for the UAE & Middle East</span>
+                  <span className="gradient-text"> Cloud Solutions in Dubai: AWS, Azure &amp; GCP</span>
                 </h1>
 
                 <p className="mt-3 max-w-xl text-xs leading-relaxed text-slate-300 sm:mt-4 sm:text-sm md:text-base lg:text-sm xl:text-base">

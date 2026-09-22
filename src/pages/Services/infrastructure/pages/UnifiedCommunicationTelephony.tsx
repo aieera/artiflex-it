@@ -5,6 +5,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 import DeliveryModel from "@/components/sections/DeliveryModel";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 
 /* ════════════════ SHARED TYPES ════════════════ */
 
@@ -345,11 +346,11 @@ const pbxLineup: LineupItem[] = [
 ];
 
 const endpointLineup: LineupItem[] = [
-  { slug: "yealink", name: "Yealink", tag: "Recommended #1", logo: "/logos/Yealink.png" },
+  { slug: "yealink", name: "Yealink", tag: "Recommended #1", logo: "/logos/yealink.png" },
   { slug: "grandstream-phones", name: "Grandstream Phones", tag: "Best Value", logo: "/logos/Grandstream.png" },
   { slug: "fanvil", name: "Fanvil", tag: "Entry tier / budget", logo: "/logos/Fanvil.png" },
   { slug: "cisco-phones", name: "Cisco IP Phones", tag: "Cisco CUCM / Webex only", logo: "/logos/Cisco.svg" },
-  { slug: "poly", name: "Poly (HP)", tag: "Conference & video bars", logo: "/logos/Poly.png" },
+  { slug: "poly", name: "Poly (HP)", tag: "Conference & video bars", logo: "/logos/PolyHP.png" },
   { slug: "snom", name: "Snom", tag: "3CX reference pairing", logo: "/logos/Snom.png" },
 ];
 
@@ -818,7 +819,7 @@ function MiniLineup({ title, items }: { title: string; items: LineupItem[] }) {
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-50 ring-1 ring-slate-200/70">
                 <img
                   src={v.logo}
-                  alt=""
+                  alt={`${v.name} logo`}
                   loading="lazy"
                   onError={(e) => {
                     (e.currentTarget as HTMLImageElement).style.display = "none";
@@ -875,12 +876,12 @@ function BranchQuestions({ items }: { items: BranchItem[] }) {
 
 function ComparisonTable({ vendors, rows }: { vendors: MatrixVendor[]; rows: MatrixRow[] }) {
   return (
-    <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+    <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
       <div className="overflow-x-auto">
-        <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + vendors.length * 116) }}>
+        <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + vendors.length * 116)}px` }}>
           <thead>
             <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-              <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+              <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                 Criteria
               </th>
               {vendors.map((v) => (
@@ -967,10 +968,10 @@ function GartnerTable({ vendors, rows }: { vendors: string[]; rows: FeatureRow[]
       </div>
       <div className="mt-8 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
         <div className="overflow-x-auto">
-          <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + vendors.length * 116) }}>
+          <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + vendors.length * 116)}px` }}>
             <thead>
               <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                   Capability
                 </th>
                 {vendors.map((v, i) => (
@@ -1083,7 +1084,7 @@ function UnifiedCommunicationHero() {
   const { open: openContact } = useContactModal();
   return (
     <section className="relative flex min-h-screen flex-col overflow-hidden bg-navy-deep">
-      <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/infra.png')" }} />
+      <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/infra.webp')" }} />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/70 to-navy-deep/90" />
 
       <div className="relative z-10 border-b border-white/5">
@@ -1105,12 +1106,12 @@ function UnifiedCommunicationHero() {
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[#28B5E1] sm:text-xs">
             UC & Telephony · Cloud Calling · IP PBX · Devices
           </p>
-          <h1 className="mt-4 font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <p className="mt-4 font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Unified Communication &{" "}
             <span className="gradient-text">Telephony</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              Cloud UC, IP PBX, Desk Phones & Video Rooms for UAE
-            </span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Cloud UC, IP PBX, Desk Phones & Video Rooms for UAE
           </h1>
 
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
@@ -1164,18 +1165,47 @@ export default function UnifiedCommunicationTelephony() {
   return (
     <>
       <>
-        <title>Unified Communication & Telephony UAE | Cloud UC, IP PBX & Phones Buyer's Guide | Artiflex IT</title>
-        <meta
-          name="description"
-          content="UAE buyer's guide for cloud UC and IP telephony. Vendor comparison and Gartner-style scorecards across Microsoft Teams Phone, Cisco Webex, Avaya, Mitel, 3CX, Zoom Phone, Grandstream UCM, Cisco CUCM and the Yealink, Grandstream, Fanvil, Poly and Snom phone ecosystem."
-        />
+        <title>Cloud IP PBX, VoIP and SIP Trunking for Dubai Offices</title>
+        <meta name="description" content="IP PBX and unified communications in Dubai. Cloud PBX, SIP trunking and contact centre across Teams Phone, Webex Calling, Avaya, Mitel, 3CX and Zoom." />
         <link rel="canonical" href="https://artiflexit.com/infrastructure/unified-communication-telephony" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/infrastructure/unified-communication-telephony" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/infrastructure/unified-communication-telephony" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/infrastructure/unified-communication-telephony" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/infrastructure/unified-communication-telephony" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/infrastructure/unified-communication-telephony" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/infrastructure/unified-communication-telephony" />
+
+        <meta property="og:title" content="Cloud IP PBX, VoIP and SIP Trunking for Dubai Offices" />
+        <meta property="og:description" content="IP PBX and unified communications in Dubai. Cloud PBX, SIP trunking and contact centre across Teams Phone, Webex Calling, Avaya, Mitel, 3CX and Zoom." />
+        <meta property="og:url" content="https://artiflexit.com/infrastructure/unified-communication-telephony" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Cloud IP PBX, VoIP and SIP Trunking for Dubai Offices" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cloud IP PBX, VoIP and SIP Trunking for Dubai Offices" />
+        <meta name="twitter:description" content="IP PBX and unified communications in Dubai. Cloud PBX, SIP trunking and contact centre across Teams Phone, Webex Calling, Avaya, Mitel, 3CX and Zoom." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Unified Communication & Telephony Services",
-            "provider": { "@type": "Organization", "name": "Artiflex IT" },
+            "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
             "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
             "description": "UAE unified communication and telephony: cloud UC platforms, IP PBX, desk phones, DECT, video rooms, PSTN integration, contact centre, recording and migration. Vendor recommendation follows the assessment.",
           })}
@@ -1225,7 +1255,7 @@ export default function UnifiedCommunicationTelephony() {
                       <div className="absolute inset-0 bg-slate-200/80 transition-colors duration-300 group-hover:bg-[#28B5E1]" style={{ clipPath: HEX_PATH }} />
                       <div className="absolute inset-[2px] bg-white transition-all duration-300 group-hover:bg-gradient-to-b group-hover:from-[#28B5E1]/[0.08] group-hover:to-white" style={{ clipPath: HEX_PATH }} />
                       <div className="relative flex h-full flex-col items-center justify-center px-5 text-center">
-                        {v.logo ? (<img src={v.logo} alt={v.name} loading="lazy" onError={(e) => { const img = e.currentTarget as HTMLImageElement; img.style.display = "none"; const fb = img.nextElementSibling as HTMLElement | null; if (fb) fb.style.removeProperty("display"); }} className="h-16 w-16 object-contain transition-transform duration-300 group-hover:scale-110" />) : null}
+                        {v.logo ? (<img src={v.logo} alt={v.name} loading="lazy" onError={(e) => { const img = e.currentTarget as HTMLImageElement; img.style.display = "none"; const fb = img.nextElementSibling as HTMLElement | null; if (fb) fb.style.removeProperty("display"); }} onLoad={(e) => { const img = e.currentTarget; const r = img.naturalWidth / img.naturalHeight; if (r) { const w = Math.min(Math.sqrt(3400 * r), 128); img.style.width = w + "px"; img.style.height = w / r + "px"; } }} className="h-20 w-32 object-contain transition-transform duration-300 group-hover:scale-110" />) : null}
                         <p className="font-display text-[13px] font-semibold leading-tight text-slate-900" style={{ display: v.logo ? "none" : "block" }}>{v.name}</p>
                       </div>
                     </div>
@@ -1239,7 +1269,7 @@ export default function UnifiedCommunicationTelephony() {
           <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:hidden">
             {cloudLineup.map((v) => (
               <div key={v.slug} className="group flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#28B5E1]/50 hover:shadow-md">
-                {v.logo ? (<img src={v.logo} alt={v.name} loading="lazy" onError={(e) => { const img = e.currentTarget as HTMLImageElement; img.style.display = "none"; const fb = img.nextElementSibling as HTMLElement | null; if (fb) fb.style.removeProperty("display"); }} className="h-12 w-12 object-contain" />) : null}
+                {v.logo ? (<img src={v.logo} alt={v.name} loading="lazy" onError={(e) => { const img = e.currentTarget as HTMLImageElement; img.style.display = "none"; const fb = img.nextElementSibling as HTMLElement | null; if (fb) fb.style.removeProperty("display"); }} onLoad={(e) => { const img = e.currentTarget; const r = img.naturalWidth / img.naturalHeight; if (r) { const w = Math.min(Math.sqrt(1350 * r), 88); img.style.width = w + "px"; img.style.height = w / r + "px"; } }} className="h-12 w-24 object-contain" />) : null}
                 <p className="font-display text-[11px] font-semibold leading-tight text-slate-900" style={{ display: v.logo ? "none" : "block" }}>{v.name}</p>
               </div>
             ))}
@@ -1503,6 +1533,8 @@ export default function UnifiedCommunicationTelephony() {
         description="A review of your communications estate: user count, site topology, PSTN strategy, contact centre depth, analog legacy and device budget. We identify the right cloud UC platform or IP PBX and build a device specification by user role and cost tier."
         primaryButton={{ text: "Book Free Assessment", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

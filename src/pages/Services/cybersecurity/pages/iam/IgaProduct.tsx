@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 import {
@@ -492,130 +493,6 @@ const vendors: {
 
 /* ───────── VENDOR PROFILES ───────── */
 
-const profiles: {
-  name: string;
-  tier: string;
-  tag: string;
-  blurb: string;
-  pros: string[];
-  cons: string[];
-}[] = [
-  {
-    name: "Saviynt",
-    tier: "Leader",
-    tag: "Artiflex Recommended · Converged IGA + PAM + CIEM",
-    blurb:
-      "Artiflex's strongly recommended IGA platform. Saviynt Identity Cloud converges IGA, ILM, PAM and cloud entitlement management (CIEM) in one SaaS-native console, with AI-driven access certifications and out-of-the-box SoD libraries for SAP S/4HANA, Oracle, Workday and PeopleSoft. The right pick for cloud-first UAE estates that want to collapse three to five point tools into one platform.",
-    pros: [
-      "IGA + ILM + PAM + cloud entitlements in one converged platform",
-      "AI-driven (Iris) risk-based access certifications",
-      "OOTB SoD libraries for SAP, Oracle, Workday, PeopleSoft",
-      "Native governance of cloud, SaaS and non-human identities",
-    ],
-    cons: [
-      "On-premises application support less mature than SailPoint",
-      "Best deployed with a Saviynt-experienced delivery partner",
-    ],
-  },
-  {
-    name: "SailPoint IdentityNow",
-    tier: "Leader",
-    tag: "Premium Alternative · IGA Category Definer",
-    blurb:
-      "The market-defining IGA platform and the premium alternative when on-prem depth or sovereign air-gapped deployment matters most. Founded to solve the IGA problem specifically, with the widest application coverage and most mature certification and role management capabilities.",
-    pros: [
-      "Widest app connector library in IGA market",
-      "Most mature role mining and management",
-      "AI-driven Identity Security Cloud platform",
-      "Strong professional services ecosystem",
-    ],
-    cons: [
-      "Premium pricing; full deployment requires significant investment",
-      "Complexity requires experienced implementation partner",
-    ],
-  },
-  {
-    name: "One Identity Manager",
-    tier: "Leader",
-    tag: "IAM + IGA + PAM",
-    blurb:
-      "One Identity's Manager platform spans IGA, ILM, and PAM, offering a compelling single-vendor approach for organisations that don't want separate governance and privilege management contracts.",
-    pros: [
-      "Native IGA + PAM integration",
-      "Strong Active Directory and M365 governance",
-      "Good mid-market value proposition",
-    ],
-    cons: [
-      "Less advanced AI / ML capabilities than SailPoint",
-      "Cloud-native evolution still in progress",
-    ],
-  },
-  {
-    name: "Microsoft Entra ID Governance",
-    tier: "Challenger",
-    tag: "Best Value Inside M365 E5",
-    blurb:
-      "The IGA layer of the Microsoft Entra family, bundled in Microsoft 365 E5 and the standalone Entra Suite. Delivers entitlement management, access packages, access reviews, lifecycle workflows and Copilot-driven recommendations across the M365, Azure and Entra-connected estate at zero or near-zero incremental licence cost. The best-value answer for Microsoft-centric estates where deep ERP SoD and legacy connectors are not the primary buying driver.",
-    pros: [
-      "Bundled in M365 E5 / Entra Suite, zero or near-zero added licence cost",
-      "Deep, native governance of Entra, M365, Teams, SharePoint and Azure RBAC",
-      "Native joiner / mover / leaver lifecycle workflows from HR attributes",
-      "Copilot-driven access recommendations and PIM for Azure / Entra admin roles",
-    ],
-    cons: [
-      "Requires Entra ID P2 / Governance SKU prerequisites",
-      "Governance depth for SAP / Oracle SoD and non-Microsoft apps trails specialist IGA",
-    ],
-  },
-  {
-    name: "Omada Identity",
-    tier: "Visionary",
-    tag: "Mid-Market IGA",
-    blurb:
-      "Cloud-native IGA platform with a strong European presence. Well-designed for organisations that want SaaS-delivered governance without the complexity and cost of SailPoint's enterprise platform.",
-    pros: [
-      "Simpler deployment than enterprise-tier IGA",
-      "Good GDPR and European compliance capabilities",
-      "Cloud-native SaaS delivery",
-    ],
-    cons: [
-      "Smaller connector library than SailPoint",
-      "Less proven at very large enterprise scale",
-    ],
-  },
-  {
-    name: "Oracle Identity Governance",
-    tier: "Challenger",
-    tag: "Oracle-Native",
-    blurb:
-      "Oracle's IGA platform integrates natively with Oracle ERP and database estates. The natural choice for organisations with significant Oracle infrastructure.",
-    pros: [
-      "Native Oracle ERP and database integration",
-      "Bundled with Oracle licensing options",
-      "Mature on-premises ILM and IGA",
-    ],
-    cons: [
-      "Limited beyond Oracle ecosystem",
-      "Cloud-native evolution behind SailPoint and Saviynt",
-    ],
-  },
-  {
-    name: "IBM Security IGI",
-    tier: "Challenger",
-    tag: "Compliance-First",
-    blurb:
-      "IBM's Identity Governance and Intelligence platform has the deepest audit trail and reporting capabilities. Preferred in highly regulated industries where compliance evidence quality matters most.",
-    pros: [
-      "Best-in-class compliance reporting",
-      "Strong IBM ecosystem (QRadar, MaaS360)",
-      "Deep on-premises application support",
-    ],
-    cons: [
-      "Slower cloud-native evolution",
-      "Higher TCO than modern SaaS competitors",
-    ],
-  },
-];
 
 /* ───────── GARTNER-STYLE SCORECARD ───────── */
 
@@ -898,11 +775,11 @@ function IgaHero() {
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[#28B5E1] sm:text-xs">
             Identity Governance &amp; Administration
           </p>
-          <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
+          <p className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
             Identity Governance &amp; <span className="gradient-text">Administration</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              Prove who should have access, and evidence it for auditors
-            </span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Prove who should have access, and evidence it for auditors
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Knowing who has access to what is easy. Knowing whether they should have it, and being able to prove it to an auditor, is what IGA exists to do. Artiflex IT designs, deploys and manages IGA across the UAE, Oman and Saudi Arabia, on Saviynt, SailPoint, One Identity, Microsoft Entra, Omada, Oracle and IBM, picked on estate breadth and compliance scope, not vendor preference.
@@ -947,15 +824,41 @@ export default function IgaProduct() {
   return (
     <>
       <>
-        <title>Identity Governance & Administration (IGA) | Identity & Access Management | Artiflex IT</title>
-        <meta
-          name="description"
-          content="Identity Governance and Administration (IGA) explained. How access certifications, role management, separation of duties and identity analytics deliver continuous visibility, compliance evidence and least-privilege enforcement at enterprise scale."
-        />
-        <link
-          rel="canonical"
-          href="https://artiflexit.com/cybersecurity/identity-access-security/iga"
-        />
+        <title>Identity Governance Dubai | Access Reviews & SoD | Artiflex</title>
+        <meta name="description" content="Identity governance in Dubai. Access certification, role mining and SoD across SailPoint, Saviynt and One Identity. IGA vendor comparison." />
+        <link rel="canonical" href="https://artiflexit.com/cybersecurity/identity-access-security/iga" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/identity-access-security/iga" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/identity-access-security/iga" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/identity-access-security/iga" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/identity-access-security/iga" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/identity-access-security/iga" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/identity-access-security/iga" />
+
+        <meta property="og:title" content="Identity Governance Dubai | Access Reviews & SoD | Artiflex" />
+        <meta property="og:description" content="Identity governance in Dubai. Access certification, role mining and SoD across SailPoint, Saviynt and One Identity. IGA vendor comparison." />
+        <meta property="og:url" content="https://artiflexit.com/cybersecurity/identity-access-security/iga" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT identity governance for the UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Identity Governance Dubai | Access Reviews & SoD | Artiflex" />
+        <meta name="twitter:description" content="Identity governance in Dubai. Access certification, role mining and SoD across SailPoint, Saviynt and One Identity. IGA vendor comparison." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -976,6 +879,7 @@ export default function IgaProduct() {
               "@type": "ListItem",
               position: i + 1,
               name: v.name,
+              url: `https://artiflexit.com/cybersecurity/iga/${v.slug}`,
             })),
           })}
         </script>
@@ -1275,22 +1179,16 @@ export default function IgaProduct() {
                     </div>
                   </div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden"
-                      >
+                  <motion.div
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
                         <p className="mt-4 border-t border-slate-200 pt-3 text-xs leading-relaxed text-slate-600">
                           {l.details}
                         </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  </motion.div>
                 </div>
               );
             })}
@@ -1462,12 +1360,12 @@ export default function IgaProduct() {
             </button>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + matrixVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + matrixVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Criteria
                     </th>
                     {matrixVendors.map((v) => (
@@ -1689,12 +1587,12 @@ export default function IgaProduct() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + featureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + featureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Capability
                     </th>
                     {featureVendors.map((v) => (
@@ -2091,6 +1989,8 @@ export default function IgaProduct() {
         description="60-minute review of your access certification cadence, SoD policy posture, and role-mining readiness, with a vendor-neutral IGA recommendation across Saviynt, SailPoint, One Identity, Microsoft Entra, Omada, Oracle and IBM."
         primaryButton={{ text: "Book Assessment", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

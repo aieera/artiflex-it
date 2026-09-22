@@ -1,6 +1,7 @@
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
+import SophosAccreditationBadge from "@/components/ui/SophosAccreditationBadge";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { MonitorIcon, ShieldIcon, EyeIcon, ServerIcon, LockIcon, CheckIcon } from "@/components/icons";
 
@@ -88,8 +89,8 @@ export default function EDRXDRPage() {
   return (
     <>
       <>
-        <title>EDR & XDR Endpoint Security UAE, Sophos Intercept X | ArtiflexIT Dubai</title>
-        <meta name="description" content="AI-powered endpoint detection and response for UAE enterprises. Anti-ransomware, exploit prevention, cross-layer XDR, deployed by ArtiflexIT, Platinum Sophos Partner." />
+        <title>Behaviour-Based EDR for UAE Workstations & Servers</title>
+        <meta name="description" content="EDR deployment in Dubai. Behaviour-based detection, ransomware rollback and 24/7 managed EDR across leading endpoint platforms." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/endpoint-detection-response" />
       </>
 
@@ -102,6 +103,8 @@ export default function EDRXDRPage() {
           { label: "EDR / XDR", href: "/cybersecurity/endpoint-detection-response" },
         ]}
       />
+
+      <SophosAccreditationBadge variant="platform" />
 
       <section className="relative border-y border-border-light bg-white">
         <div className="shell">

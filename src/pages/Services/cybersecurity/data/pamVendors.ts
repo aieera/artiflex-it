@@ -1,6 +1,8 @@
 export type PamVendor = {
   slug: string;
   name: string;
+  metaTitle: string;
+  metaDescription: string;
   logo?: string;
   tagline: string;
   bestFor: string;
@@ -61,6 +63,9 @@ export type PamVendor = {
 export const pamVendors: Record<string, PamVendor> = {
   cyberark: {
     slug: "cyberark",
+    metaTitle: "CyberArk PAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "CyberArk PAM in Dubai and the UAE: industry-standard privileged access with credential vaulting and session isolation. Deployed and managed by Artiflex IT.",
     name: "CyberArk Identity Security Platform",
     logo: "/logos/CyberArk.png",
     tagline: "Industry standard for PAM, Gartner Magic Quadrant Leader seven years running with the broadest privileged-identity coverage",
@@ -223,6 +228,9 @@ export const pamVendors: Record<string, PamVendor> = {
 
   delinea: {
     slug: "delinea",
+    metaTitle: "Delinea PAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Delinea PAM in Dubai and the UAE: cloud-first privileged access with Secret Server vaulting and fast time-to-value. Deployed and managed by Artiflex IT.",
     name: "Delinea (Thycotic + Centrify)",
     logo: "/logos/Delinea.webp",
     tagline: "Cloud-first PAM Leader with the fastest time-to-value in the Gartner MQ, built for mid-market velocity",
@@ -329,6 +337,9 @@ export const pamVendors: Record<string, PamVendor> = {
 
   beyondtrust: {
     slug: "beyondtrust",
+    metaTitle: "BeyondTrust PAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "BeyondTrust PAM in Dubai and the UAE: deep endpoint privilege management and secure remote access. Deployed and managed by Artiflex IT.",
     name: "BeyondTrust",
     logo: "/logos/BeyondTrust.webp",
     tagline: "Deepest endpoint privilege management plus market-leading remote privileged access for vendors and contractors",
@@ -434,6 +445,9 @@ export const pamVendors: Record<string, PamVendor> = {
 
   "one-identity-safeguard": {
     slug: "one-identity-safeguard",
+    metaTitle: "One Identity Safeguard PAM UAE | Artiflex IT",
+    metaDescription:
+      "One Identity Safeguard PAM in Dubai and the UAE: AD-integrated vaulting and session monitoring. Deployed and managed by Artiflex IT.",
     name: "One Identity Safeguard",
     logo: "/logos/OneIdentity.png",
     tagline: "Mature AD-integrated PAM with strong vaulting and session monitoring, best leverage when the One Identity stack is already in place",
@@ -535,6 +549,9 @@ export const pamVendors: Record<string, PamVendor> = {
 
   "saviynt-pam": {
     slug: "saviynt-pam",
+    metaTitle: "Saviynt PAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Saviynt PAM in Dubai and the UAE: cloud-native privileged access converged with IGA and third-party access governance. Deployed by Artiflex IT.",
     name: "Saviynt PAM",
     logo: "/logos/Saviynt.png",
     tagline: "Cloud-native PAM converged with IGA, third-party access governance and CIEM on the Saviynt Identity Cloud",
@@ -636,6 +653,9 @@ export const pamVendors: Record<string, PamVendor> = {
 
   "microsoft-entra-pim": {
     slug: "microsoft-entra-pim",
+    metaTitle: "Microsoft Entra PIM (PAM) UAE | Artiflex IT",
+    metaDescription:
+      "Microsoft Entra PIM in Dubai and the UAE: just-in-time elevation for Azure and Entra roles, bundled in Microsoft 365 E5. Deployed by Artiflex IT.",
     name: "Microsoft Entra Privileged Identity Management (PIM)",
     logo: "/logos/microsoft.svg",
     tagline: "Just-in-time elevation for Azure and Entra roles, bundled in Microsoft 365 E5 and Entra ID P2",
@@ -743,6 +763,9 @@ export const pamVendors: Record<string, PamVendor> = {
 
   fortra: {
     slug: "fortra",
+    metaTitle: "Fortra Privileged Access Manager UAE | Artiflex IT",
+    metaDescription:
+      "Fortra Privileged Access Manager in Dubai and the UAE: best-value full-stack PAM with vaulting and session management. Deployed by Artiflex IT.",
     name: "Fortra Privileged Access Manager",
     logo: "/logos/Fortra.png",
     tagline: "Best-value full-stack PAM with strong vaulting, session management and least privilege, the right pick for UAE mid-market and enterprise wanting Leader-grade PAM without CyberArk-tier cost",
@@ -889,6 +912,9 @@ export const pamVendors: Record<string, PamVendor> = {
 
   "hashicorp-vault": {
     slug: "hashicorp-vault",
+    metaTitle: "HashiCorp Vault PAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "HashiCorp Vault in Dubai and the UAE: the standard for secrets management, dynamic secrets and encryption. Deployed and managed by Artiflex IT.",
     name: "HashiCorp Vault",
     logo: "/logos/HashiCorp.png",
     tagline: "The de-facto standard for secrets management, dynamic secrets and encryption-as-a-service for machine, DevOps and cloud-native identity, API-first by design",
@@ -1035,6 +1061,9 @@ export const pamVendors: Record<string, PamVendor> = {
 
   senhasegura: {
     slug: "senhasegura",
+    metaTitle: "Senhasegura PAM Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Senhasegura PAM in Dubai and the UAE: full privileged access suite with vaulting, session management and DevOps secrets. Deployed by Artiflex IT.",
     name: "Senhasegura",
     tagline: "Full PAM suite with vaulting, session management, DevOps secrets and certificate management at competitive pricing, with a strong fast-deployment story",
     bestFor: "Challenger · Full-Suite Value PAM",

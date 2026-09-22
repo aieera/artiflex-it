@@ -1,5 +1,4 @@
 import Button from "@/components/ui/Button";
-import { ShieldIcon } from "@/components/icons";
 import { sophosBenefits, sophosProducts } from "@/pages/Services/cybersecurity/data/sophos";
 
 type Props = {
@@ -8,10 +7,21 @@ type Props = {
 };
 
 /**
+ * Sophos certifications, sourced directly from the Sophos Partner Portal
+ * accreditations export. Updated when fresh certifications are completed.
+ */
+const sophosCertifications = [
+  { value: "83", label: "Sales Certifications" },
+  { value: "19", label: "MDR Sales Certifications" },
+  { value: "8", label: "Engineer Certifications" },
+  { value: "3", label: "Architect Certifications" },
+];
+
+/**
  * Sophos Cybersecurity Platform showcase.
- * Renders the partner badge, header, stats grid, product portfolio
- * and Sophos Site-in-a-Box iframe. Used on the Sophos firewall vendor
- * detail page and the dedicated /vendors/sophos page.
+ * Renders the Platinum partner badge, accreditation badges, certification
+ * counts, product portfolio and Sophos Site-in-a-Box iframe. Used on the
+ * Sophos firewall vendor detail page and the dedicated /vendors/sophos page.
  */
 export default function SophosShowcase({ onCtaClick }: Props) {
   return (
@@ -20,16 +30,20 @@ export default function SophosShowcase({ onCtaClick }: Props) {
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-purple" />
 
       <div className="shell">
-        {/* Badge */}
-        <div className="flex justify-center mb-8">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#045891]/8 border border-[#045891]/15 px-5 py-2 text-xs font-bold uppercase tracking-widest text-[#045891]">
-            <ShieldIcon className="w-4 h-4" />
-            Featured Solution: Platinum Sophos Partner
-          </span>
+        {/* Platinum Partner badge (real SVG, replaces the old text pill) */}
+        <div className="flex justify-center mb-6 sm:mb-8">
+          <img
+            src="/sophos-platinum-partner/Sophos-Platinum-Partner.svg"
+            alt="Sophos Platinum Partner UAE Dubai"
+            className="h-24 w-auto sm:h-28 md:h-32"
+            loading="lazy"
+            width={120}
+            height={120}
+          />
         </div>
 
         {/* Header */}
-        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12">
           <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6">
             Sophos Cybersecurity Platform
           </h2>
@@ -38,7 +52,63 @@ export default function SophosShowcase({ onCtaClick }: Props) {
           </p>
         </div>
 
-        {/* Benefits Stats */}
+        {/* Technical Accreditations: Platform + Firewall */}
+        <div className="mx-auto mb-10 max-w-3xl sm:mb-14">
+          <h3 className="font-display text-base font-semibold uppercase tracking-widest text-[#045891] text-center mb-6">
+            Technical Accreditations
+          </h3>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
+            <div className="flex flex-col items-center text-center rounded-2xl border border-border-light bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+              <img
+                src="/sophos-platinum-partner/PartnerPlatform_Partner.svg"
+                alt="Sophos Platform Accredited Partner Dubai"
+                className="h-20 w-auto mb-3"
+                loading="lazy"
+                width={80}
+                height={80}
+              />
+              <p className="text-sm text-body leading-relaxed">
+                Sophos Platform Accredited: deep knowledge across the Sophos adaptive cybersecurity ecosystem.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center rounded-2xl border border-border-light bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+              <img
+                src="/sophos-platinum-partner/Firewall_Partner.svg"
+                alt="Sophos Firewall Accredited Partner UAE"
+                className="h-20 w-auto mb-3"
+                loading="lazy"
+                width={80}
+                height={80}
+              />
+              <p className="text-sm text-body leading-relaxed">
+                Sophos Firewall Accredited: certified in network protection with layered defence for customers and data.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Certifications count strip */}
+        <div className="mb-12 sm:mb-16">
+          <h3 className="font-display text-base font-semibold uppercase tracking-widest text-[#045891] text-center mb-6">
+            Sophos Certifications Earned
+          </h3>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-6 max-w-4xl mx-auto">
+            {sophosCertifications.map((cert) => (
+              <div
+                key={cert.label}
+                className="rounded-2xl border border-[#045891]/15 bg-white p-5 text-center shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
+              >
+                <span className="font-display text-3xl font-bold text-[#045891] sm:text-4xl">{cert.value}</span>
+                <p className="mt-1 text-xs font-medium text-body sm:text-sm">{cert.label}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-center text-xs text-muted max-w-2xl mx-auto">
+            Sophos Certifications are earned when partners complete and maintain high-quality Sophos training courses, denoting the depth of a partner's sales and technical expertise.
+          </p>
+        </div>
+
+        {/* Benefits Stats (Sophos global numbers) */}
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6 max-w-4xl mx-auto mb-10 sm:mb-16">
           {sophosBenefits.map((b) => (
             <div key={b.label} className="text-center">

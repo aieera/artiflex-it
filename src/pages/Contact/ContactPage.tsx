@@ -9,35 +9,70 @@ import {
   PhoneIcon,
   MailIcon,
   GlobeIcon,
+  WhatsAppIcon,
 } from "@/components/icons";
 import ShinyText from "@/components/ui/ShinyText";
+import { trackEvent, type EventName } from "@/lib/analytics";
+import { submitContactForm } from "@/lib/contact";
+
+/**
+ * Map a URL scheme to the GA4 event name we should fire for it.
+ * Used by the quick-connect cards (tel, mailto, WhatsApp).
+ */
+function eventNameForHref(href: string): EventName | null {
+  if (href.startsWith("tel:")) return "phone_click";
+  if (href.startsWith("mailto:")) return "email_click";
+  if (href.includes("wa.me/") || href.includes("whatsapp.com")) return "whatsapp_click";
+  return null;
+}
 
 /* ─── Office Locations ─── */
 const offices = [
   {
     city: "Dubai",
     label: "UAE",
-    address: ["Malik Saeed Suhail Saeed Bin Daliwi Al-Kutbi - Bardab - First Commercial Center 45B - Office No.102, Dubai, United Arab Emirates"
-
+    entity: "Artiflex Information Technology",
+    address: [
+      "M22, New Al Safiya Building,",
+      "Near Abu Hail Metro Station,",
+      "Hor Al Anz, Dubai, UAE",
     ],
-    phone: "+971 52 207 6531",
-    email: "info@artiflexit.com",
+    notice: "We're shifting to our new office soon as per the below address.",
+    phones: ["+971 52 207 6531"],
+    emails: ["info@artiflexit.com"],
+    website: "www.artiflexit.com",
     highlight: true,
   },
   {
     city: "Muscat",
     label: "Oman",
-    address: ["Office No: 61,Al Takween Building, Way No: 5007, Near Centara Hotel, Opp: Spar, Ghala, Muscat, Oman"],
-    phone: "+971 52 207 6531",
-    email: "info@artiflexit.com",
+    entity: "Manchi Group",
+    address: [
+      "#702, Building No: 2112,",
+      "Way No: 5026, Ghala,",
+      "Near Centara Hotel Road,",
+      "Muscat, Oman",
+    ],
+    notice: "",
+    phones: ["+968 9823 5616", "+968 9534 3098"],
+    emails: ["info@manchigroup.com", "sales@manchigroup.com"],
+    website: "www.manchigroup.com",
     highlight: false,
   },
   {
     city: "Bengaluru",
     label: "India",
-    address: ["Sai Sree Layout, Parappana Agrahara, Hosa Road, Bengaluru, Karnataka – 560100"],
-    phone: "+971 52 207 6531",
-    email: "info@artiflexit.com",
+    entity: "CloudValley Solutions OPC Pvt Ltd",
+    address: [
+      "Sai Sree Layout,",
+      "Parappana Agrahara,",
+      "Hosa Road, Bengaluru,",
+      "Karnataka, India - 560100",
+    ],
+    notice: "",
+    phones: ["+91 708 708 2684", "+91 708 708 8916"],
+    emails: ["info@cloudvalleysol.com", "sales@cloudvalleysol.com"],
+    website: "www.cloudvalleysol.com",
     highlight: false,
   },
 ];
@@ -132,7 +167,11 @@ export default function ContactPage() {
     employees: "",
     service: "",
     message: "",
+    botcheck: "",
   });
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -140,7 +179,7 @@ export default function ContactPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const {
@@ -151,41 +190,62 @@ export default function ContactPage() {
       employees,
       service,
       message,
+      botcheck,
     } = formData;
 
     if (!name || !email || !message) {
-      alert("Please fill all required fields");
+      setErrorMsg("Please fill all required fields.");
       return;
     }
 
-    const subject = encodeURIComponent(
-      `New Inquiry from ${name}${company ? `, ${company}` : ""}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\nCompany: ${company || "Not provided"}\nEmployees: ${employees || "Not specified"}\nService Interest: ${service || "Not specified"}\n\nMessage:\n${message}`
-    );
+    setSending(true);
+    setErrorMsg(null);
 
-    window.location.href = `mailto:info@artiflexit.com?subject=${subject}&body=${body}`;
+    const result = await submitContactForm({
+      name,
+      email,
+      phone,
+      company,
+      employees,
+      service,
+      message,
+      botcheck,
+      source: "contact_page",
+    });
+
+    setSending(false);
+
+    if (result.ok) {
+      trackEvent("contact_form_submit", {
+        location: "contact_page",
+        method: "email",
+        service: service || "not_specified",
+        employees: employees || "not_specified",
+      });
+      setSent(true);
+    } else {
+      setErrorMsg(result.error);
+    }
   };
 
   return (
     <>
       <>
-        <title>Contact ArtiflexIT, Get a Free Security Assessment | Dubai, UAE</title>
+        <title>Contact Artiflex IT Dubai | Free IT Assessment | UAE</title>
         <meta
           name="description"
-          content="Contact ArtiflexIT for cybersecurity, cloud migration, IT infrastructure, and managed services. Offices in Dubai, Abu Dhabi, and Sharjah."
+          content="Contact Artiflex IT for cybersecurity, cloud migration, IT infrastructure and managed services. Dubai, Muscat and Bengaluru offices. Reply within 2 hours."
         />
         <link rel="canonical" href="https://artiflexit.com/contact" />
-        <meta property="og:title" content="Contact ArtiflexIT, Get a Free Security Assessment | Dubai, UAE" />
-        <meta property="og:description" content="Contact ArtiflexIT for cybersecurity, cloud migration, IT infrastructure, and managed services across UAE, Oman, and Saudi Arabia." />
-        <meta property="og:image" content="https://artiflexit.com/og/contact.png" />
+        <meta property="og:title" content="Contact Artiflex IT Dubai | Free IT Assessment | UAE" />
+        <meta property="og:description" content="Contact Artiflex IT for cybersecurity, cloud migration, IT infrastructure and managed services. Reply within 2 business hours across UAE, Oman and Saudi Arabia." />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://artiflexit.com/contact" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact ArtiflexIT, Dubai, UAE" />
+        <meta name="twitter:title" content="Contact Artiflex IT Dubai | Free IT Assessment | UAE" />
         <meta name="twitter:description" content="Offices in Dubai, Muscat, and Bengaluru. Response within 2 business hours." />
-        <meta name="twitter:image" content="https://artiflexit.com/og/contact.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ContactPage",
@@ -196,14 +256,14 @@ export default function ContactPage() {
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          "@id": "https://artiflexit.com/#organization",
+          "@id": "https://artiflexit.com/#localbusiness",
           name: "Artiflex Information Technology",
           url: "https://artiflexit.com",
           telephone: "+971 52 207 6531",
           email: "info@artiflexit.com",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "Malik Saeed Suhail Saeed Bin Daliwi Al-Kutbi - Bardab - First Commercial Center 45B - Office No.102",
+            streetAddress: "M22, New Al Safiya Building, Near Abu Hail Metro Station, Hor Al Anz",
             addressLocality: "Dubai",
             addressCountry: "AE",
           },
@@ -262,6 +322,12 @@ export default function ContactPage() {
               <a
                 key={item.title}
                 href={item.href}
+                onClick={() => {
+                  const evt = eventNameForHref(item.href);
+                  if (evt) trackEvent(evt, { location: "contact_page_quick_connect", label: item.title });
+                }}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="group rounded-2xl border border-border-light bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(27,138,199,0.08)] hover:border-brand-blue/25"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/8 text-brand-blue mb-5 transition-colors duration-300 group-hover:bg-brand-blue group-hover:text-white">
@@ -300,107 +366,147 @@ export default function ContactPage() {
           <div className="mt-4 sm:mt-12">
             {/* Form */}
             <div className="mx-auto max-w-4xl rounded-2xl border border-border-light bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:p-8 lg:p-10">
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <FormInput
-                    label="Full Name"
-                    id="name"
-                    name="name"
+              {sent ? (
+                <div className="py-8 text-center sm:py-12">
+                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-50 text-green-500">
+                    <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-heading mb-2">
+                    Message Sent!
+                  </h3>
+                  <p className="mx-auto max-w-md text-sm text-body">
+                    Thanks for reaching out, your message has been sent. Our team will
+                    get back to you within 2 business hours.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Honeypot: hidden from humans, bots tend to fill it. */}
+                  <input
                     type="text"
-                    required
-                    value={formData.name}
+                    name="botcheck"
+                    value={formData.botcheck}
                     onChange={handleChange}
-                    placeholder="Your full name"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="hidden"
                   />
-                  <FormInput
-                    label="Business Email"
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="you@company.com"
-                  />
-                </div>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <FormInput
+                      label="Full Name"
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your full name"
+                    />
+                    <FormInput
+                      label="Business Email"
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="you@company.com"
+                    />
+                  </div>
 
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <FormInput
-                    label="Phone Number"
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+971 50 123 4567"
-                  />
-                  <FormInput
-                    label="Company Name"
-                    id="company"
-                    name="company"
-                    type="text"
-                    value={formData.company}
-                    onChange={handleChange}
-                    placeholder="Your company"
-                  />
-                </div>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <FormInput
+                      label="Phone Number"
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+971 50 123 4567"
+                    />
+                    <FormInput
+                      label="Company Name"
+                      id="company"
+                      name="company"
+                      type="text"
+                      value={formData.company}
+                      onChange={handleChange}
+                      placeholder="Your company"
+                    />
+                  </div>
 
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <FormSelect
-                    label="Number of Employees"
-                    id="employees"
-                    name="employees"
-                    value={formData.employees}
-                    onChange={handleChange}
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <FormSelect
+                      label="Number of Employees"
+                      id="employees"
+                      name="employees"
+                      value={formData.employees}
+                      onChange={handleChange}
+                    >
+                      <option value="">Select range</option>
+                      <option value="1-10">1–10 employees</option>
+                      <option value="11-50">11–50 employees</option>
+                      <option value="51-200">51–200 employees</option>
+                      <option value="201-500">201–500 employees</option>
+                      <option value="500+">500+ employees</option>
+                    </FormSelect>
+                    <FormSelect
+                      label="Service Interest"
+                      id="service"
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                    >
+                      <option value="">Select service</option>
+                      <option value="cybersecurity">Cybersecurity</option>
+                      <option value="cloud">Cloud Solutions</option>
+                      <option value="infrastructure">IT Infrastructure</option>
+                      <option value="managed">Managed Services & AMC</option>
+                      <option value="appsec">Application Security</option>
+                      <option value="multiple">Multiple Services</option>
+                    </FormSelect>
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-heading mb-2">
+                      Message <span className="text-brand-blue">*</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border border-border-light bg-surface-secondary px-4 py-3 text-sm text-heading placeholder:text-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/10 transition-all duration-200 resize-none"
+                      placeholder="Tell us about your project, challenges, or questions..."
+                    />
+                  </div>
+
+                  {errorMsg && (
+                    <p className="rounded-lg bg-red-50 px-3 py-2 text-center text-sm text-red-600">
+                      {errorMsg}
+                    </p>
+                  )}
+
+                  <Button
+                    type="submit"
+                    variant="gradient"
+                    size="lg"
+                    className="w-full"
+                    disabled={sending}
                   >
-                    <option value="">Select range</option>
-                    <option value="1-10">1–10 employees</option>
-                    <option value="11-50">11–50 employees</option>
-                    <option value="51-200">51–200 employees</option>
-                    <option value="201-500">201–500 employees</option>
-                    <option value="500+">500+ employees</option>
-                  </FormSelect>
-                  <FormSelect
-                    label="Service Interest"
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                  >
-                    <option value="">Select service</option>
-                    <option value="cybersecurity">Cybersecurity</option>
-                    <option value="cloud">Cloud Solutions</option>
-                    <option value="infrastructure">IT Infrastructure</option>
-                    <option value="managed">Managed Services & AMC</option>
-                    <option value="appsec">Application Security</option>
-                    <option value="multiple">Multiple Services</option>
-                  </FormSelect>
-                </div>
+                    {sending ? "Sending..." : "Send Message"}
+                  </Button>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-heading mb-2">
-                    Message <span className="text-brand-blue">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-border-light bg-surface-secondary px-4 py-3 text-sm text-heading placeholder:text-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/10 transition-all duration-200 resize-none"
-                    placeholder="Tell us about your project, challenges, or questions..."
-                  />
-                </div>
-
-                <Button type="submit" variant="gradient" size="lg" className="w-full">
-                  Send Message
-                </Button>
-
-                <p className="text-xs text-muted text-center">
-                  We respond within 2 business hours. Your information is confidential.
-                </p>
-              </form>
+                  <p className="text-xs text-muted text-center">
+                    We respond within 2 business hours. Your information is confidential.
+                  </p>
+                </form>
+              )}
             </div>
 
           </div>
@@ -414,75 +520,120 @@ export default function ContactPage() {
         <div className="shell">
           <SectionHeader
             label="Our Offices"
-            title="Locations Across the UAE"
-            description="With offices in Dubai,Muscat, and Bengaluru, we're never far from your business."
+            title="Locations Across UAE, Oman and India"
+            description="With offices in Dubai, Muscat and Bengaluru, we're never far from your business."
             centered
           />
 
           <div className="mt-8 grid gap-4 sm:mt-12 sm:gap-6 md:grid-cols-3">
             {offices.map((office) => (
-                <div
-                  key={office.city}
-                  className={`relative rounded-2xl border p-6 transition-all duration-500 ${office.highlight
-                      ? "border-brand-blue/25 bg-gradient-to-br from-brand-blue/5 to-white shadow-[0_4px_20px_rgba(27,138,199,0.1)]"
-                      : "border-border-light bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(27,138,199,0.08)] hover:border-brand-blue/25 hover:-translate-y-0.5"
-                    }`}
-                >
-                  {/* Highlight badge */}
-                  {office.highlight && (
-                    <span className="absolute -top-3 left-6 inline-flex items-center gap-1.5 rounded-full bg-brand-blue px-3 py-1 text-[11px] font-semibold text-white">
-                      <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse-dot" />
-                      Headquarters
-                    </span>
-                  )}
+              <div
+                key={office.city}
+                className={`relative rounded-2xl border p-6 transition-all duration-500 ${office.highlight
+                  ? "border-brand-blue/25 bg-gradient-to-br from-brand-blue/5 to-white shadow-[0_4px_20px_rgba(27,138,199,0.1)]"
+                  : "border-border-light bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(27,138,199,0.08)] hover:border-brand-blue/25 hover:-translate-y-0.5"
+                  }`}
+              >
+                {/* Highlight badge */}
+                {office.highlight && (
+                  <span className="absolute -top-3 left-6 inline-flex items-center gap-1.5 rounded-full bg-brand-blue px-3 py-1 text-[11px] font-semibold text-white">
+                    <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse-dot" />
+                    Headquarters
+                  </span>
+                )}
 
-                  <div className="flex items-center gap-3 mb-5">
-                    <div
-                      className={`flex h-11 w-11 items-center justify-center rounded-xl ${office.highlight
-                          ? "bg-brand-blue text-white"
-                          : "bg-brand-blue/8 text-brand-blue"
-                        }`}
-                    >
-                      <MapPinIcon className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-display text-lg font-semibold text-heading">
-                        {office.city}
-                      </h3>
-                      <p className="text-xs text-muted">{office.label}</p>
-                    </div>
+                <div className="mb-5 flex items-start gap-3">
+                  <div
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${office.highlight
+                      ? "bg-brand-blue text-white"
+                      : "bg-brand-blue/8 text-brand-blue"
+                      }`}
+                  >
+                    <MapPinIcon className="h-5 w-5" />
                   </div>
-
-                  <div className="space-y-4 text-sm">
-                    <div className="text-body leading-relaxed">
-                      {office.address.map((line) => (
-                        <p key={line}>{line}</p>
-                      ))}
-                    </div>
-
-                    <div className="h-px bg-border-light" />
-
-                    <div className="flex items-center justify-center gap-4">
-                      <a
-                        href={`https://wa.me/${office.phone.replace(/\D/g, "")}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue text-white hover:scale-110 transition"
-                      >
-                        <PhoneIcon className="h-5 w-5" />
-                      </a>
-
-                      {/* Email */}
-                      <a
-                        href={`mailto:${office.email}`}
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue text-white hover:scale-110 transition"
-                      >
-                        <MailIcon className="h-5 w-5" />
-                      </a>
-                    </div>
+                  <div>
+                    <h3 className="font-display text-lg font-semibold text-heading">
+                      {office.city}
+                    </h3>
+                    <p className="text-xs text-muted">{office.label}</p>
+                    <p className="mt-1 text-sm font-semibold text-brand-blue">
+                      {office.entity}
+                    </p>
                   </div>
                 </div>
-              ))}
+
+                <div className="space-y-4 text-sm">
+
+                  {office.notice && (
+                    <p className="rounded-lg border border-brand-blue/20 bg-brand-blue/8 px-4 py-2 text-[14px] font-bold text-brand-blue ">
+                      {office.notice}
+                    </p>
+                  )}
+
+                  <div className="text-body leading-relaxed">
+                    {office.address.map((line) => (
+                      <p key={line}>{line}</p>
+                    ))}
+                  </div>
+
+                  <div className="h-px bg-border-light" />
+
+                  {/* Phones */}
+                  <ul className="space-y-2">
+                    {office.phones.map((phone) => (
+                      <li key={phone} className="flex items-center gap-2.5">
+                        <a
+                          href={`https://wa.me/${phone.replace(/\D/g, "")}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`WhatsApp ${office.city} on ${phone}`}
+                          onClick={() => trackEvent("whatsapp_click", { location: "contact_page_office", label: office.city })}
+                          className="text-brand-blue transition-opacity hover:opacity-70"
+                        >
+                          <WhatsAppIcon className="h-4 w-4 shrink-0" />
+                        </a>
+                        <a
+                          href={`tel:${phone.replace(/[^\d+]/g, "")}`}
+                          onClick={() => trackEvent("phone_click", { location: "contact_page_office", label: office.city })}
+                          className="flex items-center gap-2 text-body transition-colors hover:text-brand-blue"
+                        >
+                          <PhoneIcon className="h-4 w-4 shrink-0 text-brand-blue" />
+                          {phone}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Emails */}
+                  <ul className="space-y-2">
+                    {office.emails.map((email) => (
+                      <li key={email}>
+                        <a
+                          href={`mailto:${email}`}
+                          onClick={() => trackEvent("email_click", { location: "contact_page_office", label: office.city })}
+                          className="flex items-center gap-2 break-all text-body transition-colors hover:text-brand-blue"
+                        >
+                          <MailIcon className="h-4 w-4 shrink-0 text-brand-blue" />
+                          {email}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Website */}
+                  <a
+                    href={`https://${office.website}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-body transition-colors hover:text-brand-blue"
+                  >
+                    <GlobeIcon className="h-4 w-4 shrink-0 text-brand-blue" />
+                    {office.website}
+                  </a>
+
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

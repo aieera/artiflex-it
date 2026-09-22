@@ -156,8 +156,76 @@ export default function OTICSSecurityTenable() {
   return (
     <>
       <title>Tenable OT Security | OT / ICS UAE | Artiflex IT</title>
-      <meta name="description" content="Tenable OT Security (Tenable.ot), unified IT and OT vulnerability management. Indegy heritage. Deployed and managed by Artiflex IT for UAE manufacturing and utilities." />
+      <meta name="description" content="Tenable OT Security (Tenable.ot): unified IT and OT vulnerability management with Indegy heritage. Deployed by Artiflex IT for UAE manufacturing and utilities." />
       <link rel="canonical" href="https://artiflexit.com/cybersecurity/ot-ics-security/tenable" />
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+      <meta httpEquiv="content-language" content="en-AE" />
+      <meta name="geo.region" content="AE-DU" />
+      <meta name="geo.placename" content="Dubai" />
+      <meta name="geo.position" content="25.2528;55.3300" />
+      <meta name="ICBM" content="25.2528, 55.3300" />
+
+      <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/ot-ics-security/tenable" />
+      <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/ot-ics-security/tenable" />
+      <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/ot-ics-security/tenable" />
+      <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/ot-ics-security/tenable" />
+      <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/ot-ics-security/tenable" />
+      <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/ot-ics-security/tenable" />
+
+      <meta property="og:title" content="Tenable OT Security | OT / ICS UAE | Artiflex IT" />
+      <meta property="og:description" content="Tenable OT Security (Tenable.ot): unified IT and OT vulnerability management with Indegy heritage. Deployed by Artiflex IT for UAE manufacturing and utilities." />
+      <meta property="og:url" content="https://artiflexit.com/cybersecurity/ot-ics-security/tenable" />
+      <meta property="og:site_name" content="Artiflex Information Technology" />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_AE" />
+      <meta property="og:locale:alternate" content="en_US" />
+      <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Tenable OT Security for the UAE by Artiflex IT" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Tenable OT Security | OT / ICS UAE | Artiflex IT" />
+      <meta name="twitter:description" content="Tenable OT Security (Tenable.ot): unified IT and OT vulnerability management with Indegy heritage. Deployed by Artiflex IT for UAE manufacturing and utilities." />
+      <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+      <meta name="twitter:site" content="@artiflexit" />
+
+      {/* JSON-LD: Service schema */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "OT / ICS Security",
+          name: "Tenable OT Security",
+          url: "https://artiflexit.com/cybersecurity/ot-ics-security/tenable",
+          provider: {
+            "@type": "Organization",
+            name: "Artiflex Information Technology",
+            url: "https://artiflexit.com",
+          },
+          brand: { "@type": "Brand", name: "Tenable OT Security" },
+          areaServed: [
+            { "@type": "Country", name: "United Arab Emirates" },
+            { "@type": "Country", name: "Oman" },
+            { "@type": "Country", name: "Saudi Arabia" },
+          ],
+        })}
+      </script>
+
+      {/* JSON-LD: Breadcrumbs */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://artiflexit.com/" },
+            { "@type": "ListItem", position: 2, name: "Cybersecurity", item: "https://artiflexit.com/cybersecurity" },
+            { "@type": "ListItem", position: 3, name: "OT & ICS Security", item: "https://artiflexit.com/cybersecurity/ot-ics-security" },
+            { "@type": "ListItem", position: 4, name: "Tenable OT Security", item: "https://artiflexit.com/cybersecurity/ot-ics-security/tenable" },
+          ],
+        })}
+      </script>
 
       <section className="relative overflow-hidden bg-gradient-to-br from-[#04101E] to-[#0A3D6B]">
         <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(40,181,225,0.18),transparent_55%)]" />
@@ -253,7 +321,7 @@ export default function OTICSSecurityTenable() {
       <section className="relative bg-white py-16 sm:py-24"><div className="shell"><div className="max-w-3xl"><p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#1B8AC7]">The strategic view</p><h2 className="mt-4 font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">How the products relate</h2><p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">Tenable.ot alone proves OT VM value. Pairing with Tenable.io or .sc unifies IT and OT. Tenable One adds exposure-management scale.</p></div><div className="mt-10 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]"><div className="grid grid-cols-1 gap-4 bg-gradient-to-r from-[#045891] to-[#1B8AC7] px-5 py-4 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE] sm:grid-cols-[1fr_2fr] sm:px-7 sm:text-[11px]"><span>Step</span><span>What it gives you</span></div>{upgradePaths.map((u) => (<div key={u.from} className="grid grid-cols-1 gap-4 border-t border-[#0A3D6B]/20 px-5 py-4 transition-colors hover:bg-[#28B5E1]/[0.04] sm:grid-cols-[1fr_2fr] sm:px-7"><span className="font-display text-sm font-bold text-slate-900 sm:text-base">{u.from}</span><span className="text-sm leading-relaxed text-slate-700 sm:text-[15px]"><span className="font-semibold text-[#1B8AC7]">{u.title}.</span> {u.desc}</span></div>))}</div></div></section>
 
       {/* MODULE MATRIX */}
-      <section id="license-matrix" className="relative scroll-mt-20 bg-slate-50 py-16 sm:py-24"><div className="shell"><div className="max-w-3xl"><p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#1B8AC7]">Licensing</p><h2 className="mt-4 font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">Tenable products and capabilities</h2><p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">The Tenable platform spans OT, cloud VM, on-prem VM and exposure management. License the components your programme actually needs.</p></div><div className="mt-10 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]"><div className="overflow-x-auto"><table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + editions.length * 116) }}><thead><tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]"><th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-4 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">Capability</th>{editions.map((e) => (<th key={e.name} className="border-l border-white/15 px-2 py-3 sm:px-4 sm:py-4 text-center align-bottom font-display text-sm font-semibold text-white">{e.name}<span className="mt-1 block font-mono text-[10px] font-normal uppercase tracking-wider text-[#9CD6EE]">{e.subtitle}</span></th>))}</tr></thead><tbody>{licRows.map((row, rIdx) => (<tr key={row.feature} className={`border-t border-[#0A3D6B]/15 transition-colors hover:bg-[#28B5E1]/[0.04] ${rIdx % 2 === 0 ? "bg-white" : "bg-slate-50/60"}`}><th scope="row" className={`sticky left-0 z-10 px-4 py-3 align-middle font-display text-[13px] font-semibold text-slate-900 ${rIdx % 2 === 0 ? "bg-white" : "bg-slate-50"}`}>{row.feature}</th>{row.cells.map((c, cIdx) => { const color = c.type === "yes" ? "text-emerald-600 font-bold" : c.type === "no" ? "text-slate-300" : "text-[#1B8AC7] font-semibold"; return (<td key={cIdx} className={`border-l border-[#0A3D6B]/15 px-3 py-3 text-center align-middle text-[12.5px] ${color}`}>{c.value}</td>); })}</tr>))}</tbody></table></div></div></div></section>
+      <section id="license-matrix" className="relative scroll-mt-20 bg-slate-50 py-16 sm:py-24"><div className="shell"><div className="max-w-3xl"><p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#1B8AC7]">Licensing</p><h2 className="mt-4 font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">Tenable products and capabilities</h2><p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">The Tenable platform spans OT, cloud VM, on-prem VM and exposure management. License the components your programme actually needs.</p></div><div className="mt-10 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]"><div className="overflow-x-auto"><table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + editions.length * 116)}px` }}><thead><tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]"><th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-4 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">Capability</th>{editions.map((e) => (<th key={e.name} className="border-l border-white/15 px-2 py-3 sm:px-4 sm:py-4 text-center align-bottom font-display text-sm font-semibold text-white">{e.name}<span className="mt-1 block font-mono text-[10px] font-normal uppercase tracking-wider text-[#9CD6EE]">{e.subtitle}</span></th>))}</tr></thead><tbody>{licRows.map((row, rIdx) => (<tr key={row.feature} className={`border-t border-[#0A3D6B]/15 transition-colors hover:bg-[#28B5E1]/[0.04] ${rIdx % 2 === 0 ? "bg-white" : "bg-slate-50/60"}`}><th scope="row" className={`sticky left-0 z-10 px-4 py-3 align-middle font-display text-[13px] font-semibold text-slate-900 ${rIdx % 2 === 0 ? "bg-white" : "bg-slate-50"}`}>{row.feature}</th>{row.cells.map((c, cIdx) => { const color = c.type === "yes" ? "text-emerald-600 font-bold" : c.type === "no" ? "text-slate-300" : "text-[#1B8AC7] font-semibold"; return (<td key={cIdx} className={`border-l border-[#0A3D6B]/15 px-3 py-3 text-center align-middle text-[12.5px] ${color}`}>{c.value}</td>); })}</tr>))}</tbody></table></div></div></div></section>
 
       {/* DEPLOYMENT */}
       <section className="relative bg-white py-12 sm:py-16"><div className="shell"><div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-6"><p className="font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-slate-400">Deployment Options</p><h2 className="font-display text-xl font-semibold leading-tight text-slate-900 sm:text-2xl">How we deliver Tenable OT Security <span className="font-normal text-slate-500">across UAE industrial estates</span></h2></div><div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">{deploymentOptions.map((opt) => { const Icon = opt.icon === "server" ? ServerIcon : opt.icon === "layers" ? LayersIcon : CloudIcon; return (<div key={opt.title} className="rounded-xl border border-slate-200 bg-white p-5 transition-colors duration-300 hover:border-slate-300"><div className="flex items-center gap-2.5"><span aria-hidden className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-slate-100 text-slate-500"><Icon className="h-4 w-4" /></span><h3 className="font-display text-sm font-semibold text-slate-900 sm:text-[15px]">{opt.title}</h3></div><p className="mt-3 text-[13px] leading-[1.6] text-slate-500 sm:text-sm">{opt.body}</p></div>); })}</div></div></section>

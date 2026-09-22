@@ -87,7 +87,7 @@ export default function SIEMSOCMDRPage() {
   return (
     <>
       <>
-        <title>SIEM, SOC & MDR Services UAE, Sophos Managed Detection | ArtiflexIT Dubai</title>
+        <title>Build vs Buy: SOC, SIEM & MDR for UAE Businesses</title>
         <meta name="description" content="24/7 managed detection and response for UAE enterprises. SIEM, threat hunting, incident response, delivered by ArtiflexIT and Sophos MDR, the world's largest MDR service." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/siem-soc-mdr" />
       </>

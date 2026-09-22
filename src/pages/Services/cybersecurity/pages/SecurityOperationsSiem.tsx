@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 
@@ -656,18 +657,47 @@ export default function SecurityOperationsSiem() {
   return (
     <>
       <>
-        <title>SIEM (Security Information & Event Management) UAE | Vendor Comparison & Gartner-style Scorecard | Artiflex IT</title>
-        <meta
-          name="description"
-          content="UAE SIEM buyer's guide. Vendor comparison and Gartner-style scorecard across Rapid7 InsightIDR (our top pick), Cisco Splunk Enterprise Security, Exabeam Fusion SIEM, Microsoft Sentinel, IBM QRadar and Secureworks Taegis XDR. Log management, threat detection and compliance for UAE SOCs."
-        />
+        <title>SIEM Solutions UAE | Splunk, Sentinel & QRadar Deployment</title>
+        <meta name="description" content="UAE SIEM buyer's guide: vendor comparison across Rapid7 InsightIDR, Splunk, Exabeam, Microsoft Sentinel, IBM QRadar and Secureworks Taegis." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/security-operations/siem" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/cybersecurity/security-operations/siem" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/cybersecurity/security-operations/siem" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/cybersecurity/security-operations/siem" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/cybersecurity/security-operations/siem" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/security-operations/siem" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/security-operations/siem" />
+
+        <meta property="og:title" content="SIEM Solutions UAE | Splunk, Sentinel & QRadar Deployment" />
+        <meta property="og:description" content="UAE SIEM buyer's guide. Vendor comparison and Gartner-style scorecard across Rapid7 InsightIDR (our top pick), Cisco Splunk Enterprise Security, Exabeam Fusion SIEM, Microsoft Sentinel, IBM QRadar and Secureworks Taegis XDR. Log management, threat detection and compliance for UAE SOCs." />
+        <meta property="og:url" content="https://artiflexit.com/cybersecurity/security-operations/siem" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Artiflex IT SIEM deployment for the UAE" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="SIEM Solutions UAE | Splunk, Sentinel & QRadar Deployment" />
+        <meta name="twitter:description" content="UAE SIEM buyer's guide: vendor comparison across Rapid7 InsightIDR, Splunk, Exabeam, Microsoft Sentinel, IBM QRadar and Secureworks Taegis." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "SIEM (Security Information and Event Management)",
-            "provider": { "@type": "Organization", "name": "Artiflex IT" },
+            "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
             "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
             "description":
               "UAE SIEM delivery across Rapid7 InsightIDR, Cisco Splunk Enterprise Security, Exabeam Fusion SIEM, Microsoft Sentinel, IBM QRadar and Secureworks Taegis XDR: log aggregation, UEBA detection, compliance reporting and managed SOC outcomes.",
@@ -693,6 +723,7 @@ export default function SecurityOperationsSiem() {
               "@type": "ListItem",
               "position": i + 1,
               "name": v.name,
+              "url": "https://artiflexit.com/cybersecurity/security-operations/siem",
             })),
           })}
         </script>
@@ -980,12 +1011,12 @@ export default function SecurityOperationsSiem() {
             </button>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + matrixVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + matrixVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Criteria
                     </th>
                     {matrixVendors.map((v) => (
@@ -1292,10 +1323,10 @@ export default function SecurityOperationsSiem() {
 
           <div className="mt-8 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + featureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + featureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Capability
                     </th>
                     {featureVendors.map((v, i) => (
@@ -1498,6 +1529,8 @@ export default function SecurityOperationsSiem() {
         description="Free review covering your log sources, SOC maturity, compliance gaps, and an honest SIEM vs MDR recommendation, delivered by a UAE-based engineer in Arabic or English."
         primaryButton={{ text: "Book Free Assessment", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

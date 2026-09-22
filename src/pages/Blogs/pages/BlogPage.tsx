@@ -16,7 +16,7 @@ import { CTASection } from "@/pages/Home/sections/CTASection";
 import ClientStrip from "@/components/ui/ClientStrip";
 import { ArrowRightIcon, SearchIcon, LinkedInIcon, FolderIcon } from "@/components/icons";
 import ShinyText from "@/components/ui/ShinyText";
-import { allTags, sortedPosts } from "@/content/blog/posts";
+import { allTags, prefetchPostContent, sortedPosts } from "@/content/blog";
 import { SOCIAL_LINKS } from "@/lib/constants";
 
 const SOCIAL_ICONS: Record<string, FC<{ className?: string }>> = {
@@ -107,22 +107,25 @@ export default function BlogPage() {
   return (
     <>
       <>
-        <title>Blog, Cybersecurity & IT Insights for UAE Business | Artiflex IT</title>
+        <title>Artiflex IT Blog | Cybersecurity, Cloud & IT Insights UAE</title>
         <meta
           name="description"
-          content="Field-tested cybersecurity, cloud, and IT insights from Artiflex IT engineers. Practical guidance for UAE businesses, NESA, PDPL, ransomware, cloud migration, AMC."
+          content="Practical cybersecurity, cloud and IT articles for UAE business leaders: NESA, PDPL, ransomware, cloud migration and more. By Artiflex IT engineers."
         />
         <link rel="canonical" href={`${SITE}/blog`} />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
         {/* hreflang */}
         <link rel="alternate" hrefLang="en-ae" href={`${SITE}/blog`} />
         <link rel="alternate" hrefLang="en-om" href={`${SITE}/blog`} />
         <link rel="alternate" hrefLang="en-sa" href={`${SITE}/blog`} />
+        <link rel="alternate" hrefLang="en-in" href={`${SITE}/blog`} />
+        <link rel="alternate" hrefLang="en" href={`${SITE}/blog`} />
         <link rel="alternate" hrefLang="x-default" href={`${SITE}/blog`} />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Artiflex IT Blog, Cybersecurity & IT Insights" />
+        <meta property="og:title" content="Artiflex IT Blog | Cybersecurity, Cloud & IT Insights UAE" />
         <meta
           property="og:description"
           content="Field-tested cybersecurity, cloud, and IT insights from Artiflex IT engineers for UAE businesses."
@@ -134,7 +137,7 @@ export default function BlogPage() {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Artiflex IT Blog" />
+        <meta name="twitter:title" content="Artiflex IT Blog | Cybersecurity, Cloud & IT Insights UAE" />
         <meta
           name="twitter:description"
           content="Cybersecurity, cloud, and IT insights for UAE businesses."
@@ -206,6 +209,7 @@ export default function BlogPage() {
             </p>
             <Link
               to={`/blog/${featured.slug}`}
+              onMouseEnter={() => prefetchPostContent(featured.slug)}
               className="group block overflow-hidden rounded-2xl border border-border-light bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-blue/25 hover:shadow-xl"
             >
               <div className="grid gap-0 lg:grid-cols-[1.2fr_1fr]">
@@ -295,6 +299,7 @@ export default function BlogPage() {
                   {pageItems.map((post) => (
                     <article
                       key={post.slug}
+                      onMouseEnter={() => prefetchPostContent(post.slug)}
                       className="group flex flex-col gap-5 border-b border-border-light pb-8 sm:flex-row"
                     >
                       <Link
@@ -422,7 +427,7 @@ export default function BlogPage() {
                         <Link to={`/blog/${p.slug}`} className="group flex gap-3">
                           <img
                             src={p.image}
-                            alt=""
+                            alt={p.title}
                             loading="lazy"
                             className="h-12 w-12 shrink-0 rounded-md object-cover"
                           />

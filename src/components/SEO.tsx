@@ -30,7 +30,29 @@ type SEOProps = {
   schema?: Record<string, unknown>[];
   /** Override the OG type. Defaults to "website" */
   ogType?: "website" | "article" | "product";
+  /**
+   * Author byline. Required for AI engines (ChatGPT, Perplexity, Gemini)
+   * to treat the page as authoritative. Defaults to the editorial team
+   * so every page has *some* author, which is the minimum bar.
+   */
+  author?: string;
+  /**
+   * ISO 8601 publish date, e.g. "2026-01-15T00:00:00Z".
+   * Defaults to start of current year so AI engines treat content as
+   * fresh. Override on blog posts with the real publish date.
+   */
+  datePublished?: string;
+  /**
+   * ISO 8601 last-modified date. Defaults to today (build time).
+   * Helps AI engines prefer recent content when ranking citations.
+   */
+  dateModified?: string;
 };
+
+// Defaults computed at module load (build time for prerender)
+const DEFAULT_AUTHOR = "Artiflex IT Editorial Team";
+const DEFAULT_PUBLISHED = "2026-01-01T00:00:00Z";
+const DEFAULT_MODIFIED = new Date().toISOString();
 
 export default function SEO({
   title,
@@ -40,6 +62,9 @@ export default function SEO({
   noindex = false,
   schema = [],
   ogType = "website",
+  author = DEFAULT_AUTHOR,
+  datePublished = DEFAULT_PUBLISHED,
+  dateModified = DEFAULT_MODIFIED,
 }: SEOProps) {
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
   const canonical = `${SITE}${cleanPath === "/" ? "/" : cleanPath.replace(/\/$/, "")}`;
@@ -61,6 +86,18 @@ export default function SEO({
         }
       />
 
+      {/*
+        Authorship + freshness, critical for AI Search (ChatGPT,
+        Perplexity, Gemini, Copilot) and Google E-E-A-T signals.
+        Pages without an author or published date get demoted by
+        recent ranking systems and rarely appear in AI citations.
+      */}
+      <meta name="author" content={author} />
+      <meta property="article:author" content={author} />
+      <meta property="article:published_time" content={datePublished} />
+      <meta property="article:modified_time" content={dateModified} />
+      <meta property="og:updated_time" content={dateModified} />
+
       {/* Language + geo (UAE primary market) */}
       <meta httpEquiv="content-language" content="en-AE" />
       <meta name="geo.region" content="AE-DU" />
@@ -68,10 +105,11 @@ export default function SEO({
       <meta name="geo.position" content="25.2528;55.3300" />
       <meta name="ICBM" content="25.2528, 55.3300" />
 
-      {/* hreflang, Artiflex serves UAE, Oman, Saudi Arabia */}
+      {/* hreflang, Artiflex serves UAE (primary), Oman, Saudi Arabia, India */}
       <link rel="alternate" hrefLang="en-ae" href={canonical} />
       <link rel="alternate" hrefLang="en-om" href={canonical} />
       <link rel="alternate" hrefLang="en-sa" href={canonical} />
+      <link rel="alternate" hrefLang="en-in" href={canonical} />
       <link rel="alternate" hrefLang="en" href={canonical} />
       <link rel="alternate" hrefLang="x-default" href={canonical} />
 

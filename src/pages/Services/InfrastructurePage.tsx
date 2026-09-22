@@ -401,8 +401,8 @@ function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0 z-[1] overflow-hidden" aria-hidden="true">
         <img
-          src="/cybersecurity.png"
-          alt=""
+          src="/cybersecurity.webp"
+          alt="IT infrastructure and networking services by Artiflex IT in Dubai and the UAE"
           loading="eager"
           decoding="async"
           className="h-full w-full object-cover object-center opacity-55 [mask-image:radial-gradient(120%_90%_at_60%_45%,black_55%,transparent_100%)]"
@@ -449,7 +449,7 @@ function HeroSection() {
 
             <div className="mt-6 sm:mt-8 lg:mt-8 xl:mt-10">
               <h1 className="mt-2 font-display text-xl font-semibold leading-snug tracking-tight text-white sm:mt-3 sm:text-2xl md:text-3xl lg:text-[1.6rem] xl:text-4xl">
-                <span className="gradient-text"> Enterprise IT Infrastructure for the UAE & Middle East</span>
+                <span className="gradient-text"> IT Infrastructure Services in Dubai</span>
               </h1>
 
               <p className="mt-3 max-w-xl text-xs leading-relaxed text-slate-300 sm:mt-4 sm:text-sm md:text-base lg:text-sm xl:text-base">
@@ -609,33 +609,47 @@ function HeroSection() {
 export default function InfrastructurePage() {
   return (
     <>
-      <title>IT Infrastructure UAE | Data Center, Servers, Network, Wireless, UC, AV, CCTV, UPS | Artiflex IT</title>
-      <meta
-        name="description"
-        content="End-to-end IT infrastructure for UAE enterprises across 12 solution categories: data center, servers and virtualization, storage, network, wireless, structured cabling, unified communication, video conferencing, CCTV, access control, power & UPS, and managed print. Designed for UAE conditions, aligned to NESA, ADHICS, PDPL and Civil Defence."
-      />
-      <meta
-        name="keywords"
-        content="IT infrastructure UAE, data center UAE, server infrastructure Dubai, structured cabling UAE, network infrastructure Dubai, enterprise wifi UAE, IP PBX UAE, video conferencing Dubai, CCTV UAE, access control UAE, biometrics UAE, UPS Dubai, managed print UAE, Cisco partner UAE, Dell partner UAE, HPE partner UAE, Aruba UAE, Fortinet UAE, NetApp UAE, Nutanix UAE, VMware UAE, Schneider Electric UAE, Vertiv UAE, APC UAE, Hikvision UAE, ZKTeco UAE, 3CX UAE, Microsoft Teams Rooms UAE, Logitech UAE, Poly UAE, Canon UAE, Xerox UAE, Konica Minolta UAE"
-      />
+      <title>Build Your Office IT Infrastructure in Dubai</title>
+      <meta name="description" content="IT infrastructure services in Dubai across 12 categories: data center, servers, network, wireless, UC, AV, CCTV, access control, UPS and managed print." />
       <link rel="canonical" href="https://artiflexit.com/infrastructure" />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content="IT Infrastructure UAE, 12 Solution Categories | Artiflex IT" />
-      <meta
-        property="og:description"
-        content="From data center to managed print: 12 infrastructure categories under one accountable UAE partner. Designed for UAE conditions, aligned to NESA, ADHICS, PDPL and Civil Defence."
-      />
-      <meta property="og:image" content="https://artiflexit.com/og/infrastructure.png" />
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+      <meta httpEquiv="content-language" content="en-AE" />
+      <meta name="geo.region" content="AE-DU" />
+      <meta name="geo.placename" content="Dubai" />
+      <meta name="geo.position" content="25.2528;55.3300" />
+      <meta name="ICBM" content="25.2528, 55.3300" />
+
+      <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/infrastructure" />
+      <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/infrastructure" />
+      <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/infrastructure" />
+      <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/infrastructure" />
+      <link rel="alternate" hrefLang="en" href="https://artiflexit.com/infrastructure" />
+      <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/infrastructure" />
+
+      <meta property="og:title" content="Build Your Office IT Infrastructure in Dubai" />
+      <meta property="og:description" content="IT infrastructure services in Dubai across 12 categories: data center, servers, network, wireless, UC, AV, CCTV, access control, UPS and managed print." />
       <meta property="og:url" content="https://artiflexit.com/infrastructure" />
+      <meta property="og:site_name" content="Artiflex Information Technology" />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_AE" />
+      <meta property="og:locale:alternate" content="en_US" />
+      <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Build Your Office IT Infrastructure in Dubai" />
+
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="IT Infrastructure UAE | Artiflex IT" />
-      <meta name="twitter:description" content="Data center, servers, storage, network, wireless, UC, AV, CCTV, access control, UPS and managed print for UAE enterprises." />
-      <meta name="twitter:image" content="https://artiflexit.com/og/infrastructure.png" />
+      <meta name="twitter:title" content="Build Your Office IT Infrastructure in Dubai" />
+      <meta name="twitter:description" content="IT infrastructure services in Dubai across 12 categories: data center, servers, network, wireless, UC, AV, CCTV, access control, UPS and managed print." />
+      <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+      <meta name="twitter:site" content="@artiflexit" />
       <script type="application/ld+json">{JSON.stringify({
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        name: "Artiflex IT",
-        url: "https://artiflexit.com/infrastructure",
+        "@id": "https://artiflexit.com/#localbusiness",
+        name: "Artiflex Information Technology",
+        url: "https://artiflexit.com/",
         areaServed: [
           { "@type": "Country", name: "United Arab Emirates" },
           { "@type": "Country", name: "Saudi Arabia" },

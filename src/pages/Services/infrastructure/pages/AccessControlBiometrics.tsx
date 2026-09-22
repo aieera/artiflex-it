@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { useContactModal } from "@/components/layout/ContactModal";
 import DeliveryModel from "@/components/sections/DeliveryModel";
+import EditorialOpinionNotice from "@/components/ui/EditorialOpinionNotice";
 
 /* ───────── ACCESS CONTROL VENDORS (HONEYCOMB) ───────── */
 
@@ -147,16 +148,12 @@ function SelectionFrameworkCards() {
               </h3>
             </div>
 
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  key="content"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="overflow-hidden"
-                >
+            <motion.div
+              initial={false}
+              animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden"
+            >
                   <p className="mt-4 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1B8AC7]">
                     What you are nailing down
                   </p>
@@ -169,9 +166,7 @@ function SelectionFrameworkCards() {
                   <p className="mt-1.5 text-xs leading-relaxed text-slate-600">
                     {r.why}
                   </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            </motion.div>
           </div>
         );
       })}
@@ -236,16 +231,12 @@ function ChecklistCards() {
               </svg>
             </div>
 
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  key="content"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="overflow-hidden"
-                >
+            <motion.div
+              initial={false}
+              animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden"
+            >
                   <ul className="mt-4 space-y-2 text-sm leading-relaxed text-slate-600">
                     {g.items.map((it) => (
                       <li key={it} className="flex items-start gap-2">
@@ -257,9 +248,7 @@ function ChecklistCards() {
                       </li>
                     ))}
                   </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            </motion.div>
           </div>
         );
       })}
@@ -675,7 +664,7 @@ function AccessControlHero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/infra.png')" }}
+        style={{ backgroundImage: "url('/infra.webp')" }}
       />
       <div
         aria-hidden="true"
@@ -715,12 +704,12 @@ function AccessControlHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Access Control &{" "}
             <span className="gradient-text">Biometrics</span>
-            <span className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-              Buyer's Guide, Vendor Matrix and Gartner-style Scorecard
-            </span>
+          </p>
+          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Buyer's Guide, Vendor Matrix and Gartner-style Scorecard
           </h1>
 
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
@@ -803,18 +792,55 @@ export default function AccessControlBiometrics() {
   return (
     <>
       <>
-        <title>Access Control & Biometrics UAE | Buyer's Guide & Vendor Scorecard | Artiflex IT</title>
-        <meta
-          name="description"
-          content="UAE buyer's guide for access control and biometrics. Vendor matrix and Gartner-style scorecard across HID Global, Suprema, ZKTeco, Honeywell, Bosch and Lenel S2 / Genetec."
-        />
+        <title>Biometric Access Control with EIDA for Dubai Offices</title>
+        <meta name="description" content="Access control in Dubai. Biometric attendance, mobile credentials and EIDA integration from HID, Suprema, ZKTeco, Honeywell and Genetec." />
         <link rel="canonical" href="https://artiflexit.com/infrastructure/access-control-biometrics" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <meta httpEquiv="content-language" content="en-AE" />
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2528;55.3300" />
+        <meta name="ICBM" content="25.2528, 55.3300" />
+
+        <link rel="alternate" hrefLang="en-ae" href="https://artiflexit.com/infrastructure/access-control-biometrics" />
+        <link rel="alternate" hrefLang="en-om" href="https://artiflexit.com/infrastructure/access-control-biometrics" />
+        <link rel="alternate" hrefLang="en-sa" href="https://artiflexit.com/infrastructure/access-control-biometrics" />
+        <link rel="alternate" hrefLang="en-in" href="https://artiflexit.com/infrastructure/access-control-biometrics" />
+        <link rel="alternate" hrefLang="en" href="https://artiflexit.com/infrastructure/access-control-biometrics" />
+        <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/infrastructure/access-control-biometrics" />
+
+        <meta property="og:title" content="Biometric Access Control with EIDA for Dubai Offices" />
+        <meta property="og:description" content="Access control in Dubai. Biometric attendance, mobile credentials and EIDA integration from HID, Suprema, ZKTeco, Honeywell and Genetec." />
+        <meta property="og:url" content="https://artiflexit.com/infrastructure/access-control-biometrics" />
+        <meta property="og:site_name" content="Artiflex Information Technology" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AE" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Biometric Access Control with EIDA for Dubai Offices" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Biometric Access Control with EIDA for Dubai Offices" />
+        <meta name="twitter:description" content="Access control in Dubai. Biometric attendance, mobile credentials and EIDA integration from HID, Suprema, ZKTeco, Honeywell and Genetec." />
+        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Artiflex IT",
-            "url": "https://artiflexit.com/infrastructure/access-control-biometrics",
+            "@id": "https://artiflexit.com/#localbusiness",
+            "name": "Artiflex Information Technology",
+            "url": "https://artiflexit.com/",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "M22, New Al Safiya Building, Near Abu Hail Metro Station, Hor Al Anz",
+              "addressLocality": "Dubai",
+              "addressRegion": "Dubai",
+              "addressCountry": "AE",
+            },
             "areaServed": [
               { "@type": "Country", "name": "United Arab Emirates" },
               { "@type": "City", "name": "Dubai" },
@@ -828,7 +854,7 @@ export default function AccessControlBiometrics() {
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Access Control & Biometrics Services",
-            "provider": { "@type": "Organization", "name": "Artiflex IT" },
+            "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
             "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
             "description": "UAE access control and biometrics: design, deploy, integrate and operate readers, credentials, biometrics, mobile credentials and unified physical security platforms.",
           })}
@@ -853,6 +879,7 @@ export default function AccessControlBiometrics() {
               "@type": "ListItem",
               "position": i + 1,
               "name": v.name,
+              "url": "https://artiflexit.com/infrastructure/access-control-biometrics",
             })),
           })}
         </script>
@@ -954,7 +981,7 @@ export default function AccessControlBiometrics() {
                               const fb = img.nextElementSibling as HTMLElement | null;
                               if (fb) fb.style.removeProperty("display");
                             }}
-                            className="h-16 w-16 object-contain transition-transform duration-300 group-hover:scale-110"
+                            onLoad={(e) => { const img = e.currentTarget; const r = img.naturalWidth / img.naturalHeight; if (r) { const w = Math.min(Math.sqrt(3400 * r), 128); img.style.width = w + "px"; img.style.height = w / r + "px"; } }} className="h-20 w-32 object-contain transition-transform duration-300 group-hover:scale-110"
                           />
                         ) : null}
                         <p
@@ -988,7 +1015,7 @@ export default function AccessControlBiometrics() {
                       const fb = img.nextElementSibling as HTMLElement | null;
                       if (fb) fb.style.removeProperty("display");
                     }}
-                    className="h-12 w-12 object-contain"
+                    onLoad={(e) => { const img = e.currentTarget; const r = img.naturalWidth / img.naturalHeight; if (r) { const w = Math.min(Math.sqrt(1350 * r), 88); img.style.width = w + "px"; img.style.height = w / r + "px"; } }} className="h-12 w-24 object-contain"
                   />
                 ) : null}
                 <p
@@ -1079,12 +1106,12 @@ export default function AccessControlBiometrics() {
             </button>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + matrixVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + matrixVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Criteria
                     </th>
                     {matrixVendors.map((v) => (
@@ -1296,12 +1323,12 @@ export default function AccessControlBiometrics() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)]">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-[#0A3D6B]/40 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.12)] -mx-8 lg:-mx-12 xl:-mx-20">
             <div className="overflow-x-auto">
-              <table className="w-full table-fixed border-collapse text-center text-sm" style={{ minWidth: Math.max(640, 150 + featureVendors.length * 116) }}>
+              <table className="w-full table-fixed border-collapse text-center text-sm min-w-[var(--vtw)] lg:min-w-0" style={{ ["--vtw" as string]: `${Math.max(640, 150 + featureVendors.length * 116)}px` }}>
                 <thead>
                   <tr className="bg-gradient-to-r from-[#045891] to-[#1B8AC7]">
-                    <th className="sticky left-0 z-10 w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
+                    <th className="sticky left-0 z-10 w-[120px] lg:w-[18%] bg-[#045891] px-2 py-3 sm:px-4 sm:py-5 align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9CD6EE]">
                       Capability
                     </th>
                     {featureVendors.map((v) => (
@@ -1642,6 +1669,8 @@ export default function AccessControlBiometrics() {
         description="60-minute review of your current access-control estate: door count, factor depth, credential strategy, visitor flow and compliance posture. We will identify the highest-impact upgrade options and propose a prioritised plan aligned to your growth and SIRA / MoI posture."
         primaryButton={{ text: "Book Assessment", action: "modal" }}
       />
+
+      <EditorialOpinionNotice />
     </>
   );
 }

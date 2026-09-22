@@ -1,6 +1,7 @@
 import PageHero from "@/pages/About/section/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
+import SophosAccreditationBadge from "@/components/ui/SophosAccreditationBadge";
 import { CTASection } from "@/pages/Home/sections/CTASection";
 import { MailIcon, ShieldIcon, EyeIcon, LockIcon, CheckIcon, SearchIcon } from "@/components/icons";
 
@@ -86,7 +87,7 @@ export default function EmailSecurityPage() {
   return (
     <>
       <>
-        <title>Email Security & Anti-Phishing UAE, Sophos Email | ArtiflexIT Dubai</title>
+        <title>Email Security Solutions Dubai | Stop Phishing, BEC, DMARC</title>
         <meta name="description" content="Enterprise email security for UAE businesses. NLP phishing detection, BEC prevention, attachment sandboxing, DMARC enforcement, deployed by ArtiflexIT, Platinum Sophos Partner." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/email-security" />
       </>
@@ -100,6 +101,8 @@ export default function EmailSecurityPage() {
           { label: "Email Security", href: "/cybersecurity/email-security" },
         ]}
       />
+
+      <SophosAccreditationBadge variant="platform" />
 
       <section className="relative border-y border-border-light bg-white">
         <div className="shell">

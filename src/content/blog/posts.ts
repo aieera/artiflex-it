@@ -1,19 +1,20 @@
 /**
- * Blog post catalogue, single source of truth for /blog and /blog/<slug>.
+ * ⚠ SUPERSEDED, NOT USED BY THE SITE. Editing this file changes nothing.
  *
- * Each post is a typed BlogPost with structured content blocks instead
- * of a single content string. The renderer (BlogPostPage) walks the
- * blocks and emits semantic HTML, h2/h3 headings, paragraphs, lists,
- * callouts, stats, CTAs.
+ * This catalogue was split into per-post modules to stop /blog from
+ * downloading every article just to render cards (this file shipped as a
+ * single 584 KB chunk). The live content now lives in:
  *
- * Inline links inside `p` and list items use [text](url), the renderer
- * converts them to <a> tags. Internal links should start with `/`,
- * external with `http`.
+ *   src/content/blog/posts/<slug>/meta.ts      metadata
+ *   src/content/blog/posts/<slug>/content.ts   article body
+ *   src/content/blog/index.ts                  registry + helpers
  *
- * Adding a new post:
- *   1. Append a new BlogPost to the `posts` array below.
- *   2. Add a <url> entry in public/sitemap.xml for /blog/<slug>.
- *   3. Run `npm run build:seo`, the prerender will pick it up.
+ * Every post here was migrated verbatim and verified field-by-field
+ * against the generated files. Nothing imports this module any more, so
+ * it is excluded from the bundle. It is kept only as a rollback copy and
+ * is safe to delete once you are happy with the new structure.
+ *
+ * To add or edit a post, see the docblock in src/content/blog/index.ts.
  */
 
 export type BlogTag =
@@ -144,8 +145,8 @@ export const posts: BlogPost[] = [
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cyber1.jpeg",
-    ogImage: "/og/blog/origin-firewall-network-security.png",
+    image: "/images/blog-images/origin-firewall-1988-worm.png",
+    ogImage: "/images/blog-images/origin-firewall-1988-worm.png",
     author: eng,
     content: [
       {
@@ -380,15 +381,15 @@ export const posts: BlogPost[] = [
       "The Origin of Endpoint Security: How Two Engineers in Oxford Started an Industry",
     excerpt:
       "In 1985, Peter Lammer and Jan Hruska founded Sophos in a small office in Abingdon, Oxford, and wrote the world's first antivirus software. Forty years later, that single line of code has evolved into AI-powered XDR platforms autonomously hunting threats across every device on the planet. This is the story of how endpoint security as we know it actually came to be.",
-    metaTitle: "Origin of Endpoint Security: Sophos to XDR | Artiflex IT",
+    metaTitle: "History of Endpoint Security: AV to EDR & XDR | Artiflex IT",
     metaDescription:
-      "How two engineers in Oxford in 1985 invented antivirus and sparked 40 years of endpoint security innovation, checksum, signature, NGAV, EDR, XDR.",
+      "From Oxford in 1985 to EDR and XDR today. The full history of endpoint security: antivirus, signature engines, NGAV, EDR, XDR and the rise of MDR.",
     date: "2026-04-29",
     readTime: 10,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cyber2.png",
+    image: "/cyber2.webp",
     ogImage: "/og/blog/origin-endpoint-security.png",
     author: eng,
     content: [
@@ -596,7 +597,7 @@ export const posts: BlogPost[] = [
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cyber2.png",
+    image: "/cyber2.webp",
     ogImage: "/og/blog/origin-mobile-security.png",
     author: eng,
     content: [
@@ -752,7 +753,7 @@ export const posts: BlogPost[] = [
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cyber2.png",
+    image: "/cyber2.webp",
     ogImage: "/og/blog/origin-ot-ics-security.png",
     author: eng,
     content: [
@@ -894,7 +895,7 @@ export const posts: BlogPost[] = [
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cyber3.jpg",
+    image: "/cyber3.webp",
     ogImage: "/og/blog/origin-email-security.png",
     author: eng,
     content: [
@@ -1127,13 +1128,13 @@ export const posts: BlogPost[] = [
       "In the early 2000s, security teams realised the perimeter was leaking. Customer lists were walking out on USB sticks, source code was being mailed to personal Gmail, and nobody could see any of it. That single, deceptively simple problem launched DLP. The full story of how data protection grew from packet matching into endpoint, network, email, cloud, and posture-aware controls.",
     metaTitle: "Origin of Data Loss Prevention: Vontu to DSPM | Artiflex IT",
     metaDescription:
-      "The full origin of Data Loss Prevention. Vontu, Symantec, Websense, Forcepoint, Microsoft Purview, Netskope and Trellix in one timeline. Plus DSPM and what comes next for UAE businesses.",
+      "The full origin of Data Loss Prevention: Vontu, Symantec, Websense, Forcepoint, Microsoft Purview, Netskope and Trellix, plus DSPM and what comes next.",
     date: "2026-05-08",
     readTime: 11,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybermain.jpeg",
+    image: "/cybermain.webp",
     ogImage: "/og/blog/origin-data-loss-prevention.png",
     author: ciso,
     content: [
@@ -1303,13 +1304,13 @@ export const posts: BlogPost[] = [
       "Before 2005, security teams stared at twelve consoles and missed everything important. Then SIEM arrived, then SOAR, then NDR, and finally MDR wrapped it all into a managed outcome. The full story of how the modern Security Operations Centre actually came to exist, and why each generation existed to fix what the previous one could not.",
     metaTitle: "Origin of Security Operations: SIEM to SOAR to NDR to MDR | Artiflex IT",
     metaDescription:
-      "How security operations evolved across four generations: isolated tools, SIEM, SOAR, and NDR plus MDR. ArcSight, Splunk, QRadar, Demisto, Phantom, ExtraHop, Darktrace, Sophos and Secureworks all in one timeline.",
+      "How security operations evolved: SIEM, SOAR, NDR and MDR across four generations. ArcSight, Splunk, QRadar, ExtraHop and Sophos in one timeline.",
     date: "2026-04-27",
     readTime: 12,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     ogImage: "/og/blog/origin-siem-soc-monitoring.png",
     author: eng,
     content: [
@@ -1513,9 +1514,9 @@ export const posts: BlogPost[] = [
       "The Origin of Vulnerability Management: From SATAN to Continuous Threat Exposure Management",
     excerpt:
       "In April 1995, two security researchers released a tool called SATAN that could remotely audit a Unix server for known weaknesses. The internet panicked. Newspapers warned that crackers would have a field day. Instead, an entire industry was born. The full story of how vulnerability scanning grew from a single Perl script into the continuous, risk-based exposure programmes that defend modern enterprises.",
-    metaTitle: "Origin of Vulnerability Management: SATAN to CTEM | Artiflex IT",
+    metaTitle: "History of Vulnerability Management: SATAN to CTEM | Artiflex IT",
     metaDescription:
-      "The full origin of vulnerability management. SATAN, Nessus, Qualys, Rapid7, Tenable, and the rise of risk-based VM, ASM and CTEM. Plus what UAE businesses should be running in 2026.",
+      "From SATAN (1995) to Nessus, Qualys, Tenable and modern CTEM. The full history of vulnerability management and what UAE businesses should run in 2026.",
     date: "2026-05-08",
     readTime: 11,
     tag: "cybersecurity",
@@ -1699,13 +1700,13 @@ export const posts: BlogPost[] = [
       "The username and password were invented in 1961 at MIT for one specific reason: scheduling fairness on a shared computer. Sixty-five years later, that single mechanism is still the most attacked layer of every enterprise on the planet. The full story of how identity grew from a mainframe scheduling hack into the passwordless, conditional, Zero Trust control plane that is now the new security perimeter.",
     metaTitle: "Origin of Identity & Access Management: RACF to Passwordless | Artiflex IT",
     metaDescription:
-      "The full origin of IAM. CTSS, RACF, LDAP, Active Directory, SAML, OAuth, OIDC, MFA, FIDO2, Microsoft Entra ID, Okta, Ping Identity. Plus what UAE enterprises should be running in 2026.",
+      "The full origin of IAM: CTSS, RACF, LDAP, Active Directory, SAML, OAuth, OIDC, MFA and FIDO2. Plus what UAE enterprises should run in 2026.",
     date: "2026-05-08",
     readTime: 12,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     ogImage: "/og/blog/origin-identity-access-management.png",
     author: ciso,
     content: [
@@ -1883,13 +1884,13 @@ export const posts: BlogPost[] = [
       "In 1999, three founders in Tel Aviv watched system administrators store the root passwords for production servers in shared spreadsheets and decided someone needed to invent the password vault. That company was Cyber-Ark. Twenty-six years later, PAM is the single highest-leverage control in cybersecurity. The full story of how privileged access grew from sticky notes into vaulted, session-recorded, just-in-time, zero-standing-privilege architecture.",
     metaTitle: "Origin of Privileged Access Management: Cyber-Ark to ZSP | Artiflex IT",
     metaDescription:
-      "The full origin of PAM. CyberArk, BeyondTrust, Thycotic, Centrify, Delinea, One Identity Safeguard. Plus session recording, just-in-time access, and Zero Standing Privilege for UAE enterprises in 2026.",
+      "The full origin of PAM: CyberArk, BeyondTrust, Delinea and One Identity. Plus session recording, just-in-time access and Zero Standing Privilege.",
     date: "2026-05-08",
     readTime: 11,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     ogImage: "/og/blog/origin-privileged-access-management.png",
     author: ciso,
     content: [
@@ -2067,13 +2068,13 @@ export const posts: BlogPost[] = [
       "In 2002, IT teams ran identity through paper forms and ticket queues. New hire? Open ten tickets. Promotion? Open another five. Auditor knocking? Print an Excel access list and pray it's accurate. Then Sarbanes-Oxley landed and the whole model collapsed. The full story of how Identity Governance grew from manual provisioning into the automated, policy-driven, AI-augmented lifecycle and certification engine that underpins UAE compliance today.",
     metaTitle: "Origin of Identity Governance & Administration: SailPoint, Saviynt, IGA | Artiflex IT",
     metaDescription:
-      "The full origin of IGA. Sun IDM, IBM Tivoli, SailPoint, Saviynt, Oracle IGA, Microsoft Entra ID Governance. Plus access certification, role mining, SoD, and what UAE enterprises should run in 2026.",
+      "The full origin of IGA: SailPoint, Saviynt, Oracle and Microsoft Entra ID Governance. Plus access certification, role mining, SoD and what to run in 2026.",
     date: "2026-05-08",
     readTime: 11,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     ogImage: "/og/blog/origin-identity-governance-administration.png",
     author: ciso,
     content: [
@@ -2243,13 +2244,13 @@ export const posts: BlogPost[] = [
       "For thirty years, the corporate network was a fortress and the firewall was its drawbridge. Then the apps moved to SaaS, the workforce went home, and the entire model fell apart in 2020. The full story of how workspace protection grew from MPLS hub-and-spoke and VPN concentrators into the cloud-delivered Secure Service Edge and SASE architectures that defend the hybrid, SaaS-first enterprise today.",
     metaTitle: "Origin of Workspace Protection: VPN to SSE to SASE | Artiflex IT",
     metaDescription:
-      "The full origin of Workspace Protection. MPLS, VPN, Zscaler, Netskope, BeyondCorp, ZTNA, CASB, SWG, Gartner SASE 2019, SSE 2021, single-vendor SASE 2024. Plus what UAE businesses should run.",
+      "The full origin of Workspace Protection: VPN, Zscaler, Netskope, BeyondCorp, ZTNA, CASB, SWG and the road to single-vendor SASE.",
     date: "2026-05-08",
     readTime: 12,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     ogImage: "/og/blog/origin-workspace-protection-sse-sase.png",
     author: eng,
     content: [
@@ -2429,7 +2430,7 @@ export const posts: BlogPost[] = [
       "The State of Cybersecurity in the UAE: What Every Board Needs to Know in 2026",
     excerpt:
       "Ransomware attacks on GCC businesses surged 300% in two years. The average UAE breach now costs $6.93M, 69% above global. The threats, the data, and what UAE boards should demand from their security programmes in 2026.",
-    metaTitle: "State of Cybersecurity in the UAE 2026 | Artiflex IT",
+    metaTitle: "State of Cybersecurity in the UAE | Artiflex IT",
     metaDescription:
       "GCC ransomware up 300%. Average UAE breach cost $6.93M, 69% above global. The 2026 threat landscape every UAE board needs to understand.",
     date: "2026-04-22",
@@ -2438,7 +2439,7 @@ export const posts: BlogPost[] = [
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybermain.jpeg",
+    image: "/cybermain.webp",
     ogImage: "/og/blog/state-of-cybersecurity-uae-2026.png",
     author: ciso,
     content: [
@@ -2546,7 +2547,7 @@ export const posts: BlogPost[] = [
     title: "Why Your Firewall Alone Won't Stop a Ransomware Attack",
     excerpt:
       "Modern ransomware doesn't breach the firewall, it walks through the front door via phishing, stolen credentials, and supply chain. The 2026 ransomware kill chain and the seven controls that actually stop it.",
-    metaTitle: "Firewall Won't Stop Ransomware in 2026 | Artiflex IT",
+    metaTitle: "Why a Firewall Alone Won't Stop Ransomware | Artiflex IT",
     metaDescription:
       "Modern ransomware bypasses firewalls entirely. The 2026 kill chain explained, plus the seven defence-in-depth controls that actually stop it.",
     date: "2026-04-15",
@@ -2649,7 +2650,7 @@ export const posts: BlogPost[] = [
       "Cloud Migration Mistakes That Cost UAE Businesses Millions",
     excerpt:
       "60% of cloud migrations exceed budget. 45% miss timelines. The six failure patterns we see most often, what successful UAE migrations do differently, and the pre-migration checklist that prevents the worst outcomes.",
-    metaTitle: "Cloud Migration Mistakes UAE 2026 | Artiflex IT",
+    metaTitle: "Common Cloud Migration Mistakes in the UAE | Artiflex IT",
     metaDescription:
       "60% of cloud migrations exceed budget. The six failure patterns, what successful UAE migrations do differently, and a pre-migration checklist.",
     date: "2026-04-08",
@@ -2657,7 +2658,7 @@ export const posts: BlogPost[] = [
     tag: "cloud",
     tagLabel: tagOf("cloud").label,
     tagColor: tagOf("cloud").color,
-    image: "/cyber2.png",
+    image: "/cyber2.webp",
     ogImage: "/og/blog/cloud-migration-mistakes-uae.png",
     author: cloudArch,
     content: [
@@ -2768,7 +2769,7 @@ export const posts: BlogPost[] = [
     title: "NESA Compliance: A Practical Guide for UAE Businesses",
     excerpt:
       "NESA's 188 controls across 12 domains apply to far more organisations than just critical infrastructure. The practical six-step path to compliance, how NESA aligns with UAE PDPL and ISO 27001, and the audit pitfalls to avoid.",
-    metaTitle: "NESA Compliance Guide UAE 2026 | Artiflex IT",
+    metaTitle: "NESA Compliance Guide for UAE Businesses | Artiflex IT",
     metaDescription:
       "NESA's 188 controls explained. The practical six-step path to compliance, alignment with UAE PDPL and ISO 27001, and audit pitfalls to avoid.",
     date: "2026-03-28",
@@ -2776,7 +2777,7 @@ export const posts: BlogPost[] = [
     tag: "compliance",
     tagLabel: tagOf("compliance").label,
     tagColor: tagOf("compliance").color,
-    image: "/compli.png",
+    image: "/compli.webp",
     ogImage: "/og/blog/nesa-compliance-practical-guide.png",
     author: ciso,
     content: [
@@ -2891,7 +2892,7 @@ export const posts: BlogPost[] = [
       "The $5,600-Per-Minute Problem: Calculating the True Cost of IT Downtime",
     excerpt:
       "Downtime costs more than most businesses estimate. The Gartner $5,600 figure is just the start, recovery costs, compliance penalties, customer churn, and reputation damage routinely 5x the direct revenue loss. The full math.",
-    metaTitle: "True Cost of IT Downtime UAE 2026 | Artiflex IT",
+    metaTitle: "The True Cost of IT Downtime in the UAE | Artiflex IT",
     metaDescription:
       "The Gartner $5,600/minute figure is just the start. Recovery, compliance, churn, and reputation costs add up to 5x the direct loss. Full math here.",
     date: "2026-03-18",
@@ -2899,7 +2900,7 @@ export const posts: BlogPost[] = [
     tag: "infrastructure",
     tagLabel: tagOf("infrastructure").label,
     tagColor: tagOf("infrastructure").color,
-    image: "/cyber3.jpg",
+    image: "/cyber3.webp",
     ogImage: "/og/blog/downtime-cost-true-math.png",
     author: eng,
     content: [
@@ -3016,7 +3017,7 @@ export const posts: BlogPost[] = [
       "Build vs. Buy: When Managed IT Services Make More Sense Than Hiring",
     excerpt:
       "A qualified network engineer in the UAE costs AED 25,000+ per month. After visa, insurance, and training, that is AED 400,000+ annually, for one person covering one domain. The honest math on when to hire and when to outsource.",
-    metaTitle: "Managed IT vs Hiring UAE 2026 | Artiflex IT",
+    metaTitle: "Managed IT vs In-House Hiring in the UAE | Artiflex IT",
     metaDescription:
       "Network engineer in UAE = AED 400K/year all-in. The honest math on when managed services beat hiring, and when in-house is the right call.",
     date: "2026-03-08",
@@ -3024,7 +3025,7 @@ export const posts: BlogPost[] = [
     tag: "managed-services",
     tagLabel: tagOf("managed-services").label,
     tagColor: tagOf("managed-services").color,
-    image: "/manage.jpg",
+    image: "/manage.webp",
     ogImage: "/og/blog/build-vs-buy-managed-services.png",
     author: eng,
     content: [
@@ -3153,7 +3154,7 @@ export const posts: BlogPost[] = [
       "Social Engineering in the UAE: Why Your Employees Are Your Biggest Vulnerability",
     excerpt:
       "73% of successful breaches start with a human being tricked, not a firewall bypassed. Phishing, vishing, and BEC attacks are testing UAE businesses faster than technology can defend. The five attack patterns and the 90-day awareness programme that builds real resilience.",
-    metaTitle: "Social Engineering Attacks UAE 2026 | Artiflex IT",
+    metaTitle: "Social Engineering Attacks Targeting UAE Businesses | Artiflex IT",
     metaDescription:
       "73% of breaches start with social engineering. The five attack patterns testing UAE businesses and the 90-day awareness programme that works.",
     date: "2026-02-26",
@@ -3161,7 +3162,7 @@ export const posts: BlogPost[] = [
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cyber3.jpg",
+    image: "/cyber3.webp",
     ogImage: "/og/blog/social-engineering-uae.png",
     author: ciso,
     content: [
@@ -3518,7 +3519,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Private Cloud: VMware, OpenStack, HCI, Kubernetes | Artiflex IT",
     metaDescription:
-      "How private cloud emerged from virtualisation, OpenStack, VMware, and hyperconverged infrastructure. The full story: ESX, NASA Nebula, vCloud, Nutanix, OpenShift.",
+      "How private cloud emerged from virtualisation, OpenStack, VMware and hyperconverged infrastructure. ESX, NASA Nebula, vCloud, Nutanix and OpenShift.",
     date: "2026-05-16",
     readTime: 11,
     tag: "cloud",
@@ -3948,7 +3949,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Multicloud: Kubernetes, FinOps, AI Era | Artiflex IT",
     metaDescription:
-      "How multicloud emerged from second-cloud strategies, Kubernetes portability, and FinOps discipline. AWS, Azure, GCP, Terraform, and what makes multicloud work in 2026.",
+      "How multicloud emerged from second-cloud strategies, Kubernetes portability and FinOps. AWS, Azure, GCP, Terraform and what makes it work in 2026.",
     date: "2026-05-16",
     readTime: 10,
     tag: "cloud",
@@ -4163,7 +4164,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of BaaS: Tape to Veeam to Immutable Cloud | Artiflex IT",
     metaDescription:
-      "How backup evolved from magnetic tape to cloud-native immutable BaaS. The full story: tape vaults, deduplication, Veeam, Datto, and the ransomware-driven reinvention.",
+      "How backup evolved from magnetic tape to cloud-native immutable BaaS: tape vaults, deduplication, Veeam, Datto and the ransomware-driven reinvention.",
     date: "2026-05-16",
     readTime: 11,
     tag: "cloud",
@@ -4378,7 +4379,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Disaster Recovery: Sungard to DRaaS to Cyber Recovery | Artiflex IT",
     metaDescription:
-      "How disaster recovery evolved from mainframe cold sites to one-click cloud failover. The full story: Sungard, 9/11, VMware SRM, Zerto, Azure Site Recovery, cyber recovery.",
+      "How disaster recovery evolved from mainframe cold sites to one-click cloud failover: Sungard, 9/11, VMware SRM, Zerto and Azure Site Recovery.",
     date: "2026-05-16",
     readTime: 11,
     tag: "cloud",
@@ -4593,7 +4594,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of the Server: Mainframe to Virtualised Cloud Workload | Artiflex IT",
     metaDescription:
-      "How servers and virtualisation evolved from the mainframe through PC servers, blade chassis, VMware, hyperconverged infrastructure and the post-Broadcom hypervisor era. The full story.",
+      "How servers and virtualisation evolved from the mainframe through PC servers, blade chassis, VMware, HCI and the post-Broadcom hypervisor era.",
     date: "2026-05-17",
     readTime: 11,
     tag: "infrastructure",
@@ -4804,7 +4805,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Enterprise Storage: IBM RAMAC to All-Flash AI Array | Artiflex IT",
     metaDescription:
-      "How enterprise storage evolved from the 1956 IBM RAMAC through Winchester drives, SCSI, RAID, EMC Symmetrix, Pure Storage all-flash and NVMe. The full story of how data became infinite and storage became a utility.",
+      "How enterprise storage evolved from the 1956 IBM RAMAC through RAID, EMC Symmetrix, Pure Storage all-flash and NVMe. The full story.",
     date: "2026-05-17",
     readTime: 12,
     tag: "infrastructure",
@@ -5015,7 +5016,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Backup: Tape Reel to Immutable Cyber Vault | Artiflex IT",
     metaDescription:
-      "How backup and data management evolved from IBM tape reels in 1952 through disk-based backup, deduplication, cloud backup, and the ransomware-driven shift to immutability. The full story.",
+      "How backup and data management evolved from IBM tape reels in 1952 through disk backup, deduplication, cloud backup and the shift to immutability.",
     date: "2026-05-17",
     readTime: 11,
     tag: "infrastructure",
@@ -5222,7 +5223,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of the DMS: Filing Cabinets to AI-Indexed Archives | Artiflex IT",
     metaDescription:
-      "How document management systems evolved from microfilm and steel filing cabinets through imaging, ECM, SharePoint, M-Files metadata-first design and AI extraction. The full story.",
+      "How document management evolved from microfilm and filing cabinets through imaging, ECM, SharePoint, M-Files and AI extraction.",
     date: "2026-05-17",
     readTime: 11,
     tag: "infrastructure",
@@ -5429,7 +5430,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of the Enterprise Network: Ethernet to 400 Gigabit Fabric | Artiflex IT",
     metaDescription:
-      "How enterprise networking evolved from Ethernet at Xerox PARC in 1973 through routers, IP, Cisco IOS, gigabit, 10G, SDN, intent-based networking and AI fabric. The full story.",
+      "How enterprise networking evolved from Ethernet at Xerox PARC in 1973 through routers, Cisco IOS, gigabit, SDN and AI fabric.",
     date: "2026-05-17",
     readTime: 12,
     tag: "infrastructure",
@@ -5636,7 +5637,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Enterprise Wi-Fi: 802.11 to Multi-Gigabit Air | Artiflex IT",
     metaDescription:
-      "How enterprise Wi-Fi evolved from the original 802.11 standard at 2 Mbps through Wi-Fi 4, 5, 6, 6E and Wi-Fi 7. The full story of how wireless became the primary access medium.",
+      "How enterprise Wi-Fi evolved from the original 802.11 at 2 Mbps through Wi-Fi 4, 5, 6, 6E and Wi-Fi 7. The full story.",
     date: "2026-05-17",
     readTime: 10,
     tag: "infrastructure",
@@ -5843,7 +5844,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Structured Cabling: TIA-568 to 25-Year Warranty | Artiflex IT",
     metaDescription:
-      "How structured cabling evolved from coaxial and proprietary cables to Cat 6A copper and OM4 fibre. The story of TIA-568, the 25-year warranty, and why the cables in your walls outlast everything else.",
+      "How structured cabling evolved from coaxial to Cat 6A copper and OM4 fibre: TIA-568, the 25-year warranty and why cabling outlasts everything.",
     date: "2026-05-17",
     readTime: 9,
     tag: "infrastructure",
@@ -6050,7 +6051,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Unified Communication: Bell to Microsoft Teams Phone | Artiflex IT",
     metaDescription:
-      "How unified communication and telephony evolved from analog PBX through digital PBX, VoIP, SIP, Skype, Microsoft Teams Phone and Webex Calling. The full story of how voice became software.",
+      "How unified communication evolved from analog PBX through VoIP, SIP, Skype, Microsoft Teams Phone and Webex Calling. How voice became software.",
     date: "2026-05-17",
     readTime: 11,
     tag: "infrastructure",
@@ -6254,10 +6255,9 @@ export const posts: BlogPost[] = [
       "The Origin of Video Conferencing: From the AT&T PicturePhone to Two Billion Meetings a Day",
     excerpt:
       "On 20 April 1964 AT&T unveiled the PicturePhone at the New York World's Fair. It flopped commercially because nobody had three thousand dollars a month. Sixty years later video calling is free, ubiquitous, and the thing that kept the world running through a pandemic.",
-    metaTitle:
-      "Origin of Video Conferencing: PicturePhone to Two Billion Meetings | Artiflex IT",
+    metaTitle: "History of Video Conferencing: Who Invented It? | Artiflex IT",
     metaDescription:
-      "How video conferencing evolved from the 1964 AT&T PicturePhone through ISDN room systems, IP video, Skype, Zoom and the pandemic-era explosion. The full story.",
+      "Who invented video calling, when was the first video conference, and how did we get to two billion daily meetings? The full history of video conferencing.",
     date: "2026-05-17",
     readTime: 10,
     tag: "infrastructure",
@@ -6464,7 +6464,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of CCTV: V-2 Rocket Test to AI Video Analytics | Artiflex IT",
     metaDescription:
-      "How CCTV and video surveillance evolved from a 1942 German rocket test through analog tape, IP cameras, megapixel and AI analytics. The full story, including the UAE Smart City chapter.",
+      "How CCTV and video surveillance evolved from a 1942 rocket test through analog tape, IP cameras, megapixel and AI analytics, including the UAE chapter.",
     date: "2026-05-17",
     readTime: 10,
     tag: "infrastructure",
@@ -6671,7 +6671,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Access Control: Magnetic Card to Fingerprint on Your Phone | Artiflex IT",
     metaDescription:
-      "How electronic access control evolved from magnetic-stripe cards through proximity, smart cards, biometrics and mobile credentials. The full story of how the lock became a software-defined identity gate.",
+      "How electronic access control evolved from magnetic-stripe cards through proximity, smart cards, biometrics and mobile credentials. The full story.",
     date: "2026-05-17",
     readTime: 9,
     tag: "infrastructure",
@@ -6878,7 +6878,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Power Protection: Liebert to Modular Lithium-Ion UPS | Artiflex IT",
     metaDescription:
-      "How the UPS industry was born from data centre outages and shaped by Liebert, APC and Eaton. The full story: motor-generators, online double-conversion, modular UPS and lithium-ion.",
+      "How the UPS industry was born from data-centre outages and shaped by Liebert, APC and Eaton: online double-conversion, modular UPS and lithium-ion.",
     date: "2026-05-17",
     readTime: 11,
     tag: "infrastructure",
@@ -7085,7 +7085,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Office Printing: Gutenberg to AI-Routed Cloud Print | Artiflex IT",
     metaDescription:
-      "How office printing evolved from Gutenberg's press to networked MFPs and managed print services. The story: laser printing, HP LaserJet, follow-me printing, and AI-driven document workflow.",
+      "How office printing evolved from Gutenberg's press to networked MFPs and managed print: laser printing, HP LaserJet, follow-me and AI workflows.",
     date: "2026-05-17",
     readTime: 10,
     tag: "infrastructure",
@@ -7292,7 +7292,7 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of the Data Center: ENIAC to Hyperscale AI Hall | Artiflex IT",
     metaDescription:
-      "How the data centre evolved from a single basement room at the University of Pennsylvania to the AI-era hyperscale halls drawing megawatts. The full story of cooling, redundancy, modular build and the UAE chapter.",
+      "How the data centre evolved from a single basement room to AI-era hyperscale halls: cooling, redundancy, modular build and the UAE chapter.",
     date: "2026-05-17",
     readTime: 12,
     tag: "infrastructure",
@@ -7500,13 +7500,13 @@ export const posts: BlogPost[] = [
       "In the early 1990s, employees carried ring binders full of passwords. Then the web arrived and made it worse. The story of how the industry invented a way to log in once and open everything.",
     metaTitle: "Origin of SSO: Kerberos to SAML to OIDC | IAM Origin Series | Artiflex IT",
     metaDescription:
-      "How Single Sign-On evolved from MIT's Kerberos at Project Athena to SAML, OAuth, and OpenID Connect. The full origin of the SSO category and why it became default infrastructure.",
+      "How Single Sign-On evolved from MIT's Kerberos to SAML, OAuth and OpenID Connect. The full origin of SSO and why it became default infrastructure.",
     date: "2026-05-19",
     readTime: 6,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     author: ciso,
     content: [
       {
@@ -7681,7 +7681,7 @@ export const posts: BlogPost[] = [
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     author: ciso,
     content: [
       {
@@ -7855,13 +7855,13 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Identity Lifecycle Management | IAM Origin Series | Artiflex IT",
     metaDescription:
-      "From manual joiner-mover-leaver tickets and ghost accounts to HR-driven automation, SailPoint, Saviynt, and Microsoft Entra ID Governance. The full origin of ILM.",
+      "From manual joiner-mover-leaver tickets and ghost accounts to HR-driven automation with SailPoint, Saviynt and Microsoft Entra. The origin of ILM.",
     date: "2026-05-19",
     readTime: 6,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     author: ciso,
     content: [
       {
@@ -8005,7 +8005,7 @@ export const posts: BlogPost[] = [
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     author: ciso,
     content: [
       {
@@ -8149,7 +8149,7 @@ export const posts: BlogPost[] = [
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     author: ciso,
     content: [
       {
@@ -8287,13 +8287,13 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Access Management: RBAC to Conditional Access | IAM Origin Series | Artiflex IT",
     metaDescription:
-      "From NIST's 1992 Role-Based Access Control to Google BeyondCorp and Microsoft Conditional Access. How access management evolved from network location to policy engine.",
+      "From NIST's 1992 Role-Based Access Control to Google BeyondCorp and Microsoft Conditional Access: how access management became a policy engine.",
     date: "2026-05-19",
     readTime: 6,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     author: ciso,
     content: [
       {
@@ -8439,13 +8439,13 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Zero Trust: Jericho Forum to BeyondCorp | IAM Origin Series | Artiflex IT",
     metaDescription:
-      "From the 2004 Jericho Forum to John Kindervag's Forrester paper, Google BeyondCorp, and the 2021 Biden Executive Order. Twenty years from heresy to federal policy.",
+      "From the 2004 Jericho Forum to Forrester, Google BeyondCorp and the 2021 Biden Executive Order: twenty years of Zero Trust, from heresy to policy.",
     date: "2026-05-19",
     readTime: 7,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     author: ciso,
     content: [
       {
@@ -8591,13 +8591,13 @@ export const posts: BlogPost[] = [
     metaTitle:
       "Origin of Passwordless Authentication | IAM Origin Series | Artiflex IT",
     metaDescription:
-      "From Corbato's 1961 password to FIDO2, WebAuthn, and the 2022 Apple-Google-Microsoft joint passkey launch. How a sixty-year-old problem finally got its replacement.",
+      "From Corbato's 1961 password to FIDO2, WebAuthn and the 2022 passkey launch by Apple, Google and Microsoft. How passwords finally got replaced.",
     date: "2026-05-19",
     readTime: 6,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cybersecurity.png",
+    image: "/cybersecurity.webp",
     author: ciso,
     content: [
       {
@@ -8745,13 +8745,13 @@ export const posts: BlogPost[] = [
       "Every SIEM dashboard your analysts watch today traces its lineage to a 1970s mainframe printing paper logs. The full story of how log aggregation became the brain of the modern SOC, and why the question for many UAE organisations is no longer which SIEM, but SIEM or MDR.",
     metaTitle: "Origin of SIEM: Mainframe Logs to AI-Driven SecOps | Artiflex IT",
     metaDescription:
-      "How SIEM evolved from isolated logs to AI-driven security operations: ArcSight, QRadar, Splunk, Exabeam, Microsoft Sentinel, the Cisco-Splunk acquisition, and the UAE SIEM-vs-MDR question.",
+      "How SIEM evolved from isolated logs to AI-driven SecOps: ArcSight, QRadar, Splunk, Exabeam, Microsoft Sentinel and the UAE SIEM-vs-MDR question.",
     date: "2026-05-22",
     readTime: 12,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cyber2.png",
+    image: "/cyber2.webp",
     author: eng,
     content: [
       {
@@ -8868,7 +8868,7 @@ export const posts: BlogPost[] = [
       "NDR is a 2020s category name for a problem security teams have grappled with for three decades: how do you detect threats that hide inside network traffic? The story from the Morris Worm and Snort to Vectra, Darktrace, the UAE-founded LinkShadow, and NDR's integration with managed detection.",
     metaTitle: "Origin of NDR: Packet Capture to AI Network Intelligence | Artiflex IT",
     metaDescription:
-      "How NDR evolved from the Morris Worm and Snort to AI-native network detection: ExtraHop, Vectra AI, Darktrace, the UAE-founded LinkShadow, the 2020 Gartner NDR category, and the Sophos MDR + NDR model.",
+      "How NDR evolved from the Morris Worm to AI-native network detection: ExtraHop, Vectra AI, Darktrace, the UAE-founded LinkShadow and the Gartner NDR category.",
     date: "2026-05-22",
     readTime: 12,
     tag: "cybersecurity",
@@ -8974,13 +8974,13 @@ export const posts: BlogPost[] = [
       "MDR did not emerge from a product roadmap. It emerged from recognition that the industry had been selling powerful detection tools while ignoring the fact that most organisations could not staff the teams needed to operate them. The story from Secureworks IR retainers to Sophos MDR at 39,000+ customers.",
     metaTitle: "Origin of MDR: IR Retainers to World's Largest Managed SOC | Artiflex IT",
     metaDescription:
-      "How MDR evolved from the SOC staffing problem: Secureworks managed security origins, the MSSP-to-MDR response distinction, the 2016 Gartner category, Sophos MDR scaling to 39,000+ customers, and the Sophos + Secureworks partnership.",
+      "How MDR evolved from the SOC staffing problem: Secureworks origins, the 2016 Gartner category, Sophos MDR at 39,000+ customers and the Secureworks tie-up.",
     date: "2026-05-22",
     readTime: 12,
     tag: "cybersecurity",
     tagLabel: tagOf("cybersecurity").label,
     tagColor: tagOf("cybersecurity").color,
-    image: "/cyber3.jpg",
+    image: "/cyber3.webp",
     author: eng,
     content: [
       {

@@ -1,6 +1,8 @@
 export type WorkspaceVendor = {
   slug: string;
   name: string;
+  metaTitle: string;
+  metaDescription: string;
   logo?: string;
   tagline: string;
   bestFor: string;
@@ -61,6 +63,9 @@ export type WorkspaceVendor = {
 export const workspaceVendors: Record<string, WorkspaceVendor> = {
   "sophos-workspace-protection": {
     slug: "sophos-workspace-protection",
+    metaTitle: "Sophos Workspace Protection SSE/SASE | Artiflex IT",
+    metaDescription:
+      "Sophos Workspace Protection in Dubai and the UAE: ZTNA, Secure Web Gateway, DNS and email security in one per-user licence. Deployed by Artiflex IT.",
     name: "Sophos Workspace Protection",
     logo: "/logos/sophos.svg",
     tagline: "Browser-native SSE bundling ZTNA, SWG, DNS security and email monitoring with Synchronized Security automation and best-in-class Shadow AI governance",
@@ -227,6 +232,9 @@ export const workspaceVendors: Record<string, WorkspaceVendor> = {
 
   "check-point-harmony-sase": {
     slug: "check-point-harmony-sase",
+    metaTitle: "Check Point Harmony SASE Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Check Point Harmony SASE in Dubai and the UAE: full cloud SASE with ZTNA, replacing legacy VPN and standalone CASB. Deployed and managed by Artiflex IT.",
     name: "Check Point Harmony SASE",
     logo: "/logos/Check-Point-2024-logo-color.svg",
     tagline: "Full-stack cloud SASE with ThreatCloud AI inspection across 100+ PoPs, unified under the Check Point Infinity portal",
@@ -342,6 +350,9 @@ export const workspaceVendors: Record<string, WorkspaceVendor> = {
 
   "palo-alto-prisma-access": {
     slug: "palo-alto-prisma-access",
+    metaTitle: "Palo Alto Prisma Access SASE UAE | Artiflex IT",
+    metaDescription:
+      "Palo Alto Prisma Access in Dubai and the UAE: Gartner SSE Leader delivering ZTNA, SWG, CASB and FWaaS. Deployed and managed by Artiflex IT.",
     name: "Palo Alto Networks Prisma Access",
     logo: "/logos/PaloAltoNetworks.svg",
     tagline: "Gartner Magic Quadrant Leader for SSE with the broadest SASE feature set powered by Palo Alto AI across 100+ global PoPs",
@@ -457,6 +468,9 @@ export const workspaceVendors: Record<string, WorkspaceVendor> = {
 
   "netskope-sse": {
     slug: "netskope-sse",
+    metaTitle: "Netskope SSE Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Netskope SSE in Dubai and the UAE: dedicated Security Service Edge with deep SaaS visibility on the NewEdge fabric. Deployed and managed by Artiflex IT.",
     name: "Netskope SSE",
     logo: "/logos/Netscope.png",
     tagline: "SaaS-specialist SSE with the deepest CASB and cloud DLP, NewEdge fabric inspecting 50,000+ apps across 50+ PoPs",
@@ -572,6 +586,9 @@ export const workspaceVendors: Record<string, WorkspaceVendor> = {
 
   "microsoft-mcas": {
     slug: "microsoft-mcas",
+    metaTitle: "Microsoft Defender for Cloud Apps SSE UAE | Artiflex IT",
+    metaDescription:
+      "Microsoft Defender for Cloud Apps in Dubai and the UAE: native CASB for Microsoft 365 with Global Secure Access. Deployed and managed by Artiflex IT.",
     name: "Microsoft Defender for Cloud Apps + Global Secure Access",
     logo: "/logos/MicrosoftDefender.webp",
     tagline: "Native CASB for the Microsoft estate with Entra Global Secure Access adding ZTNA and SWG, bundled in M365 E5 and Entra Suite",

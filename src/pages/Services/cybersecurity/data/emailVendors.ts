@@ -1,6 +1,8 @@
 export type EmailVendor = {
   slug: string;
   name: string;
+  metaTitle: string;
+  metaDescription: string;
   logo: string;
   tagline: string;
   bestFor: string;
@@ -61,6 +63,9 @@ export type EmailVendor = {
 export const emailVendors: Record<string, EmailVendor> = {
   "check-point-harmony-email": {
     slug: "check-point-harmony-email",
+    metaTitle: "Check Point Harmony Email Security Dubai | Artiflex IT",
+    metaDescription:
+      "Check Point Harmony Email and Collaboration in Dubai and the UAE: API-based inline protection powered by ThreatCloud AI. Deployed by Artiflex IT.",
     name: "Check Point Harmony Email & Collaboration",
     logo: "/logos/Check-Point-2024-logo-color.svg",
     tagline: "Inline API protection for Microsoft 365 and Google Workspace, powered by ThreatCloud AI",
@@ -215,6 +220,9 @@ export const emailVendors: Record<string, EmailVendor> = {
 
   "sophos-email": {
     slug: "sophos-email",
+    metaTitle: "Sophos Email Security Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Sophos Email security in Dubai and the UAE: AI phishing and BEC protection with Synchronized Security. Deployed by Artiflex IT, Sophos Platinum Partner.",
     name: "Sophos Email Security",
     logo: "/logos/sophos.svg",
     tagline: "AI-driven phishing and BEC protection with Synchronized Security",
@@ -369,6 +377,9 @@ export const emailVendors: Record<string, EmailVendor> = {
 
   "proofpoint": {
     slug: "proofpoint",
+    metaTitle: "Proofpoint Email Protection Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Proofpoint email protection in Dubai and the UAE: enterprise anti-phishing, BEC defense and TAP threat intelligence. Deployed and managed by Artiflex IT.",
     name: "Proofpoint Email Protection",
     logo: "/logos/Proofpoint.jpg.svg",
     tagline: "Industry-leading enterprise email security with TAP, CLEAR, and Sigma threat graph",
@@ -523,6 +534,9 @@ export const emailVendors: Record<string, EmailVendor> = {
 
   "abnormal-ai": {
     slug: "abnormal-ai",
+    metaTitle: "Abnormal AI Email Security Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Abnormal AI email security in Dubai and the UAE: behavioral AI that stops BEC, vendor fraud and account takeover. Deployed and managed by Artiflex IT.",
     name: "Abnormal AI",
     logo: "/logos/Abnormal.png",
     tagline: "Behavioral AI for BEC, vendor email compromise, and account takeover detection",
@@ -677,6 +691,9 @@ export const emailVendors: Record<string, EmailVendor> = {
 
   "barracuda-email-protection": {
     slug: "barracuda-email-protection",
+    metaTitle: "Barracuda Email Protection Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Barracuda Email Protection in Dubai and the UAE: multi-layered defense with Sentinel AI and Domain Fraud Protection. Deployed and managed by Artiflex IT.",
     name: "Barracuda Email Protection",
     logo: "/logos/Barracuda.png",
     tagline: "Multi-layered email security with Sentinel AI and Domain Fraud Protection",
@@ -831,6 +848,9 @@ export const emailVendors: Record<string, EmailVendor> = {
 
   "mimecast": {
     slug: "mimecast",
+    metaTitle: "Mimecast Email Security Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Mimecast email security in Dubai and the UAE: cloud email protection, continuity and archiving with CyberGraph AI. Deployed and managed by Artiflex IT.",
     name: "Mimecast Email Security",
     logo: "/logos/mimecast.svg",
     tagline: "Email security, continuity, and archiving on one cloud platform with CyberGraph AI",
@@ -985,6 +1005,9 @@ export const emailVendors: Record<string, EmailVendor> = {
 
   "fortra-email-security": {
     slug: "fortra-email-security",
+    metaTitle: "Fortra Email Security Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Fortra email security in Dubai and the UAE: Agari DMARC enforcement and Clearswift email DLP. Deployed and managed by Artiflex IT for UAE enterprises.",
     name: "Fortra Email Security",
     logo: "/logos/Fortra.png",
     tagline: "Email DLP and outbound DMARC at brand-protection scale (Agari + Clearswift)",
@@ -1123,6 +1146,9 @@ export const emailVendors: Record<string, EmailVendor> = {
 
   "microsoft-defender-o365": {
     slug: "microsoft-defender-o365",
+    metaTitle: "Microsoft Defender for Office 365 UAE | Artiflex IT",
+    metaDescription:
+      "Microsoft Defender for Office 365 in Dubai and the UAE: native M365 email security with Safe Links, Safe Attachments and Defender XDR. Deployed by Artiflex IT.",
     name: "Microsoft Defender for Office 365",
     logo: "/logos/MicrosoftDefender.webp",
     tagline: "Native Microsoft 365 email protection with Safe Links, Safe Attachments, and Defender XDR",
@@ -1261,6 +1287,9 @@ export const emailVendors: Record<string, EmailVendor> = {
 
   "darktrace-email": {
     slug: "darktrace-email",
+    metaTitle: "Darktrace / Email Security Dubai & UAE | Artiflex IT",
+    metaDescription:
+      "Darktrace / Email in Dubai and the UAE: self-learning AI that detects novel email attacks no signature engine can catch. Deployed and managed by Artiflex IT.",
     name: "Darktrace/Email",
     logo: "/logos/Darktrace.png",
     tagline: "Self-learning AI for novel email attacks no signature engine can detect",
@@ -1399,6 +1428,9 @@ export const emailVendors: Record<string, EmailVendor> = {
 
   "knowbe4-defend": {
     slug: "knowbe4-defend",
+    metaTitle: "KnowBe4 Security Awareness Training UAE | Artiflex IT",
+    metaDescription:
+      "KnowBe4 security awareness training and phishing simulation in Dubai and the UAE. Deployed and managed by Artiflex IT to reduce human cyber risk.",
     name: "KnowBe4 Security Awareness Training",
     logo: "/logos/KnowBe4.webp",
     tagline: "Security awareness training and phishing simulation at enterprise scale",
