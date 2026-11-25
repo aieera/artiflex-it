@@ -816,7 +816,7 @@ export default function MultiCloud() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cloud-solutions-multi-cloud-strategy.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT multi-cloud strategy for the UAE" />
@@ -824,7 +824,7 @@ export default function MultiCloud() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Multi-Cloud Strategy Dubai | Vendor-Neutral Operations" />
         <meta name="twitter:description" content="Multi-cloud strategy for UAE: AWS, Azure and GCP under unified governance, FinOps and security. Pick the right cloud per workload without lock-in." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cloud-solutions-multi-cloud-strategy.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

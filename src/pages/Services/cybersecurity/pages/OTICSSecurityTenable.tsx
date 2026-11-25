@@ -180,7 +180,7 @@ export default function OTICSSecurityTenable() {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_AE" />
       <meta property="og:locale:alternate" content="en_US" />
-      <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+      <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-ot-ics-security-tenable.jpg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content="Tenable OT Security for the UAE by Artiflex IT" />
@@ -188,7 +188,7 @@ export default function OTICSSecurityTenable() {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Tenable OT Security | OT / ICS UAE | Artiflex IT" />
       <meta name="twitter:description" content="Tenable OT Security (Tenable.ot): unified IT and OT vulnerability management with Indegy heritage. Deployed by Artiflex IT for UAE manufacturing and utilities." />
-      <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+      <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-ot-ics-security-tenable.jpg" />
       <meta name="twitter:site" content="@artiflexit" />
 
       {/* JSON-LD: Service schema */}

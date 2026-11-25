@@ -7,16 +7,25 @@ export function useScrollToTop() {
   useEffect(() => {
     if (hash) {
       const id = hash.slice(1);
-      // Wait one frame so the destination section is mounted before we scroll.
-      requestAnimationFrame(() => {
+      // Every route is lazy-loaded, so the destination section may not be
+      // in the DOM yet on a direct load or a cross-page "#section" link.
+      // Poll each frame (up to ~3s) until it mounts, then scroll to it.
+      const deadline = performance.now() + 3000;
+      let raf = 0;
+      const tryScroll = () => {
         const el = document.getElementById(id);
         if (el) {
           scrollToElement(el);
+          return;
+        }
+        if (performance.now() < deadline) {
+          raf = requestAnimationFrame(tryScroll);
         } else {
           scrollToTopInstant();
         }
-      });
-      return;
+      };
+      raf = requestAnimationFrame(tryScroll);
+      return () => cancelAnimationFrame(raf);
     }
     scrollToTopInstant();
   }, [pathname, hash]);

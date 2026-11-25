@@ -47,6 +47,14 @@ const capabilities: Capability[] = [
     href: "/cybersecurity/security-operations/siem",
     cta: "Explore SIEM",
   },
+  {
+    tag: "Service",
+    title: "SOC as a Service",
+    desc: "Managed SOC for the UAE. Monitoring, triage, investigation and authorised response, fully managed or co-managed with your team.",
+    focus: "Focus: Fully managed · Co-managed · Coverage extension",
+    href: "/cybersecurity/security-operations/soc-as-a-service",
+    cta: "Explore SOC as a Service",
+  },
 ];
 
 /* ───────── HONEYCOMB LINEUP DATA ───────── */
@@ -340,8 +348,8 @@ export default function SecurityOperations() {
   return (
     <>
       <>
-        <title>SOC as a Service UAE | 24/7 SIEM, SOAR, NDR & MDR | Artiflex</title>
-        <meta name="description" content="SOC as a service in UAE. SIEM, SOAR, NDR and MDR delivered as one managed outcome or co-managed with your in-house team." />
+        <title>Security Operations UAE | SIEM, MDR & NDR Solutions | Artiflex</title>
+        <meta name="description" content="Security operations solutions in the UAE. SIEM, MDR and NDR platforms compared and delivered as one managed outcome or co-managed with your in-house team." />
         <link rel="canonical" href="https://artiflexit.com/cybersecurity/security-operations" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
@@ -358,22 +366,22 @@ export default function SecurityOperations() {
         <link rel="alternate" hrefLang="en" href="https://artiflexit.com/cybersecurity/security-operations" />
         <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/security-operations" />
 
-        <meta property="og:title" content="SOC as a Service UAE | 24/7 SIEM, SOAR, NDR & MDR | Artiflex" />
-        <meta property="og:description" content="SOC as a service in UAE. SIEM, SOAR, NDR and MDR delivered as one managed outcome or co-managed with your in-house team." />
+        <meta property="og:title" content="Security Operations UAE | SIEM, MDR & NDR Solutions | Artiflex" />
+        <meta property="og:description" content="Security operations solutions in the UAE. SIEM, MDR and NDR platforms compared and delivered as one managed outcome or co-managed with your in-house team." />
         <meta property="og:url" content="https://artiflexit.com/cybersecurity/security-operations" />
         <meta property="og:site_name" content="Artiflex Information Technology" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-security-operations.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT security operations and SOC services for the UAE" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="SOC as a Service UAE | 24/7 SIEM, SOAR, NDR & MDR | Artiflex" />
-        <meta name="twitter:description" content="SOC as a service in UAE. SIEM, SOAR, NDR and MDR delivered as one managed outcome or co-managed with your in-house team." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:title" content="Security Operations UAE | SIEM, MDR & NDR Solutions | Artiflex" />
+        <meta name="twitter:description" content="Security operations solutions in the UAE. SIEM, MDR and NDR platforms compared and delivered as one managed outcome or co-managed with your in-house team." />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-security-operations.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -407,7 +415,7 @@ export default function SecurityOperations() {
             </p>
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {capabilities.map((c) => {
               const body = (
                 <>

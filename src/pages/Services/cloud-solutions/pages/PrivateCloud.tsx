@@ -816,7 +816,7 @@ export default function PrivateCloud() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cloud-solutions-private-cloud.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT private cloud hosting in Dubai, UAE" />
@@ -824,7 +824,7 @@ export default function PrivateCloud() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Private Cloud Dubai | Sovereign + Dedicated Cloud Hosting" />
         <meta name="twitter:description" content="Private cloud hosting in Dubai with sovereign data residency for UAE banking, healthcare and government. Dedicated infrastructure, full operations cover." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cloud-solutions-private-cloud.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

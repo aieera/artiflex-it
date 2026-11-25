@@ -767,7 +767,7 @@ export default function HrManagementSoftware() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/business-solutions-hr-management-software.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="HRM Software Dubai | Payroll, WPS & Gratuity Compliant" />
@@ -775,7 +775,7 @@ export default function HrManagementSoftware() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="HRM Software Dubai | Payroll, WPS & Gratuity Compliant" />
         <meta name="twitter:description" content="HRM software in Dubai with WPS payroll, end-of-service gratuity, GPSSA and MOHRE support across SuccessFactors, Oracle HCM, Ramco, Bayzat and Focus Softnet." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/business-solutions-hr-management-software.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

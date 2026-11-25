@@ -818,7 +818,7 @@ export default function PowerUps() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-power-ups.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Online and Modular UPS Supply and Install in Dubai" />
@@ -826,7 +826,7 @@ export default function PowerUps() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Online and Modular UPS Supply and Install in Dubai" />
         <meta name="twitter:description" content="UPS in Dubai. Online double-conversion and modular UPS from APC Schneider, Vertiv Liebert, Eaton, Riello and Huawei. Lithium-ion options for data centres." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-power-ups.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

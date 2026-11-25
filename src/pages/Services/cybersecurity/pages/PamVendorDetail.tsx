@@ -26,6 +26,7 @@ import {
   CloudIcon,
 } from "@/components/icons";
 import { pamVendors } from "../data/pamVendors";
+import { ogImageForUrl } from "@/lib/ogImage";
 
 const strengthIconMap: Record<string, React.FC<{ className?: string }>> = {
   shield: ShieldIcon,
@@ -103,7 +104,7 @@ export default function PamVendorDetail() {
 
   const pageUrl = `https://artiflexit.com/cybersecurity/pam/${vendor.slug}`;
   const pageTitle = vendor.metaTitle;
-  const ogImage = "https://artiflexit.com/og-image.png";
+  const ogImage = ogImageForUrl(pageUrl);
 
   return (
     <>

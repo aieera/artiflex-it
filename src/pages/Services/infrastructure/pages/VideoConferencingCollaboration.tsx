@@ -809,7 +809,7 @@ export default function VideoConferencingCollaboration() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-video-conferencing-collaboration.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Video Conferencing Dubai | Teams Rooms, Zoom & Webex AV" />
@@ -817,7 +817,7 @@ export default function VideoConferencingCollaboration() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Video Conferencing Dubai | Teams Rooms, Zoom & Webex AV" />
         <meta name="twitter:description" content="Meeting room and boardroom AV in Dubai. Microsoft Teams Rooms, Webex Rooms, Zoom Rooms, Poly, Logitech and Yealink room systems installed and supported." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-video-conferencing-collaboration.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

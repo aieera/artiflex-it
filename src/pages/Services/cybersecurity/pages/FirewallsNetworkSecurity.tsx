@@ -704,7 +704,7 @@ export default function FirewallsNetworkSecurityPage() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-firewalls-network-security.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT firewall and NGFW services in Dubai, UAE" />
@@ -712,7 +712,7 @@ export default function FirewallsNetworkSecurityPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Firewall Solutions Dubai | NGFW & Managed Firewall UAE" />
         <meta name="twitter:description" content="Firewall solutions in Dubai: NGFW and managed firewall services across the UAE for Sophos, Fortinet, Palo Alto, Check Point and Cisco." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-firewalls-network-security.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

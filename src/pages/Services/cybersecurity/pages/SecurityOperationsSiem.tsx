@@ -682,7 +682,7 @@ export default function SecurityOperationsSiem() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-security-operations-siem.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT SIEM deployment for the UAE" />
@@ -690,7 +690,7 @@ export default function SecurityOperationsSiem() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="SIEM Solutions UAE | Splunk, Sentinel & QRadar Deployment" />
         <meta name="twitter:description" content="UAE SIEM buyer's guide: vendor comparison across Rapid7 InsightIDR, Splunk, Exabeam, Microsoft Sentinel, IBM QRadar and Secureworks Taegis." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-security-operations-siem.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

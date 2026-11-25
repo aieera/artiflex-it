@@ -26,6 +26,7 @@ import {
   CloudIcon,
 } from "@/components/icons";
 import { secOpsDisciplines } from "../data/secOpsVendors";
+import { ogImageForUrl } from "@/lib/ogImage";
 
 const strengthIconMap: Record<string, React.FC<{ className?: string }>> = {
   shield: ShieldIcon,
@@ -92,7 +93,7 @@ export default function SecOpsVendorDetail() {
 
   const pageUrl = `https://artiflexit.com/cybersecurity/security-operations/${discipline}/${vendor.slug}`;
   const pageTitle = vendor.metaTitle;
-  const ogImage = "https://artiflexit.com/og-image.png";
+  const ogImage = ogImageForUrl(pageUrl);
 
   return (
     <>

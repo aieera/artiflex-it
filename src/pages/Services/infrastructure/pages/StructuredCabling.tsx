@@ -797,7 +797,7 @@ export default function StructuredCabling() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-structured-cabling.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Cat 6A and Fibre Structured Cabling Companies Dubai" />
@@ -805,7 +805,7 @@ export default function StructuredCabling() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Cat 6A and Fibre Structured Cabling Companies Dubai" />
         <meta name="twitter:description" content="Structured cabling companies in Dubai. Cat 6A, OM4/OM5 fibre and MPO installed and Fluke-certified for offices and data centres across the UAE." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-structured-cabling.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

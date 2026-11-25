@@ -23,6 +23,7 @@ This file helps AI systems and answer engines understand Artiflex IT's offerings
 - [Mobile Security](https://artiflexit.com/cybersecurity/mobile-security): Unified endpoint management and mobile threat defense.
 - [OT / ICS Security](https://artiflexit.com/cybersecurity/ot-ics-security): Operational technology and industrial control system protection.
 - [Security Operations (SIEM / MDR / NDR)](https://artiflexit.com/cybersecurity/security-operations): Managed detection, response, and security monitoring.
+- [SOC as a Service](https://artiflexit.com/cybersecurity/security-operations/soc-as-a-service): Managed SOC in the UAE: monitoring, triage, investigation and authorised response, fully managed or co-managed.
 - [Vulnerability Management](https://artiflexit.com/cybersecurity/vulnerability-management): Continuous scanning, prioritisation, and remediation advisory.
 - [Workspace Protection (SSE / SASE / CASB)](https://artiflexit.com/cybersecurity/workspace-protection-sse-sase): Zero Trust access, secure web gateway, and cloud app security.
 - [Unified Firewall Management](https://artiflexit.com/cybersecurity/unified-firewall-management): Centralised policy and management across firewall estates.

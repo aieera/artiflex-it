@@ -737,7 +737,7 @@ export default function EdrXdrSecurityPage() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-endpoint-security-edr-xdr.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT EDR and XDR managed endpoint protection in Dubai, UAE" />
@@ -745,7 +745,7 @@ export default function EdrXdrSecurityPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="EDR Solutions Dubai | XDR & Managed Endpoint Protection" />
         <meta name="twitter:description" content="EDR and XDR solutions in Dubai and across the UAE. Managed endpoint protection from CrowdStrike, SentinelOne, Sophos, Microsoft Defender and Palo Alto Cortex." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-endpoint-security-edr-xdr.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",

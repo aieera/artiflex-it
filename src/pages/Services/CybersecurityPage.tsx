@@ -577,7 +577,7 @@ export default function CybersecurityPage() {
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex Information Technology cybersecurity services in Dubai, UAE" />
@@ -585,7 +585,7 @@ export default function CybersecurityPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Cyber Security Company in Dubai | Cybersecurity Services UAE" />
         <meta name="twitter:description" content="Cyber security company in Dubai and UAE. Artiflex delivers cybersecurity services across the UAE: NGFW, EDR/XDR, SASE, SIEM and MDR aligned to NESA and PDPL." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>

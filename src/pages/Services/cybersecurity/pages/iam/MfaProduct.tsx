@@ -846,7 +846,7 @@ export default function MfaProduct() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-identity-access-security-mfa.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT multi-factor authentication for the UAE" />
@@ -854,7 +854,7 @@ export default function MfaProduct() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Multi-Factor Authentication Dubai | FIDO2 & Passwordless" />
         <meta name="twitter:description" content="Multi-factor authentication in Dubai. Passwordless, FIDO2, push and OTP. MFA solutions to reduce account-takeover risk across UAE businesses." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-identity-access-security-mfa.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

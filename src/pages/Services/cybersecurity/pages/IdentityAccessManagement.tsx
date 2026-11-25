@@ -22,6 +22,13 @@ import {
   GearIcon,
 } from "@/components/icons";
 
+/* Saviynt and One Identity are the same products as their IGA entries, so the IAM cards link to the single IGA page. */
+const IAM_TO_IGA_HREF: Record<string, string> = {
+  saviynt: "/cybersecurity/iga/saviynt",
+  "one-identity": "/cybersecurity/iga/one-identity-manager",
+};
+const iamVendorHref = (slug: string) => IAM_TO_IGA_HREF[slug] ?? `/cybersecurity/iam/${slug}`;
+
 /* ───────── IAM VENDORS LINEUP (HONEYCOMB) ───────── */
 
 const iamVendorList: { slug: string; name: string; logo: string }[] = [
@@ -246,7 +253,7 @@ const vendors: {
     strength:
       "Cloud-native IGA built for SaaS-heavy estates. Strong on application access governance, third-party access governance (TPAG), and cloud privileged access governance. Pre-built connectors and ML-driven access reviews shorten the implementation curve.",
     watch:
-      "Less mature than SailPoint for on-premises and air-gapped deployments. Product depth excellent for SaaS, less so for legacy mainframe or sovereign on-prem.",
+      "Governs access but does not authenticate it; pairs with Entra, Okta or Ping for SSO and MFA. Less mature than SailPoint for air-gapped and mainframe estates.",
     accent: "#10B981",
     logo: "/logos/Saviynt.png",
   },
@@ -424,7 +431,7 @@ const matrixRows: MatrixRow[] = [
     label: "Single Sign-On (SSO)",
     type: "stars",
     cells: [
-      { stars: 4, note: "Cloud-first, integrates Entra/Okta IdP" },
+      { stars: 2, note: "Via Entra / Okta / Ping IdP" },
       { stars: 5, note: "7,000+ pre-built apps" },
       { stars: 5, note: "Deepest federation protocols" },
       { stars: 5, note: "Native to M365 estate" },
@@ -438,7 +445,7 @@ const matrixRows: MatrixRow[] = [
     label: "Multi-Factor Authentication",
     type: "stars",
     cells: [
-      { stars: 4, note: "Risk-aware MFA + signals" },
+      { stars: 2, note: "Inherited from your IdP" },
       { stars: 5, note: "Adaptive MFA + Verify" },
       { stars: 5, note: "PingID, FIDO2, biometric" },
       { stars: 5, note: "Authenticator + Windows Hello" },
@@ -536,7 +543,7 @@ const matrixRows: MatrixRow[] = [
     label: "5-Year TCO (5,000 users)",
     type: "stars",
     cells: [
-      { stars: 4, note: "Competitive cloud pricing, fewer add-ons" },
+      { stars: 3, note: "Premium SaaS tiers, fewer add-ons" },
       { stars: 3, note: "Premium per-user pricing" },
       { stars: 3, note: "Higher, hybrid licensing" },
       { stars: 5, note: "Lowest if M365 E5 on contract" },
@@ -661,7 +668,7 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
   {
     label: "Single Sign-On (SSO)",
     cells: [
-      { tier: "veryStrong", note: "Cloud-first, IdP-integrated" },
+      { tier: "good", note: "Via your IdP" },
       { tier: "best", note: "7,000+ pre-built apps" },
       { tier: "best", note: "Deepest federation" },
       { tier: "best", note: "Native to M365 estate" },
@@ -674,7 +681,7 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
   {
     label: "Multi-Factor Authentication",
     cells: [
-      { tier: "veryStrong", note: "Risk-aware MFA + signals" },
+      { tier: "good", note: "Inherited from IdP" },
       { tier: "best", note: "Adaptive MFA + Verify" },
       { tier: "excellent", note: "PingID + FIDO2 + biometric" },
       { tier: "best", note: "Authenticator + Hello + Passkeys" },
@@ -739,7 +746,7 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
   {
     label: "Hybrid / On-Prem Deployment",
     cells: [
-      { tier: "veryStrong", note: "Cloud-first, hybrid agents" },
+      { tier: "strong", note: "Hybrid via on-prem connectors" },
       { tier: "strong", note: "SaaS-only" },
       { tier: "best", note: "Hybrid + on-prem options" },
       { tier: "strong", note: "Hybrid via AD FS / Connect" },
@@ -765,7 +772,7 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
   {
     label: "Total Cost of Ownership",
     cells: [
-      { tier: "veryStrong", note: "Competitive, fewer add-ons" },
+      { tier: "strong", note: "Premium SaaS tiers, fewer add-ons" },
       { tier: "strong", note: "Premium per-user pricing" },
       { tier: "strong", note: "Higher, hybrid licensing" },
       { tier: "best", note: "Lowest if M365 E5 on contract" },
@@ -935,7 +942,7 @@ export default function IdentityAccessManagement() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-identity-access-security-iam.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT IAM platform for the UAE" />
@@ -943,7 +950,7 @@ export default function IdentityAccessManagement() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="IAM Platform UAE | SSO, MFA & Conditional Access | Artiflex" />
         <meta name="twitter:description" content="IAM platform for UAE. SSO, MFA, conditional access and lifecycle across Okta, Microsoft Entra, Ping Identity and JumpCloud. Compare options." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-identity-access-security-iam.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -1003,7 +1010,7 @@ export default function IdentityAccessManagement() {
               "@type": "ListItem",
               position: i + 1,
               name: v.name,
-              url: `https://artiflexit.com/cybersecurity/iam/${v.slug}`,
+              url: `https://artiflexit.com${iamVendorHref(v.slug)}`,
             })),
           })}
         </script>
@@ -1181,7 +1188,7 @@ export default function IdentityAccessManagement() {
                   {row.map((v) => (
                     <Link
                       key={v.slug}
-                      to={`/cybersecurity/iam/${v.slug}`}
+                      to={iamVendorHref(v.slug)}
                       aria-label={v.name}
                       className="group relative block h-[208px] w-[180px] transition-all duration-300 hover:z-10 hover:scale-[1.06] [filter:drop-shadow(0_4px_12px_rgba(15,23,42,0.10))] hover:[filter:drop-shadow(0_10px_30px_rgba(40,181,225,0.45))]"
                     >
@@ -1218,7 +1225,7 @@ export default function IdentityAccessManagement() {
             {iamVendorList.map((v) => (
               <Link
                 key={v.slug}
-                to={`/cybersecurity/iam/${v.slug}`}
+                to={iamVendorHref(v.slug)}
                 className="group flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#28B5E1]/50 hover:shadow-md"
               >
                 {v.logo ? (
@@ -1533,7 +1540,7 @@ export default function IdentityAccessManagement() {
                   className="flex h-full"
                 >
                   <Link
-                    to={`/cybersecurity/iam/${v.slug}`}
+                    to={iamVendorHref(v.slug)}
                     aria-label={`View details for ${v.name}`}
                     className={`group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(4,88,145,0.12)] sm:p-8 ${
                       recommended

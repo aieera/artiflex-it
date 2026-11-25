@@ -96,32 +96,32 @@ export const NAV_LINKS = [
             // description: "IAM, MFA, PAM and IGA, Microsoft Entra, Okta, Ping, CyberArk, SailPoint, Saviynt."
             children: [
               { name: "Identity & Access Management (IAM)", href: "/cybersecurity/identity-access-security/iam", children: [
-                { name: "Saviynt", href: "/cybersecurity/iam/saviynt", icon: "/logos/Saviynt.png" },
-                { name: "Okta", href: "/cybersecurity/iam/okta", icon: "/logos/Okta.png" },
-                { name: "Ping Identity", href: "/cybersecurity/iam/ping-identity", icon: "/logos/pingidentity.png" },
+                { name: "Saviynt Identity Cloud", href: "/cybersecurity/iga/saviynt", icon: "/logos/Saviynt.png" },
+                { name: "Okta Workforce Identity Cloud", href: "/cybersecurity/iam/okta", icon: "/logos/Okta.png" },
+                { name: "PingOne for Workforce", href: "/cybersecurity/iam/ping-identity", icon: "/logos/pingidentity.png" },
                 { name: "Microsoft Entra ID", href: "/cybersecurity/iam/microsoft-entra", icon: "/logos/microsoft.svg" },
-                { name: "IBM Security IAM", href: "/cybersecurity/iam/ibm-security", icon: "/logos/IBM-Security.png" },
-                { name: "Oracle Identity", href: "/cybersecurity/iam/oracle", icon: "/logos/Oracle.png" },
-                { name: "One Identity", href: "/cybersecurity/iam/one-identity", icon: "/logos/OneIdentity.png" },
-                { name: "JumpCloud", href: "/cybersecurity/iam/jumpcloud", icon: "/logos/JumpCloud.webp" },
+                { name: "IBM Verify", href: "/cybersecurity/iam/ibm-security", icon: "/logos/IBM-Security.png" },
+                { name: "Oracle Access Manager", href: "/cybersecurity/iam/oracle", icon: "/logos/Oracle.png" },
+                { name: "One Identity Manager", href: "/cybersecurity/iga/one-identity-manager", icon: "/logos/OneIdentity.png" },
+                { name: "JumpCloud Directory Platform", href: "/cybersecurity/iam/jumpcloud", icon: "/logos/JumpCloud.webp" },
               ] },
               { name: "Privileged Access (PAM)", href: "/cybersecurity/identity-access-security/pam", children: [
-                { name: "BeyondTrust", href: "/cybersecurity/pam/beyondtrust", icon: "/logos/BeyondTrust.webp" },
-                { name: "CyberArk", href: "/cybersecurity/pam/cyberark", icon: "/logos/CyberArk.png" },
+                { name: "BeyondTrust Password Safe", href: "/cybersecurity/pam/beyondtrust", icon: "/logos/BeyondTrust.webp" },
+                { name: "CyberArk PAM", href: "/cybersecurity/pam/cyberark", icon: "/logos/CyberArk.png" },
                 { name: "Fortra PAM", href: "/cybersecurity/pam/fortra", icon: "/logos/Fortra.png" },
-                { name: "Delinea", href: "/cybersecurity/pam/delinea", icon: "/logos/Delinea.webp" },
+                { name: "Delinea Secret Server", href: "/cybersecurity/pam/delinea", icon: "/logos/Delinea.webp" },
                 { name: "One Identity Safeguard", href: "/cybersecurity/pam/one-identity-safeguard", icon: "/logos/OneIdentity.png" },
                 { name: "Saviynt PAM", href: "/cybersecurity/pam/saviynt-pam", icon: "/logos/Saviynt.png" },
                 { name: "Microsoft Entra PIM", href: "/cybersecurity/pam/microsoft-entra-pim", icon: "/logos/microsoft.svg" },
                 { name: "HashiCorp Vault", href: "/cybersecurity/pam/hashicorp-vault", icon: "/logos/HashiCorp.png" },
-                { name: "Senhasegura", href: "/cybersecurity/pam/senhasegura" },
+                { name: "Senhasegura PAM Core", href: "/cybersecurity/pam/senhasegura", icon: "/logos/senhasegura.png" },
               ] },
               { name: "Identity Governance (IGA)", href: "/cybersecurity/identity-access-security/iga", children: [
                 { name: "Saviynt Identity Cloud", href: "/cybersecurity/iga/saviynt", icon: "/logos/Saviynt.png" },
-                { name: "SailPoint", href: "/cybersecurity/iga/sailpoint", icon: "/logos/sailpoint.webp" },
+                { name: "SailPoint Identity Security Cloud", href: "/cybersecurity/iga/sailpoint", icon: "/logos/sailpoint.webp" },
                 { name: "One Identity Manager", href: "/cybersecurity/iga/one-identity-manager", icon: "/logos/OneIdentity.png" },
                 { name: "Microsoft Entra ID Governance", href: "/cybersecurity/iga/microsoft-entra-id-governance", icon: "/logos/microsoft.svg" },
-                { name: "Omada Identity Cloud", href: "/cybersecurity/iga/omada-identity" },
+                { name: "Omada Identity Cloud", href: "/cybersecurity/iga/omada-identity", icon: "/logos/Omada.png" },
                 { name: "Oracle Identity Governance", href: "/cybersecurity/iga/oracle-identity-governance", icon: "/logos/Oracle.png" },
                 { name: "IBM Verify Governance", href: "/cybersecurity/iga/ibm-security-igi", icon: "/logos/IBM-Security.png" },
               ] },
@@ -180,6 +180,7 @@ export const NAV_LINKS = [
                 { name: "Secureworks Taegis", href: "/cybersecurity/security-operations/siem/secureworks", icon: "/logos/Secureworks.png" },
                 { name: "Wazuh OSS", href: "/cybersecurity/security-operations/siem/wazuh", icon: "/logos/Wazuh.png" },
               ] },
+              { name: "SOC as a Service", href: "/cybersecurity/security-operations/soc-as-a-service" },
             ],
           },
           {
@@ -275,7 +276,9 @@ export const NAV_LINKS = [
             href: "/business-solutions/hr-management-software",
           },
         ]
-      }]
+      },
+      { name: "Corporate Training", description: "IT training & upskilling for your teams", href: "/corporate-training", icon: "BookOpenIcon" },
+    ]
   },
   { label: "Vendors", href: "/vendors" },
   { label: "Blog", href: "/blog" },
@@ -333,6 +336,7 @@ export const FOOTER_LINKS = {
     { label: "Infrastructure", href: "/infrastructure" },
     { label: "Managed Services", href: "/managed-services" },
     { label: "Application Security", href: "/application-security-solutions" },
+    { label: "Corporate Training", href: "/corporate-training" },
   ],
   company: [
     { label: "About", href: "/about" },

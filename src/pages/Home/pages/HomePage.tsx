@@ -312,7 +312,7 @@ export default function HomePage() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/home.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta
@@ -330,7 +330,7 @@ export default function HomePage() {
           name="twitter:description"
           content="Dubai IT solutions company for the UAE, Oman, Saudi Arabia and India: cybersecurity, cloud, infrastructure and managed IT support. 14+ years, 500+ projects."
         />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/home.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
 
         {/* Robots */}

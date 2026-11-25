@@ -401,7 +401,7 @@ function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0 z-[1] overflow-hidden" aria-hidden="true">
         <img
-          src="/cybersecurity.webp"
+          src="/images/Infrastructure-main.png"
           alt="IT infrastructure and networking services by Artiflex IT in Dubai and the UAE"
           loading="eager"
           decoding="async"
@@ -634,7 +634,7 @@ export default function InfrastructurePage() {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_AE" />
       <meta property="og:locale:alternate" content="en_US" />
-      <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+      <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure.jpg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content="Build Your Office IT Infrastructure in Dubai" />
@@ -642,7 +642,7 @@ export default function InfrastructurePage() {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Build Your Office IT Infrastructure in Dubai" />
       <meta name="twitter:description" content="IT infrastructure services in Dubai across 12 categories: data center, servers, network, wireless, UC, AV, CCTV, access control, UPS and managed print." />
-      <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+      <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure.jpg" />
       <meta name="twitter:site" content="@artiflexit" />
       <script type="application/ld+json">{JSON.stringify({
         "@context": "https://schema.org",

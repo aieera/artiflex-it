@@ -820,7 +820,7 @@ export default function BackupDataManagement() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-backup-data-management.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Backup Solutions Dubai | Veeam, Rubrik, Cohesity, AvePoint" />
@@ -828,7 +828,7 @@ export default function BackupDataManagement() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Backup Solutions Dubai | Veeam, Rubrik, Cohesity, AvePoint" />
         <meta name="twitter:description" content="Backup and data management in Dubai for on-prem, M365 and cloud-native workloads. Veeam, Commvault, Rubrik, Cohesity, AvePoint and Druva supported." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-backup-data-management.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

@@ -818,7 +818,7 @@ export default function PublicCloud() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cloud-solutions-public-cloud.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT public cloud services in Dubai, UAE" />
@@ -826,7 +826,7 @@ export default function PublicCloud() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Public Cloud Services Dubai | AWS, Azure & GCP Workloads" />
         <meta name="twitter:description" content="Public cloud services in Dubai. AWS, Azure and GCP migration, landing-zone build, FinOps and managed support for UAE workloads. Free cloud assessment." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cloud-solutions-public-cloud.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

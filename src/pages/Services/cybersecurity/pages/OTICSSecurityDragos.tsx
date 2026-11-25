@@ -179,7 +179,7 @@ export default function OTICSSecurityDragos() {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_AE" />
       <meta property="og:locale:alternate" content="en_US" />
-      <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+      <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-ot-ics-security-dragos.jpg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content="Dragos Platform OT and ICS security for the UAE by Artiflex IT" />
@@ -187,7 +187,7 @@ export default function OTICSSecurityDragos() {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Dragos Platform | OT / ICS Security UAE | Artiflex IT" />
       <meta name="twitter:description" content="Dragos Platform, WorldView and Neighborhood Keeper: the ICS-IR specialist. Deployed by Artiflex IT for UAE utilities, energy and water." />
-      <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+      <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-ot-ics-security-dragos.jpg" />
       <meta name="twitter:site" content="@artiflexit" />
 
       {/* JSON-LD: Service schema */}

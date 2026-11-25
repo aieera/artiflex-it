@@ -131,7 +131,7 @@ export default function BlogPage() {
           content="Field-tested cybersecurity, cloud, and IT insights from Artiflex IT engineers for UAE businesses."
         />
         <meta property="og:url" content={`${SITE}/blog`} />
-        <meta property="og:image" content={`${SITE}/og/blog.png`} />
+        <meta property="og:image" content={`${SITE}/og/pages/blog.jpg`} />
         <meta property="og:site_name" content="Artiflex IT" />
         <meta property="og:locale" content="en_AE" />
 
@@ -142,7 +142,7 @@ export default function BlogPage() {
           name="twitter:description"
           content="Cybersecurity, cloud, and IT insights for UAE businesses."
         />
-        <meta name="twitter:image" content={`${SITE}/og/blog.png`} />
+        <meta name="twitter:image" content={`${SITE}/og/pages/blog.jpg`} />
 
         {/* JSON-LD: Blog */}
         <script type="application/ld+json">{JSON.stringify({

@@ -590,7 +590,7 @@ export default function SecurityOperationsMdr() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-security-operations-mdr.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT managed detection and response for the UAE" />
@@ -598,7 +598,7 @@ export default function SecurityOperationsMdr() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Managed Detection and Response Dubai | 24/7 SOC + Hunting" />
         <meta name="twitter:description" content="UAE MDR buyer's guide: vendor comparison across Sophos MDR Complete, Secureworks MXDR, Rapid7, Microsoft, SentinelOne, CrowdStrike and Arctic Wolf." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-security-operations-mdr.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

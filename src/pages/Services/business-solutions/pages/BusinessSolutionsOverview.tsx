@@ -442,7 +442,7 @@ export default function BusinessSolutionsOverview() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/business-solutions.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Business Software Dubai for ERP, CRM, Finance & HRM" />
@@ -450,7 +450,7 @@ export default function BusinessSolutionsOverview() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Business Software Dubai for ERP, CRM, Finance & HRM" />
         <meta name="twitter:description" content="Integrated business software for Dubai: ERP, CRM, finance, HRM and DMS on one platform. UAE FTA, IFRS, PDPL and WPS-ready. Cloud or on-premise." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/business-solutions.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>

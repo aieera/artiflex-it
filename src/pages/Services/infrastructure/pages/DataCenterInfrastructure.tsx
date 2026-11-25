@@ -813,7 +813,7 @@ export default function DataCenterInfrastructure() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-data-center.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Data Centre Services Dubai | Tier III Design, Build, DCIM" />
@@ -821,7 +821,7 @@ export default function DataCenterInfrastructure() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Data Centre Services Dubai | Tier III Design, Build, DCIM" />
         <meta name="twitter:description" content="Data centre design, build, power and cooling in Dubai. Tier III to colocation with DCIM, raised floor, hot/cold aisle and 24/7 managed operations." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-data-center.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

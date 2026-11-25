@@ -1023,7 +1023,7 @@ export default function PamProduct() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-identity-access-security-pam.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT privileged access management for the UAE" />
@@ -1031,7 +1031,7 @@ export default function PamProduct() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Privileged Access Management Dubai | PAM Vault + Session" />
         <meta name="twitter:description" content="Privileged access management in Dubai. Credential vault, session recording and JIT access across CyberArk, BeyondTrust and Delinea." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-identity-access-security-pam.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

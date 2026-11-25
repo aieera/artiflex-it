@@ -844,7 +844,7 @@ export default function EmailSecurityBusiness() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-email-security.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT email security for the UAE" />
@@ -852,7 +852,7 @@ export default function EmailSecurityBusiness() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Email Security UAE | DMARC & BEC Protection | Artiflex IT" />
         <meta name="twitter:description" content="Email security in the UAE: stop phishing, BEC, ransomware and brand impersonation with Sophos, Check Point Harmony, Fortra DMARC and Proofpoint." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-email-security.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

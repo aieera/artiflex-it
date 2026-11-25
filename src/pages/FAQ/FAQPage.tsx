@@ -127,7 +127,7 @@ export default function FAQPage() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/faq.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT cybersecurity and IT FAQ for UAE businesses" />
@@ -135,7 +135,7 @@ export default function FAQPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Cybersecurity & IT FAQ UAE | Plain Answers | Artiflex IT" />
         <meta name="twitter:description" content="Plain-English answers on cybersecurity, VAPT, firewall management, cloud migration and managed IT services for UAE businesses. Written by Artiflex IT engineers." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/faq.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}

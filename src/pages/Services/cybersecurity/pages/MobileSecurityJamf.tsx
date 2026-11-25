@@ -332,7 +332,7 @@ export default function MobileSecurityJamf() {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_AE" />
       <meta property="og:locale:alternate" content="en_US" />
-      <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+      <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-mobile-security-jamf.jpg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={pageTitle} />
@@ -340,7 +340,7 @@ export default function MobileSecurityJamf() {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+      <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-mobile-security-jamf.jpg" />
       <meta name="twitter:site" content="@artiflexit" />
       <script type="application/ld+json">
         {JSON.stringify({

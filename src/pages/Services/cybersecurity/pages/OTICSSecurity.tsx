@@ -178,6 +178,7 @@ const matrixRows: MatrixRow[] = [
 type VendorCard = {
   id?: string;
   name: string;
+  short: string;
   best: string;
   strength: string;
   watch: string;
@@ -188,51 +189,46 @@ const vendors: VendorCard[] = [
   {
     id: "nozomi",
     name: "Nozomi Networks (Guardian / Vantage)",
+    short: "Nozomi",
     best: "Best for OT/IoT visibility & NDR (Recommended)",
-    strength:
-      "Co-founded in 2013, Nozomi brought the first AI-powered ICS visibility platform to market and was named a Leader in the Gartner Magic Quadrant for CPS Protection. Guardian performs deep packet inspection across industrial protocols, builds a digital-twin baseline of normal behaviour, and detects anomalies (atypical flows, controller-program changes, rogue devices, malware) without disrupting operations. Vantage provides SaaS-scale management across OT, IoT and IT. Integrates cleanly with Rapid7, Splunk and Sentinel for SOC correlation.",
-    watch:
-      "Purpose-built for OT and IoT, expect to pair with an IT SIEM for full IT/OT correlation. Sensor sizing and span/tap planning matters: scope this carefully during assessment.",
+    strength: "Gartner Magic Quadrant Leader for CPS Protection. Guardian does passive DPI across industrial protocols with digital-twin baselining; Vantage manages OT, IoT and IT at SaaS scale.",
+    watch: "OT/IoT-focused, so pair with an IT SIEM for full IT/OT correlation. Scope sensor sizing and SPAN/TAP placement during assessment.",
     logo: "/logos/Nozomi.png",
   },
   {
     id: "tenable",
     name: "Tenable OT Security (Tenable.ot)",
+    short: "Tenable OT",
     best: "Best for vulnerability-led OT programmes (Recommended)",
-    strength:
-      "Born from the 2019 Indegy acquisition, Tenable.ot extends the Tenable vulnerability-management programme into OT. Hybrid passive plus active discovery (active queries are safe, ICS-aware), asset-level CVE mapping, configuration drift detection and tight integration with Tenable.io and Tenable.sc for unified IT and OT risk reporting. The right answer when Tenable already runs your IT VM programme.",
-    watch:
-      "OT NDR depth is solid but not class-leading versus Nozomi or Dragos. The case for Tenable.ot is unified vulnerability reporting, not best-of-breed ICS detection alone.",
+    strength: "Extends the Tenable VM programme into OT (ex-Indegy). Safe hybrid passive/active discovery, asset-level CVE mapping and unified IT/OT risk reporting via Tenable.io and Tenable.sc.",
+    watch: "OT detection depth trails Nozomi and Dragos. Choose it for unified vulnerability reporting, not best-of-breed ICS detection alone.",
     logo: "/logos/tenable.png",
   },
   {
     id: "claroty",
     name: "Claroty (xDome / CTD)",
+    short: "Claroty",
     best: "Best for complex OT estates (Recommended)",
-    strength:
-      "Founded in 2015 with Team8 incubation, Claroty offers the broadest module set on the market: xDome (cloud), Continuous Threat Detection (CTD, on-prem), Secure Remote Access (SRA) and Edge for passive + active discovery. Particularly strong in pharma, healthcare (Medigate IoMT lineage) and manufacturing where heterogeneous device populations and remote vendor access dominate the risk surface.",
-    watch:
-      "More moving parts than competitors, plan a phased rollout (CTD or xDome first, SRA next) rather than everything at once.",
+    strength: "Broadest module set on the market: xDome (cloud), CTD (on-prem), Secure Remote Access and Edge discovery. Strong in pharma, healthcare (Medigate IoMT) and manufacturing with heavy remote vendor access.",
+    watch: "More moving parts than rivals. Plan a phased rollout (CTD or xDome first, SRA next) rather than everything at once.",
     logo: "/logos/Claroty.webp",
   },
   {
     id: "dragos",
     name: "Dragos Platform",
+    short: "Dragos",
     best: "Best for ICS-IR & threat intel",
-    strength:
-      "Founded in 2016 by Robert M. Lee and a team of former ICS-CERT and US Government ICS hunters, Dragos pairs the Dragos Platform with the WorldView threat-intelligence service and a Neighborhood Keeper community-defence model. The strongest pedigree for ICS-specific incident response, particularly in energy, oil & gas, water utilities and electricity grids where deep ICS protocol knowledge and threat-actor attribution matter most.",
-    watch:
-      "Specialist focus on heavy industry and critical infrastructure. Manufacturing or pharma buyers will often prefer Nozomi or Claroty for module breadth and IT-OT correlation depth.",
+    strength: "Built by former ICS-CERT hunters; pairs the platform with WorldView threat intel and Neighborhood Keeper community defence. Strongest ICS-IR pedigree for energy, oil & gas, water and power grids.",
+    watch: "Specialist focus on heavy industry. Manufacturing or pharma buyers often prefer Nozomi or Claroty for module breadth and IT/OT correlation.",
     logo: "/logos/Dragos.png",
   },
   {
     id: "microsoft-defender-iot",
     name: "Microsoft Defender for IoT",
+    short: "Defender for IoT",
     best: "Best for Microsoft-aligned estates",
-    strength:
-      "Built on the 2020 CyberX acquisition, Defender for IoT brings agentless OT/IoT discovery and ML-based threat detection into the Microsoft security stack. Signals flow natively into Microsoft Sentinel and Defender XDR, making it the lowest-friction choice when M365 / Azure / Sentinel are already the SOC standard. Both cloud-managed and air-gapped on-premises management modes are supported.",
-    watch:
-      "Strongest where the SOC is already Microsoft-centric. For OT-first specialists (heavy industry, ICS-IR teams), Nozomi or Dragos still set the depth bar.",
+    strength: "Agentless OT/IoT discovery with ML detection (ex-CyberX), feeding natively into Sentinel and Defender XDR. Lowest-friction choice when M365, Azure and Sentinel already run the SOC.",
+    watch: "Best where the SOC is already Microsoft-centric. For OT-first specialists, Nozomi or Dragos still set the depth bar.",
     logo: "/logos/MicrosoftDefender.webp",
   },
 ];
@@ -464,7 +460,7 @@ export default function OTICSSecurity() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-ot-ics-security.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT OT and ICS security for the UAE" />
@@ -472,7 +468,7 @@ export default function OTICSSecurity() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="OT & ICS Security Dubai | SCADA & IEC 62443 Protection" />
         <meta name="twitter:description" content="OT and ICS cybersecurity in Dubai for industrial, utility and energy sites: SCADA visibility, detection and IEC 62443, NESA and ADHICS compliance." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-ot-ics-security.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "Service", "serviceType": "OT / ICS Security", "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" }, "areaServed": { "@type": "Country", "name": "United Arab Emirates" }, "description": "UAE OT / ICS Security delivery across Nozomi, Claroty, Dragos, Tenable OT Security and Microsoft Defender for IoT." })}</script>
         <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqs.map((f) => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } })) })}</script>
@@ -683,7 +679,7 @@ export default function OTICSSecurity() {
               const recommended = v.best.includes("Recommended");
               return (
                 <motion.div key={v.name} id={v.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.5, delay: idx * 0.05 }} className="flex h-full scroll-mt-24">
-                  <div className={`group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(4,88,145,0.12)] sm:p-8 ${recommended ? "border-brand-blue/30 shadow-[0_4px_20px_rgba(27,138,199,0.10)]" : "border-border-light shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:border-brand-blue/25"}`}>
+                  <Link to={`/cybersecurity/ot-ics-security/${v.id}`} aria-label={`View details for ${v.name}`} className={`group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(4,88,145,0.12)] sm:p-8 ${recommended ? "border-brand-blue/30 shadow-[0_4px_20px_rgba(27,138,199,0.10)]" : "border-border-light shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:border-brand-blue/25"}`}>
                     {recommended && (
                       <span className="absolute -top-px left-6 inline-flex rounded-b-md bg-brand-blue px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white" aria-label="Recommended vendor">Recommended</span>
                     )}
@@ -706,7 +702,11 @@ export default function OTICSSecurity() {
                         <p className="mt-1.5 text-sm leading-relaxed text-body/80">{v.watch}</p>
                       </div>
                     </div>
-                  </div>
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-6 text-xs font-semibold text-brand-blue transition-all group-hover:gap-2.5 sm:text-sm">
+                      View {v.short} details
+                      <span aria-hidden="true">→</span>
+                    </span>
+                  </Link>
                 </motion.div>
               );
             })}

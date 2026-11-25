@@ -151,6 +151,7 @@ export const igaVendors: Record<string, IgaVendor> = {
       "Identity estates between 5,000 and 250,000 users where SaaS-native cadence is a buying requirement",
       "Buyers actively migrating off SailPoint IdentityIQ, Oracle OIM or NetIQ to a cloud-native platform",
       "Estates with heavy third-party / contractor / vendor access that needs separate governance",
+      "Cloud-native enterprises with large SaaS application footprints wanting fast time-to-value from pre-built connectors",
     ],
     products: [
       { model: "Saviynt EIC, Identity Governance & Administration", segment: "Core IGA", role: "Joiner / Mover / Leaver, certifications, access requests, role mining" },
@@ -161,7 +162,7 @@ export const igaVendors: Record<string, IgaVendor> = {
       { model: "Saviynt Identity Cloud (Bundle)", segment: "Strategic", role: "All modules under one converged licence, recommended starting point" },
     ],
     whyArtiflex:
-      "Artiflex IT delivers Saviynt Identity Cloud end-to-end for UAE banks, ministries, energy and healthcare customers. Our team has hands-on experience with Application Access Governance for SAP and Oracle ERP, Iris AI certification campaigns, CIEM for AWS / Azure / GCP, and Third-Party Access Governance for contractor-heavy estates. Vendor-neutral sizing is our default starting point; we will tell you when SailPoint or Microsoft Entra ID Governance is a stronger fit for your audit scope and identity surface.",
+      "Artiflex IT delivers Saviynt Identity Cloud end-to-end for UAE banks, ministries, energy and healthcare customers. Our team has hands-on experience with Application Access Governance for SAP and Oracle ERP, Iris AI certification campaigns, CIEM for AWS / Azure / GCP, and Third-Party Access Governance for contractor-heavy estates, all aligned to NESA, PDPL and CBUAE control expectations. Vendor-neutral sizing is our default starting point; we will tell you when SailPoint or Microsoft Entra ID Governance is a stronger fit for your audit scope and identity surface.",
     faqs: [
       {
         question: "How does Saviynt compare to SailPoint?",
@@ -188,13 +189,18 @@ export const igaVendors: Record<string, IgaVendor> = {
         answer:
           "Saviynt treats service accounts, bots and AI agents as first-class governable identities, with ownership, lifecycle, certification scope and SoD applicability. This matters as NIS2 and NCA ECC increasingly extend identity controls beyond human users, and as agentic AI workloads multiply non-human identities inside the estate.",
       },
+      {
+        question: "What is Third-Party Access Governance (TPAG)?",
+        answer:
+          "TPAG governs the lifecycle of non-employee identities, contractors, vendors and partners, with sponsorship and approval workflows so external access is granted, reviewed and revoked under control. It is a Saviynt strength for estates with heavy third-party access that standard workforce IGA handles poorly, and it runs on the same licence and data model as the core IGA module.",
+      },
     ],
     whatIs: {
       eyebrow: "What is Saviynt Identity Cloud",
       titlePrefix: "Converged identity governance for the ",
       titleHighlight: "regulated, multi-cloud enterprise",
       bodyParagraphs: [
-        "Saviynt Identity Cloud is a SaaS-native Identity Governance & Administration platform that unifies IGA, Application Access Governance, Cloud Infrastructure Entitlement Management, Third-Party Access Governance and Cloud PAM into a single converged platform.",
+        "Saviynt Identity Cloud, built cloud-first since 2010, is a SaaS-native Identity Governance & Administration platform that unifies IGA, Application Access Governance, Cloud Infrastructure Entitlement Management, Third-Party Access Governance and Cloud PAM into a single converged platform.",
         "Where legacy IGA solved 'who has access to what' as an annual access review and a JML workflow, Saviynt solves it as a continuous, AI-assisted control plane across cloud, SaaS, ERP, and non-human identities, with SoD libraries shipped out of the box for SAP S/4HANA, Oracle, Workday and PeopleSoft.",
         "For UAE buyers, this means one licence and one console answers SOX, NESA, NCA ECC and SAMA identity controls instead of stitching together SailPoint plus CyberArk plus SecZetta plus a separate CIEM. The TCO advantage typically lands at 25-40 percent, and certification fatigue drops sharply once Iris AI is focusing reviewers on actual risk.",
       ],
@@ -560,19 +566,30 @@ export const igaVendors: Record<string, IgaVendor> = {
     slug: "one-identity-manager",
     metaTitle: "One Identity Manager IGA UAE | Artiflex IT",
     metaDescription:
-      "One Identity Manager IGA in Dubai and the UAE: mature on-prem and hybrid governance with strong AD lifecycle. Deployed by Artiflex IT.",
+      "One Identity Manager IGA in Dubai and the UAE: mature on-prem and hybrid governance with strong AD lifecycle, Safeguard PAM and OneLogin in one portfolio. Deployed by Artiflex IT.",
     name: "One Identity Manager",
     logo: "/logos/OneIdentity.png",
-    tagline: "Mature on-prem and hybrid IGA with strong Active Directory lifecycle management",
-    bestFor: "Existing NetIQ / One Identity Estates · AD-Heavy Hybrid",
+    tagline: "Mature on-prem and hybrid IGA with strong Active Directory lifecycle management, and native Safeguard PAM and OneLogin access management in the same portfolio",
+    bestFor: "Existing NetIQ / One Identity Estates · AD-Heavy Hybrid · IGA + PAM in One Vendor",
     description:
-      "One Identity Manager (formerly Dell / Quest, now One Identity) is a mature on-prem and hybrid IGA platform with particularly strong Active Directory lifecycle management. Best leverage when an existing One Identity relationship (Safeguard, OneLogin, Identity Manager) is already in place. For greenfield deployments, Saviynt and SailPoint typically lead UAE shortlists, but One Identity remains a credible choice for AD-heavy estates with established One Identity tooling.",
+      "One Identity Manager (formerly Dell / Quest, now One Identity) is a mature on-prem and hybrid IGA platform with particularly strong Active Directory lifecycle management. Best leverage when an existing One Identity relationship (Safeguard, OneLogin, Identity Manager) is already in place. One Identity is also one of very few vendors with genuinely strong native capabilities across both identity governance and privileged access, which makes it a consolidation play at a mid-market price point for UAE estates that want to reduce vendor count and integration complexity. For greenfield deployments, Saviynt and SailPoint typically lead UAE shortlists, but One Identity remains a credible choice for AD-heavy estates with established One Identity tooling.",
     keyStats: [
-      { label: "Heritage", value: "Long-standing IGA, formerly Quest / Dell" },
+      { label: "Heritage", value: "Quest spin-off 2016, formerly NetIQ / Dell" },
       { label: "Strength", value: "Deep Active Directory lifecycle management" },
       { label: "Deployment", value: "On-prem and hybrid" },
-      { label: "Best leverage", value: "Estates already on Safeguard / OneLogin / Identity Manager" },
+      { label: "Differentiator", value: "IGA + Safeguard PAM + OneLogin SSO in one portfolio" },
     ],
+    whyWinsIntro: {
+      label: "One Identity Highlights",
+      title: "Consolidating governance and privileged access for AD-heavy UAE estates",
+      description:
+        "One Identity is most compelling when reducing vendor count matters and the estate wants strong governance plus native PAM from one portfolio. For pure cloud-native greenfield, Saviynt and SailPoint move faster, but for AD-heavy mid-market estates seeking consolidation and value, One Identity is a credible single-vendor answer.",
+      stats: [
+        { value: "2-in-1", label: "genuinely strong native IGA and PAM in one platform", tone: "emerald" },
+        { value: "AD-deep", label: "strong Active Directory bridge and hybrid lifecycle", tone: "violet" },
+        { value: "Mid-market", label: "competitive value at a mid-market price point", tone: "sky" },
+      ],
+    },
     strengths: [
       {
         tag: "AD lifecycle",
@@ -602,6 +619,20 @@ export const igaVendors: Record<string, IgaVendor> = {
         title: "Established request, approval and provisioning flows",
         desc: "Long-running workflow engine handles complex approval chains, role-mining and segregation patterns built up over many enterprise references.",
       },
+      {
+        tag: "Safeguard PAM",
+        icon: "lock",
+        tone: "rose",
+        title: "Safeguard privileged credential vaulting and sessions",
+        desc: "One Identity Safeguard delivers privileged credential vaulting and session management in the same portfolio as Identity Manager, so standard and privileged accounts can be certified in one review process, a genuine consolidation advantage over IGA-only vendors.",
+      },
+      {
+        tag: "OneLogin SSO",
+        icon: "shield",
+        tone: "slate",
+        title: "OneLogin adaptive authentication and SSO",
+        desc: "OneLogin by One Identity adds cloud SSO, adaptive MFA and access management, extending the portfolio toward cloud-first access alongside the on-prem governance strengths.",
+      },
     ],
     watchOuts: [
       {
@@ -616,6 +647,10 @@ export const igaVendors: Record<string, IgaVendor> = {
         title: "Greenfield-deployment cost-benefit is weaker",
         desc: "For greenfield UAE deployments without an existing One Identity portfolio relationship, Saviynt or SailPoint typically beat One Identity on innovation cadence, SaaS-native posture and ERP SoD scope.",
       },
+      {
+        title: "Less brand recognition than Tier-1 vendors",
+        desc: "One Identity carries less market visibility than Microsoft, Okta, SailPoint or IBM, which can surface in some procurement processes. The capability set is strong, but the brand premium of the leaders is not there.",
+      },
     ],
     bestFitProfile: [
       "UAE estates already running Safeguard PAM, OneLogin SSO or Active Roles for AD",
@@ -624,6 +659,7 @@ export const igaVendors: Record<string, IgaVendor> = {
       "Customers with existing One Identity portfolio commercial commitments",
       "Sovereign or air-gap-adjacent estates where on-prem IGA is mandatory",
       "Buyers prioritising vendor consolidation across PAM + IGA + AD admin under one portfolio",
+      "Cost-conscious mid-market buyers prioritising value over Tier-1 brand premium",
     ],
     products: [
       { model: "One Identity Manager", segment: "Core IGA", role: "Provisioning, requests, certifications, AD lifecycle" },
@@ -633,7 +669,7 @@ export const igaVendors: Record<string, IgaVendor> = {
       { model: "Starling Connect", segment: "Connectors", role: "Cloud-based connector framework for SaaS application integration" },
     ],
     whyArtiflex:
-      "Artiflex IT supports One Identity Manager deployments for UAE customers with existing portfolio relationships, particularly where Safeguard PAM or Active Roles AD admin are already in production. Our team provides honest, vendor-neutral assessment, we will tell you when Saviynt or SailPoint is the stronger strategic pick, and when consolidating around the existing One Identity stack is the right answer.",
+      "Artiflex IT supports One Identity Manager deployments for UAE customers with existing portfolio relationships, particularly where Safeguard PAM or Active Roles AD admin are already in production, and for mid-market estates that want to consolidate governance and privileged access under one vendor. Our team implements Identity Manager governance, Safeguard PAM, Active Roles AD delegation and OneLogin access management, aligned to NESA, PDPL and CBUAE control expectations. Honest, vendor-neutral assessment is our default: we will tell you when Saviynt or SailPoint is the stronger strategic pick, and when consolidating around the existing One Identity stack is the right answer.",
     faqs: [
       {
         question: "Should we pick One Identity Manager for a new IGA deployment?",
@@ -649,6 +685,16 @@ export const igaVendors: Record<string, IgaVendor> = {
         question: "Is the on-prem-to-hybrid path mature?",
         answer:
           "Yes. One Identity supports phased migration of components to hybrid deployment, and the Starling cloud connector framework extends SaaS application coverage without forcing a full SaaS-IGA move. Useful for sovereign-leaning estates that still need modern cloud connectors.",
+      },
+      {
+        question: "How does Safeguard compare to dedicated PAM vendors?",
+        answer:
+          "Safeguard delivers credential vaulting and session management strong enough to consolidate privileged access alongside Identity Manager. For the very deepest PAM requirements some estates still prefer a specialist such as CyberArk or BeyondTrust, but Safeguard's in-portfolio integration is a real advantage where consolidation of governance and privilege is the goal.",
+      },
+      {
+        question: "Is One Identity suitable for UAE compliance requirements?",
+        answer:
+          "Yes. One Identity's on-prem and hybrid governance, certification workflows and audit reporting map to NESA, PDPL and CBUAE expectations, and its sovereign-friendly deployment suits regulated mid-market estates. We size the deployment model against your residency and audit obligations.",
       },
     ],
   },
@@ -812,6 +858,7 @@ export const igaVendors: Record<string, IgaVendor> = {
     metaDescription:
       "Omada Identity Cloud IGA in Dubai and the UAE: cloud-native governance on the IdentityPROCESS+ framework. Deployed by Artiflex IT.",
     name: "Omada Identity Cloud",
+    logo: "/logos/Omada.png",
     tagline: "Cloud-native IGA built on the IdentityPROCESS+ best-practice framework, configurable rather than custom-coded, with strong Microsoft Entra integration",
     bestFor: "Visionary · Best-Practice IGA Framework",
     description:

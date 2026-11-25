@@ -94,6 +94,7 @@ export default function PrivacyPage() {
         title="Privacy Policy | Artiflex IT"
         description="Privacy Policy for artiflexit.com, explaining what personal information Artiflex collects, how we use and protect it, and your rights."
         path="/privacy"
+        image="https://artiflexit.com/og/pages/privacy.jpg"
       />
 
       <PageHero

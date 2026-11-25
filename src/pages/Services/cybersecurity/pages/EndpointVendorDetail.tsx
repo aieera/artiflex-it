@@ -27,6 +27,7 @@ import {
   CloudIcon,
 } from "@/components/icons";
 import { endpointVendors } from "../data/endpointVendors";
+import { ogImageForUrl } from "@/lib/ogImage";
 
 const strengthIconMap: Record<string, React.FC<{ className?: string }>> = {
   shield: ShieldIcon,
@@ -115,7 +116,7 @@ export default function EndpointVendorDetail() {
 
   const pageUrl = `https://artiflexit.com/cybersecurity/endpoint/${vendor.slug}`;
   const pageTitle = vendor.metaTitle;
-  const ogImage = "https://artiflexit.com/og-image.png";
+  const ogImage = ogImageForUrl(pageUrl);
 
   return (
     <>

@@ -37,7 +37,7 @@ const offices = [
       "Near Abu Hail Metro Station,",
       "Hor Al Anz, Dubai, UAE",
     ],
-    notice: "We're shifting to our new office soon as per the below address.",
+    notice: "",
     phones: ["+971 52 207 6531"],
     emails: ["info@artiflexit.com"],
     website: "www.artiflexit.com",
@@ -239,13 +239,13 @@ export default function ContactPage() {
         <link rel="canonical" href="https://artiflexit.com/contact" />
         <meta property="og:title" content="Contact Artiflex IT Dubai | Free IT Assessment | UAE" />
         <meta property="og:description" content="Contact Artiflex IT for cybersecurity, cloud migration, IT infrastructure and managed services. Reply within 2 business hours across UAE, Oman and Saudi Arabia." />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/contact.jpg" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://artiflexit.com/contact" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact Artiflex IT Dubai | Free IT Assessment | UAE" />
         <meta name="twitter:description" content="Offices in Dubai, Muscat, and Bengaluru. Response within 2 business hours." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/contact.jpg" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ContactPage",
@@ -635,6 +635,47 @@ export default function ContactPage() {
               </div>
             ))}
           </div>
+
+          {/* Google Map: Dubai headquarters */}
+          {(() => {
+            const hq = offices.find((o) => o.highlight) ?? offices[0];
+            const query = encodeURIComponent(`${hq.entity}, ${hq.address.join(" ")}`);
+            const embedSrc = `https://www.google.com/maps?q=${query}&z=16&output=embed`;
+            const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${query}`;
+            return (
+              <div className="mt-8 overflow-hidden rounded-2xl border border-border-light bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:mt-12">
+                <div className="flex flex-col gap-3 border-b border-border-light px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-blue/8 text-brand-blue">
+                      <MapPinIcon className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <p className="font-display text-base font-semibold text-heading">Find us in {hq.city}</p>
+                      <p className="text-xs text-muted">{hq.address.join(" ")}</p>
+                    </div>
+                  </div>
+                  <a
+                    href={directionsHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackEvent("directions_click", { location: "contact_page_map", label: hq.city })}
+                    className="inline-flex items-center justify-center gap-1.5 rounded-full border border-brand-blue/30 px-4 py-2 text-xs font-semibold text-brand-blue transition-colors hover:bg-brand-blue hover:text-white sm:text-sm"
+                  >
+                    Get directions
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+                <iframe
+                  title={`Map showing ${hq.entity} office in ${hq.city}`}
+                  src={embedSrc}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                  className="h-[320px] w-full border-0 sm:h-[400px]"
+                />
+              </div>
+            );
+          })()}
         </div>
       </section>
 

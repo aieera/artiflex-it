@@ -19,7 +19,6 @@ type Vendor = { slug: string; name: string; logo: string; featured?: boolean; ra
 /* ───────── CAPABILITY SUBPAGES ───────── */
 
 type Capability = {
-  tag: string;
   title: string;
   desc: string;
   focus: string;
@@ -29,7 +28,6 @@ type Capability = {
 
 const capabilities: Capability[] = [
   {
-    tag: "Subpage",
     title: "Identity & Access Management (IAM)",
     desc: "The discipline of giving every person, contractor and service the right access, no more, no less, across cloud and on-prem. The foundation everything else rests on.",
     focus: "Focus: Microsoft Entra · Okta · Ping · JumpCloud · OneIdentity",
@@ -37,7 +35,6 @@ const capabilities: Capability[] = [
     cta: "Explore IAM",
   },
   {
-    tag: "Subpage",
     title: "Privileged Access (PAM)",
     desc: "Administrator accounts are the keys to the kingdom. Vaulting, JIT elevation, session recording and credential rotation for the most-targeted accounts.",
     focus: "Focus: CyberArk · BeyondTrust · Delinea",
@@ -45,7 +42,6 @@ const capabilities: Capability[] = [
     cta: "Explore PAM",
   },
   {
-    tag: "Subpage",
     title: "Identity Governance (IGA)",
     desc: "Who has access to what, and should they? Access certification, role mining, segregation-of-duties and audit-ready governance for NESA and ISO 27001.",
     focus: "Focus: SailPoint · Saviynt · Microsoft Entra ID Governance",
@@ -53,7 +49,6 @@ const capabilities: Capability[] = [
     cta: "Explore IGA",
   },
   {
-    tag: "Subpage",
     title: "Multi-Factor Authentication (MFA)",
     desc: "Passwords alone are broken. MFA adds the second factor (push, FIDO2, passkey) that stops account takeover even when a password leaks.",
     focus: "Focus: Microsoft Authenticator · Okta Verify · Duo · YubiKey",
@@ -372,7 +367,7 @@ export default function IdentityAccessSecurity() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-identity-access-security.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT identity and access security for the UAE" />
@@ -380,7 +375,7 @@ export default function IdentityAccessSecurity() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Identity & Access Management Dubai | SSO, MFA, IGA, PAM" />
         <meta name="twitter:description" content="IAM in Dubai: SSO, MFA, identity governance and PAM across Okta, Microsoft Entra, CyberArk, SailPoint and Saviynt. UAE PDPL aligned." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-identity-access-security.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -418,8 +413,7 @@ export default function IdentityAccessSecurity() {
             {capabilities.map((c) => (
               <Link key={c.title} to={c.href} className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1B8AC7]/60 hover:shadow-[0_20px_60px_-12px_rgba(27,138,199,0.20)]">
                 <div aria-hidden className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#045891] to-[#28B5E1]" />
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#1B8AC7]">{c.tag}</span>
-                <h3 className="mt-2 font-display text-xl font-bold text-slate-900">{c.title}</h3>
+                <h3 className="font-display text-xl font-bold text-slate-900">{c.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">{c.desc}</p>
                 <p className="mt-3 font-mono text-[11px] uppercase tracking-wider text-slate-500">{c.focus}</p>
                 <p className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#1B8AC7] transition-colors">

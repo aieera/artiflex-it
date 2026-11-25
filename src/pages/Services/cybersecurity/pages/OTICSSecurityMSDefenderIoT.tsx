@@ -176,7 +176,7 @@ export default function OTICSSecurityMSDefenderIoT() {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_AE" />
       <meta property="og:locale:alternate" content="en_US" />
-      <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+      <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-ot-ics-security-microsoft-defender-iot.jpg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content="Microsoft Defender for IoT OT security for the UAE by Artiflex IT" />
@@ -184,7 +184,7 @@ export default function OTICSSecurityMSDefenderIoT() {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Microsoft Defender for IoT | OT / ICS UAE | Artiflex IT" />
       <meta name="twitter:description" content="Microsoft Defender for IoT: agentless OT and IoT security native to Sentinel and Defender XDR, cloud or air-gapped. Deployed by Artiflex IT for the UAE." />
-      <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+      <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-ot-ics-security-microsoft-defender-iot.jpg" />
       <meta name="twitter:site" content="@artiflexit" />
 
       {/* JSON-LD: Service schema */}

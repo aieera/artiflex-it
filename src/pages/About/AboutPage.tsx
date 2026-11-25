@@ -78,8 +78,14 @@ const organizationSchema = {
     { "@type": "Country", name: "Saudi Arabia" },
     { "@type": "Country", name: "India" },
   ],
-  award: "Sophos Platinum Partner",
+  award: ["Sophos Platinum Partner", "Hexnode Premium Partner"],
   hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Hexnode Premium Partner",
+      credentialCategory: "Vendor Partnership Tier",
+      recognizedBy: { "@type": "Organization", name: "Hexnode", url: "https://www.hexnode.com" },
+    },
     {
       "@type": "EducationalOccupationalCredential",
       name: "Sophos Platinum Partner",
@@ -224,7 +230,7 @@ export default function AboutPage() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/about.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex Information Technology, IT and cybersecurity partner in Dubai, UAE" />
@@ -232,7 +238,7 @@ export default function AboutPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About Artiflex Information Technology LLC | UAE IT Partner" />
         <meta name="twitter:description" content="Artiflex Information Technology has 14+ years delivering cybersecurity, cloud and IT solutions across the UAE, Oman, Saudi Arabia and India. 500+ projects." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/about.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
@@ -608,6 +614,40 @@ export default function AboutPage() {
                   <path d="M5 12h14M13 5l7 7-7 7" />
                 </svg>
               </Link>
+            </div>
+          </div>
+
+          {/* Hexnode Premium Partner strip */}
+          <div className="mx-auto mt-6 max-w-5xl rounded-3xl border border-border-light bg-surface-secondary p-6 sm:p-10">
+            <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-[auto_1fr] sm:gap-10">
+              <div className="flex flex-col items-center text-center">
+                <img
+                  src="/logos/Hexnode.png"
+                  alt="Hexnode Premium Partner"
+                  className="h-14 w-auto"
+                  loading="lazy"
+                  width={160}
+                  height={56}
+                />
+                <span className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-blue px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-white">
+                  Premium Partner
+                </span>
+              </div>
+              <div className="text-center sm:text-left">
+                <h3 className="font-display text-lg font-semibold text-heading sm:text-xl">Hexnode Premium Partner</h3>
+                <p className="mt-2 text-sm leading-relaxed text-body">
+                  Artiflex IT is a Hexnode Premium Partner for Unified Endpoint Management, with certified engineers who design, deploy and manage Hexnode UEM across iOS, Android, Windows and macOS fleets.
+                </p>
+                <Link
+                  to="/vendors/hexnode"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand-blue hover:underline"
+                >
+                  Learn more about our Hexnode Premium Partnership
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

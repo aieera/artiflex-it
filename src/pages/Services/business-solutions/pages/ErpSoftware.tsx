@@ -784,7 +784,7 @@ export default function ErpSoftware() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/business-solutions-erp-software.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Cloud ERP for Growing UAE Businesses" />
@@ -792,7 +792,7 @@ export default function ErpSoftware() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Cloud ERP for Growing UAE Businesses" />
         <meta name="twitter:description" content="UAE buyer's guide for ERP software: vendor matrix across SAP S/4HANA, Oracle Fusion, Microsoft Dynamics 365 and Odoo. FTA and IFRS ready." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/business-solutions-erp-software.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

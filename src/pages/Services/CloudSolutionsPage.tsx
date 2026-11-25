@@ -483,7 +483,7 @@ export default function CloudSolutionsPage() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cloud-solutions.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT cloud solutions for the UAE" />
@@ -491,7 +491,7 @@ export default function CloudSolutionsPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Cloud Solutions Dubai | AWS, Azure & GCP Migration Partner" />
         <meta name="twitter:description" content="Multi-cloud, hybrid, private cloud, BaaS, DRaaS and FinOps for UAE businesses." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cloud-solutions.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",

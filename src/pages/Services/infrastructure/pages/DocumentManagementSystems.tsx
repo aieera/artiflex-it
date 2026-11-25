@@ -846,7 +846,7 @@ export default function DocumentManagementSystems() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-document-management-systems.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Document Management with Arabic OCR for UAE Offices" />
@@ -854,7 +854,7 @@ export default function DocumentManagementSystems() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Document Management with Arabic OCR for UAE Offices" />
         <meta name="twitter:description" content="Document management in UAE: SharePoint, M-Files, OpenText, OnBase, DocuWare and Laserfiche with Arabic OCR, workflow automation and PDPL retention." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-document-management-systems.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

@@ -793,7 +793,7 @@ export default function PrintingDocumentSolutions() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-printing-document-solutions.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Printer Rental and Managed Print Services Dubai" />
@@ -801,7 +801,7 @@ export default function PrintingDocumentSolutions() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Printer Rental and Managed Print Services Dubai" />
         <meta name="twitter:description" content="Printer rental in Dubai with managed print services across HP, Canon, Xerox, Ricoh, Konica Minolta, Lexmark, Kyocera and Sharp. Per-page billing options." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-printing-document-solutions.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

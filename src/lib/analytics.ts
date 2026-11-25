@@ -36,6 +36,7 @@ export type EventName =
   | "phone_click"
   | "email_click"
   | "whatsapp_click"
+  | "directions_click"
   | "contact_form_submit"
   | "contact_form_start";
 

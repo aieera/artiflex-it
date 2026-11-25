@@ -791,7 +791,7 @@ export default function CrmSoftware() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/business-solutions-crm-software.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="CRM Software for UAE: Dynamics 365, Salesforce, Odoo" />
@@ -799,7 +799,7 @@ export default function CrmSoftware() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="CRM Software for UAE: Dynamics 365, Salesforce, Odoo" />
         <meta name="twitter:description" content="UAE buyer's guide for CRM and sales software: vendor matrix across Microsoft Dynamics 365, Salesforce, Zoho, HubSpot and Odoo." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/business-solutions-crm-software.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

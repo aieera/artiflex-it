@@ -107,6 +107,8 @@ DirectoryIndex index.html
   RewriteRule ^cybersecurity/cybersecurity-solutions/?$ /cybersecurity [L,R=301]
   RewriteRule ^cybersecurity/email-security-vendors/?$ /cybersecurity/email-security [L,R=301]
   RewriteRule ^cybersecurity/endpoint/sophos-intercept-x/?$ /cybersecurity/endpoint/sophos-endpoint [L,R=301]
+  RewriteRule ^cybersecurity/iam/one-identity/?$ /cybersecurity/iga/one-identity-manager [L,R=301]
+  RewriteRule ^cybersecurity/iam/saviynt/?$ /cybersecurity/iga/saviynt [L,R=301]
   RewriteRule ^disaster-recovery-solutions-dubai/?$ /cloud-solutions/disaster-recovery-solutions-dubai [L,R=301]
 
   # 3b-ii. Block spam-injected URL patterns with HTTP 410 Gone.

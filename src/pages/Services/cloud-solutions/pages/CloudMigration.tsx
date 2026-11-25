@@ -815,7 +815,7 @@ export default function CloudMigration() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cloud-solutions-cloud-migration.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT cloud migration in Dubai, UAE" />
@@ -823,7 +823,7 @@ export default function CloudMigration() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Cloud Migration Dubai | Zero-Downtime Moves to AWS, Azure" />
         <meta name="twitter:description" content="Cloud migration in Dubai. Zero-downtime moves to AWS, Azure or GCP with assessment, landing zone, phased cutover and rollback. Audit-ready by design." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cloud-solutions-cloud-migration.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

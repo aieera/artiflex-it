@@ -1190,7 +1190,7 @@ export default function UnifiedCommunicationTelephony() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-unified-communication-telephony.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Cloud IP PBX, VoIP and SIP Trunking for Dubai Offices" />
@@ -1198,7 +1198,7 @@ export default function UnifiedCommunicationTelephony() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Cloud IP PBX, VoIP and SIP Trunking for Dubai Offices" />
         <meta name="twitter:description" content="IP PBX and unified communications in Dubai. Cloud PBX, SIP trunking and contact centre across Teams Phone, Webex Calling, Avaya, Mitel, 3CX and Zoom." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-unified-communication-telephony.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

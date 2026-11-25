@@ -849,7 +849,7 @@ export default function BackupAsAService() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cloud-solutions-backup-as-a-service.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT backup as a service in Dubai, UAE" />
@@ -857,7 +857,7 @@ export default function BackupAsAService() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Backup as a Service Dubai | M365 + SaaS + Server Backup" />
         <meta name="twitter:description" content="Backup as a service in Dubai for endpoints, Microsoft 365, SaaS apps and on-prem servers. Immutable, ransomware-resilient, with verified restores." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cloud-solutions-backup-as-a-service.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

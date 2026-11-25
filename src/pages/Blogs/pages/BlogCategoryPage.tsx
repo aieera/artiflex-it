@@ -244,7 +244,7 @@ export default function BlogCategoryPage() {
         <meta property="og:title" content={meta.metaTitle} />
         <meta property="og:description" content={meta.metaDescription} />
         <meta property="og:url" content={url} />
-        <meta property="og:image" content={`${SITE}/og/blog.png`} />
+        <meta property="og:image" content={`${SITE}/og/pages/blog-category-${tag}.jpg`} />
         <meta property="og:site_name" content="Artiflex IT" />
         <meta property="og:locale" content="en_AE" />
 
@@ -252,7 +252,7 @@ export default function BlogCategoryPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={meta.metaTitle} />
         <meta name="twitter:description" content={meta.metaDescription} />
-        <meta name="twitter:image" content={`${SITE}/og/blog.png`} />
+        <meta name="twitter:image" content={`${SITE}/og/pages/blog-category-${tag}.jpg`} />
 
         {/* JSON-LD: CollectionPage describing the category */}
         <script type="application/ld+json">

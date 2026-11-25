@@ -301,7 +301,7 @@ export default function ApplicationSecurityPage() {
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/application-security-solutions.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT application security, VAPT and WAF services in Dubai, UAE" />
@@ -309,7 +309,7 @@ export default function ApplicationSecurityPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Application Security Dubai | VAPT, API & WAF Testing" />
         <meta name="twitter:description" content="Web application penetration testing, API security, WAF management and secure code review in Dubai. OWASP Top 10 coverage. Free app security assessment." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/application-security-solutions.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </>

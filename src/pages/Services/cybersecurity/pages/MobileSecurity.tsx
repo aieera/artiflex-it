@@ -202,77 +202,77 @@ const matrixRows: MatrixRow[] = [
 
 /* ───────── DETAILED VENDOR CARDS ───────── */
 
-type VendorCard = { id?: string; name: string; best: string; strength: string; watch: string; logo?: string };
+type VendorCard = { id?: string; slug: string; short: string; name: string; best: string; strength: string; watch: string; logo?: string };
 
 const vendors: VendorCard[] = [
   {
     id: "hexnode",
+    slug: "hexnode",
+    short: "Hexnode",
     name: "Hexnode UEM",
     best: "Best Value Mid-Market UEM (Recommended)",
-    strength:
-      "A product of Mitsogo (founded 2013), Hexnode built its reputation as the agile, value-led UEM, simple to operate, fast to deploy and strong where others are weak: kiosk mode, rugged devices and flexible cross-platform management across iOS, Android, Windows, macOS and tvOS. Best dollar-per-device in the mid-market, with an open API that integrates cleanly with Zimperium for threat defense.",
-    watch:
-      "Not positioned for the very largest, deeply Microsoft-integrated estates where Intune's native Entra and Conditional Access wiring wins. It pairs with a dedicated MTD rather than supplying deep threat defense itself.",
+    strength: "Agile, value-led UEM across iOS, Android, Windows, macOS and tvOS. Strong in kiosk mode and rugged devices, best dollar-per-device in the mid-market, and integrates cleanly with Zimperium for MTD.",
+    watch: "Not built for the largest Microsoft-integrated estates where Intune wins. Pairs with a dedicated MTD rather than supplying deep threat defense itself.",
     logo: "/logos/Hexnode.png",
   },
   {
     id: "zimperium",
+    slug: "zimperium",
+    short: "Zimperium",
     name: "Zimperium",
     best: "Best On-Device Mobile Threat Defense (Recommended)",
-    strength:
-      "Founded 2010 and backed by Liberty Strategic Capital since 2022, Zimperium pioneered on-device, machine-learning mobile threat defense (zIPS / MTD). Detection runs locally on the device, preserving privacy and working offline, across device, network, phishing and malicious-app vectors, with zero-day detection via its z9 engine. MAPS adds in-app protection (shielding and runtime checks) for organisations that build their own apps. Integrates with every major UEM.",
-    watch:
-      "It is MTD, not UEM. It defends devices but does not enrol or manage them, so it is deployed alongside a UEM such as Hexnode or Intune.",
+    strength: "Pioneer of on-device, machine-learning MTD. The z9 engine detects device, network, phishing and app threats locally, offline and privacy-preserving, and MAPS adds in-app protection for your own apps.",
+    watch: "MTD, not UEM. It defends devices but does not enrol or manage them, so deploy alongside a UEM such as Hexnode or Intune.",
     logo: "/logos/Zimperium.png",
   },
   {
     id: "sophos-mobile",
+    slug: "sophos-mobile",
+    short: "Sophos Mobile",
     name: "Sophos Mobile",
     best: "Best for Sophos-Standardised Estates (Recommended)",
-    strength:
-      "Sophos Mobile delivers Unified Endpoint Management plus Mobile Threat Defense from the same Sophos Central console as Sophos Firewall, Intercept X and email security. It manages iOS, Android, Windows and macOS, with BYOD containerisation and per-app management, and Intercept X for Mobile brings deep-learning MTD into the same user-based licence. Synchronized Security means mobile, endpoint and network respond together. A strong fit for organisations already standardised on Sophos Central.",
-    watch:
-      "UEM breadth is narrower than dedicated leaders such as Intune or Workspace ONE for very large, heterogeneous fleets. The value is highest when Sophos is already the security hub.",
+    strength: "UEM plus MTD from the same Sophos Central console as Sophos Firewall and Intercept X. BYOD containerisation, Intercept X for Mobile in one user licence, and Synchronized Security across mobile, endpoint and network.",
+    watch: "UEM breadth is narrower than Intune or Workspace ONE for very large, mixed fleets. Value is highest when Sophos is already the security hub.",
     logo: "/logos/sophos.svg",
   },
   {
     id: "jamf",
+    slug: "jamf",
+    short: "Jamf",
     name: "Jamf",
     best: "Best for Apple Environments",
-    strength:
-      "Founded 2002, Jamf is the Apple device-management specialist. Jamf Pro delivers deep, same-day support for every Apple OS feature, while Jamf Protect adds Apple-scoped MTD and endpoint security. The default choice for Apple-heavy enterprises and education.",
-    watch:
-      "Apple-only by design, not a fit for mixed Windows or Android fleets, where a cross-platform UEM is required.",
+    strength: "The Apple device-management specialist. Jamf Pro gives same-day support for every Apple OS feature and Jamf Protect adds Apple-scoped MTD. The default for Apple-heavy enterprises and education.",
+    watch: "Apple-only by design. Mixed Windows or Android fleets need a cross-platform UEM.",
     logo: "/logos/Jamf.png",
   },
   {
     id: "intune",
+    slug: "microsoft-intune",
+    short: "Intune",
     name: "Microsoft Intune",
     best: "Best for Microsoft-First Estates",
-    strength:
-      "Cloud-native UEM inside the Microsoft Intune Suite, wired natively into Entra ID, Conditional Access and Defender. For organisations already standardised on Microsoft 365 (E3 or E5) it is the lowest-friction choice, with licensing often already owned. Manages Windows, iOS, Android and macOS from one console.",
-    watch:
-      "Mobile threat defense requires Defender for Endpoint or a partner MTD, and the platform has a learning curve outside the Microsoft admin world.",
+    strength: "Cloud-native UEM wired into Entra ID, Conditional Access and Defender. Lowest-friction choice for Microsoft 365 E3 or E5 estates, where the licence is often already owned.",
+    watch: "MTD needs Defender for Endpoint or a partner product, and there is a learning curve outside the Microsoft admin world.",
     logo: "/logos/microsoft.svg",
   },
   {
     id: "omnissa",
+    slug: "omnissa-workspace-one",
+    short: "Workspace ONE",
     name: "Omnissa Workspace ONE",
     best: "Best for Large Mixed Enterprise",
-    strength:
-      "Carrying AirWatch heritage and spun out of VMware as Omnissa in 2024, Workspace ONE offers the broadest device coverage in the market (mobile, desktop, rugged, server and specialty endpoints) on a modern microservices architecture with AI-driven automation (Intelligence engine). Built for complex, global, multi-OS estates.",
-    watch:
-      "Premium positioning and operational depth. More platform than smaller fleets need, and MTD comes via partner integration.",
+    strength: "AirWatch heritage, now Omnissa. Broadest device coverage in the market (mobile, desktop, rugged, specialty) with AI-driven automation from the Intelligence engine. Built for complex, global, multi-OS estates.",
+    watch: "Premium positioning and operational depth. More platform than smaller fleets need, and MTD comes via partner integration.",
     logo: "/logos/Workspace ONE.webp",
   },
   {
     id: "lookout",
+    slug: "lookout",
+    short: "Lookout",
     name: "Lookout Mobile Endpoint Security",
     best: "Best MTD for Unmanaged Devices",
-    strength:
-      "With around 16 years of MTD heritage and the industry's largest AI-driven mobile dataset, Lookout (now a pure-play enterprise vendor since its 2023 consumer divestiture) excels at protecting managed and unmanaged iOS, Android and ChromeOS devices, with strong phishing and smishing defense.",
-    watch:
-      "Dedicated MTD only, pairs with a UEM. Detection leans on cloud intelligence, a different model to Zimperium's on-device-first approach.",
+    strength: "Long MTD heritage and the industry's largest AI-driven mobile dataset. Protects managed and unmanaged iOS, Android and ChromeOS devices with strong phishing and smishing defense.",
+    watch: "Dedicated MTD only, so pair with a UEM. Detection leans on cloud intelligence rather than Zimperium's on-device-first model.",
     logo: "/logos/Lookout.png",
   },
 ];
@@ -604,7 +604,7 @@ export default function MobileSecurity() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-mobile-security.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT mobile security, UEM and MTD guidance for the UAE" />
@@ -612,7 +612,7 @@ export default function MobileSecurity() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Mobile Device Management Dubai | MDM, MTD & BYOD Security" />
         <meta name="twitter:description" content="UAE mobile security buyer's guide: UEM and MTD vendor comparison across Microsoft Intune, Jamf, Omnissa Workspace ONE, Lookout, Hexnode and Zimperium." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-mobile-security.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -902,7 +902,9 @@ export default function MobileSecurity() {
                   transition={{ duration: 0.5, delay: idx * 0.05 }}
                   className="flex h-full scroll-mt-24"
                 >
-                  <div
+                  <Link
+                    to={`/cybersecurity/mobile-security/${v.slug}`}
+                    aria-label={`View details for ${v.name}`}
                     className={`group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(4,88,145,0.12)] sm:p-8 ${
                       recommended
                         ? "border-brand-blue/30 shadow-[0_4px_20px_rgba(27,138,199,0.10)]"
@@ -942,7 +944,11 @@ export default function MobileSecurity() {
                         <p className="mt-1.5 text-sm leading-relaxed text-body/80">{v.watch}</p>
                       </div>
                     </div>
-                  </div>
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-6 text-xs font-semibold text-brand-blue transition-all group-hover:gap-2.5 sm:text-sm">
+                      View {v.short} details
+                      <span aria-hidden="true">→</span>
+                    </span>
+                  </Link>
                 </motion.div>
               );
             })}

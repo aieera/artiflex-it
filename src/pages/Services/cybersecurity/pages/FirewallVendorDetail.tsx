@@ -74,6 +74,7 @@ const strengthToneMap: Record<string, { iconBox: string; tag: string }> = {
   },
 };
 import { firewallVendors } from "../data/firewallVendors";
+import { ogImageForUrl } from "@/lib/ogImage";
 
 export default function FirewallVendorDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -113,7 +114,7 @@ export default function FirewallVendorDetail() {
 
   const pageUrl = `https://artiflexit.com/cybersecurity/firewalls/${vendor.slug}`;
   const pageTitle = vendor.metaTitle;
-  const ogImage = "https://artiflexit.com/og-image.png";
+  const ogImage = ogImageForUrl(pageUrl);
 
   return (
     <>

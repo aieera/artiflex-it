@@ -815,7 +815,7 @@ export default function HybridCloud() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cloud-solutions-hybrid-cloud.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT hybrid cloud integration in Dubai, UAE" />
@@ -823,7 +823,7 @@ export default function HybridCloud() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Hybrid Cloud Dubai | On-Prem + Public Cloud Integration" />
         <meta name="twitter:description" content="Hybrid cloud architecture in Dubai. Stretch your data centre to AWS, Azure or GCP with consistent identity, security and operations across UAE workloads." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cloud-solutions-hybrid-cloud.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

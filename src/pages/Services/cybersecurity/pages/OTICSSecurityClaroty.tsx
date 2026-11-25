@@ -132,6 +132,7 @@ const deploymentOptions = [
 
 const faqs = [
   { question: "Should we choose xDome or CTD?", answer: "xDome (cloud-managed) is the default and the right answer for most UAE programmes, faster to deploy, less infrastructure to operate, multi-site management out of the box. CTD (on-premises) is the right answer for air-gapped sites, strict data-residency mandates and customers who refuse cloud-managed OT. Both run the same detection engine, the choice is operational not technical." },
+  { question: "Do we need to deploy every Claroty module at once?", answer: "No, and we advise against it. Claroty has more moving parts than most rivals (xDome or CTD, SRA, Edge), so a phased rollout works best: land xDome or CTD first to build the asset inventory and detection baseline, then add Secure Remote Access once vendor-access workflows are mapped, and enable Edge active discovery after a pilot tolerance test. Each phase delivers value on its own and keeps change windows small." },
   { question: "How does Claroty compare to Nozomi?", answer: "Both are Gartner Leaders for CPS Protection. Nozomi is the AI-native leader with the deepest behavioural detection and the broadest pure-passive deployment story, our default UAE recommendation. Claroty wins on module breadth (xDome + CTD + SRA + Edge), IoMT depth (Medigate lineage) and safe-active discovery, the right choice for the largest and most complex multi-protocol estates, hospitals and pharma." },
   { question: "Why does Claroty win in healthcare?", answer: "The 2021 Medigate acquisition. Medigate was the reference platform for connected medical device (IoMT) visibility, with deep clinical-workflow context and patient-safety-aware risk scoring. Claroty integrated that depth into xDome, putting the platform ahead of pure-OT competitors in any hospital, clinic or pharma manufacturing environment." },
   { question: "What is Claroty SRA and why does it matter?", answer: "Claroty Secure Remote Access is a dedicated, OT-aware remote-access platform with session recording, just-in-time approval workflows and policy enforcement specifically for vendor, OEM and engineering access into the OT environment. Critical when third parties regularly need to touch controllers, and when most generic VPN solutions do not produce the audit evidence regulators want." },
@@ -181,7 +182,7 @@ export default function OTICSSecurityClaroty() {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_AE" />
       <meta property="og:locale:alternate" content="en_US" />
-      <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+      <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-ot-ics-security-claroty.jpg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content="Claroty OT and ICS security for the UAE by Artiflex IT" />
@@ -189,7 +190,7 @@ export default function OTICSSecurityClaroty() {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Claroty | OT / ICS Security UAE | Artiflex IT" />
       <meta name="twitter:description" content="Claroty xDome, CTD, SRA and Edge: Gartner Leader for CPS protection. Deployed by Artiflex IT for UAE manufacturing, healthcare and critical infrastructure." />
-      <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+      <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-ot-ics-security-claroty.jpg" />
       <meta name="twitter:site" content="@artiflexit" />
 
       {/* JSON-LD: Service schema */}

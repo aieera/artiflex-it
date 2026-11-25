@@ -27,6 +27,7 @@ import {
   CloudIcon,
 } from "@/components/icons";
 import { workspaceVendors } from "../data/workspaceVendors";
+import { ogImageForUrl } from "@/lib/ogImage";
 
 const strengthIconMap: Record<string, React.FC<{ className?: string }>> = {
   shield: ShieldIcon,
@@ -127,7 +128,7 @@ export default function WorkspaceVendorDetail() {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_AE" />
       <meta property="og:locale:alternate" content="en_US" />
-      <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+      <meta property="og:image" content={ogImageForUrl(pageUrl)} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={vendor.metaTitle} />
@@ -135,7 +136,7 @@ export default function WorkspaceVendorDetail() {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={vendor.metaTitle} />
       <meta name="twitter:description" content={vendor.metaDescription} />
-      <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+      <meta name="twitter:image" content={ogImageForUrl(pageUrl)} />
       <meta name="twitter:site" content="@artiflexit" />
 
       {/* JSON-LD: Service schema */}

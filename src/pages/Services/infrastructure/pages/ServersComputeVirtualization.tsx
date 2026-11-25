@@ -810,7 +810,7 @@ export default function ServersComputeVirtualization() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-servers-compute-virtualization.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Server UAE | Enterprise Servers, HCI & Virtualisation" />
@@ -818,7 +818,7 @@ export default function ServersComputeVirtualization() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Server UAE | Enterprise Servers, HCI & Virtualisation" />
         <meta name="twitter:description" content="Enterprise servers, HCI and GPU compute in UAE on HPE, Dell, Lenovo, Cisco UCS and Nutanix. Includes hypervisor choice and post-Broadcom guidance." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-servers-compute-virtualization.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

@@ -849,7 +849,7 @@ export default function IgaProduct() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cybersecurity-identity-access-security-iga.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT identity governance for the UAE" />
@@ -857,7 +857,7 @@ export default function IgaProduct() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Identity Governance Dubai | Access Reviews & SoD | Artiflex" />
         <meta name="twitter:description" content="Identity governance in Dubai. Access certification, role mining and SoD across SailPoint, Saviynt and One Identity. IGA vendor comparison." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-identity-access-security-iga.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

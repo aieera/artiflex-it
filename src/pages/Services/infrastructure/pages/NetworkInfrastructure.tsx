@@ -810,7 +810,7 @@ export default function NetworkInfrastructure() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-network-infrastructure.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Network Solutions Dubai | Switching, Routing & SD-WAN" />
@@ -818,7 +818,7 @@ export default function NetworkInfrastructure() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Network Solutions Dubai | Switching, Routing & SD-WAN" />
         <meta name="twitter:description" content="Enterprise networking in Dubai across Cisco, Aruba, Juniper Mist, Arista, Huawei and Extreme. Switching, routing, SD-WAN, NAC and AIOps included." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-network-infrastructure.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

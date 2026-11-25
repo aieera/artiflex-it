@@ -820,7 +820,7 @@ export default function CctvSurveillance() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-cctv-surveillance.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="SIRA-Approved CCTV Installation in Dubai" />
@@ -828,7 +828,7 @@ export default function CctvSurveillance() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="SIRA-Approved CCTV Installation in Dubai" />
         <meta name="twitter:description" content="CCTV installation in Dubai. SIRA-approved IP video surveillance, VMS and AI analytics from Axis, Hanwha, Hikvision, Dahua, Avigilon and Bosch." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-cctv-surveillance.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

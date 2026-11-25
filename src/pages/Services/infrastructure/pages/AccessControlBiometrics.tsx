@@ -817,7 +817,7 @@ export default function AccessControlBiometrics() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-access-control-biometrics.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Biometric Access Control with EIDA for Dubai Offices" />
@@ -825,7 +825,7 @@ export default function AccessControlBiometrics() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Biometric Access Control with EIDA for Dubai Offices" />
         <meta name="twitter:description" content="Access control in Dubai. Biometric attendance, mobile credentials and EIDA integration from HID, Suprema, ZKTeco, Honeywell and Genetec." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-access-control-biometrics.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

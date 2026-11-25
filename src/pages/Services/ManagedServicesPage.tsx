@@ -526,7 +526,7 @@ export default function ManagedServicesPage() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/managed-services.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT managed services and AMC support in Dubai, UAE" />
@@ -534,7 +534,7 @@ export default function ManagedServicesPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Managed IT Services Dubai | AMC & 24/7 SLA Support" />
         <meta name="twitter:description" content="24/7 monitoring, AMC, patch management and SLA-backed incident response across UAE, Oman and Saudi Arabia." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/managed-services.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",

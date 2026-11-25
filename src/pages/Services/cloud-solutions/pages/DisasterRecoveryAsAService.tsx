@@ -816,7 +816,7 @@ export default function DisasterRecoveryAsAService() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/cloud-solutions-disaster-recovery-solutions-dubai.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Artiflex IT disaster recovery and DRaaS in Dubai, UAE" />
@@ -824,7 +824,7 @@ export default function DisasterRecoveryAsAService() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Disaster Recovery Solutions Dubai | DRaaS, 4-Hour RTO" />
         <meta name="twitter:description" content="Disaster recovery solutions in Dubai with DRaaS, automated failover and quarterly recovery testing. RTO and RPO targets your business can actually meet." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/cloud-solutions-disaster-recovery-solutions-dubai.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

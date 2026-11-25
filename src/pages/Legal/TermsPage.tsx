@@ -83,6 +83,7 @@ export default function TermsPage() {
         title="Terms of Use | Artiflex IT"
         description="Terms of Use for artiflexit.com, covering ownership of content, permitted use, and restrictions on copying or republishing Artiflex material."
         path="/terms"
+        image="https://artiflexit.com/og/pages/terms.jpg"
       />
 
       <PageHero

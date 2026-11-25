@@ -1065,6 +1065,7 @@ export const pamVendors: Record<string, PamVendor> = {
     metaDescription:
       "Senhasegura PAM in Dubai and the UAE: full privileged access suite with vaulting, session management and DevOps secrets. Deployed by Artiflex IT.",
     name: "Senhasegura",
+    logo: "/logos/senhasegura.png",
     tagline: "Full PAM suite with vaulting, session management, DevOps secrets and certificate management at competitive pricing, with a strong fast-deployment story",
     bestFor: "Challenger · Full-Suite Value PAM",
     description:

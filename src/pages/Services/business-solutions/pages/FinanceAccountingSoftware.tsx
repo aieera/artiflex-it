@@ -764,7 +764,7 @@ export default function FinanceAccountingSoftware() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/business-solutions-finance-accounting-software.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="FTA-Approved Accounting Software UAE | VAT & IFRS Ready" />
@@ -772,7 +772,7 @@ export default function FinanceAccountingSoftware() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="FTA-Approved Accounting Software UAE | VAT & IFRS Ready" />
         <meta name="twitter:description" content="FTA-approved accounting software for UAE businesses. VAT-ready, IFRS-compliant. SAP, Oracle, Microsoft, Sage, Tally, QuickBooks and Focus Softnet compared." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/business-solutions-finance-accounting-software.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

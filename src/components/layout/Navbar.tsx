@@ -13,6 +13,7 @@ import {
   GlobeIcon,
   DatabaseIcon,
   LayersIcon,
+  BookOpenIcon,
   ChevronDownIcon,
 } from "@/components/icons";
 
@@ -24,6 +25,7 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   GlobeIcon,
   DatabaseIcon,
   LayersIcon,
+  BookOpenIcon,
 };
 
 /** Override labels used as the sub-column header in the mega-menu (where vendor lists render).

@@ -63,6 +63,7 @@ const SecurityOperations = lazy(() => import("./pages/Services/cybersecurity/pag
 const SecurityOperationsSiem = lazy(() => import("./pages/Services/cybersecurity/pages/SecurityOperationsSiem"));
 const SecurityOperationsNdr = lazy(() => import("./pages/Services/cybersecurity/pages/SecurityOperationsNdr"));
 const SecurityOperationsMdr = lazy(() => import("./pages/Services/cybersecurity/pages/SecurityOperationsMdr"));
+const SecurityOperationsSocAsAService = lazy(() => import("./pages/Services/cybersecurity/pages/SecurityOperationsSocAsAService"));
 const SecOpsVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/SecOpsVendorDetail"));
 const VulnerabilityManagement = lazy(() => import("./pages/Services/cybersecurity/pages/VulnerabilityManagement"));
 const VmVendorDetail = lazy(() => import("./pages/Services/cybersecurity/pages/VmVendorDetail"));
@@ -113,6 +114,9 @@ const CrmSoftware = lazy(() => import("@/pages/Services/business-solutions/pages
 const FinanceAccountingSoftware = lazy(() => import("@/pages/Services/business-solutions/pages/FinanceAccountingSoftware"));
 const HrManagementSoftware = lazy(() => import("@/pages/Services/business-solutions/pages/HrManagementSoftware"));
 
+// Corporate Training
+const CorporateTrainingPage = lazy(() => import("@/pages/Services/CorporateTrainingPage"));
+
 function Loading() {
   return (
     <div className="flex min-h-screen items-center justify-center">
@@ -160,6 +164,9 @@ export default function App() {
           <Route path="/cybersecurity/identity-access-security/pam" element={<PamProduct />} />
           <Route path="/cybersecurity/pam/:slug" element={<PamVendorDetail />} />
           <Route path="/cybersecurity/iga/:slug" element={<IgaVendorDetail />} />
+          {/* Merged into the IGA pages (same product). Mirrors the .htaccess 301s so dev matches prod. */}
+          <Route path="/cybersecurity/iam/one-identity" element={<Navigate to="/cybersecurity/iga/one-identity-manager" replace />} />
+          <Route path="/cybersecurity/iam/saviynt" element={<Navigate to="/cybersecurity/iga/saviynt" replace />} />
           <Route path="/cybersecurity/iam/:slug" element={<IamVendorDetail />} />
           <Route path="/cybersecurity/mfa/:slug" element={<MfaVendorDetail />} />
           <Route path="/cybersecurity/workspace-protection-sse-sase" element={<WorkspaceProtectionSASE />} />
@@ -169,6 +176,7 @@ export default function App() {
           <Route path="/cybersecurity/security-operations/siem" element={<SecurityOperationsSiem />} />
           <Route path="/cybersecurity/security-operations/ndr" element={<SecurityOperationsNdr />} />
           <Route path="/cybersecurity/security-operations/mdr" element={<SecurityOperationsMdr />} />
+          <Route path="/cybersecurity/security-operations/soc-as-a-service" element={<SecurityOperationsSocAsAService />} />
           {/* Per-discipline vendor detail pages (MDR / NDR / SIEM) */}
           <Route path="/cybersecurity/security-operations/:discipline/:slug" element={<SecOpsVendorDetail />} />
           <Route path="/cybersecurity/vulnerability-management" element={<VulnerabilityManagement />} />
@@ -212,6 +220,7 @@ export default function App() {
           <Route path="/infrastructure/printing-document-solutions" element={<PrintingDocumentSolutions />} />
           <Route path="/managed-services" element={<ManagedServicesPage />} />
           <Route path="/application-security-solutions" element={<ApplicationSecurityPage />} />
+          <Route path="/corporate-training" element={<CorporateTrainingPage />} />
           <Route path="/amc-services" element={<Navigate to="/managed-services" replace />} />
 
           {/* Business Solutions */}

@@ -813,7 +813,7 @@ export default function StorageSolutions() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-storage-solutions.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Enterprise Storage Dubai | SAN, NAS & Object Storage" />
@@ -821,7 +821,7 @@ export default function StorageSolutions() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Enterprise Storage Dubai | SAN, NAS & Object Storage" />
         <meta name="twitter:description" content="Enterprise storage in Dubai: SAN, NAS and object storage from HPE Alletra, Pure, NetApp, Dell PowerStore and IBM FlashSystem. Ransomware-resilient by design." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-storage-solutions.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({

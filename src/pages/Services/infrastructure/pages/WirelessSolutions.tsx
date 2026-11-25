@@ -809,7 +809,7 @@ export default function WirelessSolutions() {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:image" content="https://artiflexit.com/og-image.png" />
+        <meta property="og:image" content="https://artiflexit.com/og/pages/infrastructure-wireless-solutions.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="WiFi Installation Dubai | Wi-Fi 6, 6E & 7 Surveys + Install" />
@@ -817,7 +817,7 @@ export default function WirelessSolutions() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="WiFi Installation Dubai | Wi-Fi 6, 6E & 7 Surveys + Install" />
         <meta name="twitter:description" content="WiFi installation in Dubai. Predictive and on-site surveys, Wi-Fi 6/6E/7 design and AIOps from Cisco Meraki, Aruba, Juniper Mist, Ruckus and Huawei." />
-        <meta name="twitter:image" content="https://artiflexit.com/og-image.png" />
+        <meta name="twitter:image" content="https://artiflexit.com/og/pages/infrastructure-wireless-solutions.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
         <script type="application/ld+json">
           {JSON.stringify({
