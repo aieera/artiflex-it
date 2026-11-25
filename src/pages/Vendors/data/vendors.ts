@@ -93,6 +93,8 @@ export type Vendor = {
   showcase?: "sophos";
   /** Partner-tier badge in the hero (e.g. "Platinum Sophos Partner"). Only set when verified. */
   partnerBadge?: string;
+  /** Per-vendor override for hero category badge labels (falls back to CATEGORY_BADGE). */
+  categoryBadgeOverrides?: Partial<Record<CategoryKey, string>>;
 
   /** Small subtitle line under the hero H1 (e.g. "Cybersecurity for the Real World"). */
   heroTagline?: string;
@@ -146,10 +148,11 @@ export const VENDORS: Vendor[] = [
     categories: ["endpoint", "network-security", "email", "dlp", "sase", "siem", "vuln"],
     showcase: "sophos",
     partnerBadge: "Platinum Sophos Partner",
+    categoryBadgeOverrides: { sase: "Workspace Protection" },
     heroTagline: "Cybersecurity for the Real World",
     summaryHeadline: "Next-gen endpoint, XDR, and managed firewalls: under one cloud console.",
     summaryParagraphs: [
-      "Artiflex IT delivers Sophos's complete cybersecurity portfolio across the UAE, Oman, and Saudi Arabia. From XGS firewalls and Intercept X endpoint protection to the world's largest 24/7 MDR service, we design, deploy, and operate Sophos solutions end-to-end, from sizing through commissioning to managed service.",
+      "Artiflex IT delivers Sophos's complete cybersecurity portfolio across the UAE, Oman, and Saudi Arabia. From XGS firewalls and Sophos Endpoint protection to Sophos's 24/7 MDR service, we design, deploy, and operate Sophos solutions end-to-end, from sizing through commissioning to managed service.",
       "As a regional partner with certified engineers, Artiflex is the destination for organizations that want enterprise-grade Sophos capability with local accountability, GCC-friendly procurement, and zero-touch escalation paths to Sophos engineering.",
     ],
     aboutHeading: "About Sophos",
@@ -157,7 +160,7 @@ export const VENDORS: Vendor[] = [
     aboutFacts: [
       { label: "Founded", value: "1985, Oxford UK" },
       { label: "Heritage", value: "Astaro + Cyberoam + Sophos" },
-      { label: "Management", value: "Sophos Central (single pane)" },
+      { label: "Management", value: "Sophos Fusion (formerly Sophos Central)" },
       { label: "Standout tech", value: "Xstream TLS, Synchronized Security, RED Appliances, NDR Essentials included in firewall, and unlimited free VPN", wide: true },
     ],
     whyVendor: {
@@ -167,8 +170,8 @@ export const VENDORS: Vendor[] = [
       items: [
         { title: "AI-First Threat Detection", body: "Deep learning models trained on petabytes of SophosLabs telemetry catch zero-day threats that signature-based products miss." },
         { title: "Synchronized Security", body: "Firewall, endpoint, email, and wireless products share threat intel automatically, with no SIEM stitching required." },
-        { title: "One Cloud Console", body: "Sophos Central unifies management of every product in a single browser tab. Onboard a new product in minutes, not weeks." },
-        { title: "Gartner-Recognized", body: "Leader in Magic Quadrant for Endpoint Protection. Customers' Choice for MDR. Highest customer satisfaction scores in segment." },
+        { title: "One Cloud Console", body: "Sophos Fusion unifies management of every product in a single browser tab. Onboard a new product in minutes, not weeks." },
+        { title: "Gartner-Recognized", body: "A Leader in the Gartner Magic Quadrant for Endpoint Protection for 17 consecutive reports. Customers' Choice for MDR. Highest customer satisfaction scores in segment." },
         { title: "Transparent Pricing", body: "Per-user and per-device pricing with no surprise modules. Site-in-a-Box bundles bring enterprise security to SMB budgets." },
         { title: "Strong Local Support", body: "Sophos has a dedicated EMEA support team and regional cloud presence, important for data residency and response times in the GCC." },
       ],

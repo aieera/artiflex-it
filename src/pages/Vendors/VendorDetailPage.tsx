@@ -207,7 +207,7 @@ export default function VendorDetailPage() {
                 key={c}
                 className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/90 backdrop-blur-sm"
               >
-                {CATEGORY_BADGE[c]}
+                {vendor.categoryBadgeOverrides?.[c] ?? CATEGORY_BADGE[c]}
               </span>
             ))}
           </div>

@@ -200,12 +200,12 @@ const faqs = [
   {
     question: "What is SASE and does my organization need it?",
     answer:
-      "SASE (Secure Access Service Edge) combines SD-WAN with cloud-delivered security services: ZTNA (Zero Trust Network Access), CASB (Cloud Access Security Broker), SWG (Secure Web Gateway), and FWaaS (Firewall as a Service). If your organization has remote workers, cloud applications, or multiple office locations, SASE replaces legacy VPN infrastructure with faster, more secure access. Sophos Workspace Protection (launched January 2026) provides a complete SSE stack from a single vendor.",
+      "SASE (Secure Access Service Edge) combines SD-WAN with cloud-delivered security services: ZTNA (Zero Trust Network Access), CASB (Cloud Access Security Broker), SWG (Secure Web Gateway), and FWaaS (Firewall as a Service). If your organization has remote workers, cloud applications, or multiple office locations, SASE replaces legacy VPN infrastructure with faster, more secure access. Sophos Workspace Protection (available since February 2026) bundles the Sophos Protected Browser, ZTNA, DNS Protection and email monitoring in one per-user license from a single vendor.",
   },
   {
     question: "Should we build a SOC internally or use an MDR service?",
     answer:
-      "Building an internal SOC requires 8–12 analysts (AED 15,000–25,000/month each), SIEM licensing (AED 200,000–500,000/year), and 12–18 months to reach operational maturity. MDR (Managed Detection & Response) delivers equivalent or superior coverage from day one at a fraction of the cost. Sophos MDR, with 28,000+ customers, is the world's largest MDR provider. For most UAE organizations with fewer than 500 employees, MDR is the more cost-effective and operationally superior choice.",
+      "Building an internal SOC requires 8–12 analysts (AED 15,000–25,000/month each), SIEM licensing (AED 200,000–500,000/year), and 12–18 months to reach operational maturity. MDR (Managed Detection & Response) delivers equivalent or superior coverage from day one at a fraction of the cost. Sophos MDR protects 40,000+ customers worldwide. For most UAE organizations with fewer than 500 employees, MDR is the more cost-effective and operationally superior choice.",
   },
   {
     question: "How often should we conduct penetration testing?",
@@ -1488,7 +1488,7 @@ export default function CybersecurityPage() {
                 Sophos Cybersecurity Platform{" "}
               </h2>
               <p className="text-base text-body leading-relaxed max-w-3xl mx-auto sm:text-lg">
-                A complete, pre-configured security stack from one vendor: firewall, endpoint, email, wireless, MDR, XDR, SASE, and unified management. Defending 600,000+ organizations and 100 million+ users globally.
+                A complete, pre-configured security stack from one vendor: firewall, endpoint, email, wireless, MDR, XDR, SASE, and unified management. Defending 625,000+ organizations and 100 million+ users globally.
               </p>
             </div>
 
@@ -1508,18 +1508,32 @@ export default function CybersecurityPage() {
                 Complete Sophos Product Portfolio
               </h3>
               <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-5">
-                {sophosProducts.map((product) => (
-                  <div
-                    key={product.title}
-                    className="group rounded-2xl border border-border-light bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#045891]/20 hover:shadow-[0_8px_30px_rgba(4,88,145,0.08)]"
-                  >
-                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-[#045891]/8 text-[#045891] transition-colors group-hover:bg-[#045891] group-hover:text-white">
-                      <product.icon className="h-5 w-5" />
+                {sophosProducts.map((product) => {
+                  const cardClass =
+                    "group rounded-2xl border border-border-light bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#045891]/20 hover:shadow-[0_8px_30px_rgba(4,88,145,0.08)]";
+                  const inner = (
+                    <>
+                      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-[#045891]/8 text-[#045891] transition-colors group-hover:bg-[#045891] group-hover:text-white">
+                        <product.icon className="h-5 w-5" />
+                      </div>
+                      <h4 className={`font-display text-sm font-semibold text-heading mb-2${product.href ? " transition-colors group-hover:text-[#045891]" : ""}`}>{product.title}</h4>
+                      <p className="text-xs text-body leading-relaxed">{product.description}</p>
+                    </>
+                  );
+                  return product.href ? (
+                    <Link
+                      key={product.title}
+                      to={product.href}
+                      className={`${cardClass} block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#045891]/40`}
+                    >
+                      {inner}
+                    </Link>
+                  ) : (
+                    <div key={product.title} className={cardClass}>
+                      {inner}
                     </div>
-                    <h4 className="font-display text-sm font-semibold text-heading mb-2">{product.title}</h4>
-                    <p className="text-xs text-body leading-relaxed">{product.description}</p>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
@@ -1620,7 +1634,7 @@ export default function CybersecurityPage() {
                 n: "01",
                 focus: "Foundation",
                 area: "Perimeter & Endpoint",
-                actions: "Deploy NGFW (Sophos / Check Point); replace legacy AV with EDR (Intercept X); enable MFA across all accounts; baseline VA scan.",
+                actions: "Deploy NGFW (Sophos / Check Point); replace legacy AV with EDR (Sophos Endpoint / Sophos EDR); enable MFA across all accounts; baseline VA scan.",
                 months: "M 1 to 3",
               },
               {

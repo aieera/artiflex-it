@@ -137,7 +137,7 @@ const vendors: {
     name: "Sophos DLP",
     best: "Bundled in Sophos Endpoint and Email · SMB / Mid-Market",
     summary:
-      "Multi-channel DLP built into Sophos Intercept X, Sophos Email and Sophos Firewall at zero incremental cost. User risk scoring auto-escalates enforcement.",
+      "Multi-channel DLP built into Sophos Endpoint and Sophos Email at zero incremental cost.",
     accent: "#1B8AC7",
     logo: "/logos/sophos.svg",
   },
@@ -183,7 +183,7 @@ const dlpFeatureRows: { label: string; cells: DlpFeatureCell[] }[] = [
       { tier: "veryStrong", note: "Strong network DLP" },
       { tier: "veryStrong", note: "Adaptive enforcement" },
       { tier: "moderate", note: "Limited, M365 traffic focus" },
-      { tier: "good", note: "Sophos Firewall perimeter" },
+      { tier: "moderate", note: "Not a Sophos DLP feature" },
     ],
   },
   {
@@ -196,7 +196,7 @@ const dlpFeatureRows: { label: string; cells: DlpFeatureCell[] }[] = [
       { tier: "good", note: "Moderate SaaS coverage" },
       { tier: "excellent", note: "Forcepoint ONE platform" },
       { tier: "best", note: "Native inside M365" },
-      { tier: "good", note: "Bundled web protection" },
+      { tier: "moderate", note: "Protected Browser data controls (Workspace Protection)" },
     ],
   },
   {
@@ -222,7 +222,7 @@ const dlpFeatureRows: { label: string; cells: DlpFeatureCell[] }[] = [
       { tier: "moderate", note: "Limited" },
       { tier: "veryStrong", note: "Yes, UEBA-style" },
       { tier: "veryStrong", note: "Insider Risk Management" },
-      { tier: "moderate", note: "Sophos Central user risk scoring" },
+      { tier: "moderate", note: "Limited, via Sophos XDR investigations" },
     ],
   },
   {
@@ -625,7 +625,7 @@ const dlpCompareRows: ComparisonRow[] = [
       { stars: 4, note: "Centralised ePO-style policy engine" },
       { stars: 4, note: "Forcepoint ONE unified console" },
       { stars: 5, note: "Single pane in Purview portal" },
-      { stars: 5, note: "Sophos Central, simple for small teams" },
+      { stars: 5, note: "Sophos Fusion (formerly Sophos Central), simple for small teams" },
     ],
   },
   {
@@ -639,7 +639,7 @@ const dlpCompareRows: ComparisonRow[] = [
       { stars: 5, note: "Endpoint, network, email, cloud" },
       { stars: 5, note: "Web, email, endpoint, cloud unified" },
       { stars: 4, note: "Endpoint, email, cloud inside M365" },
-      { stars: 4, note: "Endpoint, email, firewall multi-channel" },
+      { stars: 3, note: "Endpoint and email" },
     ],
   },
   {
@@ -667,7 +667,7 @@ const dlpCompareRows: ComparisonRow[] = [
       { stars: 3, note: "Moderate SaaS coverage" },
       { stars: 5, note: "Forcepoint ONE CASB" },
       { stars: 5, note: "Native across M365 + Defender for Cloud Apps" },
-      { stars: 3, note: "Bundled web protection" },
+      { stars: 2, note: "Protected Browser data controls (Workspace Protection)" },
     ],
   },
   {

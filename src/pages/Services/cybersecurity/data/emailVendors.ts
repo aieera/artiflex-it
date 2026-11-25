@@ -228,20 +228,20 @@ export const emailVendors: Record<string, EmailVendor> = {
     tagline: "AI-driven phishing and BEC protection with Synchronized Security",
     bestFor: "Best Overall Value (Recommended)",
     description:
-      "Sophos Central Email combines mailflow gateway scanning with API-based post-delivery protection for Microsoft 365 and Google Workspace. Sophos AI classifies impersonation, BEC, and phishing attempts at delivery and after delivery, while Synchronized Security automatically isolates endpoints that interact with a malicious link or attachment. For UAE mid-market customers already running Sophos Firewall or Intercept X, adding Sophos Email is the natural next step toward a unified Sophos Central estate.",
+      "Sophos Email combines mailflow gateway scanning with API-based post-delivery protection for Microsoft 365 and Google Workspace. Sophos AI classifies impersonation, BEC, and phishing attempts at delivery and after delivery, while Synchronized Security shares email threat signals with Sophos Endpoint and Workspace Protection so compromised devices can be contained quickly. For UAE mid-market customers already running Sophos Firewall or Sophos Endpoint, adding Sophos Email is the natural next step toward a unified Sophos Fusion (formerly Sophos Central) estate.",
     keyStats: [],
     whyWinsIntro: {
       label: "Sophos Email Security Highlights",
-      title: "The only MDR-optimised email security. 20+ AI models. Zero false positives.",
+      title: "Email security built to work with Sophos MDR and XDR",
       description:
-        "Sophos Email is the only email security solution purpose-built to integrate natively with Sophos MDR and XDR, giving security teams email telemetry alongside endpoint, firewall, and identity data in a single investigation workflow. Named an Overall, Product, Innovation, and Market leader in KuppingerCole's 2025 Leadership Compass for Email Security, with a perfect malware catch rate and zero false positives in Q2 2025 VBSpam testing.",
+        "Sophos Email is built to integrate natively with Sophos MDR and XDR, giving security teams email telemetry alongside endpoint, firewall, and identity data in a single investigation workflow. Named an Overall, Product, Innovation, and Market leader in KuppingerCole's 2025 Leadership Compass for Email Security.",
       stats: [
-        { value: "20+", label: "AI and ML models including NLP, detecting phishing, BEC, and impersonation", tone: "emerald" },
-        { value: "100%", label: "Malware catch rate with zero false positives in Q2 2025 VBSpam independent test", tone: "violet" },
-        { value: "90%", label: "BEC detection accuracy with near-zero false positives using deep learning NLP models", tone: "sky" },
+        { value: "2025", label: "Named a Leader in KuppingerCole's Leadership Compass for Email Security", tone: "emerald" },
+        { value: "2 checks", label: "URLs checked at delivery and again at the moment of click", tone: "violet" },
+        { value: "MX, API or hybrid", label: "Deploy as a gateway, via Microsoft 365 / Google Workspace API, or both", tone: "sky" },
       ],
       outro:
-        "Sophos Email's defining advantage for Sophos-invested organisations: it is the only email security platform natively integrated with an MDR service. Email threat data flows directly into Sophos MDR, enabling 24/7 expert threat hunters to investigate and respond to email-based incidents with the same precision they apply to endpoint and network threats.",
+        "Sophos Email's defining advantage for Sophos-invested organisations: it is built to integrate natively with Sophos MDR and XDR. Email threat data flows directly into Sophos MDR, enabling 24/7 expert threat hunters to investigate and respond to email-based incidents with the same precision they apply to endpoint and network threats.",
     },
     strengths: [
       {
@@ -249,14 +249,14 @@ export const emailVendors: Record<string, EmailVendor> = {
         icon: "shield",
         tone: "emerald",
         title: "Natural language processing detects BEC before it reaches any inbox",
-        desc: "Sophos Email uses proprietary NLP models trained on billions of email inputs to analyse the text, tone, context, and intent of every message, detecting hand-crafted BEC attacks, executive impersonation, and spear phishing that carry no malicious links or attachments. Achieves 90% BEC detection accuracy with near-zero false positives.",
+        desc: "Sophos Email uses proprietary NLP models trained on billions of email inputs to analyse the text, tone, context, and intent of every message, detecting hand-crafted BEC attacks, executive impersonation, and spear phishing that carry no malicious links or attachments.",
       },
       {
         tag: "MDR-optimised",
         icon: "users",
         tone: "violet",
-        title: "The only email security natively integrated with Sophos MDR and XDR",
-        desc: "Sophos Email is the only solution built to feed email telemetry (including account compromise attempts, data control violations, and post-delivery events) directly into Sophos MDR and XDR. Security teams investigate and respond to email threats alongside endpoint and firewall incidents in a single unified workflow.",
+        title: "Built for Sophos MDR and XDR",
+        desc: "Sophos Email is built to feed email telemetry (including account compromise attempts, data control violations, and post-delivery events) directly into Sophos MDR and XDR. Security teams investigate and respond to email threats alongside endpoint and firewall incidents in a single unified workflow.",
       },
       {
         tag: "Synchronized Security",
@@ -266,11 +266,11 @@ export const emailVendors: Record<string, EmailVendor> = {
         desc: "Sophos Synchronized Security links email and endpoint security. If Sophos Email detects five or more virus emails sent in ten minutes from a mailbox, the mailbox is automatically blocked while Sophos Endpoint performs a scan and removes the infection, preventing outbound spam and virus propagation from compromised devices.",
       },
       {
-        tag: "Phish Threat",
+        tag: "Employee awareness training",
         icon: "message",
         tone: "amber",
-        title: "Built-in phishing simulation and security awareness training",
-        desc: "Sophos Phish Threat delivers realistic phishing simulations and interactive training modules directly within Sophos Email, transforming employees from the most exploited vulnerability into an active layer of defence. Comprehensive reporting makes it easy to demonstrate compliance and measure programme effectiveness.",
+        title: "Phishing simulation and security awareness training add-on",
+        desc: "Employee awareness training is an add-on that delivers realistic phishing simulations and interactive training, managed in the same console as Sophos Email, transforming employees from the most exploited vulnerability into an active layer of defence. Comprehensive reporting makes it easy to demonstrate compliance and measure programme effectiveness.",
       },
       {
         tag: "Time-of-click URL protection",
@@ -294,38 +294,38 @@ export const emailVendors: Record<string, EmailVendor> = {
         desc: "The Sophos Email Monitoring System is a lightweight sensor that complements existing email security products, detecting threats that other solutions miss and feeding that intelligence into Sophos MDR and XDR. It can be deployed alongside Microsoft Defender, Proofpoint, or any other existing solution without replacement.",
       },
       {
-        tag: "Sophos Central integration",
+        tag: "Sophos Fusion integration",
         icon: "monitor",
         tone: "violet",
         title: "Managed alongside endpoint, firewall, MDR from a single console",
-        desc: "Sophos Email is managed through Sophos Central alongside Sophos Endpoint, Firewall, and MDR. Email security alerts, policy management, and incident response all happen in the same platform, eliminating the separate portals and disconnected workflows that increase response time and operational overhead.",
+        desc: "Sophos Email is managed through Sophos Fusion alongside Sophos Endpoint, Firewall, and MDR. Email security alerts, policy management, and incident response all happen in the same platform, eliminating the separate portals and disconnected workflows that increase response time and operational overhead.",
       },
     ],
     watchOuts: [],
     bestFitProfile: [
-      "UAE mid-market companies already running Sophos Firewall, Intercept X, or both",
+      "UAE mid-market companies already running Sophos Firewall, Sophos Endpoint, or both",
       "Microsoft 365 and Google Workspace customers wanting API-based post-delivery protection",
-      "Lean IT teams that benefit from one Sophos Central console across email and endpoint",
+      "Lean IT teams that benefit from one Sophos Fusion console across email and endpoint",
       "Organisations with high BEC and vendor email compromise exposure (finance, healthcare)",
       "Customers wanting the option of Sophos MDR to take over email triage 24x7",
       "Regulated industries needing DKIM, DMARC, and TLS enforcement out of the box",
-      "Schools, retail, and distributed branches needing zero-touch deployment via Sophos Central",
+      "Schools, retail, and distributed branches needing zero-touch deployment via Sophos Fusion",
     ],
     products: [
-      { model: "Sophos Email Standard", segment: "SMB", role: "Mailflow gateway scanning, anti-spam, anti-malware" },
-      { model: "Sophos Email Advanced", segment: "Mid-market", role: "+ Sandstorm sandbox, Time-of-Click URL, impersonation analysis" },
-      { model: "Sophos Email Mailbox Protection", segment: "M365 / Workspace", role: "API-based post-delivery protection alongside any gateway" },
-      { model: "Sophos Email + Phish Threat", segment: "Mid-market", role: "+ Phishing simulation and end-user training campaigns" },
-      { model: "Sophos MDR Email", segment: "Lean teams", role: "24x7 Sophos analysts triaging email alerts and incidents" },
-      { model: "Sophos Central Email Suite", segment: "Strategic platform", role: "Email plus endpoint plus firewall under one Central tenant" },
+      { model: "Sophos Email", segment: "Core protection", role: "Anti-spam, malware scanning, NLP-based phishing and BEC detection, AI cloud sandbox, time-of-click URL rewriting, impersonation protection, SPF/DKIM/DMARC checks" },
+      { model: "Sophos Email Plus", segment: "Advanced", role: "Everything in Sophos Email, plus advanced protection and reporting, with DMARC Manager included" },
+      { model: "Sophos Email Monitoring System (EMS)", segment: "Add-on sensor", role: "Works alongside Microsoft 365, Google Workspace or another email security product to spot missed threats and feed them to Sophos MDR / XDR" },
+      { model: "DMARC Manager", segment: "Add-on", role: "DMARC reporting and policy guidance for Sophos Email and EMS customers (included in Email Plus)" },
+      { model: "Employee awareness training", segment: "Add-on", role: "Phishing simulations and end-user training" },
+      { model: "Portal Encryption", segment: "Add-on", role: "Encrypted email delivery with custom-branded encryption portal" },
     ],
     whyArtiflex:
-      "Artiflex IT is a Sophos Platinum Partner, the highest tier in Sophos's UAE channel. We deliver Sophos Email end-to-end across UAE, Oman, and Saudi Arabia: Mailflow versus API-mode design, M365 and Google Workspace tenant integration, DKIM and DMARC alignment, Synchronized Security activation with Sophos Firewall and Intercept X, Phish Threat training campaigns, and MDR onboarding.",
+      "Artiflex IT is a Sophos Platinum Partner, the highest tier in Sophos's UAE channel. We deliver Sophos Email end-to-end across UAE, Oman, and Saudi Arabia: Mailflow versus API-mode design, M365 and Google Workspace tenant integration, DKIM and DMARC alignment, Synchronized Security activation with Sophos Firewall and Sophos Endpoint, employee awareness training campaigns, and MDR onboarding.",
     faqs: [
       {
         question: "How does Sophos Email compare to Proofpoint or Mimecast?",
         answer:
-          "Proofpoint typically leads on enterprise BEC and supply-chain telemetry; Mimecast leads on email continuity and archiving depth. Sophos Email is the best fit for UAE mid-market customers who also run Sophos Firewall or Intercept X, because Synchronized Security and Sophos Central operationally consolidate three vendor portals into one.",
+          "Proofpoint typically leads on enterprise BEC and supply-chain telemetry; Mimecast leads on email continuity and archiving depth. Sophos Email is the best fit for UAE mid-market customers who also run Sophos Firewall or Sophos Endpoint, because Synchronized Security and Sophos Fusion operationally consolidate three vendor portals into one.",
       },
       {
         question: "Should I use Mailflow (MX) or API mode?",
@@ -335,12 +335,12 @@ export const emailVendors: Record<string, EmailVendor> = {
       {
         question: "Does Sophos Email include DMARC enforcement?",
         answer:
-          "Yes. DMARC, DKIM, and SPF authentication, alignment, and enforcement are built in, plus inbound DMARC reporting. For organisations needing full outbound DMARC visibility and brand protection at scale, dedicated platforms (Agari, Valimail) can be layered on top.",
+          "Yes. Sophos Email checks SPF, DKIM and DMARC on inbound mail. For outbound domains, DMARC Manager (an add-on, included in Sophos Email Plus) gives DMARC reporting and guides you to an enforced policy.",
       },
       {
         question: "What is the typical Sophos Email deployment lead time in the UAE?",
         answer:
-          "Standard mid-market deployments run two to four weeks (MX cutover, M365 API integration, policy tuning, training). API-only deployments can be live in under a week. We hold demo Sophos Central tenants for proof of concept.",
+          "Standard mid-market deployments run two to four weeks (MX cutover, M365 API integration, policy tuning, training). API-only deployments can be live in under a week. We hold demo Sophos Fusion tenants for proof of concept.",
       },
     ],
     whatIs: {
@@ -348,8 +348,8 @@ export const emailVendors: Record<string, EmailVendor> = {
       titlePrefix: "Phishing and BEC protection that closes the loop with ",
       titleHighlight: "endpoint and firewall",
       bodyParagraphs: [
-        "Sophos Email blocks malicious mail at the gateway with deep learning, sandbox detonation (Sandstorm), Time-of-Click URL rewriting, and impersonation analysis. API-based post-delivery protection scans Microsoft 365 and Google Workspace mailboxes after delivery, removing messages that were re-classified as malicious based on later intelligence.",
-        "Everything runs through Sophos Central, the same cloud console that manages Sophos Firewall, Intercept X, Cloud Optix, and Wi-Fi. Synchronized Security closes the gap between email and endpoint automatically: if a user clicks a malicious link, the endpoint is isolated by Sophos Firewall in seconds.",
+        "Sophos Email blocks malicious mail at the gateway with deep learning, an AI-powered cloud sandbox, Time-of-Click URL rewriting, and impersonation analysis. API-based post-delivery protection scans Microsoft 365 and Google Workspace mailboxes after delivery, removing messages that were re-classified as malicious based on later intelligence.",
+        "Everything runs through Sophos Fusion, the same cloud console that manages Sophos Firewall, Sophos Endpoint, and Wi-Fi. Synchronized Security closes the gap between email and endpoint automatically: email, endpoint and Workspace Protection share threat signals so a compromised mailbox or device can be contained quickly.",
       ],
       feature: {
         titleLine1: "Synchronized Email",
@@ -357,10 +357,10 @@ export const emailVendors: Record<string, EmailVendor> = {
         body: "Gateway-mode and API-mode protection share the same Sophos AI engines, with Synchronized Security tying email signals to endpoint and firewall response automatically.",
       },
       capabilities: [
-        "Sandstorm: cloud sandbox detonation for unknown attachments and URLs",
+        "AI cloud sandbox: static and dynamic analysis of unknown attachments",
         "Time-of-Click URL protection: re-scan URLs at the moment the user clicks",
         "API post-delivery protection: claw back mail re-classified after delivery",
-        "Synchronized Security: auto-isolate endpoints that interact with phishing",
+        "Synchronized Security: email threat signals shared with endpoint and firewall",
       ],
     },
     deploymentOptions: {

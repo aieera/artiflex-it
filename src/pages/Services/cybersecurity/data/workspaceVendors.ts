@@ -69,11 +69,11 @@ export const workspaceVendors: Record<string, WorkspaceVendor> = {
     name: "Sophos Workspace Protection",
     logo: "/logos/sophos.svg",
     tagline: "Browser-native SSE bundling ZTNA, SWG, DNS security and email monitoring with Synchronized Security automation and best-in-class Shadow AI governance",
-    bestFor: "Recommended · Most Innovative Solution",
+    bestFor: "Recommended",
     description:
       "Sophos Workspace Protection bundles Zero Trust Network Access, Secure Web Gateway, DNS security and email monitoring into a single per-user licence delivered through the Sophos Protected Browser (powered by Island.io). For UAE buyers already running Sophos Endpoint or Sophos Firewall, Synchronized Security automation means a compromised endpoint loses ZTNA access automatically. Agentless BYOD and best-in-class Shadow IT / Shadow AI governance round out the platform. Most compelling when the Sophos ecosystem is already in the estate, or when consolidating browser, ZTNA and SWG onto one operational pane.",
     keyStats: [
-      { label: "Recognition", value: "Most Innovative Solution award winner" },
+      { label: "Firewall bundle", value: "Also included in the Sophos Firewall Xstream Plus licence" },
       { label: "Licensing", value: "Single per-user licence covers ZTNA + SWG + DNS + Email" },
       { label: "Differentiator", value: "Synchronized Security with Endpoint and Firewall" },
       { label: "BYOD", value: "Agentless, delivered via Protected Browser" },
@@ -116,14 +116,14 @@ export const workspaceVendors: Record<string, WorkspaceVendor> = {
         icon: "lock",
         tone: "amber",
         title: "Identity-based access without VPN",
-        desc: "Per-application ZTNA replaces legacy VPN concentrators. Conditional Access by user, device posture and risk score. Tightly integrated with Microsoft Entra ID, Okta and Sophos Central identity sources.",
+        desc: "Per-application ZTNA replaces legacy VPN concentrators. Conditional Access by user, device posture and risk score. Tightly integrated with Microsoft Entra ID, Okta and Sophos Fusion identity sources.",
       },
       {
         tag: "SWG + DNS",
         icon: "activity",
         tone: "rose",
-        title: "Cloud SWG with DNS-layer enforcement",
-        desc: "Cloud Secure Web Gateway plus DNS-layer protection inspect outbound web traffic, block phishing and command-and-control DNS lookups, and apply category-based policy. Telemetry surfaces in the same Sophos Central console.",
+        title: "SWG with DNS-layer enforcement",
+        desc: "Secure Web Gateway built into the Protected Browser plus DNS-layer protection inspect outbound web traffic, block phishing and command-and-control DNS lookups, and apply category-based policy. Telemetry surfaces in the same Sophos Fusion console.",
       },
       {
         tag: "Email monitoring",
@@ -154,18 +154,18 @@ export const workspaceVendors: Record<string, WorkspaceVendor> = {
       "Hybrid and remote workforces needing agentless BYOD coverage",
       "Mid-market and upper-mid-market enterprises wanting one-vendor security operations",
       "Customers replacing legacy VPN concentrators with identity-based ZTNA",
-      "Sophos Central operators wanting unified policy across Endpoint, Firewall, MDR and Workspace",
+      "Sophos Fusion operators wanting unified policy across Endpoint, Firewall, MDR and Workspace",
     ],
     products: [
       { model: "Sophos Workspace Protection (Bundle)", segment: "Strategic SSE", role: "ZTNA + SWG + DNS + Email monitoring + Protected Browser, recommended starting point" },
-      { model: "Sophos Protected Browser (Island.io)", segment: "Browser SSE", role: "Enterprise browser delivery surface, agentless BYOD coverage" },
+      { model: "Sophos Protected Browser (Island.io)", segment: "Browser SSE", role: "Hardened Chromium browser powered by Island, with integrated Secure Web Gateway, app and data controls, and agentless access for unmanaged devices" },
       { model: "Sophos ZTNA", segment: "ZTNA", role: "Identity-based per-application access, Synchronized Security to Endpoint" },
-      { model: "Sophos Cloud SWG", segment: "SWG", role: "Cloud-delivered web filtering with category-based policy" },
-      { model: "Sophos DNS Protection", segment: "DNS", role: "DNS-layer phishing, C2 and category enforcement" },
+      { model: "Sophos DNS Protection for Endpoints", segment: "DNS", role: "DNS-layer phishing, C2 and category enforcement" },
+      { model: "Sophos Email Monitoring System", segment: "Email visibility", role: "Spots email threats missed by your existing email security and feeds them to Sophos MDR / XDR" },
       { model: "Sophos Endpoint + Firewall (recommended pairing)", segment: "Synchronized Security", role: "Endpoint heartbeat + Firewall context drive Workspace Protection automation" },
     ],
     whyArtiflex:
-      "Artiflex IT is a Platinum Sophos Partner delivering Workspace Protection end-to-end across UAE estates. Our team has deployed the full Sophos stack, Endpoint Intercept X, Firewall XGS, MDR and Workspace Protection, across mid-market, enterprise and government customers, and we have the operational pattern for Synchronized Security between Endpoint, Firewall and Workspace tightly worked out. Vendor-neutral sizing is our default starting point; we will tell you when Check Point Harmony SASE or Palo Alto Prisma Access is the stronger fit.",
+      "Artiflex IT is a Platinum Sophos Partner delivering Workspace Protection end-to-end across UAE estates. Our team has deployed the full Sophos stack, Sophos Endpoint, Sophos Firewall (XGS), MDR and Workspace Protection, across mid-market, enterprise and government customers, and we have the operational pattern for Synchronized Security between Endpoint, Firewall and Workspace tightly worked out. Vendor-neutral sizing is our default starting point; we will tell you when Check Point Harmony SASE or Palo Alto Prisma Access is the stronger fit.",
     faqs: [
       {
         question: "Is Workspace Protection a full SASE platform?",
@@ -185,7 +185,7 @@ export const workspaceVendors: Record<string, WorkspaceVendor> = {
       {
         question: "Is Protected Browser the same as Island Browser?",
         answer:
-          "Sophos Protected Browser is powered by Island.io technology, integrated into the Sophos Central management plane. Same enterprise-browser foundation as Island, surfaced through Sophos licensing, telemetry and policy.",
+          "No. Sophos Protected Browser is a Sophos product built on Island's browser engine and managed in Sophos Fusion. It currently runs on Windows and macOS. Same enterprise-browser foundation as Island, surfaced through Sophos licensing, telemetry and policy.",
       },
       {
         question: "How does this compare to Microsoft Defender for Cloud Apps?",
@@ -200,16 +200,17 @@ export const workspaceVendors: Record<string, WorkspaceVendor> = {
       bodyParagraphs: [
         "Sophos Workspace Protection is a converged Security Service Edge platform delivered through the Sophos Protected Browser. ZTNA, SWG, DNS security and email monitoring are bundled into a single per-user licence, no multi-product stitch, no separate consoles.",
         "Where legacy SWG and CASB inspected traffic at the perimeter, Workspace Protection enforces policy at the browser. That makes Shadow AI governance, agentless BYOD coverage and copy / paste / download controls fundamentally easier than gateway-only architectures, and it makes the platform genuinely browser-native rather than gateway-with-a-plugin.",
-        "For UAE buyers, the platform's headline value is Synchronized Security: Workspace Protection cross-correlates with Sophos Endpoint and Sophos Firewall telemetry, automatically revoking ZTNA access when an endpoint is compromised. This is the automation pattern that elevates Workspace Protection above standalone SSE, and is the reason Sophos won Most Innovative Solution in the SSE category.",
+        "For UAE buyers, the platform's headline value is Synchronized Security: Workspace Protection cross-correlates with Sophos Endpoint and Sophos Firewall telemetry, automatically revoking ZTNA access when an endpoint is compromised. This is the automation pattern that elevates Workspace Protection above standalone SSE.",
+        "Existing Sophos ZTNA customers are upgraded to the full Workspace Protection bundle automatically. Workspace Protection licences are also included in the new Sophos Firewall Xstream Plus licence.",
       ],
       feature: {
         titleLine1: "Synchronized Security",
         titleLine2: "ZTNA + Endpoint + Firewall",
-        body: "When Sophos Endpoint detects compromise, the Security Heartbeat propagates to Workspace Protection and Sophos Firewall. ZTNA access is revoked for the affected user / device, firewall rules tighten, and the incident is correlated across all three control planes in Sophos Central. This automation pattern is unique among major SSE platforms and dramatically reduces dwell time in active incidents.",
+        body: "When Sophos Endpoint detects compromise, the Security Heartbeat propagates to Workspace Protection and Sophos Firewall. ZTNA access is revoked for the affected user / device, firewall rules tighten, and the incident is correlated across all three control planes in Sophos Fusion (formerly Sophos Central). This automation pattern is unique among major SSE platforms and dramatically reduces dwell time in active incidents.",
       },
       capabilities: [
         "Zero Trust Network Access with conditional policy",
-        "Cloud Secure Web Gateway",
+        "Secure Web Gateway built into the Protected Browser",
         "DNS-layer phishing and C2 protection",
         "Email exposure monitoring",
         "Shadow IT / Shadow AI discovery and policy",
@@ -224,8 +225,8 @@ export const workspaceVendors: Record<string, WorkspaceVendor> = {
       intro: "sized by Sophos estate footprint, BYOD scope and licence model.",
       options: [
         { icon: "cloud", title: "Standalone Workspace Protection", body: "Per-user licence bundling ZTNA + SWG + DNS + Email + Protected Browser. Right starting point for non-Sophos estates or pilot rollouts." },
-        { icon: "virtual", title: "Workspace + Endpoint bundle", body: "Workspace Protection paired with Sophos Endpoint Intercept X. Synchronized Security activates the automation layer. Recommended pattern for most UAE customers." },
-        { icon: "hardware", title: "Workspace + Firewall + Endpoint (full stack)", body: "Full Sophos ecosystem: Workspace Protection + Endpoint + XGS Firewall + MDR. Tightest Synchronized Security automation and unified Sophos Central operations." },
+        { icon: "virtual", title: "Workspace + Endpoint bundle", body: "Workspace Protection paired with Sophos Endpoint. Synchronized Security activates the automation layer. Recommended pattern for most UAE customers." },
+        { icon: "hardware", title: "Workspace + Firewall + Endpoint (full stack)", body: "Full Sophos ecosystem: Workspace Protection + Endpoint + XGS Firewall + MDR. Tightest Synchronized Security automation and unified Sophos Fusion operations." },
       ],
     },
   },

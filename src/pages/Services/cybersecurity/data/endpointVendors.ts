@@ -81,7 +81,7 @@ export const endpointVendors: Record<string, EndpointVendor> = {
     slug: "sophos-endpoint",
     metaTitle: "Sophos Endpoint Protection Dubai & UAE | Artiflex IT",
     metaDescription:
-      "Sophos Intercept X endpoint protection in Dubai and the UAE with deep-learning prevention and Synchronized Security. Artiflex handles rollout and 24/7 MDR.",
+      "Sophos Endpoint (formerly Intercept X) protection in Dubai and the UAE with deep-learning prevention and Synchronized Security. Artiflex handles rollout and 24/7 MDR.",
     name: "Sophos Endpoint",
     seoBrand: "Sophos",
     logo: "/logos/sophos.svg",
@@ -94,14 +94,14 @@ export const endpointVendors: Record<string, EndpointVendor> = {
       label: "Sophos Endpoint / EDR / XDR / MDR Highlights",
       title: "Prevention first. Then detection. Then a human team if you need one.",
       description:
-        "Sophos is the only vendor where a single cloud console, Sophos Central, manages endpoint protection, EDR, XDR, firewall, email, and MDR as a seamlessly connected stack. Its 2025 portfolio refresh gives every size of organisation a clear, scalable path from basic endpoint protection through to fully managed 24/7 detection and response.",
+        "Sophos is the only vendor where a single cloud console, Sophos Fusion, manages endpoint protection, EDR, XDR, firewall, email, and MDR as a seamlessly connected stack. Its 2025 portfolio refresh gives every size of organisation a clear, scalable path from basic endpoint protection through to fully managed 24/7 detection and response.",
       stats: [
-        { value: "600K+", label: "Customers protected worldwide", tone: "emerald" },
+        { value: "625,000+", label: "Organisations protected worldwide", tone: "emerald" },
         { value: "17x", label: "Consecutive Gartner Magic Quadrant for Endpoint Protection Leader recognition", tone: "violet" },
         { value: "24/7", label: "MDR threat hunting with full incident response included", tone: "sky" },
       ],
       outro:
-        "Sophos's unique strength for SMB and mid-market: the same Sophos Central console manages the full stack, firewall, endpoint, email, MDR. No integration tax, no separate portals, no data silos. Sophos MDR includes a breach protection warranty.",
+        "Sophos's unique strength for SMB and mid-market: the same Sophos Fusion console manages the full stack, firewall, endpoint, email, MDR. No integration tax, no separate portals, no data silos. Sophos MDR Complete includes a breach protection warranty.",
     },
     strengths: [
       {
@@ -155,7 +155,7 @@ export const endpointVendors: Record<string, EndpointVendor> = {
       "Organisations with high ransomware concern that need CryptoGuard rollback as a safety net",
       "Buyers who want the option of 24x7 Sophos MDR with full incident-response authority",
       "Regulated industries (finance, healthcare) needing endpoint DLP, application control, and HIPS",
-      "Schools, retail chains, and distributed branches needing zero-touch deployment via Sophos Central",
+      "Schools, retail chains, and distributed branches needing zero-touch deployment via Sophos Fusion",
     ],
     products: [
       { model: "Sophos Endpoint 100", segment: "Small business (up to 100 employees)", role: "Full Sophos Endpoint protection in a fixed-price subscription for organisations up to 100 employees. Replaces Intercept X Essentials for SMBs.", tag: { label: "New", tone: "new" } },
@@ -163,8 +163,8 @@ export const endpointVendors: Record<string, EndpointVendor> = {
       { model: "Sophos EDR", segment: "IT teams / SOC", role: "Everything in Sophos Endpoint plus AI-accelerated detection and response, threat hunting, live response, and Sophos Data Lake history.", tag: { label: "New tier", tone: "new" } },
       { model: "Sophos XDR", segment: "Mid-market / SOC", role: "Extends detection and response across firewall, email, identity, cloud, and third-party tools, with the Sophos AI Assistant and case management. Formerly Intercept X Advanced with XDR." },
       { model: "Sophos MDR", segment: "Lean IT teams", role: "Fully managed 24/7 Sophos SOC analysts with full incident-response authority. Formerly Intercept X Advanced with MDR." },
-      { model: "Sophos MDR Complete", segment: "Enterprise", role: "All of Sophos MDR plus a breach protection warranty and dedicated technical account management. Formerly Intercept X Advanced with MDR Complete." },
-      { model: "Sophos Endpoint for Server", segment: "Datacenter / VM", role: "Server-tuned prevention, file integrity monitoring, and cloud workload posture. Formerly Intercept X for Server." },
+      { model: "Sophos MDR Complete", segment: "Enterprise", role: "Sophos MDR with full-scale incident response and the Sophos breach protection warranty. Formerly Intercept X Advanced with MDR Complete." },
+      { model: "Sophos Endpoint - Server", segment: "Datacenter / VM", role: "Server-tuned prevention, file integrity monitoring, and cloud workload posture. Formerly Intercept X Advanced for Server." },
       { model: "Sophos Endpoint for Legacy Platforms", segment: "EOL OS add-on", role: "Add-on extending protection to Windows and Linux endpoints and servers running past their standard end-of-support dates.", tag: { label: "New", tone: "new" } },
       { model: "Intercept X Essentials", segment: "Retired", role: "End of sale in 2025: new orders closed Nov 1, 2025 and renewals close Jan 7, 2026. Existing customers upgrade to Sophos Endpoint at renewal.", tag: { label: "End of sale", tone: "eol" } },
     ],
@@ -173,12 +173,12 @@ export const endpointVendors: Record<string, EndpointVendor> = {
       body: "Unsupported and end-of-life platforms (for example, older Windows or Linux versions past vendor end-of-support) are not covered by standard Sophos Endpoint licensing. They require a separate Sophos Endpoint for Legacy Platforms add-on license. If any machines in your estate run a legacy OS, flag it during scoping so we license and protect them correctly, otherwise those endpoints will be left unprotected.",
     },
     whyArtiflex:
-      "Artiflex IT is a Sophos Platinum Partner, the highest tier in Sophos's UAE channel. We deliver Sophos Endpoint deployments end-to-end across UAE, Oman, and Saudi Arabia: agent rollout planning, Active Directory and Entra ID integration, policy hardening, Sophos Central tenant setup, MDR onboarding, and ongoing managed endpoint services. Platinum status means escalations land directly with Sophos engineering.",
+      "Artiflex IT is a Sophos Platinum Partner, the highest tier in Sophos's UAE channel. We deliver Sophos Endpoint deployments end-to-end across UAE, Oman, and Saudi Arabia: agent rollout planning, Active Directory and Entra ID integration, policy hardening, Sophos Fusion tenant setup, MDR onboarding, and ongoing managed endpoint services. Platinum status means escalations land directly with Sophos engineering.",
     faqs: [
       {
         question: "Why is Intercept X now called Sophos Endpoint?",
         answer:
-          "The 2025 Sophos portfolio refresh retired the Intercept X branding in favour of clearer Sophos Endpoint naming. The product, agent, and Sophos Central console are the same: Intercept X Advanced is now Sophos Endpoint, the XDR and MDR variants become Sophos XDR and Sophos MDR, and a new Sophos EDR tier sits between them. Existing customers move to the new SKUs at renewal with no reinstall.",
+          "The 2025 Sophos portfolio refresh retired the Intercept X branding in favour of clearer Sophos Endpoint naming. The product, agent, and management console (now Sophos Fusion) are the same: Intercept X Advanced is now Sophos Endpoint, the XDR and MDR variants become Sophos XDR and Sophos MDR, and a new Sophos EDR tier sits between them. Existing customers move to the new SKUs at renewal with no reinstall.",
       },
       {
         question: "How does Sophos Endpoint compare to CrowdStrike Falcon or SentinelOne?",
@@ -188,7 +188,7 @@ export const endpointVendors: Record<string, EndpointVendor> = {
       {
         question: "Do I need to remove my existing antivirus before deploying Sophos Endpoint?",
         answer:
-          "Yes. Running two real-time AV engines causes conflicts and performance loss. Sophos Central includes a Competitor Removal Tool that cleans up most third-party products during agent install. We provide a structured migration plan that minimizes downtime, typically rolling endpoints in waves over one to two weeks.",
+          "Yes. Running two real-time AV engines causes conflicts and performance loss. Sophos Fusion includes a Competitor Removal Tool that cleans up most third-party products during agent install. We provide a structured migration plan that minimizes downtime, typically rolling endpoints in waves over one to two weeks.",
       },
       {
         question: "What is the typical Sophos Endpoint deployment lead time in the UAE?",
@@ -212,7 +212,7 @@ export const endpointVendors: Record<string, EndpointVendor> = {
       titleHighlight: "built-in XDR",
       bodyParagraphs: [
         "Sophos Endpoint (formerly Intercept X) stops threats at multiple layers: a deep-learning neural net classifies files before execution, CryptoGuard rolls back unauthorized encryption, and exploit-prevention blocks the 60+ techniques attackers actually use, regardless of the underlying CVE. The same agent extends into EDR and XDR with live data lake queries and AI-accelerated, guided threat hunting.",
-        "Everything runs through Sophos Central, the same cloud console that manages Sophos Firewall, Email, and cloud workloads, with one credential and one alert pipeline. For lean IT teams in the UAE, this replaces three or four vendor portals overnight.",
+        "Everything runs through Sophos Fusion (formerly Sophos Central), the same cloud console that manages Sophos Firewall, Email, and cloud workloads, with one credential and one alert pipeline. For lean IT teams in the UAE, this replaces three or four vendor portals overnight.",
       ],
       feature: {
         titleLine1: "Synchronized Security",
@@ -230,11 +230,11 @@ export const endpointVendors: Record<string, EndpointVendor> = {
     },
     deploymentOptions: {
       eyebrow: "Deployment Options",
-      title: "Cloud-managed, on-prem, or hybrid: your call.",
-      intro: "Artiflex deploys Sophos Endpoint in whichever console model fits your operational and regulatory requirements.",
+      title: "Cloud-managed, with coverage for legacy systems and cloud workloads.",
+      intro: "Artiflex sets up your Sophos Fusion console, rolls out the agent and extends the same policy to servers, cloud workloads and legacy systems.",
       options: [
-        { icon: "cloud", title: "Cloud-Managed", body: "Vendor-hosted SaaS console with automatic updates and no on-prem infrastructure. Recommended for most UAE customers." },
-        { icon: "hardware", title: "On-Premises", body: "Self-hosted management console for customers with data-residency, air-gap, or full-control regulatory requirements." },
+        { icon: "cloud", title: "Cloud-Managed", body: "Vendor-hosted SaaS console with automatic updates and no on-prem infrastructure." },
+        { icon: "hardware", title: "Legacy platforms", body: "Protect Windows and Linux systems past their end-of-support dates with the Sophos Endpoint for Legacy Platforms add-on." },
         { icon: "virtual", title: "Hybrid / Cloud Workload", body: "Extend the same agent and policy into AWS, Azure, GCP, and Kubernetes workloads alongside your endpoint estate." },
       ],
     },

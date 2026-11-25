@@ -74,15 +74,15 @@ export const vmVendors: Record<string, VmVendor> = {
     metaDescription:
       "Sophos Managed Risk in Dubai and the UAE: managed vulnerability and attack-surface monitoring by the Sophos SOC. Deployed by Artiflex IT.",
     logo: "/logos/sophos.svg",
-    tagline: "Fully managed continuous vulnerability management plus external attack surface monitoring, powered by Secureworks and the Counter Threat Unit",
-    bestFor: "Recommended · Powered by Secureworks · Continuous Exposure Management",
+    tagline: "Fully managed vulnerability and attack surface management, powered by Tenable and delivered by Sophos experts",
+    bestFor: "Recommended · Powered by Tenable · Continuous Exposure Management",
     description:
-      "Sophos Managed Risk is a fully managed continuous vulnerability management and external attack surface monitoring service powered by Secureworks. Risk is ranked by real-world exploitability via the Counter Threat Unit (CTU) and Sophos X-Ops, not by raw CVSS scores. Closed-loop integration with Sophos MDR and Taegis SIEM turns findings into detection rules. For UAE banks, ministries, energy and healthcare estates that want exposure management delivered as an outcome rather than another tool to operate, Sophos Managed Risk is the natural recommendation.",
+      "Sophos Managed Risk is a fully managed service, powered by Tenable, that continuously discovers exposures across your attack surface and helps you prioritise and reduce risk. Sophos experts flag high-risk exposures, rescan when new exploits appear or a vulnerability's risk changes, and guide remediation. It is offered as a managed service option for Sophos MDR customers. For UAE banks, ministries, energy and healthcare estates that want exposure management as an outcome, not another tool to run, it is our recommended choice.",
     keyStats: [
       { label: "Service model", value: "Fully managed, no in-house VM team required" },
-      { label: "Engine", value: "Powered by Secureworks (acquired by Sophos)" },
-      { label: "Intelligence", value: "Counter Threat Unit, 150+ tracked threat actors" },
-      { label: "Integration", value: "Closed-loop with Sophos MDR + Taegis SIEM" },
+      { label: "Engine", value: "Powered by Tenable" },
+      { label: "Intelligence", value: "Sophos X-Ops threat intelligence" },
+      { label: "Integration", value: "Works alongside Sophos MDR" },
     ],
     whyWinsIntro: {
       label: "Sophos Managed Risk Highlights",
@@ -91,8 +91,8 @@ export const vmVendors: Record<string, VmVendor> = {
         "Sophos Managed Risk is most compelling when the buying question is 'who runs my vulnerability programme' rather than 'which scanner do I license.' For UAE customers without dedicated VM engineers, or those tired of CVSS-driven backlog spirals, the service delivers prioritised remediation guidance based on what's actually being exploited. For mature in-house VM teams who want to operate the scanner themselves, Tenable, Qualys or Rapid7 are typically the better fit.",
       stats: [
         { value: "Managed", label: "fully managed continuous VM + external ASM, no in-house VM engineers required", tone: "emerald" },
-        { value: "CTU", label: "Counter Threat Unit ranks risk by real exploitability, not CVSS theory", tone: "violet" },
-        { value: "Closed-loop", label: "findings auto-feed Sophos MDR and Taegis SIEM detection rules", tone: "sky" },
+        { value: "Tenable", label: "vulnerability scanning technology behind the service", tone: "violet" },
+        { value: "Rescans", label: "run when new exploits appear or a vulnerability's risk changes", tone: "sky" },
       ],
     },
     strengths: [
@@ -107,8 +107,8 @@ export const vmVendors: Record<string, VmVendor> = {
         tag: "Real exploitability",
         icon: "activity",
         tone: "violet",
-        title: "CTU-ranked, not CVSS-ranked",
-        desc: "Vulnerabilities are prioritised by what the Counter Threat Unit and Sophos X-Ops see being actively exploited in the wild, not by theoretical CVSS scores. Cuts the noise that consumes most in-house VM programmes.",
+        title: "Exploit-ranked, not CVSS-ranked",
+        desc: "Vulnerabilities are prioritised by what Sophos X-Ops see being actively exploited in the wild, not by theoretical CVSS scores. Cuts the noise that consumes most in-house VM programmes.",
       },
       {
         tag: "External ASM",
@@ -118,25 +118,18 @@ export const vmVendors: Record<string, VmVendor> = {
         desc: "Continuous external attack surface monitoring is bundled, discovering shadow IT, forgotten subdomains, exposed admin panels, expired certificates, leaked credentials. Same SOC team operates both internal VM and external ASM.",
       },
       {
-        tag: "Closed-loop SOC",
-        icon: "layers",
-        tone: "amber",
-        title: "Findings auto-feed Sophos MDR + Taegis SIEM",
-        desc: "Critical vulnerabilities and exposure events drive new detection rules inside Sophos MDR and Taegis SIEM. Unique closed-loop pattern: exposure management informs detection, detection telemetry informs exposure prioritisation.",
-      },
-      {
-        tag: "Secureworks heritage",
+        tag: "Tenable technology",
         icon: "barChart",
         tone: "rose",
-        title: "20+ years of vulnerability and threat intelligence",
-        desc: "Powered by Secureworks, which Sophos acquired for USD 859M. Brings 20+ years of CTU vulnerability tracking, breach-investigation context and intelligence on 150+ tracked threat groups into the managed VM service.",
+        title: "Proven scanning, run for you by Sophos",
+        desc: "Built on Tenable vulnerability management technology, operated for you by Sophos.",
       },
       {
         tag: "Sophos Advisory",
         icon: "list",
         tone: "slate",
         title: "Sophos Advisory Services for offensive testing",
-        desc: "Companion service for intelligence-led pentesting, web application security testing and 24/7 emergency incident response. Findings feed directly into Sophos MDR and Taegis SIEM detection rules, every test becomes a permanent detection upgrade.",
+        desc: "Companion service for intelligence-led pentesting, web application security testing and 24/7 emergency incident response.",
       },
     ],
     watchOuts: [
@@ -146,7 +139,7 @@ export const vmVendors: Record<string, VmVendor> = {
       },
       {
         title: "Synchronized value strongest within the Sophos stack",
-        desc: "The closed-loop integration with Sophos MDR and Taegis SIEM is unique to the Sophos ecosystem. Customers running a different MDR or SIEM still benefit from the managed service but lose the auto-detection-rule pattern. For non-Sophos SOC estates, Tenable or Qualys with native SIEM integrations may match better operationally.",
+        desc: "The service is simplest to run alongside Sophos MDR. Customers on another MDR still get the managed service and remediation guidance.",
       },
     ],
     bestFitProfile: [
@@ -159,14 +152,13 @@ export const vmVendors: Record<string, VmVendor> = {
       "Organisations consolidating multiple security tools under one managed-outcome relationship",
     ],
     products: [
-      { model: "Sophos Managed Risk", segment: "Managed VM + ASM", role: "Fully managed continuous VM and external attack surface monitoring" },
-      { model: "Sophos Managed Risk + Sophos MDR (bundle)", segment: "Managed VM + SOC", role: "Closed-loop VM + 24/7 MDR, recommended pattern" },
-      { model: "Sophos Advisory Services", segment: "Offensive testing", role: "Intelligence-led pentesting, web app security, emergency IR" },
-      { model: "Secureworks Taegis SIEM (companion)", segment: "SIEM", role: "Detection rules auto-fed by Managed Risk findings" },
-      { model: "Sophos X-Ops Threat Intelligence", segment: "Intel", role: "150+ tracked threat groups feeding exploitability scoring" },
+      { model: "Sophos Managed Risk", segment: "Managed VM + ASM", role: "Fully managed vulnerability and external attack surface management, powered by Tenable" },
+      { model: "Sophos Managed Risk + Sophos MDR", segment: "Managed VM + SOC", role: "Exposure management alongside 24/7 MDR (recommended)" },
+      { model: "Sophos Advisory Services", segment: "Offensive testing", role: "Pentesting, web app testing, incident response services" },
+      { model: "Sophos Next-Gen SIEM", segment: "SIEM", role: "Log collection and analysis across Sophos and third-party tools" },
     ],
     whyArtiflex:
-      "Artiflex IT is a Platinum Sophos Partner delivering Sophos Managed Risk end-to-end for UAE banks, ministries, energy and healthcare customers. Our team has hands-on experience with full-stack Sophos deployments, Endpoint, Firewall, MDR and Managed Risk, and operates the closed-loop integration patterns that make exposure management auto-feed detection rules. Vendor-neutral sizing is our default; we will tell you when Tenable, Qualys or Rapid7 is the stronger fit for mature in-house VM teams.",
+      "Artiflex IT is a Platinum Sophos Partner delivering Sophos Managed Risk end-to-end for UAE banks, ministries, energy and healthcare customers. Our team has hands-on experience with full-stack Sophos deployments, Endpoint, Firewall, MDR and Managed Risk. Vendor-neutral sizing is our default; we will tell you when Tenable, Qualys or Rapid7 is the stronger fit for mature in-house VM teams.",
     faqs: [
       {
         question: "Sophos Managed Risk versus running Tenable or Qualys ourselves?",
@@ -181,17 +173,17 @@ export const vmVendors: Record<string, VmVendor> = {
       {
         question: "How does Sophos Managed Risk prioritise vulnerabilities?",
         answer:
-          "Findings are ranked by real exploitability, what the Counter Threat Unit and Sophos X-Ops observe being actively exploited in current attacks. CVSS scores are visible but not the primary ranking signal. This dramatically reduces remediation backlogs versus CVSS-only programmes that flag every high-CVSS finding equally.",
+          "Findings are ranked by real exploitability, what Sophos X-Ops observe being actively exploited in current attacks. CVSS scores are visible but not the primary ranking signal. This dramatically reduces remediation backlogs versus CVSS-only programmes that flag every high-CVSS finding equally.",
       },
       {
         question: "Can Managed Risk findings drive Sophos MDR detections automatically?",
         answer:
-          "Yes. Exposure events and critical vulnerabilities flow into Sophos MDR and Taegis SIEM as new detection rules. Closed-loop pattern: VM informs detection, detection telemetry informs VM prioritisation. Unique to the Sophos stack, non-Sophos SOC estates lose this auto-detection-rule pattern but still get the managed VM outcomes.",
+          "Managed Risk is offered as a managed service option for Sophos MDR customers, and Sophos experts share high-risk exposures with you. Ask us about how findings are shared with your MDR team.",
       },
       {
         question: "What is Sophos Advisory Services?",
         answer:
-          "Companion offensive-security service powered by Secureworks expertise, intelligence-led pentesting, web application security testing and 24/7 emergency incident response. Findings feed directly into Sophos MDR and Taegis SIEM detection rules. Every test becomes a permanent detection upgrade rather than a one-time PDF report.",
+          "Companion offensive-security service: intelligence-led pentesting, web application security testing and 24/7 emergency incident response.",
       },
     ],
     whatIs: {
@@ -199,24 +191,22 @@ export const vmVendors: Record<string, VmVendor> = {
       titlePrefix: "Vulnerability management for the ",
       titleHighlight: "exploit-driven era",
       bodyParagraphs: [
-        "Sophos Managed Risk combines Secureworks' 20+ years of vulnerability intelligence with a Sophos-operated SOC delivery model. Discovery, scanning, prioritisation, ticketing and remediation guidance are all delivered as a managed outcome rather than a tool you operate.",
-        "Where legacy VM programmes ranked every high-CVSS finding equally and produced 50,000-item backlogs that nobody worked through, Managed Risk ranks by actual exploitability, what the Counter Threat Unit and Sophos X-Ops see being weaponised right now. Most enterprises see their actionable-finding count drop by an order of magnitude versus CVSS-only scoring.",
-        "For UAE buyers, the platform's headline value is closed-loop SOC operations. Vulnerability findings auto-generate Sophos MDR and Taegis SIEM detection rules. Detection telemetry auto-informs vulnerability prioritisation. This is the pattern that elevates Managed Risk above standalone VM platforms, and is why it pairs naturally with Sophos MDR for UAE customers seeking exposure-plus-detection as one outcome.",
+        "Sophos Managed Risk combines Tenable's vulnerability scanning technology with Sophos's managed-service team. Discovery, scanning, prioritisation, ticketing and remediation guidance are all delivered as a managed outcome rather than a tool you operate.",
+        "Where legacy VM programmes ranked every high-CVSS finding equally and produced large backlogs that nobody worked through, Managed Risk ranks by actual exploitability, what Sophos X-Ops see being weaponised right now.",
       ],
       feature: {
-        titleLine1: "CTU exploitability scoring",
-        titleLine2: "not CVSS theory",
-        body: "The Counter Threat Unit tracks 150+ named threat actors and monitors exploit activity in real time. Sophos Managed Risk prioritises findings by what's actually being exploited, not by theoretical CVSS scores. Critical for UAE customers who can't credibly remediate every high-CVSS finding, the right answer is to fix the small number that actually matter.",
+        titleLine1: "Risk-based",
+        titleLine2: "prioritisation",
+        body: "Sophos experts prioritise findings by real-world risk and exploitability, not CVSS score alone, so your team fixes the small number of exposures that matter most.",
       },
       capabilities: [
-        "Continuous internal vulnerability management",
-        "External Attack Surface Management (ASM)",
-        "CTU-ranked real-exploitability scoring",
-        "Remediation guidance with priority context",
-        "Closed-loop with Sophos MDR + Taegis SIEM",
-        "Sophos X-Ops threat intelligence integration",
-        "Sophos Advisory Services (offensive testing)",
-        "Powered by Secureworks heritage",
+        "Continuous vulnerability management",
+        "External attack surface management",
+        "Risk-based prioritisation",
+        "Notification of high-risk exposures",
+        "Rescans when new exploits appear",
+        "Remediation guidance from Sophos experts",
+        "Powered by Tenable",
       ],
     },
     deploymentOptions: {
@@ -225,8 +215,8 @@ export const vmVendors: Record<string, VmVendor> = {
       intro: "sized by SOC maturity, asset footprint and combined-service scope.",
       options: [
         { icon: "cloud", title: "Managed Risk (standalone)", body: "Fully managed VM + ASM as a standalone outcome. Right starting point for customers wanting exposure management as an outcome without committing to broader Sophos SOC services." },
-        { icon: "virtual", title: "Managed Risk + Sophos MDR (recommended)", body: "Closed-loop pattern: VM findings drive MDR detection rules; MDR telemetry informs VM prioritisation. Most UAE customers run this combined pattern for the strongest operational outcome." },
-        { icon: "hardware", title: "Managed Risk + MDR + Sophos Advisory", body: "Full Sophos exposure-and-detection stack: continuous VM, ASM, 24/7 MDR plus intelligence-led offensive testing. Findings from every layer feed detection rules. Recommended for ministries, banks and critical-infrastructure estates." },
+        { icon: "virtual", title: "Managed Risk + Sophos MDR (recommended)", body: "Most UAE customers run this combined pattern for the strongest operational outcome." },
+        { icon: "hardware", title: "Managed Risk + MDR + Sophos Advisory", body: "Full Sophos exposure-and-detection stack: continuous VM, ASM, 24/7 MDR plus intelligence-led offensive testing. Recommended for ministries, banks and critical-infrastructure estates." },
       ],
     },
     extraSections: [
@@ -234,23 +224,23 @@ export const vmVendors: Record<string, VmVendor> = {
         eyebrow: "Sophos Advisory Services",
         title: "Five engagements that test what scanners cannot",
         description:
-          "Powered by Secureworks expertise: intelligence-led pentesting, web application security and 24/7 emergency incident response. Findings feed directly into your Sophos MDR and Taegis SIEM detection rules.",
+          "Sophos Advisory Services is a separate professional service for penetration testing, web application security testing and incident response services.",
         items: [
-          { title: "External Penetration Testing", desc: "Black-box simulation of a real-world attacker breaching from the outside. Tests internet-facing systems, web applications, VPN gateways, email servers and DNS infrastructure. Critical and high-severity findings are re-tested within 90 days at no extra cost." },
+          { title: "External Penetration Testing", desc: "Black-box simulation of a real-world attacker breaching from the outside. Tests internet-facing systems, web applications, VPN gateways, email servers and DNS infrastructure." },
           { title: "Internal Penetration Testing", desc: "Insider-threat and post-perimeter-breach simulation. Tests lateral movement, privilege escalation, credential harvesting, pass-the-hash, Kerberoasting and access to finance, HR, IP repositories and backup infrastructure." },
           { title: "Wireless Network Penetration Testing", desc: "Assesses Wi-Fi infrastructure for rogue APs, 802.11 protocol weaknesses, WPA2 / WPA3 implementation, guest-network isolation and shadow IT wireless devices. Covers PCI-DSS and ISO 27001 wireless control requirements." },
           { title: "Web Application Security Assessment", desc: "Comprehensive OWASP Top 10 testing, REST and SOAP API security, authentication and session management, MFA bypass and business-logic flaws unique to your application's workflow that automated scanners cannot detect." },
-          { title: "Sophos Emergency Incident Response", desc: "On-demand 24/7/365 access to a combined Sophos and Secureworks IR team. Hourly billed, no minimum commitment. Triage, containment, adversary eviction, recovery, ransom-negotiation support and post-incident hardening." },
+          { title: "Sophos Emergency Incident Response", desc: "On-demand 24/7/365 access to the Sophos Incident Response team. Triage, containment, adversary eviction, recovery, ransom-negotiation support and post-incident hardening." },
         ],
       },
       {
         eyebrow: "Why Sophos Advisory outperforms",
         title: "Why Sophos Advisory outperforms generic testing firms",
         items: [
-          { title: "Counter Threat Unit (CTU)", desc: "150+ threat groups tracked in real time. Advisory testers know exactly which TTPs are actively targeting your industry today, not last year's threat landscape." },
-          { title: "20+ Years IR Experience", desc: "Thousands of real breach investigations inform how Sophos testers simulate adversary behaviour. Testing is grounded in actual attack patterns, not textbook theory." },
-          { title: "Taegis SIEM Integration", desc: "After a penetration test, findings can be directly mapped to Taegis detection rules. Advisory services create permanent detection improvements, not just a PDF report." },
-          { title: "Threat Intelligence Library", desc: "Access to Secureworks' proprietary intelligence covering 300,000+ malware indicators and adversary infrastructure, informing realistic attack-simulation scenarios." },
+          { title: "Counter Threat Unit (CTU)", desc: "Advisory testers know exactly which TTPs are actively targeting your industry today, not last year's threat landscape." },
+          { title: "Incident response experience", desc: "Thousands of real breach investigations inform how Sophos testers simulate adversary behaviour. Testing is grounded in actual attack patterns, not textbook theory." },
+          { title: "Sophos Next-Gen SIEM", desc: "Customers using Sophos Next-Gen SIEM can bring test findings into their security operations." },
+          { title: "Threat Intelligence Library", desc: "Access to Sophos threat intelligence, including the former Secureworks research covering malware indicators and adversary infrastructure, informing realistic attack-simulation scenarios." },
           { title: "Global Incident Response", desc: "Sophos advisory testers have backgrounds spanning active incident response. They test your defences the same way they have seen attackers breach real organisations." },
           { title: "Compliance Framework Expertise", desc: "Deep experience in regulated sectors (banking, healthcare, government). Engagements align directly to PCI-DSS, ISO 27001, HIPAA and NESA control requirements." },
         ],

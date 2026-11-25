@@ -633,6 +633,13 @@ export default function FirewallVendorDetail() {
       {/* SIZING GUIDE */}
       <section id="sizing" className="relative bg-slate-50 py-16 sm:py-24">
         <div className="shell">
+          {vendor.whatsNew && (
+            <div className="mb-10 max-w-3xl border-l-2 border-[#28B5E1]/30 pl-5">
+              <p className="text-base leading-relaxed text-slate-700 sm:text-lg">
+                {vendor.whatsNew}
+              </p>
+            </div>
+          )}
           <div className="max-w-3xl">
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#1B8AC7]">
               Sizing guide
@@ -664,6 +671,9 @@ export default function FirewallVendorDetail() {
               </div>
             ))}
           </div>
+          {vendor.sizingNote && (
+            <p className="mt-4 text-xs text-slate-500 sm:text-sm">{vendor.sizingNote}</p>
+          )}
         </div>
       </section>
 

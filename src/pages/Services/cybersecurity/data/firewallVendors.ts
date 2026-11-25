@@ -47,6 +47,10 @@ export type FirewallVendor = {
   watchOuts: { title: string; desc: string }[];
   bestFitProfile: string[];
   products: { model: string; segment: string; role: string }[];
+  /** Optional one-line note rendered directly under the sizing table. */
+  sizingNote?: string;
+  /** Optional "What's new" callout rendered at the top of the sizing section. */
+  whatsNew?: string;
   whyArtiflex: string;
   faqs: { question: string; answer: string }[];
 
@@ -74,21 +78,21 @@ export const firewallVendors: Record<string, FirewallVendor> = {
     slug: "sophos-xgs",
     metaTitle: "Sophos XGS Firewall in Dubai & UAE | Artiflex IT",
     metaDescription:
-      "Sophos XGS firewall in Dubai and the UAE with best-in-class TLS 1.3 inspection and single-pane management. Artiflex handles sizing, deployment and 24/7 support.",
+      "Sophos XGS firewall in Dubai and the UAE with high-performance TLS 1.3 inspection and single-pane management. Artiflex handles sizing, deployment and 24/7 support.",
     name: "Sophos XGS",
     logo: "/logos/sophos.svg",
-    tagline: "Best-in-class TLS 1.3 inspection with single-pane operations",
+    tagline: "High-performance TLS 1.3 inspection with single-pane operations",
     bestFor: "Best Overall Value (Recommended)",
     description:
-      "Sophos XGS combines Astaro's German UTM heritage with Cyberoam's identity-aware policy engine and Sophos's Synchronized Security automation. The Xstream architecture inspects TLS 1.3 traffic at line rate without crippling throughput, a problem that catches most other vendors at decryption scale. For UAE mid-market and enterprise environments, XGS regularly delivers the best balance of prevention, manageability, and total cost of ownership.",
+      "Sophos XGS combines Astaro's German UTM heritage with Cyberoam's identity-aware policy engine and Sophos's Synchronized Security automation. The Xstream architecture accelerates trusted traffic so more capacity is left for TLS 1.3 inspection. For UAE mid-market and enterprise environments, XGS regularly delivers the best balance of prevention, manageability, and total cost of ownership.",
     keyStats: [],
     whyWinsIntro: {
       label: "Sophos Firewall Highlights",
       title: "A firewall built for how threats actually move today",
       description:
-        "Most firewalls force you to choose between full inspection and full speed. The XGS does both, and then closes the gap between your firewall and your endpoints automatically.",
+        "Most firewalls force a trade-off between deep inspection and speed. XGS reduces that trade-off with Xstream acceleration, then closes the gap between your firewall and your endpoints automatically.",
       stats: [
-        { value: "100%", label: "HTTPS traffic inspected without throughput penalty", tone: "emerald" },
+        { value: "Xstream FastPath", label: "trusted traffic accelerated, so more capacity is left for TLS inspection", tone: "emerald" },
         { value: "Seconds", label: "to automatic host isolation on endpoint compromise", tone: "violet" },
         { value: "1 console", label: "for firewall, endpoint, email, MDR, Wi-Fi and workspace", tone: "sky" },
       ],
@@ -97,8 +101,8 @@ export const firewallVendors: Record<string, FirewallVendor> = {
       {
         tag: "Xstream FastPath",
         icon: "shield",
-        title: "TLS 1.3 inspection at line rate",
-        desc: "Most NGFWs drop 60-80% of throughput the moment TLS inspection is enabled. Sophos offloads decryption into hardware-accelerated streams, so you inspect 100% of HTTPS traffic without needing a unit two sizes larger.",
+        title: "More capacity for TLS 1.3 inspection",
+        desc: "Sophos Xstream architecture offloads trusted traffic to the FastPath and flow processors, keeping CPU capacity for deep inspection, including TLS 1.3. We size every appliance on its published TLS-inspection throughput, not the headline firewall number.",
       },
       {
         tag: "Security Heartbeat",
@@ -113,22 +117,22 @@ export const firewallVendors: Record<string, FirewallVendor> = {
         desc: "Inherited from Cyberoam, every policy decision is tied to a user identity. Policies follow people across BYOD, VPN, and remote work, no rewrites when someone changes desks, devices, or locations.",
       },
       {
-        tag: "Sophos Central",
+        tag: "Sophos Fusion (formerly Sophos Central)",
         icon: "monitor",
         title: "One console for your entire security stack",
         desc: "Firewall, endpoints, email, MDR, Wi-Fi and workspace protection, managed from a single cloud console with one credential and one alert pipeline. For lean IT teams, this replaces three or four vendor portals overnight.",
       },
       {
-        tag: "RED appliances",
+        tag: "SD-RED appliances",
         icon: "server",
         title: "Branch sites with zero on-site IT",
-        desc: "Sophos RED devices ship pre-configured and tunnel all branch traffic to your central XGS. Plug it in, and the same identity-based policies as HQ are instantly enforced, no local IT, no per-site licensing, no extra console.",
+        desc: "Sophos SD-RED 20 and SD-RED 60 devices ship pre-configured and tunnel all branch traffic to your central XGS. Plug it in, and the same identity-based policies as HQ are instantly enforced, no local IT, no per-site licensing, no extra console.",
       },
       {
         tag: "NDR Essentials",
         icon: "eye",
         title: "Network detection built in, at no extra cost",
-        desc: "NDR Essentials is included with every XGS. It monitors east-west and outbound traffic for lateral movement, C2 beacons, and slow-burn data exfiltration, the threats perimeter rules never catch, and surfaces them directly in Sophos Central.",
+        desc: "NDR Essentials is built into Sophos Firewall. Two AI-powered detection engines analyze traffic passing through the firewall, including encrypted traffic, to spot active adversaries, command-and-control activity and unknown threats. For full east-west visibility inside the network, add Sophos NDR.",
       },
     ],
     watchOuts: [],
@@ -137,8 +141,8 @@ export const firewallVendors: Record<string, FirewallVendor> = {
       "Existing Sophos endpoint customers who want to activate Synchronized Security automation",
       "Lean IT teams that benefit from a single cloud console rather than four vendor portals",
       "Organisations with high TLS-inspection requirements (compliance, DLP, ransomware C2 detection)",
-      "SMBs and branch offices needing zero-touch deployment via Sophos Central",
-      "Organizations having small branches looking for one time site-to-site VPN solutions can consider RED Appliances",
+      "SMBs and branch offices needing zero-touch deployment via Sophos Fusion",
+      "Organizations having small branches looking for one time site-to-site VPN solutions can consider SD-RED appliances",
       "Organizations that require extra visibility of the network and basic NDR functionality",
       "Organizations who have multiple IPSEC or SSL VPN requirement",
       "Organizations who require free in-depth and detailed reporting within appliances itself"
@@ -146,17 +150,22 @@ export const firewallVendors: Record<string, FirewallVendor> = {
     products: [
       { model: "XGS 88 / 108", segment: "SOHO / branch", role: "Up to 50 users" },
       { model: "XGS 118 / 128 / 138", segment: "Small office", role: "50–250 users" },
-      { model: "XGS 2100 / 3100", segment: "Mid-market", role: "250–1,500 users" },
-      { model: "XGS 4100 / 4500 / 5500", segment: "Enterprise", role: "1,500–5,000 users" },
-      { model: "XGS 6500 / 7500 / 8500", segment: "Large enterprise / DC", role: "5,000+ users, multi-Gbps inspection" },
+      { model: "XGS 2100 / 2300 / 2380", segment: "Mid-market", role: "250–750 users" },
+      { model: "XGS 3100 / 3300 / 3380", segment: "Upper mid-market", role: "750–1,500 users" },
+      { model: "XGS 4300 / 4500 / 4580", segment: "Enterprise", role: "1,500–5,000 users" },
+      { model: "XGS 5500 / 5580 / 6500", segment: "Large enterprise", role: "5,000+ users" },
+      { model: "XGS 7500 / 8500", segment: "Data center / campus core", role: "Multi-Gbps inspection" },
     ],
+    sizingNote: "New for November 2026: XGS 2380, 3380, 4580 and 5580, launched with Sophos Firewall v23.",
+    whatsNew:
+      "Sophos Firewall v23 adds an AI Assistant for configuration and rule drafting, a new REST API, a Generative AI web category, and Xstream Plus licensing (Xstream Protection + Sophos Workspace Protection + Enhanced Plus Support + extended reporting retention).",
     whyArtiflex:
       "Artiflex IT is a Sophos Platinum Partner, the highest tier in Sophos's UAE channel. We deliver XGS deployments end-to-end across the UAE, Oman, and Saudi Arabia: assessment, sizing, HA cluster design, identity integration with Active Directory or Azure AD, SD-WAN setup, and ongoing managed firewall services. Platinum status means escalations land directly with Sophos engineering and we have access to advance product roadmaps.",
     faqs: [
       {
         question: "How does Sophos XGS compare to Sophos XG (the previous generation)?",
         answer:
-          "XGS is a hardware refresh with the Xstream FastPath architecture, purpose-built for TLS 1.3 inspection at line rate. If you're on XG hardware approaching end-of-support, the migration path is direct: configurations port forward, and Sophos Central manages both during cutover. Expect 2 to 4 times the inspected-throughput at the same price point.",
+          "XGS is a hardware refresh with the Xstream FastPath architecture, built to accelerate trusted traffic and leave more capacity for TLS 1.3 inspection. If you're on XG hardware approaching end-of-support, the migration path is direct: configurations port forward, and Sophos Fusion manages both during cutover.",
       },
       {
         question: "Can Sophos XGS replace a UTM?",
@@ -179,7 +188,7 @@ export const firewallVendors: Record<string, FirewallVendor> = {
       titlePrefix: "Network protection built for ",
       titleHighlight: "modern threats",
       bodyParagraphs: [
-        "The Sophos XGS Series is the next-generation firewall platform engineered to deliver dramatically higher performance, deeper visibility, and stronger threat protection than any previous generation. With Xstream Architecture and dedicated Xstream Flow Processors, XGS firewalls accelerate trusted application traffic while inspecting risky traffic at line rate.",
+        "The Sophos XGS Series is the next-generation firewall platform engineered to deliver dramatically higher performance, deeper visibility, and stronger threat protection than any previous generation. With Xstream Architecture and dedicated Xstream Flow Processors, XGS firewalls accelerate trusted application traffic while giving more capacity to inspecting risky traffic.",
         "From single-site SMBs to multi-branch enterprise networks, XGS scales across 15+ appliance models, all managed through a single cloud console with built-in Synchronized Security that talks directly to Sophos endpoints.",
       ],
       feature: {
@@ -188,7 +197,7 @@ export const firewallVendors: Record<string, FirewallVendor> = {
         body: "Purpose-built flow processors offload trusted traffic so the CPU focuses entirely on threat detection, without sacrificing performance.",
       },
       capabilities: [
-        "Industry-leading TLS 1.3 deep-packet inspection",
+        "High-performance TLS 1.3 deep-packet inspection",
         "Hardware-accelerated SD-WAN and IPsec VPN",
         "Zero-day threat protection with deep learning AI",
         "Automatic threat response via Security Heartbeat",
@@ -200,8 +209,8 @@ export const firewallVendors: Record<string, FirewallVendor> = {
       intro: "Artiflex deploys XGS in whichever form factor fits your infrastructure strategy.",
       options: [
         { icon: "hardware", title: "Hardware Appliance", body: "Purpose-built XGS appliances with dedicated flow processors. Ideal for on-premise networks with predictable throughput needs." },
-        { icon: "virtual", title: "Virtual (VM)", body: "Deploy XGS as a virtual firewall on VMware ESXi, Hyper-V, KVM, or Xen. Perfect for virtualized data centers." },
-        { icon: "cloud", title: "Public Cloud", body: "Launch XGS in AWS, Azure, or GCP to protect cloud workloads with the same console and policies as your on-prem firewall." },
+        { icon: "virtual", title: "Virtual (VM)", body: "Deploy Sophos Firewall as a virtual firewall on VMware, Microsoft Hyper-V, KVM, Proxmox, Nutanix or Citrix Hypervisor. Perfect for virtualized data centers." },
+        { icon: "cloud", title: "Public Cloud", body: "Launch Sophos Firewall in AWS or Microsoft Azure from preconfigured marketplace images to protect cloud workloads with the same console and policies as your on-prem firewall." },
       ],
     },
   },

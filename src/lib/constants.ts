@@ -207,7 +207,7 @@ export const NAV_LINKS = [
               { name: "Trellix Data Loss Prevention", href: "/cybersecurity/dlp/trellix-dlp", icon: "/logos/Trellix.png" },
               { name: "Forcepoint Data Security", href: "/cybersecurity/dlp/forcepoint-dlp", icon: "/logos/forcepoint.png" },
               { name: "Microsoft Purview DLP", href: "/cybersecurity/dlp/microsoft-purview-dlp", icon: "/logos/microsoft.svg" },
-              { name: "Sophos Data Protection", href: "/cybersecurity/dlp/sophos-dlp", icon: "/logos/sophos.svg" },
+              { name: "Sophos DLP", href: "/cybersecurity/dlp/sophos-dlp", icon: "/logos/sophos.svg" },
             ],
           },
 

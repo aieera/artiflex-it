@@ -131,7 +131,7 @@ const vendors: {
     slug: "sophos-workspace-protection",
     name: "Sophos Workspace Protection",
     category: "Browser-Native SSE · Protected Browser · ZTNA",
-    best: "Recommended · Most Innovative Solution",
+    best: "Recommended",
     strength:
       "Recently launched. Bundles ZTNA, SWG, DNS security and email monitoring into one per-user licence delivered through the Sophos Protected Browser (powered by Island.io). Best-in-class Shadow IT / Shadow AI governance. Synchronized Security: a compromised endpoint loses ZTNA access automatically. Agentless BYOD.",
     watch:
@@ -268,9 +268,9 @@ const sophosAdvantages: { title: string; meaning: string }[] = [
       "Single per-user bundle covers ZTNA + SWG + DNS + email monitoring. No traditional SASE stack assembly cost.",
   },
   {
-    title: "Sophos Central unified management",
+    title: "Sophos Fusion unified management",
     meaning:
-      "Same console used for XGS Firewall, Intercept X, Email Security and Sophos MDR. Zero additional management overhead.",
+      "Same console used for XGS Firewall, Sophos Endpoint, Email Security and Sophos MDR. Zero additional management overhead.",
   },
 ];
 
@@ -391,7 +391,7 @@ const wspFeatureRows: { label: string; cells: WspFeatureCell[] }[] = [
   {
     label: "Management Simplicity",
     cells: [
-      { tier: "best", note: "Sophos Central, all products unified" },
+      { tier: "best", note: "Sophos Fusion, all products unified" },
       { tier: "strong", note: "Prisma Portal, expert needed" },
       { tier: "excellent", note: "Infinity Portal, unified all layers" },
       { tier: "strong", note: "Netskope console, cloud-native" },
@@ -464,7 +464,7 @@ const wspMatrixRows: WspMatrixRow[] = [
     label: "Ease of Management",
     type: "stars",
     cells: [
-      { stars: 5, note: "Sophos Central, all products unified" },
+      { stars: 5, note: "Sophos Fusion (formerly Sophos Central), all products unified" },
       { stars: 3, note: "Prisma Portal, expert needed" },
       { stars: 4, note: "Infinity Portal, unified layers" },
       { stars: 3, note: "Netskope console, cloud-native" },
@@ -729,7 +729,7 @@ function WorkspaceHero() {
           </p>
 
           <p className="mt-3 max-w-2xl text-xs leading-relaxed text-slate-400 sm:text-sm">
-            Sophos Workspace Protection (Most Innovative), Check Point Harmony SASE, Palo Alto Prisma Access, Netskope SSE and Microsoft Defender for Cloud Apps. Aligned to NESA, NCA ECC, ADHICS, SAMA, ISO 27001 and PDPL.
+            Sophos Workspace Protection, Check Point Harmony SASE, Palo Alto Prisma Access, Netskope SSE and Microsoft Defender for Cloud Apps. Aligned to NESA, NCA ECC, ADHICS, SAMA, ISO 27001 and PDPL.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
@@ -877,7 +877,7 @@ export default function WorkspaceProtectionSASE() {
               "Microsoft MCAS UAE",
             ],
             description:
-              "Workspace Protection services for the UAE and the wider GCC. Sophos Workspace Protection (Most Innovative), Check Point Harmony SASE, Palo Alto Prisma Access, Netskope SSE and Microsoft Defender for Cloud Apps. Zero Trust Network Access, Secure Web Gateway, Cloud Access Security Broker, Firewall-as-a-Service, Cloud DLP, Remote Browser Isolation, DNS Security and SaaS Security Posture Management. Aligned to NESA, NCA ECC, ADHICS, SAMA, ISO 27001 and PDPL.",
+              "Workspace Protection services for the UAE and the wider GCC. Sophos Workspace Protection, Check Point Harmony SASE, Palo Alto Prisma Access, Netskope SSE and Microsoft Defender for Cloud Apps. Zero Trust Network Access, Secure Web Gateway, Cloud Access Security Broker, Firewall-as-a-Service, Cloud DLP, Remote Browser Isolation, DNS Security and SaaS Security Posture Management. Aligned to NESA, NCA ECC, ADHICS, SAMA, ISO 27001 and PDPL.",
             provider: { "@type": "Organization", name: "Artiflex IT" },
             areaServed: [
               { "@type": "Country", name: "United Arab Emirates" },

@@ -933,41 +933,41 @@ export const dlpVendors: Record<string, DlpVendor> = {
 
   "sophos-dlp": {
     slug: "sophos-dlp",
-    name: "Sophos Data Protection",
-    metaTitle: "Sophos Data Protection DLP UAE | Artiflex IT",
+    name: "Sophos DLP (Endpoint & Email)",
+    metaTitle: "Sophos DLP UAE | Endpoint & Email Data Loss Prevention | Artiflex IT",
     metaDescription:
-      "Sophos Data Protection in Dubai and the UAE: endpoint and email DLP managed from Sophos Central. Deployed and managed by Artiflex IT.",
+      "Sophos DLP in Dubai and the UAE: endpoint and email DLP managed from Sophos Fusion. Deployed and managed by Artiflex IT.",
     logo: "/logos/sophos.svg",
-    tagline: "Endpoint DLP integrated with Intercept X, Sophos Email, and Sophos Central",
+    tagline: "Endpoint DLP built into Sophos Endpoint, plus DLP in Sophos Email",
     bestFor: "Best Overall Value (Recommended)",
     description:
-      "Sophos Data Protection brings DLP policy authoring, monitoring, and enforcement into the same Sophos Central console that already manages your endpoint, firewall, email, and MDR. Endpoint DLP runs as part of Intercept X, so there is no separate agent to deploy, no extra licence to track, and policy follows the user across managed devices automatically. For UAE mid-market customers already standardised on Sophos, adding Data Protection is the lowest-friction path to a real DLP capability.",
+      "Sophos DLP brings DLP policy authoring, monitoring, and enforcement into the same Sophos Fusion (formerly Sophos Central) console that already manages your endpoint, firewall, email, and MDR. Endpoint DLP runs as part of the Sophos Endpoint agent, so there is no separate agent to deploy, no extra licence to track, and policy follows the user across managed devices automatically. For UAE mid-market customers already standardised on Sophos, adding Sophos DLP is the lowest-friction path to a real DLP capability.",
     keyStats: [],
     whyWinsIntro: {
-      label: "Sophos Data Protection Highlights",
+      label: "Sophos DLP Highlights",
       title: "The right DLP for organisations that prioritise operational simplicity",
       description:
-        "Enterprise DLP platforms (Symantec, Forcepoint) deliver deeper content fingerprinting and broader policy libraries but require a dedicated DLP function to operate. Sophos Data Protection trades some depth for radical simplicity: one console, one agent, one analyst workflow. For UAE mid-market customers and lean IT teams, this is consistently the right starting point.",
+        "Enterprise DLP platforms (Symantec, Forcepoint) deliver deeper content fingerprinting and broader policy libraries but require a dedicated DLP function to operate. Sophos DLP trades some depth for radical simplicity: one console, one agent, one analyst workflow. For UAE mid-market customers and lean IT teams, this is consistently the right starting point.",
       stats: [
-        { value: "1 agent", label: "Intercept X carries DLP, EPP, EDR, and device control on every endpoint", tone: "emerald" },
-        { value: "1 console", label: "Sophos Central manages DLP alongside firewall, email, and endpoint", tone: "violet" },
+        { value: "1 agent", label: "Sophos Endpoint carries DLP, protection, EDR, and device control on every endpoint", tone: "emerald" },
+        { value: "1 console", label: "Sophos Fusion manages DLP alongside firewall, email, and endpoint", tone: "violet" },
         { value: "MDR", label: "Sophos MDR can triage DLP incidents 24x7 alongside the rest of the estate", tone: "sky" },
       ],
     },
     strengths: [
       {
-        tag: "Endpoint DLP in Intercept X",
+        tag: "Endpoint DLP in Sophos Endpoint",
         icon: "shield",
         tone: "emerald",
         title: "No separate DLP agent on managed devices",
-        desc: "DLP runs as part of Intercept X, so deployment is a policy push, not an agent rollout. The performance footprint is invisible to end users and the operational learning curve is shallow.",
+        desc: "DLP runs as part of the Sophos Endpoint agent, so deployment is a policy push, not an agent rollout. The performance footprint is invisible to end users and the operational learning curve is shallow.",
       },
       {
         tag: "Pre-built Content Control Lists",
         icon: "list",
         tone: "violet",
-        title: "PII, PCI, PHI, and regional templates ready to use",
-        desc: "Sophos ships a library of pre-built Content Control Lists covering most common regulatory frameworks (PCI, HIPAA, GDPR, UAE PDPL). Custom CCLs with regex, dictionaries, and document fingerprints are straightforward to author.",
+        title: "PII, PCI and PHI templates ready to use",
+        desc: "Sophos ships a library of pre-built Content Control Lists covering most common regulatory frameworks (such as PCI, HIPAA and GDPR). Custom CCLs with regex and dictionaries are straightforward to author.",
       },
       {
         tag: "Peripheral and device control",
@@ -980,15 +980,15 @@ export const dlpVendors: Record<string, DlpVendor> = {
         tag: "Synchronized Security",
         icon: "heartbeat",
         tone: "amber",
-        title: "DLP signals correlate with endpoint and firewall",
-        desc: "A user attempting to exfiltrate PII via web upload while the endpoint is showing compromise indicators produces one correlated incident in Sophos Central, not two disjoint alerts. Reduces analyst load materially.",
+        title: "DLP events alongside endpoint and firewall alerts",
+        desc: "DLP events appear in the same console as endpoint, firewall and email alerts, so your team investigates in one place.",
       },
       {
-        tag: "Sophos Central Data Lake",
+        tag: "Sophos Data Lake",
         icon: "server",
         tone: "rose",
         title: "DLP events alongside endpoint and firewall telemetry",
-        desc: "Every DLP event lands in the Data Lake with 90-day retention by default, queryable via the same XDR search interface as endpoint and firewall events. No separate DLP reporting tool required.",
+        desc: "Every DLP event lands in the Data Lake, queryable via the same XDR search interface as endpoint and firewall events. No separate DLP reporting tool required.",
       },
       {
         tag: "Sophos MDR coverage",
@@ -1000,7 +1000,7 @@ export const dlpVendors: Record<string, DlpVendor> = {
     ],
     watchOuts: [],
     bestFitProfile: [
-      "UAE mid-market customers already standardised on Sophos Endpoint or Sophos Central",
+      "UAE mid-market customers already standardised on Sophos Endpoint or Sophos Fusion",
       "Lean IT teams wanting DLP without staffing a dedicated DLP function",
       "Organisations needing peripheral and removable-device control alongside DLP",
       "Compliance-driven SMBs and mid-market (PCI, HIPAA, UAE PDPL) with pragmatic DLP scope",
@@ -1009,15 +1009,15 @@ export const dlpVendors: Record<string, DlpVendor> = {
       "Buyers who prefer one-vendor consolidation over best-of-breed enterprise DLP",
     ],
     products: [
-      { model: "Intercept X Advanced", segment: "SMB", role: "Endpoint DLP and peripheral control bundled in" },
-      { model: "Intercept X Advanced with XDR", segment: "Mid-market / SOC", role: "+ Data Lake search and XDR cross-product hunt" },
-      { model: "Intercept X with MDR", segment: "Lean teams", role: "+ Sophos MDR including DLP triage" },
-      { model: "Sophos Email + Encryption", segment: "Email-heavy", role: "Outbound email DLP and content-based encryption" },
-      { model: "Sophos Central Suite", segment: "Strategic", role: "Endpoint, email, firewall, DLP under one tenant" },
-      { model: "Custom CCLs and fingerprints", segment: "Compliance-heavy", role: "Document fingerprinting and custom regex for specific data types" },
+      { model: "Sophos Endpoint", segment: "Baseline", role: "Endpoint DLP, peripheral (device) control, web and application control" },
+      { model: "Sophos EDR", segment: "IT teams", role: "+ threat hunting, investigation and response" },
+      { model: "Sophos XDR", segment: "SOC teams", role: "+ cross-product detection, Data Lake search and AI Assistant" },
+      { model: "Sophos MDR", segment: "Lean teams", role: "+ 24/7 Sophos analysts, including DLP-related alerts" },
+      { model: "Sophos Email", segment: "Email-heavy", role: "Outbound email DLP and encryption" },
+      { model: "Sophos Workspace Protection", segment: "Browser data controls", role: "Protected Browser controls for copy / paste, download and upload" },
     ],
     whyArtiflex:
-      "Artiflex IT is a Sophos Platinum Partner, the highest tier in Sophos's UAE channel. We deliver Sophos Data Protection end-to-end across UAE, Oman, and Saudi Arabia: data discovery, policy authoring, CCL customisation for UAE PDPL and sector frameworks, peripheral-control rollout, MDR onboarding, and ongoing tuning. Our team has implemented DLP for banking, healthcare, and government customers across the region.",
+      "Artiflex IT is a Sophos Platinum Partner, the highest tier in Sophos's UAE channel. We deliver Sophos DLP end-to-end across UAE, Oman, and Saudi Arabia: data discovery, policy authoring, CCL customisation for UAE PDPL and sector frameworks, peripheral-control rollout, MDR onboarding, and ongoing tuning. Our team has implemented DLP for banking, healthcare, and government customers across the region.",
     faqs: [
       {
         question: "How does Sophos DLP compare to Symantec or Forcepoint?",
@@ -1027,7 +1027,7 @@ export const dlpVendors: Record<string, DlpVendor> = {
       {
         question: "Do I need a separate licence for Sophos DLP?",
         answer:
-          "Endpoint DLP and peripheral control are bundled into Intercept X Advanced and above, with no separate DLP licence. Email DLP is part of Sophos Email. The integrated licensing model is one of the biggest operational advantages versus standalone enterprise DLP.",
+          "Endpoint DLP and peripheral control are bundled into Sophos Endpoint and above, with no separate DLP licence. Email DLP is part of Sophos Email. The integrated licensing model is one of the biggest operational advantages versus standalone enterprise DLP.",
       },
       {
         question: "Can Sophos DLP cover Microsoft 365 and Google Workspace?",
@@ -1037,37 +1037,37 @@ export const dlpVendors: Record<string, DlpVendor> = {
       {
         question: "What is the typical Sophos DLP deployment lead time in the UAE?",
         answer:
-          "Standard mid-market deployments run two to four weeks: data discovery, CCL selection and tuning, peripheral-control rollout, and pilot. Customers already on Intercept X often go live faster because there is no agent rollout. We hold demo Sophos Central tenants for proof of concept.",
+          "Standard mid-market deployments run two to four weeks: data discovery, CCL selection and tuning, peripheral-control rollout, and pilot. Customers already on Sophos Endpoint often go live faster because there is no agent rollout. We hold demo Sophos Fusion tenants for proof of concept.",
       },
     ],
     whatIs: {
-      eyebrow: "What is Sophos Data Protection",
+      eyebrow: "What is Sophos DLP",
       titlePrefix: "DLP that lives where your ",
       titleHighlight: "endpoint security already lives",
       bodyParagraphs: [
-        "Sophos Endpoint DLP is built into the Intercept X agent. It inspects file content, clipboard, and peripheral activity (USB, Bluetooth, printers, removable drives) against pre-built and custom content rules, with actions ranging from log-only through block-with-justification to full prevention. Pre-built Content Control Lists cover PII, PCI, PHI, and many regional regulatory templates out of the box.",
-        "All events flow into the Sophos Central Data Lake, where they are correlated with endpoint, firewall, and email signals. Sophos MDR can take over DLP triage and response 24x7 alongside the rest of the Sophos estate, eliminating a separate DLP analyst function for lean UAE IT teams.",
+        "Sophos Endpoint DLP is built into the Sophos Endpoint agent. It inspects file content, clipboard, and peripheral activity (USB, Bluetooth, printers, removable drives) against pre-built and custom content rules, with actions ranging from log-only through block-with-justification to full prevention. Pre-built Content Control Lists cover PII, PCI, PHI, and common regulatory templates out of the box.",
+        "All events flow into the Sophos Data Lake, where they sit alongside endpoint, firewall, and email events. Sophos MDR can take over DLP triage and response 24x7 alongside the rest of the Sophos estate, eliminating a separate DLP analyst function for lean UAE IT teams.",
       ],
       feature: {
-        titleLine1: "Synchronized DLP",
-        titleLine2: "Architecture",
-        body: "DLP runs inside the Intercept X agent and reports into Sophos Central. Events correlate with endpoint, firewall, and email telemetry, and can be triaged by Sophos MDR analysts.",
+        titleLine1: "How Sophos DLP",
+        titleLine2: "works",
+        body: "DLP runs inside the Sophos Endpoint agent and reports into Sophos Fusion. Events appear alongside endpoint, firewall, and email telemetry, and can be triaged by Sophos MDR analysts.",
       },
       capabilities: [
-        "Endpoint DLP built into Intercept X, no separate agent install",
-        "Pre-built CCLs for PII, PCI, PHI, and regional templates",
+        "Endpoint DLP built into Sophos Endpoint, no separate agent install",
+        "Pre-built CCLs for PII, PCI and PHI",
         "Peripheral and removable-device control bundled in the same policy",
         "Sophos MDR-eligible: 24x7 DLP triage by Sophos analysts",
       ],
     },
     deploymentOptions: {
       eyebrow: "Deployment Options",
-      title: "Endpoint, network, or cloud-native: your call.",
-      intro: "Artiflex deploys Sophos Data Protection in whichever channel model fits your data-movement and regulatory requirements.",
+      title: "Endpoint, email, or browser: your call.",
+      intro: "Artiflex deploys Sophos DLP in whichever channel model fits your data-movement and regulatory requirements.",
       options: [
-        { icon: "hardware", title: "Endpoint DLP", body: "Agent-based DLP enforcement on Windows, macOS, and Linux, covering clipboard, peripherals, removable media, and application-level data movement." },
-        { icon: "virtual", title: "Network / Gateway DLP", body: "Outbound traffic inspection at the network perimeter or web proxy, with TLS inspection where the vendor supports it." },
-        { icon: "cloud", title: "Cloud / SaaS DLP", body: "API-mode or inline DLP for Microsoft 365, Google Workspace, Salesforce, Box, and other sanctioned SaaS apps." },
+        { icon: "hardware", title: "Endpoint DLP", body: "Agent-based DLP enforcement on Windows and macOS, covering clipboard, peripherals, removable media, and application-level data movement." },
+        { icon: "virtual", title: "Email DLP", body: "Outbound content rules and encryption in Sophos Email." },
+        { icon: "cloud", title: "Browser data controls", body: "Sophos Protected Browser limits copy, paste, download and upload of sensitive data in web and SaaS apps." },
       ],
     },
   },

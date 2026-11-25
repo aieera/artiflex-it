@@ -58,8 +58,8 @@ const mdrReasons = [
 
 const comboCards = [
   {
-    title: "World's Largest Pure-Play MDR Scale",
-    desc: "The Sophos MDR SOC sees threat patterns across 39,000+ customer environments simultaneously. When a new attack campaign targets one customer, detection is immediately applied across all environments, scale that no in-house SOC can replicate.",
+    title: "40,000+ Customer MDR Scale",
+    desc: "The Sophos MDR SOC sees threat patterns across 40,000+ customer environments simultaneously. When a new attack campaign targets one customer, detection is immediately applied across all environments, scale that no in-house SOC can replicate.",
   },
   {
     title: "Secureworks Counter Threat Unit (CTU)",
@@ -67,11 +67,11 @@ const comboCards = [
   },
   {
     title: "Endpoint + Email + Cloud + Network",
-    desc: "Sophos MDR Complete covers endpoint (Intercept X), email (Sophos Email), cloud (Sophos Cloud Optix) and network (Sophos NDR add-on), four coverage layers at mid-market MDR pricing, unique in the market.",
+    desc: "Sophos MDR Complete covers endpoint (Sophos Endpoint), email (Sophos Email), cloud workloads and network (Sophos NDR add-on), four coverage layers at mid-market MDR pricing, unique in the market.",
   },
   {
-    title: "Guaranteed Response, Not Just Alerting",
-    desc: "Sophos MDR Complete includes a guaranteed response commitment. Compromise containment, threat neutralisation and remediation guidance are delivered as part of the service, not as an add-on at extra cost.",
+    title: "Full-Scale Incident Response, Not Just Alerting",
+    desc: "Sophos MDR Complete includes full-scale incident response. Compromise containment, threat neutralisation and remediation guidance are delivered as part of the service, not as an add-on at extra cost.",
   },
 ];
 
@@ -85,7 +85,7 @@ const selectionFramework = [
   },
   {
     step: "2",
-    question: "Guaranteed response or detection + alerting?",
+    question: "Hands-on response or detection + alerting?",
     desc: "Sophos MDR Complete, CrowdStrike Falcon Complete and Secureworks MXDR all offer genuine hands-on response. Confirm the response commitment in the contract before signing.",
   },
   {
@@ -115,16 +115,16 @@ const selectionFramework = [
 const vendors = [
   {
     name: "Sophos MDR Complete",
-    best: "World's Largest Pure-Play MDR · 39,000+ Customers (Recommended #1)",
+    best: "40,000+ Customers · Recommended",
     strength:
-      "Our top MDR recommendation for UAE organisations of all sizes. 24/7 detection, investigation and guaranteed response. Coverage spans endpoint, email, cloud and network. As a Sophos Platinum Partner, Artiflex IT delivers with in-country UAE engineers, Arabic/English delivery and direct SOC escalation.",
+      "Our top MDR recommendation for UAE organisations of all sizes. 24/7 detection, investigation and full-scale incident response. Coverage spans endpoint, email, cloud and network. As a Sophos Platinum Partner, Artiflex IT delivers with in-country UAE engineers, Arabic/English delivery and direct SOC escalation.",
     watch:
       "Best for UAE organisations of any size. The price, coverage breadth and scale combination is unmatched at this tier.",
     logo: "/logos/sophos.svg",
   },
   {
     name: "Secureworks MXDR",
-    best: "CTU Threat Intel · World's Largest Pure-Play Cybersecurity (Recommended #2)",
+    best: "CTU Threat Intel · Now part of Sophos · Recommended",
     strength:
       "The Counter Threat Unit (CTU) provides proprietary adversary-tracking intelligence unique in the MDR market. Our preferred pairing with Sophos MDR for organisations facing sophisticated or nation-state threat environments.",
     watch:
@@ -133,7 +133,7 @@ const vendors = [
   },
   {
     name: "Rapid7 MDR",
-    best: "InsightIDR SIEM Backbone · IR Team Access (Recommended #3)",
+    best: "InsightIDR SIEM Backbone · IR Team Access · Recommended",
     strength:
       "Built on InsightIDR (our top recommended SIEM), Rapid7 MDR adds a 24/7 managed SOC on the same platform, same data, same interface. Includes Rapid7 Threat Command threat intelligence and IR team access.",
     watch:
@@ -206,7 +206,7 @@ const matrixRows: MatrixRow[] = [
     label: "Hands-on response",
     type: "stars",
     cells: [
-      { stars: 5, note: "Guaranteed response. SOC contains, neutralises, remediates. Hands-on IR included. CTU-backed response." },
+      { stars: 5, note: "Full-scale incident response. SOC contains, neutralises, remediates. Hands-on IR included. CTU-backed response." },
       { stars: 5, note: "Hands-on IR included. CTU-backed response." },
       { stars: 4, note: "Good hands-on response. IR team access." },
       { stars: 4, note: "Microsoft Security Experts response." },
@@ -236,7 +236,7 @@ const matrixRows: MatrixRow[] = [
     label: "Strategic Verdict",
     type: "verdict",
     cells: [
-      { recommended: true, rank: "#1", text: "Best overall for UAE. World's largest pure-play MDR, guaranteed response, broadest coverage at this price tier." },
+      { recommended: true, rank: "#1", text: "Best overall for UAE. Breach protection warranty on MDR Complete, broadest coverage at this price tier." },
       { recommended: true, rank: "#2", text: "Advanced threat intel. CTU adversary tracking; preferred pairing with Sophos MDR for sophisticated threats." },
       { recommended: true, rank: "#3", text: "Strong mid-market. 24/7 managed SOC on the InsightIDR platform with IR team access." },
       { text: "Strong for Microsoft 365 E5 estates with Defender XDR; less compelling on heterogeneous stacks." },
@@ -255,7 +255,7 @@ const featureRows: { label: string; cells: FeatureCell[] }[] = [
   {
     label: "24/7 detection coverage",
     cells: [
-      { tier: "best", note: "39,000+ customer threat correlation" },
+      { tier: "best", note: "40,000+ customer threat correlation" },
       { tier: "best", note: "CTU-backed 24/7 detection" },
       { tier: "excellent", note: "InsightIDR + SOC analysts" },
       { tier: "excellent", note: "Microsoft Security Experts" },
@@ -322,34 +322,34 @@ type DeepDive = {
 
 const vendorDeepDive: DeepDive[] = [
   {
-    rank: "Recommended · World's Largest Pure-Play MDR",
+    rank: "Recommended",
     name: "Sophos MDR Complete",
-    tagline: "39,000+ customers. 24/7 guaranteed response. Endpoint + email + cloud + network coverage. Sophos Platinum Partner via Artiflex IT.",
+    tagline: "40,000+ customers. 24/7 response, with a breach protection warranty on MDR Complete. Endpoint + email + cloud + network coverage. Sophos Platinum Partner via Artiflex IT.",
     featured: true,
     specs: [
-      { label: "Customers", value: "39,000+" },
+      { label: "Customers", value: "40,000+" },
       { label: "Coverage", value: "24/7/365" },
-      { label: "Response", value: "Guaranteed" },
+      { label: "Response", value: "Full-scale IR" },
       { label: "Partner tier", value: "Platinum (Artiflex IT)" },
       { label: "Annual cost", value: "USD 80–150K (500 users)" },
       { label: "Intelligence", value: "Sophos X-Ops + Secureworks CTU" },
     ],
     capabilities: [
       {
-        title: "Guaranteed threat response, the SOC acts on your behalf",
-        desc: "When the Sophos Threat Response team confirms a threat, they act: isolating compromised endpoints, blocking malicious traffic at the XGS Firewall, disabling compromised accounts, without waiting for approval in time-critical scenarios. This distinguishes true MDR from detection-and-alert services.",
+        title: "Full-scale incident response, the SOC acts on your behalf",
+        desc: "When the Sophos Threat Response team confirms a threat, they act: isolating compromised endpoints, blocking malicious traffic at the Sophos Firewall, disabling compromised accounts, without waiting for approval in time-critical scenarios. This distinguishes true MDR from detection-and-alert services.",
       },
       {
-        title: "Scale advantage, 39,000+ customer threat correlation",
-        desc: "The Sophos MDR SOC monitors threat signals across 39,000+ customer environments simultaneously. When a new campaign targets one customer, the detection is immediately applied across all environments, a scale no in-house SOC can replicate.",
+        title: "Scale advantage, 40,000+ customer threat correlation",
+        desc: "The Sophos MDR SOC monitors threat signals across 40,000+ customer environments simultaneously. When a new campaign targets one customer, the detection is immediately applied across all environments, a scale no in-house SOC can replicate.",
       },
       {
         title: "Broadest coverage at mid-market pricing",
-        desc: "Sophos MDR Complete covers endpoint (Intercept X), email (Sophos Email), cloud (Sophos Cloud Optix) and network (Sophos NDR add-on), all feeding the same MDR SOC via Sophos Central. This four-layer coverage at mid-market pricing is unique in the market.",
+        desc: "Sophos MDR Complete covers endpoint (Sophos Endpoint), email (Sophos Email), cloud workloads and network (Sophos NDR add-on), all feeding the same MDR SOC via Sophos Fusion (formerly Sophos Central). This four-layer coverage at mid-market pricing is unique in the market.",
       },
       {
-        title: "Secureworks CTU partnership, world-class threat intelligence",
-        desc: "The Sophos + Secureworks strategic partnership adds Secureworks Counter Threat Unit (CTU) intelligence, tracking specific threat actors, their infrastructure and campaigns, for customers who opt into the combined engagement.",
+        title: "Secureworks CTU, now part of Sophos, world-class threat intelligence",
+        desc: "Sophos's acquisition of Secureworks adds Counter Threat Unit (CTU) intelligence, tracking specific threat actors, their infrastructure and campaigns, for customers who opt into the combined engagement.",
       },
       {
         title: "Compliance reporting, NESA, CBUAE, PCI DSS, ISO 27001",
@@ -361,15 +361,15 @@ const vendorDeepDive: DeepDive[] = [
       },
     ],
     shortlist: [
-      "UAE organisations of any size (SMB to large enterprise) wanting 24/7 managed detection and guaranteed response without building an in-house SOC.",
-      "Existing Sophos endpoint customers wanting to activate full MDR on their Sophos Intercept X deployment.",
+      "UAE organisations of any size (SMB to large enterprise) wanting 24/7 managed detection and full-scale incident response without building an in-house SOC.",
+      "Existing Sophos endpoint customers wanting to activate full MDR on their Sophos Endpoint deployment.",
       "Organisations needing compliance evidence for NESA, CBUAE, ADHICS or PCI DSS as part of the service.",
       "Mid-market UAE enterprises wanting enterprise-grade MDR without an enterprise security budget.",
       "Security teams wanting network-layer MDR (Sophos NDR) without a separate vendor or console.",
     ],
     note: {
       title: "Choosing the right Sophos MDR tier",
-      body: "Sophos MDR Essentials provides 24/7 detection and notification with response led by your team. Sophos MDR Complete (our recommendation) adds guaranteed response: the SOC investigates and takes action, with full IR access. Add Sophos NDR to extend coverage to the network layer with five ML engines and Active Threat Response via the XGS Firewall.",
+      body: "Sophos MDR Essentials provides 24/7 detection and notification with response led by your team. Sophos MDR Complete (our recommendation) adds full-scale incident response: the SOC investigates and takes action, with full IR access. Add Sophos NDR to extend coverage to the network layer with five ML engines and Active Threat Response via the Sophos Firewall.",
     },
   },
   {
@@ -584,7 +584,7 @@ export default function SecurityOperationsMdr() {
         <link rel="alternate" hrefLang="x-default" href="https://artiflexit.com/cybersecurity/security-operations/mdr" />
 
         <meta property="og:title" content="Managed Detection and Response Dubai | 24/7 SOC + Hunting" />
-        <meta property="og:description" content="UAE MDR buyer's guide. Vendor comparison and Gartner-style scorecard across Sophos MDR Complete (our top pick), Secureworks MXDR, Rapid7 MDR, Microsoft Defender MDR, SentinelOne, CrowdStrike Falcon Complete and Arctic Wolf. 24/7 SOC, guaranteed response and threat hunting for UAE organisations." />
+        <meta property="og:description" content="UAE MDR buyer's guide. Vendor comparison and Gartner-style scorecard across Sophos MDR Complete (our top pick), Secureworks MXDR, Rapid7 MDR, Microsoft Defender MDR, SentinelOne, CrowdStrike Falcon Complete and Arctic Wolf. 24/7 SOC, incident response and threat hunting for UAE organisations." />
         <meta property="og:url" content="https://artiflexit.com/cybersecurity/security-operations/mdr" />
         <meta property="og:site_name" content="Artiflex Information Technology" />
         <meta property="og:type" content="website" />
@@ -608,7 +608,7 @@ export default function SecurityOperationsMdr() {
             "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" },
             "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
             "description":
-              "UAE MDR delivery across Sophos MDR Complete, Secureworks MXDR, Rapid7 MDR, Microsoft Defender MDR, SentinelOne, CrowdStrike Falcon Complete and Arctic Wolf: 24/7 SOC, guaranteed response, threat hunting and compliance reporting.",
+              "UAE MDR delivery across Sophos MDR Complete, Secureworks MXDR, Rapid7 MDR, Microsoft Defender MDR, SentinelOne, CrowdStrike Falcon Complete and Arctic Wolf: 24/7 SOC, incident response, threat hunting and compliance reporting.",
           })}
         </script>
         <script type="application/ld+json">
@@ -746,13 +746,13 @@ export default function SecurityOperationsMdr() {
               Sophos MDR + Secureworks MXDR: the best of both worlds
             </h2>
             <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
-              Sophos MDR and Secureworks have formalised a strategic partnership combining the world's largest pure-play MDR platform (39,000+ customers) with the Secureworks Counter Threat Unit (CTU) intelligence engine.
+              Sophos has completed its acquisition of Secureworks, combining the Sophos MDR platform (40,000+ customers) with the Secureworks Counter Threat Unit (CTU) intelligence engine.
             </p>
           </div>
 
           <div className="mx-auto mt-10 max-w-5xl rounded-2xl border border-emerald-200 bg-emerald-50/70 p-6 sm:p-7">
             <p className="text-sm leading-relaxed text-emerald-900 sm:text-base">
-              <span className="font-semibold">Artiflex IT recommendation:</span> For most UAE enterprises, Sophos MDR Complete is our top recommendation, outstanding value, 39,000+ customer scale and best-in-class endpoint protection bundled in. For organisations facing the most sophisticated threat actors, Sophos MDR + Secureworks MXDR delivers the most complete managed security outcome available at any price point. As a Sophos Platinum Partner and Rapid7 Partner, Artiflex IT delivers both.
+              <span className="font-semibold">Artiflex IT recommendation:</span> For most UAE enterprises, Sophos MDR Complete is our top recommendation, outstanding value, 40,000+ customer scale and best-in-class endpoint protection bundled in. For organisations facing the most sophisticated threat actors, Sophos MDR + Secureworks MXDR delivers the most complete managed security outcome available at any price point. As a Sophos Platinum Partner and Rapid7 Partner, Artiflex IT delivers both.
             </p>
           </div>
 

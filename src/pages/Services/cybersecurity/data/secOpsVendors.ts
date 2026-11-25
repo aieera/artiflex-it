@@ -14,10 +14,10 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
     metaDescription:
       "Sophos MDR Complete in Dubai and the UAE: fully managed 24/7 detection and response with a breach warranty. Deployed and managed by Artiflex IT.",
     logo: "/logos/sophos.svg",
-    tagline: "The world's most-deployed MDR, with a guaranteed breach response",
+    tagline: "24/7 managed detection and response, with a breach protection warranty on MDR Complete",
     bestFor: "Best Overall MDR (Recommended)",
     description:
-      "Sophos MDR is a fully-managed 24/7 detection and response service run by a global SOC of more than 500 analysts. With Sophos's acquisition of Secureworks now complete, the Secureworks Taegis platform and its Counter Threat Unit (CTU) intelligence join Sophos MDR in-house, creating one of the world's largest pure-play MDR operations. The Complete tier adds full-scale incident response with a breach-protection warranty: Sophos analysts do not just alert you, they take action to stop the threat. It ingests telemetry from Sophos endpoint, firewall, email, cloud and identity, plus third-party tools through the Sophos Marketplace, making it the pragmatic first choice for most UAE organisations that need a SOC without building one.",
+      "Sophos MDR is a fully-managed 24/7 detection and response service run by Sophos's global, AI-assisted security operations team. With Sophos's acquisition of Secureworks now complete, the Secureworks Taegis platform and its Counter Threat Unit (CTU) intelligence join Sophos MDR in-house, creating one of the world's largest pure-play MDR operations. The Complete tier adds full-scale incident response with a breach-protection warranty: Sophos analysts do not just alert you, they take action to stop the threat. It ingests telemetry from Sophos endpoint, firewall, email, cloud and identity, plus third-party tools through the Sophos Integrations marketplace, making it the pragmatic first choice for most UAE organisations that need a SOC without building one.",
     keyStats: [],
     whyWinsIntro: {
       label: "Sophos MDR Highlights",
@@ -25,7 +25,7 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
       description:
         "Most organisations cannot recruit, train and retain a 24/7 SOC. Sophos MDR gives you the analysts, the threat intelligence and the response actions as a service, integrated with the tools you already own. With Secureworks now part of Sophos, the Taegis platform, Counter Threat Unit intelligence and two decades of incident-response heritage are delivered in-house at greater scale.",
       stats: [
-        { value: "39,000+", label: "Organisations protected by Sophos MDR worldwide", tone: "emerald" },
+        { value: "40,000+", label: "Organisations protected by Sophos MDR worldwide", tone: "emerald" },
         { value: "+ Secureworks", label: "Taegis platform and Counter Threat Unit intelligence now in-house at Sophos", tone: "violet" },
         { value: "Warranty", label: "Breach-protection financial warranty on the Complete tier", tone: "sky" },
       ],
@@ -43,14 +43,14 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
         icon: "heartbeat",
         tone: "violet",
         title: "Tightest integration with the Sophos estate",
-        desc: "When Sophos MDR runs alongside Intercept X and XGS Firewall, a compromised host is isolated automatically through Security Heartbeat, shrinking attacker dwell time to minutes.",
+        desc: "When Sophos MDR runs alongside Sophos Endpoint and Sophos Firewall, a compromised host is isolated automatically through Security Heartbeat, shrinking attacker dwell time to minutes.",
       },
       {
         tag: "Open telemetry",
         icon: "layers",
         tone: "sky",
         title: "Works with the tools you already have",
-        desc: "The Sophos Marketplace ingests Microsoft 365, Entra ID, AWS, Google, Okta, firewalls and other EDRs, so MDR covers your whole estate, not only Sophos products.",
+        desc: "The Sophos Integrations marketplace ingests Microsoft 365, Entra ID, AWS, Google, Okta, firewalls and other EDRs, so MDR covers your whole estate, not only Sophos products.",
       },
       {
         tag: "Secureworks, now part of Sophos",
@@ -65,6 +65,13 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
         tone: "rose",
         title: "One of the world's largest MDR operations",
         desc: "Merging Sophos MDR with the Secureworks SOC, incident-response practice and Taegis analytics creates one of the largest pure-play MDR providers, adding two decades of IR heritage and adversary attribution to Sophos's existing 24/7 service.",
+      },
+      {
+        tag: "Agentic SOC",
+        icon: "activity",
+        tone: "slate",
+        title: "AI handles the volume, analysts handle the judgment",
+        desc: "Sophos MDR now runs an agentic AI operating model: Sophos reports 89 seconds from case creation to automated response, and 52% of cases closed end-to-end by AI, with analysts focused on novel threats and hunting.",
       },
     ],
     watchOuts: [],
@@ -81,6 +88,7 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
       { model: "Sophos MDR Complete", segment: "Full response", role: "Analysts take response actions on your behalf, with breach warranty" },
       { model: "Sophos XDR + MDR", segment: "Co-managed", role: "Your analysts and the Sophos SOC share the same XDR data lake" },
     ],
+    sizingNote: "Add-ons available to MDR and XDR customers include Sophos NDR and Sophos ITDR (identity threat detection and response).",
     whyArtiflex:
       "Artiflex IT is a Sophos Platinum Partner delivering Sophos MDR across the UAE, Oman and Saudi Arabia. We scope the right tier, onboard your telemetry sources (endpoint, firewall, M365, identity and cloud), tune detections to your environment, and act as your local escalation and governance layer on top of the Sophos SOC. With Secureworks now part of Sophos, we can position the combined Sophos MDR and Taegis investigation depth where adversary attribution and IR-grade response are decisive. You keep approval and oversight; we run the operational relationship.",
     faqs: [
@@ -97,7 +105,7 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
       {
         question: "Does Sophos MDR only work with Sophos products?",
         answer:
-          "No. While it integrates most tightly with Sophos Intercept X and XGS Firewall through Synchronized Security, the Sophos Marketplace ingests telemetry from Microsoft 365, Entra ID, AWS, Google Workspace, Okta and third-party EDR and firewall tools, so it covers a mixed-vendor estate.",
+          "No. While it integrates most tightly with Sophos Endpoint and Sophos Firewall through Synchronized Security, the Sophos Integrations marketplace ingests telemetry from Microsoft 365, Entra ID, AWS, Google Workspace, Okta and third-party EDR and firewall tools, so it covers a mixed-vendor estate.",
       },
       {
         question: "How fast can Sophos MDR be operational in the UAE?",
@@ -130,8 +138,8 @@ export const mdrVendors: Record<string, SecOpsVendor> = {
       title: "Cloud-delivered, your data sources.",
       intro: "Sophos MDR is consumed as a service; Artiflex connects your telemetry and runs the local relationship.",
       options: [
-        { icon: "cloud", title: "Cloud SOC service", body: "Monitoring, hunting and response delivered from the Sophos global SOC through Sophos Central. No SOC infrastructure to build or staff." },
-        { icon: "virtual", title: "Telemetry connectors", body: "Sophos endpoint and firewall plus Microsoft 365, Entra ID, AWS, Google, Okta and third-party EDR feeds via the Sophos Marketplace." },
+        { icon: "cloud", title: "Cloud SOC service", body: "Monitoring, hunting and response delivered from the Sophos global SOC through Sophos Fusion (formerly Sophos Central). No SOC infrastructure to build or staff." },
+        { icon: "virtual", title: "Telemetry connectors", body: "Sophos endpoint and firewall plus Microsoft 365, Entra ID, AWS, Google, Okta and third-party EDR feeds via the Sophos Integrations marketplace." },
         { icon: "hardware", title: "Co-managed option", body: "Sophos XDR gives your own analysts access to the same data lake, for organisations that want shared operations rather than fully outsourced." },
       ],
     },
@@ -1861,15 +1869,15 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
       "Sophos NDR in Dubai and the UAE: network detection and response that feeds the Sophos managed SOC. Deployed and managed by Artiflex IT.",
     logo: "/logos/sophos.svg",
     tagline: "Network detection that feeds the Sophos MDR and XDR ecosystem",
-    bestFor: "Best for Sophos-Standardised Estates",
+    bestFor: "Recommended",
     description:
-      "Sophos NDR adds east-west and outbound network visibility to the Sophos ecosystem, detecting threats that endpoint and firewall controls cannot see, such as rogue devices, lateral movement and slow-burn exfiltration. Its real power is integration: detections flow into Sophos XDR and the Sophos MDR SOC, where they are correlated with endpoint, firewall, email and identity signal and acted on through Synchronized Security. For organisations already on Sophos, it is the most operationally seamless way to add NDR.",
+      "Sophos NDR monitors traffic inside your network to find rogue devices, lateral movement, command-and-control activity and data exfiltration that firewalls and endpoints can't see. It is now available standalone, with deep packet inspection, IDS/IPS and an Active Inline mode that can block malicious traffic. Its real power is integration: detections flow into Sophos XDR and the Sophos MDR SOC, where they are correlated with endpoint, firewall, email and identity signal and acted on through Synchronized Security. For organisations already on Sophos, it is the most operationally seamless way to add NDR.",
     keyStats: [],
     whyWinsIntro: {
       label: "Sophos NDR Highlights",
       title: "Network visibility that plugs straight into your SOC",
       description:
-        "Standalone NDR creates another alert console. Sophos NDR sends its detections into Sophos XDR and MDR, so network threats are correlated and acted on in the same place as everything else.",
+        "Another alert console slows your team down. Sophos NDR can run on its own, and when connected to Sophos XDR and MDR, its detections are correlated and acted on in the same place as everything else.",
       stats: [
         { value: "East-west", label: "Visibility into internal lateral movement and exfiltration", tone: "emerald" },
         { value: "Sophos XDR", label: "Detections correlated with endpoint, firewall and identity", tone: "violet" },
@@ -1896,7 +1904,7 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
         icon: "monitor",
         tone: "sky",
         title: "One place for the whole stack",
-        desc: "Network detections appear in Sophos Central alongside endpoint, firewall, email and identity, so analysts investigate in a single console rather than juggling another tool.",
+        desc: "Network detections appear in Sophos Fusion (formerly Sophos Central) alongside endpoint, firewall, email and identity, so analysts investigate in a single console rather than juggling another tool.",
       },
       {
         tag: "MDR integration",
@@ -1909,7 +1917,7 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
     watchOuts: [
       {
         title: "Strongest inside the Sophos ecosystem",
-        desc: "Sophos NDR delivers the most value when correlated with Sophos endpoint, firewall and MDR. Organisations wanting a best-of-breed standalone NDR for a multi-vendor SOC sometimes prefer Vectra, Darktrace or Corelight.",
+        desc: "Sophos NDR delivers the most value when correlated with Sophos endpoint, firewall and MDR. Sophos NDR now runs standalone, but multi-vendor SOCs should still compare it with Vectra, Darktrace or Corelight on third-party integrations.",
       },
     ],
     bestFitProfile: [
@@ -1920,9 +1928,10 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
       "Sophos MDR customers enriching the managed SOC with network signal",
     ],
     products: [
-      { model: "Sophos NDR", segment: "Add-on", role: "Network detection feeding Sophos XDR and Central" },
-      { model: "Sophos XDR + NDR", segment: "Self-driven XDR", role: "Network signal correlated with endpoint, firewall and identity" },
-      { model: "Sophos MDR + NDR", segment: "Managed", role: "Network telemetry enriching the Sophos managed SOC" },
+      { model: "Sophos NDR (standalone)", segment: "Self-managed", role: "Behavioural detection, DPI and IDS/IPS, passive or Active Inline mode" },
+      { model: "Sophos XDR + NDR", segment: "Self-driven XDR", role: "Network detections correlated with endpoint, firewall, email and identity" },
+      { model: "Sophos MDR + NDR", segment: "Managed", role: "Network telemetry used by the Sophos MDR team for 24/7 response" },
+      { model: "NDR Essentials (in Sophos Firewall)", segment: "Built in", role: "AI detection on traffic passing through the firewall; no separate sensor" },
     ],
     whyArtiflex:
       "Artiflex IT, a Sophos Platinum Partner, deploys Sophos NDR as part of a unified Sophos security operations stack. We place sensors for full east-west coverage, integrate detections into Sophos XDR and MDR, and ensure network threats trigger Synchronized Security response across your estate.",
@@ -1935,7 +1944,7 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
       {
         question: "Does Sophos NDR work standalone?",
         answer:
-          "It can run as an add-on, but its value is highest inside the Sophos ecosystem, where detections are correlated in Sophos XDR, surfaced in Sophos Central and acted on by Sophos MDR with Synchronized Security automation.",
+          "Yes. Since November 2026 Sophos NDR is available as a standalone product. It adds the most value when paired with Sophos XDR, MDR or Firewall for automated response.",
       },
       {
         question: "How does it help a Sophos MDR deployment?",
@@ -1952,24 +1961,28 @@ export const ndrVendors: Record<string, SecOpsVendor> = {
         "Its differentiator is integration: detections flow into Sophos XDR and the Sophos MDR SOC, are correlated with endpoint, firewall, email and identity signal, and can trigger automated containment through Synchronized Security.",
       ],
       feature: {
-        titleLine1: "Integrated,",
-        titleLine2: "Not Standalone",
-        body: "Sophos NDR is designed to feed the wider Sophos stack, so network detections become correlated, actioned incidents in one console rather than another isolated alert feed.",
+        titleLine1: "Standalone",
+        titleLine2: "or Integrated",
+        body: "Run Sophos NDR on its own, or connect it to Sophos XDR, Sophos MDR and Sophos Firewall so network detections become correlated incidents in one console.",
       },
       capabilities: [
         "East-west and outbound network threat detection",
         "Correlation in Sophos XDR with endpoint and firewall",
         "Synchronized Security automated containment",
         "Enrichment of the Sophos MDR managed SOC",
+        "Deep packet inspection and IDS/IPS",
+        "Active Inline mode to drop malicious packets",
+        "Passive SPAN / mirror deployment with no added latency",
+        "Virtual sensor or Sophos NDR 5500 hardware appliance",
       ],
     },
     deploymentOptions: {
       eyebrow: "How it is delivered",
-      title: "Sensor plus Sophos Central.",
+      title: "Sensor plus Sophos Fusion.",
       intro: "Artiflex places sensors and integrates with your Sophos stack.",
       options: [
-        { icon: "hardware", title: "Network sensor", body: "Sensor on a tap or SPAN port captures east-west and outbound traffic." },
-        { icon: "cloud", title: "Sophos Central", body: "Detections surface in Sophos Central and Sophos XDR alongside the rest of the stack." },
+        { icon: "hardware", title: "Network sensor", body: "Passive virtual sensor on a SPAN / mirror port (VMware, Hyper-V or AWS), or the Sophos NDR 5500 hardware appliance. Active Inline mode is available for blocking." },
+        { icon: "cloud", title: "Sophos Fusion", body: "Detections surface in Sophos Fusion and Sophos XDR alongside the rest of the stack." },
         { icon: "virtual", title: "MDR enrichment", body: "Network signal feeds the Sophos MDR SOC for correlated, managed response." },
       ],
     },

@@ -493,6 +493,9 @@ export default function SecOpsVendorDetail() {
                 </div>
               ))}
             </div>
+            {vendor.sizingNote && (
+              <p className="mt-4 text-xs text-slate-500 sm:text-sm">{vendor.sizingNote}</p>
+            )}
           </div>
         </section>
       )}

@@ -10,7 +10,7 @@ import { useContactModal } from "@/components/layout/ContactModal";
 
 const ndrPlatforms = [
   { slug: "linkshadow", name: "LinkShadow", rank: "UAE-Founded", featured: true, logo: "/logos/LinkShadow.png" },
-  { slug: "sophos-ndr", name: "Sophos NDR Add-on", logo: "/logos/sophos.svg" },
+  { slug: "sophos-ndr", name: "Sophos NDR", logo: "/logos/sophos.svg" },
   { slug: "darktrace", name: "Darktrace / NETWORK", logo: "/logos/Darktrace.png" },
   { slug: "vectra", name: "Vectra AI", logo: "/logos/Vectra.png" },
   { slug: "extrahop", name: "ExtraHop RevealX", logo: "/logos/ExtraHop.png" },
@@ -52,8 +52,8 @@ const ndrReasons = [
 
 const comboCards = [
   {
-    title: "Native Sophos Central Integration",
-    desc: "NDR detections feed directly into Sophos Central, the same console as Sophos Intercept X, Sophos Firewall and Sophos MDR. One alert pipeline, one investigation workflow, one SOC team.",
+    title: "Native Sophos Fusion Integration",
+    desc: "NDR detections feed directly into Sophos Fusion (formerly Sophos Central), the same console as Sophos Endpoint, Sophos Firewall and Sophos MDR. One alert pipeline, one investigation workflow, one SOC team.",
   },
   {
     title: "Five Complementary ML Engines",
@@ -61,7 +61,7 @@ const comboCards = [
   },
   {
     title: "Active Threat Response via XGS",
-    desc: "When NDR detects a compromised host, it pushes an automated response to the Sophos XGS Firewall, instantly isolating that host. Containment in seconds, no manual intervention required.",
+    desc: "When NDR detects a compromised host, it pushes an automated response to the Sophos Firewall, instantly isolating that host. Containment in seconds, no manual intervention required.",
   },
   {
     title: "Fraction of Standalone NDR Cost",
@@ -69,7 +69,7 @@ const comboCards = [
   },
   {
     title: "NDR Essentials Free, XGS v21.5+",
-    desc: "Sophos XGS Firewall customers with Xstream Protection get NDR Essentials at no additional cost from firmware v21.5 onwards, immediate network-layer detection at zero extra cost.",
+    desc: "Sophos Firewall customers with Xstream Protection get NDR Essentials at no additional cost from firmware v21.5 onwards, immediate network-layer detection at zero extra cost.",
   },
   {
     title: "Unmanaged Device Discovery",
@@ -103,12 +103,12 @@ const selectionFramework = [
   {
     step: "5",
     question: "Autonomous response required?",
-    desc: "Darktrace Antigena is the most mature autonomous response. Sophos NDR Active Threat Response via the XGS Firewall is excellent for Sophos environments.",
+    desc: "Darktrace Antigena is the most mature autonomous response. Sophos NDR Active Threat Response via the Sophos Firewall is excellent for Sophos environments.",
   },
   {
     step: "6",
     question: "Standalone NDR or integrated XDR?",
-    desc: "Standalone: Vectra AI, Darktrace, LinkShadow. Integrated: Sophos NDR (via Central XDR). Integrated means operational simplicity; standalone means detection depth.",
+    desc: "Standalone: Vectra AI, Darktrace, LinkShadow, and Sophos NDR (since November 2026). Integrated: Sophos NDR (via Sophos XDR). Integrated means operational simplicity; standalone means detection depth.",
   },
 ];
 
@@ -117,7 +117,7 @@ const selectionFramework = [
 const vendors = [
   {
     name: "LinkShadow",
-    best: "UAE-Founded NDR · Regional Recommendation (Recommended #1)",
+    best: "UAE-Founded NDR · Regional Recommendation · Recommended",
     strength:
       "The only major NDR platform born in the Middle East, founded in Dubai in 2017 and built for GCC enterprise environments. Unsupervised ML detection with no signatures, NESA/CBUAE/ADHICS compliance built into the product, native Arabic-language delivery and an in-country support team operating in UAE time zones.",
     watch:
@@ -128,7 +128,7 @@ const vendors = [
     name: "Sophos NDR + MDR Complete",
     best: "Best Value · Sophos MDR + NDR (Recommended)",
     strength:
-      "The network detection add-on to Sophos MDR Complete, using five complementary ML engines feeding directly into Sophos Central. Active Threat Response auto-isolates compromised hosts via the XGS Firewall. NDR Essentials is free for XGS Xstream customers from firmware v21.5.",
+      "Network detection available as an add-on to Sophos MDR Complete or, since November 2026, as a standalone product, using five complementary ML engines feeding directly into Sophos Fusion. Active Threat Response auto-isolates compromised hosts via the Sophos Firewall. NDR Essentials is free for XGS Xstream customers from firmware v21.5.",
     watch:
       "Best for UAE organisations running Sophos MDR Complete who want network-layer detection in the same SOC and console at a fraction of standalone NDR cost.",
     logo: "/logos/sophos.svg",
@@ -195,7 +195,7 @@ const matrixRows: MatrixRow[] = [
     type: "text",
     cells: [
       "UAE-founded 2017. Dubai HQ. AI-native NDR built for GCC enterprise.",
-      "Sophos NDR add-on. 5 ML engines. Native Sophos Central + MDR.",
+      "Sophos NDR add-on. 5 ML engines. Native Sophos Fusion + MDR.",
       "Founded 2013. Self-Learning AI. Largest NDR market share globally.",
       "Founded 2012. Gartner Leader, highest execution. Customers' Choice 2024.",
       "Founded 2007. Broadcom 2023. NDR + NPM. Full-packet forensics.",
@@ -386,10 +386,10 @@ const vendorDeepDive: DeepDive[] = [
   {
     rank: "Best Value NDR · Sophos MDR + NDR",
     name: "Sophos NDR + MDR Complete",
-    tagline: "Best-value network detection. 5 ML engines. Native Sophos Central. Fraction of standalone NDR cost.",
+    tagline: "Best-value network detection. 5 ML engines. Native Sophos Fusion. Fraction of standalone NDR cost.",
     specs: [
       { label: "Detection", value: "Five ML engines" },
-      { label: "Integration", value: "Native Sophos Central" },
+      { label: "Integration", value: "Native Sophos Fusion" },
       { label: "Response", value: "Active Threat Response (XGS)" },
       { label: "Cost vs standalone", value: "Small fraction" },
       { label: "NDR Essentials", value: "Free with XGS v21.5+" },
@@ -401,20 +401,20 @@ const vendorDeepDive: DeepDive[] = [
         desc: "AI encrypted-traffic analysis, DGA detector, session-pattern analysis, behavioural risk analytics and rule-based IOC detection, five engines running simultaneously, each covering threat scenarios the others may miss.",
       },
       {
-        title: "Native Sophos Central integration, one console, one SOC team",
-        desc: "NDR detections feed directly into Sophos Central, the same console as Sophos Intercept X, Sophos Firewall and Sophos MDR. No separate NDR console, no context loss, no separate alert queue.",
+        title: "Native Sophos Fusion integration, one console, one SOC team",
+        desc: "NDR detections feed directly into Sophos Fusion, the same console as Sophos Endpoint, Sophos Firewall and Sophos MDR. No separate NDR console, no context loss, no separate alert queue.",
       },
       {
-        title: "Active Threat Response, automated containment via XGS Firewall",
-        desc: "When Sophos NDR identifies a compromised host, it pushes a response command to the Sophos XGS Firewall, immediately isolating that host. Containment in seconds, no SOAR playbook, no human intervention required.",
+        title: "Active Threat Response, automated containment via Sophos Firewall",
+        desc: "When Sophos NDR identifies a compromised host, it pushes a response command to the Sophos Firewall, immediately isolating that host. Containment in seconds, no SOAR playbook, no human intervention required.",
       },
       {
         title: "Fraction of standalone enterprise NDR cost",
         desc: "Vectra AI and Darktrace standalone NDR cost USD 60,000 to 250,000+ annually. Sophos NDR as an add-on to existing Sophos MDR Complete costs a small fraction, making network-layer detection accessible to UAE mid-market.",
       },
       {
-        title: "NDR Essentials free with Sophos XGS Firewall v21.5+",
-        desc: "Sophos XGS Firewall customers running Xstream Protection get NDR Essentials at no additional cost, immediate network-layer detection capability without additional investment.",
+        title: "NDR Essentials free with Sophos Firewall v21.5+",
+        desc: "Sophos Firewall customers running Xstream Protection get NDR Essentials at no additional cost, immediate network-layer detection capability without additional investment.",
       },
       {
         title: "Unmanaged device discovery",
@@ -423,7 +423,7 @@ const vendorDeepDive: DeepDive[] = [
     ],
     shortlist: [
       "UAE organisations running Sophos MDR Complete who want to extend managed detection to the network layer at the lowest additional cost.",
-      "Sophos XGS Firewall customers running Xstream Protection wanting to activate NDR Essentials at no extra cost.",
+      "Sophos Firewall customers running Xstream Protection wanting to activate NDR Essentials at no extra cost.",
       "Mid-market UAE organisations wanting enterprise-grade network detection but unable to justify USD 60K to 250K+ for standalone NDR.",
       "Security teams wanting network plus endpoint MDR in a single SOC relationship without a second vendor or console.",
     ],
@@ -491,7 +491,7 @@ const faqs = [
   {
     question: "Is Sophos NDR the same as Vectra or Darktrace?",
     answer:
-      "All three are credible NDR platforms targeting different buyers. Sophos NDR is an add-on to Sophos MDR Complete that feeds the same SOC and console at a fraction of standalone cost, ideal for Sophos customers. Vectra AI and Darktrace are premium standalone enterprise NDR platforms (roughly USD 60K to 300K+ annually) with deep AI detection and autonomous response. The right pick depends on whether you want integrated value or standalone detection depth.",
+      "All three are credible NDR platforms targeting different buyers. Sophos NDR is available as an add-on to Sophos MDR Complete (and, since November 2026, as a standalone product) that feeds the same SOC and console at a fraction of standalone cost, ideal for Sophos customers. Vectra AI and Darktrace are premium standalone enterprise NDR platforms (roughly USD 60K to 300K+ annually) with deep AI detection and autonomous response. The right pick depends on whether you want integrated value or standalone detection depth.",
   },
   {
     question: "What is a TAP or SPAN port?",

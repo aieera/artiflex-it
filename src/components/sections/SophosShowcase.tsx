@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "@/components/ui/Button";
 import { sophosBenefits, sophosProducts } from "@/pages/Services/cybersecurity/data/sophos";
 
@@ -48,7 +49,7 @@ export default function SophosShowcase({ onCtaClick }: Props) {
             Sophos Cybersecurity Platform
           </h2>
           <p className="text-base text-body leading-relaxed max-w-3xl mx-auto sm:text-lg">
-            A complete, pre-configured security stack from one vendor: firewall, endpoint, email, wireless, MDR, XDR, SASE, and unified management. Defending 600,000+ organizations and 100 million+ users globally.
+            A complete, pre-configured security stack from one vendor: firewall, endpoint, email, wireless, MDR, XDR, Workspace Protection, and unified management. Defending 625,000+ organizations and 100 million+ users globally.
           </p>
         </div>
 
@@ -124,18 +125,32 @@ export default function SophosShowcase({ onCtaClick }: Props) {
             Complete Sophos Product Portfolio
           </h3>
           <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-6">
-            {sophosProducts.map((product) => (
-              <div
-                key={product.title}
-                className="group rounded-2xl border border-border-light bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#045891]/20 hover:shadow-[0_8px_30px_rgba(4,88,145,0.08)] lg:p-3.5"
-              >
-                <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#045891]/8 text-[#045891] transition-colors group-hover:bg-[#045891] group-hover:text-white">
-                  <product.icon className="h-4 w-4" />
+            {sophosProducts.map((product) => {
+              const cardClass =
+                "group rounded-2xl border border-border-light bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#045891]/20 hover:shadow-[0_8px_30px_rgba(4,88,145,0.08)] lg:p-3.5";
+              const inner = (
+                <>
+                  <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#045891]/8 text-[#045891] transition-colors group-hover:bg-[#045891] group-hover:text-white">
+                    <product.icon className="h-4 w-4" />
+                  </div>
+                  <h4 className={`font-display text-sm font-semibold leading-tight text-heading mb-2${product.href ? " transition-colors group-hover:text-[#045891]" : ""}`}>{product.title}</h4>
+                  <p className="text-[11px] leading-relaxed text-body lg:text-[11.5px]">{product.description}</p>
+                </>
+              );
+              return product.href ? (
+                <Link
+                  key={product.title}
+                  to={product.href}
+                  className={`${cardClass} block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#045891]/40`}
+                >
+                  {inner}
+                </Link>
+              ) : (
+                <div key={product.title} className={cardClass}>
+                  {inner}
                 </div>
-                <h4 className="font-display text-sm font-semibold leading-tight text-heading mb-2">{product.title}</h4>
-                <p className="text-[11px] leading-relaxed text-body lg:text-[11.5px]">{product.description}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
