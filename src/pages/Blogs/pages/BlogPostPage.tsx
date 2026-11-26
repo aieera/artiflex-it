@@ -30,6 +30,7 @@ import {
   type BlogPost,
   type ContentBlock,
 } from "@/content/blog";
+import { ORIGIN_POST_SOLUTIONS } from "@/lib/cyberPillars";
 
 const SITE = "https://artiflexit.com";
 
@@ -79,6 +80,50 @@ function renderInline(text: string, keyPrefix: string) {
       </a>
     );
   });
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* Contextual solution link for /blog/origin-* posts                 */
+/*                                                                   */
+/* Each origin post tells the story of one solution area. If its     */
+/* body does not already link the matching solution page in running  */
+/* text (CTA buttons do not count), add one sentence with a          */
+/* descriptive anchor, placed before the closing CTA so it reads as  */
+/* part of the article rather than as a widget.                      */
+/* ──────────────────────────────────────────────────────────────── */
+
+function withSolutionLinks(slug: string, blocks: ContentBlock[]): ContentBlock[] {
+  const targets = ORIGIN_POST_SOLUTIONS[slug];
+  if (!targets?.length) return blocks;
+
+  const bodyText = blocks
+    .map((b) => {
+      if ("text" in b && typeof b.text === "string") return b.text;
+      if ("items" in b && Array.isArray(b.items)) {
+        return b.items.map((it) => (typeof it === "string" ? it : "")).join(" ");
+      }
+      return "";
+    })
+    .join(" ");
+  const missing = targets.filter((t) => !bodyText.includes(`](${t.href})`));
+  if (!missing.length) return blocks;
+
+  const links = missing.map((t) => `[${t.anchor}](${t.href})`);
+  const joined = links.length === 1 ? links[0] : `${links.slice(0, -1).join(", ")} and ${links[links.length - 1]}`;
+  const sentence: ContentBlock = {
+    type: "p",
+    text: `Ready to apply this in your organisation? See how Artiflex delivers ${joined}, including vendor options, sizing and managed support.`,
+  };
+
+  let at = -1;
+  for (let i = blocks.length - 1; i >= 0; i--) {
+    if (blocks[i].type === "cta") {
+      at = i;
+      break;
+    }
+  }
+  if (at === -1) return [...blocks, sentence];
+  return [...blocks.slice(0, at), sentence, ...blocks.slice(at)];
 }
 
 /* ──────────────────────────────────────────────────────────────── */
@@ -418,7 +463,7 @@ export default function BlogPostPage() {
     let cancelled = false;
     setBlocks(null);
     loadPostContent(slug).then((c) => {
-      if (!cancelled) setBlocks(c);
+      if (!cancelled) setBlocks(c ? withSolutionLinks(slug, c) : c);
     });
     return () => {
       cancelled = true;

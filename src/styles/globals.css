@@ -397,3 +397,30 @@ html {
 .scroll-fwd {
   contain: layout style;
 }
+/* ──────────────────────────────────────────────────────────────
+   Services mega-menu (desktop). The panel is ALWAYS in the DOM, so
+   every prerendered page ships real links to the service hubs and the
+   cybersecurity pillars; it is hidden with visibility/opacity only
+   (never display:none) until it is opened by:
+     - hover or tap   -> data-open="true" (React state)
+     - keyboard focus -> :has(:focus-visible). focus-visible, not
+       focus-within, so a mouse click on the trigger does not pin the
+       menu open after the pointer leaves.
+   data-suppress is set by Escape so the menu closes while focus
+   returns to the trigger button.
+   ────────────────────────────────────────────────────────────── */
+.mega-panel {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  translate: -50% 0.5rem;
+  transition: opacity 200ms ease, translate 200ms ease, visibility 0s linear 200ms;
+}
+.mega-root[data-open="true"] .mega-panel,
+.mega-root:not([data-suppress="true"]):has(:focus-visible) .mega-panel {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  translate: -50% 0;
+  transition: opacity 200ms ease, translate 200ms ease, visibility 0s;
+}

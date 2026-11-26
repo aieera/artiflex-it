@@ -1,6 +1,7 @@
 import type React from "react";
 import { Link } from "react-router-dom";
 import { FOOTER_LINKS, CONTACT_INFO, SOCIAL_LINKS } from "@/lib/constants";
+import { CYBER_PILLARS } from "@/lib/cyberPillars";
 import {
   MapPinIcon,
   PhoneIcon,
@@ -19,7 +20,7 @@ export default function Footer() {
 
       <div className="shell pb-8 pt-10 sm:pt-16">
         {/* ─── Columns ─── */}
-        <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-5">
           {/* Column 1, Brand */}
           <div>
             <Link to="/" className="group inline-flex items-center gap-2.5">
@@ -53,7 +54,26 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3, Company */}
+          {/* Column 3, Cybersecurity pillars */}
+          <div>
+            <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-white">
+              Cybersecurity
+            </h3>
+            <ul className="flex flex-col gap-2.5">
+              {CYBER_PILLARS.map((p) => (
+                <li key={p.href}>
+                  <Link
+                    to={p.href}
+                    className="text-sm text-slate-400 transition-colors duration-200 hover:text-brand-blue"
+                  >
+                    {p.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4, Company */}
           <div>
             <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-white">
               Company
@@ -72,7 +92,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4, Contact */}
+          {/* Column 5, Contact */}
           <div>
             <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-white">
               Contact

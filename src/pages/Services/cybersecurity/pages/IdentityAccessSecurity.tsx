@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { pillarBreadcrumbSchema } from "@/lib/cyberPillars";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -213,13 +214,13 @@ function IdentityHero() {
       <div className="relative z-10 mx-auto flex w-full max-w-[88rem] flex-1 flex-col px-4 py-10 sm:px-5 sm:py-12 lg:px-6 lg:py-14">
         <div className="grid flex-1 grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:items-center lg:gap-8 xl:gap-12">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }} className="w-full">
-            <p className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[5rem]">
+            <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[5rem]">
               Identity &amp; Access Security{" "}
               <span className="gradient-text">UAE</span>
-            </p>
-            <h1 className="block font-display text-xl font-light leading-tight text-slate-300 sm:mt-3 sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl">
-              IAM, MFA, IGA &amp; Privileged Access
             </h1>
+            <p className="block font-display text-xl font-light leading-tight text-slate-300 sm:mt-3 sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl">
+              IAM, MFA, IGA &amp; Privileged Access
+            </p>
 
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:mt-6 sm:text-base xl:text-lg">
               Artiflex IT designs, deploys and runs Identity & Access Security programmes across the UAE, Oman and Saudi Arabia, unifying IAM, multi-factor authentication, identity governance, privileged access and identity threat detection into one defensible posture. <span className="font-semibold text-white">Microsoft Entra, Okta, Ping Identity, CyberArk, SailPoint, Saviynt, BeyondTrust, Delinea and OneIdentity</span>, picked on workload, compliance scope and stack alignment, not vendor preference.
@@ -377,6 +378,7 @@ export default function IdentityAccessSecurity() {
         <meta name="twitter:description" content="IAM in Dubai: SSO, MFA, identity governance and PAM across Okta, Microsoft Entra, CyberArk, SailPoint and Saviynt. UAE PDPL aligned." />
         <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-identity-access-security.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify(pillarBreadcrumbSchema("identity"))}</script>
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -405,7 +407,11 @@ export default function IdentityAccessSecurity() {
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#1B8AC7]">The Capability Map</p>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">The four disciplines of identity security</h2>
             <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
-              Identity & Access Security is not a single product. It is a set of disciplines that feed each other: identity management as the foundation, MFA at the authentication layer, IGA for governance and audit, PAM for the highest-risk accounts.
+              Identity & Access Security is not a single product. It is a set of disciplines that feed each other: identity management as the foundation, MFA at the authentication layer, IGA for governance and audit, PAM for the highest-risk accounts. At the authentication layer the direction is beyond the password altogether: see{" "}
+              <Link to="/blog/origin-passwordless" className="font-semibold text-[#1B8AC7] underline underline-offset-2 hover:text-[#045891]">
+                how passwordless authentication evolved, from passwords to passkeys
+              </Link>
+              .
             </p>
           </div>
 

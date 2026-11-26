@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { pillarBreadcrumbSchema } from "@/lib/cyberPillars";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -508,6 +509,10 @@ function MdrHero() {
               <li className="text-slate-600">/</li>
               <li><Link to="/cybersecurity" className="transition-colors hover:text-white">Cybersecurity</Link></li>
               <li className="text-slate-600">/</li>
+              <li>
+                <Link to="/cybersecurity/security-operations" className="transition-colors hover:text-white">Security Operations</Link>
+              </li>
+              <li className="text-slate-600">/</li>
               <li><span className="font-medium text-[#28B5E1]">MDR</span></li>
             </ol>
           </nav>
@@ -600,6 +605,7 @@ export default function SecurityOperationsMdr() {
         <meta name="twitter:description" content="UAE MDR buyer's guide: vendor comparison across Sophos MDR Complete, Secureworks MXDR, Rapid7, Microsoft, SentinelOne, CrowdStrike and Arctic Wolf." />
         <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-security-operations-mdr.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify(pillarBreadcrumbSchema("secops", { name: "MDR", href: "/cybersecurity/security-operations/mdr" }))}</script>
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { pillarBreadcrumbSchema } from "@/lib/cyberPillars";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -388,13 +389,13 @@ function UnifiedFirewallManagementHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Unified Firewall{" "}
             <span className="gradient-text">Management</span>
-          </p>
-          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-            AI-Native Multi-Vendor Firewall Management, Powered by Raabyt UFM ONE
           </h1>
+          <p className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            AI-Native Multi-Vendor Firewall Management, Powered by Raabyt UFM ONE
+          </p>
 
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Every firewall vendor ships its own manager, but each one only speaks to its own devices. The moment your network spans multiple vendors, branches or layered firewall tiers, those native tools become silos. <span className="font-semibold text-white">Raabyt UFM ONE</span> solves this: one console for every firewall, every vendor, with AI-driven policy intelligence, full lifecycle automation and native UAE compliance reporting. Delivered by Artiflex IT as Platinum &amp; Strategic Partner.
@@ -522,6 +523,7 @@ export default function UnifiedFirewallManagement() {
         <meta name="twitter:description" content="Unified firewall management in the UAE for multi-vendor estates: policy automation, audit and compliance reporting via Raabyt UFM ONE." />
         <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-unified-firewall-management.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify(pillarBreadcrumbSchema("ufm"))}</script>
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

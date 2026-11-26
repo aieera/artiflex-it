@@ -11,6 +11,7 @@ import {
   getVendorBySlug,
 } from "@/pages/Vendors/data/vendors";
 import { ogImageForUrl } from "@/lib/ogImage";
+import { pillarsForVendor } from "@/lib/cyberPillars";
 
 export default function VendorDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -25,6 +26,11 @@ export default function VendorDetailPage() {
   if (!vendor) return <Navigate to="/vendors" replace />;
 
   const relatedProducts = RELATED_DETAIL_PAGES[vendor.slug] ?? [];
+  const vendorPillars = pillarsForVendor(
+    vendor.slug,
+    vendor.categories,
+    relatedProducts.map((rp) => rp.category)
+  );
   const initials = vendor.name
     .replace(/[^A-Za-z\s]/g, "")
     .split(/\s+/)
@@ -424,6 +430,38 @@ export default function VendorDetailPage() {
                 );
               })}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* RELATED CYBERSECURITY PILLAR PAGES (internal links back to the
+          solution pages this vendor competes on; derived from categories) */}
+      {vendorPillars.length > 0 && (
+        <section className="relative border-t border-slate-200/70 bg-slate-50 py-10 sm:py-12">
+          <div className="shell">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="font-display text-xl font-bold leading-tight text-slate-900 sm:text-2xl">
+                Where {vendor.name} fits in our cybersecurity solutions
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                Compare {vendor.name} with the alternatives we deploy in the UAE on each solution page.
+              </p>
+            </div>
+            <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {vendorPillars.map((p) => (
+                <li key={p.href}>
+                  <Link
+                    to={p.href}
+                    className="group flex h-full flex-col rounded-xl border border-slate-200 bg-white px-4 py-3.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#28B5E1]/50 hover:shadow-[0_8px_24px_-10px_rgba(27,138,199,0.20)]"
+                  >
+                    <span className="font-display text-[15px] font-bold leading-tight text-slate-900 transition-colors group-hover:text-[#1B8AC7]">
+                      {p.label}
+                    </span>
+                    <span className="mt-1 text-[13px] leading-relaxed text-slate-500">{p.description}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}

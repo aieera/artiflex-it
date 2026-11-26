@@ -6,392 +6,337 @@
   <!-- Blog -->
   <url>
     <loc>https://artiflexit.com/blog</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/category/cybersecurity</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/category/cloud</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/category/compliance</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/category/infrastructure</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/category/managed-services</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-siem</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-ndr</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-mdr</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-firewall-network-security</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-endpoint-security</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-mobile-security</loc>
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-ot-ics-security</loc>
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-email-security</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-data-loss-prevention</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-siem-soc-monitoring</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-vulnerability-management</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-public-cloud</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-private-cloud</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-hybrid-cloud</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-multi-cloud-strategy</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-backup-as-a-service</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-disaster-recovery</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-data-center</loc>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-servers-compute-virtualization</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-storage-solutions</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-backup-data-management</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-document-management-systems</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-network-infrastructure</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-wireless-solutions</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-structured-cabling</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-unified-communication-telephony</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-video-conferencing-collaboration</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-cctv-surveillance</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-access-control-biometrics</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-power-ups</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-printing-document-solutions</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/state-of-cybersecurity-uae-2026</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/firewall-alone-wont-stop-ransomware</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/cloud-migration-mistakes-uae</loc>
-    <lastmod>2026-04-08</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/nesa-compliance-practical-guide</loc>
-    <lastmod>2026-03-28</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/downtime-cost-true-math</loc>
-    <lastmod>2026-03-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/build-vs-buy-managed-services</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/social-engineering-uae</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-identity-access-management</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-privileged-access-management</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-identity-governance-administration</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-workspace-protection-sse-sase</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-sso</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-mfa</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-ilm</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-iga</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-pam</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-access-management</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-zero-trust</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://artiflexit.com/blog/origin-passwordless</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

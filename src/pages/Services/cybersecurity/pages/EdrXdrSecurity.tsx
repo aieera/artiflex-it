@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { pillarBreadcrumbSchema } from "@/lib/cyberPillars";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -617,12 +618,12 @@ function EndpointHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Endpoint Security
-          </p>
-          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-            EDR, XDR &amp; Managed Endpoint Protection Solutions in Dubai &amp; UAE
           </h1>
+          <p className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            EDR, XDR &amp; Managed Endpoint Protection Solutions in Dubai &amp; UAE
+          </p>
 
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Artiflex IT designs, deploys, and manages enterprise EDR and XDR solutions and managed endpoint protection across Dubai and the wider UAE, Oman, and Saudi Arabia. <span className="font-semibold text-white">Sophos Platinum Partner</span>, plus full delivery experience across CrowdStrike, Microsoft Defender, SentinelOne, Palo Alto Cortex, Bitdefender, ESET, Trend Micro, and Check Point, so the conversation starts with your environment, not our preferred SKU.
@@ -747,6 +748,7 @@ export default function EdrXdrSecurityPage() {
         <meta name="twitter:description" content="EDR and XDR solutions in Dubai and across the UAE. Managed endpoint protection from CrowdStrike, SentinelOne, Sophos, Microsoft Defender and Palo Alto Cortex." />
         <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-endpoint-security-edr-xdr.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify(pillarBreadcrumbSchema("endpoint"))}</script>
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { pillarBreadcrumbSchema } from "@/lib/cyberPillars";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -487,13 +488,13 @@ function DlpHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Data Loss Prevention{" "}
             <span className="gradient-text">UAE</span>
-          </p>
-          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-            Endpoint, Network &amp; Cloud DLP
           </h1>
+          <p className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Endpoint, Network &amp; Cloud DLP
+          </p>
 
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Your most valuable data, intellectual property, source code, financial records and regulated PII, PHI and PCI, is the target of almost every attack, whether the threat is a malicious outsider, a rogue insider or a careless employee. Artiflex IT designs, deploys and manages <span className="font-semibold text-white">data loss prevention (DLP)</span> and <span className="font-semibold text-white">data classification</span> across the UAE, Oman and Saudi Arabia, identifying sensitive information and stopping it from leaving via email, web, endpoint, cloud or removable media. We work across Microsoft Purview, Forcepoint, Symantec and Netskope, and recommend Fortra DLP and Check Point Harmony where they fit your data channels, compliance posture and existing stack.
@@ -744,6 +745,7 @@ export default function DataLossPrevention() {
         <meta name="twitter:description" content="Data loss prevention and data classification for the UAE across Fortra, Microsoft Purview, Forcepoint, Symantec, Trellix and Sophos." />
         <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-data-loss-prevention.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify(pillarBreadcrumbSchema("dlp"))}</script>
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",

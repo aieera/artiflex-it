@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { pillarBreadcrumbSchema } from "@/lib/cyberPillars";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -583,13 +584,13 @@ function EmailBusinessHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Email Security{" "}
             <span className="gradient-text">UAE</span>
-          </p>
-          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-            Phishing, BEC &amp; Account Takeover Defence
           </h1>
+          <p className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Phishing, BEC &amp; Account Takeover Defence
+          </p>
 
           <p className="mt-5 max-w-2xl font-display text-sm italic leading-relaxed text-slate-300 sm:text-base">
             <em className="not-italic font-semibold text-white">91%</em> of all cyberattacks begin with a phishing email. Modern email security goes beyond spam filtering: AI-driven detection of Business Email Compromise, spear-phishing, credential harvesting, account takeover, and brand impersonation, with DMARC enforcement, content disarm, outbound DLP, and human-layer training built in.
@@ -854,6 +855,7 @@ export default function EmailSecurityBusiness() {
         <meta name="twitter:description" content="Email security in the UAE: stop phishing, BEC, ransomware and brand impersonation with Sophos, Check Point Harmony, Fortra DMARC and Proofpoint." />
         <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-email-security.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify(pillarBreadcrumbSchema("email"))}</script>
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

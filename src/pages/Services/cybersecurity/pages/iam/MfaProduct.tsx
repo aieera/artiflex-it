@@ -39,6 +39,8 @@ const methods: {
   icon: typeof LockIcon;
   accent: CapAccent;
   tag: string;
+  /** Optional in-card contextual link (descriptive anchor text). */
+  more?: { lead: string; anchor: string; href: string };
 }[] = [
   {
     title: "Push Notification (App-Based)",
@@ -102,6 +104,7 @@ const methods: {
     icon: KeyIcon,
     accent: "emerald",
     tag: "Phishing-Resistant",
+    more: { lead: "Background:", anchor: "the origin of passwordless authentication", href: "/blog/origin-passwordless" },
   },
   {
     title: "Legacy & Service Account MFA",
@@ -1027,6 +1030,15 @@ export default function MfaProduct() {
                   <p className="mt-3 text-sm leading-relaxed text-slate-300">
                     {m.desc}
                   </p>
+                  {m.more && (
+                    <p className="mt-3 text-sm leading-relaxed text-slate-300">
+                      {m.more.lead}{" "}
+                      <Link to={m.more.href} className="font-semibold text-[#28B5E1] underline underline-offset-2 hover:text-white">
+                        {m.more.anchor}
+                      </Link>
+                      .
+                    </p>
+                  )}
                   <span className="mt-5 inline-flex items-center rounded-full border border-[#28B5E1]/30 bg-[#28B5E1]/10 px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#28B5E1]">
                     {m.tag}
                   </span>

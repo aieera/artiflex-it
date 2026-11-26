@@ -713,7 +713,9 @@ export default function CybersecurityPage() {
                   label: "Unified Firewall Management (UFM)",
                   short: "Unified Firewall Mgmt.",
                   icon: WifiIcon,
-                  originHref: "/blog/origin-firewall-network-security",
+                  // No UFM origin post exists yet; link the UFM pillar
+                  // instead of reusing the firewall origin post.
+                  originHref: "/cybersecurity/unified-firewall-management",
                   portfolioHref: "/cybersecurity/unified-firewall-management",
                 },
                 {

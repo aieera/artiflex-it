@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite --open",
     "build": "tsc -b && vite build",
-    "build:seo": "npm run build && npm run og && npm run prerender",
+    "build:seo": "npm run sitemap && npm run build && npm run og && npm run prerender && npm run verify:seo",
+    "sitemap": "node scripts/generate-sitemaps.mjs",
     "prerender": "node scripts/prerender.mjs",
+    "verify:seo": "node scripts/verify-seo.mjs",
     "og": "node scripts/generate-og-images.mjs && node scripts/generate-og-pages.mjs",
     "lint": "eslint .",
     "preview": "vite preview",

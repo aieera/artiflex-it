@@ -433,7 +433,7 @@ const heroTopics = [
   {
     label: "Cloud Migration",
     icon: TargetIcon,
-    originHref: "/blog/origin-cloud-migration",
+    originHref: "/blog/cloud-migration-mistakes-uae",
     portfolioHref: "/cloud-solutions/cloud-migration",
   },
   {

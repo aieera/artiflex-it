@@ -166,7 +166,7 @@ export const content: ContentBlock[] = [
   },
   {
     type: "p",
-    text: "Artiflex IT designs, deploys and operates [Privileged Access Management programmes](/cybersecurity/privileged-access-management) across the UAE, Oman and Saudi Arabia. We deliver CyberArk, Delinea (formerly Thycotic and Centrify), BeyondTrust and One Identity Safeguard as the primary PAM platforms, integrated with Microsoft Entra PIM and Conditional Access for cloud privilege elevation, and connected through ServiceNow or in-house ITSM for approval workflow. We start with a privileged-account discovery exercise (because no vault protects an account you have not enumerated) and then scope a phased rollout that prioritises the accounts with the largest blast radius first.",
+    text: "Artiflex IT designs, deploys and operates [Privileged Access Management programmes](/cybersecurity/identity-access-security/pam) across the UAE, Oman and Saudi Arabia. We deliver CyberArk, Delinea (formerly Thycotic and Centrify), BeyondTrust and One Identity Safeguard as the primary PAM platforms, integrated with Microsoft Entra PIM and Conditional Access for cloud privilege elevation, and connected through ServiceNow or in-house ITSM for approval workflow. We start with a privileged-account discovery exercise (because no vault protects an account you have not enumerated) and then scope a phased rollout that prioritises the accounts with the largest blast radius first.",
   },
   {
     type: "p",

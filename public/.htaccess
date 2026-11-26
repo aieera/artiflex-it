@@ -28,6 +28,15 @@
 # --------------------------------------------------------------
 DirectoryIndex index.html
 
+# Never append a trailing slash to directory URLs. Every pre-rendered
+# route is a directory (/<route>/index.html); its canonical URL has NO
+# trailing slash, and rule 3c 301s the slash form away. With mod_dir's
+# default (DirectorySlash On) the two would fight. Rule 3d serves the
+# directory's index.html internally, so the slash is never needed.
+<IfModule mod_dir.c>
+  DirectorySlash Off
+</IfModule>
+
 # --------------------------------------------------------------
 # 3.  Rewrite engine
 # --------------------------------------------------------------
@@ -139,9 +148,17 @@ DirectoryIndex index.html
   RewriteCond %{QUERY_STRING} ^[0-9]+$
   RewriteRule ^ https://artiflexit.com%{REQUEST_URI}? [L,R=301]
 
-  # 3c. Remove trailing slashes (except root)
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.+)/$ /$1 [L,R=301]
+  # 3c. Remove trailing slashes (except root), in ONE 301, to the
+  #     canonical https://artiflexit.com host.
+  #     This used to carry "RewriteCond %{REQUEST_FILENAME} !-d", which
+  #     exempted every PRE-RENDERED route, because each one is a real
+  #     directory (dist/<route>/index.html). So /cybersecurity/ot-ics-security/
+  #     answered 200 with the same HTML as the canonical URL (duplicate
+  #     content, "Crawled - currently not indexed"). The condition is gone;
+  #     "DirectorySlash Off" (section 2) stops mod_dir from re-adding the
+  #     slash, so the redirect cannot loop, and rule 3d still serves
+  #     /<route>/index.html for the slash-less URL.
+  RewriteRule ^(.+)/$ https://artiflexit.com/$1 [L,R=301]
 
   # 3d. Serve pre-rendered /route/index.html when /route is requested
   #     If a directory with index.html exists for the clean URL, use it.

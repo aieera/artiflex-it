@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { pillarBreadcrumbSchema } from "@/lib/cyberPillars";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -567,6 +568,10 @@ function NdrHero() {
               </li>
               <li className="text-slate-600">/</li>
               <li>
+                <Link to="/cybersecurity/security-operations" className="transition-colors hover:text-white">Security Operations</Link>
+              </li>
+              <li className="text-slate-600">/</li>
+              <li>
                 <span className="font-medium text-[#28B5E1]">NDR</span>
               </li>
             </ol>
@@ -667,6 +672,7 @@ export default function SecurityOperationsNdr() {
         <meta name="twitter:description" content="UAE NDR buyer's guide: vendor comparison across LinkShadow, Sophos NDR, Vectra AI, Darktrace, ExtraHop and Corelight for east-west threat detection." />
         <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-security-operations-ndr.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify(pillarBreadcrumbSchema("secops", { name: "NDR", href: "/cybersecurity/security-operations/ndr" }))}</script>
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

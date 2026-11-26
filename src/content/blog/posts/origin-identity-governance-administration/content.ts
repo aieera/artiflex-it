@@ -158,7 +158,7 @@ export const content: ContentBlock[] = [
   },
   {
     type: "p",
-    text: "Artiflex IT designs, deploys and operates [Identity Governance & Administration programmes](/cybersecurity/identity-governance-administration) across the UAE, Oman and Saudi Arabia. We deliver SailPoint, Saviynt, Microsoft Entra ID Governance, One Identity Manager and Oracle IGA depending on the existing identity stack, regulated-industry footprint and compliance regime. We start with an entitlement discovery exercise (because no governance platform can certify access it cannot enumerate) and then phase the rollout to deliver SOX, NESA, ADHICS or PCI evidence in the first audit cycle.",
+    text: "Artiflex IT designs, deploys and operates [Identity Governance & Administration programmes](/cybersecurity/identity-access-security/iga) across the UAE, Oman and Saudi Arabia. We deliver SailPoint, Saviynt, Microsoft Entra ID Governance, One Identity Manager and Oracle IGA depending on the existing identity stack, regulated-industry footprint and compliance regime. We start with an entitlement discovery exercise (because no governance platform can certify access it cannot enumerate) and then phase the rollout to deliver SOX, NESA, ADHICS or PCI evidence in the first audit cycle.",
   },
   {
     type: "p",

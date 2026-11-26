@@ -588,12 +588,12 @@ function FirewallHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Firewall Solutions
-          </p>
-          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-            NGFW, UTM &amp; Managed Firewall Services in Dubai &amp; UAE
           </h1>
+          <p className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            NGFW, UTM &amp; Managed Firewall Services in Dubai &amp; UAE
+          </p>
 
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Artiflex IT delivers firewall solutions in Dubai and managed firewall services across the UAE, Oman, and Saudi Arabia, designing and deploying enterprise NGFW and network security. <span className="font-semibold text-white">Sophos Platinum Partner</span>, strategic partnership with Check Point and Palo Alto Networks. Artiflex also works on solutions like Cisco, SonicWall and Fortinet. So the conversation really starts with your environment, your expectation and budget allocated for the solution.

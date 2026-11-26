@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { pillarBreadcrumbSchema } from "@/lib/cyberPillars";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -565,6 +566,10 @@ function SiemHero() {
               </li>
               <li className="text-slate-600">/</li>
               <li>
+                <Link to="/cybersecurity/security-operations" className="transition-colors hover:text-white">Security Operations</Link>
+              </li>
+              <li className="text-slate-600">/</li>
+              <li>
                 <span className="font-medium text-[#28B5E1]">SIEM</span>
               </li>
             </ol>
@@ -692,6 +697,7 @@ export default function SecurityOperationsSiem() {
         <meta name="twitter:description" content="UAE SIEM buyer's guide: vendor comparison across Rapid7 InsightIDR, Splunk, Exabeam, Microsoft Sentinel, IBM QRadar and Secureworks Taegis." />
         <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-security-operations-siem.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify(pillarBreadcrumbSchema("secops", { name: "SIEM", href: "/cybersecurity/security-operations/siem" }))}</script>
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

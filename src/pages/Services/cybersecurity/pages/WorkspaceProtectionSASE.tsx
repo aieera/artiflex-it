@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { pillarBreadcrumbSchema } from "@/lib/cyberPillars";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -716,13 +717,13 @@ function WorkspaceHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full"
         >
-          <p className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
+          <h1 className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.75rem]">
             Workspace Protection{" "}
             <span className="gradient-text">UAE</span>
-          </p>
-          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-            SSE, SASE &amp; CASB
           </h1>
+          <p className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            SSE, SASE &amp; CASB
+          </p>
 
           <p className="mt-5 max-w-2xl font-display text-sm italic leading-relaxed text-slate-300 sm:text-base">
             <em className="not-italic font-semibold text-white">The corporate network boundary is gone.</em> Security must follow the user, the device and the data, everywhere they go. ZTNA, CASB, SWG, FWaaS, DLP, RBI, DNS and SSPM, delivered from the cloud as one workspace security fabric.
@@ -844,6 +845,7 @@ export default function WorkspaceProtectionSASE() {
         <meta name="twitter:description" content="ZTNA, SSE, SASE and CASB in Dubai across Sophos, Check Point Harmony, Palo Alto Prisma Access, Netskope and Microsoft. NESA and PDPL aligned." />
         <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-workspace-protection-sse-sase.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify(pillarBreadcrumbSchema("workspace"))}</script>
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

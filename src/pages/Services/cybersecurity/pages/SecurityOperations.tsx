@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { pillarBreadcrumbSchema } from "@/lib/cyberPillars";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -220,13 +221,13 @@ function SecurityOperationsHero() {
       <div className="relative z-10 mx-auto flex w-full max-w-[88rem] flex-1 flex-col px-4 py-10 sm:px-5 sm:py-12 lg:px-6 lg:py-14">
         <div className="grid flex-1 grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:items-center lg:gap-8 xl:gap-12">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }} className="w-full">
-            <p className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[5rem]">
+            <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[5rem]">
               Security Operations{" "}
               <span className="gradient-text">UAE</span>
-            </p>
-            <h1 className="block font-display text-xl font-light leading-tight text-slate-300 sm:mt-3 sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl">
-              SIEM, MDR &amp; NDR
             </h1>
+            <p className="block font-display text-xl font-light leading-tight text-slate-300 sm:mt-3 sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl">
+              SIEM, MDR &amp; NDR
+            </p>
 
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:mt-6 sm:text-base xl:text-lg">
               Artiflex IT designs, deploys and runs the modern SOC across the UAE, Oman and Saudi Arabia, unifying SIEM, MDR and NDR into one detection-and-response programme. <span className="font-semibold text-white">Rapid7, Sophos MDR, Darktrace, Vectra AI and ExtraHop</span>, picked on threat model, log sources and budget, not a SKU.
@@ -383,6 +384,7 @@ export default function SecurityOperations() {
         <meta name="twitter:description" content="Security operations solutions in the UAE. SIEM, MDR and NDR platforms compared and delivered as one managed outcome or co-managed with your in-house team." />
         <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-security-operations.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify(pillarBreadcrumbSchema("secops"))}</script>
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

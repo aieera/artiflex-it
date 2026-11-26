@@ -40,7 +40,7 @@ const offices = [
     notice: "",
     phones: ["+971 52 207 6531"],
     emails: ["info@artiflexit.com"],
-    website: "www.artiflexit.com",
+    website: "artiflexit.com",
     highlight: true,
   },
   {

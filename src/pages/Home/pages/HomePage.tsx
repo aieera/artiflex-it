@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { HeroSection } from "@/pages/Home/sections/HeroSection";
+import { CyberPillarsSection } from "@/pages/Home/sections/CyberPillarsSection";
 import LazyMount from "@/components/ui/LazyMount";
 import { homeFaqItems } from "@/pages/Home/data/homeFaqs";
 
@@ -382,6 +383,10 @@ export default function HomePage() {
           <ServicesSection />
         </Suspense>
       </LazyMount>
+
+      {/* Eager (not LazyMount): the home page's link hub into the 11
+          cybersecurity pillar pages must always be in the HTML. */}
+      <CyberPillarsSection />
 
       <LazyMount minHeight="600px" bg="bg-surface-secondary">
         <Suspense fallback={<SectionSkeleton minHeight="600px" bg="bg-surface-secondary" />}>

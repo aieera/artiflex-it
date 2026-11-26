@@ -728,7 +728,7 @@ function CloudMigrationHero() {
               Gartner Style Review
             </a>
             <Link
-              to="/blog/origin-cloud-migration"
+              to="/blog/cloud-migration-mistakes-uae"
               className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-[#28B5E1]/40 bg-[#28B5E1]/10 px-6 py-3 text-sm font-semibold text-[#28B5E1] backdrop-blur-sm transition-all duration-300 hover:border-[#28B5E1] hover:bg-[#28B5E1]/20 hover:text-white sm:px-7 sm:py-3.5 sm:text-base"
             >
               Read Origin Story

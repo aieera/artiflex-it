@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { pillarBreadcrumbSchema } from "@/lib/cyberPillars";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -530,13 +531,13 @@ function MobileSecurityHero() {
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[#28B5E1] sm:text-xs">
             Mobile Security · UEM · MTD
           </p>
-          <p className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
+          <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
             Mobile Security UAE{" "}
             <span className="gradient-text">UEM + MTD</span>
-          </p>
-          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-            Unified Endpoint Management & Mobile Threat Defense
           </h1>
+          <p className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Unified Endpoint Management & Mobile Threat Defense
+          </p>
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Your team is managing more devices, more platforms and more risk than ever, and one lost phone or malicious app shouldn't put company data at stake. Artiflex IT builds and runs your complete mobile security stack across the UAE, Oman and Saudi Arabia, pairing <span className="font-semibold text-white">unified endpoint management (UEM/MDM)</span> to enrol and govern every device with <span className="font-semibold text-white">mobile threat defense (MTD)</span> to stop phishing, malicious apps and on-device exploits. We deploy and manage Microsoft Intune, Jamf, Omnissa Workspace ONE and Lookout, and recommend Hexnode and Zimperium where they fit your fleet, budget and compliance posture.
           </p>
@@ -614,6 +615,7 @@ export default function MobileSecurity() {
         <meta name="twitter:description" content="UAE mobile security buyer's guide: UEM and MTD vendor comparison across Microsoft Intune, Jamf, Omnissa Workspace ONE, Lookout, Hexnode and Zimperium." />
         <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-mobile-security.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify(pillarBreadcrumbSchema("mobile"))}</script>
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

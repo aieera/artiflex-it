@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { pillarBreadcrumbSchema } from "@/lib/cyberPillars";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -386,13 +387,13 @@ function OTHero() {
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[#28B5E1] sm:text-xs">
             OT / ICS Security · Visibility · Detection · Compliance
           </p>
-          <p className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
+          <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem]">
             OT / ICS Security UAE{" "}
             <span className="gradient-text">Visibility · Detection · Compliance</span>
-          </p>
-          <h1 className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
-            Protect industrial control systems without disrupting operations
           </h1>
+          <p className="block font-display text-lg font-light leading-tight text-slate-300 sm:text-xl md:text-2xl lg:text-[1.6rem]">
+            Protect industrial control systems without disrupting operations
+          </p>
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Artiflex IT designs, deploys and runs OT and ICS security programmes across the UAE, Oman and Saudi Arabia, covering manufacturing, utilities, oil and gas, water and critical infrastructure. We deliver Nozomi Networks, Claroty, Dragos, Tenable OT Security and Microsoft Defender for IoT as focused solutions and integrate them with the IT SOC you already operate. The conversation starts with your assets, protocols and safety constraints, not a SKU.
           </p>
@@ -470,6 +471,7 @@ export default function OTICSSecurity() {
         <meta name="twitter:description" content="OT and ICS cybersecurity in Dubai for industrial, utility and energy sites: SCADA visibility, detection and IEC 62443, NESA and ADHICS compliance." />
         <meta name="twitter:image" content="https://artiflexit.com/og/pages/cybersecurity-ot-ics-security.jpg" />
         <meta name="twitter:site" content="@artiflexit" />
+        <script type="application/ld+json">{JSON.stringify(pillarBreadcrumbSchema("ot"))}</script>
         <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "Service", "serviceType": "OT / ICS Security", "provider": { "@type": "Organization", "@id": "https://artiflexit.com/#organization", "name": "Artiflex Information Technology", "url": "https://artiflexit.com/" }, "areaServed": { "@type": "Country", "name": "United Arab Emirates" }, "description": "UAE OT / ICS Security delivery across Nozomi, Claroty, Dragos, Tenable OT Security and Microsoft Defender for IoT." })}</script>
         <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqs.map((f) => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } })) })}</script>
       </>

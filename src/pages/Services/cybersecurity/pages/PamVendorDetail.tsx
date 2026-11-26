@@ -180,13 +180,14 @@ export default function PamVendorDetail() {
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://artiflexit.com/" },
             { "@type": "ListItem", position: 2, name: "Cybersecurity", item: "https://artiflexit.com/cybersecurity" },
+            { "@type": "ListItem", position: 3, name: "Identity & Access Security", item: "https://artiflexit.com/cybersecurity/identity-access-security" },
             {
               "@type": "ListItem",
-              position: 3,
+              position: 4,
               name: "Privileged Access (PAM)",
               item: "https://artiflexit.com/cybersecurity/identity-access-security/pam",
             },
-            { "@type": "ListItem", position: 4, name: vendor.name, item: pageUrl },
+            { "@type": "ListItem", position: 5, name: vendor.name, item: pageUrl },
           ],
         })}
       </script>
@@ -203,13 +204,17 @@ export default function PamVendorDetail() {
         />
 
         <div className="relative z-10 border-b border-white/5">
-          <div className="shell flex w-full items-center gap-2 pt-24 pb-3 text-[11px] text-slate-400 sm:pt-28">
+          <div className="shell flex w-full flex-wrap items-center gap-2 pt-24 pb-3 text-[11px] text-slate-400 sm:pt-28">
             <Link to="/" className="transition-colors hover:text-white">
               Home
             </Link>
             <span className="text-slate-600">/</span>
             <Link to="/cybersecurity" className="transition-colors hover:text-white">
               Cybersecurity
+            </Link>
+            <span className="text-slate-600">/</span>
+            <Link to="/cybersecurity/identity-access-security" className="transition-colors hover:text-white">
+              Identity &amp; Access Security
             </Link>
             <span className="text-slate-600">/</span>
             <Link
